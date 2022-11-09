@@ -176,6 +176,7 @@
     landis$model <- "Landis II"
     landis$dbh[landis$dbh == "7 cm" ] <- 7
     landis$dbh[landis$dbh == "10 cm" ] <- 10
+    landis$dbh[landis$dbh == "0" ] <- 0
     landis$dbh <- as.numeric(landis$dbh)
     landis$V1 <- NULL
 
@@ -210,7 +211,7 @@
      aa2 <- rbind(aa7, aa10)
 
      landis <- landis[!landis$dbh == 0,] 
-     sppSimLandis <- rbind(landis, aa2)
+     landis <- rbind(landis, aa2)
      
      
      # Add 0 values to those sites where there is 0 recruitment and 0 BA for a spp
@@ -227,7 +228,18 @@
                           r.ba = 0,
                           r.trees = 0,
                           ba = 0)
-     landis <- rbind(landis, missing)                                                    
+     landis <- rbind(landis, missing) 
+     
+     # Check that same sample do not have ba value for one species and 0 for the same species 
+     # for the two diameter thresholds
+     # e.g. View(landis[landis$site == 3 & landis$sample == 1,])
+     
+     landis <- landis |> 
+         dplyr::group_by(site, sample, model, species) |>
+         dplyr::mutate(type = if(dplyr::n_distinct(ba) > 1) 'multiple values' else 'OK') |>
+         dplyr::mutate(ba = max(ba)) |>
+         dplyr::ungroup()
+     landis$type <- NULL
 
     ### Treemig ----
 
