@@ -25,12 +25,12 @@ author:
 - Harald Bugmann, Forest Ecology, ETH Zurich
 date: "`r Sys.Date()`"
 output:
-  word_document:
-    reference_docx: template_paper.docx
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
+  word_document:
+    reference_docx: template_paper.docx
 bibliography: Regeneration.bib
 link-citations: yes
 linkcolor: blue
@@ -72,56 +72,84 @@ Mortality*
 
 # Introduction
 
-Forest recruitment is fundamental for forest dynamics, in particular
-with increasing disturbance under climate change and it is also crucial
+Tree recruitment is fundamental for forest dynamics, in particular with
+increasing disturbance under climate change and it is also crucial
 understand the forest resilience under climate change.
 
 In comparison to recruitment, growth and mortality responses to climate
 change are much more studied
 
-Tree recruitment depends on several processes (reproduction, fruit
+Tree recruitment depends on multiple processes (reproduction, fruit
 maturation, seed production, dispersal, germination, juvenile growth and
 survival) that are all difficult to assess
 
-Regeneration processes in dynamic forest models
+Models are needed to (1) synthesize existing empirical data and explore
+their consequences, and (2) assess future tree recruitment e.g. in the
+context of global change scenarios
 
-Consequences of over recruit
+Regeneration processes in dynamic forest models and how they have been
+handled to date [@konig_tree_2022; @bugmann2022].
 
-Species richness in regeneration, mortality and regeneration levels
-impacts on forest dynamics
+Tendency of models to be too liberal with recruitment; consequences of
+over-recruitment Species richness in regeneration, mortality and
+regeneration levels may have strong impacts on forest dynamics
 
-This is the first time, a large number of forest models commonly used to
-assess forest dynamics under climate change is evaluated against a
-continental-scale multi-species harmonized data set on tree recruitment.
+An analysis how well models of forest dynamics perform re. recruitment
+is lacking. This is the first time, a large number of forest models
+commonly used to assess forest dynamics under climate change is
+evaluated against a continental-scale multi-species harmonized data set
+on tree recruitment. Briefly praise the dataset [@käber].
 
-In this study wanted to answer the following questions:
-
-1)  Are models of forests dynamics capturing correctly regeneration
-    levels across environmental gradients
-
-2)  Are models of forest dynamics representing correctly initial
-    composition of tree populations
-
-3)  Can models of forest dynamics correctly capture the initial
-    mortality in tree in-growth between 7 and 10 cm
+In this study wanted to answer the following questions: 1) Are models of
+forests dynamics capturing correctly regeneration levels across
+environmental gradients 2) Are models of forest dynamics representing
+correctly initial composition of tree populations 3) Can models of
+forest dynamics correctly capture the initial mortality in tree
+in-growth between 7 and 10 cm
 
 # Material and methods
 
-A total of 15 models and model variants of forest dynamics at the stand, landscape and global level were used to simulate stand dynamics and sample regeneration in 200 sites selected across Europe.
+A total of 15 models and model variants of forest dynamics at the stand,
+landscape and global level were used to simulate stand dynamics and
+sample regeneration in 200 sites selected across Europe.
 
-About the models The models ( Table @ref(tab:tableModels)) were created with different philosophies to represent regeneration. Three models, LPJ-GUESS, the two variants of ForClim and Treemig simulated more species than the one asked because XXXX , these species were assigned to "other" category in the case of TreeMig and in the case of LPJ-GUESS they were removed from the outputs as they are shrubs species (Boreal evergreen shrub, Juniperus oxycedrus and quercus coccifera) LPJ-GUESS also simulate Corylus avellana but only had 3 trees across all samples and they were removed because due to the low degrees of freedom it was not possible to create a model for the category "others" for this model). Forclim simulated a total of 17 species more than the species asked in the protocol . Observed data also have a category others.
+About the models The models ( Table @ref(tab:tableModels)) were created
+with different philosophies to represent regeneration. Three models,
+LPJ-GUESS, the two variants of ForClim and Treemig simulated more
+species than the one asked because XXXX , these species were assigned to
+"other" category in the case of TreeMig and in the case of LPJ-GUESS
+they were removed from the outputs as they are shrubs species (Boreal
+evergreen shrub, Juniperus oxycedrus and quercus coccifera) LPJ-GUESS
+also simulate Corylus avellana but only had 3 trees across all samples
+and they were removed because due to the low degrees of freedom it was
+not possible to create a model for the category "others" for this
+model). Forclim simulated a total of 17 species more than the species
+asked in the protocol . Observed data also have a category others.
 
-About the sites The sites represent the available range of environmental gradients in temperature and precipitation (Figure using the variables degree day and water balance. The sites were selected across a network of plots that collect information on forest reserves [@kaber_sheltered_nodate]
+About the sites The sites represent the available range of environmental
+gradients in temperature and precipitation (Figure using the variables
+degree day and water balance. The sites were selected across a network
+of plots that collect information on forest reserves
+[@kaber_sheltered_nodate]
 
-Each modeler group was provided with detailed information on how to perform the simulations including the input variables such as soil or climate, simulation setup and expected output variables. The overarching goal of this simulations was the assessment of the regeneration niche as it arises from empirical data analysis vs. its representation in a wide range of models of forest dynamics.
+Each modeler group was provided with detailed information on how to
+perform the simulations including the input variables such as soil or
+climate, simulation setup and expected output variables. The overarching
+goal of this simulations was the assessment of the regeneration niche as
+it arises from empirical data analysis vs. its representation in a wide
+range of models of forest dynamics.
 
-A GAM model based on XXX was used to compare the trend on the observed data and the simulated outputs. DESCRIBE GAM
+A GAM model based on XXX was used to compare the trend on the observed
+data and the simulated outputs. DESCRIBE GAM
 
-Species simulated:  4C only simulated 4 species. Treemig. ForClim and Empirical data have more species assigned all together into category "others". LPJ-GUESS simulated bushes that were not consider in the output of speces composition neither recruitment. 
+Species simulated: 4C only simulated 4 species. Treemig. ForClim and
+Empirical data have more species assigned all together into category
+"others". LPJ-GUESS simulated bushes that were not consider in the
+output of speces composition neither recruitment.
 
 In table @ref(tab:tableModels)
 
-````{r tableModels, echo=FALSE,  message=FALSE}
+```{r tableModels, echo=FALSE,  message=FALSE}
 library(knitr)
 
 modelDF <- readr::read_csv(here::here("data", "modelsDescription.csv"))
@@ -142,49 +170,85 @@ kable(modelDF,  format = "markdown", caption = "List of models included.")
 
 ToDo add a map with the species composition of the empirical data
 
-ToDo check in Haralds paper which models are in which category in the classification of establishment and link this with the results we see here in structure and complexity. For example iLand and Picus have a similar structure but results are very different. Are we meeting the expectations in behaviour fromthe different models?
+ToDo check in Haralds paper which models are in which category in the
+classification of establishment and link this with the results we see
+here in structure and complexity. For example iLand and Picus have a
+similar structure but results are very different. Are we meeting the
+expectations in behaviour fromthe different models?
 
 Species composition in regeneration
 
-We evaluated the species compositions across models and in relation to the observed data by calculating the Shannon index that defines the relative frequency of species referring to basal area (BA) (Equation @ref(eq:shannon))
+We evaluated the species compositions across models and in relation to
+the observed data by calculating the Shannon index that defines the
+relative frequency of species referring to basal area (BA) (Equation
+@ref(eq:shannon))
 
+```{=tex}
 \begin{equation}
 H_n = - \sum_{i = 1}^{s}{p_{i}ln(p_{i})}(\#eq:shannon)
 \end{equation}
-
+```
+```{=tex}
 \begin{equation}
 p_{n,i} = \frac{BA_{r_{n,i}}}{BA_{total_{n}}}(\#eq:piShannon)
 \end{equation}
-
-where, $s$ is the total number of species in the sample $n$ (11 for the models that simulated all the species and a varied number for those models that did not consider all the species (see Table @ref(tab:tableModels) for more details in the simulated species); $p_{i}$ is the proportion of the species $i$ calculated as the recruited basal area ($BA_{r_{n,i}}$) for that species $i$ over the total basal area ($BA_{total_{n}}$) of that sample $n$.
+```
+where, $s$ is the total number of species in the sample $n$ (11 for the
+models that simulated all the species and a varied number for those
+models that did not consider all the species (see Table
+@ref(tab:tableModels) for more details in the simulated species);
+$p_{i}$ is the proportion of the species $i$ calculated as the recruited
+basal area ($BA_{r_{n,i}}$) for that species $i$ over the total basal
+area ($BA_{total_{n}}$) of that sample $n$.
 
 Main hypothesis:
 
-The recruitment species richness is driven by the simulated adult trees species richness and this is defined on how models represent individual species recruitment per site with respect of adult proportion
+The recruitment species richness is driven by the simulated adult trees
+species richness and this is defined on how models represent individual
+species recruitment per site with respect of adult proportion
 
-Environmental gradients have an impact on the recruitment of the 5 main tree species but extremes are not well captured
+Environmental gradients have an impact on the recruitment of the 5 main
+tree species but extremes are not well captured
 
-Models can capture the relative abundance of recruitment of the 5 main European tree species but they are not doing a good job for minor species
+Models can capture the relative abundance of recruitment of the 5 main
+European tree species but they are not doing a good job for minor
+species
 
-We evaluate the species composition in the recruitment and for all the trees present on the site using the relative frequency of species referring to basal area with the Shannon index calculated per sample, site and model. The higher the value, the higher the diversity of species in a particular site and sample.
+We evaluate the species composition in the recruitment and for all the
+trees present on the site using the relative frequency of species
+referring to basal area with the Shannon index calculated per sample,
+site and model. The higher the value, the higher the diversity of
+species in a particular site and sample.
 
 Mortality in recruitment
 
 Main hypothesis:
 
-the higher regeneration at threshold of 7cm the stronger is the regeneration mortality, so we will see a larger decease in stem number between recruitment at threshold of 7 cm and 10 cm (as ratio nn7/nn10 (colname nn710))  In othwr words the number of individuals would decrease (Reineke self-thinning rule: This is usually calculated from even age, single species stands. The models could also include the effects of canopy shading and species competition)
+the higher regeneration at threshold of 7cm the stronger is the
+regeneration mortality, so we will see a larger decease in stem number
+between recruitment at threshold of 7 cm and 10 cm (as ratio nn7/nn10
+(colname nn710))  In othwr words the number of individuals would
+decrease (Reineke self-thinning rule: This is usually calculated from
+even age, single species stands. The models could also include the
+effects of canopy shading and species competition)
 
 Species composition it is also reduced between 7 and 10 cm
 
 Comments on the Reineke rule
 
-the number of individuals would decrease (Reineke self-thinning rule) from 7 to 10cm
+the number of individuals would decrease (Reineke self-thinning rule)
+from 7 to 10cm
 
-assumes a relationship between the number of stems and the quadratic mean diameter in fully stocked pure stands.
+assumes a relationship between the number of stems and the quadratic
+mean diameter in fully stocked pure stands.
 
-This rule is extensively used for management purposes, but it has been initially calibrated for pure, even-aged stands for relatively few species.
+This rule is extensively used for management purposes, but it has been
+initially calibrated for pure, even-aged stands for relatively few
+species.
 
-This is usually calculated from even age, single species stands. The models could also include the effects of canopy shading and species competition.
+This is usually calculated from even age, single species stands. The
+models could also include the effects of canopy shading and species
+competition.
 
 Explanations:
 
@@ -192,19 +256,25 @@ $$Reineke exp rk=-1.605: (7/10)^{(-1.605)} = 1.77$$
 
 # Results
 
-## Regeneration levels
+Regeneration levels, species composition and mortality between
+recruitment diameters thresholds of 7 and 10 cm varied across model
+simulation results and in comparison with the observations. As expected,
+recruitment was overestimated across most models for both the 7 and 10
+cm diameter thresholds, with the exception of SYBILA, Landis II and
+aDGVM2 that estimated recruitment rates at the lower end of the
+plausibility interval of the empirical data (Figure \@ref(fig:over)).
+The models with highest overestimation were PICUS and TreeMig. For most
+of the models, the variability across sites in recruitment levels
+(visible from the IQR
+in the box plots of Figure \@ref(fig:over)) is similar to or smaller
+than the observed
+variability for most of the models, with the exception of PICUS, where
+the mean
+recruitment variability is much larger.
 
--   Recruitment was overestimated across models both for 7 and 10 cm
-    diameter thresholds, with the exception of SYBILA and Landis II that
-    underestimated recruitment (Figure \@ref(fig:over)). The models with
-    higher overestimation are PICUS and TreeMig. The variability across
-    sites in recruitment levels is similar or smaller to the observed
-    variability for most of the models, with the exception of PICUS and
-    TreeMig where the mean recruitment variability is larger.
-
-    ```{r over, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites. The red dotted lines shows the 2.5 and 97.5 percentiles for the 7cm diameter threshold", out.width='100%'}
+```{r over, echo=FALSE, fig.cap="Mean recruitment values across all samples for the 200 sites. The red dotted lines shows the 2.5 and 97.5 percentiles for the 7 cm diameter threshold.", out.width='100%'}
         knitr::include_graphics(here::here("figures", "recOverAll710.png"))
-    ```
+```
 
 -   Models reproduce better the dominating effect of basal area than
     effect of environmental gradients where they have varying effects
@@ -244,12 +314,9 @@ $$Reineke exp rk=-1.605: (7/10)^{(-1.605)} = 1.77$$
     explain why for the lowest stand basal areas the empirical data has
     no recruitment of for example why ,
 
-```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites. The values have been divided in 10 bins and the red lines represent a GAM model showing the trend from the observed data.", out.width='100%'}
-    knitr::include_graphics(here::here("figures", "envTrend7Totba.png"))
-```
-
-```{r nvTrend710BA500, echo=FALSE, fig.cap="BA to be join with previous figure", out.width='100%'}
-    knitr::include_graphics(here::here("figures", "envTrend7Totba_500.png"))
+```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites. The values have been divided in 10 bins and the red lines represent a GAM model showing the trend from the observed data.", fig.show = 'hold', out.width = '50%'}
+    knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
+                              here::here("figures", "envTrend7Totba_500.png")))
 ```
 
 ## Species composition in regeneration
@@ -265,9 +332,9 @@ $$Reineke exp rk=-1.605: (7/10)^{(-1.605)} = 1.77$$
     this is a special case as this model only simulated 5 species, so
     the total species richness comparison is lower for this model.
 
-    ```{r H710, echo=FALSE, fig.cap="Shannon index of the recruitment calculated by basal area as the mean value across samples per site for diamter treshold of 7 and 10cm. The red dotted lines represent the 20 percentile of the observed data for the treshold of 7cm and 70 percentile of the observed data for the treshold of 10cm ", out.width='100%'}
+```{r H710, echo=FALSE, fig.cap="Shannon index of the recruitment calculated by basal area as the mean value across samples per site for diamter treshold of 7 and 10cm. The red dotted lines represent the 20 percentile of the observed data for the treshold of 7cm and 70 percentile of the observed data for the treshold of 10cm ", out.width='100%'}
     knitr::include_graphics(here::here("figures", "H7_10.png"))
-    ```
+```
 
 -   Most of the models are capturing well or over-predicting the species
     richness at the stand level (Figure \@ref(fig:combinedRichness) A
@@ -300,9 +367,9 @@ $$Reineke exp rk=-1.605: (7/10)^{(-1.605)} = 1.77$$
     underestimate species richness in recruitment (which ones have
     feedback! enumerate them)) (Appendix figure?)).
 
-    ```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannonn index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7cm treshold. The selection representative model per trend group was based on the Figure XX and tables available in the supplementary information", out.width='75%'}
+```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannonn index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7cm treshold. The selection representative model per trend group was based on the Figure XX and tables available in the supplementary information", out.width='75%'}
     knitr::include_graphics(here::here("figures", "combined_richness.png"))
-    ```
+```
 
 ### **Looking at the recruitment share of the 5 main tree species we found that**
 
@@ -482,14 +549,14 @@ knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 
 # References
 
-````{=html}
+```{=html}
 <!--The relationship was first described by
 [@key] for single citation
 [@key1; @key2] multiple citation can be separated by semi-colon
 [-@key] in order to suppress author name, and just display the year
 [see @key1 p 12; also this ref @key2] is alos a valid syntax
-```
 -->
-````
+```
+\`\`\`
 
 # Supplementary

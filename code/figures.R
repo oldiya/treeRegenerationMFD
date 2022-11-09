@@ -18,10 +18,16 @@
 
     outputsDF$model <- factor(outputsDF$model, levels = modelsOrder)
     outputsDF$dbh <- factor(outputsDF$dbh, levels = c("10", "7"))
-
-# Calculate Shannon index by basal area ----    
     
-    ## Recruitment Shannon index----
+# Remove the 35 sites from the models data for threshold 7cm as they do not have 
+# observations for those sites
+
+    sitesWoObs <- outputsDF[is.na(outputsDF$r.trees), ]
+    outputsDF <- outputsDF[!(outputsDF$dbh == 7 & outputsDF$site %in% unique(sitesWoObs$site)), ]
+
+# Data preparation ----    
+    
+    ## Recruitment Shannon index  by basal area ----
     ShannonDF <- outputsDF 
     ShannonDF$giDIVG <- ShannonDF$r.ba / ShannonDF$Totba
     ShannonDF$lngiDIVG <- log(ShannonDF$r.ba / ShannonDF$Totba)
@@ -140,11 +146,12 @@
                          wb  = unique(wb))
     
     envTrend <-  envTrend[ envTrend$dbh == "7", ]
-    envTrend <- as.data.table(envTrend) 
+    #envTrend <- as.data.table(envTrend) 
 
     
     # Mean across sites 
     empDataQuartile <- c(0.025, 0.975)
+    
     overDTEmp <- overDTEmp2 |>
         dplyr::group_by(dbh) |>
         dplyr::summarise(r.trees_low = quantile(r.trees, empDataQuartile[1],
@@ -202,11 +209,16 @@
     
     # Plot the boxplot with the observations GAM
     for (modelSel in unique(envTrend$model)) {
-        ienvTrendModel <- envTrend[envTrend$model == modelSel]
+        ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+        
+        max_r <- as.numeric(quantile(ienvTrendModel$r.trees,.99, na.rm = TRUE))
+        ienvTrendModel$r.trees[ienvTrendModel$r.trees > max_r] <- max_r
+        
+        
         axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
                                             "aDGVM2"), "s", "n")
         boxplot(r.trees ~ ba_cut, 
-                data = ienvTrendModel[dbh == 7 & model == modelSel], 
+                data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
                 xlab = "",
                 ylab = "",
                 #ylim = c(0, 500),
@@ -249,11 +261,11 @@
     
     # Plot 
     for (modelSel in unique(envTrend$model)) {
-        ienvTrendModel <- envTrend[envTrend$model == modelSel]
-        axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
+        ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+        axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
                                            "aDGVM2"), "s", "n")
        boxplot(r.trees ~ wb_cut, 
-               data = ienvTrendModel[dbh == 7 & model == modelSel], 
+               data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ], 
                xlab = "",
                ylab = "",
                #ylim = c(0, 500),
@@ -274,7 +286,7 @@
     dev.off()
     
    
-    #### FigS. DDS -----
+    #### FigS. R VS. DDS -----
     
     png(file = "figures/envTrend7DDS.png", width = 16, height = 12, 
         units = "cm", res = 300)
@@ -294,9 +306,9 @@
     invLink <- family(fm.sim)$linkinv
     
     for (modelSel in unique(envTrend$model)) {
-        ienvTrendModel <- envTrend[model == modelSel]
+        ienvTrendModel <- envTrend[envTrend$model == modelSel,]
         boxplot(r.trees ~ dds_cut, 
-                data = ienvTrendModel[dbh == 7 & model == modelSel], 
+                data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
                 xlab = "",
                 ylab = "",
                 #ylim = c(0, 500),
@@ -315,6 +327,802 @@
     mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
     
     dev.off()
+    
+    
+# Mortality ----    
+  ### Fig. R ratio 7/10 ----     
+    # Data preparation    
+    ddata <- outputsDF[outputsDF$species %in% c(selSpecies, aDVGMSpecies), ]
+    
+    # H1: the higher regen7 the stronger the regen mortality
+    # decrease in stem number between regen7 and regen10
+    # as ratio nn7/nn10 (colname nn710)
+    # reference lines
+    #  -ratio 1 = no decrease from 7 -> 10
+    #  -ratio for selfthinning under even aged conditions
+    #   with Reineke exp rk=-1.605: (7/10)^(-1.605) = 1.77
+    
+    treesTot <- ddata |>
+        dplyr::group_by(model, site, sample, dbh) |>
+        dplyr::summarise(Tot.rtrees = sum(r.trees),
+                         dds = unique(dds),      
+                         wb = unique(wb))
+    meanTrees <- treesTot |>
+        dplyr::group_by(model, site, dbh) |>
+        dplyr::summarise(mean.rtrees = mean(Tot.rtrees),
+                         dds = unique(dds),  
+                         wb = unique(wb))
+    
+    meanTrees7 <- meanTrees[meanTrees$dbh == 7,]
+    colnames(meanTrees7) <- c("model", "site", "dbh", "nn7", "dds", "wb")
+    meanTrees7 <- meanTrees7[, c("model", "site", "nn7")]
+    meanTrees10 <- meanTrees[meanTrees$dbh == 10,]
+    colnames(meanTrees10) <- c("model", "site", "dbh", "nn10", "dds", "wb")
+    meanTrees10 <- meanTrees10 [, c("model", "site", "nn10",  "dds", "wb")]
+    
+    nnAll <- merge(meanTrees7, meanTrees10, by = c("model","site"))
+    nnAll$nn710 <-nnAll$nn7/nnAll$nn10
+    
+    # the plot 
+    ratio7_10 <- ggplot2::ggplot(nnAll, ggplot2::aes(y = nn710, x = model, 
+                                                     fill = model)) + 
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "darkblue", 
+                            linetype = "dashed") +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "darkblue",
+                            linetype = "dashed") +
+        ggplot2::ylim(c(0,4)) +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = bquote(bar(R) * "(7cm) / " * bar(R) * "(10cm)")) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       legend.position = "none",
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       legend.key =  ggplot2::element_blank(), 
+                       legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_fill_manual(labels = labels[names(labels) %in%  unique(nnAll$model)],
+                                   values = values_color[names(values_color) %in% unique(nnAll$model)],
+                                   guide = "none")
+    
+    ggplot2::ggsave("figures/ratio7_10.png",
+                    plot = ratio7_10,
+                    width = 21, height = 12, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    
+    ### Fig. median vs overestimate per model ----
+    # Prepare the data
+    ## interquartile range (IQR) 
+    ##calculated as the difference between the 3rd quartile and the 1st quartile
+    ##in rate of ntrees between 10 and 7 cm
+    iqrDT <- nnAll[is.finite(nnAll$nn710),] |> # this is only for dbh 7!! sites with recruitment are 187 (13 sites recruitment is 0 for 7cm)
+        dplyr::group_by(model) |> 
+        dplyr::summarise(iqr7_10 = IQR(nn710, na.rm = TRUE),
+                         median = median(nn710, na.rm = TRUE),
+                         mean = mean(nn710, na.rm = TRUE),
+                         sd = sd(nn710, na.rm = TRUE) )
+    
+    # Overestimation at 7cm   
+    dbhSel <- 7
+    simResdbh2 <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
+    aggNrecr <- simResdbh2 |>  # this is only for dbh 7!! sites with recruitment are 187 (13 sites recruitment is 0 for 7cm)
+        dplyr::group_by(model, site, sample) |> 
+        dplyr::summarise(Totr.trees = sum(r.trees, na.rm = TRUE),
+                         dds = unique( dds),    
+                         wb = unique(wb))
+    
+    meanNrecr <- aggNrecr |> 
+        dplyr::group_by(model, site) |> 
+        dplyr::summarise(meanTotr.trees = mean(Totr.trees, na.rm = TRUE),
+                         dds = unique( dds),    
+                         wb = unique(wb))
+    modelMean <- meanNrecr |> 
+        dplyr::group_by(model) |> 
+        dplyr::summarise(meanModTotr.trees = mean(meanTotr.trees, na.rm = TRUE),
+                         sdModTotr.trees = sd(meanTotr.trees, na.rm = TRUE))
+    
+    modelMean$diff <- (modelMean$meanModTotr.trees - modelMean$meanModTotr.trees[modelMean$model == "Empirical"]) / modelMean$meanModTotr.trees[modelMean$model == "Empirical"]
+    modelMean2 <- merge(modelMean,  iqrDT, by = "model")
+    
+    # Plot
+    overMortmedian <- ggplot2::ggplot(modelMean2,
+                                      ggplot2::aes(x = diff, y = median, 
+                                                   fill = model,  alpha = 0.8)) +
+        ggplot2::geom_point(alpha = .8) +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", linetype = "dashed") +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", linetype = "dashed") +
+        ggplot2::xlim(c(-5, 15)) +
+        ggplot2::geom_vline(xintercept = 0, linetype = "dotted", color = "red") +
+        ggplot2::scale_colour_manual(values = values_color) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       legend.key =  ggplot2::element_blank(), 
+                       legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank(),
+                       legend.position = "none") +
+        ggplot2::xlab(label = "Proportion of overestimation in tree recruiment at 7cm diameter threshold") +
+        ggplot2::ylab(label = "Ratio of recruitment at 7 and 10cm diameter threshold") +
+        
+        ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
+                                               color = NULL),
+                                  nudge_y = 0.05) +
+        ggplot2::scale_fill_manual(values = values_color)
+    
+    ggplot2::ggsave("figures/mort7_10_medianOver.png",
+                    plot =  overMortmedian,
+                    dpi = 300, units = "cm", device = 'png')         
+    
+# Diversity in recruitment ----
+    ### Fig. H7 & H10-----
+    ## H2: diversity decreases between 7 and 10cm
+    #### Data preparation 
+    # Mean Shannon index per site (across samples)
+    dat710 <- ShannonIndex |>  
+        dplyr::group_by(model, site, dbh) |> 
+        dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
+    dat710$dbh <- ordered(dat710$dbh, levels = c("7", "10"))
+    modelsSel <-  modelsOrder[!modelsOrder  == "aDGVM2"]
+    
+    #### Plot
+    H7_10 <- ggplot2::ggplot(dat710[!dat710$model == "aDGVM2", ],
+                             ggplot2::aes(y = ShannonIndexRecruit, 
+                                          x = model,
+                                          fill = model,
+                                          alpha = dbh)) + 
+        ggplot2::scale_x_discrete(labels = labels) +
+        ggplot2::geom_boxplot(notch = F) +
+        ggplot2::ylim(c(0,0.3)) +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = bquote(bar(H) * " recruitment")) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       legend.position = "right",
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       legend.key =  ggplot2::element_blank(), 
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_fill_manual(#labels[names(labels) %in%  unique(dat710[!dat710$model == "aDGVM2", ])],
+            values = values_color[names(values_color) %in% modelsSel],
+            guide = "none") +
+        ggplot2::scale_alpha_manual(values = c(0.3, 1),
+                                    guide = ggplot2::guide_legend(override.aes = list(alpha = c(0.4, 1),
+                                                                             fill = "red")),
+                                    name = "Diameter threshold",
+                                    labels = c('7 cm', '10 cm')) +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "7" & dat710$model == "Empirical"],
+                                                               c(0.25))), 
+                            colour = "#990000", linetype = "dashed") +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "10" & dat710$model == "Empirical"],
+                                                               c(0.70))),
+                            colour = "#990000", linetype = "dashed") 
+    
+    ggplot2::ggsave("figures/H7_10.png",
+                    plot =   H7_10,
+                    width = 21, height = 12, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    
+    
+    ddataH <- outputsDF[outputsDF$species %in% c(selSpecies), ]
+    
+    ####  Figs. H7 per model -----
+    
+    dat <- ShannonIndex[ShannonIndex$dbh == "7",]
+    dat <- dat |>  dplyr::group_by(model, site) |> 
+        dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
+    
+    H7 <- ggplot2::ggplot(dat,
+                          ggplot2::aes(y = ShannonIndexRecruit, 
+                                       x = model, 
+                                       fill = model)) + 
+        ggplot2::geom_boxplot(notch = F) +
+        ggplot2::ylim(c(0,0.3)) +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = "H (7cm)") +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       legend.position = "none",
+                       #panel.spacing = ggplot2::unit(0, "lines"),
+                       #panel.grid.major = ggplot2::element_blank(), 
+                       #panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       #legend.position = "top",
+                       legend.key =  ggplot2::element_blank(), 
+                       legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_fill_manual(values = values_color) 
+    
+    ggplot2::ggsave("figures/H7.png",
+                    plot =  H7,
+                    width = 21, height = 12, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    #### FigS. H10 per model -----
+    dat10 <- ShannonIndex[ShannonIndex$dbh == "10",]
+    dat10 <- dat10 |>  dplyr::group_by(model, site) |> 
+        dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
+    
+    H10 <- ggplot2::ggplot(dat10,
+                           ggplot2::aes(y = ShannonIndexRecruit, 
+                                        x = model, 
+                                        fill = model)) + 
+        ggplot2::geom_boxplot(notch = F) +
+        ggplot2::ylim(c(0,0.3)) +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = "H (7cm)") +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       legend.position = "none",
+                       #panel.spacing = ggplot2::unit(0, "lines"),
+                       #panel.grid.major = ggplot2::element_blank(), 
+                       #panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       #legend.position = "top",
+                       legend.key =  ggplot2::element_blank(), 
+                       legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_fill_manual(values = values_color) 
+    
+    ggplot2::ggsave("figures/H10.png",
+                    plot =  H10,
+                    #width = 55, height = 18, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    
+    # (2a)
+    # png(file="figures/Diversity7.png", width=20, height=12, units="cm", res=300)
+    # boxplot(div7 ~ model,ddAll,col=clr,
+    #         xlab = "",
+    #         ylab = "H (7cm)")
+    # dev.off()
+    
+    #### FigS. H10-H7 ----
+    
+    ShannonIndexM <- ShannonIndex |>  dplyr::group_by(model, site, dbh) |> 
+        dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit),
+                         ShannonIndexAllAges = mean(ShannonIndexAllAges),
+                         relShannon = mean(relShannon))
+    
+    S10 <- ShannonIndexM[ShannonIndexM$dbh == "10",]
+    colnames(S10) <- c("model", "site", "dbh", "ShannonIndexRecruit10", 
+                       "ShannonIndexAllAges10", "relShannon10")
+    S7 <- ShannonIndexM[ShannonIndexM$dbh == "7",]
+    colnames(S7) <- c("model", "site", "dbh", "ShannonIndexRecruit7", 
+                      "ShannonIndexAllAges7", "relShannon7")
+    
+    S107 <- merge(S10[, c("model", "site", "ShannonIndexRecruit10", 
+                          "ShannonIndexAllAges10", "relShannon10")], 
+                  S7[,  c("model", "site", "ShannonIndexRecruit7", 
+                          "ShannonIndexAllAges7", "relShannon7")],
+                  by = c("site",  "model"))
+    
+    S107$H710 <- S107$ShannonIndexRecruit10 - S107$ShannonIndexRecruit7
+    
+    H710 <- ggplot2::ggplot(S107,
+                            ggplot2::aes(y = H710, 
+                                         x = model, 
+                                         fill = model)) + 
+        ggplot2::geom_boxplot(notch = F) +
+        ggplot2::ylim(c(-0.15, 0.15)) +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = "H10 - H7") +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       legend.position = "none",
+                       #panel.spacing = ggplot2::unit(0, "lines"),
+                       #panel.grid.major = ggplot2::element_blank(), 
+                       #panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       #legend.position = "top",
+                       legend.key =  ggplot2::element_blank(), 
+                       legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_fill_manual(values = values_color) +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 0), colour = "#990000", linetype = "dashed") 
+    
+    ggplot2::ggsave("figures/H710.png",
+                    plot =  H710,
+                    #width = 55, height = 18, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    
+    #### FigS. H10-H7 / H7 ----
+    
+    medianPointsH <- S107 |>
+        dplyr::group_by(model) |> 
+        dplyr::summarise(ShannonIndexRecruit7 = median(ShannonIndexRecruit7, na.rm = TRUE),
+                         H710 = median(H710, na.rm = TRUE))  
+    
+    
+    H10H7_H7  <- ggplot2::ggplot(S107,
+                                 ggplot2::aes(x = ShannonIndexRecruit7,
+                                              y = H710, 
+                                              color = model)) +
+        ggplot2::geom_point(alpha = .2) +
+        #ggplot2::ylim(c(0, 3.5)) +
+        ggplot2::xlim(c(0, 0.4)) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       panel.background = ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       legend.key =  ggplot2::element_blank(), 
+                       legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank()) +
+        #ggplot2::coord_trans(x = "log2") +
+        ggplot2::scale_colour_manual(values = values_color) +
+        ggplot2::scale_fill_manual(values = values_color) +
+        ggplot2::xlab(label = "H7") +
+        ggplot2::ylab(label = "H10-H7") +
+        ggplot2::geom_point(data = medianPointsH, size = 6, alpha = .9, 
+                            pch = 21, ggplot2::aes(fill = model))  
+    
+    
+    
+    ggplot2::ggsave("figures/H10H7_H7.png",
+                    plot = H10H7_H7,
+                    #width = 55, height = 18, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    
+    
+    ### Fig. H obs. VS sim. in stand and recruitment  ----
+    
+    ### Data preparation
+    ### Prepare data to have a set of empirical and simulated values per model
+    empShannon <- ShannonIndex[ShannonIndex$model == "Empirical",]
+    plotShannonDF <- ShannonIndex[!ShannonIndex$model == "Empirical", ]
+    # Repeat All Rows (Multiple)
+    empShannon <- empShannon |>
+        dplyr::slice(rep(1:dplyr::n(), length(unique(plotShannonDF$model))))
+    empShannon$model <- rep(unique(plotShannonDF$model), each = 579)
+    empShannon$type <- "empirical"
+    plotShannonDF$type <- "model"
+    
+    dataPlot <- rbind(empShannon, plotShannonDF)
+    dataPlot$type <- factor(dataPlot$type, levels = c("empirical",  "model"))
+    dataPlotS <- rbind(empShannon, plotShannonDF)
+    dataPlotS$type <- factor(dataPlotS$type, levels = c("empirical",  "model"))
+    dataPlot7 <- dataPlot[dataPlot$dbh == "7", ]
+    dataPlot10 <- dataPlot[dataPlot$dbh == "10", ]
+    
+    plotShannonDF <- ShannonIndex[!ShannonIndex$model == "Empirical", ]
+    empShannon <- ShannonIndex[ShannonIndex$model == "Empirical",]
+    colnames(empShannon) <- c("site", "sample","model", "dbh",
+                              "Emp_ShannonIndexRecruit", "Emp_ShannonIndexAllAges",
+                              "Emp_relShannon")
+    empShannon <- empShannon[, c("site", "sample", "dbh",
+                                 "Emp_ShannonIndexRecruit", "Emp_ShannonIndexAllAges",
+                                 "Emp_relShannon")]
+    plotShannonDFmean <-  plotShannonDF |>
+        dplyr::group_by(site, model, dbh) |>
+        dplyr::summarise(ShannonIndexRecruitSD = sd(ShannonIndexRecruit),
+                         ShannonIndexRecruitMEAN = mean(ShannonIndexRecruit),
+                         ShannonIndexAllAgesSD = sd(ShannonIndexAllAges),
+                         ShannonIndexAllAgesMEAN = mean(ShannonIndexAllAges))
+    
+    empShannonmean <-  empShannon |>
+        dplyr::group_by(site, dbh) |>
+        dplyr::summarise(Emp_ShannonIndexRecruitSD = sd(Emp_ShannonIndexRecruit),
+                         Emp_ShannonIndexRecruitMEAN = mean(Emp_ShannonIndexRecruit),
+                         Emp_ShannonIndexAllAgesSD = sd(Emp_ShannonIndexAllAges),
+                         Emp_ShannonIndexAllAgesMEAN = mean(Emp_ShannonIndexAllAges))
+    
+    plotShannonDF2 <- merge(plotShannonDFmean, empShannonmean, 
+                            by = c("site", "dbh"), all.x = TRUE)
+    
+    # Plot stand observed VS. simulated
+    selModels2 <-  c("ForClim 11", "iLand", "4C")
+    plotData3 <- plotShannonDF2[plotShannonDF2$model %in% selModels2 ,]
+    plotData3 <-  plotData3[plotData3$dbh == "7", ]
+    
+    labels2 <- c(paste0(selModels2[1], "\n(n=4)"),
+                 paste0(selModels2[2], "\n(n=7)"),
+                 paste0(selModels2[3], "\n(n=3)"))
+    
+    plotData3$model <- factor(plotData3$model, levels = selModels2, labels = labels2)
+    
+    sm <- ggplot2::ggplot(plotData3,
+                          ggplot2::aes(x = Emp_ShannonIndexAllAgesMEAN,
+                                       y = ShannonIndexAllAgesMEAN,
+                                       color = "black"),
+                          fill = "white") + 
+        ggplot2::guides(color = "none") +
+        ggplot2::scale_color_manual(values = "black") + 
+        ggplot2::geom_point(size = 0.6, alpha = 0.7, position = "jitter") + 
+        ggplot2::theme(panel.grid.major = ggplot2::element_blank(), 
+                       panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_blank(), 
+                       strip.background =  ggplot2::element_blank(),
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       legend.position = "right") +
+        ggplot2::coord_cartesian(xlim = c(0, 1.5), ylim = c(0, 1.5)) +  
+        ggplot2::labs(y = bquote(bar(H) * " stand"),
+                      x = bquote(bar(H) * " stand")) +
+        ggplot2::facet_wrap(~model) +
+        ggplot2::geom_abline()
+    
+    
+    # Plot recruited observed VS. simulated
+    selModels <- c("PICUS","Landis II", "FORMIND")
+    
+    plotData2 <- plotShannonDF2[plotShannonDF2$model %in% selModels, ]
+    plotData2 <- plotData2[plotData2$dbh == "7", ]
+    
+    labelsMod <- c(paste0(selModels[1], "\n(n=2)"),
+                   paste0(selModels[2], "\n(n=4)"),
+                   paste0(selModels[3], "\n(n=8)"))
+    
+    plotData2$model <- factor(plotData2$model, levels = selModels, labels = labelsMod)
+    
+    
+    sl <- ggplot2::ggplot(plotData2,
+                          ggplot2::aes(x = Emp_ShannonIndexRecruitMEAN,
+                                       y = ShannonIndexRecruitMEAN,
+                                       olor = "black"),
+                          fill = "white") + 
+        ggplot2::guides(color = "none") +
+        ggplot2::scale_color_manual(values = "black") + 
+        ggplot2::geom_point(size = 0.6, alpha = 0.7, position = "jitter") + #color = c("#69b3a2", rgb(0.3,0.5,1,0.4))
+        ggplot2::theme(panel.grid.major = ggplot2::element_blank(), 
+                       panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_blank(), 
+                       strip.background =  ggplot2::element_blank(),
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       legend.position = "right") +
+        ggplot2::coord_cartesian(xlim = c(0, 0.65), ylim = c(0, 0.65)) +  
+        ggplot2::labs(y = bquote(bar(H) * " recruitment"),
+                      x = bquote(bar(H) * " recruitment")) +
+        ggplot2::facet_wrap(~model) +
+        ggplot2::geom_abline()
+    
+    
+    xx <- ggpubr::ggarrange(sm, sl,
+                            labels = c("A", "B"),
+                            ncol = 1, nrow = 2, heights = c(3, 3), align = "v")
+    
+    xx <- ggpubr::annotate_figure(xx, 
+                                  left = grid::grid.text("Observed", 
+                                                         rot = 90, vjust = 1,
+                                                         gp = grid::gpar(cex = 1.3)),
+                                  bottom = grid::grid.text("Simulated", 
+                                                           gp = grid::gpar(cex = 1.3)))
+    
+    ggplot2::ggsave("figures/combined_richness.png",
+                    plot = xx,
+                    dpi = 300, 
+                    width = 20, height = 18, scale = 0.9,
+                    units = "cm", device = 'png')
+    
+    
+    #### FigS. rec vs all 7cm ----
+    
+    p <- ggplot2::ggplot(dataPlot7[!dataPlot7$model == "aDGVM2",],
+                         ggplot2::aes(x = ShannonIndexAllAges,
+                                      y = ShannonIndexRecruit,
+                                      color = type,
+                                      alpha = type),
+                         fill = "white") + 
+        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
+        ggplot2::geom_point(size = 0.1, alpha = 0.3 ) + 
+        hrbrthemes::theme_ipsum() +
+        ggplot2::theme(legend.title= ggplot2::element_blank()) +
+        ggplot2::labs(y = bquote(bar(H) * " recruitment"),
+                      x = bquote(bar(H) * " stand")) +
+        ggplot2::ggtitle("7 cm recruitment") +
+        # ggplot2::scale_alpha_manual(values = c(0.1),
+        #                             guide = "none") +
+        ggplot2::facet_wrap(~model) +
+        ggplot2::geom_abline() +
+        ggplot2::scale_color_manual(labels = c("empirical" = "Observed", 
+                                               "model" = "Simulated"),
+                                    values = c("#FDAE61", "grey"))
+    
+    
+    ggplot2::ggsave("figures/recruitmentAdultRichness7.png",
+                    plot = p,
+                    width = 20, height = 20, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png')
+    
+    
+    #### FigS. rec vs all 10cm ----
+    r <- ggplot2::ggplot(dataPlot7[!dataPlot7$model == "aDGVM2",],
+                         ggplot2::aes(x = ShannonIndexAllAges,
+                                      y = ShannonIndexRecruit,
+                                      color = type,
+                                      alpha = type),
+                         fill = "white") + 
+        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
+        ggplot2::geom_point(size = 0.1, alpha = 0.3 ) + 
+        hrbrthemes::theme_ipsum() +
+        ggplot2::theme(legend.title = ggplot2::element_blank()) +
+        ggplot2::labs(y = bquote(bar(H) * " recruitment"),
+                      x = bquote(bar(H) * " stand")) +
+        ggplot2::ggtitle("10 cm recruitment") +
+        # ggplot2::scale_alpha_manual(values = c(0.1),
+        #                             guide = "none") +
+        ggplot2::facet_wrap(~model) +
+        ggplot2::geom_abline() +
+        ggplot2::scale_color_manual(labels = c("empirical" = "Observed", 
+                                               "model" = "Simulated"),
+                                    values = c("#FDAE61", "grey"))
+    
+    
+    ggplot2::ggsave("figures/recruitmentAdultRichness10.png",
+                    plot = r,
+                    width = 20, height = 20, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png')
+    
+    #### FigS. stand sim.vs obs.  species richness -----
+    
+    category <- c("A3",  # "4C" 
+                  "A2",  # "ForCEEPS" 
+                  "A3",  # "ForCEEPS(f)"
+                  "A1",  # "FORMIND"
+                  "A1",  # "ForClim 1"
+                  "A1",  #"ForClim 11"
+                  "A2",  # "SIBYLA"  
+                  "A2",  # "xComp"
+                  "A2",  # "PICUS"
+                  "A2",  # "iLand"
+                  "A2",  # "LandClim" 
+                  "A2",  # "Landis II"
+                  "A1",  # "TreeMig"
+                  "A3")  # "LPJ-GUESS"
+    
+    ann_text2 <- data.frame(Emp_ShannonIndexRecruitMEAN = 1.7,
+                            ShannonIndexRecruitMEAN = 0.1,
+                            label = category,
+                            dbh = "7",
+                            model = factor(modelsOrder[!modelsOrder %in% c("Empirical", "aDGVM2")],
+                                           modelsOrder[!modelsOrder %in% c("Empirical", "aDGVM2")]))
+    
+    e <- ggplot2::ggplot(plotShannonDF2[!plotShannonDF2$model == "aDGVM2",],
+                         ggplot2::aes(x = Emp_ShannonIndexAllAgesMEAN,
+                                      y = ShannonIndexAllAgesMEAN,
+                                      color = dbh),
+                         fill = "white") + 
+        hrbrthemes::theme_ipsum() +
+        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
+        ggplot2::geom_point(size = 0.6, alpha = 0.7 ) + 
+        ggplot2::labs(y = bquote(bar(H) * " simulated stand"),
+                      x = bquote(bar(H) * " observed stand")) +
+        ggplot2::facet_wrap(~model) +
+        ggplot2::geom_abline() +
+        ggplot2::geom_abline() +
+        ggplot2::geom_text(data = ann_text2, color = "black",
+                           mapping = ggplot2::aes(x = ShannonIndexRecruitMEAN, 
+                                                  y = Emp_ShannonIndexRecruitMEAN,
+                                                  label = label)) +
+        ggplot2::scale_color_manual(values = c("7" = "#FDAE61", "10" = "grey"),
+                                    name = "Diameter threshold",
+                                    labels = c("7" = '7 cm', "10" = '10 cm'))
+    
+    ggplot2::ggsave("figures/allAgesRichness.png",
+                    plot = e,
+                    width = 22, height = 18, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png')
+    
+    #### FigS. recr. Sim.vs obs. recr. species richness -----
+    
+    category <- c( "B1", # "4C" 
+                   "B3", # "ForCEEPS" 
+                   "B3", # "ForCEEPS(f)"
+                   "B3", # "FORMIND"
+                   "B3", # "ForClim 1"
+                   "B3", #"ForClim 11"
+                   "B3", # "SIBYLA"  
+                   "B1", # "xComp"
+                   "B2", # "PICUS"
+                   "B2", # "iLand"
+                   "B3", # "LandClim" 
+                   "B2", # "Landis II"
+                   "B3", # "TreeMig"
+                   "B2") # "LPJ-GUESS"
+
+    
+    ann_text <- data.frame(Emp_ShannonIndexRecruitMEAN = 0.7,
+                           ShannonIndexRecruitMEAN = 0.1,
+                           label = category,
+                           dbh = "7",
+                           model = factor(modelsOrder[!modelsOrder %in% c("Empirical", "aDGVM2")],
+                                          modelsOrder[!modelsOrder %in% c("Empirical", "aDGVM2")]))
+    
+    d <- ggplot2::ggplot(plotShannonDF2[!plotShannonDF2$model == "aDGVM2",],
+                         ggplot2::aes(x = Emp_ShannonIndexRecruitMEAN,
+                                      y = ShannonIndexRecruitMEAN,
+                                      color = dbh),
+                         fill = "white") + 
+        ggplot2::coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +  
+        ggplot2::geom_point(size = 0.6, alpha = 0.7 ) + 
+        hrbrthemes::theme_ipsum() +
+        ggplot2::labs(y = bquote(bar(H) * " simulated recruitment"),
+                      x = bquote(bar(H) * " observed recruitment")) +
+        ggplot2::facet_wrap(~model) +
+        ggplot2::geom_abline() +
+        ggplot2::geom_text(data = ann_text, color = "black",
+                           mapping = ggplot2::aes(x = ShannonIndexRecruitMEAN, 
+                                                  y = Emp_ShannonIndexRecruitMEAN,
+                                                  label = label),
+                           show.legend = FALSE) +
+        ggplot2::scale_color_manual(values = c("7" = "#FDAE61", "10" = "grey"),
+                                    name = "Diameter threshold",
+                                    labels = c("7" = '7 cm', "10" = '10 cm'))
+    
+    
+    ggplot2::ggsave("figures/recruitmentRichness.png",
+                    plot = d, width = 22, height = 18, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png')
+    
+    
+    
+    ### Fig. r.ba/Totr.ba & env gradient -----
+    
+    # Data preparation
+    
+    dbhSel <- 7
+    simResdbh <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
+    simResdbh$r.baShare <- simResdbh$r.ba / simResdbh$Totba
+    simResdbh$baShare <- simResdbh$ba / simResdbh$Totba
+    simResdbh$r.baTotRecShare <- round(simResdbh$r.ba, 4) / round(simResdbh$Totr.ba, 4)
+    
+    # Aggregate values from simulations to get total recruitment per site and sample
+    simResAgg <- simResdbh |>
+        dplyr::group_by(site, species, model) |> 
+        dplyr::summarise(r.baShareMean = round(mean(r.baShare), 2), 
+                         baShareMean = round(mean(baShare), 2), 
+                         r.baTot.r.ShareMean = round(mean(r.baTotRecShare, 
+                                                          na.rm = TRUE),# there are NaN from deviding r.ba = 0 with r.BATot = 0 These are NOT plotted
+                                                     2), 
+                         dds = unique(dds), 
+                         wb = unique(wb)) 
+    
+    mainSppBAshare <-  simResAgg[simResAgg$species %in% c("Abies alba", 
+                                                          "Fagus sylvatica",
+                                                          "Picea abies", 
+                                                          "Pinus sylvestris",
+                                                          "Quercus spp."), ]
+    mainSppBAshare$model <- factor(mainSppBAshare$model, levels = modelsOrder)
+    mainSppBAshare$dds <- round(mainSppBAshare$dds, 0)
+    
+    #perform data binning on dds
+    ddsRange <- range(mainSppBAshare$dds)
+    wbRange <- range(mainSppBAshare$wb)
+    binSize <- 11
+    
+    mainSppBAshare <- mainSppBAshare |> dplyr::mutate(dds_bin = cut(dds, 
+                                                                    breaks = seq(ddsRange[1], 
+                                                                                 ddsRange[2], 
+                                                                                 by = (ddsRange[2] - ddsRange[1]) / binSize),
+                                                                    include.lowest = TRUE))
+    
+    mainSppBAshare <- mainSppBAshare |> dplyr::mutate(wb_bin = cut(wb, 
+                                                                   breaks = seq(wbRange[1], wbRange[2], 
+                                                                                by = (wbRange[2] - wbRange[1]) / binSize),
+                                                                   include.lowest = TRUE))
+    
+    # Mean value per combination of bins
+    mainSppBAshareBinsMean <-  aggregate(r.baTot.r.ShareMean ~ wb_bin + dds_bin + model + species, 
+                                         mainSppBAshare, mean)
+    mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMean[mainSppBAshareBinsMean$model == "Empirical", ]
+    mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMeanEmp[, c("species","dds_bin","wb_bin", "r.baTot.r.ShareMean")]
+    colnames(mainSppBAshareBinsMeanEmp) <- c("species","dds_bin","wb_bin", "r.ShareMeanEMP")
+    mainSppBAshareBinsMeanNOEmp <- mainSppBAshareBinsMean[!mainSppBAshareBinsMean$model == "Empirical",]
+    
+    # 
+    mainSppBAshareBinsMeanDiff <- merge(mainSppBAshareBinsMean, 
+                                        mainSppBAshareBinsMeanEmp,
+                                        by = c("species", "dds_bin", "wb_bin"),
+                                        all.x = TRUE)
+    mainSppBAshareBinsMeanDiff$Diff <- (mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean - mainSppBAshareBinsMeanDiff$r.ShareMeanEMP)
+    mainSppBAshareBinsMeanDiff$Diff <- round(mainSppBAshareBinsMeanDiff$Diff, 2)
+    
+    # Plot 
+    
+    #levels(mainSppBAshareBinsMeanDiff$model) <- modellevels
+    
+    heatCircle <- ggplot2::ggplot(data = mainSppBAshareBinsMeanDiff,
+                                  mapping = ggplot2::aes(x = dds_bin,
+                                                         y = wb_bin,
+                                                         fill = Diff)) +
+        ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
+                                      name = "R BA share difference") +
+        ggplot2::geom_tile() +
+        ggplot2::xlab(label = labEnvVarDDS) +
+        ggplot2::ylab(label = labEnvVarWB) +
+        ggplot2::facet_grid(model ~ species) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       #panel.spacing = ggplot2::unit(0, "lines"),
+                       panel.grid.major = ggplot2::element_blank(), 
+                       panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_rect(fill = "lightgrey",
+                                                                colour = "lightblue"),#ggplot2::element_blank(), 
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       #legend.position = "top",
+                       #legend.key =  ggplot2::element_blank(), 
+                       #legend.title = ggplot2::element_blank(),
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
+                                              "(786,977]" = "",
+                                              "(977,1.17e+03]" = "",
+                                              "(1.17e+03,1.36e+03]" = "",
+                                              "(1.36e+03,1.55e+03]" = "1360",
+                                              "(1.55e+03,1.74e+03]" = "",
+                                              "(1.74e+03,1.93e+03]" = "",
+                                              "(1.93e+03,2.12e+03]" = "",
+                                              "(2.12e+03,2.31e+03]" = "",
+                                              "(2.31e+03,2.51e+03]" = "2310", 
+                                              "(2.51e+03,2.7e+03]" = "")) +
+        ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
+                                             "(-138,0.29]"  = "",
+                                             "(0.29,139]" = "",
+                                             "(139,278]" = "",
+                                             "(278,416]" = "278",
+                                             "(416,555]" = "",
+                                             "(555,693]" = "",
+                                             "(693,832]" = "",
+                                             "(832,971]" = "832",
+                                             "(971,1.11e+03]" = "",
+                                             "(1.11e+03,1.25e+03]" = "")) +
+        ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
+                                         size = r.baTot.r.ShareMean), shape = 1) +
+        ggplot2::labs(size = "R BA share") 
+    
+    
+    ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles.png"),
+                    plot = heatCircle,
+                    width = 27, height = 60, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    
+    
+    ####  FigS. r.ba / Totba ----
+    
+    l <- ggplot2::ggplot(mainSppBAshare, 
+                         ggplot2::aes(x = dds, y = wb,  color = species,
+                                      size = r.baShareMean)) + 
+        ggplot2::geom_point(alpha = 0.4) +
+        ggplot2::scale_x_continuous(breaks = range(mainSppBAshare$dds)) +
+        hrbrthemes::theme_ipsum() +
+        ggplot2::labs(y = "WB",
+                      x = "DDS") +
+        ggplot2::ggtitle("Recruitment BA of the species  over Ba of all the stand") +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0)) +
+        ggplot2::facet_grid(model ~ species) 
+    
+    ggplot2::ggsave("figures/meanSpp_r_BAshareEnvGrad.png",
+                    plot = l,
+                    width = 27, height = 56, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
+    
+    #### FigS. ba / Totba ----
+    
+    m <- ggplot2::ggplot(mainSppBAshare, 
+                         ggplot2::aes(x = dds, y = wb, 
+                                      color = species,
+                                      size = baShareMean)) + 
+        ggplot2::geom_point(alpha = 0.4) +
+        ggplot2::scale_x_continuous(breaks = range(mainSppBAshare$dds)) +
+        hrbrthemes::theme_ipsum() +
+        ggplot2::labs(y = "WB",
+                      x = "DDS") +
+        ggplot2::ggtitle("BA of the species over BA of all the stand") +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0)) +
+        ggplot2::facet_grid(model ~ species) 
+    
+    ggplot2::ggsave("figures/meanSppBAshareEnvGrad.png",
+                    plot = m,
+                    width = 27, height = 56, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png') 
     
     
     
