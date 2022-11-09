@@ -7,7 +7,7 @@
 
 # Order of models with names as in the dataset----
 
-    modelsOrder <- c("Empirical" ,"4C", 
+    modelsOrder <- modelsSel <-  c("Empirical" ,"4C", 
                      "ForCEEPS", "ForCEEPS(f)",
                      "FORMIND", "ForClim 1", "ForClim 11", 
                      "SIBYLA", "xComp", "PICUS",
