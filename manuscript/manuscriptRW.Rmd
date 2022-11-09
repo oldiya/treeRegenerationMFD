@@ -139,6 +139,17 @@ goal of this simulations was the assessment of the regeneration niche as
 it arises from empirical data analysis vs. its representation in a wide
 range of models of forest dynamics.
 
+There are 35 sites that had a diameter threshold of 10 cm and therefore
+we do not know the actual recruitment rates for those sites at 7 cm; yet
+the models simulated recruitment for the 7 cm threshold on those sites.
+The 35 sites were removed from the simulated data as well to make a fair
+comparison.
+
+How many species were simulated per model? why?
+
+Need to say something about zero inflation in the observations vs. the
+simulations (current Figure S5)
+
 A GAM model based on XXX was used to compare the trend on the observed
 data and the simulated outputs. DESCRIBE GAM
 
@@ -257,7 +268,7 @@ $$Reineke exp rk=-1.605: (7/10)^{(-1.605)} = 1.77$$
 # Results
 
 Regeneration levels, species composition and mortality between
-recruitment diameters thresholds of 7 and 10 cm varied across model
+recruitment diameters thresholds of 7 and 10cm varied across model
 simulation results and in comparison with the observations. As expected,
 recruitment was overestimated across most models for both the 7 and 10
 cm diameter thresholds, with the exception of SYBILA, Landis II and
@@ -265,109 +276,97 @@ aDGVM2 that estimated recruitment rates at the lower end of the
 plausibility interval of the empirical data (Figure \@ref(fig:over)).
 The models with highest overestimation were PICUS and TreeMig. For most
 of the models, the variability across sites in recruitment levels
-(visible from the IQR
-in the box plots of Figure \@ref(fig:over)) is similar to or smaller
-than the observed
-variability for most of the models, with the exception of PICUS, where
-the mean
-recruitment variability is much larger.
+(visible from the IQR in the box plots of Figure \@ref(fig:over)) is
+similar to or smaller than the observed variability for most of the
+models, with the exception of PICUS, where the mean recruitment
+variability is much larger.
 
 ```{r over, echo=FALSE, fig.cap="Mean recruitment values across all samples for the 200 sites. The red dotted lines shows the 2.5 and 97.5 percentiles for the 7 cm diameter threshold.", out.width='100%'}
         knitr::include_graphics(here::here("figures", "recOverAll710.png"))
 ```
 
--   Models reproduce better the dominating effect of basal area than
-    effect of environmental gradients where they have varying effects
-    (Figure \@ref(fig:nvTrend710BA), \@ref(fig:nvTrend710BA500) and
-    FigureS 1-4). In the observed data the pattern shows that with
-    increasing stand basal area the recruitment decreases, this trend
-    was captured by Landis II but showing different values of basal area
-    for the decreasing. Other models showed different trends such as (1)
-    an increase in regeneration with increasing total basal area
-    (ForCEEPS, ForCEEPS(f), FORMIND and LPJ-GUESS), (2) a rather
-    constant regeneration levels with changing stand basal area (ForClim
-    11, xComp, LandClim and aDGVM2) or (3) an increase of recruitment
-    until certain value of stand basal area and after that a decrease in
-    recruitment, but with different stand basal area thresholds (4C,
-    ForClim 1, PICUS, SYBILA and iLand).
+When looking at the representation of recruitment rates along key
+gradients of light availability (basal area), temperature (degree-days)
+and soil moisture (water balance), distinct features emerge: the models
+reproduce the effect of basal area much better than the effects of
+climatic gradients, where they feature varying effects (Figure
+\@ref(fig:nvTrend710BA), \@ref(fig:nvTrend710BA500) and FigureS 1-4).
 
--   There are 35 sites that had a diameter threshold of 10cm and
-    therefore we do not know what was the recruitment for those sites at
-    7cm in the observed data, however the models did simulate
-    recruitment for the 7cm threshold on those sites. The Figures
-    \@ref(fig:nvTrend710BA), \@ref(fig:nvTrend710BA500) and FigureS 1-4
-    show the recruitment from the diameter threshold of 7cm and those
-    sites are represented in the empirical data as zeros; this would
-    explain why the empirical data has zero recruitment for the lowest
-    climatic water balance and highest degree day values while models do
-    have recruitment.
+In the observed data the pattern shows that with increasing stand basal
+area recruitment decreases. However, this trend was captured by Landis
+II only, albeit at much lower values of basal area than in the
+observations. Other models featured distinctly different trends, such as
+(1) an increase in regeneration with increasing total basal area
+followed of no recruitment at high basal area (ForCEEPS, ForCEEPS(f),
+FORMIND, TreeMig and LPJ-GUESS), (2) almost constant regeneration levels
+with basal area (ForClim 11, xComp, LandClim and aDGVM2) or (3) an
+increase of recruitment up to a certain value of stand basal area
+followed by a decrease of recruitment at even higher stand basal area
+values at model-specific thresholds (4C, ForClim 1, PICUS, SYBILA and
+iLand).
 
--   The mean stand basal area across samples and per bins did not have
-    the same categories in across models and empirical data. The bins
-    were created using the whole stand basal area range from all the
-    outputs (both from empirical and simulated data for all models). For
-    those stand basal area values where the empirical data or observed
-    models did not have values we assign a zero value so this stand
-    basal area categories would be visible in the plots, but this zeros
-    are actually not that the recruitment was zero but that this stand
-    basal area category was not present for that model. This would
-    explain why for the lowest stand basal areas the empirical data has
-    no recruitment of for example why ,
+Models did not match the observed patterns in recruitment across soil
+moisture and temperature gradients and there was either a clear common
+pattern across models. Looking at the soil moisture gradients (FigureS
+2), we can see that a group of models decreases recruitment with
+increasing soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp, PICUS
+and LandClim), while few models have the opposite trend (ForCEEPs(f),
+FORMIND and LPJ-GUESS), and the rest of do not have a clear pattern
+(ForCEEPS, iLand, Landis II, TreeMig and aDGVM2). Across temperature
+gradients all the models that had a decrease in recruitment with
+increasing soil moisture showed the opposite trend (more recruitment
+with increasing temperature) except for 4C (FigureS 3). The rest of the
+models did not have a clear patterns across the temperature gradient.
 
-```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites. The values have been divided in 10 bins and the red lines represent a GAM model showing the trend from the observed data.", fig.show = 'hold', out.width = '50%'}
+```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the stand basal area. (A) y-axis scaled by model; (B) same y-axis across all models. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
     knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
                               here::here("figures", "envTrend7Totba_500.png")))
 ```
 
-## Species composition in regeneration
+Most models match the level of diversity (as measured by the Shannon
+index) of the observed data quite well (Figure \@ref(fig:H710)),
+although they consistently underestimate its variability across sites.
+Four models overestimate recruitment diversity (4C, PICUS, LANDIS-II and
+LPJ-GUESS, the latter mostly for the 10 cm diameter threshold. The model
+4C is a special case as this model simulated 5 species only. In most
+models there are small differences across sites regarding the species
+richness of recruitment between 7 and 10 cm. Most models maintain or
+even increase in recruitment diversity between the 7 and 10 cm
+thresholds, and the same is visible from the empirical data, however the
+differences are not significant EXPLAIN WHY  "Can we understand this (I
+know this is for the Discussion, but still...)?? This cannot be species
+richness (as there are no new species popping between 7 and 10 cm DBH).
+I'd also expect the number of species to be lower at 10 cm than at 7 cm
+(because some will die off due to insufficient light etc.), but this is
+not reflected in H' because species with zero abundance are ignored
+(ln[0] is not defined). So a strongly increasing evenness must be
+driving this increase of H'."
 
--   Most models increase or maintain diversity and the same happens with
-    the empirical sites (Figure \@ref(fig:H710))
-
--   In most of the models there are small differences across sites on
-    the species richness of recruitment between 7 and 10 cm (Figure
-    \@ref(fig:H710). However three models, PICUS, LPJ-GUESS and Landis
-    II had higher recruitment species richness than the empirical. The
-    model 4C also has higher recruitment than the observed data, however
-    this is a special case as this model only simulated 5 species, so
-    the total species richness comparison is lower for this model.
-
-```{r H710, echo=FALSE, fig.cap="Shannon index of the recruitment calculated by basal area as the mean value across samples per site for diamter treshold of 7 and 10cm. The red dotted lines represent the 20 percentile of the observed data for the treshold of 7cm and 70 percentile of the observed data for the treshold of 10cm ", out.width='100%'}
+```{r H710, echo=FALSE, fig.cap="Shannon index of the recruitment, calculated by basal area as the mean value across samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dotted lines represent the 20th percentile of the observed data for the threshold of 7 cm and the 70th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
     knitr::include_graphics(here::here("figures", "H7_10.png"))
 ```
 
--   Most of the models are capturing well or over-predicting the species
-    richness at the stand level (Figure \@ref(fig:combinedRichness) A
-    and FigureS 8).
+Most of the models are capturing well or over-predicting the species
+richness at the stand level (Figure \@ref(fig:combinedRichness) A2 and
+FigureS 6). The models over predicting species richness at the stand
+level are ForClim1, ForClim 11, FORMIND and TreeMig (Figure
+\@ref(fig:combinedRichness) A1). However only few models under-predict
+the species richness at the stand level (Figure
+\@ref(fig:combinedRichness) A3) LPJ-GUESS, ForCEEPS (f), xComp, iLand
+and 4C. Species diversity is lower in the recruitment compared to the
+stand level, for both observed and simulated data, and for both
+recruitment thresholds, i.e. 7 and 10 cm (Figure
+\@ref(fig:combinedRichness)B, and FigureS 7). The majority of the models
+capture reasonably well the recruitment diversity at lower values of
+diversity, however most of them strongly underestimate species diversity
+in recruitment for higher observed diversity levels. Models simulating
+higher diversity at the stand level do not feature higher diversity in
+recruitment
+(FigureS 6 and 7). Both models with feedback and without feedback from
+the adult trees (via seed production) underestimate species richness in
+recruitment.
 
--   The models over predicting species richness at the stand level are
-    all the "ForClim family" and FORMIND ] (FigureS 8)
-
--   Only few models under-predict the species richness at the stand
-    level. LPJ-GUESS this is a global model that might not be design to
-    capture well this, ForCEEPS (f), xComp, iLand and 4C that did
-    simulate less species than the ones available (Figure
-    \@ref(fig:combinedRichness), and FigureS 8).
-
--   Species composition is lower in the recruitment compared to the
-    stand level, both for the observed data and simulated data and both
-    for recruitment thresholds of 7 and 10 cm. (Figure
-    \@ref(fig:combinedRichness)B, and FigureS 9)
-
--   Most of the models capture correctly the recruited species richness
-    at lower values (Figure \@ref(fig:combinedRichness)B, and FigureS 9)
-
--   Many of the models underestimate species richness in recruitment
-    (Figure \@ref(fig:combinedRichness)B, and FigureS 9)
-
--   Models simulating higher diversity at the stand do not have higher
-    diversity in recruitment (FigureS 6 an 7).
-
--   Both models with feedback and without feedback from the adult trees
-    underestimate species richness in recruitment (which ones have
-    feedback! enumerate them)) (Appendix figure?)).
-
-```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannonn index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7cm treshold. The selection representative model per trend group was based on the Figure XX and tables available in the supplementary information", out.width='75%'}
+```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7cm threshold. The selected representative model per trend group was based on Figure XX and tables available in the supplementary information", out.width='75%'}
     knitr::include_graphics(here::here("figures", "combined_richness.png"))
 ```
 
@@ -546,6 +545,11 @@ knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 
 -   Why the models over predicting species richness at the stand level
     are all the "ForClim family" and FORMIND ?
+
+-   Also BTW, the reason why some models have zero regeneration at very
+    low BA values may be that they never actually simulate such low BA
+    values at the one ha level (which was the sampling unit if I recall
+    correctly). If so, this should be pointed out as well, I think.
 
 # References
 
