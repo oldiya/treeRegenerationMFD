@@ -63,6 +63,41 @@
     
     ShannonIndex$relShannon <- ShannonIndex$ShannonIndexRecruit / ShannonIndex$ShannonIndexAllAges
     
+# Zero inflated data in recruitment 
+      
+    zeroInflSim <- outputsDF[!outputsDF$model == "Empirical",]
+    zeroInflEmp <- outputsDF[outputsDF$model == "Empirical",]
+    
+    zeroInflSim <-  zeroInflSim[, c("site", "sample", "model", "Totr.ba")]
+    zeroInflSim <- zeroInflSim[!duplicated(zeroInflSim)]
+    zeroInflEmp <-  zeroInflEmp[, c("site", "sample", "Totr.ba")]
+    zeroInflEmp <- zeroInflEmp[!duplicated(zeroInflEmp)]
+    
+    
+    #Number of sites and samples with recruitment equal to 0 in observations
+    zeroInflatedAll <- outputsDF[outputsDF$Totr.ba == 0, ]
+    zeroInflatedAll <- zeroInflatedAll[, c("site", "sample",  "model", "Totr.ba", "dbh")]
+    zeroInflatedAll <-  zeroInflatedAll[!duplicated(zeroInflatedAll)]
+    
+    # Zero data
+    zerroAll <- as.array(table(zeroInflatedAll$model, zeroInflatedAll$dbh))
+    colnames(zerroAll) <- c("zero10", "zero7")
+    #Total observations
+    allObs <- as.array(table(outputsDF$model,outputsDF$dbh ))
+    colnames(allObs) <- c("allObs10", "allObs7")
+    
+    inflatedZeroDF <- as.data.frame(cbind(allObs, zerroAll))
+    
+    inflatedZeroDF$share10 <- round((inflatedZeroDF$zero10  / inflatedZeroDF$allObs10), 4) * 100
+    inflatedZeroDF$share7 <- round((inflatedZeroDF$zero7  / inflatedZeroDF$allObs7) , 4) * 100
+    
+    colnames(inflatedZeroDF) <- c("Total (10 cm)", "Total (7cm)",
+                                  "No recruitment (10 cm)", "No recruitment (7cm)", 
+                                  "Percentage of no recruitment (10 cm)", "Percentage of no recruitment (7 cm)")
+    inflatedZeroDF <- tibble::rownames_to_column(inflatedZeroDF, "Model")
+    
+    data.table::fwrite(inflatedZeroDF, file = "data/noRecruitment.csv")
+    
 # Levels regeneration ----
 
     overDTsim <- outputsDF |> 
@@ -965,23 +1000,29 @@
     ### Fig. r.ba/Totr.ba & env gradient -----
     
     # Data preparation
-    
-    dbhSel <- 7
+  
+  for (dbhSel in c(7, 10)){
+    dbhSel <- dbhSel
     simResdbh <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
+    #simResdbh <- outputsDF 
     simResdbh$r.baShare <- simResdbh$r.ba / simResdbh$Totba
     simResdbh$baShare <- simResdbh$ba / simResdbh$Totba
+    
     simResdbh$r.baTotRecShare <- round(simResdbh$r.ba, 4) / round(simResdbh$Totr.ba, 4)
+    
+    # For this figure we consider that values with 0 r.ba and 0 Tot.r.ba have a 
+    # recruitment share of 0 instead of NaN
+    simResdbh$r.baTotRecShare [simResdbh$r.ba == 0 & simResdbh$Totr.ba == 0] <- 0
     
     # Aggregate values from simulations to get total recruitment per site and sample
     simResAgg <- simResdbh |>
-        dplyr::group_by(site, species, model) |> 
-        dplyr::summarise(r.baShareMean = round(mean(r.baShare), 2), 
-                         baShareMean = round(mean(baShare), 2), 
-                         r.baTot.r.ShareMean = round(mean(r.baTotRecShare, 
-                                                          na.rm = TRUE),# there are NaN from deviding r.ba = 0 with r.BATot = 0 These are NOT plotted
-                                                     2), 
-                         dds = unique(dds), 
-                         wb = unique(wb)) 
+      dplyr::group_by(site, species, model) |> 
+      dplyr::summarise(r.baShareMean = round(mean(r.baShare), 2), 
+                       baShareMean = round(mean(baShare), 2), 
+                       r.baTot.r.ShareMean = round(mean(r.baTotRecShare),
+                                                   2), 
+                       dds = unique(dds), 
+                       wb = unique(wb)) 
     
     mainSppBAshare <-  simResAgg[simResAgg$species %in% c("Abies alba", 
                                                           "Fagus sylvatica",
@@ -991,9 +1032,12 @@
     mainSppBAshare$model <- factor(mainSppBAshare$model, levels = modelsOrder)
     mainSppBAshare$dds <- round(mainSppBAshare$dds, 0)
     
-    #perform data binning on dds
-    ddsRange <- range(mainSppBAshare$dds)
-    wbRange <- range(mainSppBAshare$wb)
+    #Divide dds and wb in bins based on all the possible values for all sites
+    #not only the ones included in dbh = 7cm
+    #ddsRange <- range(mainSppBAshare$dds)
+    ddsRange <- range(outputsDF$dds)
+    #wbRange <- range(mainSppBAshare$wb)
+    wbRange <- range(outputsDF$wb)
     binSize <- 11
     
     mainSppBAshare <- mainSppBAshare |> dplyr::mutate(dds_bin = cut(dds, 
@@ -1011,11 +1055,13 @@
     mainSppBAshareBinsMean <-  aggregate(r.baTot.r.ShareMean ~ wb_bin + dds_bin + model + species, 
                                          mainSppBAshare, mean)
     mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMean[mainSppBAshareBinsMean$model == "Empirical", ]
-    mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMeanEmp[, c("species","dds_bin","wb_bin", "r.baTot.r.ShareMean")]
-    colnames(mainSppBAshareBinsMeanEmp) <- c("species","dds_bin","wb_bin", "r.ShareMeanEMP")
+    mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMeanEmp[, c("species","dds_bin",
+                                                               "wb_bin", 
+                                                               "r.baTot.r.ShareMean")]
+    colnames(mainSppBAshareBinsMeanEmp) <- c("species","dds_bin","wb_bin", 
+                                             "r.ShareMeanEMP")
     mainSppBAshareBinsMeanNOEmp <- mainSppBAshareBinsMean[!mainSppBAshareBinsMean$model == "Empirical",]
     
-    # 
     mainSppBAshareBinsMeanDiff <- merge(mainSppBAshareBinsMean, 
                                         mainSppBAshareBinsMeanEmp,
                                         by = c("species", "dds_bin", "wb_bin"),
@@ -1024,106 +1070,70 @@
     mainSppBAshareBinsMeanDiff$Diff <- round(mainSppBAshareBinsMeanDiff$Diff, 2)
     
     # Plot 
-    
-    #levels(mainSppBAshareBinsMeanDiff$model) <- modellevels
-    
     heatCircle <- ggplot2::ggplot(data = mainSppBAshareBinsMeanDiff,
                                   mapping = ggplot2::aes(x = dds_bin,
                                                          y = wb_bin,
                                                          fill = Diff)) +
-        ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
-                                      name = "R BA share difference") +
-        ggplot2::geom_tile() +
-        ggplot2::xlab(label = labEnvVarDDS) +
-        ggplot2::ylab(label = labEnvVarWB) +
-        ggplot2::facet_grid(model ~ species) +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                       strip.text.y = ggplot2::element_text(angle = 0),
-                       #panel.spacing = ggplot2::unit(0, "lines"),
-                       panel.grid.major = ggplot2::element_blank(), 
-                       panel.grid.minor = ggplot2::element_blank(),
-                       panel.background = ggplot2::element_rect(fill = "lightgrey",
-                                                                colour = "lightblue"),#ggplot2::element_blank(), 
-                       axis.line = ggplot2::element_line(colour = "black"),
-                       #legend.position = "top",
-                       #legend.key =  ggplot2::element_blank(), 
-                       #legend.title = ggplot2::element_blank(),
-                       strip.background =  ggplot2::element_blank()) +
-        ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
-                                              "(786,977]" = "",
-                                              "(977,1.17e+03]" = "",
-                                              "(1.17e+03,1.36e+03]" = "",
-                                              "(1.36e+03,1.55e+03]" = "1360",
-                                              "(1.55e+03,1.74e+03]" = "",
-                                              "(1.74e+03,1.93e+03]" = "",
-                                              "(1.93e+03,2.12e+03]" = "",
-                                              "(2.12e+03,2.31e+03]" = "",
-                                              "(2.31e+03,2.51e+03]" = "2310", 
-                                              "(2.51e+03,2.7e+03]" = "")) +
-        ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
-                                             "(-138,0.29]"  = "",
-                                             "(0.29,139]" = "",
-                                             "(139,278]" = "",
-                                             "(278,416]" = "278",
-                                             "(416,555]" = "",
-                                             "(555,693]" = "",
-                                             "(693,832]" = "",
-                                             "(832,971]" = "832",
-                                             "(971,1.11e+03]" = "",
-                                             "(1.11e+03,1.25e+03]" = "")) +
-        ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
-                                         size = r.baTot.r.ShareMean), shape = 1) +
-        ggplot2::labs(size = "R BA share") 
+      ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
+                                    breaks = c(-0.6, -0.3, 0, 0.3, 0.6),
+                                    midpoint = 0,
+                                    name = expression(bar(R) * " BA share difference")) +
+ 
+      ggplot2::geom_tile() +
+      ggplot2::xlab(label = labEnvVarDDS) +
+      ggplot2::ylab(label = labEnvVarWB) +
+      ggplot2::facet_grid(model ~ species) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                     strip.text.y = ggplot2::element_text(angle = 0),
+                     panel.grid.major = ggplot2::element_blank(), 
+                     panel.grid.minor = ggplot2::element_blank(),
+                     panel.background = ggplot2::element_rect(fill = "lightgrey",
+                                                              colour = "lightblue"),
+                     axis.line = ggplot2::element_line(colour = "black"),
+                     strip.background =  ggplot2::element_blank()) +
+      ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
+                                            "(786,977]" = "",
+                                            "(977,1.17e+03]" = "",
+                                            "(1.17e+03,1.36e+03]" = "",
+                                            "(1.36e+03,1.55e+03]" = "1360",
+                                            "(1.55e+03,1.74e+03]" = "",
+                                            "(1.74e+03,1.93e+03]" = "",
+                                            "(1.93e+03,2.12e+03]" = "",
+                                            "(2.12e+03,2.31e+03]" = "",
+                                            "(2.31e+03,2.51e+03]" = "2310", 
+                                            "(2.51e+03,2.7e+03]" = "")) +
+      ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
+                                           "(-138,0.29]"  = "",
+                                           "(0.29,139]" = "",
+                                           "(139,278]" = "",
+                                           "(278,416]" = "278",
+                                           "(416,555]" = "",
+                                           "(555,693]" = "",
+                                           "(693,832]" = "",
+                                           "(832,971]" = "832",
+                                           "(971,1.11e+03]" = "",
+                                           "(1.11e+03,1.25e+03]" = "")) +
+      ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
+                                       size = r.baTot.r.ShareMean), shape = 1) +
+      ggplot2::scale_size_area(breaks = c(0.1, 0.3, 0.5, 0.7), limits = c(0.0001, 0.8)) + 
+      ggplot2::labs(size = expression(bar(R) * " BA share")) 
     
     
-    ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles.png"),
+    ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles_",dbhSel, ".png"),
                     plot = heatCircle,
                     width = 27, height = 60, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
+    print(paste0("Range of values for recruited BA share and threshold ",dbhSel, " is ", 
+                 range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[1], "-",
+                 range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[2] ))
+    print(paste0("Range of values for difference with observed data and threshold ",dbhSel, " is ", 
+                 range(mainSppBAshareBinsMeanDiff$Diff)[1], "-",
+                 range(mainSppBAshareBinsMeanDiff$Diff)[2]))
+    
+  }
+    
+   
     
     
-    ####  FigS. r.ba / Totba ----
-    
-    l <- ggplot2::ggplot(mainSppBAshare, 
-                         ggplot2::aes(x = dds, y = wb,  color = species,
-                                      size = r.baShareMean)) + 
-        ggplot2::geom_point(alpha = 0.4) +
-        ggplot2::scale_x_continuous(breaks = range(mainSppBAshare$dds)) +
-        hrbrthemes::theme_ipsum() +
-        ggplot2::labs(y = "WB",
-                      x = "DDS") +
-        ggplot2::ggtitle("Recruitment BA of the species  over Ba of all the stand") +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                       strip.text.y = ggplot2::element_text(angle = 0)) +
-        ggplot2::facet_grid(model ~ species) 
-    
-    ggplot2::ggsave("figures/meanSpp_r_BAshareEnvGrad.png",
-                    plot = l,
-                    width = 27, height = 56, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    #### FigS. ba / Totba ----
-    
-    m <- ggplot2::ggplot(mainSppBAshare, 
-                         ggplot2::aes(x = dds, y = wb, 
-                                      color = species,
-                                      size = baShareMean)) + 
-        ggplot2::geom_point(alpha = 0.4) +
-        ggplot2::scale_x_continuous(breaks = range(mainSppBAshare$dds)) +
-        hrbrthemes::theme_ipsum() +
-        ggplot2::labs(y = "WB",
-                      x = "DDS") +
-        ggplot2::ggtitle("BA of the species over BA of all the stand") +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                       strip.text.y = ggplot2::element_text(angle = 0)) +
-        ggplot2::facet_grid(model ~ species) 
-    
-    ggplot2::ggsave("figures/meanSppBAshareEnvGrad.png",
-                    plot = m,
-                    width = 27, height = 56, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    
-    
-    
+   
