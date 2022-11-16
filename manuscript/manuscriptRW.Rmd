@@ -267,19 +267,20 @@ $$Reineke exp rk=-1.605: (7/10)^{(-1.605)} = 1.77$$
 
 # Results
 
-Regeneration levels, species composition and mortality between
-recruitment diameters thresholds of 7 and 10cm varied across model
-simulation results and in comparison with the observations. As expected,
-recruitment was overestimated across most models for both the 7 and 10
-cm diameter thresholds, with the exception of SYBILA, Landis II and
-aDGVM2 that estimated recruitment rates at the lower end of the
-plausibility interval of the empirical data (Figure \@ref(fig:over)).
-The models with highest overestimation were PICUS and TreeMig. For most
-of the models, the variability across sites in recruitment levels
-(visible from the IQR in the box plots of Figure \@ref(fig:over)) is
-similar to or smaller than the observed variability for most of the
-models, with the exception of PICUS, where the mean recruitment
-variability is much larger.
+## Recruitment levels
+
+Results related to regeneration levels, species composition and
+mortality in recruitment varied across models and in comparison with the
+observations. As expected, recruitment was overestimated across most
+models for both the 7 and 10 cm diameter thresholds, with the exception
+of SYBILA, Landis II and aDGVM2 that estimated recruitment rates at the
+lower end of the plausibility interval of the empirical data (Figure
+\@ref(fig:over)). The models with highest overestimation were PICUS and
+TreeMig. For most of the models, the variability across sites in
+recruitment levels (visible from the interquartile range in the box
+plots of Figure \@ref(fig:over)) is similar to or smaller than the
+observed variability for most of the models, with the exception of
+PICUS, where the mean recruitment variability is much larger.
 
 ```{r over, echo=FALSE, fig.cap="Mean recruitment values across all samples for the 200 sites. The red dotted lines shows the 2.5 and 97.5 percentiles for the 7 cm diameter threshold.", out.width='100%'}
         knitr::include_graphics(here::here("figures", "recOverAll710.png"))
@@ -310,21 +311,22 @@ moisture and temperature gradients and there was either a clear common
 pattern across models. Looking at the soil moisture gradients (FigureS
 2), we can see that a group of models decreases recruitment with
 increasing soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp, PICUS
-and LandClim), while few models have the opposite trend (ForCEEPs(f),
-FORMIND and LPJ-GUESS), and the rest of do not have a clear pattern
-(ForCEEPS, iLand, Landis II, TreeMig and aDGVM2). Across temperature
-gradients all the models that had a decrease in recruitment with
-increasing soil moisture showed the opposite trend (more recruitment
-with increasing temperature) except for 4C (FigureS 3). The rest of the
-models did not have a clear patterns across the temperature gradient.
+and LandClim), while few models had the opposite trend (ForCEEPs(f),
+FORMIND and LPJ-GUESS). Across temperature gradients all the models that
+had a decrease in recruitment with increasing soil moisture showed the
+opposite trend (more recruitment with increasing temperature) except for
+4C (FigureS 3). The rest of the models did not have a clear pattern
+across the temperature gradient.
 
 ```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the stand basal area. (A) y-axis scaled by model; (B) same y-axis across all models. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
     knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
                               here::here("figures", "envTrend7Totba_500.png")))
 ```
 
-Most models match the level of diversity (as measured by the Shannon
-index) of the observed data quite well (Figure \@ref(fig:H710)),
+## Species composition in recruitment
+
+Most of the models match the level of diversity (as measured by the
+Shannon index) of the observed data quite well (Figure \@ref(fig:H710)),
 although they consistently underestimate its variability across sites.
 Four models overestimate recruitment diversity (4C, PICUS, LANDIS-II and
 LPJ-GUESS, the latter mostly for the 10 cm diameter threshold. The model
@@ -333,14 +335,14 @@ models there are small differences across sites regarding the species
 richness of recruitment between 7 and 10 cm. Most models maintain or
 even increase in recruitment diversity between the 7 and 10 cm
 thresholds, and the same is visible from the empirical data, however the
-differences are not significant EXPLAIN WHY  "Can we understand this (I
-know this is for the Discussion, but still...)?? This cannot be species
-richness (as there are no new species popping between 7 and 10 cm DBH).
-I'd also expect the number of species to be lower at 10 cm than at 7 cm
-(because some will die off due to insufficient light etc.), but this is
-not reflected in H' because species with zero abundance are ignored
-(ln[0] is not defined). So a strongly increasing evenness must be
-driving this increase of H'."
+differences are not significant. **EXPLAIN WHY  "Can we understand this
+(I know this is for the Discussion, but still...)?? This cannot be
+species richness (as there are no new species popping between 7 and 10
+cm DBH). I'd also expect the number of species to be lower at 10 cm than
+at 7 cm (because some will die off due to insufficient light etc.), but
+this is not reflected in H' because species with zero abundance are
+ignored (ln[0] is not defined). So a strongly increasing evenness must
+be driving this increase of H'."**
 
 ```{r H710, echo=FALSE, fig.cap="Shannon index of the recruitment, calculated by basal area as the mean value across samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dotted lines represent the 20th percentile of the observed data for the threshold of 7 cm and the 70th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
     knitr::include_graphics(here::here("figures", "H7_10.png"))
@@ -361,63 +363,61 @@ capture reasonably well the recruitment diversity at lower values of
 diversity, however most of them strongly underestimate species diversity
 in recruitment for higher observed diversity levels. Models simulating
 higher diversity at the stand level do not feature higher diversity in
-recruitment
-(FigureS 6 and 7). Both models with feedback and without feedback from
-the adult trees (via seed production) underestimate species richness in
-recruitment.
+recruitment (FigureS 6 and 7). Both models with feedback and without
+feedback from the adult trees (via seed production) underestimate
+species richness in recruitment.
 
 ```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7cm threshold. The selected representative model per trend group was based on Figure XX and tables available in the supplementary information", out.width='75%'}
-    knitr::include_graphics(here::here("figures", "combined_richness.png"))
+knitr::include_graphics(here::here("figures", "combined_richness.png"))
 ```
 
-### **Looking at the recruitment share of the 5 main tree species we found that**
+Silver fir (*Abies alba*), beech (*Fagus sylvatica*), Scots pine (*Pinus
+sylvestris*) and oaks (*Quercus* spp) were the most frequent species in
+the observed data. Most models capture the share of basal area of
+recruitment of the five main tree species compared to the observed data
+along the two major gradients of climate (Figure \@ref(fig:diff) and
+FigureS XX). However, the models differ in the way they represent the
+climate niche of individual main species. First, some models
+overestimated recruitment across the whole gradient for one of the 5
+main tree species (for example, ForCEEPS, ForCEEPS(f),LandClim or
+LPJ-GUESS), while other models overestimated recruitment for more than
+one species for larger parts of the climate gradient, such as xComp,
+PICUS , SYBILA or LPJ-GUESS (cf. red colors in Figure \@ref(fig:diff)).
+This trends were consistent with those when the regeneration thresholds
+was at 7 and 10cm although the exact changes in recruited basal area
+share changed (FigureS XX).
 
--   Most of the models capture right the share of basal area recruitment
-    of the 5 main tree species compared to the observed data in the
-    environmental gradient (Figure \@ref(fig:diff)).
+When looking individually to each of the five main tree species it is
+possible to observe differences in the simulated recruitment results.
+Silver fir (*Abies alba*) was well captured across the gradient by most
+models except for xComp, Picus, LandClim and Landis-II, which
+overestimated its recruitment share. There are also some particularities
+evident for some models, such as 4C that did not simulate *Abies alba*.
+*Fagus sylvatica* was underestimated by many models across the
+environmental gradient, including ForCEEPS(f) and FORMIND that did not
+have regeneration in most of the sites for this species. Most of the
+models over-estimated *Picea abies* recruitment share on colder sites.
+*Pinus sylvestris* and *Quercus* spp. represented a smaller share of the
+recruited species in the observed data and localized on certain areas of
+the environmental gradient, however many models did have recruitment for
+these two species in most of the climatic gradient although at basal
+area share. Five models (4C, FORMIND, SYBILA, xComp, LandClim) had
+almost no generation or did not regenerate *Pinus sylvestris* and
+*Quercus* spp.
 
--   The models differ in the way they represent the climate niche of
-    individual main species (Figure \@ref(fig:diff)).
+It is important to keep in mind that the values shown in Figure
+\@ref(fig:diff) are the means of all samples per site, and the mean
+across the sites in each environmental bin. In this figure we are seeing
+together two types of zeros (represented with a lack of dots in the
+corresponding tile), the first type of zero are those sites where the
+recruited basal area of the species was zero and the stand recruited
+basal area for all species was also zero, those were considered as zero
+BA share; the second type of zeros are those sites where there was no
+recruitment for that species but there was recruitment for other
+species.
 
--   Some models overestimated across the whole gradient one of these 5
-    main tree species (for example 4C ForCEEPS, ForCEEPS(f), LandClim,
-    FORMIND) while other models overestimate more than one species such
-    as Landis II, xComp, PICUS or SYBILA (Figure \@ref(fig:diff)).
-
--   *Abies alba* was well captured across the gradient for most of the
-    models except for xComp, Picus, LanClim and LandisII that
-    over-estimated the recruitment share difference. There are also some
-    particularities from selected models such as the case of 4C that did
-    not simulate *Abies alba* (Figure \@ref(fig:diff)).
-
--   *Fagus sylvatica* was mainly underestimated cross the environmental
-    gradient, with the exception of 4C that overestimate this species
-    across the whole environmental gradient (Figure \@ref(fig:diff)).
-
--   Most of the models over-estimated *Picea abies* recruitment share on
-    colder sites (Figure \@ref(fig:diff)).
-
--   *Pinus sylvestris* and *Quercus* spp. are well capture for those
-    models that have recruitment in these species, but the recruitment
-    values are always lower so the range of variation is also always
-    around 0 (to be confirmed!). However some models lack of recruitment
-    for these species (Figure \@ref(fig:diff)).
-
--   The values that we are seeing are means of sample per site and mean
-    across the sites included in each environmental bin. It is important
-    to noticed that those groups of sites in the empirical data where
-    the recruited basal area of the species was 0 and the stand
-    recruited basal area for all species was also 0, the cells color is
-    represented as grey (Figure \@ref(fig:diff)). The lack of value in
-    the empirical data can be originated due to not recruitment in the
-    group of sites or that the sites did not have recruitment values for
-    7cm threshold.
-
-    Shall we plot (Figure \@ref(fig:diff)) for 10cm in the appendix and
-    remove FiguresS 10-12?
-
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 7cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%'}
-knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles.png"))
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 7cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equal to zero.", out.width='100%'}
+knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
 ```
 
 ## Mortality in regeneration
