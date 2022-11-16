@@ -54,6 +54,15 @@
 
     # Assign species simulated outside the ones asked in the protocol to category others
     forclim1$species[!forclim1$species %in% simSppAsked] <- "othr"
+    
+    # Joint values from other category 
+    forclim12 <- forclim1 |>
+      dplyr::group_by(sample, site, species, dbh, model) |>  # for each row
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       ba = sum(ba)) # calculate the sum of those columns
+    
+    forclim1 <- forclim12
 
     ### ForClim 11 ----
     forclim11 <- data.table::fread("data/simulation_results/forclim/forclim_variant11.csv")
@@ -67,6 +76,14 @@
 
     # Assign species simulated outside the ones asked in the protocol to category others
     forclim11$species[!forclim11$species %in% simSppAsked] <- "othr"
+    # Joint values from other category 
+    forclim112 <- forclim11 |>
+      dplyr::group_by(sample, site, species, dbh, model) |>  # for each row
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       ba = sum(ba)) # calculate the sum of those columns
+    
+    forclim11 <- forclim112
 
     ### ForCEEPS ----
     forceeps_7cm <- data.table::fread("data/simulation_results/forceeps/Results_Forceeps_7cm.csv")
@@ -87,6 +104,11 @@
     ### SIBYLA ----
     sibyla <- data.table::fread("data/simulation_results/sibyla/TabTreesSibyla0_KJMerganic.csv")
     sibyla$model <- "SIBYLA"
+    
+    # Some sites have more than 200 samples, 
+    # remove the extra ones to have 200 samples per site
+    sibyla <- sibyla[!sibyla$sample > 200,]
+    
 
     ### xComp----
     load("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.RData")
@@ -119,11 +141,14 @@
     formind$dbh <- formind$dbh * 100
 
 
-    ### Picus ----
+    ### PICUS ----
     picus <- data.table::fread("data/simulation_results/picus/PICUS_OutputData_2022-05-27.csv")
     picus$model <- "PICUS"
+    
+    # It has 201 sample per site, remove one sample
 
-
+    picus <- picus[!picus$sample > 200,]
+    
  ## Landscape ----
 
     ### iLand ----
@@ -204,10 +229,8 @@
      aa <- landis[landis$dbh == 0,]
      aa7 <- aa 
      aa7$dbh <- 7 
-
      aa10 <- aa 
      aa10$dbh <- 10
-
      aa2 <- rbind(aa7, aa10)
 
      landis <- landis[!landis$dbh == 0,] 
@@ -215,12 +238,11 @@
      
      
      # Add 0 values to those sites where there is 0 recruitment and 0 BA for a spp
-     
      sppSimLandis <- unique(landis$species)
      
      missing <- landis |> 
          dplyr::group_by(site, sample, dbh, model) |>
-         dplyr::summarize(species = sppSimLandis[!sppSimLandis %in% unique(species)],
+         dplyr::summarize(species = sppSimLandis[!sppSimLandis %in% species],
                           sample = unique(sample),
                           site = unique(site),
                           dbh  = unique(dbh), 
@@ -240,6 +262,53 @@
          dplyr::mutate(ba = max(ba)) |>
          dplyr::ungroup()
      landis$type <- NULL
+     
+     #Correct that there are certain samples from certain sites only present in 
+     #one dbh threshold but not in the other
+     #add them assuming 0 recruitment for those sites and samples IS THIS OK?
+    
+     dd <- as.data.frame(table(landis$site))
+     sitesWLessObs <- dd$Var1 [dd$Freq < 4400]
+     
+     length(unique(landis$sample[landis$site == 33]))
+     test <- landis[landis$site == 33,]
+     #table(test$species)
+     #table(test$sample)
+     
+     #View(test[test$sample == 117,])
+     # View(landis[landis$site == 33 & landis$sample == 117, ])
+   
+     missing7 <- as.data.frame(table(landis$sample[landis$dbh == 7], landis$site[landis$dbh == 7]))
+     missing10 <- as.data.frame(table(landis$sample[landis$dbh == 10], landis$site[landis$dbh == 10]))
+     
+     m7 <- missing7[missing7$Freq == 0,]
+     colnames(m7) <- c("sample", "site", "Freq")
+     m10 <- missing10[missing10$Freq == 0,]
+     colnames(m10) <- c("sample", "site", "Freq")
+     
+     mis7 <- landis[paste0(landis$sample, "_", landis$site) %in% paste0(m7$sample, "_", m7$site) & landis$dbh == 10,]
+     mis7$dbh <- 7
+     mis7$r.trees <- 0
+     mis7$r.ba <- 0
+  
+     mis10 <- landis[paste0(landis$sample, "_", landis$site) %in% paste0(m10$sample, "_", m10$site) & landis$dbh == 10,]
+     mis10$dbh <- 10
+     mis10$r.trees <- 0
+     mis10$r.ba <- 0     
+     
+     landis <- rbind(landis,  mis7,  mis10) 
+     
+
+     # Check that there are 200 samples per site NO! WHAT TO DO WITH THIS
+     # landis <- landis |> 
+     #   dplyr::group_by(site, dbh) |>
+     #   dplyr::mutate(TotalNumberofSamples = length(unique(sample))) |>
+     #   dplyr::ungroup()
+     
+     # missingSamples <- landis[landis$TotalNumberofSamples < 200,]
+     #unique(missingSamples$site)
+
+     
 
     ### Treemig ----
 
@@ -333,10 +402,11 @@
     lpjguess2 <- lpjguess2[!lpjguess2$species == "quer_coc", ] #"Quercus coccifera"
     #lpjguess2 <- lpjguess2[!lpjguess2$species == "BES", ] #"Boreal shrub" #Boreal evergreen shrub
     lpjguess2 <- lpjguess2[!lpjguess2$species == "jun_oxy", ]#"Juniperus oxycedrus"
-    lpjguess2 <- lpjguess2[!lpjguess2$species == "cor_ave", ] # Corilus avellana
+    lpjguess2 <- lpjguess2[!lpjguess2$species == "cor_ave", ] # Corylus avellana
                      # there are only three tree observations,
                      # they are removed because it is impossible to model the category "others" 
                      # for this model with only three observations
+
 
     # Adding species not present but simulated in LPJ-GUESS 2
     sppSimLpjGuess2 <- c("pabi", "fasy", "abal", "pisy", "quer", "Betula spp",
@@ -352,9 +422,35 @@
                                              r.trees = 0,
                                              ba = 0)
     lpjguess2 <- rbind(lpjguess2, missingLpjGuess2) 
+   
+    # Joint values from other category 
+    lpjguess2 <- lpjguess2 |>
+      dplyr::group_by(sample, site, species, dbh, model) |>  # for each row
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       ba = sum(ba)) # calculate the sum of those columns
+    
     lpjguess <- lpjguess2 
 
-
+    
+    # Missing samples in some sites
+    
+    # 7cm
+    nosamples7 <- as.data.frame(table(lpjguess$site[lpjguess$dbh == 7], 
+                                      lpjguess$sample[lpjguess$dbh == 7]))
+    missingSamples7 <- nosamples[nosamples$Freq == 0,]
+    # Sites with missing samples 
+    table(missingSamples7$Var1) 
+    
+    #10cm
+    nosamples10 <- as.data.frame(table(lpjguess$site[lpjguess$dbh == 10], 
+                                      lpjguess$sample[lpjguess$dbh == 10]))
+    missingSamples10 <- nosamples[nosamples$Freq == 0,]
+    # Sites with missing samples 
+    table(missingSamples10$Var1) 
+    
+    
+    
 
 # Combined data for all models ----     
 
@@ -412,8 +508,25 @@
     dataOutputs <- merge(dataOutputs, BATot, by = c("site", "sample", "model"))
 
     
+# Data checks -----
+   # number of observation for 200 samples per 200 sites for 11 species
+   # (200*200)*11 = 440000 
+    table(dataOutputs$model, dataOutputs$dbh ) # OK LandClim, iLand
+   # models with 12 species 
+   #  (200*200)*12 species = 480000
+   #  (200*200)*10 species  = 400000
+   #  (200*200)*9 species = 360000
+    
+   #  Species per site and model and sample
+    
+    table(dataOutputs$model, dataOutputs$dbh, dataOutputs$site, dataOutputs$sample ) 
+    
+    View (dataOutputs[dataOutputs$model == "ForClim 1",])
+    table(dataOutputs$model)
+    
 # Save the data -----
 
     data.table::fwrite(dataOutputs, file = "data/dataOutputs.csv")
+    
 
 
