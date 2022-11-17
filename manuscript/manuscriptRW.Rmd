@@ -154,7 +154,7 @@ A GAM model based on XXX was used to compare the trend on the observed
 data and the simulated outputs. DESCRIBE GAM
 
 Species simulated: 4C only simulated 4 species. Treemig. ForClim and
-Empirical data have more species assigned all together into category
+Observed data have more species assigned all together into category
 "others". LPJ-GUESS simulated bushes that were not consider in the
 output of speces composition neither recruitment.
 
@@ -179,7 +179,7 @@ modelDF$Reference <- "reference"
 kable(modelDF,  format = "markdown", caption = "List of models included.")
 ```
 
-ToDo add a map with the species composition of the empirical data
+ToDo add a map with the species composition of the observed data
 
 ToDo check in Haralds paper which models are in which category in the
 classification of establishment and link this with the results we see
@@ -274,7 +274,7 @@ mortality in recruitment varied across models and in comparison with the
 observations. As expected, recruitment was overestimated across most
 models for both the 7 and 10 cm diameter thresholds, with the exception
 of SYBILA, Landis II and aDGVM2 that estimated recruitment rates at the
-lower end of the plausibility interval of the empirical data (Figure
+lower end of the plausibility interval of the observed data (Figure
 \@ref(fig:over)). The models with highest overestimation were PICUS and
 TreeMig. For most of the models, the variability across sites in
 recruitment levels (visible from the interquartile range in the box
@@ -291,7 +291,7 @@ gradients of light availability (basal area), temperature (degree-days)
 and soil moisture (water balance), distinct features emerge: the models
 reproduce the effect of basal area much better than the effects of
 climatic gradients, where they feature varying effects (Figure
-\@ref(fig:nvTrend710BA), \@ref(fig:nvTrend710BA500) and FigureS 1-4).
+\@ref(fig:nvTrend710BA) and FigureS 1-4).
 
 In the observed data the pattern shows that with increasing stand basal
 area recruitment decreases. However, this trend was captured by Landis
@@ -328,21 +328,18 @@ across the temperature gradient.
 Most of the models match the level of diversity (as measured by the
 Shannon index) of the observed data quite well (Figure \@ref(fig:H710)),
 although they consistently underestimate its variability across sites.
-Four models overestimate recruitment diversity (4C, PICUS, LANDIS-II and
+Four models overestimate recruitment diversity:4C, PICUS, LANDIS-II and
 LPJ-GUESS, the latter mostly for the 10 cm diameter threshold. The model
 4C is a special case as this model simulated 5 species only. In most
 models there are small differences across sites regarding the species
-richness of recruitment between 7 and 10 cm. Most models maintain or
-even increase in recruitment diversity between the 7 and 10 cm
-thresholds, and the same is visible from the empirical data, however the
-differences are not significant. **EXPLAIN WHY  "Can we understand this
-(I know this is for the Discussion, but still...)?? This cannot be
-species richness (as there are no new species popping between 7 and 10
-cm DBH). I'd also expect the number of species to be lower at 10 cm than
-at 7 cm (because some will die off due to insufficient light etc.), but
-this is not reflected in H' because species with zero abundance are
-ignored (ln[0] is not defined). So a strongly increasing evenness must
-be driving this increase of H'."**
+richness of recruitment between 7 and 10 cm. Most models maintain the
+recruitment diversity between the 7 and 10 cm thresholds, and the same
+is visible from the observed data, there are only few models where the
+recruitment diversity increases between 7 and 10 cm which might be an
+artifact of the sample strategy and calculating the Shannon index based
+in BA as for a same sample recruitment at 10cm will include larger trees
+with larger BA and if those are from different species, the Shannon
+index will be larger.
 
 ```{r H710, echo=FALSE, fig.cap="Shannon index of the recruitment, calculated by basal area as the mean value across samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dotted lines represent the 20th percentile of the observed data for the threshold of 7 cm and the 70th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
     knitr::include_graphics(here::here("figures", "H7_10.png"))
@@ -416,75 +413,53 @@ BA share; the second type of zeros are those sites where there was no
 recruitment for that species but there was recruitment for other
 species.
 
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 7cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equal to zero.", out.width='100%'}
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 7cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the observed data did not becuase both recruitment and stand level recruitments were equal to zero.", out.width='100%'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
 ```
 
 ## Mortality in regeneration
 
-**Main outcomes mortality in number of trees:**
+There are strong differences across models on the mortality rate between
+7 and 10 cm (Figure \@ref(fig:mortality11)). All models except for the
+two DGVMs LPJ-GUESS and aDGVM2 feature a mortality rate larger than the
+observed data, thus at least partially compensating for the general
+overestimation of recruitment rates (Figure \@ref(fig:over)). Some of
+the models showed strong compensation for the initial overestimation of
+recruitment with larger mortality of recruitment between 7 and 10 cm
+thresholds but not in others. On the one hand, models below the Reineke
+line have lower mortality than expected by the self-thinning rule, which
+may point to facilitation, or simply a higher mortality rate before the
+trees reached 7 cm diameter. On the other hand, models such as xComp,
+PICUS and TreeMig are above the self-thinning line (Reineke), indicating
+that they have higher mortality in recruitment of mixed species forest
+than the expected in an even-aged single species forests, which
+indicates strong compensation for the initial overestimation of
+recruitment in some models. However, some of the models simulate a
+mortality rate in recruitment that is broadly compatible with the
+self-thinning rule, i.e. 4C, SIBYLA , LandClim and LANDIS II.
 
--   There are differences across models on the mortality rate between 7
-    and 10 cm (Figure \@ref(fig:mortality11)).
+Models with higher mortality also show higher tree recruitment at 7cm
+(Figure \@ref(fig:)\@ref(fig:mortality13)). On the other hand, most of
+the models with a low variation in mortality between 7 and 10 cm
+(ForCEEPS, ForCLim 1, ForClim 11 and LandClim) also have lower
+overestimation in recruitment at 7 cm (Figure \@ref(fig:mortality11) and
+FigureS XX). Some of the models that start at a lower number of
+individuals (7cm thershold) have a lower decrease between 7 and 10cm dbh
+(ratio 7-10cm); in these models the species competition and
+self-thinning is either not that large or it happened before the species
+reached 7cm. However, this pattern it is not consistent across models
+(FigureS XX). There is an effect of the number of individuals at 7cm on
+the mortality rate. Most of the models show a positive effect
+(increasing recruitment at 7cm shows increases the mortality between 7
+and 10cm), but some models show a negative effect, however the trend it
+is not very high and not always significant when we look at the slope of
+the linear trends per model (FigureS XX and tableS XX).
 
--   Most of the models have a mortality rate larger than those present
-    in the empirical data (Figure \@ref(fig:mortality11)).
-
--   Several models simulate a mortality rate in recruitment that could
-    be explained by the self thinning rule (Figure
-    \@ref(fig:mortality11)).
-
--   Models below the Reineke line have lower mortality than the expected
-    by self thinning rule, which might point to facilitation or higher
-    mortality before the species reached 7 cm diameter (Figure
-    \@ref(fig:mortality11)).
-
--   Values below 1 line show sites where there is a higher number of 10
-    cm trees than in 7 cm- this is an artifact of the method - we expect
-    space for time substitution, but in reality we just have one
-    measurement (Figure \@ref(fig:mortality11)).
-
--   Models such as SYBILA, xComp, PICUS, LandClim amd TreeMig are above
-    the self thinning line (Reineke) indicating that they have higher
-    mortality in recruitment of mixed species forest than the expected
-    in an even aged single species forests (Figure
-    \@ref(fig:mortality11)).
-
--   Most of the models with lower variation in mortality between 7 and
-    10cm also have lower overestimation in recruitment at 7cm (Figure
-    \@ref(fig:mortality13) and FigureS 13).
-
--   Models with higher mortality also show higher tree recruitment at
-    7cm (Figure \@ref(fig:mortality13)).
-
--   There might be a difference between models including stochastic
-    processes in recruitment and those which don't, but perhaps the
-    reality implies higher mortality rates in the adult component
-    (enhance the share of less shade tolerant species?) [to the
-    discussion] ((Figure \@ref(fig:mortality11) and
-    \@ref(fig:mortality13)).
-
--   Some of the models that start at a lower number of individuals (7cm)
-    have a lower decrease between 7 and 10cm dbh (ratio 7-10cm). The
-    species competition and self-thinning is either not that large or it
-    happened before the species reached 7cm. This pattern it is not
-    consistent across models (FigureS 14-15)
-
--   There is an effect of the number of individuals at 7cm on the
-    mortality rate. Most of the models show a positive effect
-    (increasing recruitment at 7cm shows increases the mortality between
-    7 and 10cm), but some models show a negative effect. The cloud point
-    per models shows the differences across sites, the shape point cloud
-    per model shows if the models take into account regeneration density
-    when applying mortality to regeneration (FigureS 14-15) This is not
-    that clear anymore when we calculate the slope of the linear trends
-    per model.
-
-```{r  mortality11, echo=FALSE, fig.cap="Ratio of tree recruitment between 7 and 10 cm recruitment treshold. Dashed blue lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='75%'}
+```{r  mortality11, echo=FALSE, fig.cap="Ratio of tree recruitment rates between the 7 and 10 cm thresholds. Dashed blue lines mark a ratio equal to 1, indicating no decrease in tree recruitment between 7 and 10 cm, and a ratio equal to 1.77, corresponding to the Reineke self-thinning ratio under even-aged conditions.", out.width='75%'}
 knitr::include_graphics(here::here("figures", "ratio7_10.png"))
 ```
 
-```{r mortality13, echo=FALSE, fig.cap="Ratio of tree recruitment between 7 and 10 cm recruitment treshold and the overestimation proportion (simulated - empirical / empirical) for the mean recruitment trees per model across sites and samples. The horizontal dotted lines show a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The vertical line representes the 0 overestimation proportion", out.width='100%'}
+```{r mortality13, echo=FALSE, fig.cap="Ratio of tree recruitment between 7 and 10 cm recruitment treshold and the overestimation proportion (simulated - observed / observed) for the mean recruitment trees per model across sites and samples. The horizontal dotted lines show a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The vertical line represents the 0 overestimation proportion", out.width='100%'}
 knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 ```
 
@@ -550,6 +525,56 @@ knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
     low BA values may be that they never actually simulate such low BA
     values at the one ha level (which was the sampling unit if I recall
     correctly). If so, this should be pointed out as well, I think.
+
+-   \# H1: the higher regen7 the stronger the regen mortality
+
+    \# decrease in stem number between regen7 and regen10
+
+    \# as ratio nn7/nn10 (colname nn710)
+
+    \# reference lines
+
+    \# -ratio 1 = no decrease from 7 -\> 10
+
+    \# -ratio for selfthinning under even aged conditions
+
+    \# with Reineke exp rk=-1.605: (7/10)\^(-1.605) = 1.77
+
+-   Models below the Reineke line have lower mortality than expected by
+    the self-thinning
+    rule, which may point to facilitation, or simply a higher mortality
+    rate before the trees reached 7 cm diameter. But then these models
+    would need to underestimate recruitment levels (Fig. 1), no? But
+    this is not what we see... not sure how to explain.
+
+-   methodological limitations compare mortality with the self thinning
+    line etc Values below the 1.0 line show sites where there is a
+    higher number of 10 cm trees than in 7 cm - this is an
+    artifact of the method - we expect space for time substitution, but
+    in reality
+    we just have one measurement (Figure 7).
+
+-   There might be a difference between models including stochastic
+    processes in recruitment and those which do not, but perhaps the
+    reality implies higher mortality rates in the adult component
+    (enhance the share of less shade tolerant species?) [to the
+    discussion] ((Figure \@ref(fig:mortality11) and
+    \@ref(fig:mortality13)).
+
+-    Most models maintain or even increase in recruitment diversity
+    between the 7 and 10 cm thresholds, and the same is visible from the
+    observed data, however the differences are not significant.
+    **EXPLAIN WHY  "Can we understand this (I know this is for the
+    Discussion, but still...)?? This cannot be species richness (as
+    there are no new species popping between 7 and 10 cm DBH). I'd also
+    expect the number of species to be lower at 10 cm than at 7 cm
+    (because some will die off due to insufficient light etc.), but this
+    is not reflected in H' because species with zero abundance are
+    ignored (ln[0] is not defined). So a strongly increasing evenness
+    must be driving this increase of H'."** This could be because we are
+    comparing 7 and 10cm from same samples, and at 10cm you might
+    include more trees and at 7cm This calls for further research and
+    anotehr paper :D
 
 # References
 
