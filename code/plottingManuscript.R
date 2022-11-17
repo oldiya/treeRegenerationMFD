@@ -7,7 +7,7 @@
 
 # Order of models with names as in the dataset----
 
-    modelsOrder <- modelsSel <-  c("Empirical" ,"4C", 
+    modelsOrder <- modelsSel <-  c("Observed" ,"4C", 
                      "ForCEEPS", "ForCEEPS(f)",
                      "FORMIND", "ForClim 1", "ForClim 11", 
                      "SIBYLA", "xComp", "PICUS",
@@ -26,7 +26,7 @@
 
 # Colors per model -----
 
-    values_color <- c("Empirical" = "#FF0000",   #red
+    values_color <- c("Observed" = "#FF0000",   #red
                       "4C" = "#FF7F00",          #orange
                       "ForCEEPS" = "#A6CEE3",    #blue light 
                       "ForCEEPS(f)" = "#1F78B4", #blue darker
@@ -46,7 +46,7 @@
 
 # Labels per model -----
 
-    labels <- c("Empirical" = "Empirical", 
+    labels <- c("Observed" = "Observed", 
                 "4C" = "4C", 
                 "Forceeps" = "ForCEEPS",
                 "Forceeps_f" = "ForCEEPS(f)",
