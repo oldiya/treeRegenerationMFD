@@ -23,12 +23,12 @@ author:
 - Harald Bugmann
 date: "`r Sys.Date()`"
 output:
-  word_document:
-    reference_docx: template_paper.docx
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
+  word_document:
+    reference_docx: template_paper.docx
 mainfont: Arial
 fontsize: 12pt
 linestretch: 1.5
@@ -67,7 +67,18 @@ across Europe. The simulation results were compared with observed data
 collected from forest reserves across Europe. In this study we want to
 asses how well are models of forest dynamics capturing regeneration
 levels, species composition and mortality in regeneration. The results
-show that .
+show that most of the models of forest dynamics tend to over-estimate
+recruitment rates although this is not always connected to large
+mortality rates in early dynamics stages. The effect of light
+availability on recruitment rates is better captured than temperature or
+soil moisture, however the patterns are not consistent across models.
+Species richness matches quite well compared to the ranges observed in
+the data. Models simulating higher species diversity at the stand level
+do not feature higher diversity in recruitment. *Abies alba* was well
+captured across temperature and soil moisture gradients by most models
+and *Fagus sylvatica* was generally underestimated. *Picea abies*
+recruitment was generally over-estimated on colder sites. HERE TWO
+SENCENTECES DISCUSSION/CONCLUSION. HERE A SO WHAT SENTENCE
 
 \newpage
 
@@ -101,8 +112,8 @@ processes in dynamic forest models are handled in a multitude of ways
 [@konig_tree_2022; @bugmann2022], from entirely ignoring tree
 regeneration (as done in classical forest growth models, e.g.
 @pretzsch2002), across the use of a few simple environmental filters, as
-done in most forest \"gap\" models (e.g., @shuman2011) and Dynamic
-Global Vegetation Models (e.g., @smith2001; @hickler2012), to complex
+done in most forest "gap" models (e.g., @shuman2011) and Dynamic Global
+Vegetation Models (e.g., @smith2001; @hickler2012), to complex
 approaches that incorporate local feedback from the canopy, multiple
 ecological processes and often also small time steps (e.g., @wehrli2006;
 @seidl2012), or field-based statistical parameterizations, which however
@@ -114,7 +125,7 @@ problems and have strong impacts on forest dynamic such as
 over-recruitment, needed excess of mortality at early stages and
 inadecuate species composition in regeneration. Some model outputs are
 over-recruiting which subsequently must die primarily by competition in
-later stages. This is characteristic of \'classical\' forest gap models
+later stages. This is characteristic of 'classical' forest gap models
 [@gutiérrez2016], at least as long as the simulations comprise a
 multitude of species. Other models use a model output to correct
 recruitment levels for example by routinely calibrate them against the
@@ -216,9 +227,7 @@ also varies, following @bugmann2022 we can see that most of the models
 included in this study can be classified as having rather low complexity
 in their tree recruitment modules while few of them have high complexity
 specifically when defining processes such as XXXX, XXXX (enumerate
-models). Further details on the models specific formulation related to
-their regeneration modules and an overall summary across models is
-presented in the supplementary materials (SHALL WE DO THIS?).
+models).
 
 Two models, ForClim and ForCEEPs used two alternative model versions.
 HERE **FORCLIM** WRITE 2 SENTENCES ON THE DIFFERENCES BETWEEN FORCLIM 1
@@ -246,9 +255,9 @@ kable(modelDF,
       kableExtra::column_spec(column = 4, width = "5em") |>
       kableExtra::column_spec(column = 5, width = "5em") |>
       kableExtra::column_spec(column = 6, width = "5em") |>
-      kableExtra::column_spec(column = 7, width = "8em") |>
-      kableExtra::column_spec(column = 8, width = "5em") |>
-      kableExtra::column_spec(column = 9, width = "5em") |>
+      kableExtra::column_spec(column = 7, width = "5em") |>
+      kableExtra::column_spec(column = 8, width = "8em") |>
+      kableExtra::column_spec(column = 9, width = "8em") |>
       kableExtra::column_spec(column = 10, width = "5em") |>
       kableExtra::column_spec(column = 11, width = "5em") |>
       kableExtra::column_spec(column = 12, width = "5em") 
@@ -274,8 +283,8 @@ refer to @käber2022.
 
 ## Simulation protocol
 
-Each modeler group was provided with detailed protocol (available in the
-supplementary material) with instruction on how to perform the
+Each modeler group was provided with a detailed protocol (available in
+the supplementary material) with instruction on how to perform the
 simulations regarding input variables such as climate or soil,
 simulation setup and expected output variables. No information was
 provided on the regeneration prior to the simulation. The overarching
@@ -350,7 +359,7 @@ sites, 200 samples per site, 11 species and two diameter thresholds).
 Those models that simulated extra species, the recruitment of those
 extra species were aggregated in a category others. The simulated data
 per model and the observations used in this study are provided as a
-supplementary information OR IN A REPOSITORY? available here(XXX).
+supplementary information / repository.
 
 ```{r map, echo=FALSE, fig.cap="The 200 sites with the dominant tree species in the observed recruitment at 10 cm threshold.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "theMap.png"))
@@ -498,9 +507,9 @@ recruitment for both 7 and 10 cm threshold (TreeMig and LPJ-GUESS), an
 the rest of the models have a very low percentage of samples with no
 recruitment (0.01% - 1.31%).
 
-```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the stand basal area. (A) y-axis scaled by model; (B) same y-axis across all models. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
-    knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
-                              here::here("figures", "envTrend7Totba_500.png")))
+```{r nvTrend710BA, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the stand basal area. (A)same y-axis across all models; (B)y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
+    knitr::include_graphics(c(here::here("figures", "envTrend7Totba_500.png"),
+                              here::here("figures", "envTrend7Totba.png")))
 ```
 
 ## Species composition in recruitment
@@ -517,7 +526,7 @@ recruitment diversity between the 7 and 10 cm thresholds, and the same
 is visible from the observed data, there are only few models where the
 recruitment diversity increases between 7 and 10 cm which might be an
 artifact of the sample strategy and calculating the Shannon index based
-in basal area as for a same sample recruitment at 10cm will include
+in basal area as for a same sample recruitment at 10 cm will include
 larger trees with larger basal area and if those are from different
 species, the Shannon index will be larger.
 
@@ -546,7 +555,7 @@ with feedback and without feedback from the adult trees (via seed
 production) underestimate species richness in recruitment compared to
 the observed data.
 
-```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7cm threshold. The selected representative model per trend group was based on supplementary figure 5 and 6", out.width='75%'}
+```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. A) Shows the three trends present across models for the species richness at the stand level. B) Shows the three trends present across models for recruitment at 7 cm threshold. The selected representative model per trend group was based on the supplementary figure 5 and 6.", out.width='75%'}
 knitr::include_graphics(here::here("figures", "combined_richness.png"))
 ```
 
@@ -595,7 +604,7 @@ considered as zero basal area share; the second type of zeros are those
 sites where there was no recruitment for that species but there was
 recruitment for other species.
 
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 7cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area.", out.width='100%', out.height= '90%'}
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 7cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species, where a lack of dot represents zero basal area recruitment share. The color gradient shows the difference between the simulated and observed ratio of recruited basal area of the species and the total recruited basal area for all the species.", out.width='100%', out.height= '90%'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
 ```
 
@@ -618,7 +627,7 @@ than the expected in an even-aged single species forests, which
 indicates strong compensation for the initial overestimation of
 recruitment in some models. However, some of the models simulated a
 mortality rate in recruitment that is broadly compatible with the
-self-thinning rule, i.e. 4C, SIBYLA , LandClim and LANDIS II.
+self-thinning rule, i.e. 4C, SIBYLA, LandClim and LANDIS II.
 
 Models with higher mortality also showed higher tree recruitment at 7cm
 (Figure \@ref(fig:mortality13)). On the other hand, most of the models
@@ -649,100 +658,96 @@ knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 # Discussion
 
 Tree recruitment is a fundamental process in forest dynamics, in
-particular with increasing disturbance under climate change . Correctly
-capturing regeneration in forest dynamics is fundamental to evaluate for
-example post-disturbance dynamics as this will define the status of the
+particular with increasing disturbance under climate change. Correctly
+capturing regeneration in forest dynamics is fundamental to for example
+evaluate post-disturbance dynamics as this will define the status of the
 forests in the first 15-20 years [@seidl_post-disturbance_2022]. If this
 initial state it is not well captured then we can not properly assess
 aspects such as the forest resilience, or changes in carbon capture. In
 this study, for the first time, projections of tree recruitment done by
-multitude models of forest dynamics were confronted with observed data
+several models of forest dynamics were confronted with observed data
 across a large environmental gradients. The observed data that we used
-[@käber2022] is exceptional in this regard, and that's why it was used
-for model benchmarking rather than calibration.
+[@käber2022] is exceptional in this regard, and to use it for model
+benchmarking has gave us much more insights than if we have used it for
+calibration.
 
 Adequate tree recruitment rates define the structure and composition of
 forests. Most of the models of forest dynamics tended to over-recruit
-trees in all the sites. Excess in recruitment has to lead to a large
-mortality in later stages. Capture properly recruitment rates in the
-environmental gradient might impact future forests. If not capture well
-it is going to be difficult to for models to correctly project range
-shifts retractions in species expansions because of climate change might
-not also be properly represented if we do not capture properly
-recruitment rates in the environmental gradient.
+trees in all the sites. Over estimating recruitment might have
+fundamental implications on the role of regrowth and forest carbon, with
+an overestimation in their capacity for carbon capture for example after
+the impact of disturbances [@pugh2019]. Excess in recruitment also
+requires of larger mortality rates in later stages, changing the
+expected forest densities at early stages and forcing the models to have
+stronger filters. Regeneration levels define the success of future
+forests, but it is equally important to correctly identify un-stocked
+forest areas [@rammer2021]. Tree recruitment is often characterized by
+an excess number of zero counts [@fortin2007]. In this study some of the
+models did not have lack of recruitment or their proportion was very
+low. This substantial difference with the observed data might be a
+consequence of assuming that the observed data is also in equilibrium,
+where lack of recruitment in sites could also be an indication of
+"non-equilibrium" due to management history.
 
-Regeneration levels define the success of future forests, but it is
-equally important to correctly identify un-stocked forest areas
-[@rammer2021]. Tree recruitment is often characterized by an excess
-number of zero counts [@fortin2007]. In this study some of the models
-did not have lack of recruitment or their proportion was very low. This
-substantial difference with the observed data might be a consequence of
-assuming that the observed data is also in equilibrium, where lack of
-recruitment in sites could also be an indication of "non-equilibrium"
-due to management history.
+Light availability effect on tree regeneration have been widely
+documented [@messier1999; @collet2006; @berdanier2016]. However it is
+difficult to have variables defining light availability for the
+regeneration. In this study, we used the total stand basal area as a
+proxy for light availability. There was differences in the basal area
+ranges, some of the models had stand basal areas lower than the observed
+data but there was also models that did have more stocked stands than
+the observed data, therefore it was not possible to evaluate the
+recruitment for lower density stands. Regeneration at low stand
+densities is an interesting aspect to evaluate how well forests are
+recovering e.g. after the creation of gaps due to disturbances. We would
+have expected that the recruitment of the different species would become
+sparser and droped out completely as a function of a proxy of light
+availability, however few models showed this trend indicating that the
+relation between recruitment and light availability it is not yet
+correctly defined.
 
-Light availability is an important process defining tree recruitment
-[@collet2006; @berdanier2016]. However it is difficult to have measured
-variables defining light availability for the regeneration. In this
-study we used the total stand basal area as a proxy for light
-availability. There was differences in the basal area ranges, some of
-the models had stand basal area lower than the observe data but there
-was also models that did have more stocked stands that the observed data
-and therefore it was not possible to evaluate the recruitment for lower
-density stands. It was also not possible to observed the expected
-pattern showing how recruitment of the different species is becoming
-sparser and drops out completely as a function of a proxy of light
-availability.
+When tree composition in recruitment is not well captured, then we can
+not assess the functional composition of the forest appropriately, e.g.
+their sensitive to drought or resilience to new disturbances events
+[@redmond2015; @seidl_post-disturbance_2022]. In the models simulation
+outputs overall species richness levels in recruitment were inside the
+observed ranges, however there were variations on how the main tree
+species were represented in the environmental gradient. Most models
+maintain or even increase in recruitment diversity between the 7 and 10
+cm thresholds, and the same is visible from the observed data, however
+the differences are not significant. Species richness variations might
+be explained by the way each model considers recruitment, e.g. in the
+absence of adults, recruitment can be linked to either seed
+rain-dispersal, or to seed/seedling bank, but also on what processes are
+formulated with stochastic or deterministic approach. Differences might
+also be expected between cohort and individual trees based models
+**how?**. However, our results do not show differences between models
+with an without feedback in recruitment, **why?** The adult forests
+species richness was better captured than the recruitment species
+richness, and only few models over-predicted stand level species
+richness **why these ones?**.
 
-If the recruitment tree composition is not well captured then we can not
-assess the functional composition of the forest appropriately, e.g.
-their sensitive to drought or resilience to new disturbances events. In
-the models simulation we saw variations on how the main tree species
-were represented in the environmental gradient but also in the in
-overall species richness levels. Most models maintain or even increase
-in recruitment diversity between the 7 and 10 cm thresholds, and the
-same is visible from the observed data, however the differences are not
-significant. Species richness variations might be explained by the way
-each model considers recruitment, e.g. in the absence of adults
-recruitment can be linked to either seed rain from elsewhere -dispersal,
-or to seed/seedling bank). Differences might also be expected between
-cohort and individual trees based models.
-
--   Why models with feedback also underestimate species richness in
-    recruitment?
-
--   Is the adult forest the right forest, how is this relevant and is
-    this the consequence for the correct recruitment composition? This
-    is highly dependent on the model structure:Background seed Yes/no /
-    Stochastic vs deterministic
-
--   Why the models over predicting species richness at the stand level
-    are all the "ForClim family" and FORMIND ?
-
-We could expect that models that over-recruited trees. will also have a
-large mortality between 7 and 10 cm thresholds. This implies that this
-models have to have the excess of mortality in later stages of the
-forest dynamics. Models below the Reineke line have lower mortality than
-expected by the self-thinning rule, which may point to facilitation, or
-simply a higher mortality rate before the trees reached 7 cm diameter,
-however one would also assume that these models will underestimate
-recruitment which was not the case. Why?. There might be a difference
-between models including stochastic processes in recruitment and those
-which do not, but perhaps the reality implies higher mortality rates in
-the adult component (enhance the share of less shade tolerant species).
+We could expect that models that over-recruit trees will also have a
+large mortality between 7 and 10 cm thresholds but this was not shown.
+This implies that these models must have the excess of mortality in
+later stages. Higher mortality in the adult component might enhance the
+share of less shade tolerant species for those models. There might be a
+difference between models including stochastic processes in recruitment
+and those which do not ??. There was also a group of models below the
+Reineke line indicating a lower mortality than expected by the
+self-thinning rule, which may point to facilitation, or simply a higher
+mortality rate before the trees reached 7 cm diameter, another
+possibility would have been that these models underestimate recruitment
+which was not the case.
 
 There is also the question of how much level of detail one have to give
 to define regeneration processes [@konig_tree_2022; @bugmann2022].
 Models with more detailed and complex recruitment modules, will have
 also increase parametrisation which will lead to lower generalization as
 this values will have to be collected from specific geographical
-regions.
-
--   how it relates to the results
-
--   future model development recommendations
-
-**Methodological aspects**
+regions. This is significant relevant when looking at mixed forests and
+the species level parametrization. **How it relates to the results?
+Future model development recommendations?**
 
 -   Difference in observations number between observed data (2-4 samples
     per site) and the simulated data (200 samples per site) and the
@@ -758,7 +763,7 @@ regions.
     the method - we expect space for time substitution, but in reality
     we just have one measurement.
 
--    choice of an ingrowth limit of 10 /7cm DBH. if the model gets
+-   choice of an ingrowth limit of 10 /7cm DBH. if the model gets
     overall species composition right, it must also get ingrowth of
     these species rather large trees right. a better test would be for
     the ingrowth limit to be lower. we chose the highest calipering
@@ -787,8 +792,8 @@ regions.
     provides sufficient flexibility for an adequate representation of
     the ecological processes and the differences between species
 
--   Recruitment of trees into size classes of ≥4 cm DBH, as in our four
-    data sets, represents a relatively late stage of forest
+-   Recruitment of trees into size classes of larger 4 cm DBH, as in our
+    four data sets, represents a relatively late stage of forest
     regeneration. It integrates over sometimes long periods since
     germination and multiple environmental constraints act upon young
     trees of widely different size. kaber 2021
@@ -798,7 +803,12 @@ regions.
     sapling, consequences of not having that information to asses forest
     dynamics. Recommendations on data collection.
 
-# Data availability statement 
+**Conclusion paragraph**
+
+Capture properly recruitment rates in the environmental gradient might
+impact future forests.
+
+# Data availability statement
 
 The code and data that support the findings of this study are openly
 available at zenodo and gitlab (links to be added)
