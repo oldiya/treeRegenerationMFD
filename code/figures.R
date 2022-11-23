@@ -1475,11 +1475,12 @@
     plotsMap <- ggplot(Europe) +
       ggthemes::theme_map() +
       geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
-      coord_sf(xlim = c(-25,45), ylim = c(35,60), expand = FALSE) +
+      coord_sf(xlim = c(-25,45), ylim = c(40,55), expand = FALSE) +
       geom_point(data = domSpp10, shape = 20, stroke = FALSE, 
                  mapping = aes(x = X, y = Y, color = recruitment), 
                  alpha = 1, size = 2) +
-      scale_color_manual(values = c("Abies alba" =  "#1B9E77",        
+      scale_color_manual("Dominant species in recruitment",
+                         values = c("Abies alba" =  "#1B9E77",        
                                     "Picea abies" ="#D95F02" ,         
                                     "Fagus sylvatica" = "#7570B3",  
                                     "Pinus sylvestris" = "#E7298A" , 
@@ -1489,7 +1490,8 @@
                                     "Fraxinus excelsior" = "#666666", 
                                     "Tilia cordata" = "#D8B365",       
                                     "Betula spp." = "#F5F5F5",
-                                    "Other spp." = "grey" ) )
+                                    "Other spp." = "grey" ) ) 
+    
     ggplot2::ggsave("figures/theMap.png",
                     plot =   plotsMap,
                     width = 21, height = 12, scale = 0.9,
