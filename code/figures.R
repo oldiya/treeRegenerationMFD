@@ -15,7 +15,18 @@
     outputsDF <- data.table::fread("data/dataOutputs.csv")
     outputsDF$model[outputsDF$model == "Empirical"] <- "Observed"
 
-
+    
+    # Number of trees in the observed data 
+    obsNum <- outputsDF [outputsDF$model == "Observed",]
+    round( sum(obsNum$r.trees, na.rm = TRUE), 0)
+    
+    obsNumAgg <- obsNum |> 
+                   dplyr::group_by(site, sample) |>
+                   dplyr::summarise( r.ha= sum(r.trees))
+    
+    hist(obsNumAgg$r.ha)
+    range (obsNumAgg$r.ha, na.rm = TRUE)
+    
     # Assign models and dbh to levels 
 
     outputsDF$model <- factor(outputsDF$model, levels = modelsOrder)
@@ -228,7 +239,7 @@
     
 
     #### Fig. R VS BA----
-  png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
+  png(file = "figures/envTrend7Totba_500.png", width = 16, height = 12, 
         units = "cm", res = 300)
   par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
     
@@ -540,10 +551,31 @@
     ggplot2::ggsave("figures/H7_10.png",
                     plot =   H7_10,
                     width = 21, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
+                    dpi = 300, units = "cm", device = 'png')
     
     
+    # Significant difference per model?
     
+    sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
+                                      data = dat710[!dat710$model == "aDGVM2", ],
+                          group.by = "model", method = "t.test")
+    
+    write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
+  
+    
+    # Significant difference compared to observed?
+    
+    sigH7_Obs <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
+                                         data = dat710[!dat710$model == "aDGVM2" & dat710$dbh == "7", ],
+                                       ref.group = "Observed", method = "t.test")
+    write.csv( sigH7_Obs,"figures/sigH7_Obs.csv", row.names = FALSE)
+    
+    sigH10_Obs <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
+                                    data = dat710[!dat710$model == "aDGVM2" & dat710$dbh == "10", ],
+                                    ref.group = "Observed", method = "t.test")
+    write.csv(sigH10_Obs,"figures/sigH10_Obs.csv", row.names = FALSE)
+    
+
     ddataH <- outputsDF[outputsDF$species %in% c(selSpecies), ]
     
     ####  Figs. H7 per model -----
@@ -578,6 +610,9 @@
                     plot =  H7,
                     width = 21, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
+    
+    
+    
     
     #### FigS. H10 per model -----
     dat10 <- ShannonIndex[ShannonIndex$dbh == "10",]
@@ -1162,7 +1197,7 @@
     meanTrees10 <- meanTrees10[, c("model", "site", "nn10",  "dds", "wb")]
     
     mortAll <- merge(meanTrees7, meanTrees10, by = c("model","site"))
-    mortAll$nn710 <- mortAll$nn7/mortAll$nn10
+    mortAll$nn710 <- mortAll$nn7 / mortAll$nn10
     
     # the plot 
     ratio7_10 <- ggplot2::ggplot(mortAll, ggplot2::aes(y = nn710, x = model, 
@@ -1191,6 +1226,16 @@
                     plot = ratio7_10,
                     width = 21, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
+    
+    
+    mortAll$nn710 <-  as.numeric(as.character(mortAll$nn710))
+    
+    mortRatio7_10 <- ggpubr::compare_means(nn710 ~ model,  
+                                        data = mortAll[!is.na(mortAll$nn710) & !is.infinite(mortAll$nn710), ],
+                                        ref.group = "Observed", method = "t.test")
+    write.csv(mortRatio7_10 ,"figures/mortRatio7_10.csv", row.names = FALSE)
+    
+    
     
     
   ### Fig. median vs overestimate per model ----
@@ -1250,7 +1295,11 @@
       ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
                                              color = NULL),
                                 nudge_y = 0.05) +
-      ggplot2::scale_fill_manual(values = values_color)
+      ggplot2::scale_fill_manual(values = values_color) +
+      ggplot2::annotate("text", x = 10, y = 2.6, label = "A") + 
+      ggplot2::annotate("text", x = 10, y = 1.6, label = "B") + 
+      ggplot2::annotate("text", x = -4.6, y = 1.6, label = "C") + 
+      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "D") 
     
     ggplot2::ggsave("figures/mort7_10_medianOver.png",
                     plot =  overMortmedian,
@@ -1427,6 +1476,53 @@
                     plot =  VarmeannOver,
                     dpi = 300, units = "cm", device = 'png') 
     
+# Complexity model structure-----  
+
+    complBugmannSeild <- readr::read_csv("data/model_structure/dNumScaled.csv")
+    complBugmannSeild$Attribute <- NULL
+    complBugmannSeild$`HYBRID 4.0` <- NULL
+    rownames(complBugmannSeild) <- c("Establishment approach", 
+                                     "Establishment probability",
+                                     "Number of established trees",
+                                     "Ingrowth threshold",
+                                     "Environmental influences",
+                                     "Light",
+                                     "Moisture",
+                                     "Temperature",
+                                     "Frost",
+                                     "Browsing",
+                                     "Seed production",
+                                     "Dispersal",
+                                     "Vegetative reproduction")
+    
+    # More complex model in ther recruitment module? 
+    modelComp <- data.frame(model = colnames(complBugmannSeild),
+                            complexityRegen = colMeans(complBugmannSeild))
+    
+    # More and least process complexity per model
+    maxAtt <- transform(stack(sapply(complBugmannSeild, which.max))[2:1], 
+                        values = row.names(complBugmannSeild)[values])
+    colnames(maxAtt) <- c("model", "max")
+    
+    minAtt <- transform(stack(sapply(complBugmannSeild, which.min))[2:1], 
+                        values = row.names(complBugmannSeild)[values])
+    colnames(minAtt) <- c("model", "min")
+    
+    # What attribute is more and least complex per model?
+    complexitySum <- merge(maxAtt, minAtt, by = "model")
+    complexitySum <-  merge(complexitySum,  modelComp, by = "model" )
+    complexitySum[order(complexitySum$complexityRegen),]
+    
+    # Across models complexity
+    complBugmannSeild$mean <- apply(complBugmannSeild, 1, mean)
+    
+    #What attribute in average across models is the most complex?
+    which.max(complBugmannSeild$mean)
+    
+    #What attribute in average across models is the least complex?
+    which.min(complBugmannSeild$mean)
+    
+  
     
 # Map -----
 
