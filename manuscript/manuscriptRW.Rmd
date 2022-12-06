@@ -4,23 +4,23 @@ title: Drivers of tree regeneration remain challenging to be captured by models 
 author:
 - Olalla Díaz-Yáñez,
 - Yannek Käber,
-- Mats Mahnken,
+- Tim Anders,
+- Kristin H. Braziunas,
+- Josef	Bruna,
 - Samuel Fischer,
-- Xavier Morin,
+- Jessica Hetzer,
+- Thomas Hickler,
+- Christian	Hochauer,
 - Manfred Lexer,
-- Christian Hochauer,
+- Heike	Lischke,
+- Mats Mahnken,
+- Paola	Mairota,
 - Katarina Merganicova,
 - Tobias Mette,
+- Xavier Morin,
 - Werner Rammer,
-- Kristin H. Braziunas,
-- Paola Mairota,
-- Josef Bruna,
-- Heike Lischke,
+- Simon	Scheiter,
 - Daniel Scherrer,
-- Simon Scheiter,
-- Thomas Hickler,
-- Tim Anders,
-- Jessica Hetzer,
 - Harald Bugmann
 date: "`r Sys.Date()`"
 output:
@@ -143,9 +143,9 @@ and that can have strong impacts on forest dynamic, such as very high
 levels of recruitment, which then necessitate excess mortality to early
 stages to arrive at correct stand structure and composition. Also, often
 inadequately high species diversity in regeneration is simulated. This
-is characteristic of \'classical\' forest gap models [@gutiérrez2016],
-at least as long as the simulations comprise a multitude of species.
-Other models use calibration against local canopy-level data to define
+is characteristic of 'classical' forest gap models [@gutiérrez2016], at
+least as long as the simulations comprise a multitude of species. Other
+models use calibration against local canopy-level data to define
 appropriate recruitment levels, which is likely to strongly hamper the
 general applicability of these models e.g. under scenarios of climate
 change.
@@ -265,19 +265,15 @@ Two models, ForClim and ForCEEPs used two alternative model versions.
 ForClim variant 1 [@bugmann1996] is based on an establishment module
 that adheres closely to the concept introduced by @botkin1972, whereas
 ForClim variant 11 is adopting a rather different approach for
-establishment model that considers
-space filling along with different \'points of entry\' for the action of
-specific
-environmental factors @huber2020. These two model variants allow us to
-evaluate a more process-based establishment module (variant 11) against
-a simpler module (variant 1) while the rest of the model structure
-remains the same. Similarly,
-the two ForCEEPS variants used here allow us to isolate the importance
-of the
-canopy feedback via seed trees for the quantity and quality of simulated
-regeneration, as one variants includes this feedback whereas the other
-one does
-not.
+establishment model that considers space filling along with different
+'points of entry' for the action of specific environmental factors
+@huber2020. These two model variants allow us to evaluate a more
+process-based establishment module (variant 11) against a simpler module
+(variant 1) while the rest of the model structure remains the same.
+Similarly, the two ForCEEPS variants used here allow us to isolate the
+importance of the canopy feedback via seed trees for the quantity and
+quality of simulated regeneration, as one variants includes this
+feedback whereas the other one does not.
 
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=FALSE}
 library(knitr)
@@ -373,7 +369,7 @@ the model LPJ-GUESS had to include HERE LPJ-GUESS PROVIDE [ONE
 SENTENCE]{.underline} OF WHY YOU INCLUDED DISTURBANCES AND WHAT TYPE.
 The simulations were set up to sample species-specific regeneration
 rates per decade and per ha in the equilibrium state of the model,
-typically entailing a \"spin-up\" run (as we did not provide any forest
+typically entailing a "spin-up" run (as we did not provide any forest
 data). The modeling teams decided on the simulated area and how they
 derived these samples. The exact length of the simulation was also
 decided by the modeling teams (Table \@ref(tab:tableModels)). Further
@@ -410,12 +406,9 @@ xComp, LPJ-GUESS) (Table \@ref(tab:tableModels)). HERE **4C** PROVIDES
 [ONE SENTENCE]{.underline} WHY THEY SIMULATED LESS SPECIES. HERE
 **XCOMP** PROVIDES [ONE SENTENCE]{.underline} WHY THEY SIMULATED LESS
 SPECIES. HERE **LPJ-GUESS** PROVIDES [ONE SENTENCE]{.underline} WHY THEY
-SIMULATED LESS SPECIES. Finally, the
-model aDGVM2 is based on a broad suite of Plant Functional Types rather
-than
-specific species, and hence this model used its default approach of PFTs
-for
-the simulations.
+SIMULATED LESS SPECIES. Finally, the model aDGVM2 is based on a broad
+suite of Plant Functional Types rather than specific species, and hence
+this model used its default approach of PFTs for the simulations.
 
 Each of the models reported the number of recruits by sampling 200 times
 over a 10-year interval for each species and per ha for each of the 200
@@ -716,14 +709,11 @@ still featured mortality rates in the recruitment that were close to but
 still above the self-thinning line (Figure \@ref(fig:mortality11)).
 
 On the one hand, the fact that some models feature lower mortality than
-expected by Reineke\'s self-thinning rule may point to facilitation, or
-simply a higher mortality rate
-before the trees had reached 7 cm diameter. On the other hand, the case
-of models
-such as xComp, PICUS and TreeMig, which are well above the self-thinning
-line, may
-indicate that they feature higher recruitment mortality in mixed-species
-forests
+expected by Reineke's self-thinning rule may point to facilitation, or
+simply a higher mortality rate before the trees had reached 7 cm
+diameter. On the other hand, the case of models such as xComp, PICUS and
+TreeMig, which are well above the self-thinning line, may indicate that
+they feature higher recruitment mortality in mixed-species forests
 compared to even-aged, single-species forests. However, some models
 yielded a mortality rate of recruitment that is broadly compatible with
 the self-thinning rule, i.e. 4C and LandClim.
@@ -792,26 +782,22 @@ recruitment rates across the 200 sites. Overestimating has far-reaching
 implications regarding biomass (and carbon) turnover, with a potential
 overestimation in their capacity for carbon capture [@pugh2019].
 Importantly, excess recruitment requires higher mortality rates in later
-stages, either -- as observed for
-some models -- between the 7 and 10 cm diameter thresholds, or either
-before or
-shortly after this stage. Correcting for the expected forest densities
-at early
-stages is thus equivalent to compensating for a first error (excess
-recruitment) by committing a second error (excess mortality). Thus, many
-models appear to get the right \'answer\', i.e., correct stand structure
-and composition, for the wrong reasons. This is problematic particularly
-if the models are to be used under novel conditions (e.g., climate
-change; @huber2021) or in a decision support context (e.g.,
-@thrippleton2021).
+stages, either -- as observed for some models -- between the 7 and 10 cm
+diameter thresholds, or either before or shortly after this stage.
+Correcting for the expected forest densities at early stages is thus
+equivalent to compensating for a first error (excess recruitment) by
+committing a second error (excess mortality). Thus, many models appear
+to get the right 'answer', i.e., correct stand structure and
+composition, for the wrong reasons. This is problematic particularly if
+the models are to be used under novel conditions (e.g., climate change;
+@huber2021) or in a decision support context (e.g., @thrippleton2021).
 
 In spite of this criticism, it remains remarkable that most of the
-models were not overly off
-with respect to simulated regeneration levels -- after all, few if any
-of the models\' establishment routines are sufficiently constrained by
-data, and the resulting degrees of freedom that are available for
-modeling regeneration (cf. @konig_tree_2022) could have implied that
-model performance would be much worse.
+models were not overly off with respect to simulated regeneration levels
+-- after all, few if any of the models' establishment routines are
+sufficiently constrained by data, and the resulting degrees of freedom
+that are available for modeling regeneration (cf. @konig_tree_2022)
+could have implied that model performance would be much worse.
 
 Regeneration levels define the success of future forests, but it is
 equally important to correctly identify unstocked forest areas
@@ -929,24 +915,22 @@ have a better performance as they are calibrated with inventory data,
 however this was not the case.
 
 Yet, in this study we were not able to assess tree regeneration in a
-holistic sense. The
-lower size threshold of 7 cm in the observed data constituted a hard
-limit based
-on which we can understand some aspects of tree recruitment, which in
-its
-entirety often comprises a rather long period since germination
-[@price2001], and many relevant environmental constraints are acting on
-these young trees [@käber2021] that we were unable to assess. However,
-recruitment data with lower thresholds are simply not available in a
-harmonized manner across large environmental gradients. The EuFoRIa data
-used here were collected in forest reserves where no management has
-taken place for long periods of time. This makes our assumption of an
-equilibrium between forest properties and environmental drivers less
-haphazard than it might appear at first sight. However this assumption
-might also justify some of the rather large recruitment rates that we
-are seeing in the models projections compare to the observed ones, as if
-the observed data it is not in equilibrium the observed recruitment
-would be lower as they are not close to the optimum.
+holistic sense. The lower size threshold of 7 cm in the observed data
+constituted a hard limit based on which we can understand some aspects
+of tree recruitment, which in its entirety often comprises a rather long
+period since germination [@price2001], and many relevant environmental
+constraints are acting on these young trees [@käber2021] that we were
+unable to assess. However, recruitment data with lower thresholds are
+simply not available in a harmonized manner across large environmental
+gradients. The EuFoRIa data used here were collected in forest reserves
+where no management has taken place for long periods of time. This makes
+our assumption of an equilibrium between forest properties and
+environmental drivers less haphazard than it might appear at first
+sight. However this assumption might also justify some of the rather
+large recruitment rates that we are seeing in the models projections
+compare to the observed ones, as if the observed data it is not in
+equilibrium the observed recruitment would be lower as they are not
+close to the optimum.
 
 ## Conclusions
 
@@ -967,7 +951,7 @@ in-growth, the models with higher over estimation of recruitment also
 had a larger tree mortality however this was not enough to reduce the
 high recruitment densities.
 
-A concluding (\"more positive\") final paragraph.
+A concluding ("more positive") final paragraph.
 
 # Data availability statement
 
