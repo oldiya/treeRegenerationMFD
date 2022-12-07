@@ -106,7 +106,7 @@
     sibyla$model <- "SIBYLA"
     
     # Some sites have more than 200 samples, 
-    # remove the extra ones to have 200 samples per site
+    # remove the extra samples reported to have 200 samples per site
     sibyla <- sibyla[!sibyla$sample > 200,]
     
 
@@ -119,12 +119,12 @@
     xcomp$model <- "xComp"
 
     # Add 0 values to those sites where there is 0 recruitment and 0 BA for a spp
-    # that was simulated for the model
+    # that were simulated by the model
     sppSimxcomp <- unique(xcomp$species)
 
     missingxcomp <- xcomp |> 
                      dplyr::group_by(site, sample, dbh, model) |>
-                     dplyr::summarize(species = sppSimxcomp[!sppSimxcomp  %in% unique(species)],
+                     dplyr::summarize(species = sppSimxcomp[!sppSimxcomp %in% unique(species)],
                                       sample = unique(sample),
                                       site = unique(site),
                                       dbh  = unique(dbh), 
@@ -431,29 +431,86 @@
                        ba = sum(ba)) # calculate the sum of those columns
     
     lpjguess <- lpjguess2 
-
     
-    # Missing samples in some sites
+    
+    
+  # Missing samples in some sites
+  # IMPORTANT! Missing samples were grasslands (authors personal com.)
+  # and will be added here as no recruitment 
     
     # 7cm
     nosamples7 <- as.data.frame(table(lpjguess$site[lpjguess$dbh == 7], 
                                       lpjguess$sample[lpjguess$dbh == 7]))
-    missingSamples7 <- nosamples[nosamples$Freq == 0,]
-    # Sites with missing samples 
-    table(missingSamples7$Var1) 
+    missingSamples7 <- nosamples7[nosamples7$Freq == 0, ]
+    colnames(missingSamples7) <- c("site", "sample", "freq")
+    missingSamples7$sample <- as.numeric(levels(missingSamples7$sample))[missingSamples7$sample] 
+    missingSamples7$site <- as.numeric(levels(missingSamples7$site))[missingSamples7$site] 
+    missingSamples7$freq <- NULL
+    missingSamples7$model <- "LPJ-GUESS" 
+    missingSamples7$dbh <- 7
+    missingSamples7$r.trees  <- 0  
+    missingSamples7$r.ba <- 0  
+    missingSamples7$ba <- 0
+    missingSamples7$species <- "pabi"
+    
+    missingLpjGuess_nosamples7 <- missingSamples7 |> 
+      dplyr::group_by(site, sample, dbh, model) |>
+      dplyr::summarize(species = sppSimLpjGuess2[!sppSimLpjGuess2 %in% unique(species)],
+                       sample = unique(sample),
+                       site = unique(site),
+                       dbh  = unique(dbh), 
+                       model = unique(model),
+                       r.ba = 0,
+                       r.trees = 0,
+                       ba = 0)
+    missingSamples7 <- rbind(missingSamples7, missingLpjGuess_nosamples7)
+    
+    
+    # Total number of sites with missing samples 
+    table(missingSamples7$site) 
+    sum(table(missingSamples7$site))
     
     #10cm
     nosamples10 <- as.data.frame(table(lpjguess$site[lpjguess$dbh == 10], 
-                                      lpjguess$sample[lpjguess$dbh == 10]))
-    missingSamples10 <- nosamples[nosamples$Freq == 0,]
-    # Sites with missing samples 
-    table(missingSamples10$Var1) 
+                                       lpjguess$sample[lpjguess$dbh == 10]))
+    missingSamples10 <- nosamples10[nosamples10$Freq == 0,]
+    colnames(missingSamples10) <- c("site", "sample", "freq")
+    missingSamples10$sample <- as.numeric(levels(missingSamples10$sample))[missingSamples10$sample] 
+    missingSamples10$site <- as.numeric(levels(missingSamples10$site))[missingSamples10$site] 
+    missingSamples10$freq <- NULL
+    missingSamples10$model <- "LPJ-GUESS" 
+    missingSamples10$dbh <- 10
+    missingSamples10$r.trees  <- 0  
+    missingSamples10$r.ba <- 0  
+    missingSamples10$ba <- 0
+    missingSamples10$species <- "pabi"
     
+    missingLpjGuess_nosamples10 <- missingSamples10 |> 
+      dplyr::group_by(site, sample, dbh, model) |>
+      dplyr::summarize(species = sppSimLpjGuess2[!sppSimLpjGuess2 %in% unique(species)],
+                       sample = unique(sample),
+                       site = unique(site),
+                       dbh  = unique(dbh), 
+                       model = unique(model),
+                       r.ba = 0,
+                       r.trees = 0,
+                       ba = 0)
+    missingSamples10 <- rbind(missingSamples10, missingLpjGuess_nosamples10)
+
+    #Total number of sites with missing samples 
+    table(missingSamples10$site) 
+    sum(table(missingSamples10$site))
+    
+    
+    lpjguess <- rbind(lpjguess, missingSamples7)
+    lpjguess <- rbind(lpjguess, missingSamples10)
+    
+    #One site is missing 
+    unique(observationsData$site)[ !unique(observationsData$site)  %in% unique(lpjguess$site)]
     
     
 
 # Combined data for all models ----     
-
     simulationData <- dplyr::bind_rows(forclim1, forclim11, 
                                        forceeps, forceepsfeedback,
                                        picus, xcomp, sibyla, fourC, formind,
