@@ -196,7 +196,21 @@
 
 
     ### Landis II ----
-    
+    landisSPP <- data.table::fread("data/simulation_results/landisII/landis_biomass_sum/landis_biomass_sum_site_species_sample.csv")
+    #landis_biomass_sum_site_species_sample.csv: species biomass per site and sample
+    # - all cohorts including regeneration - 142 425 -
+    # this should represent species present, the rest should be zero,
+    # the species were not there at the sampling time
+
+    landisSITE <- data.table::fread("data/simulation_results/landisII/landis_biomass_sum/landis_biomass_sum_site_sample.csv")
+    #landis_biomass_sum_site_sample: total biomass per site and sample -
+    #this has 39916 rows, almost the 40 000 required,
+    #the rest should be zeros, I am sure there were sites where nothing can grow
+    #(extreme climate) which will make the 84 totally missing.
+    #You can once again do your biomass->ba and the magic where you select
+    #the higher biomass for the ones where we have only regeneration.
+
+
     landis <- data.table::fread("data/simulation_results/landisII/LANDIS-II_data_version_03.csv")
     landis$model <- "Landis II"
     landis$dbh[landis$dbh == "7 cm" ] <- 7
@@ -265,19 +279,8 @@
      
      #Correct that there are certain samples from certain sites only present in 
      #one dbh threshold but not in the other
-     #add them assuming 0 recruitment for those sites and samples IS THIS OK?
+     #add them assuming 0 recruitment for those sites and samples 
     
-     dd <- as.data.frame(table(landis$site))
-     sitesWLessObs <- dd$Var1 [dd$Freq < 4400]
-     
-     length(unique(landis$sample[landis$site == 33]))
-     test <- landis[landis$site == 33,]
-     #table(test$species)
-     #table(test$sample)
-     
-     #View(test[test$sample == 117,])
-     # View(landis[landis$site == 33 & landis$sample == 117, ])
-   
      missing7 <- as.data.frame(table(landis$sample[landis$dbh == 7], landis$site[landis$dbh == 7]))
      missing10 <- as.data.frame(table(landis$sample[landis$dbh == 10], landis$site[landis$dbh == 10]))
      
@@ -299,16 +302,77 @@
      landis <- rbind(landis,  mis7,  mis10) 
      
 
-     # Check that there are 200 samples per site NO! WHAT TO DO WITH THIS
-     # landis <- landis |> 
-     #   dplyr::group_by(site, dbh) |>
-     #   dplyr::mutate(TotalNumberofSamples = length(unique(sample))) |>
-     #   dplyr::ungroup()
+     # Check missing samples per site 
+     landisSamples <- landis |>
+       dplyr::group_by(site, dbh) |>
+       dplyr::summarize(TotalNumberofSamples = length(unique(sample))) 
      
-     # missingSamples <- landis[landis$TotalNumberofSamples < 200,]
-     #unique(missingSamples$site)
+      missingSamples <- landisSamples[landisSamples$TotalNumberofSamples < 200, ]
+      missingSamples$missing <- 200 - missingSamples$TotalNumberofSamples
+      unique(missingSamples$site)
+      
+      #Add missing sample(s) as no recruitment samples with the total biomass 
+      #provided in the data landisSITE
+      samplesMissL <- list()
+      missingSITES <- list()
+      for (i in 1:nrow(missingSamples)) {
+        misingsample <- c(1:200)[!1:200 %in% unique(landis$sample[landis$site == missingSamples$site[i] & landis$dbh == missingSamples$dbh[i]])]
+        samplesISteM <- list()
+        if (any(landisSITE$MapCode == missingSamples$site[i])) {
+          for (n in 1:length(misingsample)) {
+            TotBA <- landisSITE$species.bio[landisSITE$MapCode == missingSamples$site[i] & landisSITE$sample == misingsample[n]]
+            dtMiss <- data.frame(
+              site = missingSamples$site[i],
+              sample =   misingsample[n],
+              dbh = missingSamples$dbh[i],
+              r.trees = 0 ,
+              r.ba = 0,
+              species = "abal",
+              model = "Landis II",      
+              ba = (TotBA * 0.001) / 12.5)
+            
+            samplesISteM[[n]] <- dtMiss
+            
+          }
+          samplesMissL[[i]] <- dplyr::bind_rows(dtMiss)
+        } else {
+          
+          missingSITES[[i]] <- data.frame(site = missingSamples$site[i], 
+                                          sample =  misingsample)
+        }
+      }
+        
+      addMissingSamples <- dplyr::bind_rows(samplesMissL)
+      
+      # Missing samples and their sites 
+      missingInSITES <- dplyr::bind_rows(missingSITES)
+  
+      sppSimLandis <- unique(landis$species)
+      missingSppLandis <- addMissingSamples  |> 
+        dplyr::group_by(site, sample, dbh, model) |>
+        dplyr::summarize(species =  sppSimLandis[! sppSimLandis %in% unique(species)],
+                         sample = unique(sample),
+                         site = unique(site),
+                         dbh  = unique(dbh), 
+                         model = unique(model),
+                         r.ba = 0,
+                         r.trees = 0,
+                         ba = 0)
+      
+      missingSamples <- rbind(addMissingSamples, missingSppLandis)
+      landis <- rbind(landis, missingSamples)
+      
+      # Missing samples final:
+      landisSamples2 <- landis |>
+        dplyr::group_by(site, dbh) |>
+        dplyr::summarize(TotalNumberofSamples = length(unique(sample))) 
+      missingSamples2 <- landisSamples2[landisSamples2$TotalNumberofSamples < 200, ]
+      missingSamples2$missing <- 200 - missingSamples2$TotalNumberofSamples
+      unique(missingSamples$site)
+      sum( missingSamples2$missing)
+      #proportion of missing observations 0.2
+      sum( missingSamples2$missing) * 10 * 100 / nrow(landis) 
 
-     
 
     ### Treemig ----
 
