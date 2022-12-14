@@ -24,7 +24,7 @@
                    dplyr::group_by(site, sample) |>
                    dplyr::summarise( r.ha= sum(r.trees))
     
-    hist(obsNumAgg$r.ha)
+    #hist(obsNumAgg$r.ha)
     range (obsNumAgg$r.ha, na.rm = TRUE)
     
     # Assign models and dbh to levels 
@@ -375,8 +375,7 @@
     mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
     
     dev.off()
-    
-    
+  
 # Mortality ----    
   ### Fig. R ratio 7/10 ----     
     # Data preparation    
@@ -492,8 +491,8 @@
                        legend.title = ggplot2::element_blank(),
                        strip.background =  ggplot2::element_blank(),
                        legend.position = "none") +
-        ggplot2::xlab(label = "Proportion of overestimation in tree recruiment at 7cm diameter threshold") +
-        ggplot2::ylab(label = "Ratio of recruitment at 7 and 10cm diameter threshold") +
+        ggplot2::xlab(label = "Proportion of overestimation (7 cm)") +
+        ggplot2::ylab(label = "Ratio of recruitment (7 and 10 cm)") +
         
         ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
                                                color = NULL),
@@ -502,6 +501,7 @@
     
     ggplot2::ggsave("figures/mort7_10_medianOver.png",
                     plot =  overMortmedian,
+                    width = 16, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')         
     
 # Diversity in recruitment ----
@@ -750,13 +750,14 @@
     ### Prepare data to have a set of Observed and simulated values per model
     empShannon <- ShannonIndex[ShannonIndex$model == "Observed",]
     plotShannonDF <- ShannonIndex[!ShannonIndex$model == "Observed", ]
+
     # Repeat All Rows (Multiple)
     empShannon <- empShannon |>
         dplyr::slice(rep(1:dplyr::n(), length(unique(plotShannonDF$model))))
     empShannon$model <- rep(unique(plotShannonDF$model), each = 579)
     empShannon$type <- "Observed"
     plotShannonDF$type <- "model"
-    
+
     dataPlot <- rbind(empShannon, plotShannonDF)
     dataPlot$type <- factor(dataPlot$type, levels = c("Observed",  "model"))
     dataPlotS <- rbind(empShannon, plotShannonDF)
@@ -779,7 +780,7 @@
                          ShannonIndexAllAgesSD = sd(ShannonIndexAllAges),
                          ShannonIndexAllAgesMEAN = mean(ShannonIndexAllAges))
     
-    empShannonmean <-  empShannon |>
+    empShannonmean <- empShannon |>
         dplyr::group_by(site, dbh) |>
         dplyr::summarise(Emp_ShannonIndexRecruitSD = sd(Emp_ShannonIndexRecruit),
                          Emp_ShannonIndexRecruitMEAN = mean(Emp_ShannonIndexRecruit),
@@ -860,10 +861,10 @@
                             ncol = 1, nrow = 2, heights = c(3, 3), align = "v")
     
     xx <- ggpubr::annotate_figure(xx, 
-                                  left = grid::grid.text("Observed", 
+                                  left = grid::grid.text("Simulated", 
                                                          rot = 90, vjust = 1,
                                                          gp = grid::gpar(cex = 1.3)),
-                                  bottom = grid::grid.text("Simulated", 
+                                  bottom = grid::grid.text("Observed", 
                                                            gp = grid::gpar(cex = 1.3)))
     
     ggplot2::ggsave("figures/combined_richness.png",
@@ -1270,7 +1271,7 @@
                        sdModTotr.trees = sd(meanTotr.trees, na.rm = TRUE))
     
     modelMean$diff <- (modelMean$meanModTotr.trees - modelMean$meanModTotr.trees[modelMean$model == "Observed"]) / modelMean$meanModTotr.trees[modelMean$model == "Observed"]
-    modelMean2 <- merge(modelMean,  iqrDT, by = "model")
+    modelMean2 <- merge(modelMean, iqrDT, by = "model")
     
     # Plot
     overMortmedian <- ggplot2::ggplot(modelMean2,
@@ -1290,9 +1291,11 @@
                      legend.title = ggplot2::element_blank(),
                      strip.background =  ggplot2::element_blank(),
                      legend.position = "none") +
-      ggplot2::xlab(label = bquote(bar(R) * " Sim. (7cm) - " * bar(R) * " Obs. (7cm) / " * bar(R) * " Obs. (7cm)")) +
-      ggplot2::ylab(label = bquote(bar(R) * " Sim. (7cm) / " * bar(R) * " Sim. (10cm)")) +
-      ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
+      #ggplot2::xlab(label = bquote(bar(R) * " Sim. (7cm) - " * bar(R) * " Obs. (7cm) / " * bar(R) * " Obs. (7cm)")) +
+     # ggplot2::ylab(label = bquote(bar(R) * " Sim. (7cm) / " * bar(R) * " Sim. (10cm)")) +
+      ggplot2::xlab(label = "Proportion of overestimation (7 cm)") +
+      ggplot2::ylab(label = "Ratio of recruitment (7 and 10 cm)") +
+       ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
                                              color = NULL),
                                 nudge_y = 0.05) +
       ggplot2::scale_fill_manual(values = values_color) +
@@ -1303,6 +1306,7 @@
     
     ggplot2::ggsave("figures/mort7_10_medianOver.png",
                     plot =  overMortmedian,
+                    width = 16, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')  
     
     
@@ -1522,8 +1526,48 @@
     #What attribute in average across models is the least complex?
     which.min(complBugmannSeild$mean)
     
-  
+ ### Complexity VS overestimation proportion-----
     
+    sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
+                                      data = dat710[!dat710$model == "aDGVM2", ],
+                                      group.by = "model", method = "t.test")
+    
+    write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
+    
+    # Threshold 7cm 
+    overestimationProportion <- modelMean2$diff
+    meanComplexity <- complexitySum$complexityRegen
+    complexitySum$model2 <- c("4C", "aDGVM2", "ForCEEPS", "ForClim 1", "FORMIND",
+                              "iLand", "LandClim", "Landis II", 
+                              "LPJ-GUESS", "PICUS", "TreeMig")
+    
+    tableCompOver <- merge(complexitySum,  modelMean2[, c("diff", "model")], 
+                           by.x = "model2", by.y = "model", all.x = TRUE)
+    
+    colnames(tableCompOver) <- c("model2", "model", "max", "min",
+                                 "complexity", "overestimation" )
+    tableCompOver <- tableCompOver[, c("model2", "complexity", 
+                                         "overestimation")]
+    
+    write.csv(tableCompOver,"figures/tableCompOver.csv", row.names = FALSE)
+    
+    
+    ggplot(tableCompOver, aes(x = complexity, y = overestimation )) +
+      geom_bar(stat = "identity") +
+      stat_smooth(method = "lm", se = TRUE)
+    
+    summary(lm(overestimation ~ complexity, data = tableCompOver))
+    #jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
+    sjPlot::tab_model(lm(overestimation ~ complexity, data = tableCompOver))
+
+    
+    tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
+    jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
+    
+  ### Complexity VS deviation on diversity richness value-----    
+    
+ ### Complexity VS deviation on mortality rate-----     
+  
 # Map -----
 
     obsSpp <- outputsDF[outputsDF$model == "Observed", ]
