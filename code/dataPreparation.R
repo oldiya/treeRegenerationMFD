@@ -98,9 +98,9 @@
     forceepsfeedback$model <- "ForCEEPS(f)"
 
     ### 4C ----
-    fourC <- data.table::fread("data/simulation_results/4C/recruitment_data_4c.csv")
+    fourC <- data.table::fread("data/simulation_results/4C/recruitment_data_4c_all_221213.csv")
     fourC$model <- "4C"
-
+    
     ### SIBYLA ----
     sibyla <- data.table::fread("data/simulation_results/sibyla/TabTreesSibyla0_KJMerganic.csv")
     sibyla$model <- "SIBYLA"
@@ -580,6 +580,8 @@
                                        picus, xcomp, sibyla, fourC, formind,
                                        iland, landis, landclim,
                                        treemig, lpjguess, adgvm2)
+    
+    simulationData$end_year <- NULL 
 
     # Add environmental variables to simulated data 
     
