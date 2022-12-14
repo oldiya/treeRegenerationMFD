@@ -40,6 +40,8 @@ editor_options:
 header-includes:
 - \usepackage[left]{lineno}
 - \linenumbers
+- \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+
 ---
 
 ```{r setup, include=FALSE}
@@ -48,130 +50,470 @@ knitr::opts_chunk$set(echo = TRUE, fig.pos = "H", out.extra = "")
 #knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 ```
 
-# Supplementary figures and tables
+# Supplementary Material 1: Protocol
 
-## Recruitment levels
+## General steps
 
-```{r envTrend7wb, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data..", fig.show = 'hold', out.width = '80%'}
-    knitr::include_graphics(c(here::here("figures", "envTrend7WB_500.png"),
-                              here::here("figures", "envTrend7WB.png")))
-```
+Each modeling team will run their simulations prior to the workshop, and
+will report on the results before ([short written report](#report)) and
+during the workshop. The general approach for the workshop is:
 
-```{r envTrend7dds, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the site seasonal degree-day sum. (A)same y-axis across all models; (B) y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
-    knitr::include_graphics(c(here::here("figures", "envTrend7DDS_500.png"),
-                              here::here("figures", "envTrend7DDS.png")))
-```
+1.  Each team sets up their model to simulate the regeneration niche of
+    [eleven major European tree species](#speciescomposition) within the
+    known, defined range of environmental conditions of 200 sites. They
+    will run at least one simulation per site. It is important to
+    conduct mixed-species simulations, not series of monospecific
+    stands.
 
-```{r zeroInflated, echo=FALSE,  message=FALSE}
-library(knitr)
+2.  The model is set up for each site based on the [input variable
+    information](#inputvariables) provided in this protocol, and the
+    simulations need to be run until the [equilibrium is
+    reached](#equilibrium).
 
-zeroInflated <- readr::read_csv(here::here("data", "noRecruitment.csv"))
-zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
+3.  Each team reports on the results of these exercises in terms of a
+    [standardized output dataset](#outputdata) (including density
+    variables per 10-yr interval and per ha, for each simulated site and
+    species) and in the form of a brief [working report](#report) (\~4
+    pages).
 
-kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
-        kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
+4.  At the workshop in June 2022 in Davos, Switzerland, we will evaluate
+    the regeneration niche as it results from each model and compare it
+    to the empirical estimates of the environmental limits of the
+    regeneration niche that will be made available to the participants
+    shortly before the workshop. As a group effort, the projections of
+    the niche properties arising from the different models will be
+    compared. The exact details on how this will be done will be
+    provided once we know how many modeling teams will contribute
+    results.
 
-## Recruitment species composition
+## Input variables {#inputvariables}
 
-```{r sigDiff, echo=FALSE,  message=FALSE}
-library(knitr)
+In this section, we are providing a description of all the necessary
+driver information to run the simulations (e.g., location, climate,
+soil).
 
-sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
+### Coordinates
 
-kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
+We intend to provide the site information via unique site IDs. If actual
+coordinates are needed, we can provide blurred site coordinates upon
+reasonable request.
+
+### Climate
+
+We provide time series of climatic variables from 1981 to 2018 in
+hourly, daily and monthly resolution. Based on our survey the climate
+data should be sufficient to run all models. Some variables such as
+relative humidity or vapor pressure deficit must be calculated from the
+variables we provide.
+
+Note that the hourly time series has the lowest spatial resolution, thus
+the daily time series should be used for spatial accuracy. If you need
+hourly time series we recommend to use the daily time series and only
+use the hourly time series to correct for hourly variation. For this
+purpose we also provide hourly averages over the period 1981 to 2018 for
+each hour of each day of the year. Only for calculating these averages
+the 29th of February in leap years was removed from the time series to
+obtain values for 365 days.
+
+#### Data sources {#climsources}
+
+The hourly time series are based on the Era5-land data set. Daily and
+monthly time series are mostly based on CHELSA data which has a higher
+spatial resolution. More details are given below or in the documentation
+of the original data source.
+
+The variable names are kept exactly like in the documentation of the
+Era5 and CHELSA data sets to facilitate the use of the original data
+documentation. Please don't be confused by the ending `*_hourly` in
+`surface_thermal_radiation_downwards_hourly` and the two different
+variable names for shortwave radiation: `rsds` for the values from
+CHELSA and `surface_solar_radiation_downwards_hourly` for the values
+from Era5.
+
+All changes that were made to the original data are documented here:
+
+-   The wind variable `wind_speed` is based on the u and v component of
+    the wind and calculated with $\sqrt{u^2+v^2}$ where $u$ is the
+    variable `u_component_of_wind_10m` and $v$ is
+    `v_component_of_wind_10m` of the Era5 data set.
+
+-   The units of temperature variables `temperature_2m` (Era5), `tas`,
+    `tasmin`, `tasmax`(all CHELSA) were changed from Kelvin to Degree
+    Celsius
+
+-   The units of precipitation variables `total_precipitation_hourly`
+    (Era5), `pr` (CHELSA) were changed from m to mm and kG to mm
+    respectively.
+
+-   The unit of short wave radiation `rsds` (CHELSA) was changed from kJ
+    to J.
+
+We aggregated variables from hourly to daily to monthly values by using
+means for temperature, surface pressure and wind speed and sums for
+radiation and precipitation.
+
+##### Era5-Land {#era5}
+
+-   Muñoz Sabater, J., (2019): ERA5-Land hourly data from 1981 to
+    present. Copernicus Climate Change Service (C3S) Climate Data Store
+    (CDS). (23.01.2022),
+    [doi:10.24381/cds.e2161bac](https://doi.org/10.24381/cds.e2161bac)
+-   [Documentation of the hourly ERA5 data from the Google Earth
+    Engine](https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY#description)
+-   Further information is available from the [official copernicus
+    website](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=overview).
+
+##### CHELSA {#chelsa}
+
+-   Dirk N. Karger, Stefan Lange, Chantal Hari, Christopher P. O. Reyer,
+    Niklaus E. Zimmermann (2021): CHELSA-W5E5 v1.0: W5E5 v1.0 downscaled
+    with CHELSA v2.0. ISIMIP Repository.
+    <https://doi.org/10.48364/ISIMIP.836809>
+
+-   [Official CHELSA website](https://chelsa-climate.org)
+
+#### Monthly time series 1981-2018
+
+file name: monthly_era5_chelsa_200.zip
+
+**Data description**
+
+Variables from the [Era5 data set](#era5) with a spatial resolution of
+0.1° x 0.1° (\~ 10 km):
+
+-   average wind speed (`wind_speed`) [m/s]
+
+-   average surface pressure (`surface_pressure`) [Pa]
+
+-   surface thermal (longwave) radiation
+    (`surface_thermal_radiation_downwards_hourly`) [J/m2]
+
+Variables from the [CHELSA data set](#chelsa) with a spatial resolution
+of 0.008° x 0.008° (\~ 1 km):
+
+-   average temperature (`tas`) [°C]
+
+-   average max temperature (`tasmax`) [°C]
+
+-   average min temperature (`tasmin`) [°C]
+
+-   precipitation sum (`pr`) [mm]
+
+-   surface solar (shortwave) radiation (`rsds`) [J/m2]
+
+#### Daily time series 1981-2018
+
+file name: daily_era5_chelsa_200.zip
+
+**Data description**
+
+Variables from the [Era5 data set](#era5) with a spatial resolution of
+0.1° x 0.1° (\~ 10 km):
+
+-   average wind speed (`wind_speed`) [m/s]
+
+-   average surface pressure (`surface_pressure`) [Pa]
+
+-   surface thermal (longwave) radiation
+    (`surface_thermal_radiation_downwards_hourly`) [J/m2]
+
+Variables from the [CHELSA data set](#chelsa) with a spatial resolution
+of 0.008° x 0.008° (\~ 1 km):
+
+-   average temperature (`tas`) [°C]
+
+-   average max temperature (`tasmax`) [°C]
+
+-   average min temperature (`tasmin`) [°C]
+
+-   precipitation sum (`pr`) [mm]
+
+-   surface solar (shortwave) radiation (`rsds`) [J/m2]
+
+#### Hourly time series 1981-2018
+
+file name: hour_era5_200.zip
+
+file name: yhourMean_era5_200.zip
+
+**Data description**
+
+Variables from the [Era5 data set](#era5) with a spatial resolution of
+0.1° x 0.1° (\~ 10 km):
+
+-   average temperature (temperature_2m) [°C]
+
+-   average wind speed (`wind_speed`) [m/s]
+
+-   average surface pressure (`surface_pressure`) [Pa]
+
+-   precipitation sum (total_precipitation_hourly) [mm]
+
+-   surface solar (shortwave) radiation
+    (surface_solar_radiation_downwards_hourly) [J/m2]
+
+-   surface thermal (longwave) radiation
+    (surface_solar_radiation_downwards_hourly) [J/m2]
+
+### Soil
+
+file name: soil_quality_200.csv
+
+**Data description**
+
+The following variables are available:
+
+-   Soil quality is given as a continuous value between 1 and 5.
+
+**Data source**
+
+-   The soil quality value is based on a random forest that was trained
+    to predict expert knowledge based soil quality on a scale from 1 to
+    5 from the [SoilGrids250 data
+    set](https://www.isric.org/explore/soilgrids) and the [WISE data
+    set](https://www.isric.org/explore/wise-databases). The most
+    influential variables in the random forest were total depth to
+    bedrock and sand content. Thus the variable is a good predictor for
+    plant available water storage capacity.
+
+## Topography and elevation
+
+There was an error in a earlier version of this file. Please use the
+link above to download the corrected file.
+
+This is the old file and should not be used because the aspect column
+contains elevation instead of the aspect.
+
+file name: topo_data_200.csv
+
+**Data description**
+
+The following variables are available:
+
+-   elevation [m.a.s.l]
+
+-   slope [Degree]
+
+-   aspect [Degree]
+
+**Data source**
+
+-   Topographic information was derived from the [ASTER DEM
+    V3](https://lpdaac.usgs.gov/products/astgtmv003/).
+
+-   Slope and aspect were calculated with QGIS. The specific tiles that
+    were used are documented
+    [here](https://ites-fe.ethz.ch/rws/downloads/15122021/aster_dem_files.txt),
+    and the processing steps in QGIS are documented
+    [here](https://ites-fe.ethz.ch/rws/downloads/15122021/QGIS_command_log.txt).
+
+### Natural disturbances
+
+The simulations must be run in the absence of natural disturbances.
+
+## Management
+
+The simulations must be run in the absence of management.
+
+### Area simulated
+
+From your model outputs, we would like to obtain samples on species
+specific regeneration rates per decade and per ha. The modeling teams
+decide on the simulated area and how they derive these samples. Please
+describe the methodology used in the [output report](#report).
+
+### Simulation duration and equilibrium {#equilibrium}
+
+The simulation should be run from bare ground in the absence of
+management to a simulated [equilibrium](#defequilibrium) ("potential
+natural vegetation") with current climate. The goal is to derive the
+[regeneration niche](#regenniche). The exact length of the simulation
+should be decided by the modeling teams. Please describe the simulation
+length used in your simulations in the [output report](#report).
+
+[**Regeneration niche:**]{#regenniche} The regeneration niche is defined
+as the passing of a diameter threshold of 7 and 10 cm (ingrowth; cf.
+below). Both the width of the regeneration niche (i.e., in environmental
+space) as well as the intensity of the recruitment process (i.e., the
+number of ingrowth trees per area and per unit of time) are of interest.
+
+[**Simulated equilibrium**]{#defequilibrium}: Simulated equilibrium is
+the "Potential Natural Vegetation".
+
+### Species composition {#speciescomposition}
+
+**Mixed species simulations** must be run (not multiple single-species
+simulations).
+
+**Option A: Species level**
+
+The simulation should be run for **mixtures** of the following
+species/genera: *Fagus sylvatica, Picea abies, Abies alba, Carpinus
+betulus, Tilia cordata, Acer pseudoplatanus, Betula spp., Fraxinus
+excelsior, Quercus spp., Alnus glutinosa, Pinus sylvestris.*
+
+Additional species can be included in the simulation if modelers think
+this is important, but they should report only on these 11
+species/genera because the benchmarking data refer to them only. Please
+report the methodology used in the [output report](#report).
+
+**Option B: PFTs**
+
+If species-level simulation is not possible in your model, substitute
+the species by PFTs and use the model's default approach. Please report
+the methodology used in the [output report](#report). Explain as well
+which PFTs represent which species for your model.
+
+## Diameter threshold
+
+The [output data](#outputdata) have to be provided for two diameter
+thresholds: 7 and 10 cm.
+
+## Output
+
+We are expecting to get the number of recruits over a 10-yr interval per
+species and per ha for each of the sites. However, we are also
+interested in the **variation per site** (i.e., we would like to see the
+range of estimates, not only the mean value per site). Each modeling
+team will decide how to sample multiple values per site that will show
+the variation in recruitment.
+
+Specifically, you should provide us with multiple samples (n = 200; this
+number is the same as the number of sites by sheer coincidence) of the
+regeneration rate for spatial units of 1 ha (please do [not]{.underline}
+provide average of multiple 1-ha samples). This can be done in various
+ways, e.g., by sampling simulated data from the same 1-ha plot in the
+equilibrium over time, or by sampling several 1-ha plots from the
+simulated forest at one specific point in time (in the equilibrium); for
+clarification, cf. three sample strategies proposed in [figures
+1](#sample1), [2](#sample2) and [3](#sample3).
+
+If, for some reason, you cannot submit **200 samples** of **1 ha**,
+please **let us know** in the [workshop chat](#chat) so we can discuss
+alternatives. The sampling from the simulations must happen **within**
+the simulated phase of Potential Natural Vegetation (for more
+information, see how [equilibrium](#defequilibrium), Potential [Natural
+Vegetation, and regeneration niche](#regenniche) are defined in this
+protocol).
+
+![Figure 1. In this example there are 200 samples collected at year i at
+equilibrium differentiated spatially with each square representing 1
+ha.](samplingfigure/Slide2.jpeg){#sample1 width="500"}
+
+![Figure 2. In this example, there are 100 spatially differentiated
+samples taken in year i at equilibrium and 100 in year i+10. Each square
+represents 1 ha.](samplingfigure/Slide3.jpeg){#sample2 width="500"}
+
+![Figure 3. In this example there is 1 spatially differentiated sample
+taken in year i at equilibrium and remeasured every 10 years for 2000
+years until i+2000. The square represents 1
+ha.](samplingfigure/Slide4.jpg){#sample3 width="500"}
+
+### Output data {#outputdata}
+
+Please provide the simulation output data using the following structure:
+
+-   Each row of your output dataset contains the recruitment of 10-year
+    interval per species and ha for a unique simulation site.
+
+-   Each column of your output dataset contains one of these variables:
+
+    -   `sample`: this will identify the different samples per site
+        (1:n, with n $\ge$ 200)
+
+    -   `site`: site identifier (1:200)
+
+    -   `species`: species simulated with the following categories:
+
+        -   fasy (for *Fagus sylvatica*)
+        -   pabi (for *Picea abies*)
+        -   abal (for *Abies alba*)
+        -   cabe (for *Carpinus betulus*)
+        -   tico (for *Tilia cordata*)
+        -   acps (for *Acer pseudoplatanus*)
+        -   betu (for *Betula* spp.)
+        -   frex (for *Fraxinus excelsior*)
+        -   quer (for *Quercus* spp.)
+        -   algl (for *Alnus glutinosa*)
+        -   pisy (for *Pinus sylvestris*)
+        -   If you have some other categories please create your own
+            species codes and provide the legend in the output report.
+            We prefer a lumped category "othr".
+
+    -   `r.trees`: the recruits (trees $ha^{-1}$) per species and
+        decade.
+
+    -   `r.ba`: the recruits' basal area ($m^{2}$ $ha^{-1}$) per species
+        and decade.
+
+    -   `ba`: total basal area ($m^{2}$ $ha^{-1}$) per species and
+        decade
+
+    -   `dbh`: diameter threshold (cm) used to define the recruitment (7
+        or 10 cm).
+
+### Output report {#report}
+
+To guide the writing of the output report, please refer to the following
+questions:
+
+-   What climate data have you used, and how have you created your model
+    climate input parameters?
+
+-   How have you defined the species composition in your model
+    simulation? (e.g., species levels, PFTs, etc.)? Please describe the
+    species categories used.
+
+-   How have you defined the simulation area for your model (e.g., size
+    and other relevant site aspects)?
+
+-   What are the relevant aspects of the dispersal (if any) and seed
+    input parameters in your model?
+
+-   What is the simulation length, and how have you determined the
+    simulation time until the equilibrium?
+
+-   If you have run more than one simulation per site, please describe
+    the differences of the approaches used.
+
+-   Please describe how have you calculated each of the variables in the
+    [output data](#outputdata).
+
+### Uploading data and report
+
+Please upload your data and output report as a **zip file** with the
+name of your model and any other word that might help us to understand
+the files, for example: *thenameofyourmodel_datareport.zip* or
+*thenameofyourmodel_data.zip* and *thenameofyourmodel_report.zip*.
+
+You can upload the files here: LINK
 
 
-```{r sigH7_Obs, echo=FALSE,  message=FALSE}
-library(knitr)
+# Supplementary Material 2: Model reports
 
-sigDiff7 <- readr::read_csv(here::here("figures", "sigH7_Obs.csv"))
-
-kable(sigDiff7,  format = "latex", caption = "Test of the significance of the differences of Shannon index between the observed data and each model for 7cm threshold.") |>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
-
-
-```{r sigH10_Obs, echo=FALSE,  message=FALSE}
-library(knitr)
-
-sigDiff10 <- readr::read_csv(here::here("figures", "sigH10_Obs.csv"))
-
-kable(sigDiff10,  format = "latex", caption = "Test of the significance of the differences of Shannon index between the observed data and each model for 10cm threshold.") |>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
-
-
-
-
-```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site for the recruitment  and at the stand level both for observed and simulated values. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
-knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
-```
-
-```{r recrStand10, echo=FALSE, fig.cap="Mean Shannon index per site for the recruitment  and at the stand level both for observed and simulated values. NOTE: The recruitment treshold recruitment for treshold 10 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
-knitr::include_graphics(here::here("figures", "recruitmentAdultRichness10.png"))
-```
-
-```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimaed using the Shannon index  calculated by basal area. A1) groups models that Simulated species composition in adults is higher than the observed, A2) groups models that Simulated species composition in adults is similar to the observed, A3) groups models where the imulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
-knitr::include_graphics(here::here("figures", "allAgesRichness.png"))
-```
-
-```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness. The species richness is estimaed using the Shannon index is calculated by basal area.B1) groups models where the simulated species composition is closer than the other models to observed values, B2) groups models where the sites with lower species composition are underestimated, B3) groups models where the simulated species composition recruitment is lower in the whole range compare to the observe. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
-knitr::include_graphics(here::here("figures", "recruitmentRichness.png"))
-```
-
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%'}
-knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
-```
-
-## Mortality
-
-```{r mortTable, echo=FALSE,  message=FALSE}
-library(knitr)
-
-sigDiff <- readr::read_csv(here::here("figures", "mortRatio7_10.csv"))
-
-kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold.") |>
-#kableExtra::landscape() 
-kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
-
-
-```{r mortality12 , echo=FALSE, fig.cap="Interquartile range of the ratio between 7 and 10cm recruitment and the overestimation proportion (sim-obs/obs) for the mean recruitment trees per model across sites and samples", out.width='100%'}
-knitr::include_graphics(here::here("figures", "mort7_10_iqrOver.png"))
-```
-
-```{r mortality22 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The cloud point per models shows the differences across sites, the shape point cloud per model shows if the models take into account regeneration density when applying mortality to regeneration ", out.width='60%'}
-knitr::include_graphics(here::here("figures", "mort7_10.png"))
-```
-
-```{r tableModels, echo=FALSE,  message=FALSE}
-library(knitr)
-
-tabletrends <- readr::read_csv(here::here("figures", "mort7_10_trends.csv"))
-kable(tabletrends,  format = "markdown", caption = "Models trends in mortality between and 10cm.")
-```
-
-```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='60%'}
-knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
-```
-
-
-
-```{r mortalityDiv3 , echo=FALSE, fig.cap=" Shannon index mena value across samples per site and in BA difference between 10 and 7 cm ", out.width='100%'}
-knitr::include_graphics(here::here("figures", "H710.png"))
-```
-
-
-# Model reports
 
 ## 4C
+### Authors
+
+### Model references
+
+*Please provide here the references to this model where it is possible
+to understand the model structure specially for the regeneration module,
+this could be a published paper, a website with the model description, a
+manual or some other document that the reader can access.*
+
+### Climate 
+
+### Soil
+
+### Topography
+
+### Tree species
+
+### Simulations
+
+### Outputs
+
 
 ## ForCEEPS & ForCEEPS(f)
 
@@ -798,10 +1140,6 @@ duration of the simulation.
 
 ### Tree species
 
-• How have you defined the species composition in your model simulation?
-(e.g., species levels, PFTs, etc.)? Please describe the species
-categories used.
-
 Tree composition is defined at the species level. All individually
 requested species (Fagus sylvatica, Picea abies, Abies alba, Carpinus
 betulus, Tilia cordata, Acer pseudoplatanus, Fraxinus excelsior, Alnus
@@ -814,9 +1152,6 @@ species were included in model simulations.
 ### Simulations 
 
 #### Simulation area
-
-• How have you defined the simulation area for your model (e.g., size
-and other relevant site aspects)?
 
 The simulation extent for each site was 1000 m x 1000 m (total area =
 100 ha). Environmental conditions were homogeneous for each site, and we
@@ -833,9 +1168,6 @@ available data set because we could avoid additional assumptions as it
 included all site variables needed for the model.
 
 #### Dispersal
-
-• What are the relevant aspects of the dispersal (if any) and seed input
-parameters in your model?
 
 Dispersal parameters are species-specific and include maturity age,
 fecundity (seedling potential per m2 crown area), masting (lower seed
@@ -855,9 +1187,6 @@ availability and dispersal.
 
 #### Simulation length
 
-• What is the simulation length, and how have you determined the
-simulation time until the equilibrium?
-
 Simulations were run for 2010 years, and equilibrium was reached at year
 1500. We assessed temporal patterns of species composition and basal
 area and defined equilibrium as when forest composition and structure
@@ -868,9 +1197,6 @@ appeared instead to be related to sites with extreme growth conditions
 and variation in randomly selected annual climate.
 
 #### Simulation approaches
-
-• If you have run more than one simulation per site, please describe the
-differences of the approaches used.
 
 Only one simulation was run per site.
 
@@ -1646,442 +1972,142 @@ manual or some other document that the reader can access.*
 
 ### Outputs
 
+\newpage
+\beginsupplement
 
+#  Supplementary Material 3: Supplementary figures and tables
 
-# Protocol
-
-## General steps
-
-Each modeling team will run their simulations prior to the workshop, and
-will report on the results before ([short written report](#report)) and
-during the workshop. The general approach for the workshop is:
-
-1.  Each team sets up their model to simulate the regeneration niche of
-    [eleven major European tree species](#speciescomposition) within the
-    known, defined range of environmental conditions of 200 sites. They
-    will run at least one simulation per site. It is important to
-    conduct mixed-species simulations, not series of monospecific
-    stands.
-
-2.  The model is set up for each site based on the [input variable
-    information](#inputvariables) provided in this protocol, and the
-    simulations need to be run until the [equilibrium is
-    reached](#equilibrium).
-
-3.  Each team reports on the results of these exercises in terms of a
-    [standardized output dataset](#outputdata) (including density
-    variables per 10-yr interval and per ha, for each simulated site and
-    species) and in the form of a brief [working report](#report) (\~4
-    pages).
-
-4.  At the workshop in June 2022 in Davos, Switzerland, we will evaluate
-    the regeneration niche as it results from each model and compare it
-    to the empirical estimates of the environmental limits of the
-    regeneration niche that will be made available to the participants
-    shortly before the workshop. As a group effort, the projections of
-    the niche properties arising from the different models will be
-    compared. The exact details on how this will be done will be
-    provided once we know how many modeling teams will contribute
-    results.
+## Recruitment levels
 
-## Input variables {#inputvariables}
+```{r envTrend7wb, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data..", fig.show = 'hold', out.width = '80%'}
+    knitr::include_graphics(c(here::here("figures", "envTrend7WB_500.png"),
+                              here::here("figures", "envTrend7WB.png")))
+```
 
-In this section, we are providing a description of all the necessary
-driver information to run the simulations (e.g., location, climate,
-soil).
+```{r envTrend7dds, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the site seasonal degree-day sum. (A)same y-axis across all models; (B) y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
+    knitr::include_graphics(c(here::here("figures", "envTrend7DDS_500.png"),
+                              here::here("figures", "envTrend7DDS.png")))
+```
 
-### Coordinates
+```{r zeroInflated, echo=FALSE,  message=FALSE}
+library(knitr)
 
-We intend to provide the site information via unique site IDs. If actual
-coordinates are needed, we can provide blurred site coordinates upon
-reasonable request.
+zeroInflated <- readr::read_csv(here::here("data", "noRecruitment.csv"))
+zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
 
-### Climate
+kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
+        kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
 
-We provide time series of climatic variables from 1981 to 2018 in
-hourly, daily and monthly resolution. Based on our survey the climate
-data should be sufficient to run all models. Some variables such as
-relative humidity or vapor pressure deficit must be calculated from the
-variables we provide.
+## Model complexity
 
-Note that the hourly time series has the lowest spatial resolution, thus
-the daily time series should be used for spatial accuracy. If you need
-hourly time series we recommend to use the daily time series and only
-use the hourly time series to correct for hourly variation. For this
-purpose we also provide hourly averages over the period 1981 to 2018 for
-each hour of each day of the year. Only for calculating these averages
-the 29th of February in leap years was removed from the time series to
-obtain values for 365 days.
+Summary of the linear model of the overestimation proportions versus the mean complexity value on the establishment module.
+```{r tableComp, echo=FALSE,  message=FALSE, render = 'normal_print'}
+library(knitr)
 
-#### Data sources {#climsources}
+tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
+jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
 
-The hourly time series are based on the Era5-land data set. Daily and
-monthly time series are mostly based on CHELSA data which has a higher
-spatial resolution. More details are given below or in the documentation
-of the original data source.
+```
 
-The variable names are kept exactly like in the documentation of the
-Era5 and CHELSA data sets to facilitate the use of the original data
-documentation. Please don't be confused by the ending `*_hourly` in
-`surface_thermal_radiation_downwards_hourly` and the two different
-variable names for shortwave radiation: `rsds` for the values from
-CHELSA and `surface_solar_radiation_downwards_hourly` for the values
-from Era5.
 
-All changes that were made to the original data are documented here:
 
--   The wind variable `wind_speed` is based on the u and v component of
-    the wind and calculated with $\sqrt{u^2+v^2}$ where $u$ is the
-    variable `u_component_of_wind_10m` and $v$ is
-    `v_component_of_wind_10m` of the Era5 data set.
+## Recruitment species composition
 
--   The units of temperature variables `temperature_2m` (Era5), `tas`,
-    `tasmin`, `tasmax`(all CHELSA) were changed from Kelvin to Degree
-    Celsius
+```{r sigDiff, echo=FALSE,  message=FALSE}
+library(knitr)
 
--   The units of precipitation variables `total_precipitation_hourly`
-    (Era5), `pr` (CHELSA) were changed from m to mm and kG to mm
-    respectively.
+sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
 
--   The unit of short wave radiation `rsds` (CHELSA) was changed from kJ
-    to J.
+kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
+        #kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
 
-We aggregated variables from hourly to daily to monthly values by using
-means for temperature, surface pressure and wind speed and sums for
-radiation and precipitation.
 
-##### Era5-Land {#era5}
+```{r sigH7_Obs, echo=FALSE,  message=FALSE}
+library(knitr)
 
--   Muñoz Sabater, J., (2019): ERA5-Land hourly data from 1981 to
-    present. Copernicus Climate Change Service (C3S) Climate Data Store
-    (CDS). (23.01.2022),
-    [doi:10.24381/cds.e2161bac](https://doi.org/10.24381/cds.e2161bac)
--   [Documentation of the hourly ERA5 data from the Google Earth
-    Engine](https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY#description)
--   Further information is available from the [official copernicus
-    website](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=overview).
+sigDiff7 <- readr::read_csv(here::here("figures", "sigH7_Obs.csv"))
 
-##### CHELSA {#chelsa}
+kable(sigDiff7,  format = "latex", caption = "Test of the significance of the differences of Shannon index between the observed data and each model for 7cm threshold.") |>
+        #kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
 
--   Dirk N. Karger, Stefan Lange, Chantal Hari, Christopher P. O. Reyer,
-    Niklaus E. Zimmermann (2021): CHELSA-W5E5 v1.0: W5E5 v1.0 downscaled
-    with CHELSA v2.0. ISIMIP Repository.
-    <https://doi.org/10.48364/ISIMIP.836809>
 
--   [Official CHELSA website](https://chelsa-climate.org)
+```{r sigH10_Obs, echo=FALSE,  message=FALSE}
+library(knitr)
 
-#### Monthly time series 1981-2018
+sigDiff10 <- readr::read_csv(here::here("figures", "sigH10_Obs.csv"))
 
-file name: monthly_era5_chelsa_200.zip
+kable(sigDiff10,  format = "latex", caption = "Test of the significance of the differences of Shannon index between the observed data and each model for 10cm threshold.") |>
+        #kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
 
-**Data description**
 
-Variables from the [Era5 data set](#era5) with a spatial resolution of
-0.1° x 0.1° (\~ 10 km):
 
--   average wind speed (`wind_speed`) [m/s]
 
--   average surface pressure (`surface_pressure`) [Pa]
+```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site for the recruitment  and at the stand level both for observed and simulated values. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
+knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
+```
 
--   surface thermal (longwave) radiation
-    (`surface_thermal_radiation_downwards_hourly`) [J/m2]
+```{r recrStand10, echo=FALSE, fig.cap="Mean Shannon index per site for the recruitment  and at the stand level both for observed and simulated values. NOTE: The recruitment treshold recruitment for treshold 10 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
+knitr::include_graphics(here::here("figures", "recruitmentAdultRichness10.png"))
+```
 
-Variables from the [CHELSA data set](#chelsa) with a spatial resolution
-of 0.008° x 0.008° (\~ 1 km):
+```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimaed using the Shannon index  calculated by basal area. A1) groups models that Simulated species composition in adults is higher than the observed, A2) groups models that Simulated species composition in adults is similar to the observed, A3) groups models where the imulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
+knitr::include_graphics(here::here("figures", "allAgesRichness.png"))
+```
 
--   average temperature (`tas`) [°C]
+```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness. The species richness is estimaed using the Shannon index is calculated by basal area.B1) groups models where the simulated species composition is closer than the other models to observed values, B2) groups models where the sites with lower species composition are underestimated, B3) groups models where the simulated species composition recruitment is lower in the whole range compare to the observe. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
+knitr::include_graphics(here::here("figures", "recruitmentRichness.png"))
+```
 
--   average max temperature (`tasmax`) [°C]
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%'}
+knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
+```
 
--   average min temperature (`tasmin`) [°C]
+## Mortality
 
--   precipitation sum (`pr`) [mm]
+```{r mortTable, echo=FALSE,  message=FALSE}
+# library(knitr)
+# 
+# sigDiff <- readr::read_csv(here::here("figures", "mortRatio7_10.csv"))
+# 
+# kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold.") |>
+# #kableExtra::landscape() 
+# kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
 
--   surface solar (shortwave) radiation (`rsds`) [J/m2]
 
-#### Daily time series 1981-2018
+```{r mortality12 , echo=FALSE, fig.cap="Interquartile range of the ratio between 7 and 10cm recruitment and the overestimation proportion (sim-obs/obs) for the mean recruitment trees per model across sites and samples", out.width='100%'}
+knitr::include_graphics(here::here("figures", "mort7_10_iqrOver.png"))
+```
 
-file name: daily_era5_chelsa_200.zip
+```{r mortality22 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The cloud point per models shows the differences across sites, the shape point cloud per model shows if the models take into account regeneration density when applying mortality to regeneration ", out.width='60%'}
+knitr::include_graphics(here::here("figures", "mort7_10.png"))
+```
 
-**Data description**
+```{r tableModels, echo=FALSE,  message=FALSE}
+library(knitr)
 
-Variables from the [Era5 data set](#era5) with a spatial resolution of
-0.1° x 0.1° (\~ 10 km):
+tabletrends <- readr::read_csv(here::here("figures", "mort7_10_trends.csv"))
+kable(tabletrends,  format = "markdown", caption = "Models trends in mortality between and 10cm.")
+```
 
--   average wind speed (`wind_speed`) [m/s]
+```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='60%'}
+knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
+```
 
--   average surface pressure (`surface_pressure`) [Pa]
+```{r mortalityDiv3 , echo=FALSE, fig.cap=" Shannon index mena value across samples per site and in BA difference between 10 and 7 cm ", out.width='100%'}
+knitr::include_graphics(here::here("figures", "H710.png"))
+```
 
--   surface thermal (longwave) radiation
-    (`surface_thermal_radiation_downwards_hourly`) [J/m2]
 
-Variables from the [CHELSA data set](#chelsa) with a spatial resolution
-of 0.008° x 0.008° (\~ 1 km):
 
--   average temperature (`tas`) [°C]
 
--   average max temperature (`tasmax`) [°C]
 
--   average min temperature (`tasmin`) [°C]
 
--   precipitation sum (`pr`) [mm]
-
--   surface solar (shortwave) radiation (`rsds`) [J/m2]
-
-#### Hourly time series 1981-2018
-
-file name: hour_era5_200.zip
-
-file name: yhourMean_era5_200.zip
-
-**Data description**
-
-Variables from the [Era5 data set](#era5) with a spatial resolution of
-0.1° x 0.1° (\~ 10 km):
-
--   average temperature (temperature_2m) [°C]
-
--   average wind speed (`wind_speed`) [m/s]
-
--   average surface pressure (`surface_pressure`) [Pa]
-
--   precipitation sum (total_precipitation_hourly) [mm]
-
--   surface solar (shortwave) radiation
-    (surface_solar_radiation_downwards_hourly) [J/m2]
-
--   surface thermal (longwave) radiation
-    (surface_solar_radiation_downwards_hourly) [J/m2]
-
-### Soil
-
-file name: soil_quality_200.csv
-
-**Data description**
-
-The following variables are available:
-
--   Soil quality is given as a continuous value between 1 and 5.
-
-**Data source**
-
--   The soil quality value is based on a random forest that was trained
-    to predict expert knowledge based soil quality on a scale from 1 to
-    5 from the [SoilGrids250 data
-    set](https://www.isric.org/explore/soilgrids) and the [WISE data
-    set](https://www.isric.org/explore/wise-databases). The most
-    influential variables in the random forest were total depth to
-    bedrock and sand content. Thus the variable is a good predictor for
-    plant available water storage capacity.
-
-## Topography and elevation
-
-There was an error in a earlier version of this file. Please use the
-link above to download the corrected file.
-
-This is the old file and should not be used because the aspect column
-contains elevation instead of the aspect.
-
-file name: topo_data_200.csv
-
-**Data description**
-
-The following variables are available:
-
--   elevation [m.a.s.l]
-
--   slope [Degree]
-
--   aspect [Degree]
-
-**Data source**
-
--   Topographic information was derived from the [ASTER DEM
-    V3](https://lpdaac.usgs.gov/products/astgtmv003/).
-
--   Slope and aspect were calculated with QGIS. The specific tiles that
-    were used are documented
-    [here](https://ites-fe.ethz.ch/rws/downloads/15122021/aster_dem_files.txt),
-    and the processing steps in QGIS are documented
-    [here](https://ites-fe.ethz.ch/rws/downloads/15122021/QGIS_command_log.txt).
-
-### Natural disturbances
-
-The simulations must be run in the absence of natural disturbances.
-
-## Management
-
-The simulations must be run in the absence of management.
-
-### Area simulated
-
-From your model outputs, we would like to obtain samples on species
-specific regeneration rates per decade and per ha. The modeling teams
-decide on the simulated area and how they derive these samples. Please
-describe the methodology used in the [output report](#report).
-
-### Simulation duration and equilibrium {#equilibrium}
-
-The simulation should be run from bare ground in the absence of
-management to a simulated [equilibrium](#defequilibrium) ("potential
-natural vegetation") with current climate. The goal is to derive the
-[regeneration niche](#regenniche). The exact length of the simulation
-should be decided by the modeling teams. Please describe the simulation
-length used in your simulations in the [output report](#report).
-
-[**Regeneration niche:**]{#regenniche} The regeneration niche is defined
-as the passing of a diameter threshold of 7 and 10 cm (ingrowth; cf.
-below). Both the width of the regeneration niche (i.e., in environmental
-space) as well as the intensity of the recruitment process (i.e., the
-number of ingrowth trees per area and per unit of time) are of interest.
-
-[**Simulated equilibrium**]{#defequilibrium}: Simulated equilibrium is
-the "Potential Natural Vegetation".
-
-### Species composition {#speciescomposition}
-
-**Mixed species simulations** must be run (not multiple single-species
-simulations).
-
-**Option A: Species level**
-
-The simulation should be run for **mixtures** of the following
-species/genera: *Fagus sylvatica, Picea abies, Abies alba, Carpinus
-betulus, Tilia cordata, Acer pseudoplatanus, Betula spp., Fraxinus
-excelsior, Quercus spp., Alnus glutinosa, Pinus sylvestris.*
-
-Additional species can be included in the simulation if modelers think
-this is important, but they should report only on these 11
-species/genera because the benchmarking data refer to them only. Please
-report the methodology used in the [output report](#report).
-
-**Option B: PFTs**
-
-If species-level simulation is not possible in your model, substitute
-the species by PFTs and use the model's default approach. Please report
-the methodology used in the [output report](#report). Explain as well
-which PFTs represent which species for your model.
-
-## Diameter threshold
-
-The [output data](#outputdata) have to be provided for two diameter
-thresholds: 7 and 10 cm.
-
-## Output
-
-We are expecting to get the number of recruits over a 10-yr interval per
-species and per ha for each of the sites. However, we are also
-interested in the **variation per site** (i.e., we would like to see the
-range of estimates, not only the mean value per site). Each modeling
-team will decide how to sample multiple values per site that will show
-the variation in recruitment.
-
-Specifically, you should provide us with multiple samples (n = 200; this
-number is the same as the number of sites by sheer coincidence) of the
-regeneration rate for spatial units of 1 ha (please do [not]{.underline}
-provide average of multiple 1-ha samples). This can be done in various
-ways, e.g., by sampling simulated data from the same 1-ha plot in the
-equilibrium over time, or by sampling several 1-ha plots from the
-simulated forest at one specific point in time (in the equilibrium); for
-clarification, cf. three sample strategies proposed in [figures
-1](#sample1), [2](#sample2) and [3](#sample3).
-
-If, for some reason, you cannot submit **200 samples** of **1 ha**,
-please **let us know** in the [workshop chat](#chat) so we can discuss
-alternatives. The sampling from the simulations must happen **within**
-the simulated phase of Potential Natural Vegetation (for more
-information, see how [equilibrium](#defequilibrium), Potential [Natural
-Vegetation, and regeneration niche](#regenniche) are defined in this
-protocol).
-
-![Figure 1. In this example there are 200 samples collected at year i at
-equilibrium differentiated spatially with each square representing 1
-ha.](samplingfigure/Slide2.jpeg){#sample1 width="500"}
-
-![Figure 2. In this example, there are 100 spatially differentiated
-samples taken in year i at equilibrium and 100 in year i+10. Each square
-represents 1 ha.](samplingfigure/Slide3.jpeg){#sample2 width="500"}
-
-![Figure 3. In this example there is 1 spatially differentiated sample
-taken in year i at equilibrium and remeasured every 10 years for 2000
-years until i+2000. The square represents 1
-ha.](samplingfigure/Slide4.jpg){#sample3 width="500"}
-
-### Output data {#outputdata}
-
-Please provide the simulation output data using the following structure:
-
--   Each row of your output dataset contains the recruitment of 10-year
-    interval per species and ha for a unique simulation site.
-
--   Each column of your output dataset contains one of these variables:
-
-    -   `sample`: this will identify the different samples per site
-        (1:n, with n $\ge$ 200)
-
-    -   `site`: site identifier (1:200)
-
-    -   `species`: species simulated with the following categories:
-
-        -   fasy (for *Fagus sylvatica*)
-        -   pabi (for *Picea abies*)
-        -   abal (for *Abies alba*)
-        -   cabe (for *Carpinus betulus*)
-        -   tico (for *Tilia cordata*)
-        -   acps (for *Acer pseudoplatanus*)
-        -   betu (for *Betula* spp.)
-        -   frex (for *Fraxinus excelsior*)
-        -   quer (for *Quercus* spp.)
-        -   algl (for *Alnus glutinosa*)
-        -   pisy (for *Pinus sylvestris*)
-        -   If you have some other categories please create your own
-            species codes and provide the legend in the output report.
-            We prefer a lumped category "othr".
-
-    -   `r.trees`: the recruits (trees $ha^{-1}$) per species and
-        decade.
-
-    -   `r.ba`: the recruits' basal area ($m^{2}$ $ha^{-1}$) per species
-        and decade.
-
-    -   `ba`: total basal area ($m^{2}$ $ha^{-1}$) per species and
-        decade
-
-    -   `dbh`: diameter threshold (cm) used to define the recruitment (7
-        or 10 cm).
-
-### Output report {#report}
-
-To guide the writing of the output report, please refer to the following
-questions:
-
--   What climate data have you used, and how have you created your model
-    climate input parameters?
-
--   How have you defined the species composition in your model
-    simulation? (e.g., species levels, PFTs, etc.)? Please describe the
-    species categories used.
-
--   How have you defined the simulation area for your model (e.g., size
-    and other relevant site aspects)?
-
--   What are the relevant aspects of the dispersal (if any) and seed
-    input parameters in your model?
-
--   What is the simulation length, and how have you determined the
-    simulation time until the equilibrium?
-
--   If you have run more than one simulation per site, please describe
-    the differences of the approaches used.
-
--   Please describe how have you calculated each of the variables in the
-    [output data](#outputdata).
-
-### Uploading data and report
-
-Please upload your data and output report as a **zip file** with the
-name of your model and any other word that might help us to understand
-the files, for example: *thenameofyourmodel_datareport.zip* or
-*thenameofyourmodel_data.zip* and *thenameofyourmodel_report.zip*.
-
-You can upload the files here: LINK
