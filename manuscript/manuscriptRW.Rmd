@@ -34,6 +34,8 @@ fontsize: 12pt
 linestretch: 1.5
 bibliography: Regeneration.bib
 link-citations: yes
+nocite: |
+  @reyer, @bugmann1996a, @bohn2014, @fabrika2005, @mette2014, @smith2001a, @seidl2012a, @lischke2006a, @schumacher2006, @scheiter2009, @scheller2004, @morin2021
 linkcolor: blue
 csl: global-change-biology.csl
 editor_options:
@@ -228,29 +230,27 @@ their origin differ strongly, with most of the models featuring a
 largely "process-based" approach, whereas two models are based on
 formulations derived from the statistical analysis of inventory data
 (SYBILA and xComp). Some of the models largely rely on the original
-approach underlying forest gap models (e.g., ForClim 1 and
-LandClim)[,]{.underline} whereas some [a]{.underline}re based on plant
-ecophysiological processes (e.g., FORMIND and iLand). The different
-approaches underlying the models have strongly influenced the
-formulation of tree establishment.
+approach underlying forest gap models (e.g., ForClim 1 and LandClim),
+whereas some are based on plant ecophysiological processes (e.g.,
+FORMIND and iLand). The different approaches underlying the models have
+strongly influenced the formulation of tree establishment.
 
 The establishment modules can be categorized as 'regeneration' or
 'recruitment' models [@vanclay1994; @konig_tree_2022] (see Table
 \@ref(tab:tableModels)). Regeneration models include processes such as
 flowering and pollination, seed production, seed dispersal, germination
-seedling [g]{.underline}rowth, which ultimately lead to the simulated
-number of trees. Recruitment models, in contrast, introduce a certain
-number of new trees with certain characteristics such as biomass or
-diameter, without explicitly considering earlier development processes.
-We can further distinguish models that feature a feedback in the
-establishment, i.e., where the level and species composition of
-establishment is influenced by the existing adult tree community via the
-production of seeds, seedlings or saplings, from models that do not
-contain such feedback.
+seedling growth, which ultimately lead to the simulated number of trees.
+Recruitment models, in contrast, introduce a certain number of new trees
+with certain characteristics such as biomass or diameter, without
+explicitly considering earlier development processes. We can further
+distinguish models that feature a feedback in the establishment, i.e.,
+where the level and species composition of establishment is influenced
+by the existing adult tree community via the production of seeds,
+seedlings or saplings, from models that do not contain such feedback.
 
 The starting point for in the models differs as well, ranging from
 seedbank, seed or seedling to sapling (i.e., trees much larger than 10
-cm height, often at least 2-3 m tall).This implies that the larger the
+cm height, often at least 2-3 m tall). This implies that the larger the
 size threshold, the larger the number of ecological processes that must
 be aggregated via parameterizations because they cannot be treated
 explicitly. This reduces model complexity but comes at the cost of
@@ -261,10 +261,10 @@ considerably. Following @bugmann2022, we can classify seven models
 (iLand, PICUS, LandClim, ForCEEPS, LPJ-GUESS, ForClim and TreeMig) as
 having rather high complexity in their establishment modules (average
 complexity across all processes \>0, Table \@ref(tab:tableModels)). In
-most models[,]{.underline} the two processes in the establishment
-modules with the highest complexity are the statistical approach used to
-define the successful number of new treesand how frost occurrence is
-taken into account.
+most models, the two processes in the establishment modules with the
+highest complexity are the statistical approach used to define the
+successful number of new trees and how frost occurrence is taken into
+account.
 
 Two models, ForClim and ForCEEPs, were used here with two alternative
 variants. ForClim variant 1 [@bugmann1996] is based on a recruitment
@@ -276,8 +276,8 @@ variants allow us to evaluate a more process-based module (variant 11)
 against a simple module (variant 1), while the rest of the model
 structure is identical. Similarly, the two ForCEEPS variants allow us to
 isolate the importance of the canopy feedback via seed trees for the
-quantity and quality of simulated ingrowth[,]{.underline} as one variant
-includes this feedback whereas the other does not.
+quantity and quality of simulated ingrowth, as one variant includes this
+feedback whereas the other does not.
 
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=FALSE}
 library(knitr)
@@ -312,7 +312,7 @@ kable(modelDF,
       kableExtra::column_spec(column = 9, width = "8em") |>
       kableExtra::column_spec(column = 10, width = "5em") |>
       kableExtra::column_spec(column = 11, width = "5em") |>
-      kableExtra::column_spec(column = 12, width = "5em") |>
+      kableExtra::column_spec(column = 12, width = "8em") |>
       kableExtra::add_footnote(c("S-Stand, L-Landscape, G-Global",
                                  "PB-Process based, EM-Empirical", 
                                  "C-Cohort, I-Individual",
@@ -332,14 +332,14 @@ gradients over a large number sites, to evaluate how well ingrowth is
 captured. The observations used here are from a novel and unprecedented
 network of sites in forest reserves that represent the range of
 environmental gradients in temperature and precipitation in central
-Europe as compiled in the framework of the EuFoRIa network[@euforia2019]
-(Figure \@ref(fig:map)). All these forests have not been managed for at
-least 10 years prior to their designation as reserves, and most of them
-provide time series of natural forest dynamics over multiple decades and
-up to ca. 80 years. The census periods range from 3 to 37 years, with an
-average of 14 years. The data provide information at the tree level,
-thus allowing for sequential comparison such as individual-tree ingrowth
-and death between the measurements.
+Europe as compiled in the framework of the EuFoRIa network
+[@euforia2019] (Figure \@ref(fig:map)). All these forests have not been
+managed for at least 10 years prior to their designation as reserves,
+and most of them provide time series of natural forest dynamics over
+multiple decades and up to ca. 80 years. The census periods range from 3
+to 37 years, with an average of 14 years. The data provide information
+at the tree level, thus allowing for sequential comparison such as
+individual-tree ingrowth and death between the measurements.
 
 We selected 200 sites from this network as the benchmarking data set for
 the simulation. The selection of sites is representative for the
@@ -363,15 +363,14 @@ detailed establishment information, cf. @käber2022.
 The overarching goal of the experiments was to assess the regeneration
 niche as it arises from empirical data against its representation in a
 wide range of models of forest dynamics. We define the regeneration
-niche as the passing of a diameter threshold of 7 or 10
-cm[,]{.underline} respectively (synonym: ingrowth). To this end, each
-modeling group was provided with a detailed protocol (cf. Supplementary
-Material 1, henceforth "SM") with instructions how to perform the
-simulations, providing input variables on climate and soil conditions,
-and the expected output variables. Neither were further site information
-(except for the data specified below) nor any data on tree ingrowth
-provided prior to the simulation. That is, the models were run in "blind
-flight" mode.
+niche as the passing of a diameter threshold of 7 or 10 cm, respectively
+(synonym: ingrowth). To this end, each modeling group was provided with
+a detailed protocol (cf. Supplementary Material 1, henceforth "SM") with
+instructions how to perform the simulations, providing input variables
+on climate and soil conditions, and the expected output variables.
+Neither were further site information (except for the data specified
+below) nor any data on tree ingrowth provided prior to the simulation.
+That is, the models were run in "blind flight" mode.
 
 The input variables were collected and aggregated to be adapted to the
 needs of the different models. Time series of climatic variables from
@@ -386,20 +385,19 @@ a continuous value between 1 and 5 [Soilgrids dataset, Hengl et al.
 -@hengl2017, Poggio et al. -@poggio2021]. The protocol also provided the
 elevation, slope and aspect for each of the 200 sites
 [@asterscienceteam2019], but no other spatial information such as
-coordinates was provided, with the exception of iLand[,]{.underline}
-which used the blurred coordinates to derive highly detailed soil data.
+coordinates was provided, with the exception of iLand, which used the
+blurred coordinates to derive highly detailed soil data.
 
 The simulations were run in the absence of natural disturbances. Only
-the model LPJ-GUESS had to include HERE LPJ-GUESS PROVIDE [ONE
-SENTENCE]{.underline} OF WHY YOU INCLUDED DISTURBANCES AND WHAT TYPE.
-The simulations were set up to sample species-specific ingrowth rates
-per decade and per ha in the equilibrium state of the model, typically
-entailing a "spin-up" run (as we did not provide any forest data). The
-modeling teams decided on the simulated area and how they derived these
-samples. The exact length of the simulation was also decided by the
-modeling teams (Table \@ref(tab:tableModels)). Further details on how
-each modeling team prepared the simulations and the outputs are
-available in SM 2.
+the model LPJ-GUESS had to include HERE LPJ-GUESS PROVIDE ONE SENTENCE
+OF WHY YOU INCLUDED DISTURBANCES AND WHAT TYPE. The simulations were set
+up to sample species-specific ingrowth rates per decade and per ha in
+the equilibrium state of the model, typically entailing a "spin-up" run
+(as we did not provide any forest data). The modeling teams decided on
+the simulated area and how they derived these samples. The exact length
+of the simulation was also decided by the modeling teams (Table
+\@ref(tab:tableModels)). Further details on how each modeling team
+prepared the simulations and the outputs are available in SM 2.
 
 The simulations were run in the absence of management to a
 simulated equilibrium ("Potential Natural Vegetation") with the current
@@ -427,12 +425,12 @@ model *Betula pendula* was not included because HERE **TREEMIG**
 PROVIDES THE END OF THIS SENTENCE SAYING WHY B pendula WAS NOT INCLUDED.
 In three models, fewer than these elveven species were simulated (4C,
 xComp, LPJ-GUESS) (Table \@ref(tab:tableModels)). HERE **4C** PROVIDES
-[ONE SENTENCE]{.underline} WHY THEY SIMULATED LESS SPECIES. HERE
-**XCOMP** PROVIDES [ONE SENTENCE]{.underline} WHY THEY SIMULATED LESS
-SPECIES. HERE **LPJ-GUESS** PROVIDES [ONE SENTENCE]{.underline} WHY THEY
-SIMULATED LESS SPECIES. Finally, the model aDGVM2 is based on a suite of
-broad Plant Functional Types rather than individual species, and hence
-this model used its default approach of PFTs for the simulations.
+ONE SENTENCE WHY THEY SIMULATED LESS SPECIES. HERE **XCOMP** PROVIDES
+ONE SENTENCE WHY THEY SIMULATED LESS SPECIES. HERE **LPJ-GUESS**
+PROVIDES ONE SENTENCE WHY THEY SIMULATED LESS SPECIES. Finally, the
+model aDGVM2 is based on a suite of broad Plant Functional Types rather
+than individual species, and hence this model used its default approach
+of PFTs for the simulations.
 
 Each of the models reported the ingrowth number by sampling 200 times
 over a 10-year interval for each species and per ha for each of the 200
@@ -456,10 +454,10 @@ long-term simulations without management PLEASE **4C** VERIFY THIS IS
 WHAT YOU DID. LPJ-GUESS had 2% of the sample outputs as grasslands that
 were considered in the data as zero stand basal area and zero ingrowth
 for all the tree species simulated. LPJ-GUESS could not simulate one of
-the sites HERE **LPJ-GUESS** PROVIDES [ONE SENTENCE]{.underline} WHY
-THEY DID NOT PROVIDE ALL THE SITES. Landis-II missed 0.2% of the
-observations HERE **LANDIS-II** PROVIDES [ONE SENTENCE]{.underline} WHY
-THEY DID NOT PROVIDE ALL THE SAMPLES/observations.
+the sites HERE **LPJ-GUESS** PROVIDES ONE SENTENCE WHY THEY DID NOT
+PROVIDE ALL THE SITES. Landis-II missed 0.2% of the observations HERE
+**LANDIS-II** PROVIDES ONE SENTENCE WHY THEY DID NOT PROVIDE ALL THE
+SAMPLES/observations.
 
 ```{r map, echo=FALSE, fig.cap="The 200 sites of the EuFoRIa network that were used in the present study, showing the dominant tree species per site in the observed ingrowth at the 10 cm threshold.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "theMap.png"))
@@ -609,7 +607,7 @@ low percentage of samples with no ingrowth (0.01% - 1.31%), i.e., they
 had distinctly fewer occurrences of zeros compared to the observations.
 There was no significant relationship between the mean complexity of the
 establishment module (Table \@ref(tab:tableModels)) and the
-overestimation proportion at a diameter threshold of 7 cm (Table S2).
+overestimation proportion at a diameter threshold of 7 cm (SM3).
 
 ```{r nvTrend710BA, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the stand basal area. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
     knitr::include_graphics(c(here::here("figures", "envTrend7Totba_500.png"),
@@ -646,13 +644,13 @@ stand-level diversity (Figures S3 and S4). Yet, models simulating higher
 diversity at the stand level featured higher diversity in ingrowth
 (Figure S3 and S4). Most models captured reasonably well or
 overpredicted species diversity at the stand level (Figure
-\@ref(fig:combinedRichness)A, center; cf. Figure S5)[,]{.underline} but
-a characteristic feature was that simulations had a much lower
-variability of diversity compared to observations. Models overpredicting
-species richness included ForClim1, ForClim 11, FORMIND and TreeMig
-(Figure \@ref(fig:combinedRichness)A, left). Several models
-underpredicted species diversity, i.e., LPJ-GUESS, ForCEEPS(f) and 4C
-(Figure \@ref(fig:combinedRichness)A, right). The majority of the models
+\@ref(fig:combinedRichness)A, center; cf. Figure S5), but a
+characteristic feature was that simulations had a much lower variability
+of diversity compared to observations. Models overpredicting species
+richness included ForClim1, ForClim 11, FORMIND and TreeMig (Figure
+\@ref(fig:combinedRichness)A, left). Several models underpredicted
+species diversity, i.e., LPJ-GUESS, ForCEEPS(f) and 4C (Figure
+\@ref(fig:combinedRichness)A, right). The majority of the models
 captured reasonably well the ingrowth diversity at lower values of
 diversity, but most of them strongly underestimated ingrowth diversity
 for higher observed diversity levels (Figure
@@ -699,7 +697,7 @@ sites. Many models, however, erroneously featured ingrowth for these two
 species along most of the climatic gradients although at a low basal
 area share. Five models (4C, FORMIND, SYBILA, xComp, and LandClim) had
 almost no ingrowth of *Pinus sylvestris* and *Quercus* spp., or did not
-feature any ingrowth of of these species at all.
+feature any ingrowth of these species at all.
 
 Lastly, there is no model that performed well across the five species
 regarding the species-specific ingrowth rates in the environmental space
@@ -911,17 +909,18 @@ regeneration niche of the species are needed, but this cannot be done in
 the absence of robust datasets.
 
 The species diversity of the entire stand was better captured by the
-models than the diversity of tree ingrowth, and only a few models
-overpredicted stand level diversity. Ingrowth composition defined as
-being proportional to adult abundance, regardless of productivity, might
-be a simple and cautious assumption to safely maintain relative species
-abundances [@hanbury-brown2022]. However, based on the simulation
-results, we did not see that models with feedback captured better the
-ingrowth species diversity than those without feedback. The similar
-performance between models with and without feedback might be because
-the models are giving more importance to define the regeneration niche
-via abiotic and biotic filters than with the habitat niche of the adult
-trees [@grubb1977].
+models than the diversity of
+tree ingrowth, and only a few models overpredicted stand-level
+diversity. Defining ingrowth composition as being proportional to adult
+abundance, regardless of productivity, might be a
+simple and conservative assumption to safely maintain relative species
+abundances [@hanbury-brown2022], although this may be simplistic.
+Furthermore, based on the simulation results there is no evidence that
+models with feedback captured better the ingrowth species diversity than
+those without feedback. The similar performance of models with and
+without feedback is likely because the models are giving more weight to
+the regeneration niche arising abiotic and biotic filters than from the
+habitat niche of the adult trees [@grubb1977].
 
 ## Ingrowth mortality
 
@@ -967,22 +966,22 @@ long period since germination [@price2001]. However, many environmental
 constraints are acting on young trees [@käber2021] that we were unable
 to assess. Yet, ingrowth data with lower thresholds are simply not
 available in a harmonized manner across large environmental gradients.
-Third, the empirical data were collected from rather small plots that
-ranged from 0.2 to up to 1 ha, while we sampled simulated ingrowth rates
-from 1 ha areas, which may lead to an incorrect representation of space.
-Even though this strategy it is not ideal, it represents a common
-challenge when harmonizing diverse data sources originating from varied
-sampling strategies [@portier2022]. It would have been extremely
-challenging for such a variety of models to follow a protocol where the
-spatial sampling size was different at each of the 200 sites.
+Third, the empirical data were collected from rather small plots, while
+we sampled simulated ingrowth rates from 1 ha areas, which may lead to
+an incorrect representation of space. Even though this strategy it is
+not ideal, it represents a common challenge when harmonizing diverse
+data sources originating from varied sampling strategies [@portier2022].
+It would have been extremely challenging for such a variety of models to
+follow a protocol where the spatial sampling size was different at each
+of the 200 sites.
 
 The design of our sampling protocol did not include spatial aspects. We
 considered a wide range of models of forest dynamics, from stand to
 global scale. However, the simulation setup was limited to 1 ha ingrowth
 values. The lack of spatial considerations potentially puts landscape
-models at a disadvantage, as they have been built to be accurate~~l~~ at
-the landscape level. Without spatial context, we are limiting ingrowth
-to the seed influx from the stand itself, if the model does not have a
+models at a disadvantage, as they have been built to be accurate at the
+landscape level. Without spatial context, we are limiting ingrowth to
+the seed influx from the stand itself, if the model does not have a
 background seed input. However, Global Dynamic Vegetation Models should
 not be in disadvantage due to the limited spatial considerations [but
 cf. Snell et al. -@snell2014] as they are usually lacking dispersal
@@ -1047,11 +1046,12 @@ for simulated forest properties. The 15 models and variants used here
 are facing similar challenges when representing tree establishment. They
 generally overestimate tree establishment rates, and the simulated
 establishment niche is not always captured accurately as a function of
-the biotic (light) and abiotic (temperature and moisture). However, most
-models properly capture the diversity of the initial tree populations,
-although changes in their formulations including feedback from adult
-trees did not have an effect on better capturing the species composition
-of ingrowth.
+the biotic (light) and abiotic (temperature and moisture).
+
+However, most models properly capture the diversity of the initial tree
+community, but variations in model formulations, e.g., the presence or
+absence of feedback from the adult trees, did not have a strong effect
+for capturing the species composition of ingrowth.
 
 Regarding mortality in the early phase of tree life, many models that
 feature a particularly high overestimation of ingrowth levels are
