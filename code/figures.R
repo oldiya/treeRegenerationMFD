@@ -15,17 +15,16 @@
     outputsDF <- data.table::fread("data/dataOutputs.csv")
     outputsDF$model[outputsDF$model == "Empirical"] <- "Observed"
 
-    
     # Number of trees in the observed data 
-    obsNum <- outputsDF [outputsDF$model == "Observed",]
+    obsNum <- outputsDF[outputsDF$model == "Observed", ]
     round( sum(obsNum$r.trees, na.rm = TRUE), 0)
     
     obsNumAgg <- obsNum |> 
                    dplyr::group_by(site, sample) |>
-                   dplyr::summarise( r.ha= sum(r.trees))
+                   dplyr::summarise(r.ha = sum(r.trees))
     
-    #hist(obsNumAgg$r.ha)
-    range (obsNumAgg$r.ha, na.rm = TRUE)
+    sum(obsNumAgg$r.ha, na.rm =  T)
+    range(obsNumAgg$r.ha, na.rm = TRUE)
     
     # Assign models and dbh to levels 
 
@@ -48,19 +47,19 @@
     
     # Sum across species in each observation
     ShannonIndex <- data.frame(cbind(aggregate(mult ~ site + sample + model + dbh,
-                                               sum, data =  ShannonDF)))
+                                               sum, data = ShannonDF)))
     
     ShannonIndex$mult <- (-1) * (ShannonIndex$mult)
-    colnames(ShannonIndex) <- c("site", "sample", "model",
-                                "dbh", "ShannonIndexRecruit")
+    colnames(ShannonIndex) <- c("site", "sample", "model", "dbh",
+                                "ShannonIndexRecruit")
     
     ## Stand Shannon index ----
     ShannonDFAll <- outputsDF 
     ShannonDFAll$giDIVG <- ShannonDFAll$ba / ShannonDFAll$Totba
     ShannonDFAll$lngiDIVG <- log(ShannonDFAll$ba / ShannonDFAll$Totba)
-    ShannonDFAll$mult <- round(ShannonDFAll$giDIVG *  ShannonDFAll$lngiDIVG, 2)
+    ShannonDFAll$mult <- round(ShannonDFAll$giDIVG * ShannonDFAll$lngiDIVG, 2)
     
-    # Sum across secies per site and sample
+    # Sum across species per site and sample
     ShannonIndexAll <- data.frame(cbind(aggregate(mult ~ site + sample + model + dbh,
                                                   sum, data = ShannonDFAll)))
     
@@ -76,7 +75,7 @@
     
     ShannonIndex$relShannon <- ShannonIndex$ShannonIndexRecruit / ShannonIndex$ShannonIndexAllAges
     
-# Zero inflated data in recruitment 
+# Zero inflated data in recruitment ----
       
     zeroInflSim <- outputsDF[!outputsDF$model == "Observed",]
     zeroInflEmp <- outputsDF[outputsDF$model == "Observed",]
@@ -85,7 +84,6 @@
     zeroInflSim <- zeroInflSim[!duplicated(zeroInflSim)]
     zeroInflEmp <-  zeroInflEmp[, c("site", "sample", "Totr.ba")]
     zeroInflEmp <- zeroInflEmp[!duplicated(zeroInflEmp)]
-    
     
     #Number of sites and samples with recruitment equal to 0 in observations
     zeroInflatedAll <- outputsDF[outputsDF$Totr.ba == 0, ]
@@ -101,12 +99,14 @@
     
     inflatedZeroDF <- as.data.frame(cbind(allObs, zerroAll))
     
-    inflatedZeroDF$share10 <- round((inflatedZeroDF$zero10  / inflatedZeroDF$allObs10), 4) * 100
-    inflatedZeroDF$share7 <- round((inflatedZeroDF$zero7  / inflatedZeroDF$allObs7) , 4) * 100
+    inflatedZeroDF$share10 <- round((inflatedZeroDF$zero10 / inflatedZeroDF$allObs10), 4) * 100
+    inflatedZeroDF$share7 <- round((inflatedZeroDF$zero7 / inflatedZeroDF$allObs7), 4) * 100
     
     colnames(inflatedZeroDF) <- c("Total (10 cm)", "Total (7cm)",
-                                  "No recruitment (10 cm)", "No recruitment (7cm)", 
-                                  "Percentage of no recruitment (10 cm)", "Percentage of no recruitment (7 cm)")
+                                  "No recruitment (10 cm)", 
+                                  "No recruitment (7cm)", 
+                                  "Percentage of no recruitment (10 cm)", 
+                                  "Percentage of no recruitment (7 cm)")
     inflatedZeroDF <- tibble::rownames_to_column(inflatedZeroDF, "Model")
     
     data.table::fwrite(inflatedZeroDF, file = "data/noRecruitment.csv")
@@ -122,7 +122,6 @@
         dplyr::summarise(r.trees = mean(r.trees),
                          r.ba = mean(r.ba),
                          Totba = mean(Totba))
-    
     
   ### Fig. overestimation 7&10 ----
 
@@ -160,7 +159,7 @@
     
     ggplot2::ggsave("figures/recOverAll710.png",
                     plot =  recOverAll,
-                    width = 21, height = 12,# scale = 0.9,
+                    width = 21, height = 12,
                     dpi = 300, units = "cm", 
                     device = 'png') 
     
@@ -194,8 +193,6 @@
                          wb  = unique(wb))
     
     envTrend <-  envTrend[ envTrend$dbh == "7", ]
-    #envTrend <- as.data.table(envTrend) 
-
     
     # Mean across sites 
     empDataQuartile <- c(0.025, 0.975)
@@ -223,7 +220,7 @@
     overDTsim7 <- overDTsim[overDTsim$dbh == "7", ]
     overDTsim10 <- overDTsim[overDTsim$dbh == "10", ]
     
-    # Divide data in bins to crate boxplots
+    # Divide data in bins to create boxplots
     bins = 10
     bins = bins - 1
     wb_width <- round(diff(range(envTrend$wb)) / bins)
@@ -239,9 +236,9 @@
     
 
     #### Fig. R VS BA----
-  png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
+    png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
         units = "cm", res = 300)
-  par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
     
     # Prepare Observed GAM model data for all the plots
     max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
@@ -280,6 +277,54 @@
               lty = 2, col = "red")
         lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
               lty = 2, col = "red")
+    }
+    
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVartotBA, side = 1, line = 1, outer = TRUE)
+    
+    dev.off()
+    
+    png(file = "figures/envTrend7Totba_500.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
+    min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat <- data.frame(
+      Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    # Plot the boxplot with the observations GAM
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      
+      max_r <- as.numeric(quantile(ienvTrendModel$r.trees,.99, na.rm = TRUE))
+      ienvTrendModel$r.trees[ienvTrendModel$r.trees > max_r] <- max_r
+      
+      
+      axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      boxplot(r.trees ~ ba_cut, 
+              data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
+              xlab = "",
+              ylab = "",
+              ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2, col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2, col = "red")
     }
     
     mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
@@ -333,6 +378,50 @@
     mtext(labEnvVarWB, side = 1, line = 1, outer = TRUE)
     dev.off()
     
+    png(file = "figures/envTrend7WB_500.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_r = as.numeric(quantile(envTrend$r.trees,.99, na.rm = TRUE))
+    max_wb = as.numeric(quantile(envTrend$wb,.99, na.rm = TRUE))
+    min_wb = as.numeric(quantile(envTrend$wb,.01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(wb, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat <- data.frame(
+      wb = seq(min_wb, max_wb, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    # Plot 
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      boxplot(r.trees ~ wb_cut, 
+              data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ], 
+              xlab = "",
+              ylab = "",
+              ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2,col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2,col = "red")
+      
+    }
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVarWB, side = 1, line = 1, outer = TRUE)
+    dev.off()
+    
+    
    
     #### FigS. R VS. DDS -----
     
@@ -375,19 +464,54 @@
     mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
     
     dev.off()
+    
+    
+    png(file = "figures/envTrend7DDS_500.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_r = as.numeric(quantile(ienvTrendModel$r.trees, .99, na.rm = TRUE))
+    max_dds = as.numeric(quantile(ienvTrendModel$dds, .99, na.rm = TRUE))
+    min_dds = as.numeric(quantile(ienvTrendModel$dds, .01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(dds, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat = data.frame(
+      dds = seq(min_dds, max_dds, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      boxplot(r.trees ~ dds_cut, 
+              data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
+              xlab = "",
+              ylab = "",
+              ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2,col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2,col = "red")
+    }
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
+    
+    dev.off()
+    
+# Mortality ----  
   
-# Mortality ----    
-  ### Fig. R ratio 7/10 ----     
+  ### Fig. R ratio 7/10 ----
+     
     # Data preparation    
     ddata <- outputsDF[outputsDF$species %in% c(selSpecies, aDVGMSpecies), ]
-    
-    # H1: the higher regen7 the stronger the regen mortality
-    # decrease in stem number between regen7 and regen10
-    # as ratio nn7/nn10 (colname nn710)
-    # reference lines
-    #  -ratio 1 = no decrease from 7 -> 10
-    #  -ratio for selfthinning under even aged conditions
-    #   with Reineke exp rk=-1.605: (7/10)^(-1.605) = 1.77
     
     treesTot <- ddata |>
         dplyr::group_by(model, site, sample, dbh) |>
@@ -405,10 +529,10 @@
     meanTrees7 <- meanTrees7[, c("model", "site", "nn7")]
     meanTrees10 <- meanTrees[meanTrees$dbh == 10,]
     colnames(meanTrees10) <- c("model", "site", "dbh", "nn10", "dds", "wb")
-    meanTrees10 <- meanTrees10 [, c("model", "site", "nn10",  "dds", "wb")]
+    meanTrees10 <- meanTrees10[, c("model", "site", "nn10",  "dds", "wb")]
     
     mortAll <- merge(meanTrees7, meanTrees10, by = c("model","site"))
-    mortAll$nn710 <-mortAll$nn7/mortAll$nn10
+    mortAll$nn710 <- mortAll$nn7 / mortAll$nn10
     
     # the plot 
     ratio7_10 <- ggplot2::ggplot(mortAll, ggplot2::aes(y = nn710, x = model, 
@@ -429,7 +553,7 @@
                        legend.key =  ggplot2::element_blank(), 
                        legend.title = ggplot2::element_blank(),
                        strip.background =  ggplot2::element_blank()) +
-        ggplot2::scale_fill_manual(labels = labels[names(labels) %in%  unique(mortAll$model)],
+        ggplot2::scale_fill_manual(labels = labels[names(labels) %in% unique(mortAll$model)],
                                    values = values_color[names(values_color) %in% unique(mortAll$model)],
                                    guide = "none")
     
@@ -438,13 +562,13 @@
                     width = 21, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
-    
     ### Fig. median vs overestimate per model ----
     # Prepare the data
+    
     ## interquartile range (IQR) 
     ##calculated as the difference between the 3rd quartile and the 1st quartile
     ##in rate of ntrees between 10 and 7 cm
-    iqrDT <- mortAll[is.finite(mortAll$nn710),] |> # this is only for dbh 7!! sites with recruitment are 187 (13 sites recruitment is 0 for 7cm)
+    iqrDT <- mortAll[is.finite(mortAll$nn710),] |> # this is only for dbh 7
         dplyr::group_by(model) |> 
         dplyr::summarise(iqr7_10 = IQR(nn710, na.rm = TRUE),
                          median = median(nn710, na.rm = TRUE),
@@ -454,7 +578,7 @@
     # Overestimation at 7cm   
     dbhSel <- 7
     simResdbh2 <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
-    aggNrecr <- simResdbh2 |>  # this is only for dbh 7!! sites with recruitment are 187 (13 sites recruitment is 0 for 7cm)
+    aggNrecr <- simResdbh2 |>  # this is only for dbh 7
         dplyr::group_by(model, site, sample) |> 
         dplyr::summarise(Totr.trees = sum(r.trees, na.rm = TRUE),
                          dds = unique( dds),    
@@ -478,8 +602,10 @@
                                       ggplot2::aes(x = diff, y = median, 
                                                    fill = model,  alpha = 0.8)) +
         ggplot2::geom_point(alpha = .8) +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", linetype = "dashed") +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", linetype = "dashed") +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", 
+                            linetype = "dashed") +
+        ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", 
+                            linetype = "dashed") +
         ggplot2::xlim(c(-5, 15)) +
         ggplot2::geom_vline(xintercept = 0, linetype = "dotted", color = "red") +
         ggplot2::scale_colour_manual(values = values_color) +
@@ -505,9 +631,10 @@
                     dpi = 300, units = "cm", device = 'png')         
     
 # Diversity in recruitment ----
+
     ### Fig. H7 & H10-----
-    ## H2: diversity decreases between 7 and 10cm
-    #### Data preparation 
+  
+    # Data preparation 
     # Mean Shannon index per site (across samples)
     dat710 <- ShannonIndex |>  
         dplyr::group_by(model, site, dbh) |> 
@@ -595,12 +722,8 @@
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
                        strip.text.y = ggplot2::element_text(angle = 0),
                        legend.position = "none",
-                       #panel.spacing = ggplot2::unit(0, "lines"),
-                       #panel.grid.major = ggplot2::element_blank(), 
-                       #panel.grid.minor = ggplot2::element_blank(),
                        panel.background = ggplot2::element_blank(), 
                        axis.line = ggplot2::element_line(colour = "black"),
-                       #legend.position = "top",
                        legend.key =  ggplot2::element_blank(), 
                        legend.title = ggplot2::element_blank(),
                        strip.background =  ggplot2::element_blank()) +
@@ -610,9 +733,6 @@
                     plot =  H7,
                     width = 21, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
-    
-    
-    
     
     #### FigS. H10 per model -----
     dat10 <- ShannonIndex[ShannonIndex$dbh == "10",]
@@ -630,12 +750,8 @@
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
                        strip.text.y = ggplot2::element_text(angle = 0),
                        legend.position = "none",
-                       #panel.spacing = ggplot2::unit(0, "lines"),
-                       #panel.grid.major = ggplot2::element_blank(), 
-                       #panel.grid.minor = ggplot2::element_blank(),
                        panel.background = ggplot2::element_blank(), 
                        axis.line = ggplot2::element_line(colour = "black"),
-                       #legend.position = "top",
                        legend.key =  ggplot2::element_blank(), 
                        legend.title = ggplot2::element_blank(),
                        strip.background =  ggplot2::element_blank()) +
@@ -645,14 +761,6 @@
                     plot =  H10,
                     #width = 55, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
-    
-    
-    # (2a)
-    # png(file="figures/Diversity7.png", width=20, height=12, units="cm", res=300)
-    # boxplot(div7 ~ model,ddAll,col=clr,
-    #         xlab = "",
-    #         ylab = "H (7cm)")
-    # dev.off()
     
     #### FigS. H10-H7 ----
     
@@ -687,12 +795,8 @@
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
                        strip.text.y = ggplot2::element_text(angle = 0),
                        legend.position = "none",
-                       #panel.spacing = ggplot2::unit(0, "lines"),
-                       #panel.grid.major = ggplot2::element_blank(), 
-                       #panel.grid.minor = ggplot2::element_blank(),
                        panel.background = ggplot2::element_blank(), 
                        axis.line = ggplot2::element_line(colour = "black"),
-                       #legend.position = "top",
                        legend.key =  ggplot2::element_blank(), 
                        legend.title = ggplot2::element_blank(),
                        strip.background =  ggplot2::element_blank()) +
@@ -701,7 +805,6 @@
     
     ggplot2::ggsave("figures/H710.png",
                     plot =  H710,
-                    #width = 55, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
     
@@ -718,7 +821,6 @@
                                               y = H710, 
                                               color = model)) +
         ggplot2::geom_point(alpha = .2) +
-        #ggplot2::ylim(c(0, 3.5)) +
         ggplot2::xlim(c(0, 0.4)) +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
                        strip.text.y = ggplot2::element_text(angle = 0),
@@ -727,7 +829,6 @@
                        legend.key =  ggplot2::element_blank(), 
                        legend.title = ggplot2::element_blank(),
                        strip.background =  ggplot2::element_blank()) +
-        #ggplot2::coord_trans(x = "log2") +
         ggplot2::scale_colour_manual(values = values_color) +
         ggplot2::scale_fill_manual(values = values_color) +
         ggplot2::xlab(label = "H7") +
@@ -739,7 +840,6 @@
     
     ggplot2::ggsave("figures/H10H7_H7.png",
                     plot = H10H7_H7,
-                    #width = 55, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
     
@@ -889,8 +989,6 @@
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
         ggplot2::ggtitle("7 cm recruitment") +
-        # ggplot2::scale_alpha_manual(values = c(0.1),
-        #                             guide = "none") +
         ggplot2::facet_wrap(~model) +
         ggplot2::geom_abline() +
         ggplot2::scale_color_manual(labels = c("Observed" = "Observed", 
@@ -918,8 +1016,6 @@
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
         ggplot2::ggtitle("10 cm recruitment") +
-        # ggplot2::scale_alpha_manual(values = c(0.1),
-        #                             guide = "none") +
         ggplot2::facet_wrap(~model) +
         ggplot2::geom_abline() +
         ggplot2::scale_color_manual(labels = c("Observed" = "Observed", 
@@ -999,7 +1095,6 @@
                    "B3", # "TreeMig"
                    "B2") # "LPJ-GUESS"
 
-    
     ann_text <- data.frame(Emp_ShannonIndexRecruitMEAN = 0.7,
                            ShannonIndexRecruitMEAN = 0.1,
                            label = category,
@@ -1028,11 +1123,9 @@
                                     name = "Diameter threshold",
                                     labels = c("7" = '7 cm', "10" = '10 cm'))
     
-    
     ggplot2::ggsave("figures/recruitmentRichness.png",
                     plot = d, width = 22, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')
-    
     
     
     ### Fig. r.ba/Totr.ba & env gradient -----
@@ -1072,22 +1165,22 @@
     
     #Divide dds and wb in bins based on all the possible values for all sites
     #not only the ones included in dbh = 7cm
-    #ddsRange <- range(mainSppBAshare$dds)
     ddsRange <- range(outputsDF$dds)
-    #wbRange <- range(mainSppBAshare$wb)
     wbRange <- range(outputsDF$wb)
     binSize <- 11
     
-    mainSppBAshare <- mainSppBAshare |> dplyr::mutate(dds_bin = cut(dds, 
-                                                                    breaks = seq(ddsRange[1], 
-                                                                                 ddsRange[2], 
-                                                                                 by = (ddsRange[2] - ddsRange[1]) / binSize),
-                                                                    include.lowest = TRUE))
+    mainSppBAshare <- mainSppBAshare |> 
+                       dplyr::mutate(dds_bin = cut(dds, 
+                                                   breaks = seq(ddsRange[1], 
+                                                                ddsRange[2], 
+                                                                by = (ddsRange[2] - ddsRange[1]) / binSize),
+                                                   include.lowest = TRUE))
     
-    mainSppBAshare <- mainSppBAshare |> dplyr::mutate(wb_bin = cut(wb, 
-                                                                   breaks = seq(wbRange[1], wbRange[2], 
-                                                                                by = (wbRange[2] - wbRange[1]) / binSize),
-                                                                   include.lowest = TRUE))
+    mainSppBAshare <- mainSppBAshare |> 
+                      dplyr::mutate(wb_bin = cut(wb, 
+                                                 breaks = seq(wbRange[1], wbRange[2],
+                                                              by = (wbRange[2] - wbRange[1]) / binSize),
+                                                 include.lowest = TRUE))
     
     # Mean value per combination of bins
     mainSppBAshareBinsMean <-  aggregate(r.baTot.r.ShareMean ~ wb_bin + dds_bin + model + species, 
@@ -1291,8 +1384,6 @@
                      legend.title = ggplot2::element_blank(),
                      strip.background =  ggplot2::element_blank(),
                      legend.position = "none") +
-      #ggplot2::xlab(label = bquote(bar(R) * " Sim. (7cm) - " * bar(R) * " Obs. (7cm) / " * bar(R) * " Obs. (7cm)")) +
-     # ggplot2::ylab(label = bquote(bar(R) * " Sim. (7cm) / " * bar(R) * " Sim. (10cm)")) +
       ggplot2::xlab(label = "Proportion of overestimation (7 cm)") +
       ggplot2::ylab(label = "Ratio of recruitment (7 and 10 cm)") +
        ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
@@ -1332,7 +1423,6 @@
                      legend.key =  ggplot2::element_blank(), 
                      legend.title = ggplot2::element_blank(),
                      strip.background =  ggplot2::element_blank()) +
-      #ggplot2::coord_trans(x = "log2") +
       ggplot2::scale_colour_manual(values = values_color) +
       ggplot2::scale_fill_manual(values = values_color) +
       ggplot2::xlab(label = expression("R (trees ha"^-1 * "10yr"^-1 * ")(7cm) (mean per site)")) +
@@ -1343,7 +1433,6 @@
     
     ggplot2::ggsave("figures/mort7_10.png",
                     plot = mort7_10,
-                    #width = 55, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
     mort7_10_trends <- mort7_10_a +
@@ -1359,27 +1448,24 @@
     
     ggplot2::ggsave("figures/mort7_10_trends.png",
                     plot = mort7_10_trends ,
-                    #width = 55, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
-    
-    
-    # add a grouping variable (or many!)
+
     
     # Remove inf values 
     mortAllnoInf <- mortAll[!is.infinite(mortAll$nn710), ]
     # model lm
     prep <- mortAllnoInf  |>
-      dplyr::group_by(model) |> #x = nn7, y = nn710
-      dplyr::mutate(slope = lm(nn710 ~ nn7, na.action=na.omit)$coefficients[2],
-                    significance = summary(lm(nn710 ~ nn7, na.action=na.omit))$coefficients[2, 4],
-                    x = mean(nn710),   # x coordinate for slope label
-                    y = mean(nn7)     # y coordinate for slope label
+      dplyr::group_by(model) |> 
+      dplyr::mutate(slope = lm(nn710 ~ nn7, na.action = na.omit)$coefficients[2],
+                    significance = summary(lm(nn710 ~ nn7, na.action = na.omit))$coefficients[2, 4],
+                    x = mean(nn710),  
+                    y = mean(nn7)     
       )
     
     
     prep2 <- mortAllnoInf  |>
-      dplyr::group_by(model) |> # You can add here additional grouping variables if your real data set enables it
+      dplyr::group_by(model) |> 
       dplyr::do(mod = lm(nn710 ~ nn7, na.action=na.omit, data = .)) |>
       dplyr::mutate(Slope = summary(mod)$coeff[2],
                     Significance = summary(mod)$coeff[2, 4]) |> 
@@ -1430,7 +1516,6 @@
                                                              height = 0.1)) +
       ggplot2::xlim(c(-5, 15)) +
       ggplot2::ylim(c(0, 1)) +
-      #ggplot2::coord_trans(y = "log2") +
       ggplot2::geom_vline(xintercept = 0, linetype = "dotted", color = "red") +
       ggplot2::scale_colour_manual(values = values_color) +
       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
@@ -1557,7 +1642,6 @@
       stat_smooth(method = "lm", se = TRUE)
     
     summary(lm(overestimation ~ complexity, data = tableCompOver))
-    #jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
     sjPlot::tab_model(lm(overestimation ~ complexity, data = tableCompOver))
 
     
@@ -1566,9 +1650,11 @@
     
   ### Complexity VS deviation on diversity richness value-----    
     
- ### Complexity VS deviation on mortality rate-----     
+  ### Complexity VS deviation on mortality rate-----     
   
 # Map -----
+    # IMPORTANT: This is the only figure that is not reproducible
+    # because we can not share the location of the plots 
 
     obsSpp <- outputsDF[outputsDF$model == "Observed", ]
     
@@ -1593,15 +1679,18 @@
       dplyr::group_by(site) |>  
       dplyr::filter(dplyr::row_number() == 1)
     
+    
+    # DO NOT RUN
+  
     # Add location 
     location <- data.table::fread("data/coords_blurred_dt4326.csv")
-    
+
     domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
     domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
-    
+
     domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
     domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
-    
+
 
     library(tidyverse)
     library(sf)
@@ -1616,24 +1705,23 @@
       ggthemes::theme_map() +
       geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
       coord_sf(xlim = c(-25,45), ylim = c(40,55), expand = FALSE) +
-      geom_point(data = domSpp10, shape = 20, stroke = FALSE, 
-                 mapping = aes(x = X, y = Y, color = recruitment), 
+      geom_point(data = domSpp10, shape = 20, stroke = FALSE,
+                 mapping = aes(x = X, y = Y, color = recruitment),
                  alpha = 1, size = 2) +
-      scale_color_manual("Dominant species in recruitment",
-                         values = c("Abies alba" =  "#1B9E77",        
-                                    "Picea abies" ="#D95F02" ,         
-                                    "Fagus sylvatica" = "#7570B3",  
-                                    "Pinus sylvestris" = "#E7298A" , 
-                                    "Quercus spp." = "#66A61E", 
-                                    "Acer pseudoplatanus" =  "#E6AB02", 
-                                    "Carpinus betulus" = "#A6761D",    
-                                    "Fraxinus excelsior" = "#666666", 
-                                    "Tilia cordata" = "#D8B365",       
+      scale_color_manual("Dominant species of ingrowth",
+                         values = c("Abies alba" =  "#1B9E77",
+                                    "Picea abies" ="#D95F02" ,
+                                    "Fagus sylvatica" = "#7570B3",
+                                    "Pinus sylvestris" = "#E7298A" ,
+                                    "Quercus spp." = "#66A61E",
+                                    "Acer pseudoplatanus" =  "#E6AB02",
+                                    "Carpinus betulus" = "#A6761D",
+                                    "Fraxinus excelsior" = "#666666",
+                                    "Tilia cordata" = "#D8B365",
                                     "Betula spp." = "#F5F5F5",
-                                    "Other spp." = "grey" ) ) 
-    
+                                    "Other spp." = "grey" ) )
+
     ggplot2::ggsave("figures/theMap.png",
                     plot =   plotsMap,
                     width = 21, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
-    
+                    dpi = 300, units = "cm", device = 'png')
