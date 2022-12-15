@@ -6,3 +6,8 @@ data/dataOutputs.csv
 figures/*
 data/coords_blurred_dt4326.csv
 data/noRecruitment.csv
+manuscript/manuscriptRW.tex
+manuscript/manuscriptRW.pdf
+manuscript/manuscriptRW.log
+manuscript/supplementaryRW.pdf
+manuscript/supplementaryRW.tex
