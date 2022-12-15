@@ -1979,12 +1979,12 @@ manual or some other document that the reader can access.*
 
 ## Recruitment levels
 
-```{r envTrend7wb, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data..", fig.show = 'hold', out.width = '80%'}
+```{r envTrend7wb, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
     knitr::include_graphics(c(here::here("figures", "envTrend7WB_500.png"),
                               here::here("figures", "envTrend7WB.png")))
 ```
 
-```{r envTrend7dds, echo=FALSE, fig.cap="Mean recruitment values across samples for the 200 sites against the site seasonal degree-day sum. (A)same y-axis across all models; (B) y-axis scaled by model. The values were split into 10 bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
+```{r envTrend7dds, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites seasonal degree-day sum. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
     knitr::include_graphics(c(here::here("figures", "envTrend7DDS_500.png"),
                               here::here("figures", "envTrend7DDS.png")))
 ```
@@ -2073,21 +2073,21 @@ knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
 ## Mortality
 
 ```{r mortTable, echo=FALSE,  message=FALSE}
-# library(knitr)
-# 
-# sigDiff <- readr::read_csv(here::here("figures", "mortRatio7_10.csv"))
-# 
-# kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold.") |>
-# #kableExtra::landscape() 
-# kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+library(knitr)
+
+sigDiff <- readr::read_csv(here::here("figures", "mortRatio7_10.csv"))
+
+kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold.") |>
+#kableExtra::landscape()
+kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
 
-```{r mortality12 , echo=FALSE, fig.cap="Interquartile range of the ratio between 7 and 10cm recruitment and the overestimation proportion (sim-obs/obs) for the mean recruitment trees per model across sites and samples", out.width='100%'}
+```{r mortality12 , echo=FALSE, fig.cap="Interquartile range of the ratio between 7 and 10cm recruitment and the overestimation proportion (sim-obs/obs) for the mean recruitment trees per model across sites and samples", out.width='70%'}
 knitr::include_graphics(here::here("figures", "mort7_10_iqrOver.png"))
 ```
 
-```{r mortality22 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The cloud point per models shows the differences across sites, the shape point cloud per model shows if the models take into account regeneration density when applying mortality to regeneration ", out.width='60%'}
+```{r mortality22 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The cloud point per models shows the differences across sites, the shape point cloud per model shows if the models take into account regeneration density when applying mortality to regeneration ", out.width='70%'}
 knitr::include_graphics(here::here("figures", "mort7_10.png"))
 ```
 
@@ -2098,11 +2098,11 @@ tabletrends <- readr::read_csv(here::here("figures", "mort7_10_trends.csv"))
 kable(tabletrends,  format = "markdown", caption = "Models trends in mortality between and 10cm.")
 ```
 
-```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='60%'}
+```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='70%'}
 knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
 ```
 
-```{r mortalityDiv3 , echo=FALSE, fig.cap=" Shannon index mena value across samples per site and in BA difference between 10 and 7 cm ", out.width='100%'}
+```{r mortalityDiv3 , echo=FALSE, fig.cap=" Shannon index mean value across samples per site and in BA difference between 10 and 7 cm ", out.width='70%'}
 knitr::include_graphics(here::here("figures", "H710.png"))
 ```
 
