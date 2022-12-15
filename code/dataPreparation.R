@@ -4,21 +4,6 @@
 # Authors: Olalla Díaz-Yáñez and Yannek Käber 
 ################################################################################ 
 
-# NOTES
-# 0 values in recruitment (r.trees and r.ba) indicate that the site was simulated/observed 
-# for that diameter threshold but there was not recruitment for that species.
-# This also include species were the total basal area in the site was also 0.
-# 
-# NA values in recruitment (r.trees and r.ba) indicate that this site was not observed 
-# this is the case for 35 sites for diameter threshold of 7cm in the observations 
-# data set
-# 
-# Models where not all the species were simulated (4C, LPJ-GUESS and xComp) 
-# do not have values for those species in the dataset
-
-
-
-
 # Load observations -----
 
     observationsData <- data.table::fread("data/observations/observations.csv")
@@ -630,22 +615,6 @@
     colnames(BATot)[5] <- "Totr.ba"
     dataOutputs <- merge(dataOutputs, BATot, by = c("site", "sample", "model"))
 
-    
-# Data checks -----
-   # number of observation for 200 samples per 200 sites for 11 species
-   # (200*200)*11 = 440000 
-    table(dataOutputs$model, dataOutputs$dbh ) # OK LandClim, iLand
-   # models with 12 species 
-   #  (200*200)*12 species = 480000
-   #  (200*200)*10 species  = 400000
-   #  (200*200)*9 species = 360000
-    
-   #  Species per site and model and sample
-    
-    table(dataOutputs$model, dataOutputs$dbh, dataOutputs$site, dataOutputs$sample ) 
-    
-    View (dataOutputs[dataOutputs$model == "ForClim 1",])
-    table(dataOutputs$model)
     
 # Save the data -----
 
