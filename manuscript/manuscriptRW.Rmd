@@ -35,7 +35,7 @@ linestretch: 1.5
 bibliography: Regeneration.bib
 link-citations: yes
 nocite: |
-  @reyer, @bugmann1996a, @bohn2014, @fabrika2005, @mette2014, @smith2001a, @seidl2012a, @lischke2006a, @schumacher2006, @scheiter2009, @scheller2004, @morin2021
+  @reyer, @bugmann1996a, @bohn2014, @fabrika2005, @mette2014, @smith2001a, @seidl2012a, @lischke2006, @schumacher2006, @scheiter2009, @scheller2004, @morin2021
 linkcolor: blue
 csl: global-change-biology.csl
 editor_options:
@@ -178,17 +178,17 @@ of future forest dynamics, i.e., when the models need to be operated in
 extrapolation mode, but also from a fundamental ecological point of view
 (increasing systems understanding). Also in the field of general
 ecology, tree establishment has not received a lot of attention
-[@hanburybrown_forest_2022], although many sub-processes have been
-studied in detail. Yet, little data is available that covers all the
-processes within one species along environmental gradients, let alone
-for a vast suite of species. Thus, the available data are fragmented,
-which constitutes a major problem for model building. On the one hand,
+[@hanbury-brown2022], although many sub-processes have been studied in
+detail. Yet, little data is available that covers all the processes
+within one species along environmental gradients, let alone for a vast
+suite of species. Thus, the available data are fragmented, which
+constitutes a major problem for model building. On the one hand,
 monitoring on permanent sample plots (such as National Forest
 Inventories) often measure tree establishment [@zell2019], however with
 a design that captures the rate after the stand initiation phase
 [@hallsby2015]. Data from permanent plots, although available across
 regions, are highly heterogeneous, rendering their utility difficult in
-a modeling context[@käber2021]. On the other hand, targeted studies to
+a modeling context [@käber2021]. On the other hand, targeted studies to
 measure tree establishment on experimental sites are often limited in
 spatial extent, species studied, or the sub-set of processes that are
 targeted [@berdanier2016; @collet2006].
@@ -986,7 +986,7 @@ background seed input. However, Global Dynamic Vegetation Models should
 not be in disadvantage due to the limited spatial considerations [but
 cf. Snell et al. -@snell2014] as they are usually lacking dispersal
 between cells as they are based on an abstraction of horizontal space,
-or even the trees themselves [@hanburybrown_forest_2022].
+or even the trees themselves [@hanbury-brown2022].
 
 ## Research recommendations
 
