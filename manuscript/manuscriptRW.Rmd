@@ -65,7 +65,7 @@ an assessment of their capacity to represent tree establishment is
 lacking. We assess how well current models are capturing the overall
 abundance, species composition and mortality of tree establishment.
 
-Using 15 models and model variants buil to capture longterm (i.e.,
+Using 15 models and model variants built to capture long-term (i.e.,
 decadal to centennial) forest dynamics at the stand, landscape and
 global levels, we simulate tree establishment at 200 sites representing
 environmental gradients across Europe. The results are benchmarked
@@ -89,13 +89,13 @@ global) and approach (empirical, process-based) to accurately capture
 tree establishment.
 
 Even though the overestimation of tree establishment represent a
-challenge for the usefulness of model~~s~~ projections under uncertain
+challenge for the usefulness of model projections under uncertain
 conditions such a climate change, and although some formulations should
 be reconsidered to correct excessive ingrowth levels, it is remarkable
-that most of the~~se~~ models capture the essential features of the
-highly complex process of tree establishment, while not having been
+that most of the models capture the essential features of the highly
+complex process of tree establishment, while not having been
 parameterized with such a data. We conclude that in spite of all the
-uncertainties, many models hold promise for assessing longterm forest
+uncertainties, many models hold promise for assessing long-term forest
 dynamics under changing environmental conditions.
 
 \newpage
@@ -158,17 +158,17 @@ challenge, potentially leading to unrealistic successional drift in the
 model, which must be corrected by factors that are hard to parameterize
 [e.g., @lischke2006]. A related issue is the excessive reduction of
 species richness due to positive feedback effects such that eventually
-just single-species ~~forest~~ stands remain. This is sometimes
-corrected by the incorporation of a low level of seed influx of all
-species at all times [@lischke2006]. However, simulated species
-composition is usually exceedingly sensitive to that level, whereas the
-parameters of such functions are poorly constrained by field data.
-Lastly, there is often a problem with insufficient observational
-constraint on parameter values for models that start from very small
-tree sizes (e.g., 10 cm of height or even seeds) and track tree
-development in a process-oriented manner by considering a multitude of
-ecological influences, rather than emphasizing tree establishment into a
-larger size class [e.g., @wehrli2006].
+just single-species stands remain. This is sometimes corrected by the
+incorporation of a low level of seed influx of all species at all times
+[@lischke2006]. However, simulated species composition is usually
+exceedingly sensitive to that level, whereas the parameters of such
+functions are poorly constrained by field data. Lastly, there is often a
+problem with insufficient observational constraint on parameter values
+for models that start from very small tree sizes (e.g., 10 cm of height
+or even seeds) and track tree development in a process-oriented manner
+by considering a multitude of ecological influences, rather than
+emphasizing tree establishment into a larger size class [e.g.,
+@wehrli2006].
 
 Thus, a focus on the modeling of tree establishment processes is sorely
 needed and overdue [@price2001] if we are to make reliable projections
@@ -183,13 +183,13 @@ for a vast suite of species. Thus, the available data are fragmented,
 which constitutes a major problem for model building. On the one hand,
 monitoring on permanent sample plots (such as National Forest
 Inventories) often measure tree establishment [@zell2019], however with
-a design that captures the rate after the stand initiation
-phase[@hallsby2015]. Data from permanent plots, although available
-across regions, are highly heterogeneous, rendering their utility
-difficult in a modeling context[@käber2021]. On the other hand, targeted
-studies to measure tree establishment on experimental sites are often
-limited in spatial extent, species studied, or the sub-set of processes
-that are targeted [@berdanier2016; @collet2006].
+a design that captures the rate after the stand initiation phase
+[@hallsby2015]. Data from permanent plots, although available across
+regions, are highly heterogeneous, rendering their utility difficult in
+a modeling context[@käber2021]. On the other hand, targeted studies to
+measure tree establishment on experimental sites are often limited in
+spatial extent, species studied, or the sub-set of processes that are
+targeted [@berdanier2016; @collet2006].
 
 In the present study, for the first time, a large number of forest
 models commonly used to assess forest dynamics under climate change are
@@ -202,7 +202,7 @@ to the global scale as well as the range of models from empirically
 derived to "process-based" [e.g., @bugmann1996; @fabrika2012;
 @mette2014; @lexer2001]. Because of the large variability in tree
 establishment patterns in nature and the large number of factors driving
-this process --- including some that are not included in most models
+this process --- including some that are not incorporated in most models
 such as deer browsing --- we do not aim at a detailed statistical
 evaluation of each model. Instead, we aim at evaluating the general
 ingrowth patterns and magnitudes simulated by the models, and benchmark
