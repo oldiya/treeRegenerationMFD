@@ -239,7 +239,7 @@
     
 
     #### Fig. R VS BA----
-  png(file = "figures/envTrend7Totba_500.png", width = 16, height = 12, 
+  png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
         units = "cm", res = 300)
   par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
     
