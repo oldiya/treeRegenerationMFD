@@ -1637,9 +1637,10 @@
     write.csv(tableCompOver,"figures/tableCompOver.csv", row.names = FALSE)
     
     
-    ggplot(tableCompOver, aes(x = complexity, y = overestimation )) +
-      geom_bar(stat = "identity") +
-      stat_smooth(method = "lm", se = TRUE)
+    ggplot2::ggplot(tableCompOver, ggplot2::aes(x = complexity, 
+                                                y = overestimation )) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::stat_smooth(method = "lm", se = TRUE)
     
     summary(lm(overestimation ~ complexity, data = tableCompOver))
     sjPlot::tab_model(lm(overestimation ~ complexity, data = tableCompOver))
