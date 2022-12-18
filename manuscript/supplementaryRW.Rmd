@@ -33,7 +33,7 @@ output:
 bibliography: Regeneration.bib
 link-citations: yes
 linkcolor: blue
-csl: draft.csl
+csl: global-change-biology.csl
 editor_options: 
   markdown: 
     wrap: 72
