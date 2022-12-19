@@ -1681,48 +1681,50 @@
       dplyr::filter(dplyr::row_number() == 1)
     
     
-    # DO NOT RUN
+    ###### DO NOT RUN #########
   
     # Add location 
-    location <- data.table::fread("data/coords_blurred_dt4326.csv")
+    # location <- data.table::fread("data/coords_blurred_dt4326.csv")
+    # 
+    # domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
+    # domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
+    # 
+    # domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
+    # domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
+    # 
+    # 
+    # library(tidyverse)
+    # library(sf)
+    # library(rnaturalearth)
+    # library(rnaturalearthdata)
+    # library(rgeos)
+    # library(rgdal)
+    # library(raster)
+    # world <- ne_countries(scale = "medium", returnclass = "sf")
+    # Europe <- world[which(world$continent == "Europe"), ]
+    # plotsMap <- ggplot(Europe) +
+    #   ggthemes::theme_map() +
+    #   geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
+    #   coord_sf(xlim = c(-25,45), ylim = c(40,55), expand = FALSE) +
+    #   geom_point(data = domSpp10, shape = 20, stroke = FALSE,
+    #              mapping = aes(x = X, y = Y, color = recruitment),
+    #              alpha = 1, size = 2) +
+    #   scale_color_manual("Dominant species of ingrowth",
+    #                      values = c("Abies alba" =  "#1B9E77",
+    #                                 "Picea abies" ="#D95F02" ,
+    #                                 "Fagus sylvatica" = "#7570B3",
+    #                                 "Pinus sylvestris" = "#E7298A" ,
+    #                                 "Quercus spp." = "#66A61E",
+    #                                 "Acer pseudoplatanus" =  "#E6AB02",
+    #                                 "Carpinus betulus" = "#A6761D",
+    #                                 "Fraxinus excelsior" = "#666666",
+    #                                 "Tilia cordata" = "#D8B365",
+    #                                 "Betula spp." = "#F5F5F5",
+    #                                 "Other spp." = "grey" ) )
+    # 
+    # ggplot2::ggsave("figures/theMap.png",
+    #                 plot =   plotsMap,
+    #                 width = 21, height = 12, scale = 0.9,
+    #                 dpi = 300, units = "cm", device = 'png')
 
-    domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
-    domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
-
-    domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
-    domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
-
-
-    library(tidyverse)
-    library(sf)
-    library(rnaturalearth)
-    library(rnaturalearthdata)
-    library(rgeos)
-    library(rgdal)
-    library(raster)
-    world <- ne_countries(scale = "medium", returnclass = "sf")
-    Europe <- world[which(world$continent == "Europe"), ]
-    plotsMap <- ggplot(Europe) +
-      ggthemes::theme_map() +
-      geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
-      coord_sf(xlim = c(-25,45), ylim = c(40,55), expand = FALSE) +
-      geom_point(data = domSpp10, shape = 20, stroke = FALSE,
-                 mapping = aes(x = X, y = Y, color = recruitment),
-                 alpha = 1, size = 2) +
-      scale_color_manual("Dominant species of ingrowth",
-                         values = c("Abies alba" =  "#1B9E77",
-                                    "Picea abies" ="#D95F02" ,
-                                    "Fagus sylvatica" = "#7570B3",
-                                    "Pinus sylvestris" = "#E7298A" ,
-                                    "Quercus spp." = "#66A61E",
-                                    "Acer pseudoplatanus" =  "#E6AB02",
-                                    "Carpinus betulus" = "#A6761D",
-                                    "Fraxinus excelsior" = "#666666",
-                                    "Tilia cordata" = "#D8B365",
-                                    "Betula spp." = "#F5F5F5",
-                                    "Other spp." = "grey" ) )
-
-    ggplot2::ggsave("figures/theMap.png",
-                    plot =   plotsMap,
-                    width = 21, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png')
+    

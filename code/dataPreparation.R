@@ -10,7 +10,7 @@
 
 # Load model simulations ----
     
-    # Species asked to be simulated in the procotol
+    # Species asked to be simulated in the protocol
     # Assign other species to other category
     simSppAsked <- c("fasy", "Fagus sylvatica",
                      "pabi", "Picea abies", "piab",
@@ -133,7 +133,8 @@
     # It has 201 sample per site, remove one sample
 
     picus <- picus[!picus$sample > 200,]
-    
+ 
+       
  ## Landscape ----
 
     ### iLand ----
