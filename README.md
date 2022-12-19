@@ -4,14 +4,11 @@ This repository contains the data, code for the analysis and manuscript.
 
 ## How to contribute
 
-Please if you want to contribute, clone the repository, do you changes locally and request a merge.
+If you want to contribute in this repository: first clone the repository, do the changes locally (e.g. in a different branch) and request a merge. Please, do not push content without a merge request.
 
 ## How to compile the manuscript?
 
--   Run first code/dataPreparation.R
--   Then run codefigures.R
--   Then compile manuscript/manuscriptRW.Rmd
-
-```{r}
-rmarkdown::render('manuscript/manuscriptRW.Rmd', ' bookdown::pdf_document2')
-```
+1. Run code/dataPreparation.R
+2. Run code/figures.R
+3. Compile manuscript/manuscriptRW.Rmd
+4. Compile manuscript/supplementaryRW.Rmd
