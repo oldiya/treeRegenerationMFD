@@ -578,6 +578,133 @@ the actual species composition on the seed rain)
 
 ## FORMIND
 
+## FORMIND
+
+### Authors
+
+Samuel M. Fischer, Friedrich Bohn, Rico Fischer
+
+### Model references
+
+<!--
+@article{fischer_lessons_2016,
+	title = {Lessons learned from applying a forest gap model to understand ecosystem and carbon dynamics of complex tropical forests},
+	volume = {326},
+	issn = {03043800},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0304380015005505},
+	doi = {10.1016/j.ecolmodel.2015.11.018},
+	language = {en},
+	urldate = {2022-09-15},
+	journal = {Ecological Modelling},
+	author = {Fischer, Rico and Bohn, Friedrich and Dantas de Paula, Mateus and Dislich, Claudia and Groeneveld, J{\"u}rgen and Guti{\'e}rrez, Alvaro G. and Kazmierczak, Martin and Knapp, Nikolai and Lehmann, Sebastian and Paulick, Sebastian and P{\"u}tz, Sandro and R{\"o}dig, Edna and Taubert, Franziska and K{\"o}hler, Peter and Huth, Andreas},
+	month = apr,
+	year = {2016},
+	pages = {124--133},
+	file = {Volltext:C\:\\Users\\fischsam\\Zotero\\storage\\EISNTZF6\\Fischer et al. - 2016 - Lessons learned from applying a forest gap model t.pdf:application/pdf},
+}
+-->
+
+A full description of the model can be found in @fischer_lessons_2016. 
+The basis for the parameterization we applied is described in @bohn2014.
+
+### Climate 
+
+To incorporate climate, we used the data set `daily_era5_chelsa_200.csv',
+which contains climate data on a daily resolution. We considered the
+covariates precipitation, temperature, and irradiance, the latter
+of which we converted to units used in Formind. Adding on to these
+data, we used a constant and site-independent potential evapotranspiration
+(PET) value of $4\frac{\text{mm}}{\text{d}}$ and assumed that the mean day
+length was $12\text{h}$ at all sites.
+
+Since we simulated longer time periods than the $38$ years for which
+we had climate data, we used the provided data in a randomized fashion.
+For each simulation year, we applied the climate data of a randomly
+selected year. We neglected the existence of leap years, which led
+to a minor time shift in climate data of later years.
+
+### Soil
+
+We modelled soil conditions by using the provided soil quality values
+as proxy for soil depth. To that end, we scaled the provided values
+to the typical range of soil depth values used in Formind for temperate
+forests. Specifically, we multiplied the soil quality values by factor 
+$0.5$ to obtain the modelled soil depth in meters.
+
+### Topography
+
+We did not use any topograpy data.
+
+### Tree species
+
+We considered each of the $11$ species in the protocol explicitly.
+We chose the model parameters for the individual species based on
+the work by @bohn2014. For species that were not
+covered by @bohn2014, we used parameter values of
+similar species with known parameters. The species composition was
+not predefined and evolved solely from the seed input
+and the model dynamics.
+
+### Simulations
+
+#### Simulation area
+
+We simulated a forest area of $1\text{ha}$, which was divided into
+$25$ patches of size $20\text{m}\times20\text{m}$. No interactions
+between trees from different patches were considered in the model.
+That is, the $25$ patches were independent replicates of one another.
+
+#### Seed generation and dispersal
+
+We modelled seed generation as global external seed rain. Specifically, we 
+assumed that for each species, there is a constant seed inflow of 
+$250\frac{\text{seeds}}{\text{ha}\cdot \text{yr}}$, which is distributed 
+evenly among the $25$ individual patches. We supposed that all 
+seeds promptly establish to seedlings with initial stem diameters at 
+breast height (DBH) of 5\text{cm}.
+
+#### Simulation length and sampling approach
+
+We started the simulation at each site with a burn-in phase of $1000$
+years and collected samples of the output variables in subsequent
+years. The length of the burn-in phase was chosen based on earlier
+experiences with the model. To confirm that the model reached its
+limiting behaviour, we plotted the evolution of the output variables
+(e.g. the basal area) at selected sites over time and verified that
+no trends were visible after the burn-in phase.
+
+We computed the output variables in equidistant time intervals of
+$60$ years. Before taking a sample, we saved parts of the model's
+state. Then, we simulated the forest for $10$ years and computed
+the output variables, comparing the model's current state with the
+state saved earlier (see below).
+After taking the sample, we simulated the forest for another $50$
+years to reduce correlations between samples. Then, we repeated the
+procedure until the desired number of $200$ samples was collected.
+
+### Outputs
+
+To determine the number and basal area of recruits, we compared the
+set of large trees before and after the regeneration time period of
+$10$ years. Prior to simulating the forest for the regeneration time
+period, we saved the internal IDs of all trees with DBHs above the
+thresholds of $0.07\text{m}$ or $0.1\text{m}$, respectively. We
+stored these IDs in set data structures $S_{0.07}^{\text{prior}}$ and
+$S_{0.1}^{\text{prior}}$, corresponding to one threshold value each.
+After the regeneration time, we repeated the procedure, obtaining
+tree ID sets $S_{0.07}^{\text{posterior}}$ and $S_{0.1}^{\text{posterior}}$.
+We then computed the set differences 
+$S_{0.07}^{\text{recruits}}=S_{0.07}^{\text{posterior}}\backslash S_{0.07}^{\text{prior}}$
+and $S_{0.1}^{\text{recruits}}=S_{0.1}^{\text{posterior}}\backslash S_{0.1}^{\text{prior}}$
+and determined both the number and cumulative basal area of the trees
+in $S_{0.07}^{\text{recruits}}$ and $S_{0.1}^{\text{recruits}}$ by considered
+species, respectively.
+
+Finally, we computed the total basal area for each considered species
+by adding up the basal areas of all corresponding individuals. Note
+that the initial DBH of seedlings in our model was $0.05\text{m}$.
+Consequently, smaller trees were not included in the basal area computation.
+
 ## ForClim 1 & ForClim 11
 
 ### Authors
