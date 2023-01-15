@@ -578,8 +578,6 @@ the actual species composition on the seed rain)
 
 ## FORMIND
 
-## FORMIND
-
 ### Authors
 
 Samuel M. Fischer, Friedrich Bohn, Rico Fischer
