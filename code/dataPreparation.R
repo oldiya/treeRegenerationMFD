@@ -611,10 +611,11 @@
                                   wb = unique(wb))
 
     # Add the total ba for all the species 
-    BATot <- simAgg[, c("site", "sample", "model", "dbh", "ba", "r.ba")]
+    BATot <- simAgg[, c("site", "sample", "model", "ba", "r.ba", "dbh")]
     colnames(BATot)[4] <- "Totba"
     colnames(BATot)[5] <- "Totr.ba"
-    dataOutputs <- merge(dataOutputs, BATot, by = c("site", "sample", "model"))
+    dataOutputs <- merge(dataOutputs, BATot, 
+                         by = c("site", "sample", "dbh", "model"))
 
     
 # Save the data -----
