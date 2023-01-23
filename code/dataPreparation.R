@@ -603,7 +603,7 @@
 # Calculate r.Totba and Totba per site and sample-----
     # Calculate the total basal area and total recruited basal area 
     simAgg <- dataOutputs |>
-                 dplyr::group_by(site, sample, model) |> 
+                 dplyr::group_by(site, sample, model, dbh) |> 
                  dplyr::summarise(r.trees = round(sum(r.trees), 2), 
                                   r.ba = round(sum(r.ba), 4),
                                   ba = round(sum(ba), 2), # This is total BA in the site, value per ha!
@@ -611,7 +611,7 @@
                                   wb = unique(wb))
 
     # Add the total ba for all the species 
-    BATot <- simAgg[, c("site", "sample", "model", "ba", "r.ba")]
+    BATot <- simAgg[, c("site", "sample", "model", "dbh", "ba", "r.ba")]
     colnames(BATot)[4] <- "Totba"
     colnames(BATot)[5] <- "Totr.ba"
     dataOutputs <- merge(dataOutputs, BATot, by = c("site", "sample", "model"))
