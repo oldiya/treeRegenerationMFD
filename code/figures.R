@@ -2,8 +2,8 @@
 # Title: Figures
 # Aim: Create figures and analysis for the manuscript
 # Author: Olalla Díaz-Yáñez | @olalla | olalladiaz.net &
-#         some part of figures were inspired in the work of the regeneration
-#         workshop attendees
+#         some part of the figures code were based in the work of the 
+#         regeneration workshop attendees
 ################################################################################
 
 # Load plotting styles 
@@ -506,130 +506,7 @@
     
     dev.off()
     
-# Mortality ----  
-  
-  ### Fig. R ratio 7/10 ----
-     
-    # Data preparation    
-    ddata <- outputsDF[outputsDF$species %in% c(selSpecies, aDVGMSpecies), ]
-    
-    treesTot <- ddata |>
-        dplyr::group_by(model, site, sample, dbh) |>
-        dplyr::summarise(Tot.rtrees = sum(r.trees),
-                         dds = unique(dds),      
-                         wb = unique(wb))
-    meanTrees <- treesTot |>
-        dplyr::group_by(model, site, dbh) |>
-        dplyr::summarise(mean.rtrees = mean(Tot.rtrees),
-                         dds = unique(dds),  
-                         wb = unique(wb))
-    
-    meanTrees7 <- meanTrees[meanTrees$dbh == 7,]
-    colnames(meanTrees7) <- c("model", "site", "dbh", "nn7", "dds", "wb")
-    meanTrees7 <- meanTrees7[, c("model", "site", "nn7")]
-    meanTrees10 <- meanTrees[meanTrees$dbh == 10,]
-    colnames(meanTrees10) <- c("model", "site", "dbh", "nn10", "dds", "wb")
-    meanTrees10 <- meanTrees10[, c("model", "site", "nn10",  "dds", "wb")]
-    
-    mortAll <- merge(meanTrees7, meanTrees10, by = c("model","site"))
-    mortAll$nn710 <- mortAll$nn7 / mortAll$nn10
-    
-    # the plot 
-    ratio7_10 <- ggplot2::ggplot(mortAll, ggplot2::aes(y = nn710, x = model, 
-                                                     fill = model)) + 
-        ggplot2::geom_boxplot() +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "darkblue", 
-                            linetype = "dashed") +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "darkblue",
-                            linetype = "dashed") +
-        ggplot2::ylim(c(0,4)) +
-        ggplot2::xlab(label = "") +
-        ggplot2::ylab(label = bquote(bar(R) * "(7cm) / " * bar(R) * "(10cm)")) +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                       strip.text.y = ggplot2::element_text(angle = 0),
-                       legend.position = "none",
-                       panel.background = ggplot2::element_blank(), 
-                       axis.line = ggplot2::element_line(colour = "black"),
-                       legend.key =  ggplot2::element_blank(), 
-                       legend.title = ggplot2::element_blank(),
-                       strip.background =  ggplot2::element_blank()) +
-        ggplot2::scale_fill_manual(labels = labels[names(labels) %in% unique(mortAll$model)],
-                                   values = values_color[names(values_color) %in% unique(mortAll$model)],
-                                   guide = "none")
-    
-    ggplot2::ggsave("figures/ratio7_10.png",
-                    plot = ratio7_10,
-                    width = 21, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    ### Fig. median vs overestimate per model ----
-    # Prepare the data
-    
-    ## interquartile range (IQR) 
-    ##calculated as the difference between the 3rd quartile and the 1st quartile
-    ##in rate of ntrees between 10 and 7 cm
-    iqrDT <- mortAll[is.finite(mortAll$nn710),] |> # this is only for dbh 7
-        dplyr::group_by(model) |> 
-        dplyr::summarise(iqr7_10 = IQR(nn710, na.rm = TRUE),
-                         median = median(nn710, na.rm = TRUE),
-                         mean = mean(nn710, na.rm = TRUE),
-                         sd = sd(nn710, na.rm = TRUE) )
-    
-    # Overestimation at 7cm   
-    dbhSel <- 7
-    simResdbh2 <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
-    aggNrecr <- simResdbh2 |>  # this is only for dbh 7
-        dplyr::group_by(model, site, sample) |> 
-        dplyr::summarise(Totr.trees = sum(r.trees, na.rm = TRUE),
-                         dds = unique( dds),    
-                         wb = unique(wb))
-    
-    meanNrecr <- aggNrecr |> 
-        dplyr::group_by(model, site) |> 
-        dplyr::summarise(meanTotr.trees = mean(Totr.trees, na.rm = TRUE),
-                         dds = unique( dds),    
-                         wb = unique(wb))
-    modelMean <- meanNrecr |> 
-        dplyr::group_by(model) |> 
-        dplyr::summarise(meanModTotr.trees = mean(meanTotr.trees, na.rm = TRUE),
-                         sdModTotr.trees = sd(meanTotr.trees, na.rm = TRUE))
-    
-    modelMean$diff <- (modelMean$meanModTotr.trees - modelMean$meanModTotr.trees[modelMean$model == "Observed"]) / modelMean$meanModTotr.trees[modelMean$model == "Observed"]
-    modelMean2 <- merge(modelMean,  iqrDT, by = "model")
-    
-    # Plot
-    overMortmedian <- ggplot2::ggplot(modelMean2,
-                                      ggplot2::aes(x = diff, y = median, 
-                                                   fill = model,  alpha = 0.8)) +
-        ggplot2::geom_point(alpha = .8) +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", 
-                            linetype = "dashed") +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", 
-                            linetype = "dashed") +
-        ggplot2::xlim(c(-5, 15)) +
-        ggplot2::geom_vline(xintercept = 0, linetype = "dotted", color = "red") +
-        ggplot2::scale_colour_manual(values = values_color) +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
-                       strip.text.y = ggplot2::element_text(angle = 0),
-                       panel.background = ggplot2::element_blank(), 
-                       axis.line = ggplot2::element_line(colour = "black"),
-                       legend.key =  ggplot2::element_blank(), 
-                       legend.title = ggplot2::element_blank(),
-                       strip.background =  ggplot2::element_blank(),
-                       legend.position = "none") +
-        ggplot2::xlab(label = "Proportion of overestimation (7 cm)") +
-        ggplot2::ylab(label = "Ratio of recruitment (7 and 10 cm)") +
-        
-        ggrepel::geom_label_repel(ggplot2::aes(label = model, size = NULL, 
-                                               color = NULL),
-                                  nudge_y = 0.05) +
-        ggplot2::scale_fill_manual(values = values_color)
-    
-    ggplot2::ggsave("figures/mort7_10_medianOver.png",
-                    plot =  overMortmedian,
-                    width = 16, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png')         
-    
+
 # Diversity in recruitment ----
 
     ### Fig. H7 & H10-----
