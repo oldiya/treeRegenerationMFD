@@ -998,7 +998,8 @@
                            show.legend = FALSE) +
         ggplot2::scale_color_manual(values = c("7" = "#FDAE61", "10" = "grey"),
                                     name = "Diameter threshold",
-                                    labels = c("7" = '7 cm', "10" = '10 cm'))
+                                    labels = c("7" = '7 cm', "10" = '10 cm')) 
+
     
     ggplot2::ggsave("figures/recruitmentRichness.png",
                     plot = d, width = 22, height = 18, scale = 0.9,
@@ -1083,7 +1084,7 @@
                                                          y = wb_bin,
                                                          fill = Diff)) +
       ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
-                                    breaks = c(-0.6, -0.3, 0, 0.3, 0.6),
+                                    breaks = c(-1, -0.5, 0, 0.5, 1),
                                     midpoint = 0,
                                     name = expression(bar(R) * " BA share difference")) +
  
@@ -1123,7 +1124,7 @@
                                            "(1.11e+03,1.25e+03]" = "")) +
       ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
                                        size = r.baTot.r.ShareMean), shape = 1) +
-      ggplot2::scale_size_area(breaks = c(0.1, 0.3, 0.5, 0.7), limits = c(0.0001, 0.8)) + 
+      ggplot2::scale_size_area(breaks = c(0.1, 0.3, 0.6, 0.9), limits = c(0.0001, 1)) + 
       ggplot2::labs(size = expression(bar(R) * " BA share")) 
     
     
