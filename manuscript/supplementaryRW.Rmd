@@ -631,7 +631,7 @@ $0.5$ to obtain the modelled soil depth in meters.
 
 ### Topography
 
-We did not use any topograpy data.
+We did not use any topography data.
 
 ### Tree species
 
