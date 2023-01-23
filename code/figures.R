@@ -792,7 +792,7 @@
                        strip.background =  ggplot2::element_blank(),
                        axis.line = ggplot2::element_line(colour = "black"),
                        legend.position = "right") +
-        ggplot2::coord_cartesian(xlim = c(0, 1.5), ylim = c(0, 1.5)) +  
+        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::labs(y = bquote(bar(H) * " stand"),
                       x = bquote(bar(H) * " stand")) +
         ggplot2::facet_wrap(~model) +
@@ -935,7 +935,7 @@
                                       color = dbh),
                          fill = "white") + 
         hrbrthemes::theme_ipsum() +
-        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
+        ggplot2::coord_cartesian(xlim = c(0, 2.5), ylim = c(0, 2.5)) +  
         ggplot2::geom_point(size = 0.6, alpha = 0.7 ) + 
         ggplot2::labs(y = bquote(bar(H) * " simulated stand"),
                       x = bquote(bar(H) * " observed stand")) +
