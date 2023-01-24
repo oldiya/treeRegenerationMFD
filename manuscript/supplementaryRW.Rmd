@@ -519,26 +519,26 @@ manual or some other document that the reader can access.*
 
 ### Author
 
-Xavier Morin
+Xavier Morin & François de Coligny
 
 ### Model references
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+Morin X., de Coligny F., Bugmann H., Limousin J.-M., Ourcival J.-M., Martin-StPaul N., Simioni G., Cailleret M., Prevosto B., Toïgo M., Vennetier M., Cateau E., Guillemot J. 2021. Beyond forest succession: a gap model to study ecosystem functioning and tree community composition under climate change. Functional Ecology. 35, 955-975.
+
+Jourdan M., Dreyfus, P., Riond C., Cordonnier T., Cornet B., de Coligny F., Morin X. 2021. Managing mixed stands can mitigate severe climate change impacts on French alpine forests. Regional Environmental Change.  21, 78.
+
+Morin X., Damestoy T., Toïgo M., Jactel H., Castagneyrol B. Meredieu C. 2020. Using forest gap models and experimental data to explore long-term effects of tree diversity on the productivity of mixed planted forests. Annals of Forest Science. 77 https://doi.org/10.1007/s13595-020-00954-0.
+
 
 ### Climate
 
-ForCEEPS requires monthly data, I have thus just randomized the years
-given by CHELSA database to obotain a 4000-yr long time-series for each
-site, with mean monthly temperature and monthly sum of precipitations.
+ForCEEPS requires monthly data. A 4000-yr long time-series was obtained for each site by randomizing available years from the CHELSA database, with mean monthly temperature and monthly sum of precipitations (see 1.2.2).
 
 ### Soil
 
-Relying on given information, I used the following relationship for
-assessing Soil Field Capacity (SFC) : SFC = 8+(X-1)\*(25-8)/(5-1), in
-which X is the 'soil_qual' value in the 'soil_quality_200.csv' file.
+Soil quality is represented by a continuous value between 1 and 5, as provided (see 1.2.3) Soil Field Capacity (SFC) was assessed as follows:
+SFC = 8+(X-1)*(25-8)/(5-1), in which X is the ‘soil_qual’ value in the provided ‘soil_quality_200.csv’ file.
+
 
 ### Topography
 
@@ -546,35 +546,24 @@ Not considered.
 
 ### Simulations
 
-I have run two kinds of simulations : - Simulations with seed rain from
-a potential species list, thus independent from the actual forest
-composition ("Forclim-like"), for both thresholds (7 and 10cm) -
-Simulations with seed rain depending on the actual forest composition
-for both thresholds (7 and 10cm) In each site, the simulation consists
-of 4000 yr-long simulation of 1ha of forest (ie. 10 patches of 1000 m²),
-starting from bare-ground. There was no dispersal between patches, but
-the effect of the abundance of adult trees on the composition of
-regeneration was considered in half of the simulations as mentioned.
+In each site, the simulation consists of 4000 yr-long simulation of 1ha of forest (ie. 10 patches of 1000 m²), starting from bare-ground. There was no dispersal between patches.
+Two kinds of simulations have been carried out in each of the 200 sites. 
+In a first set of simulations, regeneration dynamics was simulated with a seed rain from a potential species list, thus independent from the actual forest composition, as classically done in gap models. Under this design, a number of seedling is randomly chosen for each patch, and a species identity is randomly sorted from a potential species list (defined at the start of simulation) assigned to each seedling. Then each seedling tries to colonize the site depending on whether the suitability between species requirements and site conditions (climate, light, soil quality, browsing index).
+In a second set of simulations, regeneration dynamics was simulated with a seed rain whose composition depended on the actual forest composition. Under this design, a number of seedling is randomly chosen for each patch, but the species identity is assigned according to species relative abundance (calculated across all 10 patches according to species biomass). For instance, if at year i the adult trees of species j represent 60% of the total biomass across the 10 patches, then 60% of the seedlings that try to colonize the patches at year i will belong to species j. Then, similarly to the first design, each seedling tries to colonize the site depending on whether the suitability between species requirements and site conditions.
+In the two sets of simulations, simulations have been run for both thresholds for regeneration (7 and 10 cm).
+
 
 ### Outputs
 
-As requested, I have output species specific regeneration rates per
-decade and per ha. More precisely, I have considered only the last 2000
-years of simulations (= to ensure that pseudo-equilibrium state is
-reached). I have exported the results every 10 years for the last 2000
-years at the 1ha-level. My outputs thus rely on temporal variability.
-Variables: - Site: numbers corresponding to the climate data file -
-Sample: one per decade, for a total of 2000 years = identified from 1 to
-200 - Species: name specified as requested (eg. 'fasy') - r.trees:
-number of trees outcrossing the threshold (7 or 10 cm) during the
-decade, for the 10 patches simulated (= 1ha), per species - r.ba: summed
-basal area of the r.trees, per species - ba: summed basal area of all
-trees per species at the end of the decade - dbh: threshold used And
-there are thus 4 output files: Results_Forceeps_7cm.csv
-Results_Forceeps_10cm.csv Results_Forceeps_feedback_7cm.csv (=
-simulations with feedback of the actual species composition on the seed
-rain) Results_Forceeps_feedback 10cm.csv (= simulations with feedback of
-the actual species composition on the seed rain)
+Outputs consisted in species specific regeneration rates per decade and per ha, by considering the last 2000 years of simulations to ensure that pseudo-equilibrium state is reached. Results were aggregated for every 10 years for the last 2000 years at the 1ha-level. Variables:
+-	Site: numbers corresponding to the climate data file
+-	Sample: one per decade, for a total of 2000 years = identified from 1 to 200
+-	Species: name specified as requested (eg. ‘fasy’)
+-	r.trees: number of trees outcrossing the threshold (7 or 10 cm) during the decade, for the 10 patches simulated (= 1ha), per species
+-	r.ba: summed basal area of the r.trees, per species
+-	ba: summed basal area of all trees per species at the end of the decade
+-	dbh: threshold used
+
 
 ## FORMIND
 
