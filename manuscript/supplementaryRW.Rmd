@@ -1785,24 +1785,73 @@ vegetation model. Biogeosciences, 11(7), 2027-2054.
 
 ### Authors
 
+Simon Scheiter
+Senckenberg Biodiversity and Climate Research Centre, Senckenberganlage 25, 60325 Frankfurt am Main, Germany
+
 ### Model 
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+We used aDGVM2, an individual-based dynamic vegetation model that is based on concepts from community assembly theory and uses a functional trait approach (Langan et al., 2017; Scheiter et al., 2013). The model simulates growth, reproduction, and mortality of individual plants while keeping track of state variables, such as biomass, height, and leaf area. Each plant in aDGVM2 is characterized by a plant-specific set of trait values. Traits describe growth form, leaf characteristics, hydraulic characteristics, resource allocation, architecture, reproduction, mortality, and response to disturbance. Most plant traits are linked by trade-offs to constrain possible trait combinations. Selection and trait inheritance assemble plant communities that are adapted to biotic and abiotic conditions. Plants with trait combinations that allow sufficient growth and reproduction rates, and that allow plants to cope with competition and disturbances can contribute their trait values to the community trait pool. Trait mutation and recombination may alter trait values in the community trait pool. Randomly drawn seeds from the trait pool are added to the plant population and new plants start growing from seeds. Plants that are not adapted to the prevailing disturbance regimes, biotic and abiotic conditions, or that do not allocate enough carbon to reproduction disappear from the population. Therefore, successful ecological strategies emerge dynamically from these community assembly and reproduction process. Due to the trait-based approach, species or plant functional types (PFTs) are not pre-defined and hard-coded in aDGVM2. Rather, different PFTs or ecological strategies that are adjusted to the prevailing biotic and abiotic conditions emerge from community assembly processes (Scheiter et al., 2013), and plants can be classified into PFTs or ecological strategies based on their trait values in a post-processing step. 
+The aDGVM2 has primarily been developed for tropical and sub-tropical ecosystems and it has not been tested and benchmarked for Europe. We applied the model in the original version. Data-model comparisons with model results were not done and the model was not changed to improve agreement with any data for Europe.
 
 ### Climate 
 
+The aDGVM2 simulates vegetation at daily temporal resolution. We therefore used daily climate input data for the period 1981-2018 according to the modeling protocol. 
+
 ### Soil
+
+Soil quality data was converted to maximum rooting depth. Specifically, the soil quality value multiplied by 2 and the result was used as maximum rooting depth. We used the multiplication, as we typically use maximum soil depth and maximum rooting depth of 10m. Previous model simulations showed that rooting depth and soil dept have strong impacts on vegetation dynamics by influencing water availability to plants (Langan et al., 2017). We therefore considered it as adequate representation of soil quality. Other soil characteristics including volumetric water-holding capacity, soil hydraulic conductivity, soil bulk density, soil depth, soil texture, soil carbon content, soil wilting point and field capacity were taken from the FAO (http://www.fao.org, Nachtergaele et al., 2009).
 
 ### Topography
 
+We used elevation according to the modeling protocol. In aDGVM2, elevation is used to calculate atmospheric pressure which in turn influences ecophysiological processes related to water and carbon fluxes at leaf and canopy level. Information on slope and aspect was not used, as related processes (e.g., impacts on runoff or radiation balance) are not implemented in aDGVM2.
+
 ### Tree species
+
+The aDGVM2 does not simulate pre-defined species or PFTs. The 11 tree species included in the modeling protocol cannot be implemented and parametrized with reasonable effort. We therefore classified simulated trees into different ecological strategies as a post-processing step. We used all combinations of evergreen/deciduous, light/water triggered phenology, low/high SLA. Evergreen/deciduous phenology and light/water triggered phenology are traits implemented in aDGVM2. The threshold to distinguish high and low SLA was defined as 20 m2/kg. We used these traits as previous simulation experiments showed that patterns of these traits emerge along environmental gradients while patterns of other traits implemented in aDGVM2 are often less clear. Ecological strategies considered are: low SLA, deciduous, rain-triggered; low SLA, deciduous, light-triggered; low SLA, evergreen, rain-triggered; low SLA, evergreen, light-triggered; high SLA, deciduous, rain-triggered; high SLA, deciduous, light-triggered; high SLA, evergreen, rain-triggered; high SLA, evergreen, light-triggered.
 
 ### Simulations
 
+Simulations followed the modeling protocol. Simulations were conducted for all sites using the provided daily climate and soil data. By default, aDGVM2 simulates 1ha stands. To implement the modeling protocol, adjustments to scale model results to 1 ha level were therefore not required. The model was initialized by default initialization routines, i.e., traits of individual plants were drawn randomly from a pre-defined range of values for each trait. Ranges of trait values are provided in Langan et al. (2017). The model was initialized with bare ground and 2880 tree seedlings with 100g each. The aDGVM2 simulates both trees and grasses. As the simulation experiment aims at tree/forest regeneration, simulations were conducted only with trees while grasses were removed.
+
+We conducted 5 replicates for each of the 200 sites to account for stochastic processes in aDGVM2. Stochastic processes include random initialization of trait values of initial plant populations, demographic processes such as plant mortality or selection of seeds from seed bank, or the community assembly processes including mutation and cross-over. Climate time series used for different replicates were identical such that variation between replicates can be attributed by stochastic processes in aDGVM2.
+
+Although aDGVM2 includes routines to simulate fire, simulations were conducted in the absence of fire. Management was not simulated.
+
+### Dispersal 
+The aDGVM2 does not simulate seed dispersal.
+
+### Simulation length
+
+We first conducted a 600-year spin-up with a randomized order of years 1981-2018 provided in the CHELSA daily climate data. Spin-up is required to ensure that both state variables such as biomass and tree cover and community trait composition have stabilized and are in a dynamic equilibrium with climate. Previous model simulations showed that a 600-year spin-up is sufficient to reach such an equilibrium state (Langan et al., 2017). Following the spin-up, we simulated transient vegetation dynamics with daily CHELSA climate data for the period 1981-2018.
+
 ### Outputs
+
+To create output variables, we randomly selected 10-year periods within the transient phase (i.e., period 1981-2018 after spin-up phase) and calculated averages of all required output variables following the modeling protocol. The selected 10-year periods differed between sites and replicates.
+
+The aDGVM2 does not simulate pre-defined species or PFTs and trees were classified into different ecological strategies (see section Tree species). Codes for the ecological strategies in the species column of the output files are:
+1 - low SLA, deciduous, rain-triggered
+2 - low SLA, deciduous, light-triggered
+3 - low SLA, evergreen, rain-triggered
+4 - low SLA, evergreen, light-triggered
+5 - high SLA, deciduous, rain-triggered
+6 - high SLA, deciduous, light-triggered
+7 - high SLA, evergreen, rain-triggered
+8 - high SLA, evergreen, light-triggered
+
+Simulations were conducted for all 200 sites. We conducted 5 replicates per site to account for stochastic processes in aDGVM. In the output files, replicates are given as follows: 
+Replicate 1 – sample 1:200
+Replicate 2 – sample 201:400
+Replicate 3 – sample 401:600
+Replicate 4 – sample 601:800
+Replicate 5 – sample 801:1000
+
+### References
+
+Langan L; Higgins SI; Scheiter S (2017) Climate-biomes, pedo-biomes or pyro-biomes: which world view explains the tropical forest - savanna boundary in South America? JOURNAL OF BIOGEOGRAPHY, 44, 2319-2330.
+
+Nachtergaele, F., van Velthuizen, H., Verelst, L., Batjes, N., Dijk- shoorn, K., Van Engelen, V., Fischer, G., Jones, A., Montanarella, L., and Petri, M.: Harmonized world soil database (version 1.1), FAO, Rome, Italy, IIASA, Laxenburg, Austria, 2009. 
+
+Scheiter S, Langan L, Higgins SI (2013) Next generation dynamic global vegetation models: learning from community ecology. NEW PHYTOLOGIST, 198, 957-969.
 
 \newpage
 \beginsupplement
