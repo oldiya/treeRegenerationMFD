@@ -263,6 +263,59 @@
          dplyr::ungroup()
      landis$type <- NULL
      
+     
+     # Corrections done by Josef----
+     emp_site <- unique(landis$site)
+     emp_sample <- unique(landis$sample)
+     emp_dbh <- c(7, 10)
+     emp_species <- unique(landis$species)
+     require(utils)
+     lanempty <- data.frame(expand.grid(emp_site, emp_sample, emp_dbh, emp_species))
+     names(lanempty) <- (c("site", "sample","dbh", "species"))
+     lanempty$r.trees <- 0
+     lanempty$r.ba <- 0
+     lanempty$ba <- 0
+     lanempty$model <- "Landis II"
+     lanempty$ID <- paste0(lanempty$site,"_", lanempty$sample,"_", 
+                           lanempty$dbh,"_", lanempty$species)
+     
+     
+     landis$ID <- paste0(landis$site,"_", landis$sample,"_", 
+                         landis$dbh,"_", landis$species)
+     lanempty$ba <- landis$ba[match(lanempty$ID, landis$ID)]
+     lanempty$r.trees <- landis$r.trees[match(lanempty$ID, landis$ID)]
+     lanempty$r.ba <- landis$r.ba[match(lanempty$ID, landis$ID)]
+     
+     
+     #### check consistency ####
+     lanempty$r.ba[is.na(lanempty$r.ba)] <- 0
+     lanempty$r.trees[is.na(lanempty$r.trees)] <- 0
+     
+     lanempty$ba[is.na(lanempty$ba)] <- 0
+     summary(lanempty$ba)
+     summary(landis$ba)
+     sum(lanempty$ba)
+     sum(landis$ba)
+     
+     summary(lanempty$r.ba)
+     summary(landis$r.ba)
+     sum(lanempty$r.ba)
+     sum(landis$r.ba)
+     
+     summary(lanempty$r.trees)
+     summary(landis$r.trees)
+     sum(lanempty$r.trees)
+     sum(landis$r.trees)
+     
+     
+     
+     landis <- rbind(landis,  lanempty) 
+ 
+     
+     
+     
+     
+     
      #Correct that there are certain samples from certain sites only present in 
      #one dbh threshold but not in the other
      #add them assuming 0 recruitment for those sites and samples 
