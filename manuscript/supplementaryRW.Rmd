@@ -1696,175 +1696,78 @@ and Applied Climatology 80: 17--25.
 ## TreeMig
 
 ### Authors
-
+Heike Lischke 
 
 ### Model 
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+The model TreeMig (see treemig.wsl.ch) was originally based on the ForClim model, then aggregated by a distribution based approach (Lischke et al. 1998), and extended to a forest landscape model by including seed production, seed dispersal, seed bank dynamics and seedling establishment (Lischke and Loffler 2006, Lischke et al. 2006).
 
 ### Climate
 
-What climate data have you used, and how have you created your model
-climate input parameters? I used the monthly time series of tas and
-precipitation,additionally slope and aspect from the topo- data set, and
-soil quality from the quality data set. slasp= 2*cos(aspect* pi/180)
-\*min(1, slope/60)
+As climatic input, the monthly time series of mean temperature and precipitation sum were used.  With these climatic variables and additional data about slope, aspect and soil field capacity, yearly time series of the following bioclimatic variables were calculated:  (1) DDSum, the yearly day degree sum above 5.5°C , (2) MinWiT, the lowest mean monthly temperature, (3) DrStr, drought stress according to a bucket model  that estimates a monthly PET following (Thornthwaite and Mather 1957), using temperature, latitude, slope and aspect as input,  and calculates the monthly soil water content  based on soil water content in the previous month, precipitation, interception, and field capacity (“bucketsize”)   (Bugmann 1994, Fischlin et al. 1995). Drought stress is then given by 1- the ratio between demand (PET-interception) and the supply, a function of the soil water content.
+To get climate data also for the spin-up, bioclimate was calculated from the monthly data   as given, and then extended by sampling from the given data from the end of the climate data to get 1000 years. The same sequence of sampling years was used in all simulations and sites. 
+
 
 ### Soil
 
-The soil quality I translated into AWC (of  upmost m soil, "bucketsize")
-by Bucketsize = 10 + (soil_quality[-1) /4  \* 25 , to covert he range
-from 10 cm to 35cm   With these values I calculated the yearly time
-series of the bioclimatic variables DDsum (day degree sum above 5.5°C) ,
-minWinterTemp (lowest mean monthly temperature) and Drought stress
-according to a bucket model, that estimates a monthly PET following
-[Thorntwaithe, 1957],  and calculates the monthly soil water content
-   based on soil water content in the previous month, precipitation,
-interception, and bucketsize   [Bugmann , 1994] . Drought stress is then
-given by 1- the ratio between demand (PET-interception) and the supply
-(a function of the soil water content). Extending the climate data I
-used the monthly data as given, calculated the bioclimate, and extended
-since the end of the climate data to get 1000 years, by sampling from
-the given data. I used always the same sequence of sampling years in all
-simulations and sites. (-\> better comparability of experiments)
-
-### Soil
+The soil bucketsize (available water capacity of the upmost 1m soil layer) required for the drought stress calculation, was derived from the soil quality data set, by
+Bucketsize = 10 + (soil_quality-1) /4  * 25 , to covert the range from 10 cm to 35cm  
 
 ### Topography 
 
+Slope and aspect were taken from the topographic data set and converted to a common variable entering the PET calculation, by
+slasp= 2*cos(aspect *pi/180) *min(1, slope/60)
+
+
 ### Tree species
 
-How have you defined the species composition in your model simulation?
-(e.g., species levels, PFTs, etc.)? Please describe the species
-categories used. Species level, 30 species (see list of species I sent).
+Thirty Central European tree species were simulated, including the standard species of the project .  Only Betula pubescens was not simulated, because we did not have a parametrization for this species at hand. Species: Abies alba, Larix decidua, Picea abies, Pinus cembra, Pinus montana, Pinus sylvestris, Taxus baccata, Acer campestre, Acer platanoides, Acer pseudoplatanus, Alnus glutinosa, Alnus incana, Alnus viridis, Betula pendula, Carpinus betulus, Castanea sativa, Corylus avellana, Fagus sylvatica, Fraxinus excelsior, Populus nigra, Populus tremula, Quercus petraea, Quercus pubescens, Quercus robur, Salix alba, Sorbus aria, Sorbus aucuparia, Tilia cordata, Tilia platyphyllos, Ulmus glabra
 
 ### Simulation 
 
-How have you defined the simulation area for your model (e.g., size and
-other relevant site aspects)? A grid of 15 \* 15 grid cells, each grid
-cell with 200m side length.
+The simulations were carried out on a grid of 15 x 15 cells, each with 200 m side length. 
 
 #### Dispersal
 
-What are the relevant aspects of the dispersal (if any) and seed input
-parameters in your model? Seed dispersal is described by species
-specific, height dependent seed production. The seeds are then
-transported according to a double negative exponential, species specific
-kernel, and enter the seed bank in the sink cells, from which seedlings
-germinate depending on light and other environmental conditions. At the
-start of the simulation, for 10 years seeds of all species are available
-in all grid cells, from then on, the normal seed dispersal starts.
+The seeds produced by the mother trees are transported from the source cell according to a double negative exponential, species specific that determines the share of the seeds in the source cell landing in a sink cell in a given distance to the source cell.  In the sink cells, the seeds enter the seed bank . At the start of the simulation for 10 years seeds of all species are available in all grid cells, from then on, the normal seed dispersal starts. 
 
-There are 5 different experiments related to dispersal NoDisp:  the
-dispersal kernels are so narrow, that the huge majority of seeds stays
-in the source grid cell. I.e. the spatial variability (see below) only
-arises from the sampling of the light classes. But there is still the
-feedback between the mother trees and the seedlings. StochDisp:
-stochastic dispersal. The seeds are distributed randomly, whereby the
-kernel gives the probability of the seeds  landing in a certain distance
-DetDisp: deterministic dispersal. The kernel determines the share of the
-seeds in the source cell landing in a sink cell in a given distance to
-the source cell. FBirthAll: a fixed ingrowth above 1.37m of 20
-trees/833m\^2  and year, same for all species, but reduced by
-environmental drivers and shade.  This is analogous to the approach of
-ForClim,  i.e. ignores the feedback  between mother trees and young
-trees and the youth development FBirthIndiv: as FBirthAll, but the fixed
-ingrowth is species-specific  (between 4 and 54 trees/833m\^2 )
+#### Regeneration processes
+
+TreeMig simulates the full feedback from seed production to ingrowth. Some of the involved processes depend on environment.
+(1) Overall seed production in TreeMig is described by multiplying a species specific seed production per tree that depends on tree size and thus indirectly on the growth, which depends on DDsum, drought stress, nutrients and light and the adult tree number that depends on survival  that depends on DDsum, drought stress, nutrients and light.
+(2) Seed dispersal is independent of environment. 
+(3) Seed bank dynamics – also environment independent -   is given by seed input, seed mortality, and germination.  Additionally, the number of seeds S of a species in the seed bank of this species (SB) is limited to a carrying capacity C of 1000, by           
+SB = C + (SB - C) * Exp(-S/C).  
+(4) Germination and seedling survival depend on browsing, drought, winter temperature, DDSum and light. 
+(5) The saplings up to 1.37 die and grow like adult trees, depending on DDsum, drought stress and light. Only the parameter value of the light dependence differs from that of the adult trees.  
+The regeneration processes were simulated annually in the order 1. germination, 2. germinated seeds leave the seed bank, 3. mortality of seeds in the seed bank, 4. seed entry by seed dispersal. The ingrowth numbers were very sensitive to this order. Simulations with another sequence, in which the seeds in the seed bank died first and then  the  remaining ones germinated,  resulted in about half the ingrowth.
+
 
 #### Simulation length
 
-What is the simulation length, and how have you determined the
-simulation time until the equilibrium? 1000 years, experience and check
-by eye-ball of the simulated basal areas. Variability: I have employed
-three different aspects of the model  to account for spatial and
-temporal variability and to get the required 200 patches of 1ha.
-
-1)  Basic spatial variability due to the combination of demographic
-    stochasticity and short-range spatial interactions. In contrast to
-    gap models, TreeMig is based on the concept of frequency
-    distributions of tree densities classes in different tree heights on
-    ca. 1/12 ha (833m\^2) patches, and the resulting frequency
-    distributions in discrete light. During the simulation, in each
-    height class the frequencies of the different light classes are
-    recorded, as well as the ingrowth of each species in the
-    height-light class. By sampling 12 times from the height-light class
-    ingrowths according to the height-light class frequency
-    distribution, and summing up, the stochastic ingrowth for one ha is
-    calculated, for each grid cell.  Then the height class boundaries
-    are translated into DBH and the ingrowths in the height classes
-    linearly interpolated to 7cm and 10cm.
-
-2)  Spatial smoothing and variability by the formulation of dispersal.
-    The different dispersal strategies, see above. With NoDisp, solely
-    the basic spatial variability is accounted for. With DetDisp, I
-    expect the dispersal to smooth out the variability. StochDisp, in
-    turn is expected to create additional variability by stochastic
-    founder processes.
-
-3)  Temporal variability by sampling from different decades of the last
-    100 years of the  simulation, i.e. years 900-1000
+The simulations were started on bare ground and run for 1000 years, when at all sites the equilibrium was reached.
     
-#### Regeneration parameters
 
-How does environment affect regeneration in the model? Seed production:
-depends on tree size and thus indirectly on the growth, that  depends on
-DDsum,  drought stress, nutrients and light and on adult tree number and
-thus on survival  that depends on DDsum, drought stress, nutrients and
-light
+#### More simulations per site
 
-Seed dispersal:  independent on environment Seed bank dynamics : 
-independent on environment Germination and seedling survival: Depends on
-drought, browsing, winter temperature and DDSum and light (last 3 are
-step functions) Sapling dynamics (up to 1.37): like adult growth and
-survival, i.e. depends on DDsum, drought stress and light but light
-dependence with a specific parameter values, namely the klights
-parameter instead of klighta
-
-#### more simulations per site
-
-If you have run more than one simulation per site, please describe the
-differences of the approaches used. I used the following 15
-combinationsExperiments (exp_txpe) NoDisp, StochDisp, DetDisp,
-FBirthAll, FBirthIndiv), each with the variability setups (comb_type)
-200space1time: 200 grid cells at a single randomly chosen decade (
-50space4time: 50 grid cells at 4 randomly chosen decades, or
-20space10time: 20 grid cells at all 10 decades Always the same random
-(nested) sets of decades and grid cells were used Fixed ingrowth values
-(for the FBirthAll and FBirthIndiv experiments ) were calculated
-beforehand in a  set of simulations with single species under optimal
-conditions, without interspecific, but under intraspecific competition.
-The ingrowth into the height class above 1.37m per species was averaged
-over the last 100  years of the 1000 year simulation and used in the
-FBirthIndiv simulations. For the FBirthAll simulations the mean of the
-single species ingrowths' (20) was used.
-
-The "standard" combination is DetDisp with 20 grid cells at all 10
-decades Please describe how have you calculated each of the variables in
-the output data. During the simulation,  in each height class the
-frequencies of the different light classes are recorded, as well as the
-ingrowth numbers of each species in the height-light class. By sampling
-12 times from the height-light class ingrowth numbers according to the
-height-light class  frequency distribution, and summing up, the
-stochastic ingrowth number for one ha is calculated, for each grid
-cell.  Then the height class boundaries are translated into DBH and the
-ingrowths in the height classes linearly interpolated to 7cm and 10cm
-based.  The ingrowth basal areas into the height classes are obtained by
-multiplying the interpolated ingrowth numbers with the basal areas at 
-7cm and 10cm, i.e. r.trees \* Pi *(0.07/2)\^2  and r.trees* Pi\* 
-(0.1/2)\^2 .
-
-The species specific basal area (at 1.37m) sums are a standard output of
-TreeMig, given by multiplying the state variables (number of trees per
-grid cell , height class, and species) with  the species specific basal
-area of each height class. Files TreeMigRes_all_data.RData: R RData-file
-with all experiments (exp_type) and variability combinations (comb_type)
-TreeMigRes_Std_data.RData: R RData-file with   exp_type=detDisp) and
-variability combinations (comb_type=20space10time)
+TreeMig simulates directly the mean dynamics of entire stands, but based on the  variability of light conditions within the stand   [distribution based approach, \Lischke, 1998, aggregation. To come up with the required 200 random patches of 1 ha, temporal and spatial variability intrinsic to TreeMig were combined.  Temporal variability was given by sampling from each decade of the last 100 years of the simulation, i.e. years 900-1000. For each of theses 10 decades, 20 grid cells were sampled from the simulated grid, reflecting spatial variability, results from demographic stochasticity and short-range spatial interactions 
 
 ### Outputs
+
+In contrast to gap models, TreeMig is based on the concept of frequency distributions of tree densities classes in different tree heights on ca. 1/12 ha (833m^2) patches, and the resulting frequency distributions in discrete light. During the simulation, in each height class the frequencies of the different light classes were recorded, as well as the ingrowth of each species in the height-light class. By sampling 12 times from the height-light class ingrowths according to the height-light class frequency distribution and summing up, the stochastic ingrowths into all TreeMig height classes for one ha were calculated for each grid cell.  Then the height class boundaries were translated into DBH and the ingrowths into the height classes linearly interpolated to 7cm and 10cm. 
+The ingrowth basal areas into the height classes were obtained by multiplying the interpolated ingrowth numbers with the basal areas at  7cm and 10cm, i.e. r.trees * Pi*  (0.07/2)2  and r.trees * Pi*  (0.1/2)2 .
+The species specific basal area (at 1.37m) sums are a standard output of TreeMig, given by multiplying the state variables (number of trees per grid cell, height class, and species) with  the species specific basal area of each height class. 
+To account for the ingrown trees dying within a decade, as an approximation the survival in each year to the power of 5 was used. Thereby, it was assumed that the trees have to survive in average 5 years in each decade, and that the current mortality is valid for these 5 years. 
+
+### References 
+
+•	Bugmann, H. 1994. On the ecology of mountainous forests in a changing climate: A simulation study. Dissertation. Swiss Federal Institute of Technology, Zurich.
+•	Fischlin, A., H. Bugmann, and D. Gyalistras. 1995. Sensitivity of a forest ecosystem model to climate parametrization schemes. Env. Poll. 87:267-282.
+•	Lischke, H., and T. J. Loffler. 2006. Intra-specific density dependence is required to maintain species diversity in spatio-temporal forest simulations with reproduction. Ecological Modelling 198:341-361.
+•	Lischke, H., T. J. Loffler, and A. Fischlin. 1998. Aggregation of individual trees and patches in forest succession models: Capturing variability with height structured, random, spatial distributions. Theor Popul Biol 54:213-226.
+•	Lischke, H., N. E. Zimmermann, J. Bolliger, S. Rickebusch, and T. J. Loffler. 2006. TreeMig: A forest-landscape model for simulating spatio-temporal patterns from stand to landscape scale. Ecological Modelling 199:409-420.
+•	Thornthwaite, C. W., and J. R. Mather. 1957. The water balance. Publications in Climatology VIII:1-69.
+
 
 ## LPJ-GUESS
 
