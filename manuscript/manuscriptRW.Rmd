@@ -61,27 +61,27 @@ header-includes:
 # Abstract
 
 Tree establishment is a key process in forest dynamics, particularly in
-the context of forest resilience after disturbance and climate change.
-Models of forest dynamics have been in use since more than 50 years, but
-an assessment of their capacity to represent tree establishment is
-lacking. We assess how well current models are capturing the overall
-abundance, species composition and mortality of tree establishment.
+the context of forest resilience and climate change. Models of forest
+dynamics have been in use for more than 50 years, but an assessment of
+their capacity to represent tree establishment is lacking. We assess how
+well current models capture the overall abundance, species composition
+and mortality of tree establishment.
 
 Using 15 models and model variants built to capture long-term (i.e.,
 decadal to centennial) forest dynamics at the stand, landscape and
 global levels, we simulate tree establishment at 200 sites representing
 environmental gradients across Europe. The results are benchmarked
-against comprehensive data from forest reserves.
+against comprehensive data from unmanaged forests.
 
 Most of the models overestimate ingrowth rates, but this is not always
 compensated by high simulated mortality rates in the early stages of
-population dynamics. In the models, the effect of light availability on
-ingrowth rates is captured better than the effect of temperature and
-soil moisture, but the patterns are not consistent across models.
-Simulated species diversity matches the observed ranges quite well.
-Models simulating higher species diversity at the stand level do not
-feature higher ingrowth diversity. The ingrowth of *Abies alba* is
-captured across temperature and soil moisture gradients, whereas *Fagus
+population dynamics. The effect of light availability on ingrowth rates
+is captured better than the effect of temperature and soil moisture, but
+patterns are not consistent across models. Simulated species diversity
+of ingrowth matches the observed ranges quite well. Models simulating
+higher species diversity at the stand level do not feature higher
+ingrowth diversity. The ingrowth of *Abies alba* is captured across
+temperature and soil moisture gradients, whereas ingrowth of *Fagus
 sylvatica* is generally underestimated. *Picea abies* ingrowth is
 generally overestimated, particularly at colder sites. Increasing
 complexity in the tree establishment modules of the models is not
@@ -90,34 +90,37 @@ individual model design is more important than scale (stand, landscape,
 global) and approach (empirical, process-based) to accurately capture
 tree establishment.
 
-Even though the overestimation of tree establishment represent a
+Even though the overestimation of tree establishment represents a
 challenge for the usefulness of model projections under uncertain
-conditions such a climate change, and although some formulations should
+conditions such as climate change, and although some formulations should
 be reconsidered to correct excessive ingrowth levels, it is remarkable
 that most of the models capture the essential features of the highly
 complex process of tree establishment, while not having been
-parameterized with such a data. We conclude that in spite of all the
-uncertainties, many models hold promise for assessing long-term forest
-dynamics under changing environmental conditions.
+parameterized with such data. We conclude that in spite of all the
+uncertainties, a lot can be gained by a focus on the modeling of
+establishment processes in these model, this will make their long-term
+forest dynamics projections under changing environmental conditions much
+more robust.
 
 \newpage
 
 # Introduction
 
 Forests provide a wide range of products and services of vital
-importance to humankind. Under the pressure of climate change and
-increasing disturbances, it is becoming ever more important to
-understand how forest structure, composition and function will change,
-and to evaluate forest capacity to adapt or be resilient after
-disturbance [@lindner2010]. A wide range of models of forest dynamics
-were developed over the past decades considering the impacts of climate
-on forest dynamics [@bugmann2022]. From these studies, it is evident
-that while we have a reasonably good understanding how to model tree
-growth [@vanclay1997; @bugmann1996], and substantial efforts have been
-dedicated to improving the depiction of tree mortality [@bugmann2019],
-tree establishment remains a much less studied process that is often
-represented rather coarsely in these models, which is a clear research
-gap in the context of climate-induced forest disturbances and forest
+importance to humankind [@foresteurope2020]. Under the pressure of
+climate change and increasing disturbances, it is becoming ever more
+important to understand how forest structure, composition and function
+will change, and to evaluate forest capacity to adapt or be resilient
+after disturbance [@lindner2010; @seidl2022]. A wide range of models of
+forest dynamics were developed over the past decades considering the
+impacts of climate on forest dynamics [@bugmann2022]. From these
+studies, it is evident that while we have a reasonably good
+understanding how to model tree growth [@vanclay1997; @bugmann1996], and
+substantial efforts have been dedicated to improving the depiction of
+tree mortality [@bugmann2019]. However, tree establishment remains a
+much less studied process that is often represented rather coarsely in
+these models [@walck2011; @leishman1992], which is a clear research gap
+in the context of climate-induced forest disturbances and forest
 resilience.
 
 Tree establishment arises from multiple processes such as reproduction,
@@ -909,18 +912,17 @@ regeneration niche of the species are needed, but this cannot be done in
 the absence of robust datasets.
 
 The species diversity of the entire stand was better captured by the
-models than the diversity of
-tree ingrowth, and only a few models overpredicted stand-level
-diversity. Defining ingrowth composition as being proportional to adult
-abundance, regardless of productivity, might be a
-simple and conservative assumption to safely maintain relative species
-abundances [@hanbury-brown2022], although this may be simplistic.
-Furthermore, based on the simulation results there is no evidence that
-models with feedback captured better the ingrowth species diversity than
-those without feedback. The similar performance of models with and
-without feedback is likely because the models are giving more weight to
-the regeneration niche arising abiotic and biotic filters than from the
-habitat niche of the adult trees [@grubb1977].
+models than the diversity of tree ingrowth, and only a few models
+overpredicted stand-level diversity. Defining ingrowth composition as
+being proportional to adult abundance, regardless of productivity, might
+be a simple and conservative assumption to safely maintain relative
+species abundances [@hanbury-brown2022], although this may be
+simplistic. Furthermore, based on the simulation results there is no
+evidence that models with feedback captured better the ingrowth species
+diversity than those without feedback. The similar performance of models
+with and without feedback is likely because the models are giving more
+weight to the regeneration niche arising abiotic and biotic filters than
+from the habitat niche of the adult trees [@grubb1977].
 
 ## Ingrowth mortality
 
