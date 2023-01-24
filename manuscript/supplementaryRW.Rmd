@@ -1464,6 +1464,8 @@ Biomass of all cohorts of the species on site including the regeneration and eve
 
 r.bio.sum Biomass of the regeneration cohorts corresponding to the r. ba and r.trees on site (units kg/ha).
 
+Please noticed that we included 0 values for species missing in a given sample and for samples in sites where Landis did not simulate any tree.
+
 ### References
 
 Aber J. D. & Federer C. A. (1992). A generalized, lumped-parameter model of photosynthesis, evapotranspiration and net primary production in temperate and boreal forest ecosystems. Oecologia 92(4): 463-474.
