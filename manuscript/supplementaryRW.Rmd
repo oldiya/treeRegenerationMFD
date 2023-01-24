@@ -707,24 +707,41 @@ Consequently, smaller trees were not included in the basal area computation.
 
 ### Authors
 
+Yannek Käber
+Harald Bugmann
+
 ### Model references
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+Bugmann, H. (1994). On the ecology of mountainous forests in a changing climate: A simulation study.
+Huber, N., Bugmann, H., & Lafond, V. (2020). Capturing ecological processes in dynamic forest models: Why there is no silver bullet to cope with complexity. Ecosphere, 11(5). https://doi.org/10.1002/ecs2.3109
 
 ### Climate 
 
+Temperature and precipitation were aggregated to monthly means and sums, respectively, including their standard deviation. These values served as input for the weather generator within the model. The weather generator simulates wheather conditions in an annual time step based on the monthly average temperatures and precipitations sums.
+
 ### Soil
+
+Soil data were translated to bucket sizes values based on the assumpation that the lowest soil quality value of 1 refers to a bucket size of 10 cm and the highest soil quality of 5 refers to a bucket size of 35 cm. Specifically we used the following formula to calculate the bucket size bucket_size = 10 + (soil_quality-1) /4  * 25.
 
 ### Topography
 
+Topographic information was included by specifying the kSlAsp parameter. This parameter defines a value between -2 and 2 which affects the calculated Potential Evapotranspiration within the model. For details on the calculation of this value see Käber et. al. 2021.
+
 ### Tree species
+
+All species required were simulated:
+Fagus sylvatica, Picea abies, Abies alba, Carpinus betulus, Tilia cordata, Acer pseudoplatanus, Betula spp., Fraxinus excelsior, Quercus spp., Alnus glutinosa, Pinus sylvestris
+
+In addition the following species were simulated:
+Acer campestre, Acer platanoides, Alnus incana, Alnus viridis, Castanea sativa, Corylus avellana, Larix decidua, Pinus montana, Populus nigra, Populus tremula, Salix alba, Sorbus aria, Sorbus aucuparia, Taxus baccata, Tilia platyphyllos, Ulmus glabra, Pinus cembra
 
 ### Simulations
 
+All simulations were run according to the protocoll. For each site we simulated on 16 ha (i.e., 100 patches of 0.08 ha). We defined a spin up phase of 1000 years. After the spin up we simulated 200 years of forest dynamics.
+
 ### Outputs
+
+We sampled in 10 year intervals between the simulation years 1010 to 1200, which resulted in 16 times 20 intervals each with one ha.
 
 
 ## SIBYLA
