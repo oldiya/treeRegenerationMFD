@@ -125,73 +125,75 @@ resilience.
 
 Tree establishment arises from multiple processes such as reproduction,
 fruit maturation, seed production, dispersal, germination, juvenile
-growth and survival [@price2001]. All these processes are difficult to
-assess, and some of them are scarcely understood and thus appear highly
-stochastic [@bogdziewicz2021]. Identifying the appropriate level of
-complexity for the formulation of the key factors that are leading to
-successful tree establishment is challenging. Currently, tree
-establishment processes in dynamic forest models are handled in a
-multitude of ways [@konig_tree_2022; @bugmann2022], from entirely
-ignoring it [as done in classical forest growth models, e.g., Pretzsch
-et al. -@pretzsch2002], across the use of a few simple environmental
-filters, as done in most forest "gap" models [@shuman2011] and Dynamic
-Global Vegetation Models [e.g., @hickler2012; @smith2001], to complex
-approaches that incorporate local feedback from the canopy, multiple
-ecological processes and often also small time steps [e.g., @seidl2012;
-@wehrli2006], or field-based statistical parameterizations, which
-however are not easy to extrapolate in space and time [e.g.,
-@ribbens1994].
+growth and survival [@price2001; @vacchiano2018]. All these processes
+are difficult to assess, and some of them are scarcely understood and
+thus appear highly stochastic [@bogdziewicz2021]. Identifying the
+appropriate level of complexity for the formulation of the key factors
+that are leading to successful tree establishment is challenging.
+Currently, tree establishment processes in dynamic forest models are
+handled in a multitude of ways [@konig_tree_2022; @bugmann2022]: a) from
+entirely ignoring it [as done in classical forest growth models, e.g.,
+Pretzsch et al. -@pretzsch2002], b) across the use of a few simple
+environmental filters, as done in most forest "gap" models [@shuman2011]
+and Dynamic Global Vegetation Models [e.g., @hickler2012; @smith2001],
+c) to complex approaches that incorporate local feedback from the
+canopy, multiple ecological processes and often also small time steps
+[e.g., @seidl2012; @wehrli2006], or d) field-based statistical
+parameterizations, which however are not easy to extrapolate in space
+and time [e.g., @ribbens1994].
 
 Overall, models are needed to (1) synthesize existing empirical data and
-explore their consequences, and (2) assess future tree establishment
-e.g., in the context of global change scenarios. Given the current
-strategies that are used in models of forest dynamics to represent tree
-establishment, model behavior is often facing problems that can have
-strong impacts on simulated forest dynamics, such as very high levels of
-tree establishment, which then necessitate excess mortality at early
-stages of tree life to arrive at correct stand structure and
-composition. Also, inadequately high species diversity in tree
-establishment may be simulated. This is characteristic of "classical"
-forest gap models [@gutiérrez2016], at least as long as the simulations
-comprise a multitude of species. Other models use calibration against
-local canopy-level data to define appropriate ingrowth levels, which is
-likely to strongly hamper the general applicability of these models
-e.g., under scenarios of climate change. Furthermore, correctly
-capturing the species composition in tree establishment as a function of
-the presence of seed trees in the canopy is often a particular
-challenge, potentially leading to unrealistic successional drift in the
-model, which must be corrected by factors that are hard to parameterize
-[e.g., @lischke2006]. A related issue is the excessive reduction of
-species richness due to positive feedback effects such that eventually
-just single-species stands remain. This is sometimes corrected by the
-incorporation of a low level of seed influx of all species at all times
-[@lischke2006]. However, simulated species composition is usually
-exceedingly sensitive to that level, whereas the parameters of such
-functions are poorly constrained by field data. Lastly, there is often a
-problem with insufficient observational constraint on parameter values
-for models that start from very small tree sizes (e.g., 10 cm of height
-or even seeds) and track tree development in a process-oriented manner
-by considering a multitude of ecological influences, rather than
-emphasizing tree establishment into a larger size class [e.g.,
-@wehrli2006].
+explore their consequences, (2) assess future tree establishment e.g.,
+in the context of global change scenarios and, (3) identify most
+important processes needed to define relevant ecological processes.
+Given the current strategies that are used in models of forest dynamics
+to represent tree establishment, model behavior often faces problems
+that can have strong impacts on simulated forest dynamics, such as very
+high levels of tree establishment, which then necessitate excess
+mortality at early stages of tree life to simulate correct stand
+structure and composition. Also, inadequately high species diversity in
+tree establishment may be simulated. This is characteristic of
+"classical" forest gap models [@gutiérrez2016], at least as long as the
+simulations comprise a multitude of species. Other models use
+calibration against local canopy-level data to define appropriate
+ingrowth levels, which is likely to strongly hamper the general
+applicability of these models e.g., under scenarios of climate change.
+Furthermore, correctly capturing the species composition in tree
+establishment as a function of the presence of seed trees in the canopy
+is often a particular challenge, potentially leading to unrealistic
+successional drift in the model, which must be corrected by factors that
+are hard to parameterize [e.g., @lischke2006]. A related issue is the
+excessive reduction of species richness due to positive feedback effects
+such that eventually just single-species stands remain. This is
+sometimes corrected by the incorporation of a low level of seed influx
+of all species at all times [@schumacher2006] or by restricting the
+number of seeds per species in the seedbank [@lischke2006]. However,
+simulated species composition is usually exceedingly sensitive to that
+level, whereas the parameters of such functions are poorly constrained
+by field data. Lastly, there is often a problem with insufficient
+observational constraints on parameter values for models that start from
+very small tree sizes (e.g., 10 cm of height or even seeds) and track
+tree development in a process-oriented manner by considering a multitude
+of ecological influences, rather than emphasizing tree establishment
+into a larger size class [e.g., @wehrli2006].
 
 Thus, a focus on the modeling of tree establishment processes is sorely
-needed and overdue [@price2001] if we are to make reliable projections
-of future forest dynamics, i.e., when the models need to be operated in
-extrapolation mode, but also from a fundamental ecological point of view
-(increasing systems understanding). Also in the field of general
+needed and overdue [@price2001; @walck2011] if we are to make reliable
+projections of future forest dynamics, i.e., when the models need to be
+operated in extrapolation mode, but also from a fundamental ecological
+point of view increasing systems understanding. Also in the field-based
 ecology, tree establishment has not received a lot of attention
 [@hanbury-brown2022], although many sub-processes have been studied in
 detail. Yet, little data is available that covers all the processes
 within one species along environmental gradients, let alone for a vast
 suite of species. Thus, the available data are fragmented, which
-constitutes a major problem for model building. On the one hand,
-monitoring on permanent sample plots (such as National Forest
-Inventories) often measure tree establishment [@zell2019], however with
+constitutes a major problem for model building [@clark1999]. On the one
+hand, monitoring on permanent sample plots (such as National Forest
+Inventories) often measures tree establishment [@zell2019], however with
 a design that captures the rate after the stand initiation phase
 [@hallsby2015]. Data from permanent plots, although available across
-regions, are highly heterogeneous, rendering their utility difficult in
-a modeling context [@käber2021]. On the other hand, targeted studies to
+regions, are highly heterogeneous, rendering their use difficult in a
+modeling context [@käber2021]. On the other hand, targeted studies to
 measure tree establishment on experimental sites are often limited in
 spatial extent, species studied, or the sub-set of processes that are
 targeted [@berdanier2016; @collet2006].
@@ -199,27 +201,28 @@ targeted [@berdanier2016; @collet2006].
 In the present study, for the first time, a large number of forest
 models commonly used to assess forest dynamics under climate change are
 evaluated against a continental-scale, multi-species harmonized data set
-on tree establishment [@käber2022]. By tree establishment, we refer to
-the passing of trees across a specific diameter threshold ("ingrowth")
-and thus as successful tree establishment. We included models that are
-based on a range of "philosophies", from models operating at the stand
-to the global scale as well as the range of models from empirically
-derived to "process-based" [e.g., @bugmann1996; @fabrika2012;
-@mette2014; @lexer2001]. Because of the large variability in tree
-establishment patterns in nature and the large number of factors driving
-this process --- including some that are not incorporated in most models
-such as deer browsing --- we do not aim at a detailed statistical
-evaluation of each model. Instead, we aim at evaluating the general
-ingrowth patterns and magnitudes simulated by the models, and benchmark
-the simulated regeneration niche of multiple species against empirical
-data along a wide environmental gradients of temperature, moisture, and
-light availability.
+on tree establishment [@käber2022]. This is a challenging experiment for
+these models as they do also have to estimate the forest stand above the
+tree establishment. By tree establishment, we refer to the passing of
+trees across a specific diameter threshold ("ingrowth"). We included
+models that are based on a range of "philosophies", from models
+operating at the stand to the global scale as well as the range of
+models from empirically derived to "process-based" [e.g., @bugmann1996;
+@fabrika2012; @mette2014; @lexer2001]. Because of the large variability
+in tree establishment patterns in nature and the large number of factors
+driving this process --- including some that are not incorporated in
+most models such as deer browsing --- we do not aim at a detailed
+statistical evaluation of each model. Instead, we aim at evaluating the
+general ingrowth patterns and magnitudes simulated by the models, and
+benchmark the simulated regeneration niche of multiple species against
+empirical data along a wide environmental gradient of temperature,
+moisture, and light availability.
 
 More specifically, we aimed to answer the following questions. 1) Are
 models of forest dynamics capturing accurately tree ingrowth levels
 across environmental gradients? 2) Are they matching the initial species
 composition of the tree ingrowth layer? And 3), do they correctly
-represent the mortality in tree establishment?.
+represent the mortality in tree establishment?
 
 # Material and methods
 
