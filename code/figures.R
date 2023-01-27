@@ -25,6 +25,8 @@
     
     sum(obsNumAgg$r.ha, na.rm =  T)
     range(obsNumAgg$r.ha, na.rm = TRUE)
+    mean(obsNumAgg$r.ha, na.rm = TRUE)
+    median(obsNumAgg$r.ha, na.rm = TRUE)
     
     # Assign models and dbh to levels 
 
@@ -243,12 +245,15 @@
     # Prepare Observed GAM model data for all the plots
     max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
     min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed",]
+    empModel <- envTrend[envTrend$model == "Observed", ]
     fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
                         family = mgcv::nb())
     new_dat <- data.frame(
         Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
         fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    
+    new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
+    
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
     invLink <- family(fm.sim)$linkinv
     
@@ -262,8 +267,10 @@
         
         axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
                                             "aDGVM2"), "s", "n")
+        
+        dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
         boxplot(r.trees ~ ba_cut, 
-                data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
+                data = dataSel, 
                 xlab = "",
                 ylab = "",
                 #ylim = c(0, 500),
@@ -271,7 +278,16 @@
                 xaxt = axisPlot,
                 col = values_color[modelSel],
                 frame = F)
+        
+        means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
+        points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
         box(bty = "l")
+        
+        linesData <- data.frame(TotBA = new_dat$fct_name, 
+                                r.trees = invLink(pred.sim$fit),
+                                UP = invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+                                DOWN = invLink(pred.sim$fit - pred.sim$se.fit * 1.96))
+        #[11:79]
         lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
         lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
               lty = 2, col = "red")
@@ -295,8 +311,10 @@
     fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
                         family = mgcv::nb())
     new_dat <- data.frame(
-      Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
+      Totba = seq(min_TotbaEMP, max_TotbaEMP, length.out = 10 * bins),
       fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
+    
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
     invLink <- family(fm.sim)$linkinv
     
@@ -310,8 +328,9 @@
       
       axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
                                          "aDGVM2"), "s", "n")
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
       boxplot(r.trees ~ ba_cut, 
-              data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
+              data = dataSel, 
               xlab = "",
               ylab = "",
               ylim = c(0, 500),
@@ -319,6 +338,8 @@
               xaxt = axisPlot,
               col = values_color[modelSel],
               frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
       box(bty = "l")
       lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
       lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
@@ -349,6 +370,8 @@
     new_dat <- data.frame(
         wb = seq(min_wb, max_wb, length.out = 10 * bins),
         fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$wb < max(empModel$wb) & new_dat$wb > min(empModel$wb), ]
+    
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
     invLink <- family(fm.sim)$linkinv
     
@@ -357,8 +380,11 @@
         ienvTrendModel <- envTrend[envTrend$model == modelSel,]
         axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
                                            "aDGVM2"), "s", "n")
+        
+        dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
+        
        boxplot(r.trees ~ wb_cut, 
-               data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ], 
+               data = dataSel, 
                xlab = "",
                ylab = "",
                #ylim = c(0, 500),
@@ -366,6 +392,9 @@
                xaxt = axisPlot,
                col = values_color[modelSel],
                frame = F)
+       means <- tapply(dataSel$r.trees, INDEX = dataSel$wb_cut, FUN = mean) # calculate mean
+       points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+       
        box(bty = "l")
        lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
        lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
@@ -392,6 +421,8 @@
     new_dat <- data.frame(
       wb = seq(min_wb, max_wb, length.out = 10 * bins),
       fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$wb < max(empModel$wb) & new_dat$wb > min(empModel$wb), ]
+    
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
     invLink <- family(fm.sim)$linkinv
     
@@ -400,8 +431,9 @@
       ienvTrendModel <- envTrend[envTrend$model == modelSel,]
       axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
                                          "aDGVM2"), "s", "n")
-      boxplot(r.trees ~ wb_cut, 
-              data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ], 
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
+       boxplot(r.trees ~ wb_cut, 
+              data = dataSel, 
               xlab = "",
               ylab = "",
               ylim = c(0, 500),
@@ -409,6 +441,9 @@
               xaxt = axisPlot,
               col = values_color[modelSel],
               frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$wb_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      
       box(bty = "l")
       lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
       lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
@@ -439,13 +474,16 @@
     new_dat = data.frame(
         dds = seq(min_dds, max_dds, length.out = 10 * bins),
         fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$dds < max(empModel$dds) & new_dat$dds > min(empModel$dds), ]
+    
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
     invLink <- family(fm.sim)$linkinv
     
     for (modelSel in unique(envTrend$model)) {
         ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+        dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
         boxplot(r.trees ~ dds_cut, 
-                data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
+                data = dataSel, 
                 xlab = "",
                 ylab = "",
                 #ylim = c(0, 500),
@@ -453,6 +491,9 @@
                 xaxt = axisPlot,
                 col = values_color[modelSel],
                 frame = F)
+        means <- tapply(dataSel$r.trees, INDEX = dataSel$dds_cut, FUN = mean) # calculate mean
+        points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+        
         box(bty = "l")
         lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
         lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
@@ -480,13 +521,16 @@
     new_dat = data.frame(
       dds = seq(min_dds, max_dds, length.out = 10 * bins),
       fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$dds < max(empModel$dds) & new_dat$dds > min(empModel$dds), ]
+    
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
     invLink <- family(fm.sim)$linkinv
     
     for (modelSel in unique(envTrend$model)) {
       ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
       boxplot(r.trees ~ dds_cut, 
-              data = ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,], 
+              data = dataSel, 
               xlab = "",
               ylab = "",
               ylim = c(0, 500),
@@ -494,6 +538,9 @@
               xaxt = axisPlot,
               col = values_color[modelSel],
               frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$dds_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      
       box(bty = "l")
       lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
       lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
