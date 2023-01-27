@@ -41,7 +41,6 @@ header-includes:
 - \usepackage[left]{lineno}
 - \linenumbers
 - \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
-
 ---
 
 ```{r setup, include=FALSE}
@@ -488,11 +487,10 @@ the files, for example: *thenameofyourmodel_datareport.zip* or
 
 You can upload the files here: LINK
 
-
 # Supplementary Material 2: Model reports
 
-
 ## 4C
+
 ### Authors
 
 ### Model references
@@ -502,7 +500,7 @@ to understand the model structure specially for the regeneration module,
 this could be a published paper, a website with the model description, a
 manual or some other document that the reader can access.*
 
-### Climate 
+### Climate
 
 ### Soil
 
@@ -513,7 +511,6 @@ manual or some other document that the reader can access.*
 ### Simulations
 
 ### Outputs
-
 
 ## ForCEEPS & ForCEEPS(f)
 
@@ -523,22 +520,36 @@ Xavier Morin & François de Coligny
 
 ### Model references
 
-Morin X., de Coligny F., Bugmann H., Limousin J.-M., Ourcival J.-M., Martin-StPaul N., Simioni G., Cailleret M., Prevosto B., Toïgo M., Vennetier M., Cateau E., Guillemot J. 2021. Beyond forest succession: a gap model to study ecosystem functioning and tree community composition under climate change. Functional Ecology. 35, 955-975.
+Morin X., de Coligny F., Bugmann H., Limousin J.-M., Ourcival J.-M.,
+Martin-StPaul N., Simioni G., Cailleret M., Prevosto B., Toïgo M.,
+Vennetier M., Cateau E., Guillemot J. 2021. Beyond forest succession: a
+gap model to study ecosystem functioning and tree community composition
+under climate change. Functional Ecology. 35, 955-975.
 
-Jourdan M., Dreyfus, P., Riond C., Cordonnier T., Cornet B., de Coligny F., Morin X. 2021. Managing mixed stands can mitigate severe climate change impacts on French alpine forests. Regional Environmental Change.  21, 78.
+Jourdan M., Dreyfus, P., Riond C., Cordonnier T., Cornet B., de Coligny
+F., Morin X. 2021. Managing mixed stands can mitigate severe climate
+change impacts on French alpine forests. Regional Environmental Change.
+21, 78.
 
-Morin X., Damestoy T., Toïgo M., Jactel H., Castagneyrol B. Meredieu C. 2020. Using forest gap models and experimental data to explore long-term effects of tree diversity on the productivity of mixed planted forests. Annals of Forest Science. 77 https://doi.org/10.1007/s13595-020-00954-0.
-
+Morin X., Damestoy T., Toïgo M., Jactel H., Castagneyrol B. Meredieu C.
+2020. Using forest gap models and experimental data to explore long-term
+effects of tree diversity on the productivity of mixed planted forests.
+Annals of Forest Science. 77
+<https://doi.org/10.1007/s13595-020-00954-0>.
 
 ### Climate
 
-ForCEEPS requires monthly data. A 4000-yr long time-series was obtained for each site by randomizing available years from the CHELSA database, with mean monthly temperature and monthly sum of precipitations (see 1.2.2).
+ForCEEPS requires monthly data. A 4000-yr long time-series was obtained
+for each site by randomizing available years from the CHELSA database,
+with mean monthly temperature and monthly sum of precipitations (see
+1.2.2).
 
 ### Soil
 
-Soil quality is represented by a continuous value between 1 and 5, as provided (see 1.2.3) Soil Field Capacity (SFC) was assessed as follows:
-SFC = 8+(X-1)*(25-8)/(5-1), in which X is the ‘soil_qual’ value in the provided ‘soil_quality_200.csv’ file.
-
+Soil quality is represented by a continuous value between 1 and 5, as
+provided (see 1.2.3) Soil Field Capacity (SFC) was assessed as follows:
+SFC = 8+(X-1)\*(25-8)/(5-1), in which X is the 'soil_qual' value in the
+provided 'soil_quality_200.csv' file.
 
 ### Topography
 
@@ -546,24 +557,45 @@ Not considered.
 
 ### Simulations
 
-In each site, the simulation consists of 4000 yr-long simulation of 1ha of forest (ie. 10 patches of 1000 m²), starting from bare-ground. There was no dispersal between patches.
-Two kinds of simulations have been carried out in each of the 200 sites. 
-In a first set of simulations, regeneration dynamics was simulated with a seed rain from a potential species list, thus independent from the actual forest composition, as classically done in gap models. Under this design, a number of seedling is randomly chosen for each patch, and a species identity is randomly sorted from a potential species list (defined at the start of simulation) assigned to each seedling. Then each seedling tries to colonize the site depending on whether the suitability between species requirements and site conditions (climate, light, soil quality, browsing index).
-In a second set of simulations, regeneration dynamics was simulated with a seed rain whose composition depended on the actual forest composition. Under this design, a number of seedling is randomly chosen for each patch, but the species identity is assigned according to species relative abundance (calculated across all 10 patches according to species biomass). For instance, if at year i the adult trees of species j represent 60% of the total biomass across the 10 patches, then 60% of the seedlings that try to colonize the patches at year i will belong to species j. Then, similarly to the first design, each seedling tries to colonize the site depending on whether the suitability between species requirements and site conditions.
-In the two sets of simulations, simulations have been run for both thresholds for regeneration (7 and 10 cm).
-
+In each site, the simulation consists of 4000 yr-long simulation of 1ha
+of forest (ie. 10 patches of 1000 m²), starting from bare-ground. There
+was no dispersal between patches. Two kinds of simulations have been
+carried out in each of the 200 sites. In a first set of simulations,
+regeneration dynamics was simulated with a seed rain from a potential
+species list, thus independent from the actual forest composition, as
+classically done in gap models. Under this design, a number of seedling
+is randomly chosen for each patch, and a species identity is randomly
+sorted from a potential species list (defined at the start of
+simulation) assigned to each seedling. Then each seedling tries to
+colonize the site depending on whether the suitability between species
+requirements and site conditions (climate, light, soil quality, browsing
+index). In a second set of simulations, regeneration dynamics was
+simulated with a seed rain whose composition depended on the actual
+forest composition. Under this design, a number of seedling is randomly
+chosen for each patch, but the species identity is assigned according to
+species relative abundance (calculated across all 10 patches according
+to species biomass). For instance, if at year i the adult trees of
+species j represent 60% of the total biomass across the 10 patches, then
+60% of the seedlings that try to colonize the patches at year i will
+belong to species j. Then, similarly to the first design, each seedling
+tries to colonize the site depending on whether the suitability between
+species requirements and site conditions. In the two sets of
+simulations, simulations have been run for both thresholds for
+regeneration (7 and 10 cm).
 
 ### Outputs
 
-Outputs consisted in species specific regeneration rates per decade and per ha, by considering the last 2000 years of simulations to ensure that pseudo-equilibrium state is reached. Results were aggregated for every 10 years for the last 2000 years at the 1ha-level. Variables:
--	Site: numbers corresponding to the climate data file
--	Sample: one per decade, for a total of 2000 years = identified from 1 to 200
--	Species: name specified as requested (eg. ‘fasy’)
--	r.trees: number of trees outcrossing the threshold (7 or 10 cm) during the decade, for the 10 patches simulated (= 1ha), per species
--	r.ba: summed basal area of the r.trees, per species
--	ba: summed basal area of all trees per species at the end of the decade
--	dbh: threshold used
-
+Outputs consisted in species specific regeneration rates per decade and
+per ha, by considering the last 2000 years of simulations to ensure that
+pseudo-equilibrium state is reached. Results were aggregated for every
+10 years for the last 2000 years at the 1ha-level. Variables: - Site:
+numbers corresponding to the climate data file - Sample: one per decade,
+for a total of 2000 years = identified from 1 to 200 - Species: name
+specified as requested (eg. 'fasy') - r.trees: number of trees
+outcrossing the threshold (7 or 10 cm) during the decade, for the 10
+patches simulated (= 1ha), per species - r.ba: summed basal area of the
+r.trees, per species - ba: summed basal area of all trees per species at
+the end of the decade - dbh: threshold used
 
 ## FORMIND
 
@@ -573,49 +605,51 @@ Samuel M. Fischer, Friedrich Bohn, Rico Fischer
 
 ### Model references
 
+```{=html}
 <!--
 @article{fischer_lessons_2016,
-	title = {Lessons learned from applying a forest gap model to understand ecosystem and carbon dynamics of complex tropical forests},
-	volume = {326},
-	issn = {03043800},
-	url = {https://linkinghub.elsevier.com/retrieve/pii/S0304380015005505},
-	doi = {10.1016/j.ecolmodel.2015.11.018},
-	language = {en},
-	urldate = {2022-09-15},
-	journal = {Ecological Modelling},
-	author = {Fischer, Rico and Bohn, Friedrich and Dantas de Paula, Mateus and Dislich, Claudia and Groeneveld, J{\"u}rgen and Guti{\'e}rrez, Alvaro G. and Kazmierczak, Martin and Knapp, Nikolai and Lehmann, Sebastian and Paulick, Sebastian and P{\"u}tz, Sandro and R{\"o}dig, Edna and Taubert, Franziska and K{\"o}hler, Peter and Huth, Andreas},
-	month = apr,
-	year = {2016},
-	pages = {124--133},
-	file = {Volltext:C\:\\Users\\fischsam\\Zotero\\storage\\EISNTZF6\\Fischer et al. - 2016 - Lessons learned from applying a forest gap model t.pdf:application/pdf},
+    title = {Lessons learned from applying a forest gap model to understand ecosystem and carbon dynamics of complex tropical forests},
+    volume = {326},
+    issn = {03043800},
+    url = {https://linkinghub.elsevier.com/retrieve/pii/S0304380015005505},
+    doi = {10.1016/j.ecolmodel.2015.11.018},
+    language = {en},
+    urldate = {2022-09-15},
+    journal = {Ecological Modelling},
+    author = {Fischer, Rico and Bohn, Friedrich and Dantas de Paula, Mateus and Dislich, Claudia and Groeneveld, J{\"u}rgen and Guti{\'e}rrez, Alvaro G. and Kazmierczak, Martin and Knapp, Nikolai and Lehmann, Sebastian and Paulick, Sebastian and P{\"u}tz, Sandro and R{\"o}dig, Edna and Taubert, Franziska and K{\"o}hler, Peter and Huth, Andreas},
+    month = apr,
+    year = {2016},
+    pages = {124--133},
+    file = {Volltext:C\:\\Users\\fischsam\\Zotero\\storage\\EISNTZF6\\Fischer et al. - 2016 - Lessons learned from applying a forest gap model t.pdf:application/pdf},
 }
 -->
-
-A full description of the model can be found in @fischer_lessons_2016. 
+```
+A full description of the model can be found in @fischer_lessons_2016.
 The basis for the parameterization we applied is described in @bohn2014.
 
-### Climate 
+### Climate
 
-To incorporate climate, we used the data set `daily_era5_chelsa_200.csv',
-which contains climate data on a daily resolution. We considered the
-covariates precipitation, temperature, and irradiance, the latter
-of which we converted to units used in Formind. Adding on to these
-data, we used a constant and site-independent potential evapotranspiration
-(PET) value of $4\frac{\text{mm}}{\text{d}}$ and assumed that the mean day
-length was $12\text{h}$ at all sites.
+To incorporate climate, we used the data set
+\`daily_era5_chelsa_200.csv', which contains climate data on a daily
+resolution. We considered the covariates precipitation, temperature, and
+irradiance, the latter of which we converted to units used in Formind.
+Adding on to these data, we used a constant and site-independent
+potential evapotranspiration (PET) value of
+$4\frac{\text{mm}}{\text{d}}$ and assumed that the mean day length was
+$12\text{h}$ at all sites.
 
-Since we simulated longer time periods than the $38$ years for which
-we had climate data, we used the provided data in a randomized fashion.
-For each simulation year, we applied the climate data of a randomly
-selected year. We neglected the existence of leap years, which led
-to a minor time shift in climate data of later years.
+Since we simulated longer time periods than the $38$ years for which we
+had climate data, we used the provided data in a randomized fashion. For
+each simulation year, we applied the climate data of a randomly selected
+year. We neglected the existence of leap years, which led to a minor
+time shift in climate data of later years.
 
 ### Soil
 
-We modelled soil conditions by using the provided soil quality values
-as proxy for soil depth. To that end, we scaled the provided values
-to the typical range of soil depth values used in Formind for temperate
-forests. Specifically, we multiplied the soil quality values by factor 
+We modelled soil conditions by using the provided soil quality values as
+proxy for soil depth. To that end, we scaled the provided values to the
+typical range of soil depth values used in Formind for temperate
+forests. Specifically, we multiplied the soil quality values by factor
 $0.5$ to obtain the modelled soil depth in meters.
 
 ### Topography
@@ -624,114 +658,135 @@ We did not use any topography data.
 
 ### Tree species
 
-We considered each of the $11$ species in the protocol explicitly.
-We chose the model parameters for the individual species based on
-the work by @bohn2014. For species that were not
-covered by @bohn2014, we used parameter values of
-similar species with known parameters. The species composition was
-not predefined and evolved solely from the seed input
+We considered each of the $11$ species in the protocol explicitly. We
+chose the model parameters for the individual species based on the work
+by @bohn2014. For species that were not covered by @bohn2014, we used
+parameter values of similar species with known parameters. The species
+composition was not predefined and evolved solely from the seed input
 and the model dynamics.
 
 ### Simulations
 
 #### Simulation area
 
-We simulated a forest area of $1\text{ha}$, which was divided into
-$25$ patches of size $20\text{m}\times20\text{m}$. No interactions
-between trees from different patches were considered in the model.
-That is, the $25$ patches were independent replicates of one another.
+We simulated a forest area of $1\text{ha}$, which was divided into $25$
+patches of size $20\text{m}\times20\text{m}$. No interactions between
+trees from different patches were considered in the model. That is, the
+$25$ patches were independent replicates of one another.
 
 #### Seed generation and dispersal
 
-We modelled seed generation as global external seed rain. Specifically, we 
-assumed that for each species, there is a constant seed inflow of 
-$250\frac{\text{seeds}}{\text{ha}\cdot \text{yr}}$, which is distributed 
-evenly among the $25$ individual patches. We supposed that all 
-seeds promptly establish to seedlings with initial stem diameters at 
-breast height (DBH) of 5\text{cm}.
+We modelled seed generation as global external seed rain. Specifically,
+we assumed that for each species, there is a constant seed inflow of
+$250\frac{\text{seeds}}{\text{ha}\cdot \text{yr}}$, which is distributed
+evenly among the $25$ individual patches. We supposed that all seeds
+promptly establish to seedlings with initial stem diameters at breast
+height (DBH) of 5\text{cm}.
 
 #### Simulation length and sampling approach
 
 We started the simulation at each site with a burn-in phase of $1000$
-years and collected samples of the output variables in subsequent
-years. The length of the burn-in phase was chosen based on earlier
-experiences with the model. To confirm that the model reached its
-limiting behaviour, we plotted the evolution of the output variables
-(e.g. the basal area) at selected sites over time and verified that
-no trends were visible after the burn-in phase.
+years and collected samples of the output variables in subsequent years.
+The length of the burn-in phase was chosen based on earlier experiences
+with the model. To confirm that the model reached its limiting
+behaviour, we plotted the evolution of the output variables (e.g. the
+basal area) at selected sites over time and verified that no trends were
+visible after the burn-in phase.
 
-We computed the output variables in equidistant time intervals of
-$60$ years. Before taking a sample, we saved parts of the model's
-state. Then, we simulated the forest for $10$ years and computed
-the output variables, comparing the model's current state with the
-state saved earlier (see below).
-After taking the sample, we simulated the forest for another $50$
-years to reduce correlations between samples. Then, we repeated the
-procedure until the desired number of $200$ samples was collected.
+We computed the output variables in equidistant time intervals of $60$
+years. Before taking a sample, we saved parts of the model's state.
+Then, we simulated the forest for $10$ years and computed the output
+variables, comparing the model's current state with the state saved
+earlier (see below). After taking the sample, we simulated the forest
+for another $50$ years to reduce correlations between samples. Then, we
+repeated the procedure until the desired number of $200$ samples was
+collected.
 
 ### Outputs
 
-To determine the number and basal area of recruits, we compared the
-set of large trees before and after the regeneration time period of
-$10$ years. Prior to simulating the forest for the regeneration time
-period, we saved the internal IDs of all trees with DBHs above the
-thresholds of $0.07\text{m}$ or $0.1\text{m}$, respectively. We
-stored these IDs in set data structures $S_{0.07}^{\text{prior}}$ and
+To determine the number and basal area of recruits, we compared the set
+of large trees before and after the regeneration time period of $10$
+years. Prior to simulating the forest for the regeneration time period,
+we saved the internal IDs of all trees with DBHs above the thresholds of
+$0.07\text{m}$ or $0.1\text{m}$, respectively. We stored these IDs in
+set data structures $S_{0.07}^{\text{prior}}$ and
 $S_{0.1}^{\text{prior}}$, corresponding to one threshold value each.
-After the regeneration time, we repeated the procedure, obtaining
-tree ID sets $S_{0.07}^{\text{posterior}}$ and $S_{0.1}^{\text{posterior}}$.
-We then computed the set differences 
+After the regeneration time, we repeated the procedure, obtaining tree
+ID sets $S_{0.07}^{\text{posterior}}$ and $S_{0.1}^{\text{posterior}}$.
+We then computed the set differences
 $S_{0.07}^{\text{recruits}}=S_{0.07}^{\text{posterior}}\backslash S_{0.07}^{\text{prior}}$
-and $S_{0.1}^{\text{recruits}}=S_{0.1}^{\text{posterior}}\backslash S_{0.1}^{\text{prior}}$
-and determined both the number and cumulative basal area of the trees
-in $S_{0.07}^{\text{recruits}}$ and $S_{0.1}^{\text{recruits}}$ by considered
-species, respectively.
+and
+$S_{0.1}^{\text{recruits}}=S_{0.1}^{\text{posterior}}\backslash S_{0.1}^{\text{prior}}$
+and determined both the number and cumulative basal area of the trees in
+$S_{0.07}^{\text{recruits}}$ and $S_{0.1}^{\text{recruits}}$ by
+considered species, respectively.
 
-Finally, we computed the total basal area for each considered species
-by adding up the basal areas of all corresponding individuals. Note
-that the initial DBH of seedlings in our model was $0.05\text{m}$.
-Consequently, smaller trees were not included in the basal area computation.
+Finally, we computed the total basal area for each considered species by
+adding up the basal areas of all corresponding individuals. Note that
+the initial DBH of seedlings in our model was $0.05\text{m}$.
+Consequently, smaller trees were not included in the basal area
+computation.
 
 ## ForClim 1 & ForClim 11
 
 ### Authors
 
-Yannek Käber
-Harald Bugmann
+Yannek Käber Harald Bugmann
 
 ### Model references
 
-Bugmann, H. (1994). On the ecology of mountainous forests in a changing climate: A simulation study.
-Huber, N., Bugmann, H., & Lafond, V. (2020). Capturing ecological processes in dynamic forest models: Why there is no silver bullet to cope with complexity. Ecosphere, 11(5). https://doi.org/10.1002/ecs2.3109
+Bugmann, H. (1994). On the ecology of mountainous forests in a changing
+climate: A simulation study. Huber, N., Bugmann, H., & Lafond, V.
+(2020). Capturing ecological processes in dynamic forest models: Why
+there is no silver bullet to cope with complexity. Ecosphere, 11(5).
+<https://doi.org/10.1002/ecs2.3109>
 
-### Climate 
+### Climate
 
-Temperature and precipitation were aggregated to monthly means and sums, respectively, including their standard deviation. These values served as input for the weather generator within the model. The weather generator simulates wheather conditions in an annual time step based on the monthly average temperatures and precipitations sums.
+Temperature and precipitation were aggregated to monthly means and sums,
+respectively, including their standard deviation. These values served as
+input for the weather generator within the model. The weather generator
+simulates wheather conditions in an annual time step based on the
+monthly average temperatures and precipitations sums.
 
 ### Soil
 
-Soil data were translated to bucket sizes values based on the assumpation that the lowest soil quality value of 1 refers to a bucket size of 10 cm and the highest soil quality of 5 refers to a bucket size of 35 cm. Specifically we used the following formula to calculate the bucket size bucket_size = 10 + (soil_quality-1) /4  * 25.
+Soil data were translated to bucket sizes values based on the
+assumpation that the lowest soil quality value of 1 refers to a bucket
+size of 10 cm and the highest soil quality of 5 refers to a bucket size
+of 35 cm. Specifically we used the following formula to calculate the
+bucket size bucket_size = 10 + (soil_quality-1) /4  \* 25.
 
 ### Topography
 
-Topographic information was included by specifying the kSlAsp parameter. This parameter defines a value between -2 and 2 which affects the calculated Potential Evapotranspiration within the model. For details on the calculation of this value see Käber et. al. 2021.
+Topographic information was included by specifying the kSlAsp parameter.
+This parameter defines a value between -2 and 2 which affects the
+calculated Potential Evapotranspiration within the model. For details on
+the calculation of this value see Käber et. al. 2021.
 
 ### Tree species
 
-All species required were simulated:
-Fagus sylvatica, Picea abies, Abies alba, Carpinus betulus, Tilia cordata, Acer pseudoplatanus, Betula spp., Fraxinus excelsior, Quercus spp., Alnus glutinosa, Pinus sylvestris
+All species required were simulated: Fagus sylvatica, Picea abies, Abies
+alba, Carpinus betulus, Tilia cordata, Acer pseudoplatanus, Betula spp.,
+Fraxinus excelsior, Quercus spp., Alnus glutinosa, Pinus sylvestris
 
-In addition the following species were simulated:
-Acer campestre, Acer platanoides, Alnus incana, Alnus viridis, Castanea sativa, Corylus avellana, Larix decidua, Pinus montana, Populus nigra, Populus tremula, Salix alba, Sorbus aria, Sorbus aucuparia, Taxus baccata, Tilia platyphyllos, Ulmus glabra, Pinus cembra
+In addition the following species were simulated: Acer campestre, Acer
+platanoides, Alnus incana, Alnus viridis, Castanea sativa, Corylus
+avellana, Larix decidua, Pinus montana, Populus nigra, Populus tremula,
+Salix alba, Sorbus aria, Sorbus aucuparia, Taxus baccata, Tilia
+platyphyllos, Ulmus glabra, Pinus cembra
 
 ### Simulations
 
-All simulations were run according to the protocoll. For each site we simulated on 16 ha (i.e., 100 patches of 0.08 ha). We defined a spin up phase of 1000 years. After the spin up we simulated 200 years of forest dynamics.
+All simulations were run according to the protocoll. For each site we
+simulated on 16 ha (i.e., 100 patches of 0.08 ha). We defined a spin up
+phase of 1000 years. After the spin up we simulated 200 years of forest
+dynamics.
 
 ### Outputs
 
-We sampled in 10 year intervals between the simulation years 1010 to 1200, which resulted in 16 times 20 intervals each with one ha.
-
+We sampled in 10 year intervals between the simulation years 1010 to
+1200, which resulted in 16 times 20 intervals each with one ha.
 
 ## SIBYLA
 
@@ -755,7 +810,6 @@ to understand the model structure specially for the regeneration module,
 this could be a published paper, a website with the model description, a
 manual or some other document that the reader can access.*
 
-
 SIBYLA is the simulator of forest biodynamics. It belongs to the
 category of semi-empirical tree growth simulators. It consists of the
 set of mathematical models and algorithms that are transformed into an
@@ -770,7 +824,6 @@ height and diameter growth potential, and consequently tree increment.
 The climatic factors also influence tree regeneration model. More
 detailed information about Sibyla can be found in Fabrika (2005),
 <http://etools.tuzvo.sk/sibyla/english/model.htm>.
-
 
 ### Climate
 
@@ -790,7 +843,6 @@ season" (labelled as PRECIP or s8 in the model). Daily average
 temperature (tas) values were used to derive the SIBYLA site-specific
 characteristic called the „length of the growing season" (labelled as
 DAYS or s4 in the model).
-
 
 ### Soil
 
@@ -828,14 +880,13 @@ period in mm (from April to September) • s9 (ARID)... aridity index
 according to de Martone in mm.°C-1 They directly influence the
 production capacity of a stand (tree height and diameter increment).
 
-### Tree species 
+### Tree species
 
 At the beginning of the simulations we determined balanced tree species
 composition of all 12 tree species pre-defined in the „Regeneration
 workshop protocol". It means that at the beginning each species was
 represented by the same volume, mean tree diameter, mean tree height,
 and age.
-
 
 ### Simulations
 
@@ -844,7 +895,6 @@ protocol". Hence, we simulated the pre-defined 200 sites with the model
 SIBYLA under current climate. The simulations were performed with the
 help of two software tools for automatised handling of multiple sites to
 speed up the process called DBCreator and Automat (Valent et al. 2018).
-
 
 #### Simulation area and site
 
@@ -953,7 +1003,7 @@ algorithms (Bugmann et al. 2019). For the current article the model was
 modify growth and mortality in dependence of the site conditions, and
 (5) extended from single to multi-species simulations.
 
-### Climate 
+### Climate
 
 ### Soil
 
@@ -1134,14 +1184,14 @@ where the canopy shadow is lower than their regeneration light demand
 
 Christian Hochauer, Manfred J. Lexer
 
-### Model summary 
+### Model summary
 
 *Please provide here the references to this model where it is possible
 to understand the model structure specially for the regeneration module,
 this could be a published paper, a website with the model description, a
 manual or some other document that the reader can access.*
 
-### Climate 
+### Climate
 
 We used the provided monthly climate data (monthly_era5_chelsa_200.csv).
 The provided solar radiation rsds was converted to MJ per m².
@@ -1172,14 +1222,12 @@ and size of potential parent trees.
 
 ### Simulations
 
-
 #### Simulation Area
 
 In PICUS the area is defined via the number of 10 m by 10 m patches. For
 this simulation we used an area of 12 by 12 patches resulting in an area
 of 1.44 ha. This size of the simulated forest provides relatively stable
 species composition & structure and reasonable simulation time.
-
 
 #### Seed dispersal
 
@@ -1226,7 +1274,7 @@ value.
 
 Werner Rammer Kristin Braziunas
 
-### Model summary 
+### Model summary
 
 *Please provide here the references to this model where it is possible
 to understand the model structure specially for the regeneration module,
@@ -1268,7 +1316,6 @@ duration of the simulation.
 
 ### Topography
 
-
 ### Tree species
 
 Tree composition is defined at the species level. All individually
@@ -1279,8 +1326,7 @@ species was not defined, we identified a representative species (Betula
 pendula for Betula spp. and Quercus robur for Quercus spp.). No other
 species were included in model simulations.
 
-
-### Simulations 
+### Simulations
 
 #### Simulation area
 
@@ -1365,17 +1411,16 @@ vapor pressure. Journal of Applied Meteorology 6:203--204.
 
 ## LandClim
 
-
 ### Authors
 
-### Model 
+### Model
 
 *Please provide here the references to this model where it is possible
 to understand the model structure specially for the regeneration module,
 this could be a published paper, a website with the model description, a
 manual or some other document that the reader can access.*
 
-### Climate 
+### Climate
 
 ### Soil
 
@@ -1387,8 +1432,6 @@ manual or some other document that the reader can access.*
 
 ### Outputs
 
-
-
 ## Landis II
 
 ### Authors
@@ -1397,184 +1440,480 @@ Josef Brůna, Paola Mairota, Marco Mina, Giorgio Vacchiano
 
 ### Model
 
-*Please provide here the references to this model where it is possible to understand the model structure specially for the regeneration module, this could be a published paper, a website with the model description, a manual or some other document that the reader can access.*
+*Please provide here the references to this model where it is possible
+to understand the model structure specially for the regeneration module,
+this could be a published paper, a website with the model description, a
+manual or some other document that the reader can access.*
 
-Landscape scale forest simulation model LANDIS-II (Scheller et al. 2007) with PnET-Succession extension (version 4.1). PnET-Succession is based on the Biomass Succession extension of Scheller and Mladenoff (2004), embedding elements of the PnET-II ecophysiology model of Aber et al. (1995) to mechanistically simulate growth as a competition for available light and water (De Bruijn et al. 2014). PnET-Succession simulates the competition among cohorts for water and light at a monthly time-step as a function of photosynthetic processes and maintenance respiration that are explicitly linked to environmental drivers such as temperature, precipitation, photosynthetic active radiation (PAR), and CO~2~ concentration. Regeneration depends on distance from a seed source, soil water, and subcanopy light, while competition is modeled by partitioning incoming light through multiple canopy layers. Growth of specific cohort biomass components is allocated in the following order: non structural carbon, first, then foliage then root and stem. Biomass growth decreases as cohorts approach their longevity age but mortality can occur at any time when carbon reserves production is insufficient to support growth due to shading, water competition, and/or drought (Gustafson et al. 2015), or by any disturbance or management extension used. For output, we selected Biomass Community Output Extension version 2.0.1, which generates output in the format: species age biomass (g / m^2^) at specified time steps.
+Landscape scale forest simulation model LANDIS-II (Scheller et al. 2007)
+with PnET-Succession extension (version 4.1). PnET-Succession is based
+on the Biomass Succession extension of Scheller and Mladenoff (2004),
+embedding elements of the PnET-II ecophysiology model of Aber et al.
+(1995) to mechanistically simulate growth as a competition for available
+light and water (De Bruijn et al. 2014). PnET-Succession simulates the
+competition among cohorts for water and light at a monthly time-step as
+a function of photosynthetic processes and maintenance respiration that
+are explicitly linked to environmental drivers such as temperature,
+precipitation, photosynthetic active radiation (PAR), and CO~2~
+concentration. Regeneration depends on distance from a seed source, soil
+water, and subcanopy light, while competition is modeled by partitioning
+incoming light through multiple canopy layers. Growth of specific cohort
+biomass components is allocated in the following order: non structural
+carbon, first, then foliage then root and stem. Biomass growth decreases
+as cohorts approach their longevity age but mortality can occur at any
+time when carbon reserves production is insufficient to support growth
+due to shading, water competition, and/or drought (Gustafson et al.
+2015), or by any disturbance or management extension used. For output,
+we selected Biomass Community Output Extension version 2.0.1, which
+generates output in the format: species age biomass (g / m^2^) at
+specified time steps.
 
 ### Climate
 
-Climate input was generated by randomly selecting entire years from the monthly data from the CHELSA dataset and collating them one after the other to create a 2000 years series. The sampling was repeated 10 times with different random order of years to create the 10 climate replicates. Selecting a year at a time eliminates inconsistent seasons (especially summer). We used monthly mean, minimum and maximum temperatures and precipitation as input for PnET succession extension. PnET-Succession also requires mean monthly values of PAR during daylight hours, which we calculated by dividing the monthly rsds data by the number of daylight seconds in each month for latitude 47 to get W/m2. We then multiplied this by 4.6 to get μmol/m^2^/s and multiplied by 0.5 to get PAR part of the spectrum, based on the approximation by Tsubo et al. (2005). Leap years were not considered. The PAR distribution across all sites and years is in range with values that are typical for temperate regions.
+Climate input was generated by randomly selecting entire years from the
+monthly data from the CHELSA dataset and collating them one after the
+other to create a 2000 years series. The sampling was repeated 10 times
+with different random order of years to create the 10 climate
+replicates. Selecting a year at a time eliminates inconsistent seasons
+(especially summer). We used monthly mean, minimum and maximum
+temperatures and precipitation as input for PnET succession extension.
+PnET-Succession also requires mean monthly values of PAR during daylight
+hours, which we calculated by dividing the monthly rsds data by the
+number of daylight seconds in each month for latitude 47 to get W/m2. We
+then multiplied this by 4.6 to get μmol/m^2^/s and multiplied by 0.5 to
+get PAR part of the spectrum, based on the approximation by Tsubo et al.
+(2005). Leap years were not considered. The PAR distribution across all
+sites and years is in range with values that are typical for temperate
+regions.
 
-CO~2~ concentration with yearly timestep was added from the concentrations table available from EEA (2019). For years 0-1750 CO~2~ concentration was maintained fixed to 278 ppm. As for the period 1750-1975 there was only one value each 5 years, we used a constant value for each 5-year period. CO~2~ concentration was added to the climate input file after randomization of temperature, precipitation and PAR (see above), so it reflects realistic values for the simulated years. Simulations were run from year 0 to 1990 but sampled outputs did not exceed year 1910. Thus, the drastic increase in CO~2~ concentration during the second half of the 1900s did not affect the delivered results.
+CO~2~ concentration with yearly timestep was added from the
+concentrations table available from EEA (2019). For years 0-1750 CO~2~
+concentration was maintained fixed to 278 ppm. As for the period
+1750-1975 there was only one value each 5 years, we used a constant
+value for each 5-year period. CO~2~ concentration was added to the
+climate input file after randomization of temperature, precipitation and
+PAR (see above), so it reflects realistic values for the simulated
+years. Simulations were run from year 0 to 1990 but sampled outputs did
+not exceed year 1910. Thus, the drastic increase in CO~2~ concentration
+during the second half of the 1900s did not affect the delivered
+results.
 
 ### Soil
 
-Soil type was set to LOAM at all sites. Rooting depth was calculated from soil quality codes (1-5, original values ranged from 1.13 to 4.87) multiplicated by 205. This produces a soil depth in the range 231 - 998 mm, that are within the typical range for PnET-Succession (maximum 1000 mm). A clear trend emerged - deeper soils resulted in higher biomass, although with some exceptions.
+Soil type was set to LOAM at all sites. Rooting depth was calculated
+from soil quality codes (1-5, original values ranged from 1.13 to 4.87)
+multiplicated by 205. This produces a soil depth in the range 231 - 998
+mm, that are within the typical range for PnET-Succession (maximum 1000
+mm). A clear trend emerged - deeper soils resulted in higher biomass,
+although with some exceptions.
 
 ### Topograhpy
 
-The ecoregion-specific parameter Precipitation Loss Fraction denotes the water lost to runoff induced by topographic slope. We estimated this parameter for each site from topo_data_200 dataset as slope \* 0.01 (e.g., 12% slope = 0.12 PrecLossFrac). We acknowledge that this is a simplification and that better parameterization would be possible if soil types were available for each site. Tests showed that sites with extreme slope tended to have lower biomass, but the signal was not that clear. The correlation between slope and elevation was 0.6 which could obscure the results.
+The ecoregion-specific parameter Precipitation Loss Fraction denotes the
+water lost to runoff induced by topographic slope. We estimated this
+parameter for each site from topo_data_200 dataset as slope \* 0.01
+(e.g., 12% slope = 0.12 PrecLossFrac). We acknowledge that this is a
+simplification and that better parameterization would be possible if
+soil types were available for each site. Tests showed that sites with
+extreme slope tended to have lower biomass, but the signal was not that
+clear. The correlation between slope and elevation was 0.6 which could
+obscure the results.
 
-Some sites at very high elevation had, correspondingly, very low temperature. At these sites, the model showed a visible trend in producing lower biomass (down to zero at a few sites). Yet this was probably not apparent in the regeneration results, as extremely low biomass could still support regeneration, even if cohorts do not live long, due to our modification of sexual maturity age.
+Some sites at very high elevation had, correspondingly, very low
+temperature. At these sites, the model showed a visible trend in
+producing lower biomass (down to zero at a few sites). Yet this was
+probably not apparent in the regeneration results, as extremely low
+biomass could still support regeneration, even if cohorts do not live
+long, due to our modification of sexual maturity age.
 
 ### Tree species
 
-As LANDIS-II cannot start from bare ground, initial communities were set to include all species defined in the protocol at all sites starting with 10-years old cohorts of the following species: fasy (*Fagus sylvatica*), pabi (*Picea abies*), abal (*Abies alba*), cabe (*Carpinus betulus*), tico (*Tilia cordata*), acps (*Acer pseudoplatanus*), betu (*Betula spp.*), frex (*Fraxinus excelsior*), quer (*Quercus spp.*), algl (*Alnus glutinosa*), pisy (*Pinus sylvestris*). The species-specific parameter denoting sexual maturity was set to 10 years equally for all species, so that seed source of all species is available from the onset of the simulations at all sites and to maintain seed in the ladscape pool. Vegetative regeneration (resprouting) was prevented, since this would have an effect on allometry and regeneration.
+As LANDIS-II cannot start from bare ground, initial communities were set
+to include all species defined in the protocol at all sites starting
+with 10-years old cohorts of the following species: fasy (*Fagus
+sylvatica*), pabi (*Picea abies*), abal (*Abies alba*), cabe (*Carpinus
+betulus*), tico (*Tilia cordata*), acps (*Acer pseudoplatanus*), betu
+(*Betula spp.*), frex (*Fraxinus excelsior*), quer (*Quercus spp.*),
+algl (*Alnus glutinosa*), pisy (*Pinus sylvestris*). The
+species-specific parameter denoting sexual maturity was set to 10 years
+equally for all species, so that seed source of all species is available
+from the onset of the simulations at all sites and to maintain seed in
+the ladscape pool. Vegetative regeneration (resprouting) was prevented,
+since this would have an effect on allometry and regeneration.
 
-Some species may be under or overrepresented because their occurrence in LANDIS-II simulations is typically due to small-scale disturbances or management which were not included in the simulations.
+Some species may be under or overrepresented because their occurrence in
+LANDIS-II simulations is typically due to small-scale disturbances or
+management which were not included in the simulations.
 
-The model requires two sets of parameters representing species-specific life traits. The first set is used by the LANDIS-II core module. The species-specific parameter denoting "longevity" and "sexual maturity" were the only parameters of this set considered in the current exercise. The "sexual maturity" was set to 10 years equally for all species, so that seed source of all species is available from the onset of the simulations at all sites and to maintain seed in the landscape pool. Vegetative regeneration (resprouting) was prevented since this would influence allometry and regeneration.
+The model requires two sets of parameters representing species-specific
+life traits. The first set is used by the LANDIS-II core module. The
+species-specific parameter denoting "longevity" and "sexual maturity"
+were the only parameters of this set considered in the current exercise.
+The "sexual maturity" was set to 10 years equally for all species, so
+that seed source of all species is available from the onset of the
+simulations at all sites and to maintain seed in the landscape pool.
+Vegetative regeneration (resprouting) was prevented since this would
+influence allometry and regeneration.
 
-The second set is used by the PnET-Succession extension and includes several ecophysiological parameters. For this second set we started with the values already applied in Petter et al. (2020) with a previous version of PnET. The values of some of the parameters to which PnET is most sensitive and/or for which the range of variation had been modified for PnET4.1 were then iteratively adjusted (individually and then in combination) to meet the requirements of PnET version 4.1 used in this exercise. The changes were implemented one by one in simulations with the exercise data and those leading to an output deemed realistic and to a relative stabilization of the biomass trend through the simulation were retained for the implementation of the full set of replicates. The retained changes include: 1) decreased percentage of foliar nitrogen for algl (*Alnus glutinosa*); 2) rescaling to the new ranges for all species of the values of the Halfsat and the FracBelowG. The first of these parameters represents shade tolerance and its value affects the probability of establishment of a species (Half saturation light level for photosynthesis.); the latter regulates allocation between above and below ground pool (Fraction of non-foliar biomass that is belowground (root pool)) ; 3) a slight decrease of the value of the parameter (Fracfol) affecting the yearly allocation to foliage of the active total woody biomass for the three conifers abal (*Abies alba*), piab (*Picea abies*), pisy (*Pinus sylvestris*).
+The second set is used by the PnET-Succession extension and includes
+several ecophysiological parameters. For this second set we started with
+the values already applied in Petter et al. (2020) with a previous
+version of PnET. The values of some of the parameters to which PnET is
+most sensitive and/or for which the range of variation had been modified
+for PnET4.1 were then iteratively adjusted (individually and then in
+combination) to meet the requirements of PnET version 4.1 used in this
+exercise. The changes were implemented one by one in simulations with
+the exercise data and those leading to an output deemed realistic and to
+a relative stabilization of the biomass trend through the simulation
+were retained for the implementation of the full set of replicates. The
+retained changes include: 1) decreased percentage of foliar nitrogen for
+algl (*Alnus glutinosa*); 2) rescaling to the new ranges for all species
+of the values of the Halfsat and the FracBelowG. The first of these
+parameters represents shade tolerance and its value affects the
+probability of establishment of a species (Half saturation light level
+for photosynthesis.); the latter regulates allocation between above and
+below ground pool (Fraction of non-foliar biomass that is belowground
+(root pool)) ; 3) a slight decrease of the value of the parameter
+(Fracfol) affecting the yearly allocation to foliage of the active total
+woody biomass for the three conifers abal (*Abies alba*), piab (*Picea
+abies*), pisy (*Pinus sylvestris*).
 
 ### Simulation
 
-Simulation area was defined as a rectangle of 10×20 dimension with sites (i.e., cells) of 1-ha. Each site is an individual ecoregion (i.e., one cell - as in our case - or group of cells sharing similar climate and soil conditions, as a way in LANDIS-II to define differences in biophysical conditions across landscapes) with specific values for soil quality, topography and climate, based on the data provided. The model runs with a yearly timestep using monthly climate. We started each model run with initial communities of all species at age 10 at all sites. Each run was simulated for 1980 years.
+Simulation area was defined as a rectangle of 10×20 dimension with sites
+(i.e., cells) of 1-ha. Each site is an individual ecoregion (i.e., one
+cell - as in our case - or group of cells sharing similar climate and
+soil conditions, as a way in LANDIS-II to define differences in
+biophysical conditions across landscapes) with specific values for soil
+quality, topography and climate, based on the data provided. The model
+runs with a yearly timestep using monthly climate. We started each model
+run with initial communities of all species at age 10 at all sites. Each
+run was simulated for 1980 years.
 
 #### Dispersal
 
-We have used the non-spatial seeding algorithm "universal dispersal" for all the model runs. This way, every species can seed any forest site in the landscape (across all the 200 sites). This mode does not take into account the spatial arrangement and contiguity of cells (i.e., no active seed dispersal), which is proper for the sake of the model comparison exercise. Yet in real landscape seed limitation can also play a role in species composition. The seed number is affected by species-specific age of maturity, which we have modified. This setting ensures an influx of seeds from outside consistent with the original settings.
+We have used the non-spatial seeding algorithm "universal dispersal" for
+all the model runs. This way, every species can seed any forest site in
+the landscape (across all the 200 sites). This mode does not take into
+account the spatial arrangement and contiguity of cells (i.e., no active
+seed dispersal), which is proper for the sake of the model comparison
+exercise. Yet in real landscape seed limitation can also play a role in
+species composition. The seed number is affected by species-specific age
+of maturity, which we have modified. This setting ensures an influx of
+seeds from outside consistent with the original settings.
 
 #### Sampling design
 
-We have sampled each site 20 times along the simulation run in two time windows starting 50 years after the first cycle following typical species longevity. After the year 700, biomass of most species was relatively stable and we sampled every 50 years, starting at 750 until the year 1200. The next sampling period started from 1450 and continued until 1900, i.e., after the next longevity peak, again every 50 years. At each selected sampling time, we extracted cohorts of each species according to the age related to the two DBH thresholds (7cm/10cm). Additionally, we extracted cohorts that were up to 9 years older than these thresholds, to get the expected results for a 10-year interval. For example, *Fagus sylvatica* reaches DBH 7cm at 17 years, therefore we have selected all cohorts with age 17-26.
+We have sampled each site 20 times along the simulation run in two time
+windows starting 50 years after the first cycle following typical
+species longevity. After the year 700, biomass of most species was
+relatively stable and we sampled every 50 years, starting at 750 until
+the year 1200. The next sampling period started from 1450 and continued
+until 1900, i.e., after the next longevity peak, again every 50 years.
+At each selected sampling time, we extracted cohorts of each species
+according to the age related to the two DBH thresholds (7cm/10cm).
+Additionally, we extracted cohorts that were up to 9 years older than
+these thresholds, to get the expected results for a 10-year interval.
+For example, *Fagus sylvatica* reaches DBH 7cm at 17 years, therefore we
+have selected all cohorts with age 17-26.
 
-To deliver more than one simulation per site, we created 10 replicates with different climate replicate and random number generator seed number to account for stochastic processes in PnET-Succession. This resulted in the expected 200 samples for each site.
+To deliver more than one simulation per site, we created 10 replicates
+with different climate replicate and random number generator seed number
+to account for stochastic processes in PnET-Succession. This resulted in
+the expected 200 samples for each site.
 
 ### Outputs
 
-*Please describe how have you calculated each of the variables in the output data.*
-
 Sample number code
 
-Number (1-200) was defined as sample in time + (replicate-1)\*20, with sample in time (1-20) according to the sample order. Replicate (1-10) combines random number and climate sequence. For example sample number 25 was taken from the climate replicate 2 and the fifth sample in time (year 950).
+Number (1-200) was defined as sample in time + (replicate-1)\*20, with
+sample in time (1-20) according to the sample order. Replicate (1-10)
+combines random number and climate sequence. For example sample number
+25 was taken from the climate replicate 2 and the fifth sample in time
+(year 950).
 
 r.trees
 
-As LANDIS-II outputs are expressed in terms of cohort age and mean biomass per site, we have calculated the mean DBH and biomass of each species based on age. We estimated the age when each species reaches 7 cm and 10 cm DBH and the number of individuals using allometric models from the Italian forest inventory collected in R package ForIT (Puletti et al. 2014), and unpublished data from the study by Mina et al. (2021). Please note that the equations used predict DBH \>0 already for a tree with age 1, this is because it is based on forestry data and tree cores. The real age when reaching 1.3 m height is species specific and we did not implement this offset. For each cohort, we divided the cohort biomass reported by LANDIS-II, recalculated to kg/ha by the mean biomass of a tree of the same species and age to obtain the number of trees of each species per site. We rounded all results up to the nearest integer to avoid any fraction of trees. The number of individuals was aggregated for all the cohorts of the age of reaching 7 cm or 10 cm DBH and all cohorts of the same species that were up to 9 years older. This approach does not reflect influence of site conditions or stand densities on Age-DBH and Age-Biomass. Relationships between age and DBH were derived by fitting asymptotic regressions using individual tree measurements from an ensemble of forest inventory plots distributed across south-eastern Canada (see Supporting information of Mina et al. 2021). This was the only public dataset for which we could relate tree age, derived from stem coring and tree ring analysis, to measured DBH. Although tree age measurements were obtained with a robust methodology, these functions do not disentangle the influence of site conditions or stand densities. Additionally, they reflect growing conditions of tree genera in Eastern North America.
+As LANDIS-II outputs are expressed in terms of cohort age and mean
+biomass per site, we have calculated the mean DBH and biomass of each
+species based on age. We estimated the age when each species reaches 7
+cm and 10 cm DBH and the number of individuals using allometric models
+from the Italian forest inventory collected in R package ForIT (Puletti
+et al. 2014), and unpublished data from the study by Mina et al. (2021).
+Please note that the equations used predict DBH \>0 already for a tree
+with age 1, this is because it is based on forestry data and tree cores.
+The real age when reaching 1.3 m height is species specific and we did
+not implement this offset. For each cohort, we divided the cohort
+biomass reported by LANDIS-II, recalculated to kg/ha by the mean biomass
+of a tree of the same species and age to obtain the number of trees of
+each species per site. We rounded all results up to the nearest integer
+to avoid any fraction of trees. The number of individuals was aggregated
+for all the cohorts of the age of reaching 7 cm or 10 cm DBH and all
+cohorts of the same species that were up to 9 years older. This approach
+does not reflect influence of site conditions or stand densities on
+Age-DBH and Age-Biomass. Relationships between age and DBH were derived
+by fitting asymptotic regressions using individual tree measurements
+from an ensemble of forest inventory plots distributed across
+south-eastern Canada (see Supporting information of Mina et al. 2021).
+This was the only public dataset for which we could relate tree age,
+derived from stem coring and tree ring analysis, to measured DBH.
+Although tree age measurements were obtained with a robust methodology,
+these functions do not disentangle the influence of site conditions or
+stand densities. Additionally, they reflect growing conditions of tree
+genera in Eastern North America.
 
-r.ba basal area of regeneration Calculated as a sum of r.ba of all the cohorts selected in r.trees using the following formula: DBH2 \* π/4 \* r.tree.
+r.ba basal area of regeneration Calculated as a sum of r.ba of all the
+cohorts selected in r.trees using the following formula: DBH2 \* π/4 \*
+r.tree.
 
-ba: total basal area We have not calculated this since our allometric equations do not cover older ages. Therefore, we produced the following two biomass variables as a surrogate. The basal area was later calculated as a sum of r.ba and estimated ba based on biomass. The estimation includes transformation of kg into tonnes / ha and expansion factor 12.5 to transform ba m^2^/ha.
+ba: total basal area We have not calculated this since our allometric
+equations do not cover older ages. Therefore, we produced the following
+two biomass variables as a surrogate. The basal area was later
+calculated as a sum of r.ba and estimated ba based on biomass. The
+estimation includes transformation of kg into tonnes / ha and expansion
+factor 12.5 to transform ba m^2^/ha.
 
-((( landis\$sum.bio - landis\$r.bio.sum )\* 0.001) / 12.5). This includes
+((( landis\$sum.bio - landis\$r.bio.sum )\* 0.001) / 12.5). This
+includes
 
 sum.bio\
-Biomass of all cohorts of the species on site including the regeneration and even younger regeneration (units kg/ha).
+Biomass of all cohorts of the species on site including the regeneration
+and even younger regeneration (units kg/ha).
 
-r.bio.sum Biomass of the regeneration cohorts corresponding to the r. ba and r.trees on site (units kg/ha).
+r.bio.sum Biomass of the regeneration cohorts corresponding to the r. ba
+and r.trees on site (units kg/ha).
 
-Please noticed that we included 0 values for species missing in a given sample and for samples in sites where Landis did not simulate any tree.
+Please noticed that we included 0 values for species missing in a given
+sample and for samples in sites where Landis did not simulate any tree.
 
 ### References
 
-Aber J. D. & Federer C. A. (1992). A generalized, lumped-parameter model of photosynthesis, evapotranspiration and net primary production in temperate and boreal forest ecosystems. Oecologia 92(4): 463-474.
+Aber J. D. & Federer C. A. (1992). A generalized, lumped-parameter model
+of photosynthesis, evapotranspiration and net primary production in
+temperate and boreal forest ecosystems. Oecologia 92(4): 463-474.
 
-Aber J.D., Ollinger S.V., Federer C.A., Reich P.B., Goulden M.L., Kicklighter D.W., Melillo J.M. & Lathrop R.G. Jr. (1995) Predicting the effects of climate change on water yield and forest production in the northeastern United States. Climate Research 5(3): 207--22.
+Aber J.D., Ollinger S.V., Federer C.A., Reich P.B., Goulden M.L.,
+Kicklighter D.W., Melillo J.M. & Lathrop R.G. Jr. (1995) Predicting the
+effects of climate change on water yield and forest production in the
+northeastern United States. Climate Research 5(3): 207--22.
 
-de Bruijn A., Gustafson E.J. , Sturtevant B.R., Foster J.R., Miranda B.R., Lichti N.I. & Jacobs D.F. (2014) Toward more robust projections of forest landscape dynamics under novel environmental conditions: Embedding PnET within LANDIS-II. Ecological Modelling (287): 44--57
+de Bruijn A., Gustafson E.J. , Sturtevant B.R., Foster J.R., Miranda
+B.R., Lichti N.I. & Jacobs D.F. (2014) Toward more robust projections of
+forest landscape dynamics under novel environmental conditions:
+Embedding PnET within LANDIS-II. Ecological Modelling (287): 44--57
 
-EEA (2019) Trends in atmospheric concentrations of CO2 (ppm), CH4 (ppb) and N2O (ppb), between 1800 and 2017 available at <https://www.eea.europa.eu/ds_resolveuid/217c026ca03649398aadf39d87623e57>
+EEA (2019) Trends in atmospheric concentrations of CO2 (ppm), CH4 (ppb)
+and N2O (ppb), between 1800 and 2017 available at
+<https://www.eea.europa.eu/ds_resolveuid/217c026ca03649398aadf39d87623e57>
 
-Gustafson, E. J., A. M. G. De Bruijn, R. E. Pangle, J.-M. Limousin, N. G. McDowell, W. T. Pockman, B. R. Sturtevant, J. D. Muss, and M. E. Kubiske. 2015. Integrating ecophysiology and forest landscape models to improve projections of drought effects under climate change. Global Change Biology 21:843-856.
+Gustafson, E. J., A. M. G. De Bruijn, R. E. Pangle, J.-M. Limousin, N.
+G. McDowell, W. T. Pockman, B. R. Sturtevant, J. D. Muss, and M. E.
+Kubiske. 2015. Integrating ecophysiology and forest landscape models to
+improve projections of drought effects under climate change. Global
+Change Biology 21:843-856.
 
-Mina, M., Messier, C., Duveneck, M., Fortin, M. J., & Aquilué, N. 2021. Network analysis can guide resilience-based management in forest landscapes under global change. Ecological Applications, 31(1), 1--18.
+Mina, M., Messier, C., Duveneck, M., Fortin, M. J., & Aquilué, N. 2021.
+Network analysis can guide resilience-based management in forest
+landscapes under global change. Ecological Applications, 31(1), 1--18.
 
-Petter G., Mairota P., Albrich K., Bebi P., Brůna J., Bugmann H., Haffenden A., Scheller R.M., Schmatz D.R., Seidl R., Speich M., Vacchiano G. & Lischke H. (2020) How robust are future projections of forest landscape dynamics? Insights from a systematic comparison of four forest landscape models. Environmental Modelling & Software 134: 104844. <https://doi.org/10.1016/j.envsoft.2020.104844>
+Petter G., Mairota P., Albrich K., Bebi P., Brůna J., Bugmann H.,
+Haffenden A., Scheller R.M., Schmatz D.R., Seidl R., Speich M.,
+Vacchiano G. & Lischke H. (2020) How robust are future projections of
+forest landscape dynamics? Insights from a systematic comparison of four
+forest landscape models. Environmental Modelling & Software 134: 104844.
+<https://doi.org/10.1016/j.envsoft.2020.104844>
 
-Puletti N., Mura M., Castaldi C., Marchi N., Chiavetta U. and Scotti R. (2014). ForIT: Functions from the 2nd Italian Forest Inventory (INFC). R package version 1.0. <https://CRAN.R-project.org/package=ForIT>
+Puletti N., Mura M., Castaldi C., Marchi N., Chiavetta U. and Scotti R.
+(2014). ForIT: Functions from the 2nd Italian Forest Inventory (INFC). R
+package version 1.0. <https://CRAN.R-project.org/package=ForIT>
 
-Scheller, R. M., Domingo J. B. , Sturtevant B. R. , Williams J. S. , Rudy A. , Gustafson E. J. & Mladenoff D. J. (2007) Design, development, and application of LANDIS-II, a spatial landscape simulation model with flexible temporal and spatial resolution. Ecological Modelling 201(3-4): 409--419. <https://doi.org/10.1016/j.ecolmodel.2006.10.009>
+Scheller, R. M., Domingo J. B. , Sturtevant B. R. , Williams J. S. ,
+Rudy A. , Gustafson E. J. & Mladenoff D. J. (2007) Design, development,
+and application of LANDIS-II, a spatial landscape simulation model with
+flexible temporal and spatial resolution. Ecological Modelling 201(3-4):
+409--419. <https://doi.org/10.1016/j.ecolmodel.2006.10.009>
 
-Tsubo M. & Walker S. (2005) Relationships between photosynthetically active radiation and clearness index at Bloemfontein, South Africa. Theoretical and Applied Climatology 80: 17--25. <https://doi.org/10.1007/s00704-004-0080-5>
+Tsubo M. & Walker S. (2005) Relationships between photosynthetically
+active radiation and clearness index at Bloemfontein, South Africa.
+Theoretical and Applied Climatology 80: 17--25.
+<https://doi.org/10.1007/s00704-004-0080-5>
 
 ## TreeMig
 
 ### Authors
-Heike Lischke 
 
-### Model 
+Heike Lischke
 
-The model TreeMig (see treemig.wsl.ch) was originally based on the ForClim model, then aggregated by a distribution based approach (Lischke et al. 1998), and extended to a forest landscape model by including seed production, seed dispersal, seed bank dynamics and seedling establishment (Lischke and Loffler 2006, Lischke et al. 2006).
+### Model
+
+The model TreeMig (see treemig.wsl.ch) was originally based on the
+ForClim model, then aggregated by a distribution based approach (Lischke
+et al. 1998), and extended to a forest landscape model by including seed
+production, seed dispersal, seed bank dynamics and seedling
+establishment (Lischke and Loffler 2006, Lischke et al. 2006).
 
 ### Climate
 
-As climatic input, the monthly time series of mean temperature and precipitation sum were used.  With these climatic variables and additional data about slope, aspect and soil field capacity, yearly time series of the following bioclimatic variables were calculated:  (1) DDSum, the yearly day degree sum above 5.5°C , (2) MinWiT, the lowest mean monthly temperature, (3) DrStr, drought stress according to a bucket model  that estimates a monthly PET following (Thornthwaite and Mather 1957), using temperature, latitude, slope and aspect as input,  and calculates the monthly soil water content  based on soil water content in the previous month, precipitation, interception, and field capacity (“bucketsize”)   (Bugmann 1994, Fischlin et al. 1995). Drought stress is then given by 1- the ratio between demand (PET-interception) and the supply, a function of the soil water content.
-To get climate data also for the spin-up, bioclimate was calculated from the monthly data   as given, and then extended by sampling from the given data from the end of the climate data to get 1000 years. The same sequence of sampling years was used in all simulations and sites. 
-
+As climatic input, the monthly time series of mean temperature and
+precipitation sum were used. With these climatic variables and
+additional data about slope, aspect and soil field capacity, yearly time
+series of the following bioclimatic variables were calculated: (1)
+DDSum, the yearly day degree sum above 5.5°C , (2) MinWiT, the lowest
+mean monthly temperature, (3) DrStr, drought stress according to a
+bucket model that estimates a monthly PET following (Thornthwaite and
+Mather 1957), using temperature, latitude, slope and aspect as input,
+and calculates the monthly soil water content based on soil water
+content in the previous month, precipitation, interception, and field
+capacity ("bucketsize") (Bugmann 1994, Fischlin et al. 1995). Drought
+stress is then given by 1- the ratio between demand (PET-interception)
+and the supply, a function of the soil water content. To get climate
+data also for the spin-up, bioclimate was calculated from the monthly
+data as given, and then extended by sampling from the given data from
+the end of the climate data to get 1000 years. The same sequence of
+sampling years was used in all simulations and sites.
 
 ### Soil
 
-The soil bucketsize (available water capacity of the upmost 1m soil layer) required for the drought stress calculation, was derived from the soil quality data set, by
-Bucketsize = 10 + (soil_quality-1) /4  * 25 , to covert the range from 10 cm to 35cm  
+The soil bucketsize (available water capacity of the upmost 1m soil
+layer) required for the drought stress calculation, was derived from the
+soil quality data set, by Bucketsize = 10 + (soil_quality-1) /4 \* 25 ,
+to covert the range from 10 cm to 35cm
 
-### Topography 
+### Topography
 
-Slope and aspect were taken from the topographic data set and converted to a common variable entering the PET calculation, by
-slasp= 2*cos(aspect *pi/180) *min(1, slope/60)
-
+Slope and aspect were taken from the topographic data set and converted
+to a common variable entering the PET calculation, by slasp=
+2*cos(aspect* pi/180) \*min(1, slope/60)
 
 ### Tree species
 
-Thirty Central European tree species were simulated, including the standard species of the project .  Only Betula pubescens was not simulated, because we did not have a parametrization for this species at hand. Species: Abies alba, Larix decidua, Picea abies, Pinus cembra, Pinus montana, Pinus sylvestris, Taxus baccata, Acer campestre, Acer platanoides, Acer pseudoplatanus, Alnus glutinosa, Alnus incana, Alnus viridis, Betula pendula, Carpinus betulus, Castanea sativa, Corylus avellana, Fagus sylvatica, Fraxinus excelsior, Populus nigra, Populus tremula, Quercus petraea, Quercus pubescens, Quercus robur, Salix alba, Sorbus aria, Sorbus aucuparia, Tilia cordata, Tilia platyphyllos, Ulmus glabra
+Thirty Central European tree species were simulated, including the
+standard species of the project . Only Betula pubescens was not
+simulated, because we did not have a parametrization for this species at
+hand. Species: Abies alba, Larix decidua, Picea abies, Pinus cembra,
+Pinus montana, Pinus sylvestris, Taxus baccata, Acer campestre, Acer
+platanoides, Acer pseudoplatanus, Alnus glutinosa, Alnus incana, Alnus
+viridis, Betula pendula, Carpinus betulus, Castanea sativa, Corylus
+avellana, Fagus sylvatica, Fraxinus excelsior, Populus nigra, Populus
+tremula, Quercus petraea, Quercus pubescens, Quercus robur, Salix alba,
+Sorbus aria, Sorbus aucuparia, Tilia cordata, Tilia platyphyllos, Ulmus
+glabra
 
-### Simulation 
+### Simulation
 
-The simulations were carried out on a grid of 15 x 15 cells, each with 200 m side length. 
+The simulations were carried out on a grid of 15 x 15 cells, each with
+200 m side length.
 
 #### Dispersal
 
-The seeds produced by the mother trees are transported from the source cell according to a double negative exponential, species specific that determines the share of the seeds in the source cell landing in a sink cell in a given distance to the source cell.  In the sink cells, the seeds enter the seed bank . At the start of the simulation for 10 years seeds of all species are available in all grid cells, from then on, the normal seed dispersal starts. 
+The seeds produced by the mother trees are transported from the source
+cell according to a double negative exponential, species specific that
+determines the share of the seeds in the source cell landing in a sink
+cell in a given distance to the source cell. In the sink cells, the
+seeds enter the seed bank . At the start of the simulation for 10 years
+seeds of all species are available in all grid cells, from then on, the
+normal seed dispersal starts.
 
 #### Regeneration processes
 
-TreeMig simulates the full feedback from seed production to ingrowth. Some of the involved processes depend on environment.
-(1) Overall seed production in TreeMig is described by multiplying a species specific seed production per tree that depends on tree size and thus indirectly on the growth, which depends on DDsum, drought stress, nutrients and light and the adult tree number that depends on survival  that depends on DDsum, drought stress, nutrients and light.
-(2) Seed dispersal is independent of environment. 
-(3) Seed bank dynamics – also environment independent -   is given by seed input, seed mortality, and germination.  Additionally, the number of seeds S of a species in the seed bank of this species (SB) is limited to a carrying capacity C of 1000, by           
-SB = C + (SB - C) * Exp(-S/C).  
-(4) Germination and seedling survival depend on browsing, drought, winter temperature, DDSum and light. 
-(5) The saplings up to 1.37 die and grow like adult trees, depending on DDsum, drought stress and light. Only the parameter value of the light dependence differs from that of the adult trees.  
-The regeneration processes were simulated annually in the order 1. germination, 2. germinated seeds leave the seed bank, 3. mortality of seeds in the seed bank, 4. seed entry by seed dispersal. The ingrowth numbers were very sensitive to this order. Simulations with another sequence, in which the seeds in the seed bank died first and then  the  remaining ones germinated,  resulted in about half the ingrowth.
-
+TreeMig simulates the full feedback from seed production to ingrowth.
+Some of the involved processes depend on environment. (1) Overall seed
+production in TreeMig is described by multiplying a species specific
+seed production per tree that depends on tree size and thus indirectly
+on the growth, which depends on DDsum, drought stress, nutrients and
+light and the adult tree number that depends on survival that depends on
+DDsum, drought stress, nutrients and light. (2) Seed dispersal is
+independent of environment. (3) Seed bank dynamics -- also environment
+independent - is given by seed input, seed mortality, and germination.
+Additionally, the number of seeds S of a species in the seed bank of
+this species (SB) is limited to a carrying capacity C of 1000, by\
+SB = C + (SB - C) \* Exp(-S/C).\
+(4) Germination and seedling survival depend on browsing, drought,
+winter temperature, DDSum and light. (5) The saplings up to 1.37 die and
+grow like adult trees, depending on DDsum, drought stress and light.
+Only the parameter value of the light dependence differs from that of
+the adult trees.\
+The regeneration processes were simulated annually in the order 1.
+germination, 2. germinated seeds leave the seed bank, 3. mortality of
+seeds in the seed bank, 4. seed entry by seed dispersal. The ingrowth
+numbers were very sensitive to this order. Simulations with another
+sequence, in which the seeds in the seed bank died first and then the
+remaining ones germinated, resulted in about half the ingrowth.
 
 #### Simulation length
 
-The simulations were started on bare ground and run for 1000 years, when at all sites the equilibrium was reached.
-    
+The simulations were started on bare ground and run for 1000 years, when
+at all sites the equilibrium was reached.
 
 #### More simulations per site
 
-TreeMig simulates directly the mean dynamics of entire stands, but based on the  variability of light conditions within the stand   [distribution based approach, \Lischke, 1998, aggregation. To come up with the required 200 random patches of 1 ha, temporal and spatial variability intrinsic to TreeMig were combined.  Temporal variability was given by sampling from each decade of the last 100 years of the simulation, i.e. years 900-1000. For each of theses 10 decades, 20 grid cells were sampled from the simulated grid, reflecting spatial variability, results from demographic stochasticity and short-range spatial interactions 
+TreeMig simulates directly the mean dynamics of entire stands, but based
+on the variability of light conditions within the stand [distribution
+based approach, Lischke, 1998, aggregation. To come up with the required
+200 random patches of 1 ha, temporal and spatial variability intrinsic
+to TreeMig were combined. Temporal variability was given by sampling
+from each decade of the last 100 years of the simulation, i.e. years
+900-1000. For each of theses 10 decades, 20 grid cells were sampled from
+the simulated grid, reflecting spatial variability, results from
+demographic stochasticity and short-range spatial interactions
 
 ### Outputs
 
-In contrast to gap models, TreeMig is based on the concept of frequency distributions of tree densities classes in different tree heights on ca. 1/12 ha (833m^2) patches, and the resulting frequency distributions in discrete light. During the simulation, in each height class the frequencies of the different light classes were recorded, as well as the ingrowth of each species in the height-light class. By sampling 12 times from the height-light class ingrowths according to the height-light class frequency distribution and summing up, the stochastic ingrowths into all TreeMig height classes for one ha were calculated for each grid cell.  Then the height class boundaries were translated into DBH and the ingrowths into the height classes linearly interpolated to 7cm and 10cm. 
-The ingrowth basal areas into the height classes were obtained by multiplying the interpolated ingrowth numbers with the basal areas at  7cm and 10cm, i.e. r.trees * Pi*  (0.07/2)2  and r.trees * Pi*  (0.1/2)2 .
-The species specific basal area (at 1.37m) sums are a standard output of TreeMig, given by multiplying the state variables (number of trees per grid cell, height class, and species) with  the species specific basal area of each height class. 
-To account for the ingrown trees dying within a decade, as an approximation the survival in each year to the power of 5 was used. Thereby, it was assumed that the trees have to survive in average 5 years in each decade, and that the current mortality is valid for these 5 years. 
+In contrast to gap models, TreeMig is based on the concept of frequency
+distributions of tree densities classes in different tree heights on ca.
+1/12 ha (833m\^2) patches, and the resulting frequency distributions in
+discrete light. During the simulation, in each height class the
+frequencies of the different light classes were recorded, as well as the
+ingrowth of each species in the height-light class. By sampling 12 times
+from the height-light class ingrowths according to the height-light
+class frequency distribution and summing up, the stochastic ingrowths
+into all TreeMig height classes for one ha were calculated for each grid
+cell. Then the height class boundaries were translated into DBH and the
+ingrowths into the height classes linearly interpolated to 7cm and 10cm.
+The ingrowth basal areas into the height classes were obtained by
+multiplying the interpolated ingrowth numbers with the basal areas at
+7cm and 10cm, i.e. r.trees \* Pi\* (0.07/2)2 and r.trees \* Pi\*
+(0.1/2)2 . The species specific basal area (at 1.37m) sums are a
+standard output of TreeMig, given by multiplying the state variables
+(number of trees per grid cell, height class, and species) with the
+species specific basal area of each height class. To account for the
+ingrown trees dying within a decade, as an approximation the survival in
+each year to the power of 5 was used. Thereby, it was assumed that the
+trees have to survive in average 5 years in each decade, and that the
+current mortality is valid for these 5 years.
 
-### References 
+### References
 
-•	Bugmann, H. 1994. On the ecology of mountainous forests in a changing climate: A simulation study. Dissertation. Swiss Federal Institute of Technology, Zurich.
-•	Fischlin, A., H. Bugmann, and D. Gyalistras. 1995. Sensitivity of a forest ecosystem model to climate parametrization schemes. Env. Poll. 87:267-282.
-•	Lischke, H., and T. J. Loffler. 2006. Intra-specific density dependence is required to maintain species diversity in spatio-temporal forest simulations with reproduction. Ecological Modelling 198:341-361.
-•	Lischke, H., T. J. Loffler, and A. Fischlin. 1998. Aggregation of individual trees and patches in forest succession models: Capturing variability with height structured, random, spatial distributions. Theor Popul Biol 54:213-226.
-•	Lischke, H., N. E. Zimmermann, J. Bolliger, S. Rickebusch, and T. J. Loffler. 2006. TreeMig: A forest-landscape model for simulating spatio-temporal patterns from stand to landscape scale. Ecological Modelling 199:409-420.
-•	Thornthwaite, C. W., and J. R. Mather. 1957. The water balance. Publications in Climatology VIII:1-69.
-
+• Bugmann, H. 1994. On the ecology of mountainous forests in a changing
+climate: A simulation study. Dissertation. Swiss Federal Institute of
+Technology, Zurich. • Fischlin, A., H. Bugmann, and D. Gyalistras. 1995.
+Sensitivity of a forest ecosystem model to climate parametrization
+schemes. Env. Poll. 87:267-282. • Lischke, H., and T. J. Loffler. 2006.
+Intra-specific density dependence is required to maintain species
+diversity in spatio-temporal forest simulations with reproduction.
+Ecological Modelling 198:341-361. • Lischke, H., T. J. Loffler, and A.
+Fischlin. 1998. Aggregation of individual trees and patches in forest
+succession models: Capturing variability with height structured, random,
+spatial distributions. Theor Popul Biol 54:213-226. • Lischke, H., N. E.
+Zimmermann, J. Bolliger, S. Rickebusch, and T. J. Loffler. 2006.
+TreeMig: A forest-landscape model for simulating spatio-temporal
+patterns from stand to landscape scale. Ecological Modelling
+199:409-420. • Thornthwaite, C. W., and J. R. Mather. 1957. The water
+balance. Publications in Climatology VIII:1-69.
 
 ## LPJ-GUESS
 
 ### Authors
 
-### Model 
+Jessica Hetzer, Thoms Hickler, Tim Anders
 
+### Model
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+The model was originally developed by Ben Smith of Lund University in a
+collaboration also involving the Potsdam Institute for Climate Impact
+Research and the Max-Planck Institute for Biogeochemistry. Over the
+years, many people from institutes around the world have contributed to
+the refinement and further development of the model.
 
 We used the process-based mechanistic model LPJ-GUESS to simulate
 vegetation dynamics considering tree species, age cohorts, gap dynamics
@@ -1582,136 +1921,127 @@ and biogeochemical cycles. Parameters of the model reflect an updated
 version of the most common European tree species as well as typical
 shrub PFTs as described by Hickler et al. (2012). A detailed description
 of LPJ-GUESS is available in Smith et al. 2001 and Smith et al. 2014.
+Source code is available on demand (see
+<https://web.nateko.lu.se/lpj-guess/>).
 
 ### Climate
 
-What climate data have you used, and how have you created your model
-climate input parameters? We used the provided daily time series of
-climatic variables from 1981 to 2018. The climatic variables base on the
-CHELSA data set with a spatial resolution of 0.008° x 0.008° (\~ 1 km)
-(Karger et al., 2021). Daily average temperature (tas) [°C], daily
-average maximum temperature (tasmax) [°C], daily average minimum
-temperature (tasmin) [°C], precipitation sum (pr) [mm] and surface solar
-(shortwave) radiation (rsds) were taken to set up the LPJ-GUESS
-simulation. Used climatic variables were converted to netCDF files. As
-LPJ-GUESS requires the climatic variables in specific units, temperature
-variables (tas, tasmax, tasmin) [°C] were converted to Kelvin and
-surface solar radiation (rsds) [J/m2] was converted to W/m2 by dividing
-rsds by 86400 s (3600 s/h \* 24 h). Nitrogen deposition was considered
-to be constant at a level of 10 kgN/ha/year. Atmospheric carbon dioxide
-concentration data from 1900 to 2018 was taken from the global carbon
-project (Quéré et al. 2018). We used the same default LPJ-GUESS soil
-code for a medium textured soil type (LPJ-GUESS soil class 2) for each
-grid cell (Sitch et al. 2003).
+We used the provided daily time series of climatic variables from 1981
+to 2018. The climatic variables base on the CHELSA data set with a
+spatial resolution of 0.008° x 0.008° (\~ 1 km) (Karger et al., 2021).
+Daily average temperature (tas) [°C], daily average maximum temperature
+(tasmax) [°C], daily average minimum temperature (tasmin) [°C],
+precipitation sum (pr) [mm] and surface solar (shortwave) radiation
+(rsds) were taken to set up the LPJ-GUESS simulation. Used climatic
+variables were converted to netCDF files. As LPJ-GUESS requires the
+climatic variables in specific units, temperature variables (tas,
+tasmax, tasmin) [°C] were converted to Kelvin and surface solar
+radiation (rsds) [J/m2] was converted to W/m2 by dividing rsds by 86400
+s (3600 s/h \* 24 h). Nitrogen deposition was considered to be constant
+at a level of 10 kgN/ha/year. Atmospheric carbon dioxide concentration
+data from 1900 to 2018 was taken from the global carbon project (Quéré
+et al. 2018).
 
 ### Soil
 
+All sites We used were simulated withdefault values for a medium
+textured soil type (sand: 0.35, clay: 0.15, silt: 0.5) in LPJ-GUESS.
+
 ### Topography
 
+Topography was not considered.
 
 ### Tree species
 
-How have you defined the species composition in your model simulation?
-(e.g., species levels, PFTs, etc.)? Please describe the species
-categories used. LPJ-GUESS can be run in different modes, with different
-levels of abstraction of the population and community processes. For
-this study, the more detailed 'cohort' mode was used, in which
-individuals, patches and vertical canopy structure are represented
-explicitly, but living individuals within a cohort (age class) of a
-given tree species in a given patch are assumed to be identical (in
-terms of all state variables, such as height and stem diameter).
-Simulations consider the main tree species as well as other PFTs
-yielding an appropriate representation of European vegetation, including
-only tree and shrub species that are widely distributed across Europe
-and can become dominant in some areas (Hickler et al., 2012).
-Mediterranean rain-green small shrubs with shallow roots (e.g. Lavendula
-spp., Rosmarinus spp.) and alpine/arctic shrubs (e.g. Vaccinium spp.)
-were represented as PFTs in the model. As in earlier applications of
-LPJ-GUESS, herbaceous vegetation was represented by two 'generic herb'
-PFTs, with C3 and C4 photosynthesis, respectively. The final set
-included 16 tree species, one Mediterranean shrub PFT, one boreal/alpine
-shrub PFT, and the two herbaceous PFTs described earlier (Table 2). Acer
+LPJ-GUESS can be run in different modes, with different levels of
+abstraction of the population and community processes. For this study,
+the more detailed 'cohort' mode was used, in which individuals, patches
+and vertical canopy structure are represented explicitly, but living
+individuals within a cohort (age class) of a given tree species in a
+given patch are assumed to be identical (in terms of all state
+variables, such as height and stem diameter). Simulations consider the
+main tree species as well as other PFTs yielding an appropriate
+representation of European vegetation, including only tree and shrub
+species that are widely distributed across Europe and can become
+dominant in some areas (Hickler et al., 2012). Mediterranean rain-green
+small shrubs with shallow roots (e.g. Lavendula spp., Rosmarinus spp.)
+and alpine/arctic shrubs (e.g. Vaccinium spp.) were represented as PFTs
+in the model. As in earlier applications of LPJ-GUESS, herbaceous
+vegetation was represented by two 'generic herb' PFTs, with C3 and C4
+photosynthesis, respectively. The final set included 16 tree species,
+one Mediterranean shrub PFT, one boreal/alpine shrub PFT, and the two
+herbaceous PFTs described earlier (Table 2). To increase the chances of
+shade-intolerant species becoming established, patch-destroying
+disturbances were allowed as described in Hickler et al. 2012. Acer
 pseudoplatanus and Alnus glutinosa are not parameterized in LPJ-GUESS
-and therefore we did not simulate these species.
+and therefore not considered.we did not simulate these species.
 
-### Simulation 
+### Simulation
 
-How have you defined the simulation area for your model (e.g., size and
-other relevant site aspects)? In this study, vegetation is simulated in
-so called patches that represent forest areas of fixed size. Patches can
-be regarded as sample stands in a grid cell, each of which represents an
-0.1 ha (comparable to figure 1 of the tree regeneration workshop
-protocol). In this study, vegetation dynamics were simulated by 2000
-replicate patches each 0.1 ha in size. To match the required sample
-size, we processed the data so that ten 0.1 ha patches were merged to
-one 1 ha sample.
+In this study, vegetation is simulated in so called patches that
+represent forest areas of fixed size. Patches can be regarded as sample
+stands in a grid cell, each of which represents an 0.1 ha (comparable to
+figure 1 of the tree regeneration workshop protocol). In this study,
+vegetation dynamics were simulated by 2000 replicate patches each 0.1 ha
+in size. To match the required sample size, we processed the data so
+that ten 0.1 ha patches were merged to one 1 ha sample.
 
 #### Dispersal
 
-What are the relevant aspects of the dispersal (if any) and seed input
-parameters in your model? Model formulations of establishment are based
-on those employed within the 'forest gap' model FORSKA (Leemans &
-Prentice, 1989; Prentice et al., 1993). The number of new saplings of
-each woody PFT/species and in each patch each year is drawn at random
-from the Poisson distribution, with an expectation influenced by a
-PFT/species-specific maximum establishment rate and by the 'propagule
-pool', i.e. the amount of carbon allocated to reproduction by all
-individuals of the PFT/species at all patches in the previous year. No
-saplings are established in a given patch if the minimum PAR level at
-the forest floor is below a PFT/species-specific threshold, which is
-higher for more light-demanding PFTs/species.
+Model formulations of establishment are based on those employed within
+the 'forest gap' model FORSKA (Leemans & Prentice, 1989; Prentice et
+al., 1993). The number of new saplings of each woody PFT/species and in
+each patch each year is drawn at random from the Poisson distribution,
+with an expectation influenced by a PFT/species-specific maximum
+establishment rate and by the 'propagule pool', i.e. the amount of
+carbon allocated to reproduction by all individuals of the PFT/species
+at all patches in the previous year. No saplings are established in a
+given patch if the minimum PAR level at the forest floor is below a
+PFT/species-specific threshold, which is higher for more light-demanding
+PFTs/species.
 
 Table 1: Parameter settings associated with vegetation establishment.
-Parameter Description Parameter setting in this study ifbgestab Whether
-background establishment enabled (0,1) 1 ifsme Whether spatial mass
-effect enabled for establishment (0,1) 1 ifstochmort Whether stochastic
-mortality is enabled (0,1) 1 ifstochestab Whether stochastic
-establishment is enabled (0,1) 1 ifdroughtlimitedestab Whether
-establishment is limited by growing season drought (0,1) 1 tcmin_est Min
-20-year coldest month mean temp for establishment (deg C) PFT/species
-specific (see table 2 and 3) tcmax_est Max 20-year coldest month mean
-temp for establishment (deg C) PFT/species specific (see table 2 and 3)
-twmin_est Min warmest month mean temp for establishment (deg C)
-PFT/species specific (see table 2 and 3) twminusc Continentality
-parameter for boreal summer-green trees 0 gdd5min_est Min GDD on 5 deg C
-base for establishment PFT/species specific (see table 2 and 3) est_max
-Max sapling establishment rate (indiv/m2/year) PFT/species specific (see
-table 2 and 3) gdd0_min min GDD0 for survival/establishment reestab Pft
-reestablishment ("NONE", "RESTRICTED" or "ALL") ALL
+
+![](images/image-1265081375.png)
 
 #### Simulation length
 
 What is the simulation length, and how have you determined the
-simulation time until the equilibrium? The simulations were initialized
-from bare ground (no biomass) and the model was spun up for 500 years
-until the modelled vegetation was in approximate equilibrium with the
-climate and CO2 around the year 1900 (Smith et al., 2001; Hickler et
-al., 2012).
+simulation time until the equilibrium?
+
+The simulations were initialized from bare ground (no biomass) and the
+model was spun up for 500 years until the modelled vegetation was in
+approximate equilibrium with the climate and CO2 around the year 1900
+(Smith et al., 2001; Hickler et al., 2012).
 
 If you have run more than one simulation per site, please describe the
 differences of the approaches used. We performed one simulation per
 site.
 
-### Output v
+### Output
 
 Please describe how have you calculated each of the variables in the
-output data. The generated output file is called
-Output_SGN_LPJGUESS.txt. Each row of the output dataset contains
-variables regarding the decade 2008-2018. The first two columns describe
-the study site (column "site", values reflect site ID) and the 1 ha
-samples of that specific site (column "sample", values range from 1 to
-200). Output variables are species-specific. Although we simulated a
-total of 20 European tree species and PFTs, our output file considers
-only the species required by the protocol (column "species", values are
-the abbreviations for the species name ("abal" for Abies alba, "cabe"
-for Carpinus betulus, "fasy" for Fagus sylvatica, "frex" for Fraxinus
-excelsior, "pabi" for Picea abies, "pisy" for Pinus sylvestris , "tico"
-for Tilia cordata , "betu_pen" for Betula pendula, "betu_pen" for Betula
-pubescens, "quer_coc" for Quercus coccifera, "quer_il" for Quercus ilex,
-"quer_pub" for Quercus pubescens, and "quer_rob" for Quercus robur).
-Since Acer pseudoplatanus ("acps") and Alnus glutinosa ("algl") are not
-parameterized for LPJ-GUESS so far, we have not included these species
-in the output. The first variable is the number of 7 cm recruits
+output data.
+
+The generated output file is called Output_SGN_LPJGUESS.txt. Each row of
+the output dataset contains variables regarding the decade 2008-2018.
+The first two columns describe the study site (column "site", values
+reflect site ID) and the 1 ha samples of that specific site (column
+"sample", values range from 1 to 200). Output variables are
+species-specific. Although we simulated a total of 20 European tree
+species and PFTs, our output file considers only the species required by
+the protocol (column "species", values are the abbreviations for the
+species name ("abal" for Abies alba, "cabe" for Carpinus betulus, "fasy"
+for Fagus sylvatica, "frex" for Fraxinus excelsior, "pabi" for Picea
+abies, "pisy" for Pinus sylvestris , "tico" for Tilia cordata ,
+"betu_pen" for Betula pendula, "betu_pen" for Betula pubescens,
+"quer_il" for Quercus ilex, "quer_pub" for Quercus pubescens, and
+"quer_rob" for Quercus robur). Since Acer pseudoplatanus ("acps") and
+Alnus glutinosa ("algl") are not parameterized for LPJ-GUESS so far, we
+have not included these species in the output. Further we excluded
+shrubs (alpine/arctic shrubs and Quercus coccifera) and herbaceous
+vegetation from the final output as this study focusses on tree
+regeneration only. The first variable is the number of 7 cm recruits
 "r_7cm.trees" calculated as the sum of all trees of the same species
 that cross the threshold of 7 cm DHB between 2008 and 2018 in that
 specific sample of that specific site. The variable "r_10cm.trees"
@@ -1733,11 +2063,9 @@ above 5 °C for establishment, fAWC minimum growing-season fraction of
 available soil water holding capacity in the first soil layer, rfire
 fraction of individuals surviving fire, kla:sa leaf longevity, CAmax
 maximum woody crown area. Parameter that are associated with
-establishment processes are marked in bold.
+establishment processes are marked in bold. Species/PFT
 
-  Table 3: Parameters associated with different shade tolerance classes
-(updates compared to Hickler et al. 2012). Parameter that are associated
-with establishment processes are marked in bold.
+![](images/image-2144349832.png)
 
 ### References
 
@@ -1758,11 +2086,6 @@ Quéré, C., Andrew, R. M., Friedlingstein, P., Sitch, S., Hauck, J.,
 Pongratz, J., ... & Zheng, B. (2018). Global carbon budget 2018. Earth
 System Science Data.
 
-Sitch, S., Smith, B., Prentice, I. C., Arneth, A., Bondeau, A., Cramer,
-W., ... & Venevsky, S. (2003). Evaluation of ecosystem dynamics, plant
-geography and terrestrial carbon cycling in the LPJ dynamic global
-vegetation model. Global change biology, 9(2), 161-185.
-
 Smith, B. (2001). LPJ-GUESS-an ecosystem modelling framework. Department
 of Physical Geography and Ecosystems Analysis, INES, Sölvegatan, 12,
 22362.
@@ -1776,78 +2099,180 @@ vegetation model. Biogeosciences, 11(7), 2027-2054.
 
 ### Authors
 
-Simon Scheiter
-Senckenberg Biodiversity and Climate Research Centre, Senckenberganlage 25, 60325 Frankfurt am Main, Germany
+Simon Scheiter Senckenberg Biodiversity and Climate Research Centre,
+Senckenberganlage 25, 60325 Frankfurt am Main, Germany
 
-### Model 
+### Model
 
-We used aDGVM2, an individual-based dynamic vegetation model that is based on concepts from community assembly theory and uses a functional trait approach (Langan et al., 2017; Scheiter et al., 2013). The model simulates growth, reproduction, and mortality of individual plants while keeping track of state variables, such as biomass, height, and leaf area. Each plant in aDGVM2 is characterized by a plant-specific set of trait values. Traits describe growth form, leaf characteristics, hydraulic characteristics, resource allocation, architecture, reproduction, mortality, and response to disturbance. Most plant traits are linked by trade-offs to constrain possible trait combinations. Selection and trait inheritance assemble plant communities that are adapted to biotic and abiotic conditions. Plants with trait combinations that allow sufficient growth and reproduction rates, and that allow plants to cope with competition and disturbances can contribute their trait values to the community trait pool. Trait mutation and recombination may alter trait values in the community trait pool. Randomly drawn seeds from the trait pool are added to the plant population and new plants start growing from seeds. Plants that are not adapted to the prevailing disturbance regimes, biotic and abiotic conditions, or that do not allocate enough carbon to reproduction disappear from the population. Therefore, successful ecological strategies emerge dynamically from these community assembly and reproduction process. Due to the trait-based approach, species or plant functional types (PFTs) are not pre-defined and hard-coded in aDGVM2. Rather, different PFTs or ecological strategies that are adjusted to the prevailing biotic and abiotic conditions emerge from community assembly processes (Scheiter et al., 2013), and plants can be classified into PFTs or ecological strategies based on their trait values in a post-processing step. 
-The aDGVM2 has primarily been developed for tropical and sub-tropical ecosystems and it has not been tested and benchmarked for Europe. We applied the model in the original version. Data-model comparisons with model results were not done and the model was not changed to improve agreement with any data for Europe.
+We used aDGVM2, an individual-based dynamic vegetation model that is
+based on concepts from community assembly theory and uses a functional
+trait approach (Langan et al., 2017; Scheiter et al., 2013). The model
+simulates growth, reproduction, and mortality of individual plants while
+keeping track of state variables, such as biomass, height, and leaf
+area. Each plant in aDGVM2 is characterized by a plant-specific set of
+trait values. Traits describe growth form, leaf characteristics,
+hydraulic characteristics, resource allocation, architecture,
+reproduction, mortality, and response to disturbance. Most plant traits
+are linked by trade-offs to constrain possible trait combinations.
+Selection and trait inheritance assemble plant communities that are
+adapted to biotic and abiotic conditions. Plants with trait combinations
+that allow sufficient growth and reproduction rates, and that allow
+plants to cope with competition and disturbances can contribute their
+trait values to the community trait pool. Trait mutation and
+recombination may alter trait values in the community trait pool.
+Randomly drawn seeds from the trait pool are added to the plant
+population and new plants start growing from seeds. Plants that are not
+adapted to the prevailing disturbance regimes, biotic and abiotic
+conditions, or that do not allocate enough carbon to reproduction
+disappear from the population. Therefore, successful ecological
+strategies emerge dynamically from these community assembly and
+reproduction process. Due to the trait-based approach, species or plant
+functional types (PFTs) are not pre-defined and hard-coded in aDGVM2.
+Rather, different PFTs or ecological strategies that are adjusted to the
+prevailing biotic and abiotic conditions emerge from community assembly
+processes (Scheiter et al., 2013), and plants can be classified into
+PFTs or ecological strategies based on their trait values in a
+post-processing step. The aDGVM2 has primarily been developed for
+tropical and sub-tropical ecosystems and it has not been tested and
+benchmarked for Europe. We applied the model in the original version.
+Data-model comparisons with model results were not done and the model
+was not changed to improve agreement with any data for Europe.
 
-### Climate 
+### Climate
 
-The aDGVM2 simulates vegetation at daily temporal resolution. We therefore used daily climate input data for the period 1981-2018 according to the modeling protocol. 
+The aDGVM2 simulates vegetation at daily temporal resolution. We
+therefore used daily climate input data for the period 1981-2018
+according to the modeling protocol.
 
 ### Soil
 
-Soil quality data was converted to maximum rooting depth. Specifically, the soil quality value multiplied by 2 and the result was used as maximum rooting depth. We used the multiplication, as we typically use maximum soil depth and maximum rooting depth of 10m. Previous model simulations showed that rooting depth and soil dept have strong impacts on vegetation dynamics by influencing water availability to plants (Langan et al., 2017). We therefore considered it as adequate representation of soil quality. Other soil characteristics including volumetric water-holding capacity, soil hydraulic conductivity, soil bulk density, soil depth, soil texture, soil carbon content, soil wilting point and field capacity were taken from the FAO (http://www.fao.org, Nachtergaele et al., 2009).
+Soil quality data was converted to maximum rooting depth. Specifically,
+the soil quality value multiplied by 2 and the result was used as
+maximum rooting depth. We used the multiplication, as we typically use
+maximum soil depth and maximum rooting depth of 10m. Previous model
+simulations showed that rooting depth and soil dept have strong impacts
+on vegetation dynamics by influencing water availability to plants
+(Langan et al., 2017). We therefore considered it as adequate
+representation of soil quality. Other soil characteristics including
+volumetric water-holding capacity, soil hydraulic conductivity, soil
+bulk density, soil depth, soil texture, soil carbon content, soil
+wilting point and field capacity were taken from the FAO
+(<http://www.fao.org>, Nachtergaele et al., 2009).
 
 ### Topography
 
-We used elevation according to the modeling protocol. In aDGVM2, elevation is used to calculate atmospheric pressure which in turn influences ecophysiological processes related to water and carbon fluxes at leaf and canopy level. Information on slope and aspect was not used, as related processes (e.g., impacts on runoff or radiation balance) are not implemented in aDGVM2.
+We used elevation according to the modeling protocol. In aDGVM2,
+elevation is used to calculate atmospheric pressure which in turn
+influences ecophysiological processes related to water and carbon fluxes
+at leaf and canopy level. Information on slope and aspect was not used,
+as related processes (e.g., impacts on runoff or radiation balance) are
+not implemented in aDGVM2.
 
 ### Tree species
 
-The aDGVM2 does not simulate pre-defined species or PFTs. The 11 tree species included in the modeling protocol cannot be implemented and parametrized with reasonable effort. We therefore classified simulated trees into different ecological strategies as a post-processing step. We used all combinations of evergreen/deciduous, light/water triggered phenology, low/high SLA. Evergreen/deciduous phenology and light/water triggered phenology are traits implemented in aDGVM2. The threshold to distinguish high and low SLA was defined as 20 m2/kg. We used these traits as previous simulation experiments showed that patterns of these traits emerge along environmental gradients while patterns of other traits implemented in aDGVM2 are often less clear. Ecological strategies considered are: low SLA, deciduous, rain-triggered; low SLA, deciduous, light-triggered; low SLA, evergreen, rain-triggered; low SLA, evergreen, light-triggered; high SLA, deciduous, rain-triggered; high SLA, deciduous, light-triggered; high SLA, evergreen, rain-triggered; high SLA, evergreen, light-triggered.
+The aDGVM2 does not simulate pre-defined species or PFTs. The 11 tree
+species included in the modeling protocol cannot be implemented and
+parametrized with reasonable effort. We therefore classified simulated
+trees into different ecological strategies as a post-processing step. We
+used all combinations of evergreen/deciduous, light/water triggered
+phenology, low/high SLA. Evergreen/deciduous phenology and light/water
+triggered phenology are traits implemented in aDGVM2. The threshold to
+distinguish high and low SLA was defined as 20 m2/kg. We used these
+traits as previous simulation experiments showed that patterns of these
+traits emerge along environmental gradients while patterns of other
+traits implemented in aDGVM2 are often less clear. Ecological strategies
+considered are: low SLA, deciduous, rain-triggered; low SLA, deciduous,
+light-triggered; low SLA, evergreen, rain-triggered; low SLA, evergreen,
+light-triggered; high SLA, deciduous, rain-triggered; high SLA,
+deciduous, light-triggered; high SLA, evergreen, rain-triggered; high
+SLA, evergreen, light-triggered.
 
 ### Simulations
 
-Simulations followed the modeling protocol. Simulations were conducted for all sites using the provided daily climate and soil data. By default, aDGVM2 simulates 1ha stands. To implement the modeling protocol, adjustments to scale model results to 1 ha level were therefore not required. The model was initialized by default initialization routines, i.e., traits of individual plants were drawn randomly from a pre-defined range of values for each trait. Ranges of trait values are provided in Langan et al. (2017). The model was initialized with bare ground and 2880 tree seedlings with 100g each. The aDGVM2 simulates both trees and grasses. As the simulation experiment aims at tree/forest regeneration, simulations were conducted only with trees while grasses were removed.
+Simulations followed the modeling protocol. Simulations were conducted
+for all sites using the provided daily climate and soil data. By
+default, aDGVM2 simulates 1ha stands. To implement the modeling
+protocol, adjustments to scale model results to 1 ha level were
+therefore not required. The model was initialized by default
+initialization routines, i.e., traits of individual plants were drawn
+randomly from a pre-defined range of values for each trait. Ranges of
+trait values are provided in Langan et al. (2017). The model was
+initialized with bare ground and 2880 tree seedlings with 100g each. The
+aDGVM2 simulates both trees and grasses. As the simulation experiment
+aims at tree/forest regeneration, simulations were conducted only with
+trees while grasses were removed.
 
-We conducted 5 replicates for each of the 200 sites to account for stochastic processes in aDGVM2. Stochastic processes include random initialization of trait values of initial plant populations, demographic processes such as plant mortality or selection of seeds from seed bank, or the community assembly processes including mutation and cross-over. Climate time series used for different replicates were identical such that variation between replicates can be attributed by stochastic processes in aDGVM2.
+We conducted 5 replicates for each of the 200 sites to account for
+stochastic processes in aDGVM2. Stochastic processes include random
+initialization of trait values of initial plant populations, demographic
+processes such as plant mortality or selection of seeds from seed bank,
+or the community assembly processes including mutation and cross-over.
+Climate time series used for different replicates were identical such
+that variation between replicates can be attributed by stochastic
+processes in aDGVM2.
 
-Although aDGVM2 includes routines to simulate fire, simulations were conducted in the absence of fire. Management was not simulated.
+Although aDGVM2 includes routines to simulate fire, simulations were
+conducted in the absence of fire. Management was not simulated.
 
-### Dispersal 
+### Dispersal
+
 The aDGVM2 does not simulate seed dispersal.
 
 ### Simulation length
 
-We first conducted a 600-year spin-up with a randomized order of years 1981-2018 provided in the CHELSA daily climate data. Spin-up is required to ensure that both state variables such as biomass and tree cover and community trait composition have stabilized and are in a dynamic equilibrium with climate. Previous model simulations showed that a 600-year spin-up is sufficient to reach such an equilibrium state (Langan et al., 2017). Following the spin-up, we simulated transient vegetation dynamics with daily CHELSA climate data for the period 1981-2018.
+We first conducted a 600-year spin-up with a randomized order of years
+1981-2018 provided in the CHELSA daily climate data. Spin-up is required
+to ensure that both state variables such as biomass and tree cover and
+community trait composition have stabilized and are in a dynamic
+equilibrium with climate. Previous model simulations showed that a
+600-year spin-up is sufficient to reach such an equilibrium state
+(Langan et al., 2017). Following the spin-up, we simulated transient
+vegetation dynamics with daily CHELSA climate data for the period
+1981-2018.
 
 ### Outputs
 
-To create output variables, we randomly selected 10-year periods within the transient phase (i.e., period 1981-2018 after spin-up phase) and calculated averages of all required output variables following the modeling protocol. The selected 10-year periods differed between sites and replicates.
+To create output variables, we randomly selected 10-year periods within
+the transient phase (i.e., period 1981-2018 after spin-up phase) and
+calculated averages of all required output variables following the
+modeling protocol. The selected 10-year periods differed between sites
+and replicates.
 
-The aDGVM2 does not simulate pre-defined species or PFTs and trees were classified into different ecological strategies (see section Tree species). Codes for the ecological strategies in the species column of the output files are:
-1 - low SLA, deciduous, rain-triggered
-2 - low SLA, deciduous, light-triggered
-3 - low SLA, evergreen, rain-triggered
-4 - low SLA, evergreen, light-triggered
-5 - high SLA, deciduous, rain-triggered
-6 - high SLA, deciduous, light-triggered
-7 - high SLA, evergreen, rain-triggered
-8 - high SLA, evergreen, light-triggered
+The aDGVM2 does not simulate pre-defined species or PFTs and trees were
+classified into different ecological strategies (see section Tree
+species). Codes for the ecological strategies in the species column of
+the output files are: 1 - low SLA, deciduous, rain-triggered 2 - low
+SLA, deciduous, light-triggered 3 - low SLA, evergreen, rain-triggered
+4 - low SLA, evergreen, light-triggered 5 - high SLA, deciduous,
+rain-triggered 6 - high SLA, deciduous, light-triggered 7 - high SLA,
+evergreen, rain-triggered 8 - high SLA, evergreen, light-triggered
 
-Simulations were conducted for all 200 sites. We conducted 5 replicates per site to account for stochastic processes in aDGVM. In the output files, replicates are given as follows: 
-Replicate 1 – sample 1:200
-Replicate 2 – sample 201:400
-Replicate 3 – sample 401:600
-Replicate 4 – sample 601:800
-Replicate 5 – sample 801:1000
+Simulations were conducted for all 200 sites. We conducted 5 replicates
+per site to account for stochastic processes in aDGVM. In the output
+files, replicates are given as follows: Replicate 1 -- sample 1:200
+Replicate 2 -- sample 201:400 Replicate 3 -- sample 401:600 Replicate 4
+-- sample 601:800 Replicate 5 -- sample 801:1000
 
 ### References
 
-Langan L; Higgins SI; Scheiter S (2017) Climate-biomes, pedo-biomes or pyro-biomes: which world view explains the tropical forest - savanna boundary in South America? JOURNAL OF BIOGEOGRAPHY, 44, 2319-2330.
+Langan L; Higgins SI; Scheiter S (2017) Climate-biomes, pedo-biomes or
+pyro-biomes: which world view explains the tropical forest - savanna
+boundary in South America? JOURNAL OF BIOGEOGRAPHY, 44, 2319-2330.
 
-Nachtergaele, F., van Velthuizen, H., Verelst, L., Batjes, N., Dijk- shoorn, K., Van Engelen, V., Fischer, G., Jones, A., Montanarella, L., and Petri, M.: Harmonized world soil database (version 1.1), FAO, Rome, Italy, IIASA, Laxenburg, Austria, 2009. 
+Nachtergaele, F., van Velthuizen, H., Verelst, L., Batjes, N., Dijk-
+shoorn, K., Van Engelen, V., Fischer, G., Jones, A., Montanarella, L.,
+and Petri, M.: Harmonized world soil database (version 1.1), FAO, Rome,
+Italy, IIASA, Laxenburg, Austria, 2009.
 
-Scheiter S, Langan L, Higgins SI (2013) Next generation dynamic global vegetation models: learning from community ecology. NEW PHYTOLOGIST, 198, 957-969.
+Scheiter S, Langan L, Higgins SI (2013) Next generation dynamic global
+vegetation models: learning from community ecology. NEW PHYTOLOGIST,
+198, 957-969.
 
+```{=tex}
 \newpage
 \beginsupplement
-
-#  Supplementary Material 3: Supplementary figures and tables
+```
+# Supplementary Material 3: Supplementary figures and tables
 
 ## Recruitment levels
 
@@ -1874,7 +2299,9 @@ kable(zeroInflated,  format = "latex", caption = "Number of total samples, sampl
 
 ## Model complexity
 
-Summary of the linear model of the overestimation proportions versus the mean complexity value on the establishment module.
+Summary of the linear model of the overestimation proportions versus the
+mean complexity value on the establishment module.
+
 ```{r tableComp, echo=FALSE,  message=FALSE, render = 'normal_print'}
 library(knitr)
 
@@ -1882,8 +2309,6 @@ tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
 jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
 
 ```
-
-
 
 ## Recruitment species composition
 
@@ -1897,7 +2322,6 @@ kable(sigDiff,  format = "latex", caption = "Test of the significance of the dif
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-
 ```{r sigH7_Obs, echo=FALSE,  message=FALSE}
 library(knitr)
 
@@ -1908,7 +2332,6 @@ kable(sigDiff7,  format = "latex", caption = "Test of the significance of the di
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-
 ```{r sigH10_Obs, echo=FALSE,  message=FALSE}
 library(knitr)
 
@@ -1918,9 +2341,6 @@ kable(sigDiff10,  format = "latex", caption = "Test of the significance of the d
         #kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
-
-
-
 
 ```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site for the recruitment  and at the stand level both for observed and simulated values. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
@@ -1954,7 +2374,6 @@ kable(sigDiff,  format = "latex", caption = "Test of the significance of the dif
 kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-
 ```{r mortality12 , echo=FALSE, fig.cap="Interquartile range of the ratio between 7 and 10cm recruitment and the overestimation proportion (sim-obs/obs) for the mean recruitment trees per model across sites and samples", out.width='70%'}
 knitr::include_graphics(here::here("figures", "mort7_10_iqrOver.png"))
 ```
@@ -1977,9 +2396,3 @@ knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
 ```{r mortalityDiv3 , echo=FALSE, fig.cap=" Shannon index mean value across samples per site and in BA difference between 10 and 7 cm ", out.width='70%'}
 knitr::include_graphics(here::here("figures", "H710.png"))
 ```
-
-
-
-
-
-
