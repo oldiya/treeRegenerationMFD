@@ -478,10 +478,10 @@ knitr::include_graphics(here::here("figures", "theMap.png"))
 The simulation results were analyzed regarding the ingrowth levels
 (i.e., ingrowth number per unit time and space), species composition of
 the ingrowth, and ingrowth mortality. The observed data were modeled
-using a Generalized Additive Model (GAM) with a negative binomial
-distribution to better understand the trend and levels of the observed
-ingrowth, relative to the simulation results per model. To avoid
-overfitting we used the restricted maximum likelihood
+using a Generalized Additive Model [@wood2011] with a negative binomial
+distribution and restricted maximum likelihood to better understand the
+trend and levels of the observed ingrowth, relative to the simulation
+results per model.
 
 Ingrowth levels were evaluated along three key environmental gradients,
 i.e., stand basal area (the basal area of all the trees in each sample)
@@ -493,13 +493,13 @@ mean across the 200 samples per site.
 
 We evaluated the species composition across models and in relation to
 the observed data by calculating the Shannon index based on the relative
-frequency of the species in terms of basal area. The higher the value of
-the index, the higher the species diversity at a particular site and
+proportion of the species in terms of basal area. The higher the value
+of the index, the higher the species diversity at a particular site and
 sample (Equation \ref{eqpiShannon}).
 
 ```{=tex}
 \begin{equation}
-H_n = - \sum_{i = 1}^{s}{p_{i}ln(p_{n,i})}\label{eqpiShannon}
+H_n = - \sum_{i = 1}^{s}{p_{n,i}ln(p_{n,i})}\label{eqpiShannon}
 \end{equation}
 ```
 ```{=tex}
