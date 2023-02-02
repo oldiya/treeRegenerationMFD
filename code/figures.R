@@ -17,7 +17,7 @@
 
     # Number of trees in the observed data 
     obsNum <- outputsDF[outputsDF$model == "Observed", ]
-    round( sum(obsNum$r.trees, na.rm = TRUE), 0)
+    round(sum(obsNum$r.trees, na.rm = TRUE), 0)
     
     obsNumAgg <- obsNum |> 
                    dplyr::group_by(site, sample) |>
@@ -307,12 +307,13 @@
     # Prepare Observed GAM model data for all the plots
     max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
     min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed",]
+    empModel <- envTrend[envTrend$model == "Observed", ]
     fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
                         family = mgcv::nb())
     new_dat <- data.frame(
-      Totba = seq(min_TotbaEMP, max_TotbaEMP, length.out = 10 * bins),
+      Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
       fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    
     new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
     
     pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
@@ -328,6 +329,7 @@
       
       axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
                                          "aDGVM2"), "s", "n")
+      
       dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
       boxplot(r.trees ~ ba_cut, 
               data = dataSel, 
@@ -338,9 +340,16 @@
               xaxt = axisPlot,
               col = values_color[modelSel],
               frame = F)
+      
       means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
       points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
       box(bty = "l")
+      
+      linesData <- data.frame(TotBA = new_dat$fct_name, 
+                              r.trees = invLink(pred.sim$fit),
+                              UP = invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+                              DOWN = invLink(pred.sim$fit - pred.sim$se.fit * 1.96))
+      #[11:79]
       lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
       lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
             lty = 2, col = "red")
