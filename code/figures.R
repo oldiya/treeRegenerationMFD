@@ -43,8 +43,8 @@
     
     ## Recruitment Shannon index  by basal area ----
     ShannonDF <- outputsDF 
-    ShannonDF$giDIVG <- ShannonDF$r.ba / ShannonDF$Totba
-    ShannonDF$lngiDIVG <- log(ShannonDF$r.ba / ShannonDF$Totba)
+    ShannonDF$giDIVG <- ShannonDF$r.ba / ShannonDF$Totr.ba
+    ShannonDF$lngiDIVG <- log(ShannonDF$r.ba / ShannonDF$Totr.ba)
     ShannonDF$mult <- round(ShannonDF$giDIVG * ShannonDF$lngiDIVG, 2)
     
     # Sum across species in each observation
