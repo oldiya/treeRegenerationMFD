@@ -583,7 +583,7 @@
                                           alpha = dbh)) + 
         ggplot2::scale_x_discrete(labels = labels) +
         ggplot2::geom_boxplot(notch = F) +
-        ggplot2::ylim(c(0,0.3)) +
+        #ggplot2::ylim(c(0, 0.3)) +
         ggplot2::xlab(label = "") +
         ggplot2::ylab(label = bquote(bar(H) * " recruitment")) +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
@@ -640,7 +640,7 @@
     
     ####  Figs. H7 per model -----
     
-    dat <- ShannonIndex[ShannonIndex$dbh == "7",]
+    dat <- ShannonIndex[ShannonIndex$dbh == "7", ]
     dat <- dat |>  dplyr::group_by(model, site) |> 
         dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
     
@@ -649,7 +649,7 @@
                                        x = model, 
                                        fill = model)) + 
         ggplot2::geom_boxplot(notch = F) +
-        ggplot2::ylim(c(0,0.3)) +
+        #ggplot2::ylim(c(0,0.3)) +
         ggplot2::xlab(label = "") +
         ggplot2::ylab(label = "H (7cm)") +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
@@ -677,7 +677,7 @@
                                         x = model, 
                                         fill = model)) + 
         ggplot2::geom_boxplot(notch = F) +
-        ggplot2::ylim(c(0,0.3)) +
+        #ggplot2::ylim(c(0,0.3)) +
         ggplot2::xlab(label = "") +
         ggplot2::ylab(label = "H (7cm)") +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
@@ -722,7 +722,7 @@
                                          x = model, 
                                          fill = model)) + 
         ggplot2::geom_boxplot(notch = F) +
-        ggplot2::ylim(c(-0.15, 0.15)) +
+        #ggplot2::ylim(c(-0.5, 0.5)) +
         ggplot2::xlab(label = "") +
         ggplot2::ylab(label = "H10 - H7") +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
@@ -754,7 +754,7 @@
                                               y = H710, 
                                               color = model)) +
         ggplot2::geom_point(alpha = .2) +
-        ggplot2::xlim(c(0, 0.4)) +
+        #ggplot2::xlim(c(0, 0.4)) +
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
                        strip.text.y = ggplot2::element_text(angle = 0),
                        panel.background = ggplot2::element_blank(), 
@@ -882,7 +882,7 @@
                        strip.background =  ggplot2::element_blank(),
                        axis.line = ggplot2::element_line(colour = "black"),
                        legend.position = "right") +
-        ggplot2::coord_cartesian(xlim = c(0, 0.65), ylim = c(0, 0.65)) +  
+        #ggplot2::coord_cartesian(xlim = c(0, 0.65), ylim = c(0, 0.65)) +  
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " recruitment")) +
         ggplot2::facet_wrap(~model) +
@@ -918,7 +918,7 @@
         ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::geom_point(size = 0.1, alpha = 0.3 ) + 
         hrbrthemes::theme_ipsum() +
-        ggplot2::theme(legend.title= ggplot2::element_blank()) +
+        ggplot2::theme(legend.title = ggplot2::element_blank()) +
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
         ggplot2::ggtitle("7 cm recruitment") +
@@ -1066,7 +1066,7 @@
     
     # Data preparation
   
-  for (dbhSel in c(7, 10)){
+  for (dbhSel in c(7, 10)) {
     dbhSel <- dbhSel
     simResdbh <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
     #simResdbh <- outputsDF 
@@ -1199,7 +1199,7 @@
   }
 
     
-# Mortality 7 -10 -----
+# Mortality 7-10 -----
     
   ### Fig. R ratio 7/10 ----
     
