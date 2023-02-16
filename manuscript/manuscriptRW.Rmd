@@ -224,6 +224,22 @@ across environmental gradients? 2) Are they matching the initial species
 composition of the tree ingrowth layer? And 3), do they correctly
 represent the mortality in tree establishment?
 
+NEW
+
+1) Are models of forest dynamics capturing accurately tree ingrowth
+levels, initial tree diversity and mortality in tree establishment?
+
+2) Species specific recruitment values in ennvironmental gradients?
+
+3) Are the models traits linked to the tree establishment values?
+
+environmental gradients?
+
+2) Are they matching the initial species composition of the tree
+ingrowth layer? And
+
+3), do they correctly represent the mortality in tree establishment?
+
 # Material and methods
 
 ## Models
