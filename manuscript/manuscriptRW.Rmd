@@ -481,9 +481,10 @@ long-term simulations without management, due to misrepresentations in
 density-dependent mortality processes in long-term simulations and
 assumptions of tree geometry that lead to unrealistic single tree
 dimensions of very old individuals. LPJ-GUESS had 2% of the sample
-outputs as grasslands that were considered in the data as zero stand
-basal area and zero ingrowth for all the tree species simulated and one
-site was not simulated.
+outputs without tree establishment and were considered in the data as
+zero stand basal area and zero ingrowth for all the tree species
+simulated and one site produced grasslands and was not included in the
+results.
 
 ```{r map, echo=FALSE, fig.cap="The 200 sites of the EuFoRIa network that were used in the present study, showing the dominant tree species per site in the observed ingrowth at the 10 cm threshold.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "theMap.png"))
