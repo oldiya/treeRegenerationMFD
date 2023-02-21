@@ -2378,10 +2378,6 @@ kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 knitr::include_graphics(here::here("figures", "mort7_10_iqrOver.png"))
 ```
 
-```{r mortality22 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions. The cloud point per models shows the differences across sites, the shape point cloud per model shows if the models take into account regeneration density when applying mortality to regeneration ", out.width='70%'}
-knitr::include_graphics(here::here("figures", "mort7_10.png"))
-```
-
 ```{r tableModels, echo=FALSE,  message=FALSE}
 library(knitr)
 
