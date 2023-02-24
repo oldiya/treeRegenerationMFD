@@ -875,20 +875,25 @@ investigated here is problematic particularly if the models are to be
 used under novel conditions such as under climate change [e.g.,
 @huber2021] or in a decision support context [e.g., @thrippleton2021].
 
-In spite of this criticism, it is remarkable that most models were not
-overly off with respect to simulated ingrowth levels -- after all, few
-if any of the models' establishment routines are sufficiently
+## Model formulation did not affect model performance
+
+ADD THESE POINTS HERE complexity, empirical v. PB, etc.
+
+In spite of this criticism, it is remarkable that most models did not
+exceedingly deviate from respect to simulated ingrowth levels -- after
+all, few if any of the models' establishment routines are sufficiently
 constrained by data, with the exception of the empirical models xComp
 and SIBYLA. It is noteworthy that in spite of their empirical basis,
-both models were off relative to empirical ingrowth levels, in similar
+both models did not match empirical ingrowth levels, in similar
 magnitude as the other models and even in opposite directions (SIBYLA:
 underestimation; xComp: overestimation). It appears that using empirical
-data of limited geographical scope, as done in either of these models,
-leads to extrapolation problems already under current climatic
-conditions. For the other models, whose establishment module is not
-strongly constrained by empirical data, the degrees of freedom that are
-available for modeling ingrowth [@konig_tree_2022] could have implied
-that model performance would be much worse.
+data of limited geographical scope and constrained to managed forests,
+as done in either of these models, leads to extrapolation problems
+already under current climatic conditions. For the other models, whose
+establishment module is not strongly constrained by empirical data, the
+degrees of freedom that are available for modeling ingrowth
+[@konig_tree_2022] could have implied that model performance would be
+much worse.
 
 Ingrowth levels define the structure and composition of future forests,
 but it is equally important to correctly identify areas where ingrowth
@@ -901,25 +906,26 @@ EuFoRIa dataset, but some of the models did not produce zeros at all, or
 featured a very low proportion of zero data. This substantial difference
 may be due to the fact that the simulation results were drawn from
 equilibrium forests, whereas in reality many of the forest reserves are
-recovering from past management activities and have become denser and
-darker over the past decades [e.g., @heiri2009], leading to less
-ingrowth than in an equilibrium situation.
+recovering from past management activities and have become denser over
+the past decades [e.g., @heiri2009], leading to less ingrowth than in an
+equilibrium situation.
 
 Competition for light as a strong filter for tree establishment has been
-documented widely [@messier1999; @collet2006; @berdanier2016]. However,
-it is difficult to measure light availability at large spatial and
-temporal scales. We used total stand basal area as a proxy for light
-availability [cf. @schmid2021]. We found pronounced differences in the
-stand basal area ranges simulated by the models, but also between the
-models and the observations. This made it impossible to evaluate the
-establishment for the extremes of the density ranges in some models. For
-example, ingrowth rates at low stand densities are relevant to assess
-how well forests are recovering e.g., after gap creation due to
-disturbance [@seidl2022; @grubb1977]. At the level of the simulated
-one-hectare samples, average basal area is typically not very low as
-long as no larger disturbances occur, which was explicitly excluded in
-our simulation protocol. Towards the other end of the spectrum, i.e.,
-with increasing basal area, it would be reasonable to expect that with
+widely documented [@messier1999; @collet2006; @berdanier2016], but
+models did not reproduce this expectation. However, it is difficult to
+measure light availability at large spatial and temporal scales. We used
+total stand basal area as a proxy for light availability [cf.
+@schmid2021]. We found pronounced differences in the stand basal area
+ranges simulated by the models, but also between the models and the
+observations. This made not possible to evaluate the establishment for
+the extremes of the stand density ranges in some models. For example,
+ingrowth rates at low stand densities are relevant to assess how well
+forests are recovering e.g., after gap creation due to disturbance
+[@seidl2022; @grubb1977]. At the level of the simulated one-hectare
+samples, average basal area is typically not very low as long as no
+larger disturbances occur, which was explicitly excluded in our
+simulation protocol. Towards the other end of the spectrum, i.e., with
+increasing basal area, it would be reasonable to expect that with
 increasing stand basal area, the ingrowth of the different species would
 become sparser and drop out entirely under low-light conditions
 [@klopcic2012; @zell2019]. However, few models showed this trend, thus
@@ -935,22 +941,23 @@ its sensitivity to drought or resilience to disturbances [@redmond2015;
 levels were well within the observed range for two thirds of the models
 (10 out of 15). Thus, while most of the models are facing difficulties
 to quantitatively match ingrowth levels (cf. above), their performance
-is much better when it comes to matching the quality, i.e., the
-composition of ingrowth as a function of abiotic and biotic conditions.
-
-Yet, there were pronounced variations how the main tree species were
-represented along the environmental gradients. Most models maintained or
+is much better when it comes to matching the composition of ingrowth as
+a function of abiotic and biotic conditions. Most models maintained or
 even increased ingrowth diversity between the 7 and 10 cm thresholds,
 and the same is visible from the empirical data, but the differences are
 not significant. Diversity variations may be explained by the way the
-individual models are considering establishment processes
-[@konig_tree_2022], e.g., in the absence of adults, ingrowth can be
-linked to either seed rain-dispersal, or to a seed/seedling bank. The
+individual models consider establishment processes [@konig_tree_2022],
+e.g., in the absence of adults, ingrowth can be linked to either seed
+rain-dispersal, or to a seed/seedling bank.
+
+Yet, there were pronounced variations how the main tree species were
+represented along the environmental gradients, in particular the
+dominant species Abies alba, Fagus sylvatica and Picea abies. The
 ingrowth rates were sampled from simulations in the equilibrium, and in
 this state it is expected that non-climax species such as *Pinus
 sylvestris* or *Quercus* would be of minor importance, or absent
-entirely [@klopcic2015]. Most models captured this difference, which is
-also found in the empirical data. Thus, although the broad patterns are
+[@klopcic2015]. Most models captured this low abundance, which is also
+found in the empirical data. Thus, although the broad patterns are
 matched by many models, improvements in the quantification of the
 regeneration niche of the species are needed, but this cannot be done in
 the absence of robust datasets.
@@ -961,117 +968,131 @@ overpredicted stand-level diversity. Defining ingrowth composition as
 being proportional to adult abundance, regardless of productivity, might
 be a simple and conservative assumption to safely maintain relative
 species abundances [@hanbury-brown2022], although this may be
-simplistic. Furthermore, based on the simulation results there is no
+simplistic. Furthermore, based on the simulation results, there is no
 evidence that models with feedback captured better the ingrowth species
 diversity than those without feedback. The similar performance of models
-with and without feedback is likely because the models are giving more
-weight to the regeneration niche arising abiotic and biotic filters than
+with and without feedback is likely because the models put more weight
+to the regeneration niche arising from abiotic and biotic filters, than
 from the habitat niche of the adult trees [@grubb1977].
 
 ## Ingrowth mortality
 
-There are several factors that lead to mortality in establishment such
-as competition [@casper1997] in addition to multiple abiotic factors
-[@schmid2021; @cunningham2006]. As mentioned above, it is reasonable to
-expect that models that overestimate ingrowth of small trees will have a
-particularly high mortality between the 7 and 10 cm thresholds. However,
-this was not consistently evident from the simulations. This implies
-that these models must have the excess of mortality in earlier or later
-stages, if we assume that all models would be able to capture the
-structure and composition of adult stands along the EuFoRIa gradient,
-which however was not tested here.
+There are several factors that lead to mortality during the
+establishment phase such as competition [@casper1997] and multiple
+abiotic factors [@schmid2021; @cunningham2006]. As mentioned above, it
+is reasonable to expect that models that overestimate ingrowth of small
+trees will already have a particularly high mortality between the 7 and
+10 cm thresholds. However, this was not consistently evident from the
+simulations. This implies that these models must have the excess of
+mortality in earlier or later stages, if we assume that all models would
+be able to capture the structure and composition of adult stands along
+the EuFoRIa gradient, which however was not directly tested here.
 
-Higher mortality towards the adult stage has important implications for
+Higher mortality towards the adult phase has important implications for
 forest dynamics and the goods and services provided by forests. On the
 one hand, mortality in later stages may erroneously enhance the share of
-less shade tolerant species in the models [@klopcic2015], therefore
-shifting the species composition. Unrealistic high stem densities for a
-longer period of time may overestimate the role of tree regrowth in
-carbon sink dynamics [@pugh2019]. Given our set of simulations and
-analyses, we cannot conclusively assess what is going on in the models,
-and further studies are required that focus on a wider range of tree
-sizes and the fate of tree establishment along such a size continuum.
+less shade tolerant species in the models [@klopcic2015], if available,
+therefore shifting the species composition. Unrealistic high stem
+densities for a longer period of time may overestimate the role of tree
+regrowth in carbon sink dynamics [@pugh2019]. Given our set of
+simulations and analyses, we cannot conclusively assess what is
+happening in the models, and further studies are required that focus on
+a wider range of tree sizes and the fate of tree establishment along
+such a size continuum.
 
 ## Methodological considerations
 
-The EuFoRIa data as used in this study is unique and highly suited to
-better understand tree establishment. However, three aspects of this
+The EuFoRIa data as used in this study are unique and well suited to
+better understand tree establishment. However, three aspects of these
 data may also represent considerable limitations. First, we made a
-comparison of tree ingrowth in a posited equilibrium state, but we
-cannot assess how close the empirical data were to such a state. The
-data were collected in forest reserves where no management has taken
-place for long periods of time. This makes our assumption of an
-equilibrium between forest properties and environmental drivers less
-haphazard than it might appear at first sight. However, it may explain
-why simulated ingrowth rates were higher than the observed ones. Second,
-the data were collected for ingrowth above a 7 cm threshold, thus
-limiting the assessment of tree establishment in a holistic sense. This
-constituted a hard limit based on which we can understand some aspects
-of tree establishment, which in its entirety often comprises a rather
-long period since germination [@price2001]. However, many environmental
-constraints are acting on young trees [@käber2021] that we were unable
-to assess. Yet, ingrowth data with lower thresholds are simply not
-available in a harmonized manner across large environmental gradients.
-Third, the empirical data were collected from rather small plots, while
-we sampled simulated ingrowth rates from 1 ha areas, which may lead to
-an incorrect representation of space. Even though this strategy it is
-not ideal, it represents a common challenge when harmonizing diverse
-data sources originating from varied sampling strategies [@portier2022].
-It would have been extremely challenging for such a variety of models to
-follow a protocol where the spatial sampling size was different at each
-of the 200 sites.
+comparison of tree ingrowth in a equilibrium state, but we cannot assess
+how close the forests included in the EuFoRIa dataset were to such a
+state. The data were collected in forest reserves where no management
+has taken place for long periods of time. This makes our assumption of
+an equilibrium between forest properties and environmental drivers more
+reasonable than it might appear at first sight. However, the equilibrium
+assumption may explain why simulated ingrowth rates were higher than the
+observed ones. Second, the data were collected for ingrowth above a 7 cm
+threshold, thus limiting the assessment of tree establishment to a
+holistic viewpoint. This constituted a hard limit based on which we can
+understand some aspects of tree establishment, which in its entirety
+often comprises a rather long period since seed production [@price2001].
+However, many environmental constraints are acting on young trees
+[@käber2021] that we were unable to assess. Yet, ingrowth data with
+lower thresholds are simply not available in a harmonized manner across
+large environmental gradients. Third, the empirical data were collected
+from rather small plots, while we sampled simulated ingrowth rates from
+1 ha areas, which may lead to an incorrect representation of space. Even
+though this strategy is not ideal, it represents a common challenge when
+harmonizing diverse data sources originating from varied sampling
+strategies [@portier2022]. It would have been extremely challenging for
+such a variety of models to follow a protocol where the spatial sampling
+size was different at each of the 200 sites and it would have introduce
+additional uncertainty into the results.
 
-The design of our sampling protocol did not include spatial aspects. We
-considered a wide range of models of forest dynamics, from stand to
-global scale. However, the simulation setup was limited to 1 ha ingrowth
-values. The lack of spatial considerations potentially puts landscape
-models at a disadvantage, as they have been built to be accurate at the
-landscape level. Without spatial context, we are limiting ingrowth to
-the seed influx from the stand itself, if the model does not have a
-background seed input. However, Global Dynamic Vegetation Models should
-not be in disadvantage due to the limited spatial considerations [but
-cf. Snell et al. -@snell2014] as they are usually lacking dispersal
-between cells as they are based on an abstraction of horizontal space,
-or even the trees themselves [@hanbury-brown2022].
+The design of our sampling protocol did not include spatial aspects such
+as seed migration nor detailed soil data. We considered a wide range of
+models of forest dynamics, from stand to global scale. However, the
+simulation setup was limited to 1 ha ingrowth values. The lack of
+spatial considerations potentially puts landscape models at a
+disadvantage, as they have been built to be accurate at the landscape
+level. Without spatial context, we are limiting ingrowth to the seed
+influx from the stand itself, if the model does not have a background
+seed input. However, Global Dynamic Vegetation Models should not be in
+disadvantage due to the limited spatial considerations [but cf. Snell et
+al. -@snell2014] as they are usually lacking dispersal between cells as
+they are based on an abstraction of horizontal space, or even the trees
+themselves [@hanbury-brown2022]. Detailed data on soil conditions were
+not available from the observed data and indepentdent data for soil and
+climatic water balance were used instead. Several models, however, used
+more detailed drought stress indicators based e.g., on soil water
+holding capacity that had to be derived from a rough soil quality
+measure which could explain the poor performance of the models against
+climatic water balance.
 
 ## Research recommendations
 
-Increasing complexity in establishment modules has been motivated by
-better process understanding and enhancing of model accuracy
-[@bugmann2022; @bugmann2019]. However, more complex models do not
-necessary lead to better projections and rather to a reduced
-transparency and predictive power [@franklin2020]. The results from this
-study showed that increasing complexity in the establishment modules did
-not represent an improvement in the projections of ingrowth levels,
-species composition or mortality at early tree stages. Thus, the
-question what level of detail one has to use to model establishment
-processes remains open and must be addressed in future research
-[@konig_tree_2022; @bugmann2022].
-
-If it should be adequate to include more detail in the establishment
-models, this will come with higher parameterisation efforts, which will
-most likely lead to lower generalization as the required data will have
-to be collected from specific locations, as there is no general
-establishment dataset available. We recommend on the one hand that the
-further development of the establishment modules is implemented as
-additional features that can be traced back, as done in this study for
-the model variants of ForClim and ForCEEPS, and that model complexity
-and structure must always be connected with model objectives
-[@albrich2020]. On the other hand, we emphasize that datasets like
-EuFoRIa used here are invaluable and should be further expanded in both
-their spatial extent (e.g., towards boreal and Mediterranean conditions)
-as well as in time (e.g., continuing the monitoring into the future).
-
 Based on the results of this study, it is clear that models of forest
-dynamics need a focus on their establishment modules. However, here we
-have only consider tree establishment in the equilibrium state. It is
-equally important to understand how these models project tree
+dynamics need a focus on their establishment modules. Increasing
+complexity in establishment modules has been motivated by better process
+understanding and enhancing of model accuracy [@bugmann2022;
+@bugmann2019]. However, more complex models do not necessarily lead to
+better projections and rather to a reduced transparency and predictive
+power [@franklin2020]. The results from this study showed that
+increasing complexity in the establishment modules did not represent an
+improvement in the projections of ingrowth levels, species composition
+or mortality at early tree stages. Thus, the question what level of
+detail one has to use to model establishment processes remains open and
+must be addressed in future research [@konig_tree_2022; @bugmann2022].
+
+We recommend that the further development of the establishment modules
+is implemented as additional features that can be traced back, as done
+in this study for the model variants of ForClim and ForCEEPS, and that
+model complexity and structure must always be connected with model
+objectives [@albrich2020]. If it should be necessary to include more
+detail in the establishment models, this will come with higher
+parameterisation efforts, which will most likely lead to lower
+generalization as the required data will have to be collected from
+specific locations, as there is no general establishment dataset
+available.
+
+More effort should be invested into collecting harmonised datasets on
+tree establishment. We emphasize that datasets like EuFoRIa used here
+are invaluable and should be further expanded in both their spatial
+extent (e.g., towards boreal and Mediterranean conditions) as well as in
+time (e.g., continuing the monitoring into the future). Such a data will
+allow a better evaluation of forest models and help to reduce the
+uncertainty in their projections, which is crucial when they are used as
+tools for predicting potential impacts of climate change.
+
+Here we have only consider tree establishment in the equilibrium state.
+It is equally important to understand how these models project tree
 establishment after changes in forest structure like those brought about
 by disturbances [@seidl2022], or under different management strategies
 [@lindner2000]. However, this will require an entirely different set of
 observed data, and potentially not all models of forest dynamics would
 be able to assess the relationship of these aspects on tree
-establishment, e.g., due to the lack of disturbance or appropiate
+establishment, e.g., due to the lack of disturbance or appropriate
 management modules.
 
 We recommend to further investigate the implications of the current
