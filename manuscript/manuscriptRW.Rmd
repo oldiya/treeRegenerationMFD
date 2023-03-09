@@ -1073,8 +1073,8 @@ objectives [@albrich2020]. If it should be necessary to include more
 detail in the establishment models, this will come with higher
 parameterisation efforts, which will most likely lead to lower
 generalization as the required data will have to be collected from
-specific locations, as there is no general establishment dataset
-available.
+specific locations, as currently there is no general establishment
+dataset available.
 
 More effort should be invested into collecting harmonised datasets on
 tree establishment. We emphasize that datasets like EuFoRIa used here
@@ -1085,25 +1085,24 @@ allow a better evaluation of forest models and help to reduce the
 uncertainty in their projections, which is crucial when they are used as
 tools for predicting potential impacts of climate change.
 
-Here we have only consider tree establishment in the equilibrium state.
-It is equally important to understand how these models project tree
-establishment after changes in forest structure like those brought about
-by disturbances [@seidl2022], or under different management strategies
-[@lindner2000]. However, this will require an entirely different set of
-observed data, and potentially not all models of forest dynamics would
-be able to assess the relationship of these aspects on tree
-establishment, e.g., due to the lack of disturbance or appropriate
-management modules.
+Here we have only considered tree establishment in the equilibrium
+state. It is equally important to understand how these models project
+tree establishment after changes in forest structure by disturbances
+[@seidl2022], or under different management strategies [@lindner2000].
+However, this will require an entirely different set of observed data,
+and potentially not all models of forest dynamics would be able to
+assess the relationship of these aspects on tree establishment, e.g.,
+due to the lack of disturbance or appropriate management modules.
 
 We recommend to further investigate the implications of the current
 modeling strategies for tree establishment, particularly those related
-to excess tree establishment and probably late excess mortality, by
-focusing on a wider range of tree sizes and the related ingrowth
-dynamics. We also recommend, especially for the landscape-level models,
-the inclusion of explicit spatial considerations regarding tree ingrowth
-[@beckage2003]; this, however, is facing a serious challenge regarding
-appropriate datasets, as inventory data have wide coverage, but do not
-allow for the assessment of spatial interaction effects.
+to excess tree establishment and late excess mortality, by focusing on a
+wider range of tree sizes and the related ingrowth dynamics. We also
+recommend, especially for the landscape-level models, the inclusion of
+explicit spatial considerations regarding tree ingrowth [@beckage2003];
+this, however, is facing a serious challenge regarding appropriate
+datasets, as inventory data have wide coverage, but do not allow for the
+assessment of spatial interaction effects.
 
 ## Conclusions
 
@@ -1113,7 +1112,7 @@ for simulated forest properties. The 15 models and variants used here
 are facing similar challenges when representing tree establishment. They
 generally overestimate tree establishment rates, and the simulated
 establishment niche is not always captured accurately as a function of
-the biotic (light) and abiotic (temperature and moisture).
+the biotic (light) and abiotic (temperature and moisture) factors.
 
 However, most models properly capture the diversity of the initial tree
 community, but variations in model formulations, e.g., the presence or
@@ -1122,15 +1121,15 @@ for capturing the species composition of ingrowth.
 
 Regarding mortality in the early phase of tree life, many models that
 feature a particularly high overestimation of ingrowth levels are
-compensating this by a larger tree mortality. Often, however, this
+compensating for this by a larger tree mortality. Often, this
 compensation is not sufficient to reduce the high ingrowth levels to
-realistic values. Overall, however, there is no clear pattern across all
-models.
+realistic values. Overall, there is no clear mortality pattern across
+all models.
 
 When capturing tree establishment, the specific design decisions taken
 in the development of any model are more important for its behavior
-(accuracy) than scale (stand, landscape, global), background (empirical
-vs. process-based), and complexity. Having both empirical and
+(accuracy) than scale (stand, landscape, global), modelling approach
+(empirical vs. process-based), and complexity. Having both empirical and
 process-based models in our set, the empirically-based models could have
 been expected to have a better performance, as they were calibrated with
 inventory data, but this was not the case. Similarly, higher model
