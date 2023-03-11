@@ -125,6 +125,44 @@
                          r.ba = mean(r.ba),
                          Totba = mean(Totba))
     
+    # tests to see that is ok 
+    sumFOR <- overDTsim[ overDTsim$model == "ForCEEPS",]    
+    is7largetthan10 <- list()
+    # 200 samples per site select 
+    for (i in 1:length(unique(sumFOR$site))) {
+      siteVal <- unique(sumFOR$site)
+      
+      value7 <- (sumFOR[sumFOR$dbh == "7" & sumFOR$site == siteVal[1], ])
+      value10 <- (sumFOR[sumFOR$dbh == "10" & sumFOR$site == siteVal[1], ])
+
+      is7smallerthan10[[i]] <- ifelse(as.numeric(value7$r.trees)>as.numeric(value10$r.trees), TRUE, FALSE)
+      
+    }
+    table( unlist(is7smallerthan10))
+    
+    dataTF <- data.frame(unique(sumFOR$site),unlist(is7smallerthan10) )
+    
+    
+    forceepssite3 <-  forceeps[ forceeps$site == 3, ]
+    
+    forceepssite37 <-  forceepssite3[ forceepssite3$dbh == 7,]
+    forceepssite310 <-  forceepssite3[ forceepssite3$dbh == 10,]
+    
+    
+a <- forceepssite37 |>
+      dplyr::group_by(sample) |> 
+      dplyr::summarise(Total=sum(r.trees))
+mean(a$Total)
+
+b<- forceepssite310 |>
+  dplyr::group_by(sample) |> 
+  dplyr::summarise(Total=sum(r.trees))
+mean(b$Total)
+    
+    
+    mean(forceepssite37$r.trees)
+    mean(forceepssite310$r.trees)
+    
   ### Fig. overestimation 7&10 ----
 
     recOverAll <- ggplot2::ggplot() +
@@ -155,7 +193,7 @@
                                                                na.rm = TRUE)), 
                             colour = "#990000", linetype = "dashed") +
         ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(overDTsim$r.trees[overDTsim$dbh == "10" & overDTsim$model == "Observed"],
-                                                               c(0.70),
+                                                               c(0.75),
                                                                na.rm = TRUE)),
                             colour = "#990000", linetype = "dashed") 
     
@@ -605,7 +643,7 @@
                                                                c(0.25))), 
                             colour = "#990000", linetype = "dashed") +
         ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "10" & dat710$model == "Observed"],
-                                                               c(0.70))),
+                                                               c(0.77))),
                             colour = "#990000", linetype = "dashed") 
     
     ggplot2::ggsave("figures/H7_10.png",
@@ -828,9 +866,9 @@
     plotData3 <- plotShannonDF2[plotShannonDF2$model %in% selModels2 ,]
     plotData3 <-  plotData3[plotData3$dbh == "7", ]
     
-    labels2 <- c(paste0(selModels2[1], "\n(n=4)"),
-                 paste0(selModels2[2], "\n(n=7)"),
-                 paste0(selModels2[3], "\n(n=3)"))
+    labels2 <- c(paste0("Overpredict", "\n(n=4)"),
+                 paste0("", "\n(n=7)"),
+                 paste0("Underpredict", "\n(n=3)"))
     
     plotData3$model <- factor(plotData3$model, levels = selModels2, labels = labels2)
     
@@ -856,14 +894,14 @@
     
     
     # Plot recruited observed VS. simulated
-    selModels <- c("PICUS","Landis II", "FORMIND")
+    selModels <- c("PICUS","FORMIND", "Landis II")
     
     plotData2 <- plotShannonDF2[plotShannonDF2$model %in% selModels, ]
     plotData2 <- plotData2[plotData2$dbh == "7", ]
     
-    labelsMod <- c(paste0(selModels[1], "\n(n=2)"),
-                   paste0(selModels[2], "\n(n=4)"),
-                   paste0(selModels[3], "\n(n=8)"))
+    labelsMod <- c(paste0("Overpredict", "\n(n=2)"),
+                   paste0("", "\n(n=4)"),
+                   paste0("Underpredict", "\n(n=8)"))
     
     plotData2$model <- factor(plotData2$model, levels = selModels, labels = labelsMod)
     
