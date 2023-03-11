@@ -94,26 +94,26 @@
     
     # Zero data
     zerroAll <- as.array(table(zeroInflatedAll$model, zeroInflatedAll$dbh))
-    colnames(zerroAll) <- c("zero10", "zero7")
+    colnames(zerroAll) <- c("zero7", "zero10")
     #Total observations
-    allObs <- as.array(table(outputsDF$model,outputsDF$dbh ))
-    colnames(allObs) <- c("allObs10", "allObs7")
+    allObs <- as.array(table(outputsDF$model, outputsDF$dbh ))
+    colnames(allObs) <- c("allObs7", "allObs10")
     
     inflatedZeroDF <- as.data.frame(cbind(allObs, zerroAll))
     
     inflatedZeroDF$share10 <- round((inflatedZeroDF$zero10 / inflatedZeroDF$allObs10), 4) * 100
     inflatedZeroDF$share7 <- round((inflatedZeroDF$zero7 / inflatedZeroDF$allObs7), 4) * 100
     
-    colnames(inflatedZeroDF) <- c("Total (10 cm)", "Total (7cm)",
-                                  "No recruitment (10 cm)", 
-                                  "No recruitment (7cm)", 
-                                  "Percentage of no recruitment (10 cm)", 
-                                  "Percentage of no recruitment (7 cm)")
+    colnames(inflatedZeroDF) <- c("Total (7 cm)", "Total (10cm)",
+                                  "No recruitment (7 cm)", 
+                                  "No recruitment (10cm)", 
+                                  "Percentage of no recruitment (7 cm)", 
+                                  "Percentage of no recruitment (10 cm)")
     inflatedZeroDF <- tibble::rownames_to_column(inflatedZeroDF, "Model")
     
     data.table::fwrite(inflatedZeroDF, file = "data/noRecruitment.csv")
     
-# Levels regeneration ----
+# Ingrowth levels ----
 
     overDTsim <- outputsDF |> 
         dplyr::group_by(site, sample, dbh, model) |>
@@ -165,404 +165,6 @@
                     dpi = 300, units = "cm", 
                     device = 'png') 
     
-## R VS. env. trends-----
-
-    #Total values across all species per site and sample
-    overDTEmp1 <- outputsDF[outputsDF$model == "Observed", ] |>
-        dplyr::group_by(site, sample, dbh) |>
-        dplyr::summarise(r.trees = sum(r.trees),
-                         r.ba = sum(r.ba),
-                         Totba = unique(Totba))
-    # # mean of samples 
-    overDTEmp2 <- overDTEmp1 |>
-        dplyr::group_by(site, dbh) |>
-        dplyr::summarise(r.trees = mean(r.trees),
-                         r.ba = mean(r.ba),
-                         Totba = mean(Totba))
-    
-    envTrend <- outputsDF |>
-        dplyr::group_by(site, sample, dbh, model) |>
-        dplyr::summarise(r.trees = sum(r.trees),
-                         r.ba = sum(r.ba),
-                         Totba = unique(Totba), 
-                         dds = unique(dds),
-                         wb  = unique(wb)) |>
-        dplyr::group_by(site, dbh, model) |>
-        dplyr::summarise(r.trees = mean(r.trees),
-                         r.ba = mean(r.ba),
-                         Totba = mean(Totba),
-                         dds = unique(dds),
-                         wb  = unique(wb))
-    
-    envTrend <-  envTrend[ envTrend$dbh == "7", ]
-    
-    # Mean across sites 
-    empDataQuartile <- c(0.025, 0.975)
-    
-    overDTEmp <- overDTEmp2 |>
-        dplyr::group_by(dbh) |>
-        dplyr::summarise(r.trees_low = quantile(r.trees, empDataQuartile[1],
-                                                na.rm = TRUE),
-                         r.trees_upp = quantile(r.trees, empDataQuartile[2],
-                                                na.rm = TRUE),
-                         r.trees = mean(r.trees),
-                         r.ba_low = quantile(r.ba, empDataQuartile[1],
-                                             na.rm = TRUE),
-                         r.ba_upp = quantile(r.ba, empDataQuartile[2],
-                                             na.rm = TRUE),
-                         r.ba = mean(r.ba),
-                         Totba_low = quantile(Totba, empDataQuartile[1],
-                                              na.rm = TRUE),
-                         Totba_upp = quantile(Totba, empDataQuartile[2],
-                                              na.rm = TRUE),
-                         Totba = mean(Totba))
-    
-    overDTEmp7 <- overDTEmp[overDTEmp$dbh == "7", ]
-    overDTEmp10 <- overDTEmp[overDTEmp$dbh == "10", ]
-    overDTsim7 <- overDTsim[overDTsim$dbh == "7", ]
-    overDTsim10 <- overDTsim[overDTsim$dbh == "10", ]
-    
-    # Divide data in bins to create boxplots
-    bins = 10
-    bins = bins - 1
-    wb_width <- round(diff(range(envTrend$wb)) / bins)
-    dds_width <- round(diff(range(envTrend$dds)) / bins)
-    ba_width <- round(diff(range(envTrend$Totba)) / bins)
-    
-    envTrend$wb_cut <- round(envTrend$wb / wb_width) * wb_width
-    envTrend$dds_cut <- round(envTrend$dds / dds_width) * dds_width
-    envTrend$ba_cut <- round(envTrend$Totba / ba_width) * ba_width
-    
-    envTrend$ba_cut <- factor(envTrend$ba_cut,
-                              levels = sort(unique(envTrend$ba_cut)))
-    
-
-    #### Fig. R VS BA----
-    png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
-        units = "cm", res = 300)
-    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
-    
-    # Prepare Observed GAM model data for all the plots
-    max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
-    min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed", ]
-    fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
-                        family = mgcv::nb())
-    new_dat <- data.frame(
-        Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
-        fct_name = seq(1, bins + 1, length.out = 10 * bins))
-    
-    new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
-    
-    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
-    invLink <- family(fm.sim)$linkinv
-    
-    # Plot the boxplot with the observations GAM
-    for (modelSel in unique(envTrend$model)) {
-        ienvTrendModel <- envTrend[envTrend$model == modelSel,]
-        
-        max_r <- as.numeric(quantile(ienvTrendModel$r.trees,.99, na.rm = TRUE))
-        ienvTrendModel$r.trees[ienvTrendModel$r.trees > max_r] <- max_r
-        
-        
-        axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
-                                            "aDGVM2"), "s", "n")
-        
-        dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
-        boxplot(r.trees ~ ba_cut, 
-                data = dataSel, 
-                xlab = "",
-                ylab = "",
-                #ylim = c(0, 500),
-                main = modelSel,
-                xaxt = axisPlot,
-                col = values_color[modelSel],
-                frame = F)
-        
-        means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
-        points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
-        box(bty = "l")
-        
-        linesData <- data.frame(TotBA = new_dat$fct_name, 
-                                r.trees = invLink(pred.sim$fit),
-                                UP = invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-                                DOWN = invLink(pred.sim$fit - pred.sim$se.fit * 1.96))
-        #[11:79]
-        lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
-        lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-              lty = 2, col = "red")
-        lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
-              lty = 2, col = "red")
-    }
-    
-    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
-    mtext(labEnvVartotBA, side = 1, line = 1, outer = TRUE)
-    
-    dev.off()
-    
-    png(file = "figures/envTrend7Totba_500.png", width = 16, height = 12, 
-        units = "cm", res = 300)
-    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
-    
-    # Prepare Observed GAM model data for all the plots
-    max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
-    min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed", ]
-    fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
-                        family = mgcv::nb())
-    new_dat <- data.frame(
-      Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
-      fct_name = seq(1, bins + 1, length.out = 10 * bins))
-    
-    new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
-    
-    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
-    invLink <- family(fm.sim)$linkinv
-    
-    # Plot the boxplot with the observations GAM
-    for (modelSel in unique(envTrend$model)) {
-      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
-      
-      max_r <- as.numeric(quantile(ienvTrendModel$r.trees,.99, na.rm = TRUE))
-      ienvTrendModel$r.trees[ienvTrendModel$r.trees > max_r] <- max_r
-      
-      
-      axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
-                                         "aDGVM2"), "s", "n")
-      
-      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
-      boxplot(r.trees ~ ba_cut, 
-              data = dataSel, 
-              xlab = "",
-              ylab = "",
-              ylim = c(0, 500),
-              main = modelSel,
-              xaxt = axisPlot,
-              col = values_color[modelSel],
-              frame = F)
-      
-      means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
-      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
-      box(bty = "l")
-      
-      linesData <- data.frame(TotBA = new_dat$fct_name, 
-                              r.trees = invLink(pred.sim$fit),
-                              UP = invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-                              DOWN = invLink(pred.sim$fit - pred.sim$se.fit * 1.96))
-      #[11:79]
-      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
-      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-            lty = 2, col = "red")
-      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
-            lty = 2, col = "red")
-    }
-    
-    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
-    mtext(labEnvVartotBA, side = 1, line = 1, outer = TRUE)
-    
-    dev.off()
-    
-    
-    #### FigS. R VS WB -----
-   
-    png(file = "figures/envTrend7WB.png", width = 16, height = 12, 
-        units = "cm", res = 300)
-    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
-    
-    # Prepare Observed GAM model data for all the plots
-    max_r = as.numeric(quantile(envTrend$r.trees,.99, na.rm = TRUE))
-    max_wb = as.numeric(quantile(envTrend$wb,.99, na.rm = TRUE))
-    min_wb = as.numeric(quantile(envTrend$wb,.01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed",]
-    fm.sim <- mgcv::gam(r.trees ~ s(wb, k = 3), data = empModel,
-                        family = mgcv::nb())
-    new_dat <- data.frame(
-        wb = seq(min_wb, max_wb, length.out = 10 * bins),
-        fct_name = seq(1, bins + 1, length.out = 10 * bins))
-    new_dat <- new_dat[new_dat$wb < max(empModel$wb) & new_dat$wb > min(empModel$wb), ]
-    
-    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
-    invLink <- family(fm.sim)$linkinv
-    
-    # Plot 
-    for (modelSel in unique(envTrend$model)) {
-        ienvTrendModel <- envTrend[envTrend$model == modelSel,]
-        axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
-                                           "aDGVM2"), "s", "n")
-        
-        dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
-        
-       boxplot(r.trees ~ wb_cut, 
-               data = dataSel, 
-               xlab = "",
-               ylab = "",
-               #ylim = c(0, 500),
-               main = modelSel,
-               xaxt = axisPlot,
-               col = values_color[modelSel],
-               frame = F)
-       means <- tapply(dataSel$r.trees, INDEX = dataSel$wb_cut, FUN = mean) # calculate mean
-       points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
-       
-       box(bty = "l")
-       lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
-       lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-             lty = 2,col = "red")
-        lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
-              lty = 2,col = "red")
-        
-    }
-    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
-    mtext(labEnvVarWB, side = 1, line = 1, outer = TRUE)
-    dev.off()
-    
-    png(file = "figures/envTrend7WB_500.png", width = 16, height = 12, 
-        units = "cm", res = 300)
-    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
-    
-    # Prepare Observed GAM model data for all the plots
-    max_r = as.numeric(quantile(envTrend$r.trees,.99, na.rm = TRUE))
-    max_wb = as.numeric(quantile(envTrend$wb,.99, na.rm = TRUE))
-    min_wb = as.numeric(quantile(envTrend$wb,.01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed",]
-    fm.sim <- mgcv::gam(r.trees ~ s(wb, k = 3), data = empModel,
-                        family = mgcv::nb())
-    new_dat <- data.frame(
-      wb = seq(min_wb, max_wb, length.out = 10 * bins),
-      fct_name = seq(1, bins + 1, length.out = 10 * bins))
-    new_dat <- new_dat[new_dat$wb < max(empModel$wb) & new_dat$wb > min(empModel$wb), ]
-    
-    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
-    invLink <- family(fm.sim)$linkinv
-    
-    # Plot 
-    for (modelSel in unique(envTrend$model)) {
-      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
-      axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
-                                         "aDGVM2"), "s", "n")
-      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
-       boxplot(r.trees ~ wb_cut, 
-              data = dataSel, 
-              xlab = "",
-              ylab = "",
-              ylim = c(0, 500),
-              main = modelSel,
-              xaxt = axisPlot,
-              col = values_color[modelSel],
-              frame = F)
-      means <- tapply(dataSel$r.trees, INDEX = dataSel$wb_cut, FUN = mean) # calculate mean
-      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
-      
-      box(bty = "l")
-      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
-      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-            lty = 2,col = "red")
-      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
-            lty = 2,col = "red")
-      
-    }
-    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
-    mtext(labEnvVarWB, side = 1, line = 1, outer = TRUE)
-    dev.off()
-    
-    
-   
-    #### FigS. R VS. DDS -----
-    
-    png(file = "figures/envTrend7DDS.png", width = 16, height = 12, 
-        units = "cm", res = 300)
-    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
-    
-    # Prepare Observed GAM model data for all the plots
-    max_r = as.numeric(quantile(ienvTrendModel$r.trees, .99, na.rm = TRUE))
-    max_dds = as.numeric(quantile(ienvTrendModel$dds, .99, na.rm = TRUE))
-    min_dds = as.numeric(quantile(ienvTrendModel$dds, .01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed",]
-    fm.sim <- mgcv::gam(r.trees ~ s(dds, k = 3), data = empModel,
-                        family = mgcv::nb())
-    new_dat = data.frame(
-        dds = seq(min_dds, max_dds, length.out = 10 * bins),
-        fct_name = seq(1, bins + 1, length.out = 10 * bins))
-    new_dat <- new_dat[new_dat$dds < max(empModel$dds) & new_dat$dds > min(empModel$dds), ]
-    
-    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
-    invLink <- family(fm.sim)$linkinv
-    
-    for (modelSel in unique(envTrend$model)) {
-        ienvTrendModel <- envTrend[envTrend$model == modelSel,]
-        dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
-        boxplot(r.trees ~ dds_cut, 
-                data = dataSel, 
-                xlab = "",
-                ylab = "",
-                #ylim = c(0, 500),
-                main = modelSel,
-                xaxt = axisPlot,
-                col = values_color[modelSel],
-                frame = F)
-        means <- tapply(dataSel$r.trees, INDEX = dataSel$dds_cut, FUN = mean) # calculate mean
-        points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
-        
-        box(bty = "l")
-        lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
-        lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-              lty = 2,col = "red")
-         lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
-               lty = 2,col = "red")
-    }
-    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
-    mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
-    
-    dev.off()
-    
-    
-    png(file = "figures/envTrend7DDS_500.png", width = 16, height = 12, 
-        units = "cm", res = 300)
-    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
-    
-    # Prepare Observed GAM model data for all the plots
-    max_r = as.numeric(quantile(ienvTrendModel$r.trees, .99, na.rm = TRUE))
-    max_dds = as.numeric(quantile(ienvTrendModel$dds, .99, na.rm = TRUE))
-    min_dds = as.numeric(quantile(ienvTrendModel$dds, .01, na.rm = TRUE))
-    empModel <- envTrend[envTrend$model == "Observed",]
-    fm.sim <- mgcv::gam(r.trees ~ s(dds, k = 3), data = empModel,
-                        family = mgcv::nb())
-    new_dat = data.frame(
-      dds = seq(min_dds, max_dds, length.out = 10 * bins),
-      fct_name = seq(1, bins + 1, length.out = 10 * bins))
-    new_dat <- new_dat[new_dat$dds < max(empModel$dds) & new_dat$dds > min(empModel$dds), ]
-    
-    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
-    invLink <- family(fm.sim)$linkinv
-    
-    for (modelSel in unique(envTrend$model)) {
-      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
-      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
-      boxplot(r.trees ~ dds_cut, 
-              data = dataSel, 
-              xlab = "",
-              ylab = "",
-              ylim = c(0, 500),
-              main = modelSel,
-              xaxt = axisPlot,
-              col = values_color[modelSel],
-              frame = F)
-      means <- tapply(dataSel$r.trees, INDEX = dataSel$dds_cut, FUN = mean) # calculate mean
-      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
-      
-      box(bty = "l")
-      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
-      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
-            lty = 2,col = "red")
-      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
-            lty = 2,col = "red")
-    }
-    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
-    mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
-    
-    dev.off()
-    
-
 # Diversity in recruitment ----
 
     ### Fig. H7 & H10-----
@@ -1518,7 +1120,7 @@
                                      "Dispersal",
                                      "Vegetative reproduction")
     
-    # More complex model in ther recruitment module? 
+    # More complex model in the recruitment module? 
     modelComp <- data.frame(model = colnames(complBugmannSeild),
                             complexityRegen = colMeans(complBugmannSeild))
     
@@ -1545,15 +1147,18 @@
     #What attribute in average across models is the least complex?
     which.min(complBugmannSeild$mean)
     
- ### Complexity VS overestimation proportion-----
     
+## Model traits-----    
+ ### Complexity VS overestimation proportion-----
+
+    # Prepare data for species diversit -----
     sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
                                       data = dat710[!dat710$model == "aDGVM2", ],
                                       group.by = "model", method = "t.test")
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
     
-    # Threshold 7cm 
+    # Prepare data for Threshold 7cm 
     overestimationProportion <- modelMean2$diff
     meanComplexity <- complexitySum$complexityRegen
     complexitySum$model2 <- c("4C", "aDGVM2", "ForCEEPS", "ForClim 1", "FORMIND",
@@ -1567,26 +1172,420 @@
                                  "complexity", "overestimation" )
     tableCompOver <- tableCompOver[, c("model2", "complexity", 
                                          "overestimation")]
-    
+  
     write.csv(tableCompOver,"figures/tableCompOver.csv", row.names = FALSE)
     
-    
-    ggplot2::ggplot(tableCompOver, ggplot2::aes(x = complexity, 
-                                                y = overestimation )) +
-      ggplot2::geom_bar(stat = "identity") +
-      ggplot2::stat_smooth(method = "lm", se = TRUE)
-    
-    summary(lm(overestimation ~ complexity, data = tableCompOver))
-    sjPlot::tab_model(lm(overestimation ~ complexity, data = tableCompOver))
-
-    
-    tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
-    jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
-    
+   
   ### Complexity VS deviation on diversity richness value-----    
     
   ### Complexity VS deviation on mortality rate-----     
-  
+
+    
+# Recruitment niche-----
+    
+    #Total values across all species per site and sample
+    overDTEmp1 <- outputsDF[outputsDF$model == "Observed", ] |>
+      dplyr::group_by(site, sample, dbh) |>
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       Totba = unique(Totba))
+    # # mean of samples 
+    overDTEmp2 <- overDTEmp1 |>
+      dplyr::group_by(site, dbh) |>
+      dplyr::summarise(r.trees = mean(r.trees),
+                       r.ba = mean(r.ba),
+                       Totba = mean(Totba))
+    
+    envTrend <- outputsDF |>
+      dplyr::group_by(site, sample, dbh, model) |>
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       Totba = unique(Totba), 
+                       dds = unique(dds),
+                       wb  = unique(wb)) |>
+      dplyr::group_by(site, dbh, model) |>
+      dplyr::summarise(r.trees = mean(r.trees),
+                       r.ba = mean(r.ba),
+                       Totba = mean(Totba),
+                       dds = unique(dds),
+                       wb  = unique(wb))
+    
+    envTrend <-  envTrend[ envTrend$dbh == "7", ]
+    
+    # Mean across sites 
+    empDataQuartile <- c(0.025, 0.975)
+    
+    overDTEmp <- overDTEmp2 |>
+      dplyr::group_by(dbh) |>
+      dplyr::summarise(r.trees_low = quantile(r.trees, empDataQuartile[1],
+                                              na.rm = TRUE),
+                       r.trees_upp = quantile(r.trees, empDataQuartile[2],
+                                              na.rm = TRUE),
+                       r.trees = mean(r.trees),
+                       r.ba_low = quantile(r.ba, empDataQuartile[1],
+                                           na.rm = TRUE),
+                       r.ba_upp = quantile(r.ba, empDataQuartile[2],
+                                           na.rm = TRUE),
+                       r.ba = mean(r.ba),
+                       Totba_low = quantile(Totba, empDataQuartile[1],
+                                            na.rm = TRUE),
+                       Totba_upp = quantile(Totba, empDataQuartile[2],
+                                            na.rm = TRUE),
+                       Totba = mean(Totba))
+    
+    overDTEmp7 <- overDTEmp[overDTEmp$dbh == "7", ]
+    overDTEmp10 <- overDTEmp[overDTEmp$dbh == "10", ]
+    overDTsim7 <- overDTsim[overDTsim$dbh == "7", ]
+    overDTsim10 <- overDTsim[overDTsim$dbh == "10", ]
+    
+    # Divide data in bins to create boxplots
+    bins = 10
+    bins = bins - 1
+    wb_width <- round(diff(range(envTrend$wb)) / bins)
+    dds_width <- round(diff(range(envTrend$dds)) / bins)
+    ba_width <- round(diff(range(envTrend$Totba)) / bins)
+    
+    envTrend$wb_cut <- round(envTrend$wb / wb_width) * wb_width
+    envTrend$dds_cut <- round(envTrend$dds / dds_width) * dds_width
+    envTrend$ba_cut <- round(envTrend$Totba / ba_width) * ba_width
+    
+    envTrend$ba_cut <- factor(envTrend$ba_cut,
+                              levels = sort(unique(envTrend$ba_cut)))
+    
+    
+    #### Fig. R VS BA----
+    png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
+    min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed", ]
+    fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat <- data.frame(
+      Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    
+    new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
+    
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    # Plot the boxplot with the observations GAM
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      
+      max_r <- as.numeric(quantile(ienvTrendModel$r.trees,.99, na.rm = TRUE))
+      ienvTrendModel$r.trees[ienvTrendModel$r.trees > max_r] <- max_r
+      
+      
+      axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
+      boxplot(r.trees ~ ba_cut, 
+              data = dataSel, 
+              xlab = "",
+              ylab = "",
+              #ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      box(bty = "l")
+      
+      linesData <- data.frame(TotBA = new_dat$fct_name, 
+                              r.trees = invLink(pred.sim$fit),
+                              UP = invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+                              DOWN = invLink(pred.sim$fit - pred.sim$se.fit * 1.96))
+      #[11:79]
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2, col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2, col = "red")
+    }
+    
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVartotBA, side = 1, line = 1, outer = TRUE)
+    
+    dev.off()
+    
+    png(file = "figures/envTrend7Totba_500.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_Totba = as.numeric(quantile(envTrend$Totba, .99, na.rm = TRUE))
+    min_Totba = as.numeric(quantile(envTrend$Totba, .01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed", ]
+    fm.sim <- mgcv::gam(r.trees ~ s(Totba, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat <- data.frame(
+      Totba = seq(min_Totba, max_Totba, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    
+    new_dat <- new_dat[new_dat$Totba < max(empModel$Totba) & new_dat$Totba > min(empModel$Totba), ]
+    
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    # Plot the boxplot with the observations GAM
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      
+      max_r <- as.numeric(quantile(ienvTrendModel$r.trees,.99, na.rm = TRUE))
+      ienvTrendModel$r.trees[ienvTrendModel$r.trees > max_r] <- max_r
+      
+      
+      axisPlot <- ifelse(modelSel %in% c("Landis II",  "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel,]
+      boxplot(r.trees ~ ba_cut, 
+              data = dataSel, 
+              xlab = "",
+              ylab = "",
+              ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$ba_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      box(bty = "l")
+      
+      linesData <- data.frame(TotBA = new_dat$fct_name, 
+                              r.trees = invLink(pred.sim$fit),
+                              UP = invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+                              DOWN = invLink(pred.sim$fit - pred.sim$se.fit * 1.96))
+      #[11:79]
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2, col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2, col = "red")
+    }
+    
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVartotBA, side = 1, line = 1, outer = TRUE)
+    
+    dev.off()
+    
+    
+    #### FigS. R VS WB -----
+    
+    png(file = "figures/envTrend7WB.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_r = as.numeric(quantile(envTrend$r.trees,.99, na.rm = TRUE))
+    max_wb = as.numeric(quantile(envTrend$wb,.99, na.rm = TRUE))
+    min_wb = as.numeric(quantile(envTrend$wb,.01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(wb, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat <- data.frame(
+      wb = seq(min_wb, max_wb, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$wb < max(empModel$wb) & new_dat$wb > min(empModel$wb), ]
+    
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    # Plot 
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
+      
+      boxplot(r.trees ~ wb_cut, 
+              data = dataSel, 
+              xlab = "",
+              ylab = "",
+              #ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$wb_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2,col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2,col = "red")
+      
+    }
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVarWB, side = 1, line = 1, outer = TRUE)
+    dev.off()
+    
+    png(file = "figures/envTrend7WB_500.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_r = as.numeric(quantile(envTrend$r.trees,.99, na.rm = TRUE))
+    max_wb = as.numeric(quantile(envTrend$wb,.99, na.rm = TRUE))
+    min_wb = as.numeric(quantile(envTrend$wb,.01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(wb, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat <- data.frame(
+      wb = seq(min_wb, max_wb, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$wb < max(empModel$wb) & new_dat$wb > min(empModel$wb), ]
+    
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    # Plot 
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
+      boxplot(r.trees ~ wb_cut, 
+              data = dataSel, 
+              xlab = "",
+              ylab = "",
+              ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$wb_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2,col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2,col = "red")
+      
+    }
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVarWB, side = 1, line = 1, outer = TRUE)
+    dev.off()
+    
+    
+    
+    #### FigS. R VS. DDS -----
+    
+    png(file = "figures/envTrend7DDS.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_r = as.numeric(quantile(ienvTrendModel$r.trees, .99, na.rm = TRUE))
+    max_dds = as.numeric(quantile(ienvTrendModel$dds, .99, na.rm = TRUE))
+    min_dds = as.numeric(quantile(ienvTrendModel$dds, .01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(dds, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat = data.frame(
+      dds = seq(min_dds, max_dds, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$dds < max(empModel$dds) & new_dat$dds > min(empModel$dds), ]
+    
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
+      boxplot(r.trees ~ dds_cut, 
+              data = dataSel, 
+              xlab = "",
+              ylab = "",
+              #ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$dds_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2,col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2,col = "red")
+    }
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
+    
+    dev.off()
+    
+    
+    png(file = "figures/envTrend7DDS_500.png", width = 16, height = 12, 
+        units = "cm", res = 300)
+    par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
+    
+    # Prepare Observed GAM model data for all the plots
+    max_r = as.numeric(quantile(ienvTrendModel$r.trees, .99, na.rm = TRUE))
+    max_dds = as.numeric(quantile(ienvTrendModel$dds, .99, na.rm = TRUE))
+    min_dds = as.numeric(quantile(ienvTrendModel$dds, .01, na.rm = TRUE))
+    empModel <- envTrend[envTrend$model == "Observed",]
+    fm.sim <- mgcv::gam(r.trees ~ s(dds, k = 3), data = empModel,
+                        family = mgcv::nb())
+    new_dat = data.frame(
+      dds = seq(min_dds, max_dds, length.out = 10 * bins),
+      fct_name = seq(1, bins + 1, length.out = 10 * bins))
+    new_dat <- new_dat[new_dat$dds < max(empModel$dds) & new_dat$dds > min(empModel$dds), ]
+    
+    pred.sim <- predict(fm.sim, new_dat, type = "link", se.fit = TRUE)
+    invLink <- family(fm.sim)$linkinv
+    
+    for (modelSel in unique(envTrend$model)) {
+      ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
+      boxplot(r.trees ~ dds_cut, 
+              data = dataSel, 
+              xlab = "",
+              ylab = "",
+              ylim = c(0, 500),
+              main = modelSel,
+              xaxt = axisPlot,
+              col = values_color[modelSel],
+              frame = F)
+      means <- tapply(dataSel$r.trees, INDEX = dataSel$dds_cut, FUN = mean) # calculate mean
+      points(means, pch = 20, cex = 0.5, col = "lightgrey") #add means as circles to each boxplot
+      
+      box(bty = "l")
+      lines(new_dat$fct_name, invLink(pred.sim$fit), col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit + pred.sim$se.fit * 1.96),
+            lty = 2,col = "red")
+      lines(new_dat$fct_name, invLink(pred.sim$fit - pred.sim$se.fit * 1.96), 
+            lty = 2,col = "red")
+    }
+    mtext(labMeanRecruitment, side = 2, line = 0, outer = TRUE)
+    mtext(labEnvVarDDS, side = 1, line = 1, outer = TRUE)
+    
+    dev.off()
+    
+    
+    
+    
+    
+    
+    
+    
+      
 # Map -----
     # IMPORTANT: This is the only figure that is not reproducible
     # because we can not share the location of the plots 

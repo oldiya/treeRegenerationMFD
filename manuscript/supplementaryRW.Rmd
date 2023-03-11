@@ -2000,9 +2000,6 @@ given patch if the minimum PAR level at the forest floor is below a
 PFT/species-specific threshold, which is higher for more light-demanding
 PFTs/species.
 
-Table 1: Parameter settings associated with vegetation establishment.
-
-![](images/image-1265081375.png)
 
 #### Simulation length
 
@@ -2274,7 +2271,45 @@ vegetation models: learning from community ecology. NEW PHYTOLOGIST,
 ```
 # Supplementary Material 3: Supplementary figures and tables
 
-## Recruitment levels
+## Ingrowth levels, tree diversity and mortality in tree establishment
+
+```{r zeroInflated, echo=FALSE,  message=FALSE}
+library(knitr)
+
+zeroInflated <- readr::read_csv(here::here("data", "noRecruitment.csv"))
+zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
+
+kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
+        #kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
+## Model traits and model performance
+
+### Model complexity VS overestimation
+
+```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary atatiatics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%'}
+tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
+
+ggplotRegression <- function(fit){
+require(ggplot2)
+ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "blue") +
+  labs(title = paste("Adj R2 = ",signif(summary(fit)$adj.r.squared, 5),
+                     "Intercept =",signif(fit$coef[[1]],5 ),
+                     " Slope =",signif(fit$coef[[2]], 5),
+                     " P =",signif(summary(fit)$coef[2,4], 5)))
+}
+
+
+fit1 <- lm(overestimation ~ complexity, data = tableCompOver)
+ggplotRegression(fit1)
+
+
+```
+
+
+## Total ingrowth and individual species regeneration niches
 
 ```{r envTrend7wb, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
     knitr::include_graphics(c(here::here("figures", "envTrend7WB_500.png"),
@@ -2286,29 +2321,6 @@ vegetation models: learning from community ecology. NEW PHYTOLOGIST,
                               here::here("figures", "envTrend7DDS.png")))
 ```
 
-```{r zeroInflated, echo=FALSE,  message=FALSE}
-library(knitr)
-
-zeroInflated <- readr::read_csv(here::here("data", "noRecruitment.csv"))
-zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
-
-kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
-        kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
-
-## Model complexity
-
-Summary of the linear model of the overestimation proportions versus the
-mean complexity value on the establishment module.
-
-```{r tableComp, echo=FALSE,  message=FALSE, render = 'normal_print'}
-library(knitr)
-
-tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
-jtools::summ(lm(overestimation ~ complexity, data = tableCompOver), model.info = FALSE, digits = 5)
-
-```
 
 ## Recruitment species composition
 
