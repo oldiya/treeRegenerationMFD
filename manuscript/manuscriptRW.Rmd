@@ -35,7 +35,7 @@ linestretch: 1.5
 bibliography: Regeneration.bib
 link-citations: yes
 nocite: |
-  @reyer, @bugmann1996a, @bohn2014, @fabrika2005, @mette2014, @smith2001a, @seidl2012a, @lischke2006, @schumacher2006, @scheiter2009, @scheller2004, @morin2021
+  @bugmann1996a, @bohn2014, @fabrika2005, @mette2014, @smith2001a, @langan2017, @seidl2012a, @lischke2006, @schumacher2006, @scheiter2009, @scheller2004, @morin2021, @lasch-born2020, @hickler2012, @fischer_lessons_2016
 linkcolor: blue
 csl: global-change-biology.csl
 editor_options:
@@ -218,27 +218,16 @@ benchmark the simulated regeneration niche of multiple species against
 empirical data along a wide environmental gradient of temperature,
 moisture, and light availability.
 
-More specifically, we aimed to answer the following questions. 1) Are
-models of forest dynamics capturing accurately tree ingrowth levels
-across environmental gradients? 2) Are they matching the initial species
-composition of the tree ingrowth layer? And 3), do they correctly
-represent the mortality in tree establishment?
-
-NEW
+More specifically, we aimed to answer the following questions:
 
 1)  Are models of forest dynamics capturing accurately tree ingrowth
     levels, initial tree diversity and mortality in tree establishment?
 
-2)  Species specific recruitment values in ennvironmental gradients?
+2)  Do model traits explain differences in model performance?
 
-3)  Are the models traits linked to the tree establishment values?
-
-environmental gradients?
-
-2)  Are they matching the initial species composition of the tree
-    ingrowth layer? And
-
-3), do they correctly represent the mortality in tree establishment?
+3)  How well do models capture total ingrowth and individual species
+    regeneration niches across environmental gradients of light
+    availability, temperature, and soil moisture?
 
 # Material and methods
 
@@ -305,19 +294,17 @@ includes this feedback whereas the other does not.
 library(knitr)
 
 modelDF <- readr::read_csv(here::here("data", "modelsDescription.csv"))
-modelDF$`Species simulated`[modelDF$`Species simulated` == "F. sylbatica, P. sylvestris, P. abies, A. alba"] <- "F. sylbatica,  P. sylvestris, P. abies,  A. alba"
 modelDF$Sampling <- NULL
 
-#there is a better way of doing footnotes, have a look here https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf and change
+#footnotes
 names(modelDF)[2] <- paste0(names(modelDF)[2], "(a)")
 names(modelDF)[3] <- paste0(names(modelDF)[3], "(b)")
 names(modelDF)[4] <- paste0(names(modelDF)[4], "(c)")
 names(modelDF)[5] <- paste0(names(modelDF)[5], "(d)")
-names(modelDF)[6] <- paste0(names(modelDF)[6],"(e)")
+names(modelDF)[6] <- paste0(names(modelDF)[6], "(e)")
 names(modelDF)[11] <- paste0(names(modelDF)[11],"(f)")
 
 kable(modelDF, 
-      #format = "markdown",
       format = "latex", booktabs = TRUE,
       caption = "List of models included.") |>
         kableExtra::landscape() |>
@@ -486,7 +473,7 @@ zero stand basal area and zero ingrowth for all the tree species
 simulated and one site produced grasslands and was not included in the
 results.
 
-```{r map, echo=FALSE, fig.cap="The 200 sites of the EuFoRIa network that were used in the present study, showing the dominant tree species per site in the observed ingrowth at the 10 cm threshold.", out.width='80%'}
+```{r map, echo=FALSE, fig.cap="The 200 sites of the EuFoRIa network used in the present study, the colors show the dominant tree species per site in the observed ingrowth at the 10 cm threshold.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "theMap.png"))
 ```
 
@@ -520,7 +507,7 @@ We also tested for significant trends across XXXXX !!!!!
 
 ```{=tex}
 \begin{equation}
-H_{n,r} = - \sum_{i = 1}^{s}{p_{n,i}ln(p_{n,r,i})}\label{eqpiShannonR}
+H_{n,r} = - \sum_{i = 1}^{s}{p_{n,i}\ln(p_{n,r,i})}\label{eqpiShannonR}
 \end{equation}
 ```
 ```{=tex}
@@ -530,7 +517,7 @@ p_{n,r,i} = \frac{r_{BA_{n,i}}}{TotalR_{BA_{n}}} \label{eqpiShannonR2}
 ```
 ```{=tex}
 \begin{equation}
-H_{n,s} = - \sum_{i = 1}^{s}{p_{n,i}ln(p_{n,i})}\label{eqpiShannon}
+H_{n,s} = - \sum_{i = 1}^{s}{p_{n,i}\ln(p_{n,i})}\label{eqpiShannon}
 \end{equation}
 ```
 ```{=tex}
@@ -604,7 +591,7 @@ interquartile range in the box plots of Figure \@ref(fig:over)) was
 similar to or smaller than observed, with the notable exception of
 PICUS, where simulated ingrowth variability was much larger.
 
-```{r over, echo=FALSE, fig.cap="Mean ingrowth rates across all samples per site, plotted for the 200 sites and for each model. The red dotted lines shows the 2.5 and 97.5 percentiles for the 7 cm diameter threshold in the observed data. There are two boxplots for each model where the left lighted boxplot corresponds to 7cm and the right darker boxplot to 10cm", out.width='100%'}
+```{r over, echo=FALSE, fig.cap="Mean ingrowth levels across all samples per site, plotted for the 200 sites and for each model. The red dashed lines shows the 25th and 75th percentiles for the 7 cm diameter threshold in the observed data. There are two boxplots for each model where the left lighted boxplot corresponds to 7cm and the right darker boxplot to 10cm", out.width='100%'}
         knitr::include_graphics(here::here("figures", "recOverAll710.png"))
 ```
 
@@ -636,7 +623,7 @@ with increasing soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp,
 PICUS, LandClim, TreeMig and iLand), while a few models showed the
 opposite trend (ForCEEPS(f), FORMIND and LPJ-GUESS). Across the
 temperature gradient (Figure S2), all the models that featured a
-decrease in ingrowth rates with increasing soil moisture showed the
+decrease in ingrowth levels with increasing soil moisture showed the
 opposite trend (i.e., more ingrowth with increasing temperature), except
 for 4C. The other models did not feature a clear pattern.
 
@@ -679,7 +666,7 @@ evident from the observed data. There were a few models with a strong
 increase of ingrowth diversity between 7 and 10 cm (ForCEEPS, TreeMig,
 LPJ-GUESS, FORMIND, Figure \@ref(fig:H710)).
 
-```{r H710, echo=FALSE, fig.cap="Shannon index of tree ingrowth, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dotted lines represent the 20th percentile of the observed data for the threshold of 7 cm and the 70th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
+```{r H710, echo=FALSE, fig.cap="Shannon index of tree ingrowth, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dashed lines represent the 25th percentile of the observed data for the threshold of 7 cm and the 75th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
     knitr::include_graphics(here::here("figures", "H7_10.png"))
 ```
 
@@ -747,13 +734,13 @@ spp., or did not feature any ingrowth of these species at all, close to
 the patterns from the observed data.
 
 Lastly, there is no model that performed well across the five species
-regarding the species-specific ingrowth rates in the environmental space
-of Figure 6. Some models (e.g., ForClim11, PICUS) tended to consistently
-overestimate the ingrowth share of all five species, but most models
-overestimated the ingrowth share of some species while underestimating
-the share of others (e.g., ForCEEPS, LPJ-GUESS).
+regarding the species-specific ingrowth levels in the environmental
+space of Figure 6. Some models (e.g., ForClim11, PICUS) tended to
+consistently overestimate the ingrowth share of all five species, but
+most models overestimated the ingrowth share of some species while
+underestimating the share of others (e.g., ForCEEPS, LPJ-GUESS).
 
-```{r diff, echo=FALSE, fig.cap="Ingrowth rates of the five main species in terms of their basal area share in the observations (top row) and the performance of each model across the environmental gradients (other rows) for the 7 cm ingrowth threshold. The values shown are the mean of the 200 samples per site and across the sites in each bin (tile), with ten bins per gradient. The sizes of the circles represent the ratio between the ingrowth basal area of the species and the total ingrowth basal area for all species. The absence of a circle indicates a zero basal area share in the ingrowth, or the absence of ingrowth altogether. The color gradient (for the models only) shows the difference between the simulated and observed ratio of ingrowth basal area of the species and the total ingrowth basal area for all the species.", out.width='100%', out.height= '85%'}
+```{r diff, echo=FALSE, fig.cap="Ingrowth levels of the five main species in terms of their basal area share in the observations (top row) and the performance of each model across the environmental gradients (other rows) for the 7 cm ingrowth threshold. The values shown are the mean of the 200 samples per site and across the sites in each bin (tile), with ten bins per gradient. The sizes of the circles represent the ratio between the ingrowth basal area of the species and the total ingrowth basal area for all species. The absence of a circle indicates a zero basal area share in the ingrowth, or the absence of ingrowth altogether. The color gradient (for the models only) shows the difference between the simulated and observed ratio of ingrowth basal area of the species and the total ingrowth basal area for all the species.", out.width='100%', out.height= '85%'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
 ```
 
@@ -763,7 +750,7 @@ There were strong differences among the models regarding the mortality
 rate between 7 and 10 cm (Figure \@ref(fig:mortality11)). Most of the
 models featured a mortality rate significantly larger than the observed
 data, thus at least partially compensating for the general
-overestimation of ingrowth rates (Figure \@ref(fig:over) and Table S5);
+overestimation of ingrowth levels (Figure \@ref(fig:over) and Table S5);
 six models did not feature a significant difference compared to the
 observed data (ForCEEPS, FORMIND, ForClim 1 and 11, and aDGVM2), and
 only the model LPJ-GUESS had a significantly lower mortality rate. Four
@@ -817,7 +804,7 @@ and not always significant regarding the slope (Figure S9 and Table S6).
 knitr::include_graphics(here::here("figures", "ratio7_10.png"))
 ```
 
-```{r mortality13, echo=FALSE, fig.cap="Ratio of tree ingrowth between the 7 and 10 cm thresholds (ingrowth 7 cm / ingrowth 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean ingrowth per model across sites and samples. The horizontal dotted lines show a ratio equal to 1, indicating no decrease of ingrowth between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
+```{r mortality13, echo=FALSE, fig.cap="Ratio of tree ingrowth between the 7 and 10 cm thresholds (ingrowth 7 cm / ingrowth 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean ingrowth per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of ingrowth between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 ```
 
