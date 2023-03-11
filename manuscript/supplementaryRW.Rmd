@@ -2283,28 +2283,25 @@ kable(zeroInflated,  format = "latex", caption = "Number of total samples, sampl
         #kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
+
+```{r sigDiff, echo=FALSE,  message=FALSE}
+library(knitr)
+
+sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
+
+kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
+        #kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+```
+
+
 ## Model traits and model performance
 
 ### Model complexity VS overestimation
 
-```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary atatiatics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%'}
-tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
+```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary statistics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%'}
 
-ggplotRegression <- function(fit){
-require(ggplot2)
-ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 
-  geom_point() +
-  stat_smooth(method = "lm", col = "blue") +
-  labs(title = paste("Adj R2 = ",signif(summary(fit)$adj.r.squared, 5),
-                     "Intercept =",signif(fit$coef[[1]],5 ),
-                     " Slope =",signif(fit$coef[[2]], 5),
-                     " P =",signif(summary(fit)$coef[2,4], 5)))
-}
-
-
-fit1 <- lm(overestimation ~ complexity, data = tableCompOver)
-ggplotRegression(fit1)
-
+knitr::include_graphics(here::here("figures", "compOver.png"))
 
 ```
 
@@ -2324,35 +2321,6 @@ ggplotRegression(fit1)
 
 ## Recruitment species composition
 
-```{r sigDiff, echo=FALSE,  message=FALSE}
-library(knitr)
-
-sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
-
-kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
-
-```{r sigH7_Obs, echo=FALSE,  message=FALSE}
-library(knitr)
-
-sigDiff7 <- readr::read_csv(here::here("figures", "sigH7_Obs.csv"))
-
-kable(sigDiff7,  format = "latex", caption = "Test of the significance of the differences of Shannon index between the observed data and each model for 7cm threshold.") |>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
-
-```{r sigH10_Obs, echo=FALSE,  message=FALSE}
-library(knitr)
-
-sigDiff10 <- readr::read_csv(here::here("figures", "sigH10_Obs.csv"))
-
-kable(sigDiff10,  format = "latex", caption = "Test of the significance of the differences of Shannon index between the observed data and each model for 10cm threshold.") |>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
-```
 
 ```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site for the recruitment  and at the stand level both for observed and simulated values. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
