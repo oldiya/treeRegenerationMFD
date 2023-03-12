@@ -1473,11 +1473,7 @@
       
     }
     
-    
-    
-    
-    
-    
+   
       
 # Map -----
     # IMPORTANT: This is the only figure that is not reproducible

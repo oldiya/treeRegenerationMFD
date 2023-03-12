@@ -71,8 +71,8 @@ and mortality of tree establishment.
 Using 15 models and model variants built to capture long-term (i.e.,
 decadal to centennial) forest dynamics at the stand, landscape and
 global levels, we simulate tree establishment at 200 sites representing
-environmental gradients across Europe. The results are benchmarked
-against comprehensive data from unmanaged forests.
+environmental gradients across Europe. The results are evaluated against
+comprehensive data from unmanaged forests.
 
 Most of the models overestimate ingrowth rates, which is only
 compensated by some models with high simulated mortality rates in the
@@ -91,14 +91,11 @@ Furthermore, individual model design is more important than scale
 (stand, landscape, global) and approach (empirical, process-based) to
 accurately capture tree establishment.
 
-Even though the overestimation of tree establishment represents a
-challenge for the usefulness of model projections under uncertain
-conditions such as climate change, and although some formulations should
-be reconsidered to correct excessive ingrowth levels, it is remarkable
-that most of the models capture the essential features of the highly
-complex process of tree establishment, while not having been
-parameterized with such data. We conclude that in spite of all the
-uncertainties, a lot can be gained by a focus on the modeling of
+In spite of more or less substantial mismatches between model results
+and data, it is remarkable that most of the models capture the essential
+features of the highly complex process of tree establishment, while not
+having been parameterized with such data. We conclude that in spite of
+all the uncertainties, a lot can be gained by a focus on the modeling of
 establishment processes in these model, this will make their long-term
 forest dynamics projections under changing environmental conditions much
 more robust.
