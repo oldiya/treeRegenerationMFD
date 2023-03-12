@@ -937,56 +937,7 @@
     
     
     #### FigS. R change from 7 ----   
-    
-    medianPoints <- mortAll |>
-      dplyr::group_by(model) |> 
-      dplyr::summarise(nn7 = median(nn7, na.rm = TRUE),
-                       nn10 = median(nn10, na.rm = TRUE),
-                       nn710 = median(nn710, na.rm = TRUE))  
-    
-    
-    mort7_10_a <- ggplot2::ggplot(mortAll, ggplot2::aes(x = nn7, y = nn710, color = model)) +
-      ggplot2::geom_point(alpha = .2) +
-      ggplot2::ylim(c(0, 3.5)) +
-      ggplot2::xlim(c(.2, 100)) +
-      ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", linetype = "dashed") +
-      ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", linetype = "dashed") +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
-                     strip.text.y = ggplot2::element_text(angle = 0),
-                     panel.background = ggplot2::element_blank(), 
-                     axis.line = ggplot2::element_line(colour = "black"),
-                     legend.key =  ggplot2::element_blank(), 
-                     legend.title = ggplot2::element_blank(),
-                     strip.background =  ggplot2::element_blank()) +
-      ggplot2::scale_colour_manual(values = values_color) +
-      ggplot2::scale_fill_manual(values = values_color) +
-      ggplot2::xlab(label = expression("R (trees ha"^-1 * "10yr"^-1 * ")(7cm) (mean per site)")) +
-      ggplot2::ylab(label = "R (7cm) / R (10cm) (mean per site)") 
-    
-    mort7_10 <- mort7_10_a + ggplot2::geom_point(data = medianPoints, size = 6, alpha = .9, 
-                                                 pch = 21, ggplot2::aes(fill = model))  
-    
-    ggplot2::ggsave("figures/mort7_10.png",
-                    plot = mort7_10,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    mort7_10_trends <- mort7_10_a +
-      ggplot2::geom_smooth(method = lm, level = 0.99, se = F,
-                           ggplot2::aes(group = model)) +
-      ggplot2::geom_smooth(mortAll, 
-                           mapping = ggplot2::aes(group = 1,
-                                                  x = nn7, y = nn710),
-                           method = lm, level = 0.99, se = F,
-                           color = 'black',
-                           linetype = 2)
-    
-    
-    ggplot2::ggsave("figures/mort7_10_trends.png",
-                    plot = mort7_10_trends ,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-
-    
+  
     # Remove inf values 
     mortAllnoInf <- mortAll[!is.infinite(mortAll$nn710), ]
     # model lm
