@@ -959,27 +959,7 @@
 
     write.csv(prep2[, c("model", "Slope", "Significance")],
               "figures/mort7_10_trends.csv", row.names = FALSE)
-    
-    # Categorize the trends 
-    
-    trends <- prep2[, c("model", "Slope", "Significance")]
-    trends$trend[trends$Slope < 0] <- "negative"
-    postive <- trends[trends$Slope > 0,]
-    median(postive$Slope)
-    trends$trend[trends$Slope <  median(postive$Slope) & trends$Slope > 0] <- "positve"
-    trends$trend[trends$Slope >=  median(postive$Slope)] <- "strong positive"
-    
-    negative <- paste0(trends$model[trends$trend == "negative"],sep = ", ", collapse = "")
-    positive <- paste0(trends$model[trends$trend == "positve"],sep = ", ", collapse = "")
-    positvestrong <- paste0(trends$model[trends$trend == "strong positive"],
-                            sep = ", ", collapse = "")
-    
-    tabletrend <- data.frame(negative =  negative, positive  = positive , 
-                             positvestrong = positvestrong)
-    colnames(tabletrend) <- c("Negative", "Positive", "Strong positive")
-    write.csv(tabletrend,
-              "figures/summaryTrend_mort7_10_trends.csv", row.names = FALSE)
-    
+
     # Plot the trends 
     mort7_10_trends <- 
       ggplot2::ggplot(mortAllnoInf , ggplot2::aes(x = nn7, y = nn710, color = model)) +
