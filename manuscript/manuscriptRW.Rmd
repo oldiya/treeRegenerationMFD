@@ -742,12 +742,12 @@ When evaluating the representation of ingrowth levels along key
 gradients of light availability (basal area), temperature (degree-days)
 and soil moisture (climatic water balance), distinct features emerge:
 the models reproduced the effect of basal area in magnitude and patterns
-(Figure \@ref(fig:nvTrend710BA)) better than the effects of the climatic
-gradients, where they featured varying effects (Figures S1 and S2).
+(Figure \@ref(fig:nvTrend710BAlightTemp) and S7) better than the effects
+of the climatic gradients, where they featured varying effects.
 
 In the observed data, ingrowth levels decreased clearly with increasing
-stand basal area (Figure \@ref(fig:nvTrend710BA)). This trend was
-captured by the Landis-II model only, albeit at much lower values of
+stand basal area (Figure \@ref(fig:nvTrend710BAlightTemp)). This trend
+was captured by the Landis-II model only, albeit at much lower values of
 basal area than in the observations. The other models featured
 distinctly different trends, such as (1) an increase in ingrowth levels
 with increasing total basal area followed by the absence of ingrowth at
@@ -758,32 +758,34 @@ certain value of stand basal area followed by a decrease at even higher
 values of stand basal area, with model-specific thresholds (4C, ForClim
 1, PICUS, SIBYLA and iLand).
 
-The models did not match the observed ingrowth patterns across gradients
-of soil moisture and temperature (Figures S1 and S2), and neither was
+The observed ingrowth did not change much across the climatic water
+balance gradient, and showed a slight increase with temperature. The
+models did not match the observed ingrowth patterns across gradients of
+soil moisture and temperature (Figure
+\@ref(fig:)\@ref(fig:nvTrend710BAlightTemp) and S7), and neither was
 there a clear pattern across models. Regarding the soil moisture
-gradient (Figure S1), a group of models featured decreasing ingrowth
-with increasing soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp,
-PICUS, LandClim, TreeMig and iLand), while a few models showed the
-opposite trend (ForCEEPS(f), FORMIND and LPJ-GUESS). Across the
-temperature gradient (Figure S2), all the models that featured a
-decrease in ingrowth levels with increasing soil moisture showed the
-opposite trend (i.e., more ingrowth with increasing temperature), except
-for 4C. The other models did not feature a clear pattern.
+gradient, a group of models featured decreasing ingrowth with increasing
+soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp, PICUS, LandClim,
+TreeMig and iLand), while a few models showed the opposite trend
+(ForCEEPS(f), FORMIND and LPJ-GUESS). Across the temperature gradient,
+all the models that featured a decrease in ingrowth levels with
+increasing soil moisture showed the opposite trend (i.e., more ingrowth
+with increasing temperature), except for 4C. The other models did not
+feature a clear pattern.
 
-```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. The same graphs with y-axis scaled by model as availalbe in Figure S", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
+```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site with y-axis scaled by model, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. For comparing the magnitude of recruitment across models the same graphs with equal y-axis are availalbe in Figure S7", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
 
-   knitr::include_graphics(c(here::here("figures", "envTrend7Totba_500.png"),
-                              here::here("figures", "envTrend7WB_500.png"),
-                              here::here("figures", "envTrend7DDS_500.png")))
+   knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
+                              here::here("figures", "envTrend7WB.png"),
+                              here::here("figures", "envTrend7DDS.png")))
 ```
-
 
 Silver fir (*Abies alba*), beech (*Fagus sylvatica*), Scots pine (*Pinus
 sylvestris*) and oak (*Quercus* spp.) were the species observed most
 frequently in the EuFoRIa data. Most models captured well the share of
 basal area in the ingrowth of these five species compared to the
 observed data along the two major gradients of climate (Figure
-\@ref(fig:diff), cf. Figure S7). However, the models differed
+\@ref(fig:diff), cf. Figure S8). However, the models differed
 considerably in the way in which they simulated their climatic niche.
 
 First, some models overestimated ingrowth across the entire gradients
@@ -1157,7 +1159,10 @@ available at zenodo and gitlab (links to be added)
 
 # Acknowledgements
 
-Funding of the workshop by COST (Action No CA19139) and ETH Zurich
+Funding of the workshop by COST Action CA19139 PROCLIAS (PROcess-based
+models for CLimate Impact Attribution across Sectors), supported by COST
+(European Cooperation in Science and
+Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
 (Grant ETH-35 18-1).
 
 # References
