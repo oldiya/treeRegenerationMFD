@@ -206,7 +206,7 @@ trees across a specific diameter threshold ("ingrowth"). We included
 models that are based on a range of "philosophies", from models
 operating at the stand to the global scale as well as the range of
 models from empirically derived to "process-based" [e.g., @bugmann1996;
-@fabrika2012; @mette2014; @lexer2001]. Because of the large variability
+@fabrika2012; @lexer2001; @reyer2014]. Because of the large variability
 in tree establishment patterns in nature and the large number of factors
 driving this process --- including some that are not incorporated in
 most models such as deer browsing --- we do not aim at a detailed
@@ -274,16 +274,16 @@ complexity across all processes \>0, Table
 Two models, ForClim and ForCEEPS, were used here with two alternative
 variants. ForClim variant 1 [@bugmann1996] is based on a recruitment
 module that adheres closely to the concept introduced by @botkin1972,
-whereas ForClim variant 11 is adopting a rather different approach that
-considers space filling along with different 'points of entry' for the
-action of specific environmental factors [@huber2020]. These two model
-variants allow us to evaluate a more process-based module (variant 11)
-against a simple module (variant 1), while the rest of the model
-structure is identical. Similarly, the two ForCEEPS variants allow us to
-isolate the importance of the canopy feedback (i.e. simulated actual
-composition and relative abundance of species in the plot) via seed
-trees for the quantity and quality of simulated ingrowth, as one variant
-includes this feedback whereas the other does not.
+whereas ForClim variant 11 is adopting a different approach where
+individual species properties and its relation to the environment are
+more important [@huber2020]. These two model variants allow us to
+evaluate a more process-based and complex module (variant 11) against a
+simple module (variant 1), while the rest of the model structure is
+identical. Similarly, the two ForCEEPS variants allow us to isolate the
+importance of the canopy feedback (i.e. simulated actual composition and
+relative abundance of species in the plot) via seed trees for the
+quantity and quality of simulated ingrowth, as one variant includes this
+feedback whereas the other does not.
 
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=FALSE}
 library(knitr)
