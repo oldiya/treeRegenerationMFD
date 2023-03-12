@@ -76,13 +76,13 @@ against comprehensive data from unmanaged forests.
 
 Most of the models overestimate ingrowth rates, which is only
 compensated by some models with high simulated mortality rates in the
-early stages of population dynamics. The effect of light availability on
-ingrowth rates is captured better than the effect of temperature and
-soil moisture, but patterns are not consistent across models. Simulated
-species diversity of ingrowth matches the observed ranges quite well.
-Models simulating higher species diversity at the stand level do not
-feature higher ingrowth diversity. The ingrowth of *Abies alba* is
-captured across temperature and soil moisture gradients, whereas
+early stages of population dynamics. Simulated species diversity of
+ingrowth matches the observed ranges quite well. Models simulating
+higher species diversity at the stand level do not feature higher
+ingrowth diversity. The effect of light availability on ingrowth rates
+is captured better than the effect of temperature and soil moisture, but
+patterns are not consistent across models. The ingrowth of *Abies alba*
+is captured across temperature and soil moisture gradients, whereas
 ingrowth of *Fagus sylvatica* is generally underestimated. *Picea abies*
 ingrowth is generally overestimated, particularly at colder sites.
 Increasing complexity in the tree establishment modules of the models is
@@ -219,16 +219,13 @@ benchmark the simulated regeneration niche of multiple species against
 empirical data along a wide environmental gradient of temperature,
 moisture, and light availability.
 
-More specifically, we aimed to answer the following questions:
-
-1)  Are models of forest dynamics capturing accurately tree ingrowth
-    levels, initial tree diversity and mortality in tree establishment?
-
-2)  Do model traits explain differences in model performance?
-
-3)  How well do models capture total ingrowth and individual species
-    regeneration niches across environmental gradients of light
-    availability, temperature, and soil moisture?
+More specifically, we aimed to answer the following questions: (1) Are
+models of forest dynamics capturing accurately tree ingrowth levels,
+initial tree diversity and mortality in tree establishment? (2)Do model
+traits explain differences in model performance? (3) How well do models
+capture total ingrowth and individual species regeneration niches across
+environmental gradients of light availability, temperature, and soil
+moisture?
 
 # Material and methods
 
@@ -795,14 +792,14 @@ overestimated ingrowth for more than one species for a large part of the
 climate gradients, such as xComp, PICUS, SIBYLA or LPJ-GUESS (cf. red
 colors in Figure \@ref(fig:diff)). These trends were consistent for both
 ingrowth thresholds, although the exact changes in the share of the
-ingrowth basal area were different (Figure S7).
+ingrowth basal area were different (Figure S8).
 
 Second, there was some congruence in the simulation results by species
 across the models. The share in the ingrowth of Silver fir (*Abies
 alba*) was captured well across the gradient by most models except for
-xComp, PICUS, LandClim and Landis-II, which overestimated the ingrowth
-share of this species. There were also some peculiarities evident for
-some models, such as 4C that did not simulate *Abies alba*. The patterns
+xComp, PICUS, and LandClim, which overestimated the ingrowth share of
+this species. There were also some peculiarities evident for some
+models, such as 4C that did not simulate *Abies alba*. The patterns
 across models for *Fagus sylvatica* ingrowth were more complex, the
 ingrowth was underestimated by many models across the environmental
 gradients featuring negligible ingrowth at most sites, while others
@@ -819,10 +816,11 @@ the patterns from the observed data.
 
 Lastly, there is no model that performed well across the five species
 regarding the species-specific ingrowth levels in the environmental
-space of Figure 6. Some models (e.g., ForClim11, PICUS) tended to
-consistently overestimate the ingrowth share of all five species, but
-most models overestimated the ingrowth share of some species while
-underestimating the share of others (e.g., ForCEEPS, LPJ-GUESS).
+space of Figure \@ref(fig:diff)). Some models (e.g., ForClim11, PICUS)
+tended to consistently overestimate the ingrowth share of all five
+species, but most models overestimated the ingrowth share of some
+species while underestimating the share of others (e.g., ForCEEPS,
+LPJ-GUESS).
 
 ```{r diff, echo=FALSE, fig.cap="Ingrowth levels of the five main species in terms of their basal area share in the observations (top row) and the performance of each model across the environmental gradients (other rows) for the 7 cm ingrowth threshold. The values shown are the mean of the 200 samples per site and across the sites in each bin (tile), with ten bins per gradient. The sizes of the circles represent the ratio between the ingrowth basal area of the species and the total ingrowth basal area for all species. The absence of a circle indicates a zero basal area share in the ingrowth, or the absence of ingrowth altogether. The color gradient (for the models only) shows the difference between the simulated and observed ratio of ingrowth basal area of the species and the total ingrowth basal area for all the species.", out.width='100%', out.height= '85%'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
@@ -854,7 +852,7 @@ much broader understanding resulted than if we had used these data for
 model calibration: it is primarily from the shortcomings of the models
 that we can gain ecological insights [e.g., @trugman2022].
 
-## Ingrowth levels
+## Most of the models overestimated tree ingrowth rates
 
 Most of the models overestimated tree ingrowth rates. This has
 potentially far-reaching implications, e.g., regarding biomass (and thus
@@ -882,26 +880,6 @@ investigated here is problematic particularly if the models are to be
 used under novel conditions such as under climate change [e.g.,
 @huber2021] or in a decision support context [e.g., @thrippleton2021].
 
-## Model formulation did not affect model performance
-
-ADD THESE POINTS HERE complexity, empirical v. PB, etc.
-
-In spite of this criticism, it is remarkable that most models did not
-exceedingly deviate from respect to simulated ingrowth levels -- after
-all, few if any of the models' establishment routines are sufficiently
-constrained by data, with the exception of the empirical models xComp
-and SIBYLA. It is noteworthy that in spite of their empirical basis,
-both models did not match empirical ingrowth levels, in similar
-magnitude as the other models and even in opposite directions (SIBYLA:
-underestimation; xComp: overestimation). It appears that using empirical
-data of limited geographical scope and constrained to managed forests,
-as done in either of these models, leads to extrapolation problems
-already under current climatic conditions. For the other models, whose
-establishment module is not strongly constrained by empirical data, the
-degrees of freedom that are available for modeling ingrowth
-[@konig_tree_2022] could have implied that model performance would be
-much worse.
-
 Ingrowth levels define the structure and composition of future forests,
 but it is equally important to correctly identify areas where ingrowth
 is lacking [@rammer2021]. There are multiple constraints to the
@@ -916,30 +894,6 @@ equilibrium forests, whereas in reality many of the forest reserves are
 recovering from past management activities and have become denser over
 the past decades [e.g., @heiri2009], leading to less ingrowth than in an
 equilibrium situation.
-
-Competition for light as a strong filter for tree establishment has been
-widely documented [@messier1999; @collet2006; @berdanier2016], but
-models did not reproduce this expectation. However, it is difficult to
-measure light availability at large spatial and temporal scales. We used
-total stand basal area as a proxy for light availability [cf.
-@schmid2021]. We found pronounced differences in the stand basal area
-ranges simulated by the models, but also between the models and the
-observations. This made not possible to evaluate the establishment for
-the extremes of the stand density ranges in some models. For example,
-ingrowth rates at low stand densities are relevant to assess how well
-forests are recovering e.g., after gap creation due to disturbance
-[@seidl2022; @grubb1977]. At the level of the simulated one-hectare
-samples, average basal area is typically not very low as long as no
-larger disturbances occur, which was explicitly excluded in our
-simulation protocol. Towards the other end of the spectrum, i.e., with
-increasing basal area, it would be reasonable to expect that with
-increasing stand basal area, the ingrowth of the different species would
-become sparser and drop out entirely under low-light conditions
-[@klopcic2012; @zell2019]. However, few models showed this trend, thus
-indicating that the relation between ingrowth and light availability is
-not yet captured correctly in most models.
-
-## Species composition of ingrowth
 
 Correctly capturing species composition in tree establishment is
 important to assess the future functional diversity of a forest, e.g.,
@@ -957,18 +911,6 @@ individual models consider establishment processes [@konig_tree_2022],
 e.g., in the absence of adults, ingrowth can be linked to either seed
 rain-dispersal, or to a seed/seedling bank.
 
-Yet, there were pronounced variations how the main tree species were
-represented along the environmental gradients, in particular the
-dominant species Abies alba, Fagus sylvatica and Picea abies. The
-ingrowth rates were sampled from simulations in the equilibrium, and in
-this state it is expected that non-climax species such as *Pinus
-sylvestris* or *Quercus* would be of minor importance, or absent
-[@klopcic2015]. Most models captured this low abundance, which is also
-found in the empirical data. Thus, although the broad patterns are
-matched by many models, improvements in the quantification of the
-regeneration niche of the species are needed, but this cannot be done in
-the absence of robust datasets.
-
 The species diversity of the entire stand was better captured by the
 models than the diversity of tree ingrowth, and only a few models
 overpredicted stand-level diversity. Defining ingrowth composition as
@@ -981,8 +923,6 @@ diversity than those without feedback. The similar performance of models
 with and without feedback is likely because the models put more weight
 to the regeneration niche arising from abiotic and biotic filters, than
 from the habitat niche of the adult trees [@grubb1977].
-
-## Ingrowth mortality
 
 There are several factors that lead to mortality during the
 establishment phase such as competition [@casper1997] and multiple
@@ -1006,6 +946,71 @@ simulations and analyses, we cannot conclusively assess what is
 happening in the models, and further studies are required that focus on
 a wider range of tree sizes and the fate of tree establishment along
 such a size continuum.
+
+## Model traits did not affect model performance
+
+In spite of this criticism, it is remarkable that most models did not
+exceedingly deviate from respect to simulated ingrowth levels -- after
+all, few if any of the models' establishment routines are sufficiently
+constrained by data, with the exception of the empirical models xComp
+and SIBYLA. It is noteworthy that in spite of their empirical basis,
+both models did not match empirical ingrowth levels, in similar
+magnitude as the other models and even in opposite directions (SIBYLA:
+underestimation; xComp: overestimation). It appears that using empirical
+data of limited geographical scope and constrained to managed forests,
+as done in either of these models, leads to extrapolation problems
+already under current climatic conditions. For the other models, whose
+establishment module is not strongly constrained by empirical data, the
+degrees of freedom that are available for modeling ingrowth
+[@konig_tree_2022] could have implied that model performance would be
+much worse.
+
+Increasing complexity in establishment modules has been motivated by
+better process understanding and enhancing of model accuracy
+[@bugmann2022; @bugmann2019]. However, more complex models do not
+necessarily lead to better projections and rather to a reduced
+transparency and predictive power [@franklin2020]. The results from this
+study showed that increasing complexity in the establishment modules did
+not represent an improvement in the projections of ingrowth levels,
+species composition or mortality at early tree stages. Thus, the
+question what level of detail one has to use to model establishment
+processes remains open [@konig_tree_2022; @bugmann2022].
+
+## Regeneration niche 
+
+Competition for light as a strong filter for tree establishment has been
+widely documented [@messier1999; @collet2006; @berdanier2016], but
+models did not reproduce this expectation. However, it is difficult to
+measure light availability at large spatial and temporal scales. We used
+total stand basal area as a proxy for light availability [cf.
+@schmid2021]. We found pronounced differences in the stand basal area
+ranges simulated by the models, but also between the models and the
+observations. This made not possible to evaluate the establishment for
+the extremes of the stand density ranges in some models. For example,
+ingrowth rates at low stand densities are relevant to assess how well
+forests are recovering e.g., after gap creation due to disturbance
+[@seidl2022; @grubb1977]. At the level of the simulated one-hectare
+samples, average basal area is typically not very low as long as no
+larger disturbances occur, which was explicitly excluded in our
+simulation protocol. Towards the other end of the spectrum, i.e., with
+increasing basal area, it would be reasonable to expect that with
+increasing stand basal area, the ingrowth of the different species would
+become sparser and drop out entirely under low-light conditions
+[@klopcic2012; @zell2019]. However, few models showed this trend, thus
+indicating that the relation between ingrowth and light availability is
+not yet captured correctly in most models.
+
+There were pronounced variations how the main tree species were
+represented along the environmental gradients, in particular the
+dominant species Abies alba, Fagus sylvatica and Picea abies. The
+ingrowth rates were sampled from simulations in the equilibrium, and in
+this state it is expected that non-climax species such as *Pinus
+sylvestris* or *Quercus* would be of minor importance, or absent
+[@klopcic2015]. Most models captured this low abundance, which is also
+found in the empirical data. Thus, although the broad patterns are
+matched by many models, improvements in the quantification of the
+regeneration niche of the species are needed, but this cannot be done in
+the absence of robust datasets.
 
 ## Methodological considerations
 
@@ -1060,24 +1065,15 @@ climatic water balance.
 ## Research recommendations
 
 Based on the results of this study, it is clear that models of forest
-dynamics need a focus on their establishment modules. Increasing
-complexity in establishment modules has been motivated by better process
-understanding and enhancing of model accuracy [@bugmann2022;
-@bugmann2019]. However, more complex models do not necessarily lead to
-better projections and rather to a reduced transparency and predictive
-power [@franklin2020]. The results from this study showed that
-increasing complexity in the establishment modules did not represent an
-improvement in the projections of ingrowth levels, species composition
-or mortality at early tree stages. Thus, the question what level of
-detail one has to use to model establishment processes remains open and
-must be addressed in future research [@konig_tree_2022; @bugmann2022].
-
-We recommend that the further development of the establishment modules
-is implemented as additional features that can be traced back, as done
-in this study for the model variants of ForClim and ForCEEPS, and that
-model complexity and structure must always be connected with model
-objectives [@albrich2020]. If it should be necessary to include more
-detail in the establishment models, this will come with higher
+dynamics need a focus on their establishment modules. As shown in the
+results of the study it is still uncertain what level of detail one has
+to use to model establishment processes and must be addressed in future
+research. We recommend that the further development of the establishment
+modules is implemented as additional features that can be traced back,
+as done in this study for the model variants of ForClim and ForCEEPS,
+and that model complexity and structure must always be connected with
+model objectives [@albrich2020]. If it should be necessary to include
+more detail in the establishment models, this will come with higher
 parameterisation efforts, which will most likely lead to lower
 generalization as the required data will have to be collected from
 specific locations, as currently there is no general establishment
@@ -1152,18 +1148,21 @@ more robust particularly in the face of climate change and
 post-disturbance dynamics, thus strongly reducing the uncertainty in
 long-term projections of future forest dynamics.
 
-# Data availability statement
+# Reproducibility and data availability statement
 
-The code and data that support the findings of this study are openly
-available at zenodo and gitlab (links to be added)
+This study compiles with the basic rules of reproducibility and has make
+available the protocol of the study, the data and all the software that
+leads of the findings presented in this study. The protocol is available
+here XXX. The code and data that support the findings of this study are
+openly available at zenodo and gihub (links to be added)
 
 # Acknowledgements
 
-Funding of the workshop by COST Action CA19139 PROCLIAS (PROcess-based
-models for CLimate Impact Attribution across Sectors), supported by COST
-(European Cooperation in Science and
+Funding of the workshop was provided by the COST Action CA19139 PROCLIAS
+(PROcess-based models for CLimate Impact Attribution across Sectors),
+supported by COST (European Cooperation in Science and
 Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
-(Grant ETH-35 18-1).
+(Grant ETH-35 18-1). ODY was funded by SNF project XXXX
 
 # References
 
