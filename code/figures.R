@@ -463,9 +463,9 @@
     plotData2 <- plotShannonDF2[plotShannonDF2$model %in% selModels, ]
     plotData2 <- plotData2[plotData2$dbh == "7", ]
     
-    labelsMod <- c(paste0("Overpredict", "\n(n=2)"),
-                   paste0("", "\n(n=4)"),
-                   paste0("Underpredict", "\n(n=8)"))
+    labelsMod <- c(paste0("Overpredict", "\n(n=7)"),
+                   paste0("", "\n(n=5)"),
+                   paste0("Underpredict", "\n(n=2)"))
     
     plotData2$model <- factor(plotData2$model, levels = selModels, labels = labelsMod)
     
@@ -484,7 +484,7 @@
                        strip.background =  ggplot2::element_blank(),
                        axis.line = ggplot2::element_line(colour = "black"),
                        legend.position = "right") +
-        #ggplot2::coord_cartesian(xlim = c(0, 0.65), ylim = c(0, 0.65)) +  
+        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " recruitment")) +
         ggplot2::facet_wrap(~model) +
@@ -523,7 +523,7 @@
         ggplot2::theme(legend.title = ggplot2::element_blank()) +
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
-        ggplot2::ggtitle("7 cm recruitment") +
+        ggplot2::ggtitle("7 cm diamter threshold") +
         ggplot2::facet_wrap(~model) +
         ggplot2::geom_abline() +
         ggplot2::scale_color_manual(labels = c("Observed" = "Observed", 
@@ -550,7 +550,7 @@
         ggplot2::theme(legend.title = ggplot2::element_blank()) +
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
-        ggplot2::ggtitle("10 cm recruitment") +
+        ggplot2::ggtitle("10 cm diameter threshold") +
         ggplot2::facet_wrap(~model) +
         ggplot2::geom_abline() +
         ggplot2::scale_color_manual(labels = c("Observed" = "Observed", 
@@ -615,19 +615,19 @@
     
     #### FigS. recr. Sim.vs obs. recr. species richness -----
     
-    category <- c( "B1", # "4C" 
-                   "B3", # "ForCEEPS" 
-                   "B3", # "ForCEEPS(f)"
-                   "B3", # "FORMIND"
-                   "B3", # "ForClim 1"
-                   "B3", #"ForClim 11"
-                   "B3", # "SIBYLA"  
+    category <- c( "B3", # "4C" 
+                   "B1", # "ForCEEPS" 
+                   "B2", # "ForCEEPS(f)"
+                   "B2", # "FORMIND"
+                   "B1", # "ForClim 1"
+                   "B1", #"ForClim 11"
+                   "B2", # "SIBYLA"  
                    "B1", # "xComp"
-                   "B2", # "PICUS"
+                   "B1", # "PICUS"
                    "B2", # "iLand"
-                   "B3", # "LandClim" 
-                   "B2", # "Landis II"
-                   "B3", # "TreeMig"
+                   "B1", # "LandClim" 
+                   "B3", # "Landis II"
+                   "B1", # "TreeMig"
                    "B2") # "LPJ-GUESS"
 
     ann_text <- data.frame(Emp_ShannonIndexRecruitMEAN = 0.7,
@@ -642,7 +642,7 @@
                                       y = ShannonIndexRecruitMEAN,
                                       color = dbh),
                          fill = "white") + 
-        ggplot2::coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +  
+        ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::geom_point(size = 0.6, alpha = 0.7 ) + 
         hrbrthemes::theme_ipsum() +
         ggplot2::labs(y = bquote(bar(H) * " simulated recruitment"),
@@ -996,8 +996,7 @@
       dplyr::mutate(slope = lm(nn710 ~ nn7, na.action = na.omit)$coefficients[2],
                     significance = summary(lm(nn710 ~ nn7, na.action = na.omit))$coefficients[2, 4],
                     x = mean(nn710),  
-                    y = mean(nn7)     
-      )
+                    y = mean(nn7))
     
     
     prep2 <- mortAllnoInf  |>
@@ -1007,7 +1006,7 @@
                     Significance = summary(mod)$coeff[2, 4]) |> 
       dplyr::ungroup() |>
       as.data.frame()
-    
+
     write.csv(prep2[, c("model", "Slope", "Significance")],
               "figures/mort7_10_trends.csv", row.names = FALSE)
     
@@ -1021,53 +1020,48 @@
     trends$trend[trends$Slope <  median(postive$Slope) & trends$Slope > 0] <- "positve"
     trends$trend[trends$Slope >=  median(postive$Slope)] <- "strong positive"
     
-    negative <- paste0(trends$model[trends$trend == "negative"],sep=", ", collapse="")
-    positive <- paste0(trends$model[trends$trend == "positve"],sep=", ", collapse="")
-    positvestrong <- paste0(trends$model[trends$trend == "strong positive"],sep=", ", collapse="")
+    negative <- paste0(trends$model[trends$trend == "negative"],sep = ", ", collapse = "")
+    positive <- paste0(trends$model[trends$trend == "positve"],sep = ", ", collapse = "")
+    positvestrong <- paste0(trends$model[trends$trend == "strong positive"],
+                            sep = ", ", collapse = "")
     
-    tabletrend <- data.frame(negative =  negative, positive  = positive , positvestrong = positvestrong)
+    tabletrend <- data.frame(negative =  negative, positive  = positive , 
+                             positvestrong = positvestrong)
     colnames(tabletrend) <- c("Negative", "Positive", "Strong positive")
     write.csv(tabletrend,
               "figures/summaryTrend_mort7_10_trends.csv", row.names = FALSE)
     
     # Plot the trends 
-    mort7_10_trends <- mort7_10_a + ggplot2::geom_smooth(
-      data = prep, ggplot2::aes(x = nn7, y = nn710, group = model),  # grouping variable does the plots for us!
-      method = "lm", se = FALSE,
-      formula = y ~ x) +
-      ggplot2::geom_text(
-        data = prep, ggplot2::aes(x = nn7, y = nn710, label = slope),
-        nudge_y = 12, nudge_x = -1
-      )
-    
-    
-    #### FigS. IQR vs overestimation ----
-    
-    overMortiqr <- ggplot2::ggplot(modelMean2,
-                                   ggplot2::aes(x = diff, y = iqr7_10,
-                                                label = model, color = model)) +
-      ggplot2::geom_point(alpha = .8) +
-      ggplot2::geom_text(fontface = "bold",
-                         position = ggplot2::position_jitter(width = 0.1,
-                                                             height = 0.1)) +
-      ggplot2::xlim(c(-5, 15)) +
-      ggplot2::ylim(c(0, 1)) +
-      ggplot2::geom_vline(xintercept = 0, linetype = "dotted", color = "red") +
-      ggplot2::scale_colour_manual(values = values_color) +
+    mort7_10_trends <- 
+      ggplot2::ggplot(mortAllnoInf, ggplot2::aes(x = nn7, y = nn710, color = model)) +
+      ggplot2::geom_point(alpha = .2) +
+      ggplot2::ylim(c(0, 3.5)) +
+      ggplot2::xlim(c(.2, 100)) +
+      ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", linetype = "dashed") +
+      ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", linetype = "dashed") +
       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
                      strip.text.y = ggplot2::element_text(angle = 0),
                      panel.background = ggplot2::element_blank(), 
                      axis.line = ggplot2::element_line(colour = "black"),
                      legend.key =  ggplot2::element_blank(), 
                      legend.title = ggplot2::element_blank(),
-                     strip.background =  ggplot2::element_blank(),
-                     legend.position = "none") +
-      ggplot2::xlab(label = "Proportion of overestimation in tree recruiment") +
-      ggplot2::ylab(label = "Interquartile range of tree share between 10 and 7cm") 
+                     strip.background =  ggplot2::element_blank()) +
+      ggplot2::scale_colour_manual(values = values_color) +
+      ggplot2::scale_fill_manual(values = values_color) +
+      ggplot2::xlab(label = expression("R (trees ha"^-1 * "10yr"^-1 * ")(7cm) (mean per site)")) +
+      ggplot2::ylab(label = "R (7cm) / R (10cm) (mean per site)") + 
+      ggplot2::geom_smooth(data = prep, 
+                           ggplot2::aes(x = nn7, y = nn710, group = model),  # grouping variable does the plots for us!
+                           method = "lm", se = FALSE,
+                           formula = y ~ x) +
+      ggplot2::geom_text(data = prep, 
+                         ggplot2::aes(x = nn7, y = nn710, label = slope),
+                         nudge_y = 12, nudge_x = -1)
     
-    ggplot2::ggsave("figures/mort7_10_iqrOver.png",
-                    plot =  overMortiqr,
+    ggplot2::ggsave("figures/mort7_10_trends.png",
+                    plot = mort7_10_trends,
                     dpi = 300, units = "cm", device = 'png') 
+
     
     ### variability 7-10 vs overestimate per model ----
     VarmeannOver <- ggplot2::ggplot(modelMean2,
@@ -1151,7 +1145,7 @@
 ## Model traits-----    
  ### Complexity VS overestimation proportion-----
 
-    # Prepare data for species diversit -----
+    # Prepare data for species diversity -----
     sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
                                       data = dat710[!dat710$model == "aDGVM2", ],
                                       group.by = "model", method = "t.test")
@@ -1175,7 +1169,29 @@
   
     write.csv(tableCompOver,"figures/tableCompOver.csv", row.names = FALSE)
     
-   
+    #Figure
+    tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
+    
+    ggplotRegression <- function(fit){
+      require(ggplot2)
+      ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 
+        geom_point() +
+        stat_smooth(method = "lm", col = "blue") +
+        labs(title = paste("Adj R2 = ",signif(summary(fit)$adj.r.squared, 5),
+                           "Intercept =",signif(fit$coef[[1]],5 ),
+                           " Slope =",signif(fit$coef[[2]], 5),
+                           " P =",signif(summary(fit)$coef[2,4], 5)))
+    }
+    
+    
+    fit1 <- lm(overestimation ~ complexity, data = tableCompOver)
+    
+    ggplot2::ggsave("figures/compOver.png",
+                    plot =  ggplotRegression(fit1),
+                    width = 25, height = 20, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png')
+    
+    
   ### Complexity VS deviation on diversity richness value-----    
     
   ### Complexity VS deviation on mortality rate-----     
