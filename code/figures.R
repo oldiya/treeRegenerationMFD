@@ -216,7 +216,7 @@
                     dpi = 300, units = "cm", device = 'png')
     
     
-    # Significant difference per model?
+    # Significant difference per model between 7 and 10 diameter threshold
     
     sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
                                       data = dat710[!dat710$model == "aDGVM2", ],
@@ -617,144 +617,6 @@
                     plot = d, width = 22, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')
     
-    
-    ### Fig. r.ba/Totr.ba & env gradient -----
-    
-    # Data preparation
-  
-  for (dbhSel in c(7, 10)) {
-    dbhSel <- dbhSel
-    simResdbh <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
-    #simResdbh <- outputsDF 
-    simResdbh$r.baShare <- simResdbh$r.ba / simResdbh$Totba
-    simResdbh$baShare <- simResdbh$ba / simResdbh$Totba
-    
-    simResdbh$r.baTotRecShare <- round(simResdbh$r.ba, 4) / round(simResdbh$Totr.ba, 4)
-    
-    # For this figure we consider that values with 0 r.ba and 0 Tot.r.ba have a 
-    # recruitment share of 0 instead of NaN
-    simResdbh$r.baTotRecShare [simResdbh$r.ba == 0 & simResdbh$Totr.ba == 0] <- 0
-    
-    # Aggregate values from simulations to get total recruitment per site and sample
-    simResAgg <- simResdbh |>
-      dplyr::group_by(site, species, model) |> 
-      dplyr::summarise(r.baShareMean = round(mean(r.baShare), 2), 
-                       baShareMean = round(mean(baShare), 2), 
-                       r.baTot.r.ShareMean = round(mean(r.baTotRecShare),
-                                                   2), 
-                       dds = unique(dds), 
-                       wb = unique(wb)) 
-    
-    mainSppBAshare <-  simResAgg[simResAgg$species %in% c("Abies alba", 
-                                                          "Fagus sylvatica",
-                                                          "Picea abies", 
-                                                          "Pinus sylvestris",
-                                                          "Quercus spp."), ]
-    mainSppBAshare$model <- factor(mainSppBAshare$model, levels = modelsOrder)
-    mainSppBAshare$dds <- round(mainSppBAshare$dds, 0)
-    
-    #Divide dds and wb in bins based on all the possible values for all sites
-    #not only the ones included in dbh = 7cm
-    ddsRange <- range(outputsDF$dds)
-    wbRange <- range(outputsDF$wb)
-    binSize <- 11
-    
-    mainSppBAshare <- mainSppBAshare |> 
-                       dplyr::mutate(dds_bin = cut(dds, 
-                                                   breaks = seq(ddsRange[1], 
-                                                                ddsRange[2], 
-                                                                by = (ddsRange[2] - ddsRange[1]) / binSize),
-                                                   include.lowest = TRUE))
-    
-    mainSppBAshare <- mainSppBAshare |> 
-                      dplyr::mutate(wb_bin = cut(wb, 
-                                                 breaks = seq(wbRange[1], wbRange[2],
-                                                              by = (wbRange[2] - wbRange[1]) / binSize),
-                                                 include.lowest = TRUE))
-    
-    # Mean value per combination of bins
-    mainSppBAshareBinsMean <-  aggregate(r.baTot.r.ShareMean ~ wb_bin + dds_bin + model + species, 
-                                         mainSppBAshare, mean)
-    mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMean[mainSppBAshareBinsMean$model == "Observed", ]
-    mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMeanEmp[, c("species","dds_bin",
-                                                               "wb_bin", 
-                                                               "r.baTot.r.ShareMean")]
-    colnames(mainSppBAshareBinsMeanEmp) <- c("species","dds_bin","wb_bin", 
-                                             "r.ShareMeanEMP")
-    mainSppBAshareBinsMeanNOEmp <- mainSppBAshareBinsMean[!mainSppBAshareBinsMean$model == "Observed",]
-    
-    mainSppBAshareBinsMeanDiff <- merge(mainSppBAshareBinsMean, 
-                                        mainSppBAshareBinsMeanEmp,
-                                        by = c("species", "dds_bin", "wb_bin"),
-                                        all.x = TRUE)
-    mainSppBAshareBinsMeanDiff$Diff <- (mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean - mainSppBAshareBinsMeanDiff$r.ShareMeanEMP)
-    mainSppBAshareBinsMeanDiff$Diff <- round(mainSppBAshareBinsMeanDiff$Diff, 2)
-    
-    # Plot 
-    heatCircle <- ggplot2::ggplot(data = mainSppBAshareBinsMeanDiff,
-                                  mapping = ggplot2::aes(x = dds_bin,
-                                                         y = wb_bin,
-                                                         fill = Diff)) +
-      ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
-                                    breaks = c(-1, -0.5, 0, 0.5, 1),
-                                    midpoint = 0,
-                                    name = expression(bar(R) * " BA share difference")) +
- 
-      ggplot2::geom_tile() +
-      ggplot2::xlab(label = labEnvVarDDS) +
-      ggplot2::ylab(label = labEnvVarWB) +
-      ggplot2::facet_grid(model ~ species) +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                     strip.text.y = ggplot2::element_text(angle = 0),
-                     panel.grid.major = ggplot2::element_blank(), 
-                     panel.grid.minor = ggplot2::element_blank(),
-                     panel.background = ggplot2::element_rect(fill = "lightgrey",
-                                                              colour = "lightblue"),
-                     axis.line = ggplot2::element_line(colour = "black"),
-                     strip.background =  ggplot2::element_blank()) +
-      ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
-                                            "(786,977]" = "",
-                                            "(977,1.17e+03]" = "",
-                                            "(1.17e+03,1.36e+03]" = "",
-                                            "(1.36e+03,1.55e+03]" = "1360",
-                                            "(1.55e+03,1.74e+03]" = "",
-                                            "(1.74e+03,1.93e+03]" = "",
-                                            "(1.93e+03,2.12e+03]" = "",
-                                            "(2.12e+03,2.31e+03]" = "",
-                                            "(2.31e+03,2.51e+03]" = "2310", 
-                                            "(2.51e+03,2.7e+03]" = "")) +
-      ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
-                                           "(-138,0.29]"  = "",
-                                           "(0.29,139]" = "",
-                                           "(139,278]" = "",
-                                           "(278,416]" = "278",
-                                           "(416,555]" = "",
-                                           "(555,693]" = "",
-                                           "(693,832]" = "",
-                                           "(832,971]" = "832",
-                                           "(971,1.11e+03]" = "",
-                                           "(1.11e+03,1.25e+03]" = "")) +
-      ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
-                                       size = r.baTot.r.ShareMean), shape = 1) +
-      ggplot2::scale_size_area(breaks = c(0.1, 0.3, 0.6, 0.9), limits = c(0.0001, 1)) + 
-      ggplot2::labs(size = expression(bar(R) * " BA share")) 
-    
-    
-    ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles_",dbhSel, ".png"),
-                    plot = heatCircle,
-                    width = 27, height = 60, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    print(paste0("Range of values for recruited BA share and threshold ",dbhSel, " is ", 
-                 range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[1], "-",
-                 range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[2] ))
-    print(paste0("Range of values for difference with observed data and threshold ",dbhSel, " is ", 
-                 range(mainSppBAshareBinsMeanDiff$Diff)[1], "-",
-                 range(mainSppBAshareBinsMeanDiff$Diff)[2]))
-    
-  }
-
-    
 # Mortality 7-10 -----
     
   ### Fig. R ratio 7/10 ----
@@ -994,6 +856,7 @@
     
     
 ## Model traits-----    
+## 
  ### Complexity VS overestimation proportion-----
 
     # Prepare data for species diversity -----
@@ -1041,12 +904,39 @@
                     plot =  ggplotRegression(fit1),
                     width = 25, height = 20, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')
-    
-    
-  ### Complexity VS deviation on diversity richness value-----    
-    
-  ### Complexity VS deviation on mortality rate-----     
 
+  ### Emp/process based -----
+    overDTsim <- outputsDF |> 
+      dplyr::group_by(site, sample, dbh, model) |>
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       Totba = unique(Totba)) |>
+      dplyr::group_by(site, dbh, model) |>
+      dplyr::summarise(r.trees = mean(r.trees),
+                       r.ba = mean(r.ba),
+                       Totba = mean(Totba))
+    
+  
+    rtreesDiff <- ggpubr::compare_means(r.trees ~ model,  
+                                    data = overDTsim, 
+                                    ref.group = "Observed", method = "t.test")
+    write.csv(rtreesDiff ,"figures/rtreesDiff.csv", row.names = FALSE)
+    
+    
+### feedback / not feedback H simulated vs observed -----  
+
+    dat710 <- ShannonIndex |>  
+      dplyr::group_by(model, site, dbh) |> 
+      dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
+    dat710$dbh <- ordered(dat710$dbh, levels = c("7", "10"))
+    
+    dat7H <- dat710[dat710$dbh == "7", ]
+    
+    rtreesDiff <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
+                                        data = dat7H[!dat7H$model == "aDGVM2", ], 
+                                        ref.group = "Observed", method = "t.test")
+    write.csv(rtreesDiff, "figures/sigH7_SimObs.csv", row.names = FALSE)  
+    
     
 # Recruitment niche-----
     
@@ -1446,6 +1336,142 @@
     dev.off()
     
     
+### Fig. r.ba/Totr.ba & env gradient -----
+    
+    # Data preparation
+    
+    for (dbhSel in c(7, 10)) {
+      dbhSel <- dbhSel
+      simResdbh <- outputsDF |> dplyr::filter(dbh %in% dbhSel)
+      simResdbh$r.baShare <- simResdbh$r.ba / simResdbh$Totba
+      simResdbh$baShare <- simResdbh$ba / simResdbh$Totba
+      
+      simResdbh$r.baTotRecShare <- round(simResdbh$r.ba, 4) / round(simResdbh$Totr.ba, 4)
+      
+      # For this figure we consider that values with 0 r.ba and 0 Tot.r.ba have a 
+      # recruitment share of 0 instead of NaN
+      simResdbh$r.baTotRecShare [simResdbh$r.ba == 0 & simResdbh$Totr.ba == 0] <- 0
+      
+      # Aggregate values from simulations to get total recruitment per site and sample
+      simResAgg <- simResdbh |>
+        dplyr::group_by(site, species, model) |> 
+        dplyr::summarise(r.baShareMean = round(mean(r.baShare), 2), 
+                         baShareMean = round(mean(baShare), 2), 
+                         r.baTot.r.ShareMean = round(mean(r.baTotRecShare),
+                                                     2), 
+                         dds = unique(dds), 
+                         wb = unique(wb)) 
+      
+      mainSppBAshare <-  simResAgg[simResAgg$species %in% c("Abies alba", 
+                                                            "Fagus sylvatica",
+                                                            "Picea abies", 
+                                                            "Pinus sylvestris",
+                                                            "Quercus spp."), ]
+      mainSppBAshare$model <- factor(mainSppBAshare$model, levels = modelsOrder)
+      mainSppBAshare$dds <- round(mainSppBAshare$dds, 0)
+      
+      #Divide dds and wb in bins based on all the possible values for all sites
+      #not only the ones included in dbh = 7cm
+      ddsRange <- range(outputsDF$dds)
+      wbRange <- range(outputsDF$wb)
+      binSize <- 11
+      
+      mainSppBAshare <- mainSppBAshare |> 
+        dplyr::mutate(dds_bin = cut(dds, 
+                                    breaks = seq(ddsRange[1], 
+                                                 ddsRange[2], 
+                                                 by = (ddsRange[2] - ddsRange[1]) / binSize),
+                                    include.lowest = TRUE))
+      
+      mainSppBAshare <- mainSppBAshare |> 
+        dplyr::mutate(wb_bin = cut(wb, 
+                                   breaks = seq(wbRange[1], wbRange[2],
+                                                by = (wbRange[2] - wbRange[1]) / binSize),
+                                   include.lowest = TRUE))
+      
+      # Mean value per combination of bins
+      mainSppBAshareBinsMean <-  aggregate(r.baTot.r.ShareMean ~ wb_bin + dds_bin + model + species, 
+                                           mainSppBAshare, mean)
+      mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMean[mainSppBAshareBinsMean$model == "Observed", ]
+      mainSppBAshareBinsMeanEmp <- mainSppBAshareBinsMeanEmp[, c("species","dds_bin",
+                                                                 "wb_bin", 
+                                                                 "r.baTot.r.ShareMean")]
+      colnames(mainSppBAshareBinsMeanEmp) <- c("species","dds_bin","wb_bin", 
+                                               "r.ShareMeanEMP")
+      mainSppBAshareBinsMeanNOEmp <- mainSppBAshareBinsMean[!mainSppBAshareBinsMean$model == "Observed",]
+      
+      mainSppBAshareBinsMeanDiff <- merge(mainSppBAshareBinsMean, 
+                                          mainSppBAshareBinsMeanEmp,
+                                          by = c("species", "dds_bin", "wb_bin"),
+                                          all.x = TRUE)
+      mainSppBAshareBinsMeanDiff$Diff <- (mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean - mainSppBAshareBinsMeanDiff$r.ShareMeanEMP)
+      mainSppBAshareBinsMeanDiff$Diff <- round(mainSppBAshareBinsMeanDiff$Diff, 2)
+      
+      mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean[mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean == 0] <- NA
+      
+      # Plot 
+      heatCircle <- ggplot2::ggplot(data = mainSppBAshareBinsMeanDiff,
+                                    mapping = ggplot2::aes(x = dds_bin,
+                                                           y = wb_bin,
+                                                           fill = Diff)) +
+        ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
+                                      breaks = c(-1, -0.5, 0, 0.5, 1),
+                                      midpoint = 0,
+                                      name = expression(bar(R) * " BA share difference")) +
+        
+        ggplot2::geom_tile() +
+        ggplot2::xlab(label = labEnvVarDDS) +
+        ggplot2::ylab(label = labEnvVarWB) +
+        ggplot2::facet_grid(model ~ species) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       panel.grid.major = ggplot2::element_blank(), 
+                       panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_rect(fill = "lightgrey",
+                                                                colour = "lightblue"),
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       strip.background =  ggplot2::element_blank()) +
+        ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
+                                              "(786,977]" = "",
+                                              "(977,1.17e+03]" = "",
+                                              "(1.17e+03,1.36e+03]" = "",
+                                              "(1.36e+03,1.55e+03]" = "1360",
+                                              "(1.55e+03,1.74e+03]" = "",
+                                              "(1.74e+03,1.93e+03]" = "",
+                                              "(1.93e+03,2.12e+03]" = "",
+                                              "(2.12e+03,2.31e+03]" = "",
+                                              "(2.31e+03,2.51e+03]" = "2310", 
+                                              "(2.51e+03,2.7e+03]" = "")) +
+        ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
+                                             "(-138,0.29]"  = "",
+                                             "(0.29,139]" = "",
+                                             "(139,278]" = "",
+                                             "(278,416]" = "278",
+                                             "(416,555]" = "",
+                                             "(555,693]" = "",
+                                             "(693,832]" = "",
+                                             "(832,971]" = "832",
+                                             "(971,1.11e+03]" = "",
+                                             "(1.11e+03,1.25e+03]" = "")) +
+        ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
+                                         size = r.baTot.r.ShareMean), shape = 1) +
+        ggplot2::scale_size_binned_area(breaks = c(0.1, 0.3, 0.6, 0.9), limits = c(0.000001, 1)) + 
+        ggplot2::labs(size = expression(bar(R) * " BA share")) 
+      
+      
+      ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles_",dbhSel, ".png"),
+                      plot = heatCircle,
+                      width = 27, height = 60, scale = 0.9,
+                      dpi = 300, units = "cm", device = 'png') 
+      
+      print(paste0("Range of values for recruited BA share and threshold ",dbhSel, " is ", 
+                   range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[1], "-",
+                   range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[2] ))
+      print(paste0("Range of values for difference with observed data and threshold ",dbhSel, " is ", 
+                   range(mainSppBAshareBinsMeanDiff$Diff)[1], "-",
+                   range(mainSppBAshareBinsMeanDiff$Diff)[2]))
+      
+    }
     
     
     
