@@ -870,8 +870,17 @@
     
   ### Fig. median vs overestimate per model ----
     # Prepare the data
+    ##calculated as the difference between the 3rd quartile and the 1st quartile
+    ##in rate of ntrees between 10 and 7 cm
+    iqrDT <- mortAll[is.finite(mortAll$nn710),] |>
+                dplyr::group_by(model) |> 
+                dplyr::summarise(iqr7_10 = IQR(nn710, na.rm = TRUE),
+                                 median = median(nn710, na.rm = TRUE),
+                                 mean = mean(nn710, na.rm = TRUE),
+                                 sd = sd(nn710, na.rm = TRUE) )
+    
     # Overestimation at 7cm   
-    dbhSel <- 7
+    dbhSel <- "7"
     simResdbh2 <- outputsDF |> dplyr::filter(dbh %in% dbhSel) # this is only for dbh 7cm
     aggNrecr <- simResdbh2 |>  
       dplyr::group_by(model, site, sample) |> 
@@ -991,7 +1000,7 @@
     
     prep2 <- mortAllnoInf  |>
       dplyr::group_by(model) |> 
-      dplyr::do(mod = lm(nn710 ~ nn7, na.action=na.omit, data = .)) |>
+      dplyr::do(mod = lm(nn710 ~ nn7, na.action = na.omit, data = .)) |>
       dplyr::mutate(Slope = summary(mod)$coeff[2],
                     Significance = summary(mod)$coeff[2, 4]) |> 
       dplyr::ungroup() |>
@@ -1003,7 +1012,6 @@
     # Categorize the trends 
     
     trends <- prep2[, c("model", "Slope", "Significance")]
-    
     trends$trend[trends$Slope < 0] <- "negative"
     postive <- trends[trends$Slope > 0,]
     median(postive$Slope)
@@ -1023,7 +1031,7 @@
     
     # Plot the trends 
     mort7_10_trends <- 
-      ggplot2::ggplot(mortAllnoInf, ggplot2::aes(x = nn7, y = nn710, color = model)) +
+      ggplot2::ggplot(mortAllnoInf , ggplot2::aes(x = nn7, y = nn710, color = model)) +
       ggplot2::geom_point(alpha = .2) +
       ggplot2::ylim(c(0, 3.5)) +
       ggplot2::xlim(c(.2, 100)) +
@@ -1041,7 +1049,7 @@
       ggplot2::xlab(label = expression("R (trees ha"^-1 * "10yr"^-1 * ")(7cm) (mean per site)")) +
       ggplot2::ylab(label = "R (7cm) / R (10cm) (mean per site)") + 
       ggplot2::geom_smooth(data = prep, 
-                           ggplot2::aes(x = nn7, y = nn710, group = model),  # grouping variable does the plots for us!
+                           ggplot2::aes(x = nn7, y = nn710, group = model), 
                            method = "lm", se = FALSE,
                            formula = y ~ x) +
       ggplot2::geom_text(data = prep, 
