@@ -268,8 +268,7 @@ establishment modules varies considerably. Following @bugmann2022, we
 can classify seven models (iLand, PICUS, LandClim, ForCEEPS, LPJ-GUESS,
 ForClim and TreeMig) as having rather high complexity in their
 establishment modules (mean establishment formulation complexity
-complexity across all processes \>0, Table
-\@ref(tab:)\@ref(tab:tableModels)).
+complexity across all processes \>0, Table \@ref(tab:tableModels)).
 
 Two models, ForClim and ForCEEPS, were used here with two alternative
 variants. ForClim variant 1 [@bugmann1996] is based on a recruitment
@@ -351,17 +350,21 @@ environmental variation of the data. This was achieved by applying
 k-means clustering to define 200 clusters of plots from the original set
 of 869 plots along the environmental dimensions of temperature, water
 balance, soil quality and exposition (i.e., slope and aspect). Each of
-these sites featured at least two consecutive measurements. Ingrowth was
-measured at threshold of 7 and 10 cm of stem diameter at breast height
-in all sites except for 35 sites where only ingrowth at the 10 cm
-diameter threshold was available. Plot size ranged from 0.02 ha to 5.52
-ha, and the data were further processed and aggregated following
-@käber2022 to provide ingrowth rates per ha and per decade. The
-observations used in this study featured 30,900 established trees, and
-ingrowth rates per site, sample and decade ranged from zero to 1246
-trees per ha, with a mean of 56 trees per ha. For more details on this
-unique dataset and the detailed establishment information, cf.
-@käber2022.
+these sites featured at least two consecutive measurements. Ingrowth
+thresholds for the sites differed between 0 and 10 cm, we defined two
+data sets where one included all sites with a dbh threshold of 7cm or
+lower and the other included another 35 sites with dbh thresholds
+between 7 and 10 cm. Thus we focused on two data sets with the
+harmonized dbh thresholds of 7 cm and 10 cm.
+
+Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
+processed and aggregated following @käber2022 to provide ingrowth rates
+per ha and per decade. The observations used in this study featured
+30,900 established trees, and ingrowth rates per site, sample and
+decade ranged from zero to 1246 trees per ha, with a mean of 56 trees
+per ha. Adult species composition was also available for the simulated
+species. For more details on this unique dataset and the detailed
+establishment information, cf. @käber2022.
 
 ## Simulation protocol
 
