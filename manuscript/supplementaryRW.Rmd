@@ -2273,70 +2273,70 @@ vegetation models: learning from community ecology. NEW PHYTOLOGIST,
 
 ## Ingrowth levels, tree diversity and mortality in tree establishment
 
-```{r zeroInflated, echo=FALSE,  message=FALSE}
+```{r zeroInflated, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
 zeroInflated <- readr::read_csv(here::here("data", "noRecruitment.csv"))
 zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
 
 kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
+        kableExtra::kable_styling(latex_options = "HOLD_position")|>
         #kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-```{r sigDiff, echo=FALSE,  message=FALSE}
+```{r sigDiff, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
 sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
 
 kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
+        kableExtra::kable_styling(latex_options = "HOLD_position")|>
         #kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
 
-```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm", out.width='100%'}
+```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
 ```
 
-```{r recrStand10, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 10cm", out.width='100%'}
+```{r recrStand10, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 10cm", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness10.png"))
 ```
 
-```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimaed using the Shannon index  calculated by basal area. A1) groups models that Simulated species composition in adults is higher than the observed, A2) groups models that Simulated species composition in adults is similar to the observed, A3) groups models where the imulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
+```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimaed using the Shannon index  calculated by basal area. A1) groups models that Simulated species composition in adults is higher than the observed, A2) groups models that Simulated species composition in adults is similar to the observed, A3) groups models where the imulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "allAgesRichness.png"))
 ```
 
-```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness. The species richness is estimaed using the Shannon index is calculated by basal area.B1) groups models where the simulated species composition is closer than the other models to observed values, B2) groups models where the sites with lower species composition are underestimated, B3) groups models where the simulated species composition recruitment is lower in the whole range compare to the observe. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%'}
+```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness. The species richness is estimaed using the Shannon index is calculated by basal area.B1) groups models where the simulated species composition is closer than the other models to observed values, B2) groups models where the sites with lower species composition are underestimated, B3) groups models where the simulated species composition recruitment is lower in the whole range compare to the observe. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentRichness.png"))
 ```
 
 ### Mortality
 
-```{r mortTable, echo=FALSE,  message=FALSE}
+```{r mortTable, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
 sigDiff <- readr::read_csv(here::here("figures", "mortRatio7_10.csv"))
 
-kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold.") |>
+kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold between the observed values and the simulated values per model.") |>
+    kableExtra::kable_styling(latex_options = "HOLD_position")|>
 #kableExtra::landscape()
 kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
 
-```{r tableModels, echo=FALSE,  message=FALSE}
+```{r tableModels, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
 tabletrends <- readr::read_csv(here::here("figures", "mort7_10_trends.csv"))
-kable(tabletrends,  format = "markdown", caption = "Models trends in mortality between 7 and 10cm, and the ingrowth at 7cm, based in the mean oer site .")
+kable(tabletrends,  format = "latex", caption = "Models trends in mortality between 7 and 10cm, and the ingrowth at 7cm, based in the mean oer site .")|>
+kableExtra::kable_styling(latex_options = "HOLD_position")
 ```
 
-```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='70%'}
+```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='70%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
-```
-
-```{r mortalityDiv3 , echo=FALSE, fig.cap=" Shannon index mean value across samples per site and in BA difference between 10 and 7 cm ", out.width='70%'}
-knitr::include_graphics(here::here("figures", "H710.png"))
 ```
 
 \newpage
@@ -2347,7 +2347,7 @@ knitr::include_graphics(here::here("figures", "H710.png"))
 
 ### Model complexity VS overestimation
 
-```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary statistics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%'}
+```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary statistics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%', fig.pos='H'}
 
 knitr::include_graphics(here::here("figures", "compOver.png"))
 
@@ -2356,18 +2356,18 @@ knitr::include_graphics(here::here("figures", "compOver.png"))
 
 ## Total ingrowth and individual species regeneration niches
 
-```{r envTrend7wb, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
+```{r envTrend7wb, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites water balance. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%', fig.pos='H'}
     knitr::include_graphics(c(here::here("figures", "envTrend7WB_500.png"),
                               here::here("figures", "envTrend7WB.png")))
 ```
 
-```{r envTrend7dds, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites seasonal degree-day sum. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
+```{r envTrend7dds, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the sites seasonal degree-day sum. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%', fig.pos='H'}
     knitr::include_graphics(c(here::here("figures", "envTrend7DDS_500.png"),
                               here::here("figures", "envTrend7DDS.png")))
 ```
 
 
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%'}
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
 ```
 

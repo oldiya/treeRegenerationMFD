@@ -297,52 +297,6 @@
                     #width = 55, height = 18, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png') 
     
-    #### FigS. H10-H7 ----
-    
-    ShannonIndexM <- ShannonIndex |>  dplyr::group_by(model, site, dbh) |> 
-        dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit),
-                         ShannonIndexAllAges = mean(ShannonIndexAllAges),
-                         relShannon = mean(relShannon))
-    
-    S10 <- ShannonIndexM[ShannonIndexM$dbh == "10",]
-    colnames(S10) <- c("model", "site", "dbh", "ShannonIndexRecruit10", 
-                       "ShannonIndexAllAges10", "relShannon10")
-    S7 <- ShannonIndexM[ShannonIndexM$dbh == "7",]
-    colnames(S7) <- c("model", "site", "dbh", "ShannonIndexRecruit7", 
-                      "ShannonIndexAllAges7", "relShannon7")
-    
-    S107 <- merge(S10[, c("model", "site", "ShannonIndexRecruit10", 
-                          "ShannonIndexAllAges10", "relShannon10")], 
-                  S7[,  c("model", "site", "ShannonIndexRecruit7", 
-                          "ShannonIndexAllAges7", "relShannon7")],
-                  by = c("site",  "model"))
-    
-    S107$H710 <- S107$ShannonIndexRecruit10 - S107$ShannonIndexRecruit7
-    
-    H710 <- ggplot2::ggplot(S107,
-                            ggplot2::aes(y = H710, 
-                                         x = model, 
-                                         fill = model)) + 
-        ggplot2::geom_boxplot(notch = F) +
-        #ggplot2::ylim(c(-0.5, 0.5)) +
-        ggplot2::xlab(label = "") +
-        ggplot2::ylab(label = "H10 - H7") +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                       strip.text.y = ggplot2::element_text(angle = 0),
-                       legend.position = "none",
-                       panel.background = ggplot2::element_blank(), 
-                       axis.line = ggplot2::element_line(colour = "black"),
-                       legend.key =  ggplot2::element_blank(), 
-                       legend.title = ggplot2::element_blank(),
-                       strip.background =  ggplot2::element_blank()) +
-        ggplot2::scale_fill_manual(values = values_color) +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = 0), colour = "#990000", linetype = "dashed") 
-    
-    ggplot2::ggsave("figures/H710.png",
-                    plot =  H710,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    
     #### FigS. H10-H7 / H7 ----
     
     medianPointsH <- S107 |>
@@ -989,6 +943,7 @@
     
     ggplot2::ggsave("figures/mort7_10_trends.png",
                     plot = mort7_10_trends,
+                    width = 16, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')
     
 # Complexity model structure-----  
