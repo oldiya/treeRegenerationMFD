@@ -1060,40 +1060,7 @@
     
     ggplot2::ggsave("figures/mort7_10_trends.png",
                     plot = mort7_10_trends,
-                    dpi = 300, units = "cm", device = 'png') 
-
-    
-    ### variability 7-10 vs overestimate per model ----
-    VarmeannOver <- ggplot2::ggplot(modelMean2,
-                                    ggplot2::aes(x = diff, y = median,
-                                                 ymin = mean - sd, ymax = mean + sd,
-                                                 label = model, 
-                                                 color = model)) +
-      ggplot2::geom_point(alpha = .8) +
-      ggplot2::geom_text(fontface = "bold",
-                         position = ggplot2::position_jitter(width = 1,
-                                                             height = 1)) +
-      ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "#990000", linetype = "dashed") +
-      ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "#990000", linetype = "dashed") +
-      ggplot2::geom_pointrange() +
-      ggplot2::xlim(c(-1, 15)) +
-      ggplot2::ylim(c(0, 4)) +
-      ggplot2::geom_vline(xintercept = 0, linetype = "dotted", color = "red") +
-      ggplot2::scale_colour_manual(values = values_color) +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
-                     strip.text.y = ggplot2::element_text(angle = 0),
-                     panel.background = ggplot2::element_blank(), 
-                     axis.line = ggplot2::element_line(colour = "black"),
-                     legend.key =  ggplot2::element_blank(), 
-                     legend.title = ggplot2::element_blank(),
-                     strip.background =  ggplot2::element_blank(),
-                     legend.position = "right") +
-      ggplot2::xlab(label = "Proportion of overestimation in tree recruiment") +
-      ggplot2::ylab(label = "Median and SD of tree share between 10 and 7cm") 
-    
-    ggplot2::ggsave("figures/mort7_10_VarmeannOver.png",
-                    plot =  VarmeannOver,
-                    dpi = 300, units = "cm", device = 'png') 
+                    dpi = 300, units = "cm", device = 'png')
     
 # Complexity model structure-----  
 
