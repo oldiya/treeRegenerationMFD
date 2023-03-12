@@ -870,16 +870,6 @@
     
   ### Fig. median vs overestimate per model ----
     # Prepare the data
-    ## interquartile range (IQR) 
-    ##calculated as the difference between the 3rd quartile and the 1st quartile
-    ##in rate of ntrees between 10 and 7 cm
-    iqrDT <- mortAll[is.finite(mortAll$nn710),] |> 
-      dplyr::group_by(model) |> 
-      dplyr::summarise(iqr7_10 = IQR(nn710, na.rm = TRUE),
-                       median = median(nn710, na.rm = TRUE),
-                       mean = mean(nn710, na.rm = TRUE),
-                       sd = sd(nn710, na.rm = TRUE) )
-    
     # Overestimation at 7cm   
     dbhSel <- 7
     simResdbh2 <- outputsDF |> dplyr::filter(dbh %in% dbhSel) # this is only for dbh 7cm
