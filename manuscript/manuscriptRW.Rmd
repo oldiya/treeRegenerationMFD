@@ -27,6 +27,7 @@ output:
     keep_tex: yes
     number_sections: yes
     toc: no
+    extra_dependencies: "subfig"
   word_document:
     reference_docx: template_paper.docx
 mainfont: Arial
@@ -286,8 +287,8 @@ variants allow us to evaluate a more process-based module (variant 11)
 against a simple module (variant 1), while the rest of the model
 structure is identical. Similarly, the two ForCEEPS variants allow us to
 isolate the importance of the canopy feedback (i.e. simulated actual
-composition and relative abundance of species in the plot)via seed trees
-for the quantity and quality of simulated ingrowth, as one variant
+composition and relative abundance of species in the plot) via seed
+trees for the quantity and quality of simulated ingrowth, as one variant
 includes this feedback whereas the other does not.
 
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=FALSE}
@@ -480,30 +481,14 @@ knitr::include_graphics(here::here("figures", "theMap.png"))
 ## Data analysis
 
 The simulation results were analyzed regarding the ingrowth levels
-(i.e., ingrowth number per unit time and space), species composition of
-the ingrowth, and ingrowth mortality. The observed data were modeled
-using a Generalized Additive Model [@wood2011] with a negative binomial
-distribution and restricted maximum likelihood to better understand the
-environmental gradients trend in the levels of the observed ingrowth,
-relative to the simulation results per model.
-
-Ingrowth levels were evaluated along three key environmental gradients,
-i.e., stand basal area (the basal area of all the trees in each sample
-including tree establishment) as a proxy of light availability at the
-forest floor, the annual degree-day sum (DD) [@allen1976; @fischlin1995]
-as a proxy for growing season warmth, and the climatic water balance
-(CWB) as a proxy for soil moisture [@speich2019]. The mean ingrowth
-values were calculated as the mean across the 200 samples per site.
-
-We evaluated the species diversity across models and in relation to the
-observed data by calculating the Shannon index based on the relative
-proportion of the species in terms of basal area. The Shannon index was
-calculated for the establishment ($H_{n,r}$) (Equation
-\ref{eqpiShannonR}) and at the stand level ($H_{n,s}$)(Equation
-\ref{eqpiShannon}). The higher the value of the index, the higher the
-species diversity at a particular site and sample.
-
-We also tested for significant trends across XXXXX !!!!!
+(i.e., ingrowth number per unit time and space), species diversity of
+the ingrowth, and ingrowth mortality. We evaluated the species diversity
+across models and in relation to the observed data by calculating the
+Shannon index based on the relative proportion of the species in terms
+of basal area. The Shannon index was calculated for the establishment
+($H_{n,r}$) (Equation \ref{eqpiShannonR}) and at the stand level
+($H_{n,s}$)(Equation \ref{eqpiShannon}). The higher the value of the
+index, the higher the species diversity at a particular site and sample.
 
 ```{=tex}
 \begin{equation}
@@ -533,12 +518,52 @@ the sample $n$; $p_{n,s,i}$ is the proportion of the species $i$
 calculated as the basal area ($BA_{n,i}$) for that species $i$ relative
 to the total basal area ($TotalR_{BA_{n}}$) of the sample $n$.
 
-In order to analyze the relationship between the adult species
-composition and ingrowth across the climatic gradients, we focused on
-the five main tree species or genera: *Abies alba*, *Fagus sylvatica*,
-*Picea abies*, *Pinus sylvestris*, and *Quercus* spp. For these species,
-we calculated the mean ingrowth basal area share per site as the mean
-value across the available samples per site:
+Mortality in tree establishment was assessed based on the ratio of
+ingrowth between the 7 and 10 cm diameter thresholds. We used the
+Reineke self-thinning rule [@reineke1933; @pretzsch2003] as a reference
+to estimate whether the different ingrowth values were above or below
+the expected theoretical rate between these two diameters. The Reineke
+self-thinning rule is usually calculated from even-aged, single species
+stands and assumes a relationship between the number of stems and the
+quadratic mean diameter in fully stocked pure stands. The value used in
+our comparisons was 1.77 (i.e., we expect stem numbers at 7cm to be 77%
+higher than at 10cm), calculated using Equation \ref{eqReineke}.
+
+```{=tex}
+\begin{equation}
+Reineke = (7/10)^{(-1.605)} \label{eqReineke}
+\end{equation}
+```
+We assessed model traits in relation to model performance focusing on
+features such as model complexity as defined in @bugmann2022, model type
+(empirical or process based), models with and without canopy feedback
+(the level and species composition of the ingrowth is influenced by the
+existing adult tree community) and the models scale (stand, landscape or
+global). We tested for significant differences considering each of these
+model features and between observed and simulated ingrowth
+overestimation, ingrowth levels and species diversity respectively.
+
+The total ingrowth and individual species regeneration niches were
+evaluated across environmental gradients of light availability,
+temperature, and soil moisture. Ingrowth levels were evaluated along
+three key environmental gradients, i.e., stand basal area (the basal
+area of all the trees in each sample including tree establishment) as a
+proxy of light availability at the forest floor, the annual degree-day
+sum (DD) [@allen1976; @fischlin1995] as a proxy for growing season
+warmth, and the climatic water balance (CWB) as a proxy for soil
+moisture [@speich2019]. The mean ingrowth values were calculated as the
+mean across the 200 samples per site. The observed data were modeled
+using a Generalized Additive Model [@wood2011] with a negative binomial
+distribution and restricted maximum likelihood to better understand the
+environmental gradients trend in the levels of the observed ingrowth,
+relative to the simulation results per model.
+
+In order to analyze the individual species regeneration niches across
+the climatic gradients, we focused on the five main tree species or
+genera: *Abies alba*, *Fagus sylvatica*, *Picea abies*, *Pinus
+sylvestris*, and *Quercus* spp. For these species, we calculated the
+mean ingrowth basal area share per site as the mean value across the
+available samples per site:
 
 ```{=tex}
 \begin{equation}
@@ -557,32 +582,16 @@ categorized this as zero when the ingrowth basal area of that species
 area of that species ($\bar{r}_{BA_{t,i}}$) and the total ingrowth basal
 area ( $\sum_{i = 1}^{s}{\bar{r}_{BA_{t,i}}}$ ) equaled zero.
 
-Mortality in tree establishment was assessed based on the ratio of
-ingrowth between the 7 and 10 cm diameter thresholds. We used the
-Reineke self-thinning rule [@reineke1933; @pretzsch2003] as a reference
-to estimate whether the different ingrowth values were above or below
-the expected theoretical rate between these two diameters. The Reineke
-self-thinning rule is usually calculated from even-aged, single species
-stands and assumes a relationship between the number of stems and the
-quadratic mean diameter in fully stocked pure stands. The value used in
-our comparisons was 1.77 (i.e., we expect stem numbers at 7cm to be 77%
-higher than at 10cm), calculated using Equation \ref{eqReineke}.
-
-```{=tex}
-\begin{equation}
-Reineke = (7/10)^{(-1.605)} \label{eqReineke}
-\end{equation}
-```
 # Results
 
-## Ingrowth levels
+## Ingrowth levels, tree diversity and mortality in tree establishment
 
 The ingrowth levels varied strongly across the 15 models and typically
 did not match the levels found in the forest reserve data (Figure
 \@ref(fig:over)). Ingrowth was overestimated in most models for both the
 7 and 10 cm diameter thresholds, with the exception of the empirical
 stand model SIBYLA, the landscape model Landis-II and the global model
-aDGVM2, which estimated ingrowth rates at the lower end of the
+aDGVM2, which estimated ingrowth levels at the lower end of the
 plausibility interval of the observed data (Figure \@ref(fig:over)). The
 models with the largest overestimation were the stand model PICUS and
 the landscape model TreeMig. For most models, the variability of
@@ -591,9 +600,143 @@ interquartile range in the box plots of Figure \@ref(fig:over)) was
 similar to or smaller than observed, with the notable exception of
 PICUS, where simulated ingrowth variability was much larger.
 
-```{r over, echo=FALSE, fig.cap="Mean ingrowth levels across all samples per site, plotted for the 200 sites and for each model. The red dashed lines shows the 25th and 75th percentiles for the 7 cm diameter threshold in the observed data. There are two boxplots for each model where the left lighted boxplot corresponds to 7cm and the right darker boxplot to 10cm", out.width='100%'}
+```{r over, echo=FALSE, fig.cap="Mean ingrowth levels across all samples per site, plotted for the 200 sites and for each model. The red dashed lines shows the 25th and 75th percentiles for the 7cm diameter threshold in the observed data. There are two boxplots for each model where the left lighted boxplot corresponds to 7cm and the right darker boxplot to 10cm", out.width='100%'}
         knitr::include_graphics(here::here("figures", "recOverAll710.png"))
 ```
+
+Both observations and simulated data had no ingrowth in some samples and
+at some sites (Table S1). The observed data had 4% of the samples with
+no ingrowth. Only three models had a larger proportion of no ingrowth
+(4C, Landis-II and aDVM2). Two models always simulated ingrowth for both
+the 7 and 10 cm threshold (xComp and TreeMig), i.e., they did not
+feature any zero values. The other models had a very low percentage of
+samples with no ingrowth (0.01% - 2.39%), i.e., they had distinctly
+fewer occurrences of zeros compared to the observations.
+
+Most models matched the level of diversity of the observed data quite
+well as quantified by the Shannon index (Figure \@ref(fig:H710)). Five
+models overestimated ingrowth diversity: ForCEEPS, ForClim 11, PICUS,
+TreeMig and LandClim, the latter mostly for the 7 cm diameter threshold.
+The model 4C is a special case, as it simulated five species only, i.e.,
+its diversity values are not directly comparable to those of the other
+models, nor to the observations. Only one model, Landis-II, consistently
+underestimated ingrowth diversity.
+
+```{r H710, echo=FALSE, fig.cap="Shannon index of tree ingrowth, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dashed lines represent the 25th percentile of the observed data for the threshold of 7 cm and the 75th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
+    knitr::include_graphics(here::here("figures", "H7_10.png"))
+```
+
+In most models, there were only small but significant differences in the
+species diversity of ingrowth between 7 and 10 cm across sites (Tables
+S2). Four models (iLand, Landis-II, TreeMig and LPJ-GUESS) maintained
+the ingrowth diversity between the 7 and 10 cm thresholds (i.e., the
+differences between them were not significant, see Table S2), and the
+same was evident from the observed data.
+
+For both the observed and the simulated data, and both ingrowth
+thresholds, species diversity in the ingrowth compared to stand-level
+diversity did not have clear patterns across all the models (Figures S1
+and S2). Most models captured reasonably well or overpredicted species
+diversity at the stand level (Figure \@ref(fig:combinedRichness)A,
+center; cf. Figure S3), but a characteristic feature was that
+simulations had a much lower variability of diversity compared to
+observations. Models overpredicting species diversity included ForClim1,
+ForClim 11, FORMIND and TreeMig (Figure \@ref(fig:combinedRichness)A,
+left). Several models underpredicted species diversity, i.e., LPJ-GUESS,
+ForCEEPS(f) and 4C (Figure \@ref(fig:combinedRichness)A, right).
+
+The majority of the models overpredicted ingrowth diversity and only two
+of them underestimated ingrowth diversity (4C and Landis-II) (Figure
+\@ref(fig:combinedRichness)A and C, cf. Figure S4). Both the models with
+feedback and those without feedback from the adult trees to ingrowth
+(via seed production) overestimate, underestimated and captured
+reasonably well ingrowth species diversity compared to the observations.
+
+```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. n indicates the number of models falling in each group. A) Examples for the three trends across models for species diversity at the stand level. B) Examples for the three trends across models for ingrowth at the 7 cm threshold. The selection of the representative model for each trend group was based on the full data shown in Figures S5 and S6.", out.width='75%'}
+knitr::include_graphics(here::here("figures", "combined_richness.png"))
+```
+
+There were strong differences among the models regarding the mortality
+rate between 7 and 10 cm (Figure \@ref(fig:mortality11)). Most of the
+models featured a mortality rate significantly larger than the observed
+data, thus at least partially compensating for the general
+overestimation of ingrowth levels (Figure \@ref(fig:over) and Table S5);
+six models did not feature a significant difference compared to the
+observed data (ForCEEPS, FORMIND, ForClim 1 and 11, iLand and aDGVM2).
+Four models (xComp, PICUS, LandClim and TreeMig) featured very high
+mortality rates (i.e., well above the Reineke self-thinning line), which
+compensated for the strong initial overestimation of ingrowth (cf.
+Figure \@ref(fig:over)). Interestingly, two models that underestimated
+overall ingrowth levels (SIBYLA and Landis-II; cf. Figure
+\@ref(fig:over)) featured mortality rates that were close to but still
+above the self-thinning line (Figure \@ref(fig:mortality11)).
+
+```{r mortality11, echo=FALSE, fig.cap="Ratio of tree ingrowth rates between the 7 and 10 cm thresholds. Dashed blue lines mark a ratio equal to 1, indicating no decrease in tree ingrowth between 7 and 10 cm, and a ratio equal to 1.77, corresponding to the Reineke self-thinning ratio under even-aged conditions.", out.width='75%'}
+knitr::include_graphics(here::here("figures", "ratio7_10.png"))
+```
+
+The fact that some models (and observed data) featured lower mortality
+than expected by Reineke's self-thinning rule may point to facilitation,
+or simply a higher mortality rate before the trees had reached 7 cm
+diameter. Yet, the case of models such as xComp, PICUS and TreeMig,
+whose mortality was well above the self-thinning line, indicates that
+they feature higher ingrowth mortality in mixed-species forests compared
+to even-aged, single-species forests. Some models yielded a mortality
+rate of ingrowth that is broadly compatible with the self-thinning rule
+(e.g., 4C and LandClim).
+
+The three models with the largest overestimation of the proportion of
+ingrowth at the 7 cm threshold featured the highest mortality between
+the 7 and 10 cm thresholds (Figure \@ref(fig:mortality13)A). The other
+models that overestimated ingrowth had mortalities lower than the
+expected self-thinning ratio with the exception of LandClim (Figure
+\@ref(fig:mortality13)B). It is noteworthy that most of the models that
+featured a low ratio of ingrowth between 7 and 10 cm (i.e., ForCEEPS,
+ForClim 1, ForClim 11 and iLand) had only a small overestimation of
+ingrowth at the 7 cm threshold (Figure \@ref(fig:mortality11)). aDGVM2
+was the only model that underestimated ingrowth at the 7 cm threshold
+while featuring a low mortality between the two thresholds (Figure
+\@ref(fig:mortality13)C), and only a few models were close to the
+correct ingrowth rate at 7 cm while also being close to the Reineke line
+(SIBYLA, Landis-II; cf. Figure \@ref(fig:mortality13)D; and 4C as well
+as LandClim).
+
+```{r mortality13, echo=FALSE, fig.cap="Ratio of tree ingrowth between the 7 and 10 cm thresholds (ingrowth 7 cm / ingrowth 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean ingrowth per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of ingrowth between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
+knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
+```
+
+Lastly, some models that had a low number of individuals at 7 cm
+threshold also had a smaller decrease of ingrowth between 7 and 10 cm
+(ratio 7-10 cm) (Figure S5). In these models, competition and
+self-thinning are either not pronounced or must have occurred before the
+species had reached 7 cm. However, this pattern was not consistent
+across models (Figure S5). It is noteworthy that there is a relationship
+between the ingrowth rate at 7 cm and the mortality rate (Table S4):
+most of the models showed a positive effect (higher ingrowth at 7 cm is
+coupled to an increase of the mortality between 7 and 10 cm). While some
+models showed a negative effect, this linear trend was not pronounced
+and not always significant regarding the slope.
+
+## Model traits and model performance
+
+There was no significant relationship between the mean complexity of the
+establishment module (Table \@ref(tab:tableModels)) and the
+overestimation proportion at a diameter threshold of 7 cm (Figure S7).
+All the models except 4C had significant differences between the
+observed mean ingrowth values and the simulated, therefore it was not
+possible to differentiate in terms of performance between models forest
+type (empirical or process based) and across models scales (stand,
+landscape or global) (Table S5). The ingrowth species diversity values
+simulated per models were also assessed againts the observed data to see
+if there was a difference between models that include feedback compare
+to those that did not include feedback, all the models except
+ForCEEPs(f) and FORMIND had significant differences (Table S6). It is
+noteworthy the change from overpredicted species diversity in the
+ingrowth for the model ForCEEPS to a closer diversity levels when the
+recruitment module included feedback (ForCEEPs(f)). Again, simulated
+diversity was considerably less variable than observed diversity.
+
+## Total ingrowth and individual species regeneration niches
 
 When evaluating the representation of ingrowth levels along key
 gradients of light availability (basal area), temperature (degree-days)
@@ -627,74 +770,13 @@ decrease in ingrowth levels with increasing soil moisture showed the
 opposite trend (i.e., more ingrowth with increasing temperature), except
 for 4C. The other models did not feature a clear pattern.
 
-Both observations and simulated data had no ingrowth in some samples and
-at some sites (Table S1). The observed data had 3% of the samples with
-no ingrowth. Only three models had a larger proportion of no ingrowth
-(4C, Landis-II and aDVM2). CHECK! No LPJ-GUESS anymore with the new data
-submission!!!! Two models always simulated ingrowth for both the 7 and
-10 cm threshold (TreeMig and LPJ-GUESS), i.e., they did not feature any
-zero values. The other models had a very low percentage of samples with
-no ingrowth (0.01% - 1.31%), i.e., they had distinctly fewer occurrences
-of zeros compared to the observations. There was no significant
-relationship between the mean complexity of the establishment module
-(Table \@ref(tab:tableModels)) and the overestimation proportion at a
-diameter threshold of 7 cm (SM3).
+```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. The same graphs with y-axis scaled by model as availalbe in Figure S", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
 
-```{r nvTrend710BA, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against the stand basal area. (A) same y-axis across all models; (B) y-axis scaled by model. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width = '80%'}
-    knitr::include_graphics(c(here::here("figures", "envTrend7Totba_500.png"),
-                              here::here("figures", "envTrend7Totba.png")))
+   knitr::include_graphics(c(here::here("figures", "envTrend7Totba_500.png"),
+                              here::here("figures", "envTrend7WB_500.png"),
+                              here::here("figures", "envTrend7DDS_500.png")))
 ```
 
-## Species composition of ingrowth
-
-Most models matched the level of diversity of the observed data quite
-well as quantified by the Shannon index (Figure \@ref(fig:H710)),
-although they consistently underestimated its variability across sites.
-Four models overestimated ingrowth diversity: 4C, PICUS, Landis-II and
-LPJ-GUESS, the latter mostly for the 10 cm diameter threshold. The model
-4C is a special case, as it simulated five species only, i.e., its
-diversity values are not directly comparable to those of the other
-models, nor to the observations. Only one model, SIBYLA, consistently
-underestimated ingrowth diversity.
-
-In most models, there were only small but significant differences in the
-species diversity of ingrowth between 7 and 10 cm across sites (Tables
-S2-S4). Three models (4C, SIBYLA, Landis-II) maintained the ingrowth
-diversity between the 7 and 10 cm thresholds (i.e., the differences
-between them were not significant, see Table S3), and the same was
-evident from the observed data. There were a few models with a strong
-increase of ingrowth diversity between 7 and 10 cm (ForCEEPS, TreeMig,
-LPJ-GUESS, FORMIND, Figure \@ref(fig:H710)).
-
-```{r H710, echo=FALSE, fig.cap="Shannon index of tree ingrowth, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dashed lines represent the 25th percentile of the observed data for the threshold of 7 cm and the 75th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
-    knitr::include_graphics(here::here("figures", "H7_10.png"))
-```
-
-For both the observed and the simulated data, and both ingrowth
-thresholds, species diversity was lower in the ingrowth compared to
-stand-level diversity (Figures S3 and S4). Yet, models simulating higher
-diversity at the stand level featured higher diversity in ingrowth
-(Figure S3 and S4). Most models captured reasonably well or
-overpredicted species diversity at the stand level (Figure
-\@ref(fig:combinedRichness)A, center; cf. Figure S5), but a
-characteristic feature was that simulations had a much lower variability
-of diversity compared to observations. Models overpredicting species
-diversity included ForClim1, ForClim 11, FORMIND and TreeMig (Figure
-\@ref(fig:combinedRichness)A, left). Several models underpredicted
-species diversity, i.e., LPJ-GUESS, ForCEEPS(f) and 4C (Figure
-\@ref(fig:combinedRichness)A, right). The majority of the models
-captured reasonably well the ingrowth diversity at lower values of
-diversity, but most of them strongly underestimated ingrowth diversity
-for higher observed diversity levels (Figure
-\@ref(fig:combinedRichness)B, cf. Figure S6). Both the models with
-feedback and those without feedback from the adult trees to ingrowth
-(via seed production) underestimated ingrowth species diversity compared
-to the observations. Again, simulated diversity was considerably less
-variable than observed diversity (Fig. \@ref(fig:combinedRichness)B).
-
-```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. n indicates the number of models falling in each group. A) Examples for the three trends across models for species diversity at the stand level. B) Examples for the three trends across models for ingrowth at the 7 cm threshold. The selection of the representative model for each trend group was based on the full data shown in Figures S5 and S6.", out.width='75%'}
-knitr::include_graphics(here::here("figures", "combined_richness.png"))
-```
 
 Silver fir (*Abies alba*), beech (*Fagus sylvatica*), Scots pine (*Pinus
 sylvestris*) and oak (*Quercus* spp.) were the species observed most
@@ -742,70 +824,6 @@ underestimating the share of others (e.g., ForCEEPS, LPJ-GUESS).
 
 ```{r diff, echo=FALSE, fig.cap="Ingrowth levels of the five main species in terms of their basal area share in the observations (top row) and the performance of each model across the environmental gradients (other rows) for the 7 cm ingrowth threshold. The values shown are the mean of the 200 samples per site and across the sites in each bin (tile), with ten bins per gradient. The sizes of the circles represent the ratio between the ingrowth basal area of the species and the total ingrowth basal area for all species. The absence of a circle indicates a zero basal area share in the ingrowth, or the absence of ingrowth altogether. The color gradient (for the models only) shows the difference between the simulated and observed ratio of ingrowth basal area of the species and the total ingrowth basal area for all the species.", out.width='100%', out.height= '85%'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
-```
-
-## Ingrowth mortality
-
-There were strong differences among the models regarding the mortality
-rate between 7 and 10 cm (Figure \@ref(fig:mortality11)). Most of the
-models featured a mortality rate significantly larger than the observed
-data, thus at least partially compensating for the general
-overestimation of ingrowth levels (Figure \@ref(fig:over) and Table S5);
-six models did not feature a significant difference compared to the
-observed data (ForCEEPS, FORMIND, ForClim 1 and 11, and aDGVM2), and
-only the model LPJ-GUESS had a significantly lower mortality rate. Four
-models (xComp, PICUS, LandClim and TreeMig) featured very high mortality
-rates (i.e., well above the Reineke self-thinning line), which
-compensated for the strong initial overestimation of ingrowth (cf.
-Figure 2). Interestingly, two models that underestimated overall
-ingrowth levels (SIBYLA and Landis-II; cf. Figure \@ref(fig:over))
-featured mortality rates that were close to but still above the
-self-thinning line (Figure \@ref(fig:mortality11)).
-
-The fact that some models (and observed data) featured lower mortality
-than expected by Reineke's self-thinning rule may point to facilitation,
-or simply a higher mortality rate before the trees had reached 7 cm
-diameter. Yet, the case of models such as xComp, PICUS and TreeMig,
-whose mortality was well above the self-thinning line, indicates that
-they feature higher ingrowth mortality in mixed-species forests compared
-to even-aged, single-species forests. Some models yielded a mortality
-rate of ingrowth that is broadly compatible with the self-thinning rule
-(e.g., 4C and LandClim).
-
-The three models with the largest overestimation of the proportion of
-ingrowth at the 7 cm threshold featured the highest mortality between
-the 7 and 10 cm thresholds (Figure \@ref(fig:mortality13)A). The other
-models that overestimated ingrowth had mortalities lower than the
-expected self-thinning ratio with the exception of LandClim (Figure
-\@ref(fig:mortality13)B). It is noteworthy that most of the models that
-featured a low ratio of ingrowth between 7 and 10 cm (i.e., ForCEEPS,
-ForClim 1, ForClim 11 and iLand) had only a small overestimation of
-ingrowth at the 7 cm threshold (Figure \@ref(fig:mortality11)). aDGVM2
-was the only model that underestimated ingrowth at the 7 cm threshold
-while featuring a low mortality between the two thresholds (Figure
-\@ref(fig:mortality13)C), and only a few models were close to the
-correct ingrowth rate at 7 cm while also being close to the Reineke line
-(SIBYLA, Landis-II; cf. Figure \@ref(fig:mortality13)D; and 4C as well
-as LandClim).
-
-Lastly, some models that had a low number of individuals at 7 cm
-threshold also had a smaller decrease of ingrowth between 7 and 10 cm
-(ratio 7-10 cm) (Figure S10). In these models, competition and
-self-thinning are either not pronounced or must have occurred before the
-species had reached 7 cm. However, this pattern was not consistent
-across models (Figure S10). It is noteworthy that there is a
-relationship between the ingrowth rate at 7 cm and the mortality rate:
-most of the models showed a positive effect (higher ingrowth at 7 cm is
-coupled to an increase of the mortality between 7 and 10 cm). While some
-models showed a negative effect, this linear trend was not pronounced
-and not always significant regarding the slope (Figure S9 and Table S6).
-
-```{r mortality11, echo=FALSE, fig.cap="Ratio of tree ingrowth rates between the 7 and 10 cm thresholds. Dashed blue lines mark a ratio equal to 1, indicating no decrease in tree ingrowth between 7 and 10 cm, and a ratio equal to 1.77, corresponding to the Reineke self-thinning ratio under even-aged conditions.", out.width='75%'}
-knitr::include_graphics(here::here("figures", "ratio7_10.png"))
-```
-
-```{r mortality13, echo=FALSE, fig.cap="Ratio of tree ingrowth between the 7 and 10 cm thresholds (ingrowth 7 cm / ingrowth 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean ingrowth per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of ingrowth between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
-knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 ```
 
 # Discussion
