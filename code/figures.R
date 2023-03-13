@@ -744,11 +744,14 @@
       ggplot2::annotate("text", x = 10, y = 2.6, label = "A") + 
       ggplot2::annotate("text", x = 10, y = 1.6, label = "B") + 
       ggplot2::annotate("text", x = -4.6, y = 1.6, label = "C") + 
-      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "D") 
+      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "D") + 
+    
+      ggplot2::annotate("text", x = 8.5, y = 1.81, label = "Reineke self-thinning") + 
+      ggplot2::annotate("text", x = 7.9, y = 1.03, label = "Ratio equal to 1")
     
     ggplot2::ggsave("figures/mort7_10_medianOver.png",
                     plot =  overMortmedian,
-                    width = 16, height = 12, scale = 0.9,
+                    width = 18, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", device = 'png')  
     
     
