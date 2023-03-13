@@ -58,7 +58,7 @@
                 "xcomp" = "xComp",
                 "iLand" = "iLand", 
                 "LandClim" = "LandClim",  
-                "Landis II" = "LANDIS-II",  
+                "Landis II" = "Landis-II",  
                 "Treemig" = "TreeMig",
                 "aDGVM2" = "aDGVM2", 
                 "LPJ-GUESS" = "LPJ-GUESS")
