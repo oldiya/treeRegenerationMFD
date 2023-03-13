@@ -74,12 +74,12 @@ global levels, we simulate tree establishment at 200 sites representing
 environmental gradients across Europe. The results are evaluated against
 comprehensive data from unmanaged forests.
 
-Most of the models overestimate ingrowth rates, which is only
+Most of the models overestimate ingrowth levels, which is only
 compensated by some models with high simulated mortality rates in the
 early stages of population dynamics. Simulated species diversity of
 ingrowth matches the observed ranges quite well. Models simulating
 higher species diversity at the stand level do not feature higher
-ingrowth diversity. The effect of light availability on ingrowth rates
+ingrowth diversity. The effect of light availability on ingrowth levels
 is captured better than the effect of temperature and soil moisture, but
 patterns are not consistent across models. The ingrowth of *Abies alba*
 is captured across temperature and soil moisture gradients, whereas
@@ -694,9 +694,9 @@ ingrowth at the 7 cm threshold (Figure \@ref(fig:mortality11)). aDGVM2
 was the only model that underestimated ingrowth at the 7 cm threshold
 while featuring a low mortality between the two thresholds (Figure
 \@ref(fig:mortality13)C), and only a few models were close to the
-correct ingrowth rate at 7 cm while also being close to the Reineke line
-(SIBYLA, Landis-II; cf. Figure \@ref(fig:mortality13)D; and 4C as well
-as LandClim).
+correct ingrowth levels at 7 cm while also being close to the Reineke
+line (SIBYLA, Landis-II; cf. Figure \@ref(fig:mortality13)D; and 4C as
+well as LandClim).
 
 ```{r mortality13, echo=FALSE, fig.cap="Ratio of tree ingrowth between the 7 and 10 cm thresholds (ingrowth 7 cm / ingrowth 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean ingrowth per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of ingrowth between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
@@ -708,7 +708,7 @@ threshold also had a smaller decrease of ingrowth between 7 and 10 cm
 self-thinning are either not pronounced or must have occurred before the
 species had reached 7 cm. However, this pattern was not consistent
 across models (Figure S5). It is noteworthy that there is a relationship
-between the ingrowth rate at 7 cm and the mortality rate (Table S4):
+between the ingrowth levels at 7 cm and the mortality rate (Table S4):
 most of the models showed a positive effect (higher ingrowth at 7 cm is
 coupled to an increase of the mortality between 7 and 10 cm). While some
 models showed a negative effect, this linear trend was not pronounced
@@ -852,18 +852,18 @@ much broader understanding resulted than if we had used these data for
 model calibration: it is primarily from the shortcomings of the models
 that we can gain ecological insights [e.g., @trugman2022].
 
-## Most of the models overestimated tree ingrowth rates
+## Most of the models overestimated tree ingrowth levels
 
-Most of the models overestimated tree ingrowth rates. This has
+Most of the models overestimated tree ingrowth levels. This has
 potentially far-reaching implications, e.g., regarding biomass (and thus
 carbon) turnover, with a potential overestimation of the capacity for
 forest carbon sequestration [@pugh2019; @pan2011]. Yet, we focused on
 one specific stage, i.e., ingrowth into the 7 and 10 cm diameter
 classes. Trees at this size contribute little to carbon sequestration,
-and if the excess ingrowth rate at this stage is compensated -- in the
-models -- soon thereafter by higher mortality, overall simulated
-ingrowth may still yield trustworthy results at the level of stand
-structure and related forest attributes such as basal area or biomass.
+and if the excess ingrowth at this stage is compensated -- in the models
+-- soon thereafter by higher mortality, overall simulated ingrowth may
+still yield trustworthy results at the level of stand structure and
+related forest attributes such as basal area or biomass.
 
 From a modeling point of view, excess ingrowth inevitably requires
 excess mortality rates in a later stage, either -- as observed for some
@@ -964,16 +964,16 @@ degrees of freedom that are available for modeling ingrowth
 [@konig_tree_2022] could have implied that model performance would be
 much worse.
 
-Increasing complexity in establishment modules has been motivated by
-better process understanding and enhancing of model accuracy
-[@bugmann2022; @bugmann2019]. However, more complex models do not
-necessarily lead to better projections and rather to a reduced
-transparency and predictive power [@franklin2020]. The results from this
-study showed that increasing complexity in the establishment modules did
-not represent an improvement in the projections of ingrowth levels,
-species composition or mortality at early tree stages. Thus, the
-question what level of detail one has to use to model establishment
-processes remains open [@konig_tree_2022; @bugmann2022].
+The results from this study showed that increasing complexity in the
+establishment modules did not represent an improvement in the
+projections of ingrowth levels, species composition or mortality at
+early tree stages. Increasing complexity in establishment modules has
+been motivated by better process understanding and enhancing of model
+accuracy [@bugmann2022; @bugmann2019]. However, more complex models do
+not necessarily lead to better projections and rather to a reduced
+transparency and predictive power [@franklin2020]. Thus, the question
+what level of detail one has to use to model establishment processes
+remains open.[@konig_tree_2022; @bugmann2022].
 
 ## Regeneration niche 
 
@@ -986,7 +986,7 @@ total stand basal area as a proxy for light availability [cf.
 ranges simulated by the models, but also between the models and the
 observations. This made not possible to evaluate the establishment for
 the extremes of the stand density ranges in some models. For example,
-ingrowth rates at low stand densities are relevant to assess how well
+ingrowth levels at low stand densities are relevant to assess how well
 forests are recovering e.g., after gap creation due to disturbance
 [@seidl2022; @grubb1977]. At the level of the simulated one-hectare
 samples, average basal area is typically not very low as long as no
@@ -997,12 +997,16 @@ increasing stand basal area, the ingrowth of the different species would
 become sparser and drop out entirely under low-light conditions
 [@klopcic2012; @zell2019]. However, few models showed this trend, thus
 indicating that the relation between ingrowth and light availability is
-not yet captured correctly in most models.
+not yet captured correctly in most models. On the other hand several of
+the models with an increase of ingrowth with increasing basal area also
+include the feedback between seed production of mature trees and
+ingrowth. Thus it seems that the light competition does not sufficiently
+compensate the increased seed availability with higher basal area.
 
 There were pronounced variations how the main tree species were
 represented along the environmental gradients, in particular the
 dominant species Abies alba, Fagus sylvatica and Picea abies. The
-ingrowth rates were sampled from simulations in the equilibrium, and in
+ingrowth levels were sampled from simulations in the equilibrium, and in
 this state it is expected that non-climax species such as *Pinus
 sylvestris* or *Quercus* would be of minor importance, or absent
 [@klopcic2015]. Most models captured this low abundance, which is also
@@ -1022,9 +1026,9 @@ state. The data were collected in forest reserves where no management
 has taken place for long periods of time. This makes our assumption of
 an equilibrium between forest properties and environmental drivers more
 reasonable than it might appear at first sight. However, the equilibrium
-assumption may explain why simulated ingrowth rates were higher than the
-observed ones. Second, the data were collected for ingrowth above a 7 cm
-threshold, thus limiting the assessment of tree establishment to a
+assumption may explain why simulated ingrowth levels were higher than
+the observed ones. Second, the data were collected for ingrowth above a
+7 cm threshold, thus limiting the assessment of tree establishment to a
 holistic viewpoint. This constituted a hard limit based on which we can
 understand some aspects of tree establishment, which in its entirety
 often comprises a rather long period since seed production [@price2001].
@@ -1032,7 +1036,7 @@ However, many environmental constraints are acting on young trees
 [@käber2021] that we were unable to assess. Yet, ingrowth data with
 lower thresholds are simply not available in a harmonized manner across
 large environmental gradients. Third, the empirical data were collected
-from rather small plots, while we sampled simulated ingrowth rates from
+from rather small plots, while we sampled simulated ingrowth levels from
 1 ha areas, which may lead to an incorrect representation of space. Even
 though this strategy is not ideal, it represents a common challenge when
 harmonizing diverse data sources originating from varied sampling
@@ -1042,9 +1046,9 @@ size was different at each of the 200 sites and it would have introduce
 additional uncertainty into the results. We can not forget here that the
 observed data is just a snapshot of an extremely complex and stochastic
 reality, which might be the explanation of e.g. lack of clear patterns
-when confronted with gradients of climater water balance and degree
-days, while the models outputs are the realizations of the definitions
-of the regeneration niche.
+when confronted with gradients of climate water balance and degree days,
+while the models outputs are the realizations of the definitions of the
+regeneration niche.
 
 The design of our sampling protocol did not include spatial aspects such
 as seed migration nor detailed soil data. We considered a wide range of
@@ -1111,13 +1115,23 @@ this, however, is facing a serious challenge regarding appropriate
 datasets, as inventory data have wide coverage, but do not allow for the
 assessment of spatial interaction effects.
 
+Exercises like the one presented here where the models are run in "blind
+flight" without the possibility of being tuned towards capturing the
+observed values should be repeated. Such a benchmarking exercises should
+next focus in different aspects such as specific model traits and
+ecological formulations to better understand the implications of the
+model assumptions. Furthermore, the inclusion in this exercises with
+different scales, type, populations structures, tree establishment
+modules and complexity ensure a wider benefit to the whole modeling
+community.
+
 ## Conclusions
 
 Models of forest dynamics are important tools in science and decision
 support, and how tree establishment is defined has strong implications
 for simulated forest properties. The 15 models and variants used here
 are facing similar challenges when representing tree establishment. They
-generally overestimate tree establishment rates, and the simulated
+generally overestimate tree establishment levels, and the simulated
 establishment niche is not always captured accurately as a function of
 the biotic (light) and abiotic (temperature and moisture) factors.
 
