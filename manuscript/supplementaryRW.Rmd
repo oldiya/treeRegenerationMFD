@@ -1149,35 +1149,6 @@ turnover.
     species under climate warming in managed European forests. Forest
     Ecology and Management, 430, 485-497.
 
-Tab. 1: Species calibration parameters for site 434. Spec = species
-code, rke = Reineke Exponent, Sdi = stand density index, ogPer =
-(maximum) old growth time span (years), regnLgh = regeneration light
-demand (canopy shadow value of xcomp), plot_id = site (434), tjja =
-summer temperature (Jun-Aug, °C), sitePred = modelled species prevalence
-for site (0...1 = min...max), dd = upper diameter growth (cm/ 5 years,
-maximum dbh growth up to 85 % higher), ogDbh = old growth dbh (cm, dbh
-at which old growth phase begins), regnPer = (minimum) regeneration time
-span (year, until seedling reaches 5 cm dbh), regeneration mortality
-(climate dependent) Spec Rke Sdi ogPer regnLgh Plot_id Tjja sitePred Dd
-ogDbh regnPer regnMort Abal -1.6 1000 350 4 434 0.81 2.8 32.4 17 0 Acps
--1.6 800 150 3 434 0.86 1.8 24.6 17 0 Betu -1.6 700 100 2 434 0.76 1.7
-12.8 17 0.001 Cabe -1.6 700 125 3 434 0.76 1.4 16.7 17 0.001 Fasy -1.6
-800 150 4 434 0.93 1.9 24.6 17 0 Piab -1.6 1000 350 3 434 0.87 2.9 32.4
-17 0 Pisy -1.6 800 250 2 434 0.70 2.0 24.6 17 0.01 Qupe -1.6 700 300 2
-434 0.82 1.4 24.6 17 0 Qupu -1.6 700 300 2 434 - - - 0 Tico -1.6 700 150
-2.5 434 0.74 24.6 17 0
-
-Fig. 1: Basal area shares in xcomp simulation of site 434 over a time
-span of 2750 years.
-
-Fig. 2: xcomp canopy shadow at site 434 after 150 simulation periods
-(750 years).
-
-Fig. 3: Histogram of xcomp canopy shadow (vj_lgh) at site 434 after 150
-simulation periods (750 years). Species can only establish at sites
-where the canopy shadow is lower than their regeneration light demand
-(regnLgh in Tab. 1)
-
 ## PICUS
 
 ### Authors
@@ -1272,14 +1243,13 @@ value.
 
 ### Authors
 
-Werner Rammer Kristin Braziunas
+Werner Rammer, Kristin Braziunas
 
 ### Model summary
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+The most complete reference resource for the iLand regeneration module is:
+Seidl, R., Spies, T. a. T. A. T. a., Rammer, W., Steel, E. A. A., Pabst, R. J. R. J. R. J., & Olsen, K. (2012). Multi-scale Drivers of Spatial Variation in Old-Growth Forest Carbon Density Disentangled with Lidar and an Individual-Based Landscape Model. Ecosystems, 15(8), 1321-1335. https://doi.org/10.1007/s10021-012-9587-2
+
 
 ### Climate
 
@@ -2305,11 +2275,11 @@ knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness10.png"))
 ```
 
-```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimaed using the Shannon index  calculated by basal area. A1) groups models that Simulated species composition in adults is higher than the observed, A2) groups models that Simulated species composition in adults is similar to the observed, A3) groups models where the imulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
+```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimated using the Shannon index  calculated by basal area. A1) groups models that Simulated species composition in adults is higher than the observed, A2) groups models that Simulated species composition in adults is similar to the observed, A3) groups models where the imulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "allAgesRichness.png"))
 ```
 
-```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness. The species richness is estimaed using the Shannon index is calculated by basal area.B1) groups models where the simulated species composition is closer than the other models to observed values, B2) groups models where the sites with lower species composition are underestimated, B3) groups models where the simulated species composition recruitment is lower in the whole range compare to the observe. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
+```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness. The species richness is estimated using the Shannon index is calculated by basal area.B1) groups models where the simulated species composition is closer than the other models to observed values, B2) groups models where the sites with lower species composition are underestimated, B3) groups models where the simulated species composition recruitment is lower in the whole range compare to the observe. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentRichness.png"))
 ```
 
@@ -2382,7 +2352,7 @@ kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the 
                               here::here("figures", "envTrend7DDS_500.png")))
 ```
 
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%', fig.pos='H'}
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%',out.height= "80%", fig.pos='H'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
 ```
 
