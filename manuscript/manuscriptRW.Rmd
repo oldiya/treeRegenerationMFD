@@ -975,7 +975,7 @@ transparency and predictive power [@franklin2020]. Thus, the question
 what level of detail one has to use to model establishment processes
 remains open.[@konig_tree_2022; @bugmann2022].
 
-## Regeneration niche 
+## Regeneration niche
 
 Competition for light as a strong filter for tree establishment has been
 widely documented [@messier1999; @collet2006; @berdanier2016], but
