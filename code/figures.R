@@ -206,8 +206,8 @@
         ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "7" & dat710$model == "Observed"],
                                                                c(0.25))), 
                             colour = "#990000", linetype = "dashed") +
-        ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "10" & dat710$model == "Observed"],
-                                                               c(0.77))),
+        ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "7" & dat710$model == "Observed"],
+                                                               c(0.75))),
                             colour = "#990000", linetype = "dashed") 
     
     ggplot2::ggsave("figures/H7_10.png",
