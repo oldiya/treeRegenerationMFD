@@ -23,13 +23,13 @@ author:
 - Harald Bugmann
 date: "`r Sys.Date()`"
 output:
+  word_document:
+    reference_docx: template_paper.docx
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
     extra_dependencies: "subfig"
-  word_document:
-    reference_docx: template_paper.docx
 mainfont: Arial
 fontsize: 12pt
 linestretch: 1.5
@@ -96,7 +96,7 @@ and data, it is remarkable that most of the models capture the essential
 features of the highly complex process of tree establishment, while not
 having been parameterized with such data. We conclude that in spite of
 all the uncertainties, a lot can be gained by a focus on the modeling of
-establishment processes in these model, this will make their long-term
+establishment processes in these models, this will make their long-term
 forest dynamics projections under changing environmental conditions much
 more robust.
 
@@ -218,7 +218,7 @@ moisture, and light availability.
 
 More specifically, we aimed to answer the following questions: (1) Are
 models of forest dynamics capturing accurately tree ingrowth levels,
-initial tree diversity and mortality in tree establishment? (2)Do model
+initial tree diversity and mortality in tree establishment? (2) Do model
 traits explain differences in model performance? (3) How well do models
 capture total ingrowth and individual species regeneration niches across
 environmental gradients of light availability, temperature, and soil
@@ -259,7 +259,7 @@ The starting point for the models establishment differs as well, ranging
 from seedbank, seed or seedling to sapling (i.e., trees much larger than
 10 cm height, often at least 2-3 m tall). Models that start from seed
 need to include a larger number of ecological processes such as
-germination and survival of young seedlings, whereas models that started
+germination and survival of young seedlings, whereas models that start
 from saplings have to aggregate via parameterizations several ecological
 processes because they are not treated explicitly. This reduces model
 complexity but comes at the cost of blurring process representation. In
@@ -279,8 +279,8 @@ more important [@huber2020]. These two model variants allow us to
 evaluate a more process-based and complex module (variant 11) against a
 simple module (variant 1), while the rest of the model structure is
 identical. Similarly, the two ForCEEPS variants allow us to isolate the
-importance of the canopy feedback (i.e. simulated actual composition and
-relative abundance of species in the plot) via seed trees for the
+importance of the canopy feedback (i.e., simulated actual composition
+and relative abundance of species in the plot) via seed trees for the
 quantity and quality of simulated ingrowth, as one variant includes this
 feedback whereas the other does not.
 
@@ -300,7 +300,7 @@ names(modelDF)[11] <- paste0(names(modelDF)[11],"(f)")
 
 kable(modelDF, 
       format = "latex", booktabs = TRUE,
-      caption = "List of models included.") |>
+      caption = "Models included and their characteristics.") |>
         kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down") |>
     # fix width by column
@@ -352,10 +352,10 @@ of 869 plots along the environmental dimensions of temperature, water
 balance, soil quality and exposition (i.e., slope and aspect). Each of
 these sites featured at least two consecutive measurements. Ingrowth
 thresholds for the sites differed between 0 and 10 cm, we defined two
-data sets where one included all sites with a dbh threshold of 7cm or
-lower and the other included another 35 sites with dbh thresholds
-between 7 and 10 cm. Thus we focused on two data sets with the
-harmonized dbh thresholds of 7 cm and 10 cm.
+data sets where one included all sites with a diameter threshold of 7 cm
+or lower and the other included another 35 sites with diameter
+thresholds between 7 and 10 cm. Thus we focused on two data sets with
+the harmonized diameter thresholds of 7 cm and 10 cm.
 
 Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
 processed and aggregated following @käber2022 to provide ingrowth rates
@@ -483,37 +483,38 @@ the ingrowth, and ingrowth mortality. We evaluated the species diversity
 across models and in relation to the observed data by calculating the
 Shannon index based on the relative proportion of the species in terms
 of basal area. The Shannon index was calculated for the establishment
-($H_{n,r}$) (Equation \ref{eqpiShannonR}) and at the stand level
-($H_{n,s}$)(Equation \ref{eqpiShannon}). The higher the value of the
+($H_{R_{n}}$) (Equation \ref{eqpiShannonR}) and at the stand level
+($H_{S_{n,s}}$)(Equation \ref{eqpiShannon}). The higher the value of the
 index, the higher the species diversity at a particular site and sample.
 
 ```{=tex}
 \begin{equation}
-H_{n,r} = - \sum_{i = 1}^{s}{p_{n,i}\ln(p_{n,r,i})}\label{eqpiShannonR}
+H_{R_{n}} = - \sum_{i = 1}^{s}{p_{R_{n,i}}\ln(p_{R_{n,i}})}\label{eqpiShannonR}
 \end{equation}
 ```
 ```{=tex}
 \begin{equation}
-p_{n,r,i} = \frac{r_{BA_{n,i}}}{TotalR_{BA_{n}}} \label{eqpiShannonR2}
+p_{R_{n,i}} = \frac{r_{BA_{n,i}}}{TotalR_{BA_{n}}} \label{eqpiShannonR2}
 \end{equation}
 ```
 ```{=tex}
 \begin{equation}
-H_{n,s} = - \sum_{i = 1}^{s}{p_{n,i}\ln(p_{n,i})}\label{eqpiShannon}
+H_{S_{n}} = - \sum_{i = 1}^{s}{p_{S_{n,i}}\ln(p_{S_{n,i}})}\label{eqpiShannon}
 \end{equation}
 ```
 ```{=tex}
 \begin{equation}
-p_{n,s,i} = \frac{BA_{n,i}}{Total_{BA_{n}}} \label{eqpiShannon2}
+p_{S_{n,i}} = \frac{BA_{n,i}}{Total_{BA_{n}}} \label{eqpiShannon2}
 \end{equation}
 ```
 where $s$ is the total number of species present and have basal area
 above zero in sample $n$; $p_{n,r,i}$ is the proportion of the species
-$i$ calculated as the ingrowth basal area ($r_{BA_{n,i}}$) for that
-species $i$ relative to the recruited basal area ($TotalR_{BA_{n}}$) of
-the sample $n$; $p_{n,s,i}$ is the proportion of the species $i$
-calculated as the basal area ($BA_{n,i}$) for that species $i$ relative
-to the total basal area ($TotalR_{BA_{n}}$) of the sample $n$.
+$i$ in sample $n$ calculated as the ingrowth basal area ($r_{BA_{n,i}}$)
+for that species $i$ relative to the recruited basal area
+($TotalR_{BA_{n}}$) of the sample $n$; $p_{S_{n,i}}$ is the proportion
+of the species $i$ calculated as the basal area of all trees
+($BA_{n,i}$) of that species $i$ relative to the total basal area
+($TotalR_{BA_{n}}$) of the sample $n$.
 
 Mortality in tree establishment was assessed based on the ratio of
 ingrowth between the 7 and 10 cm diameter thresholds. We used the
@@ -523,8 +524,8 @@ the expected theoretical rate between these two diameters. The Reineke
 self-thinning rule is usually calculated from even-aged, single species
 stands and assumes a relationship between the number of stems and the
 quadratic mean diameter in fully stocked pure stands. The value used in
-our comparisons was 1.77 (i.e., we expect stem numbers at 7cm to be 77%
-higher than at 10cm), calculated using Equation \ref{eqReineke}.
+our comparisons was 1.77 (i.e., we expect stem numbers at 7 cm to be 77%
+higher than at 10 cm), calculated using Equation \ref{eqReineke}.
 
 ```{=tex}
 \begin{equation}
@@ -533,11 +534,10 @@ Reineke = (7/10)^{(-1.605)} \label{eqReineke}
 ```
 We assessed model traits in relation to model performance focusing on
 features such as model complexity as defined in @bugmann2022, model type
-(empirical or process based), models with and without canopy feedback
-(the level and species composition of the ingrowth is influenced by the
-existing adult tree community) and the models scale (stand, landscape or
-global). We tested for significant differences considering each of these
-model features and between observed and simulated ingrowth
+(empirical or process based), models with and without canopy feedback,
+and the models scale (stand, landscape or global). We tested for
+significant differences using two sample t-tests by considering each of
+these model features considering observed and simulated ingrowth
 overestimation, ingrowth levels and species diversity respectively.
 
 The total ingrowth and individual species regeneration niches were
@@ -546,11 +546,11 @@ temperature, and soil moisture. Ingrowth levels were evaluated along
 three key environmental gradients, i.e., stand basal area (the basal
 area of all the trees in each sample including tree establishment) as a
 proxy of light availability at the forest floor, the annual degree-day
-sum (DD) [@allen1976; @fischlin1995] as a proxy for growing season
-warmth, and the climatic water balance (CWB) as a proxy for soil
-moisture [@speich2019]. The mean ingrowth values were calculated as the
-mean across the 200 samples per site. The observed data were modeled
-using a Generalized Additive Model [@wood2011] with a negative binomial
+sum [@allen1976; @fischlin1995] as a proxy for growing season warmth,
+and the climatic water balance as a proxy for soil moisture
+[@speich2019]. The mean ingrowth values were calculated as the mean
+across the 200 samples per site. The observed data were modeled using a
+Generalized Additive Model [@wood2011] with a negative binomial
 distribution and restricted maximum likelihood to better understand the
 environmental gradients trend in the levels of the observed ingrowth,
 relative to the simulation results per model.
@@ -597,7 +597,7 @@ interquartile range in the box plots of Figure \@ref(fig:over)) was
 similar to or smaller than observed, with the notable exception of
 PICUS, where simulated ingrowth variability was much larger.
 
-```{r over, echo=FALSE, fig.cap="Mean ingrowth levels across all samples per site, plotted for the 200 sites and for each model. The red dashed lines shows the 25th and 75th percentiles for the 7cm diameter threshold in the observed data. There are two boxplots for each model where the left lighted boxplot corresponds to 7cm and the right darker boxplot to 10cm", out.width='100%'}
+```{r over, echo=FALSE, fig.cap="Mean ingrowth levels across all samples per site, plotted for the 200 sites and for each model. The red dashed lines shows the 25th and 75th percentiles for the 7 cm diameter threshold in the observed data. There are two boxplots for each model where the left lighted boxplot corresponds to 7 cm and the right darker boxplot to 10 cm", out.width='100%'}
         knitr::include_graphics(here::here("figures", "recOverAll710.png"))
 ```
 
@@ -619,7 +619,7 @@ its diversity values are not directly comparable to those of the other
 models, nor to the observations. Only one model, Landis-II, consistently
 underestimated ingrowth diversity.
 
-```{r H710, echo=FALSE, fig.cap="Shannon index of tree ingrowth, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dashed lines represent the 25th percentile of the observed data for the threshold of 7 cm and the 75th percentile of the observed data for the threshold of 10 cm.", out.width='100%'}
+```{r H710, echo=FALSE, fig.cap="Shannon index of tree ingrowth, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dashed lines shows the 25th and 75th percentiles for the 7 cm diameter threshold in the observed data.", out.width='100%'}
     knitr::include_graphics(here::here("figures", "H7_10.png"))
 ```
 
@@ -634,8 +634,8 @@ For both the observed and the simulated data, and both ingrowth
 thresholds, species diversity in the ingrowth compared to stand-level
 diversity did not have clear patterns across all the models (Figures S1
 and S2). Most models captured reasonably well or overpredicted species
-diversity at the stand level (Figure \@ref(fig:combinedRichness)A,
-center; cf. Figure S3), but a characteristic feature was that
+diversity at the stand level (Figure \@ref(fig:combinedRichness)A, left
+and center; cf. Figure S3), but a characteristic feature was that
 simulations had a much lower variability of diversity compared to
 observations. Models overpredicting species diversity included ForClim1,
 ForClim 11, FORMIND and TreeMig (Figure \@ref(fig:combinedRichness)A,
@@ -644,10 +644,12 @@ ForCEEPS(f) and 4C (Figure \@ref(fig:combinedRichness)A, right).
 
 The majority of the models overpredicted ingrowth diversity and only two
 of them underestimated ingrowth diversity (4C and Landis-II) (Figure
-\@ref(fig:combinedRichness)A and C, cf. Figure S4). Both the models with
+\@ref(fig:combinedRichness)B and Figure S4). Both the models with
 feedback and those without feedback from the adult trees to ingrowth
 (via seed production) overestimate, underestimated and captured
 reasonably well ingrowth species diversity compared to the observations.
+Again, simulated diversity was considerably less variable than observed
+diversity in the ingrowth.
 
 ```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site and for observed and simulated values. n indicates the number of models falling in each group. A) Examples for the three trends across models for species diversity at the stand level. B) Examples for the three trends across models for ingrowth at the 7 cm threshold. The selection of the representative model for each trend group was based on the full data shown in Figures S5 and S6.", out.width='75%'}
 knitr::include_graphics(here::here("figures", "combined_richness.png"))
@@ -657,7 +659,7 @@ There were strong differences among the models regarding the mortality
 rate between 7 and 10 cm (Figure \@ref(fig:mortality11)). Most of the
 models featured a mortality rate significantly larger than the observed
 data, thus at least partially compensating for the general
-overestimation of ingrowth levels (Figure \@ref(fig:over) and Table S5);
+overestimation of ingrowth levels (Figure \@ref(fig:over) and Table S3);
 six models did not feature a significant difference compared to the
 observed data (ForCEEPS, FORMIND, ForClim 1 and 11, iLand and aDGVM2).
 Four models (xComp, PICUS, LandClim and TreeMig) featured very high
@@ -718,7 +720,7 @@ and not always significant regarding the slope.
 
 There was no significant relationship between the mean complexity of the
 establishment module (Table \@ref(tab:tableModels)) and the
-overestimation proportion at a diameter threshold of 7 cm (Figure S7).
+overestimation proportion at a diameter threshold of 7 cm (Figure S6).
 All the models except 4C had significant differences between the
 observed mean ingrowth values and the simulated, therefore it was not
 possible to differentiate in terms of performance between models forest
@@ -730,8 +732,7 @@ to those that did not include feedback, all the models except
 ForCEEPs(f) and FORMIND had significant differences (Table S6). It is
 noteworthy the change from overpredicted species diversity in the
 ingrowth for the model ForCEEPS to a closer diversity levels when the
-recruitment module included feedback (ForCEEPs(f)). Again, simulated
-diversity was considerably less variable than observed diversity.
+recruitment module included feedback (ForCEEPs(f)).
 
 ## Total ingrowth and individual species regeneration niches
 
@@ -758,17 +759,16 @@ values of stand basal area, with model-specific thresholds (4C, ForClim
 The observed ingrowth did not change much across the climatic water
 balance gradient, and showed a slight increase with temperature. The
 models did not match the observed ingrowth patterns across gradients of
-soil moisture and temperature (Figure
-\@ref(fig:)\@ref(fig:nvTrend710BAlightTemp) and S7), and neither was
-there a clear pattern across models. Regarding the soil moisture
-gradient, a group of models featured decreasing ingrowth with increasing
-soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp, PICUS, LandClim,
-TreeMig and iLand), while a few models showed the opposite trend
-(ForCEEPS(f), FORMIND and LPJ-GUESS). Across the temperature gradient,
-all the models that featured a decrease in ingrowth levels with
-increasing soil moisture showed the opposite trend (i.e., more ingrowth
-with increasing temperature), except for 4C. The other models did not
-feature a clear pattern.
+soil moisture and temperature (Figure \@ref(fig:nvTrend710BAlightTemp)
+and S7), and neither was there a clear pattern across models. Regarding
+the soil moisture gradient, a group of models featured decreasing
+ingrowth with increasing soil moisture (4C, ForClim 1, ForClim11,
+SIBYLA, xComp, PICUS, LandClim, TreeMig and iLand), while a few models
+showed the opposite trend (ForCEEPS(f), FORMIND and LPJ-GUESS). Across
+the temperature gradient, all the models that featured a decrease in
+ingrowth levels with increasing soil moisture showed the opposite trend
+(i.e., more ingrowth with increasing temperature), except for 4C. The
+other models did not feature a clear pattern.
 
 ```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site with y-axis scaled by model, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. For comparing the magnitude of recruitment across models the same graphs with equal y-axis are availalbe in Figure S7", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
 
@@ -898,12 +898,12 @@ Correctly capturing species composition in tree establishment is
 important to assess the future functional diversity of a forest, e.g.,
 its sensitivity to drought or resilience to disturbances [@redmond2015;
 @seidl2022]. In the simulations, overall ingrowth species diversity
-levels were well within the observed range for two thirds of the models
-(10 out of 15). Thus, while most of the models are facing difficulties
-to quantitatively match ingrowth levels (cf. above), their performance
-is much better when it comes to matching the composition of ingrowth as
-a function of abiotic and biotic conditions. Most models maintained or
-even increased ingrowth diversity between the 7 and 10 cm thresholds,
+levels were well within the observed range for half of the models (7 out
+of 14). Thus, while most of the models are facing difficulties to
+quantitatively match ingrowth levels (cf. above), their performance is
+better when it comes to matching the composition of ingrowth as a
+function of abiotic and biotic conditions. Most models maintained or
+even decreased ingrowth diversity between the 7 and 10 cm thresholds,
 and the same is visible from the empirical data, but the differences are
 not significant. Diversity variations may be explained by the way the
 individual models consider establishment processes [@konig_tree_2022],
@@ -918,10 +918,13 @@ be a simple and conservative assumption to safely maintain relative
 species abundances [@hanbury-brown2022], although this may be
 simplistic. Furthermore, based on the simulation results, there is no
 evidence that models with feedback captured better the ingrowth species
-diversity than those without feedback. The similar performance of models
-with and without feedback is likely because the models put more weight
-to the regeneration niche arising from abiotic and biotic filters, than
-from the habitat niche of the adult trees [@grubb1977].
+diversity than those without feedback with the exception of ForCEEPS
+that significantly improved the ingrowth species diversity with the
+model version that included feedback (ForCEEPS(f)). The similar
+performance of models with and without feedback is likely because the
+models put more weight to the regeneration niche arising from abiotic
+and biotic filters, than from the habitat niche of the adult trees
+[@grubb1977].
 
 There are several factors that lead to mortality during the
 establishment phase such as competition [@casper1997] and multiple
@@ -1180,7 +1183,18 @@ Funding of the workshop was provided by the COST Action CA19139 PROCLIAS
 (PROcess-based models for CLimate Impact Attribution across Sectors),
 supported by COST (European Cooperation in Science and
 Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
-(Grant ETH-35 18-1). ODY was funded by SNF project XXXX
+(Grant ETH-35 18-1). ODY was funded by SNF project XXXX. KB received
+support from the European Research Council under the European Union's
+Horizon 2020 research and innovation program (Grant Agreement
+101001905). JB acknowledges funding from the long-term research
+development project no. RVO 67985939 from the Czech Academy of Sciences.
+MM acknowledges financial support from I-Maestro (Innovative forest
+management strategies for a resilient bioeconomy under climate change
+and disturbances, grant no. 22035418, 2019--2022) funded by the ERA-NET
+Cofund ForestValue. KM received funding from the Project No.
+CZ.02.1.01/0.0/0.0/16_019/0000803 financed by OP RDE, grant no.
+ITMS2014+313011W580 supported by the Integrated Infrastructure
+Operational Programme funded by the ERDF
 
 # References
 
