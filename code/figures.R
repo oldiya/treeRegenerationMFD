@@ -446,7 +446,7 @@
     
     
     xx <- ggpubr::ggarrange(sm, sl,
-                            labels = c("A", "B"),
+                            labels = c("a", "b"),
                             ncol = 1, nrow = 2, heights = c(3, 3), align = "v")
     
     xx <- ggpubr::annotate_figure(xx, 
@@ -741,10 +741,10 @@
                                              color = NULL),
                                 nudge_y = 0.05) +
       ggplot2::scale_fill_manual(values = values_color) +
-      ggplot2::annotate("text", x = 10, y = 2.6, label = "A") + 
-      ggplot2::annotate("text", x = 10, y = 1.6, label = "B") + 
-      ggplot2::annotate("text", x = -4.6, y = 1.6, label = "C") + 
-      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "D") + 
+      ggplot2::annotate("text", x = 10, y = 2.6, label = "a") + 
+      ggplot2::annotate("text", x = 10, y = 1.6, label = "b") + 
+      ggplot2::annotate("text", x = -4.6, y = 1.6, label = "c") + 
+      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "d") + 
     
       ggplot2::annotate("text", x = 8.5, y = 1.81, label = "Reineke self-thinning") + 
       ggplot2::annotate("text", x = 7.9, y = 1.03, label = "Ratio equal to 1")
