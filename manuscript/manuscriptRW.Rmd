@@ -944,13 +944,13 @@ adult trees [@grubb1977].
 There are several factors that lead to mortality during the
 establishment phase, such as competition [@casper1997] and multiple
 abiotic factors [@schmid2021; @cunningham2006]. As mentioned above, it
-is reasonable to expect that models that overestimate ingrowth will
-already have a particularly high mortality between the 7 and 10 cm
-thresholds. However, this was not consistently evident from the
-simulations. This implies that these models must have the excess of
-mortality in later stages, if we assume that all models would be able to
-capture the structure and composition of adult stands along the EuFoRIa
-gradient, which however was not directly tested here.
+is reasonable to expect that models that overestimate ingrowth may have
+a particularly high mortality between the 7 and 10 cm thresholds.
+However, this was not consistently evident from the simulations. This
+implies that these models must have an excess mortality in later stages,
+if we assume that all models were able to capture the structure and
+composition of the adult stands along the EuFoRIa gradient; this however
+was not tested here.
 
 Higher mortality towards the adult phase has important implications for
 forest dynamics and the goods and services provided by forests. On the
@@ -1043,30 +1043,31 @@ the forests included in the EuFoRIa dataset were to such a state. The
 data were collected in forest reserves where no management has taken
 place for long periods of time. This makes our assumption of an
 equilibrium between forest properties and environmental drivers more
-reasonable than it might appear at first sight. However, the equilibrium
-assumption may explain why simulated ingrowth levels were higher than
-the observed ones [@brzeziecki2021]. Second, the data were collected for
-ingrowth above a 7 cm threshold, thus limiting the assessment of tree
-establishment to a holistic viewpoint. This constituted a hard limit
-based on which we can understand only some aspects of tree
-establishment, which in its entirety often comprises a rather long
-period since seed production [@price2001]. In reality, many
-environmental constraints are acting on young trees [@käber2021] that we
-were unable to assess. Yet, ingrowth data with lower thresholds are
-simply not available in a harmonized manner across large environmental
-gradients. Third, the empirical data were collected from rather small
-plots, while we sampled simulated ingrowth levels from 1 ha areas, which
-may lead to an incorrect representation of space. Even though this
-strategy is not ideal, it represents a common challenge when harmonizing
-diverse data sources originating from varied sampling strategies
-[@portier2022]. It would have been extremely challenging for such a
-variety of models to follow a protocol where the spatial sampling size
-was different at each of the 200 sites, and it would have introduced
-additional uncertainty in the results. We must not ignore that the
-observed data represent just a snapshot of an extremely complex and
-stochastic reality. This, may at least parlty explain e.g. the lack of
-clear patterns in the simulation results along the gradients of climate
-water balance and degree-days.
+reasonable than it might appear at first sight. In an analysis of
+primeval forests at demographic equilibrium, @brzeziecki2021, they found
+higher ingrowth rates than the ones observed in the Euforia data. Thus,
+the overestimate of ingrowth rates by the models may not be so
+problematic !!! Second, the data were collected for ingrowth above a 7
+cm threshold, thus limiting the assessment of tree establishment to a
+holistic viewpoint. This constituted a hard limit based on which we can
+understand only some aspects of tree establishment, which in its
+entirety often comprises a rather long period since seed production
+[@price2001]. In reality, many environmental constraints are acting on
+young trees [@käber2021] that we were unable to assess. Yet, ingrowth
+data with lower thresholds are simply not available in a harmonized
+manner across large environmental gradients. Third, the empirical data
+were collected from rather small plots, while we sampled simulated
+ingrowth levels from 1 ha areas, which may lead to an incorrect
+representation of space. Even though this strategy is not ideal, it
+represents a common challenge when harmonizing diverse data sources
+originating from varied sampling strategies [@portier2022]. It would
+have been extremely challenging for such a variety of models to follow a
+protocol where the spatial sampling size was different at each of the
+200 sites, and it would have introduced additional uncertainty in the
+results. We must not ignore that the observed data represent just a
+snapshot of an extremely complex and stochastic reality. This, may at
+least parlty explain e.g. the lack of clear patterns in the simulation
+results along the gradients of climate water balance and degree-days.
 
 The design of our sampling protocol did not include spatial aspects such
 as seed dispersal or detailed soil data. Although, we considered a wide
@@ -1203,13 +1204,13 @@ to be added).
 # Acknowledgements
 
 This paper arises from a workshop held in Davos (Switzerland) in June
-2022, co-led by Olalla Díaz-Yñaez, Yannek Käber and Harald Bugmann.
+2022, co-led by Olalla Díaz-Yáñez, Yannek Käber and Harald Bugmann.
 Funding for the workshop was provided by COST Action CA19139 PROCLIAS
 (PROcess-based models for CLimate Impact Attribution across Sectors),
 supported by COST (European Cooperation in Science and
 Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
 (Research Grant ETH-35 18-1). ODY was funded by the Swiss National
-Science Foundation project . KB received support from the European
+Science Foundation project XXXX . KB received support from the European
 Research Council under the European Union's Horizon 2020 research and
 innovation program (Grant Agreement 101001905). JB acknowledges funding
 from the long-term research development project no. RVO 67985939 from
@@ -1219,7 +1220,7 @@ bioeconomy under climate change and disturbances, grant no. 22035418,
 2019--2022) funded by the ERA-NET Cofund ForestValue. KM received
 funding from the Project No. CZ.02.1.01/0.0/0.0/16_019/0000803 financed
 by OP RDE, grant no. ITMS2014+313011W580 supported by the Integrated
-Infrastructure Operational Programme funded by the ERDF
+Infrastructure Operational Programme funded by the ERDF.
 
 # References
 
