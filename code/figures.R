@@ -1533,7 +1533,7 @@
     #   coord_sf(xlim = c(-15,30), ylim = c(40,55), expand = FALSE) +
     #   geom_point(data = domSpp10, shape = 20, stroke = FALSE,
     #              mapping = aes(x = X, y = Y, color = recruitment),
-    #              alpha = 1, size = 2) +
+    #              alpha = 1, size = 2.5) +
     #   scale_color_manual("Dominant species of ingrowth",
     #                      values = c("Abies alba" =  "#1B9E77",
     #                                 "Picea abies" ="#D95F02" ,
