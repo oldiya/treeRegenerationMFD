@@ -1530,7 +1530,7 @@
     # plotsMap <- ggplot(Europe) +
     #   ggthemes::theme_map() +
     #   geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
-    #   coord_sf(xlim = c(-25,45), ylim = c(40,55), expand = FALSE) +
+    #   coord_sf(xlim = c(-15,30), ylim = c(40,55), expand = FALSE) +
     #   geom_point(data = domSpp10, shape = 20, stroke = FALSE,
     #              mapping = aes(x = X, y = Y, color = recruitment),
     #              alpha = 1, size = 2) +
@@ -1552,4 +1552,3 @@
     #                 width = 21, height = 12, scale = 0.9,
     #                 dpi = 300, units = "cm", device = 'png')
 
-    
