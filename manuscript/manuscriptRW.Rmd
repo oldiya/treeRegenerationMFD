@@ -371,13 +371,13 @@ establishment as it arises from empirical data against its
 representation in a wide range of models of forest dynamics. We define
 the tree establishment as the passing of a breast height diameter
 threshold of 7 or 10 cm, respectively (synonym: ingrowth). To this end,
-each modeling group was provided with a detailed protocol (cf.
-Supplementary Material 1, henceforth "SM") with instructions how to
-perform the simulations, providing input variables on climate and soil
-conditions, and the expected output variables. Neither were further site
-information (except for the data specified below) nor any data on tree
-ingrowth or forest stand features provided prior to the simulation. That
-is, the models were run in "blind flight" mode.
+each modeling group was provided with a detailed protocol [@díaz-yáñez]
+with instructions how to perform the simulations, providing input
+variables on climate and soil conditions, and the expected output
+variables. Neither were further site information (except for the data
+specified below) nor any data on tree ingrowth or forest stand features
+provided prior to the simulation. That is, the models were run in "blind
+flight" mode.
 
 The input variables were collected and aggregated to be adapted to the
 needs of the different models. Time series of climatic variables from
@@ -403,7 +403,8 @@ run (as we did not provide any forest data). The modeling teams decided
 on the simulated area and how they derived these samples. The exact
 length of the simulation was also decided by the modeling teams (Table
 \@ref(tab:tableModels)). Further details on how each modeling team
-prepared the simulations and the outputs are available in SM 2.
+prepared the simulations and the outputs are available in Supplementary
+Material 1.
 
 The simulations were run in the absence of management to a
 simulated equilibrium ("Potential Natural Vegetation") with the current
@@ -476,12 +477,13 @@ knitr::include_graphics(here::here("figures", "theMap.png"))
 
 The simulation results were analyzed regarding (1) ingrowth levels
 (i.e., ingrowth number per unit time and space), (2) species diversity
-of the ingrowth, and (3) ingrowth mortality. We evaluated the species
-diversity across models and in relation to the observed data by
-calculating the Shannon index based on the relative proportion of the
+of the ingrowth, (3) ingrowth mortality, (4) model performance and model
+traits, and (5) ingrowth gradients on regeneration niches. We evaluated
+the species diversity across models and in relation to the observed data
+by calculating the Shannon index based on the relative proportion of the
 species in terms of basal area. The Shannon index was calculated for the
 establishment ($H_{R_{n}}$) (Equation \ref{eqpiShannonR}) and at the
-stand level ($H_{S_{n,s}}$)(Equation \ref{eqpiShannon}). The higher the
+stand level ($H_{S_{n,s}}$) (Equation \ref{eqpiShannon}). The higher the
 value of the index, the higher the species diversity at a particular
 site and sample.
 
@@ -991,7 +993,7 @@ transparency and predictive power [@franklin2020]. Thus, the question
 what level of detail is appropriate and parsimonious for modeling tree
 establishment processes remains open [@konig_tree_2022; @bugmann2022].
 
-## Regeneration niche
+## Ingrowth gradients on regeneration niches
 
 Competition for light as a strong filter for tree establishment has been
 widely documented [@messier1999; @collet2006; @berdanier2016], but the
@@ -1045,8 +1047,8 @@ reasonable than it might appear at first sight. In an analysis of
 primeval forests at demographic equilibrium, @brzeziecki2021, they found
 higher ingrowth rates than the ones observed in the Euforia data. Thus,
 the overestimate of ingrowth rates by the models may not be so
-problematic !!! Second, the data were collected for ingrowth above a 7
-cm threshold, thus limiting the assessment of tree establishment to a
+problematic. Second, the data were collected for ingrowth above a 7 cm
+threshold, thus limiting the assessment of tree establishment to a
 holistic viewpoint. This constituted a hard limit based on which we can
 understand only some aspects of tree establishment, which in its
 entirety often comprises a rather long period since seed production
@@ -1064,7 +1066,7 @@ protocol where the spatial sampling size was different at each of the
 200 sites, and it would have introduced additional uncertainty in the
 results. We must not ignore that the observed data represent just a
 snapshot of an extremely complex and stochastic reality. This, may at
-least parlty explain e.g. the lack of clear patterns in the simulation
+least partly explain e.g. the lack of clear patterns in the simulation
 results along the gradients of climate water balance and degree-days.
 
 The design of our sampling protocol did not include spatial aspects such
@@ -1106,7 +1108,7 @@ required data will have to be collected from specific locations, as
 currently there is no general establishment dataset available.
 
 Therefore, we recommend that more effort should be invested into
-collecting harmonised datasets on tree establishment. We emphasize that
+collecting harmonized datasets on tree establishment. We emphasize that
 datasets like EuFoRIa used here are invaluable and should be further
 expanded in both their spatial extent (e.g., towards boreal and
 Mediterranean conditions) as well as in time (e.g., continuing the
@@ -1195,9 +1197,9 @@ long-term projections of future forest dynamics.
 This study complies with the basic rules of reproducibility and has made
 available the protocol of the study, the data and all the software that
 has led to the findings presented in this paper. The protocol is
-available here:( link to be added). The code and data that support the
-findings of this study are openly available at zenodo and gihub (links
-to be added).
+available here @díaz-yáñez . The code and data that support the findings
+of this study are openly available at zenodo (*link to be added*) and
+gihub (*link to be added*).
 
 # Acknowledgements
 
@@ -1208,17 +1210,18 @@ Funding for the workshop was provided by COST Action CA19139 PROCLIAS
 supported by COST (European Cooperation in Science and
 Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
 (Research Grant ETH-35 18-1). ODY was funded by the Swiss National
-Science Foundation project XXXX . KB received support from the European
-Research Council under the European Union's Horizon 2020 research and
-innovation program (Grant Agreement 101001905). JB acknowledges funding
-from the long-term research development project no. RVO 67985939 from
-the Czech Academy of Sciences. MM acknowledges financial support from
-I-Maestro (Innovative forest management strategies for a resilient
-bioeconomy under climate change and disturbances, grant no. 22035418,
-2019--2022) funded by the ERA-NET Cofund ForestValue. KM received
-funding from the Project No. CZ.02.1.01/0.0/0.0/16_019/0000803 financed
-by OP RDE, grant no. ITMS2014+313011W580 supported by the Integrated
-Infrastructure Operational Programme funded by the ERDF.
+Science Foundation project 200020_188882 / 1 . KB received support from
+the European Research Council under the European Union's Horizon 2020
+research and innovation program (Grant Agreement 101001905). JB
+acknowledges funding from the long-term research development project no.
+RVO 67985939 from the Czech Academy of Sciences. MM acknowledges
+financial support from I-Maestro (Innovative forest management
+strategies for a resilient bioeconomy under climate change and
+disturbances, grant no. 22035418, 2019--2022) funded by the ERA-NET
+Cofund ForestValue. KM received funding from the Project No.
+CZ.02.1.01/0.0/0.0/16_019/0000803 financed by OP RDE, grant no.
+ITMS2014+313011W580 supported by the Integrated Infrastructure
+Operational Programme funded by the ERDF.
 
 # References
 
