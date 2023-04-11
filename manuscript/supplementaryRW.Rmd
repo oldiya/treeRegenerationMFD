@@ -49,7 +49,6 @@ knitr::opts_chunk$set(echo = TRUE, fig.pos = "H", out.extra = "")
 #knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 ```
 
-
 # Supplementary Material 1: Model reports
 
 ## 4C
@@ -379,10 +378,10 @@ model is sensitive to climatic factors (length of growing season, mean
 temperature during growing season, annual temperature amplitude, and
 total precipitation during growing season). The climatic factors modify
 height and diameter growth potential, and consequently tree increment.
-The climatic factors also influence tree regeneration model. 
+The climatic factors also influence tree regeneration model.
 
-More detailed information about Sibyla can be found in Fabrika (2005) and in the link: 
-<http://etools.tuzvo.sk/sibyla/english/model.htm>.
+More detailed information about Sibyla can be found in Fabrika (2005)
+and in the link: <http://etools.tuzvo.sk/sibyla/english/model.htm>.
 
 ### Climate
 
@@ -806,9 +805,12 @@ Werner Rammer, Kristin Braziunas
 
 ### Model summary
 
-The most complete reference resource for the iLand regeneration module is:
-Seidl, R., Spies, T. a. T. A. T. a., Rammer, W., Steel, E. A. A., Pabst, R. J. R. J. R. J., & Olsen, K. (2012). Multi-scale Drivers of Spatial Variation in Old-Growth Forest Carbon Density Disentangled with Lidar and an Individual-Based Landscape Model. Ecosystems, 15(8), 1321-1335. https://doi.org/10.1007/s10021-012-9587-2
-
+The most complete reference resource for the iLand regeneration module
+is: Seidl, R., Spies, T. a. T. A. T. a., Rammer, W., Steel, E. A. A.,
+Pabst, R. J. R. J. R. J., & Olsen, K. (2012). Multi-scale Drivers of
+Spatial Variation in Old-Growth Forest Carbon Density Disentangled with
+Lidar and an Individual-Based Landscape Model. Ecosystems, 15(8),
+1321-1335. <https://doi.org/10.1007/s10021-012-9587-2>
 
 ### Climate
 
@@ -963,11 +965,6 @@ Josef Brůna, Paola Mairota, Marco Mina, Giorgio Vacchiano
 
 ### Model
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
-
 Landscape scale forest simulation model LANDIS-II (Scheller et al. 2007)
 with PnET-Succession extension (version 4.1). PnET-Succession is based
 on the Biomass Succession extension of Scheller and Mladenoff (2004),
@@ -990,6 +987,18 @@ due to shading, water competition, and/or drought (Gustafson et al.
 we selected Biomass Community Output Extension version 2.0.1, which
 generates output in the format: species age biomass (g / m^2^) at
 specified time steps.
+
+The most complete reference resources for the LANDIS-II model and
+regeneration module used here are:
+
+-   Scheller et al. 2007 -
+    <https://doi.org/10.1016/j.ecolmodel.2006.10.00>
+-   De Bruijn et al. 2014 -
+    <https://doi.org/10.1016/j.ecolmodel.2014.05.004>
+-   Petter et al. 2020 - <https://doi.org/10.1016/j.envsoft.2020.104844>
+    (supplementary material)
+-   User guide for PNET 4.1 online -
+    <https://github.com/LANDIS-II-Foundation/Extension-PnET-Succession/blob/master/deploy/docs/LANDIS-II%20PnET-Succession%20v4.1%20User%20Guide.pdf>
 
 ### Climate
 
@@ -1523,7 +1532,6 @@ given patch if the minimum PAR level at the forest floor is below a
 PFT/species-specific threshold, which is higher for more light-demanding
 PFTs/species.
 
-
 #### Simulation length
 
 What is the simulation length, and how have you determined the
@@ -1817,7 +1825,6 @@ kable(sigDiff,  format = "latex", caption = "Test of the significance of the dif
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-
 ```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
 ```
@@ -1834,7 +1841,6 @@ knitr::include_graphics(here::here("figures", "allAgesRichness.png"))
 knitr::include_graphics(here::here("figures", "recruitmentRichness.png"))
 ```
 
-
 ```{r mortTable, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
@@ -1845,7 +1851,6 @@ kable(sigDiff,  format = "latex", caption = "Test of the significance of the dif
 #kableExtra::landscape()
 kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
-
 
 ```{r tableModels, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
@@ -1863,14 +1868,11 @@ knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
 
 ## Model traits and model performance
 
-
 ```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary statistics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%', fig.pos='H'}
 
 knitr::include_graphics(here::here("figures", "compOver.png"))
 
 ```
-
-
 
 ```{r rtreesDiff, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
@@ -1892,9 +1894,8 @@ kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the 
     kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-
-
 \newpage
+
 ## Total ingrowth and individual species regeneration niches
 
 ```{r nvTrend710, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
@@ -1907,5 +1908,4 @@ kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the 
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
 ```
 
-## References 
-
+## References
