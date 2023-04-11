@@ -55,24 +55,154 @@ knitr::opts_chunk$set(echo = TRUE, fig.pos = "H", out.extra = "")
 
 ### Authors
 
-### Model references
+Mahnken M., Gutsch M., Reyer C.P.O., Lasch-Born P.
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+### Model
+
+The most complete reference resource for the 4C (v2.2) model and
+regeneration module is:
+
+Lasch-Bonn et al. 2020. Description and evaluation of the process-based
+forest model 4C v2.2 at four European forest sites. DOI:
+[https://doi.org/10.5194/gmd-13-5311-2020)](https://doi.org/10.5194/gmd-13-5311-2020))
 
 ### Climate
 
+We used the provided daily ERA5-CHELSA climate data set and complemented
+the CHELSA time series data regarding relative humidity with the model
+after Eccel et al. (2015) based on minimum and mean daily temperature to
+accomodate data needs of 4C. The missing data for January 2nd and 3rd
+2013 were filled with data from January 1st and 4th 2013 respectively.
+For construction of longer climate time series we looped through the
+provided time series from 1981 to 2018 up to the maximum simulation
+length of 2500 years. We amended situations where leap year
+inconsistencies arised by removing February 29 or duplicating data from
+February 28. Otherwise, the unaltered daily data were used to run 4C on
+a daily basis. We applied a constant atmopsheric CO2 concentration of
+380 ppm.
+
 ### Soil
+
+We used parametrized soils readily available for 4C from the EU soil
+data base. The link from parametrized soil to soil quality was done by
+extracting the plant available water storage capacity as the model
+bucket size of the rooted soil horizons. We excluded bucket size values
+of lower than 10 cm and larger than 35 cm. The bucket size was
+reprojected to the range from 0 to 1. In addition we tested the
+sensitivity of dominant tree height at age 100 years for monospecific
+stands of all five species descibed above to the available soils using
+model simulations with 4C. The dominant tree height at age 100 years was
+then also reprojected to the range from 0 to 1 in order to derive a
+model specific soil quality indicator for all paramterized soils. Then
+we multiplied this relative model specific soil quality with the
+relative soil quality derived from the bucket size to the range from 1
+to 5. The match between paramterized soil and plot was then done by
+finding the pair of soil quality with the minimum difference between
+simuation protocol prescribed soil quality and and the soil quality of
+the paramterized soils as described above.
 
 ### Topography
 
+Topographical information was not considered in the simulations.
+
 ### Tree species
+
+We initialized stands with five out of the eleven proposed
+species/genera: Fagus sylvatica (fasy), Picea abies (piab), Betula spp.
+(betu; 4C parameters for Betula pendula), Quercus spp. (quer; 4C
+parameters for Quercus robur) and Pinus sylvestris (pisy) since only
+these are fully parameterized for an application as proposed in the
+simulation protocol. Each plot was initialized with all five tree
+species with similar distributions of height classes and number of
+individuals: 2000 individuals/ha with height around 0.25 m, 1000
+individuals/ha with height around 0.75 m and 500 individuals/ha with
+height around 1.75 m. In total 17500 individuals/ha.
+Carpinus betulus,
+Tilia cordata, Acer pseudoplatanus, Fraxinus excelsior, Alnus glutinosa
+and Abies alba are not fully parameterized in 4C.
 
 ### Simulations
 
+#### Dispersal and seed input
+
+There is no explicitly modelled seed dispersal in a stand and between
+stands. We applied a constant sapling establishment rate every five
+years of 2000 individuals/ha for all five species; 10000 individuals/ha
+in total every five years. The constant sapling establishment provides
+constant regeneration potential if favorable conditions for sapling
+growth (especially light and water regime) are present. This approach
+enables regeneration of other species than only the one present in the
+stand to establish if competition allows. The resulting recruitment
+patterns are an outcome of the dynamical processes from the sapling
+stage onward. Seed production and germination were not explicitly
+simulated.
+
+#### Simulation length and equilibrium criteria
+
+To reach equilibrium and obtain dynamics in the equilibrium period, we
+simulated a maximum of 2500 years. 4C is usually applied for much
+shorter simulation periods and different technical as well as
+model-theory related issues arise when simulating longer than 100-150
+years. Therefore 2500 years can be seen as the upper limit of continuous
+simulation in the defined simulation setup. The first 500 years were not
+sampled for recruitment as we assume the model needs this time to reach
+equilibrium. In this long simulation period 4C partially projects
+unrealistically large tree heights resulting in premature termination of
+the simulation (36 plots) so that not all plots were simulated for the
+full 2500 years. We started sampling the recruits after the first 500
+simulation years from non-overlapping 10 year periods to obtain 200
+samples. For shorter simulation periods we produced 200 samples from
+overlapping 10 year periods.
+In addition, we excluded those plots in which 4C simulated
+unrealistically high basal area values of over 150 m² (19 plots). We
+used this large threshold to give the model maximum flexibility to
+explore the solution space in these long simulation runs although we
+acknowledge that this is an unrealistic overestimation that is probably
+originating from misrepresented density dependent mortality processes in
+long simulation runs and misrepresented single tree dimensions due to
+wrong assumptions of tree geometry and biomass share of such old-aged
+individuals. Furthermore those plots with less than 1000 simulation
+years (16 plots) before termination were excluded because the sample
+space after the first 500 years was too small. Additionally we included
+another subset criterion removing all samples that have a ba \> 100 to
+exclude unrealistically high samples without the need to exclude the
+full site. This resulted in discarding 0.8 % of the sample
+
 ### Outputs
+
+We provide 200 samples each for 165 of the 200 plots (see reason for
+excluded plots in "Simulation length and equilibrium criteria"). These
+stem from 10 year periods that overlap partially (for \< 2500 simulation
+years) or do not overlap (for 2500 simulation years). The number of
+recruits (r.trees) is the sum of individuals that cross the threshold
+diameter (7/10 cm) in the 10 year sample period per hectare that have
+not already died until the sample year (Fig. 3). The recruit's basal
+area (r.ba) is the sum of the basal area per hectare of the trees that
+cross the diameter threshold that have not already died until the sample
+year. The total stand basal area (ba) is the basal area per hectare of
+all trees in the stand \> 0 cm diameter at breast height (no lower
+boundary) at the sample time per species. We provide the data for both
+diameter thresholds, 7 and 10 cm. In over 90 % of the decades no
+recruitment takes place.
+
+[4C
+(v2.2)]([https://doi.org/10.5194/gmd-13-5311-2020)](https://doi.org/10.5194/gmd-13-5311-2020))
+is usually not used for simulations of forest equillibrium dynamics,
+potential natural vegetation assessment and long simulation periods but
+rather shorter-term simulations (up to 100-150 years). In addition, only
+five species out of the pool of eleven potentially relevant species here
+are parameterized in 4C so that projections of the potential natural
+vegetation done wih 4C need to be considered in the light of model
+uncertainty.
+For example, the spatial homogeneity in the model leads to
+cyclic recruitment patterns (see Fig. 4). When the adult stands dies of,
+young individuals are recruited into the larger diameter classes because
+more light reaches lower canopy layer since larger (adult) trees do not
+anymore prevent the light reaching lower canopy layers. This results in
+increased growth of the regeneration layer during those times. In most
+stands Fagus sylvatica dominates the stand after some time but
+occasionally individuals of other species, like Picea abies or Quercus
+spp. cross the recruitment diameter threshold.
 
 ## ForCEEPS & ForCEEPS(f)
 
@@ -80,24 +210,28 @@ manual or some other document that the reader can access.*
 
 Xavier Morin & François de Coligny
 
-### Model references
+### Model 
 
-Morin X., de Coligny F., Bugmann H., Limousin J.-M., Ourcival J.-M.,
-Martin-StPaul N., Simioni G., Cailleret M., Prevosto B., Toïgo M.,
-Vennetier M., Cateau E., Guillemot J. 2021. Beyond forest succession: a
-gap model to study ecosystem functioning and tree community composition
-under climate change. Functional Ecology. 35, 955-975.
+The most complete reference resource for the ForCEEPS & ForCEEPS(f)
+model and regeneration module are:
 
-Jourdan M., Dreyfus, P., Riond C., Cordonnier T., Cornet B., de Coligny
-F., Morin X. 2021. Managing mixed stands can mitigate severe climate
-change impacts on French alpine forests. Regional Environmental Change.
-21, 78.
+-   Morin X., de Coligny F., Bugmann H., Limousin J.-M., Ourcival J.-M.,
+    Martin-StPaul N., Simioni G., Cailleret M., Prevosto B., Toïgo M.,
+    Vennetier M., Cateau E., Guillemot J. 2021. Beyond forest
+    succession: a gap model to study ecosystem functioning and tree
+    community composition under climate change. Functional Ecology. 35,
+    955-975.
 
-Morin X., Damestoy T., Toïgo M., Jactel H., Castagneyrol B. Meredieu C.
-2020. Using forest gap models and experimental data to explore long-term
-effects of tree diversity on the productivity of mixed planted forests.
-Annals of Forest Science. 77
-<https://doi.org/10.1007/s13595-020-00954-0>.
+-   Jourdan M., Dreyfus, P., Riond C., Cordonnier T., Cornet B., de
+    Coligny F., Morin X. 2021. Managing mixed stands can mitigate severe
+    climate change impacts on French alpine forests. Regional
+    Environmental Change. 21, 78.
+
+-   Morin X., Damestoy T., Toïgo M., Jactel H., Castagneyrol B.
+    Meredieu C. 2020. Using forest gap models and experimental data to
+    explore long-term effects of tree diversity on the productivity of
+    mixed planted forests. Annals of Forest Science. 77
+    <https://doi.org/10.1007/s13595-020-00954-0>.
 
 ### Climate
 
@@ -165,7 +299,7 @@ the end of the decade - dbh: threshold used
 
 Samuel M. Fischer, Friedrich Bohn, Rico Fischer
 
-### Model references
+### Model
 
 ```{=html}
 <!--
@@ -295,13 +429,16 @@ computation.
 
 Yannek Käber, Harald Bugmann
 
-### Model references
+### Model
 
-Bugmann, H. (1994). On the ecology of mountainous forests in a changing
-climate: A simulation study. Huber, N., Bugmann, H., & Lafond, V.
-(2020). Capturing ecological processes in dynamic forest models: Why
-there is no silver bullet to cope with complexity. Ecosphere, 11(5).
-<https://doi.org/10.1002/ecs2.3109>
+The most complete reference resource for the ForClim 1 & ForClim 11
+model and regeneration module is:
+
+-   Bugmann, H. (1994). On the ecology of mountainous forests in a
+    changing climate: A simulation study. Huber, N., Bugmann, H., &
+    Lafond, V. (2020). Capturing ecological processes in dynamic forest
+    models: Why there is no silver bullet to cope with complexity.
+    Ecosphere, 11(5). <https://doi.org/10.1002/ecs2.3109>
 
 ### Climate
 
@@ -313,11 +450,11 @@ monthly average temperatures and precipitations sums.
 
 ### Soil
 
-Soil data were translated to bucket sizes values based on the
-assumpation that the lowest soil quality value of 1 refers to a bucket
-size of 10 cm and the highest soil quality of 5 refers to a bucket size
-of 35 cm. Specifically we used the following formula to calculate the
-bucket size bucket_size = 10 + (soil_quality-1) /4  \* 25.
+Soil data were translated to bucket sizes values based on the assumption
+that the lowest soil quality value of 1 refers to a bucket size of 10 cm
+and the highest soil quality of 5 refers to a bucket size of 35 cm.
+Specifically we used the following formula to calculate the bucket size
+bucket_size = 10 + (soil_quality-1) /4  \* 25.
 
 ### Topography
 
@@ -340,7 +477,7 @@ platyphyllos, Ulmus glabra, Pinus cembra
 
 ### Simulations
 
-All simulations were run according to the protocoll. For each site we
+All simulations were run according to the protocol. For each site we
 simulated on 16 ha (i.e., 100 patches of 0.08 ha). We defined a spin up
 phase of 1000 years. After the spin up we simulated 200 years of forest
 dynamics.
@@ -365,7 +502,7 @@ of Sciences, Štefánikova 3, P.O.Box 25, 81499 Bratislava, Slovakia
 3Czech University of Life Sciences Prague, Faculty of Forestry and Wood
 Sciences, Kamýcká 129, 16500 Praha 6 -- Suchdol, Czech Republic
 
-### Model references
+### Model
 
 SIBYLA is the simulator of forest biodynamics. It belongs to the
 category of semi-empirical tree growth simulators. It consists of the
@@ -380,8 +517,11 @@ total precipitation during growing season). The climatic factors modify
 height and diameter growth potential, and consequently tree increment.
 The climatic factors also influence tree regeneration model.
 
-More detailed information about Sibyla can be found in Fabrika (2005)
-and in the link: <http://etools.tuzvo.sk/sibyla/english/model.htm>.
+The most complete reference resource for the SIBYLA model and
+regeneration module is:
+
+-    Fabrika (2005) and in the link:
+    <http://etools.tuzvo.sk/sibyla/english/model.htm>.
 
 ### Climate
 
@@ -536,7 +676,7 @@ for Multi-criteria analysis. TU Zvolen.
 
 Tobias Mette, LWF, 24.05.2022
 
-### Model summary
+### Model 
 
 *Please provide here the references to this model where it is possible
 to understand the model structure specially for the regeneration module,
@@ -560,6 +700,11 @@ algorithms (Bugmann et al. 2019). For the current article the model was
 (4) connected to a climate sensitive species distribution model to
 modify growth and mortality in dependence of the site conditions, and
 (5) extended from single to multi-species simulations.
+
+The most complete reference resource for the xComp model and
+regeneration module is:
+
+-   
 
 ### Climate
 
@@ -713,12 +858,17 @@ turnover.
 
 Christian Hochauer, Manfred J. Lexer
 
-### Model summary
+### Model 
 
 *Please provide here the references to this model where it is possible
 to understand the model structure specially for the regeneration module,
 this could be a published paper, a website with the model description, a
 manual or some other document that the reader can access.*
+
+The most complete reference resource for the PICUS model and
+regeneration module is:
+
+-   
 
 ### Climate
 
@@ -803,14 +953,16 @@ value.
 
 Werner Rammer, Kristin Braziunas
 
-### Model summary
+### Model 
 
 The most complete reference resource for the iLand regeneration module
-is: Seidl, R., Spies, T. a. T. A. T. a., Rammer, W., Steel, E. A. A.,
-Pabst, R. J. R. J. R. J., & Olsen, K. (2012). Multi-scale Drivers of
-Spatial Variation in Old-Growth Forest Carbon Density Disentangled with
-Lidar and an Individual-Based Landscape Model. Ecosystems, 15(8),
-1321-1335. <https://doi.org/10.1007/s10021-012-9587-2>
+is:
+
+-   Seidl, R., Spies, T. a. T. A. T. a., Rammer, W., Steel, E. A. A.,
+    Pabst, R. J. R. J. R. J., & Olsen, K. (2012). Multi-scale Drivers of
+    Spatial Variation in Old-Growth Forest Carbon Density Disentangled
+    with Lidar and an Individual-Based Landscape Model. Ecosystems,
+    15(8), 1321-1335. <https://doi.org/10.1007/s10021-012-9587-2>
 
 ### Climate
 
@@ -945,6 +1097,11 @@ to understand the model structure specially for the regeneration module,
 this could be a published paper, a website with the model description, a
 manual or some other document that the reader can access.*
 
+The most complete reference resource for the LandClim model and
+regeneration module is:
+
+-   
+
 ### Climate
 
 ### Soil
@@ -989,7 +1146,7 @@ generates output in the format: species age biomass (g / m^2^) at
 specified time steps.
 
 The most complete reference resources for the LANDIS-II model and
-regeneration module used here are:
+regeneration module are:
 
 -   Scheller et al. 2007 -
     <https://doi.org/10.1016/j.ecolmodel.2006.10.00>
@@ -1284,6 +1441,26 @@ et al. 1998), and extended to a forest landscape model by including seed
 production, seed dispersal, seed bank dynamics and seedling
 establishment (Lischke and Loffler 2006, Lischke et al. 2006).
 
+The most complete reference resource for the TreeMig model and
+regeneration module are:
+
+-   Lischke, H., T. J. Loffler, and A. Fischlin. 1998. Aggregation of
+    individual trees and patches in forest succession models: Capturing
+    variability with height structured, random, spatial distributions.
+    Theor Popul Biol 54:213-226.
+
+-   Lischke, H., N. E. Zimmermann, J. Bolliger, S. Rickebusch, and T. J.
+    Loffler. 2006. TreeMig: A forest-landscape model for simulating
+    spatio-temporal patterns from stand to landscape scale. Ecological
+    Modelling 199:409-420.
+
+-   Lischke, H., and T. J. Loffler. 2006. Intra-specific density
+    dependence is required to maintain species diversity in
+    spatio-temporal forest simulations with reproduction. Ecological
+    Modelling 198:341-361.
+
+-   The online resources available at treemig.wsl.ch
+
 ### Climate
 
 As climatic input, the monthly time series of mean temperature and
@@ -1416,22 +1593,30 @@ current mortality is valid for these 5 years.
 
 ### References
 
-• Bugmann, H. 1994. On the ecology of mountainous forests in a changing
+Bugmann, H. 1994. On the ecology of mountainous forests in a changing
 climate: A simulation study. Dissertation. Swiss Federal Institute of
-Technology, Zurich. • Fischlin, A., H. Bugmann, and D. Gyalistras. 1995.
-Sensitivity of a forest ecosystem model to climate parametrization
-schemes. Env. Poll. 87:267-282. • Lischke, H., and T. J. Loffler. 2006.
-Intra-specific density dependence is required to maintain species
-diversity in spatio-temporal forest simulations with reproduction.
-Ecological Modelling 198:341-361. • Lischke, H., T. J. Loffler, and A.
-Fischlin. 1998. Aggregation of individual trees and patches in forest
-succession models: Capturing variability with height structured, random,
-spatial distributions. Theor Popul Biol 54:213-226. • Lischke, H., N. E.
-Zimmermann, J. Bolliger, S. Rickebusch, and T. J. Loffler. 2006.
-TreeMig: A forest-landscape model for simulating spatio-temporal
-patterns from stand to landscape scale. Ecological Modelling
-199:409-420. • Thornthwaite, C. W., and J. R. Mather. 1957. The water
-balance. Publications in Climatology VIII:1-69.
+Technology, Zurich.
+
+Fischlin, A., H. Bugmann, and D. Gyalistras. 1995. Sensitivity of a
+forest ecosystem model to climate parametrization schemes. Env. Poll.
+87:267-282.
+
+Lischke, H., and T. J. Loffler. 2006. Intra-specific density dependence
+is required to maintain species diversity in spatio-temporal forest
+simulations with reproduction. Ecological Modelling 198:341-361.
+
+Lischke, H., T. J. Loffler, and A. Fischlin. 1998. Aggregation of
+individual trees and patches in forest succession models: Capturing
+variability with height structured, random, spatial distributions. Theor
+Popul Biol 54:213-226.
+
+Lischke, H., N. E. Zimmermann, J. Bolliger, S. Rickebusch, and T. J.
+Loffler. 2006. TreeMig: A forest-landscape model for simulating
+spatio-temporal patterns from stand to landscape scale. Ecological
+Modelling 199:409-420.
+
+Thornthwaite, C. W., and J. R. Mather. 1957. The water balance.
+Publications in Climatology VIII:1-69.
 
 ## LPJ-GUESS
 
@@ -1451,10 +1636,23 @@ We used the process-based mechanistic model LPJ-GUESS to simulate
 vegetation dynamics considering tree species, age cohorts, gap dynamics
 and biogeochemical cycles. Parameters of the model reflect an updated
 version of the most common European tree species as well as typical
-shrub PFTs as described by Hickler et al. (2012). A detailed description
-of LPJ-GUESS is available in Smith et al. 2001 and Smith et al. 2014.
-Source code is available on demand (see
-<https://web.nateko.lu.se/lpj-guess/>).
+shrub PFTs as described by Hickler et al. (2012).
+
+The most complete reference resource for the LPJ-GUESS model and
+regeneration module is:
+
+-   Smith, B. (2001). LPJ-GUESS-an ecosystem modelling framework.
+    Department of Physical Geography and Ecosystems Analysis, INES,
+    Sölvegatan, 12, 22362.
+
+-   Smith, B., Wårlind, D., Arneth, A., Hickler, T., Leadley, P.,
+    Siltberg, J., & Zaehle, S. (2014). Implications of incorporating N
+    cycling and N limitations on primary production in an
+    individual-based dynamic vegetation model. Biogeosciences, 11(7),
+    2027-2054.
+
+-   Source code is available on demand (see
+    <https://web.nateko.lu.se/lpj-guess/>).
 
 ### Climate
 
@@ -1476,7 +1674,7 @@ et al. 2018).
 
 ### Soil
 
-All sites We used were simulated withdefault values for a medium
+All sites We used were simulated with default values for a medium
 textured soil type (sand: 0.35, clay: 0.15, silt: 0.5) in LPJ-GUESS.
 
 ### Topography
@@ -1663,6 +1861,13 @@ tropical and sub-tropical ecosystems and it has not been tested and
 benchmarked for Europe. We applied the model in the original version.
 Data-model comparisons with model results were not done and the model
 was not changed to improve agreement with any data for Europe.
+
+The most complete reference resource for the aDGVM2 model and
+regeneration module is:
+
+-   Scheiter S, Langan L, Higgins SI (2013) Next generation dynamic
+    global vegetation models: learning from community ecology. NEW
+    PHYTOLOGIST, 198, 957-969.
 
 ### Climate
 
