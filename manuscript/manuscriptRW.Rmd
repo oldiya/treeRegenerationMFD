@@ -10,7 +10,7 @@ author:
 - Jessica Hetzer,
 - Thomas Hickler,
 - Christian	Hochauer,
-- Manfred Lexer,
+- Manfred J. Lexer,
 - Heike	Lischke,
 - Mats Mahnken,
 - Paola	Mairota,

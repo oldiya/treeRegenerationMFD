@@ -6,7 +6,7 @@ author:
 - Mats Mahnken, 
 - Samuel Fischer, 
 - Xavier Morin, 
-- Manfred Lexer, 
+- Manfred J. Lexer, 
 - Christian Hochauer, 
 - Katarina Merganicova, 
 - Tobias Mette, 
