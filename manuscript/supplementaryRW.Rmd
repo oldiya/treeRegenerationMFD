@@ -1153,14 +1153,33 @@ specified time steps.
 The most complete reference resources for the LANDIS-II model and
 regeneration module are:
 
--   Scheller et al. 2007 -
-    <https://doi.org/10.1016/j.ecolmodel.2006.10.00>
--   De Bruijn et al. 2014 -
-    <https://doi.org/10.1016/j.ecolmodel.2014.05.004>
--   Petter et al. 2020 - <https://doi.org/10.1016/j.envsoft.2020.104844>
+-   Scheller R.M. & Mladenoff D.J. (2004) A forest growth and biomass
+    module for a landscape simulation model, LANDIS: design, validation,
+    and application. Ecological Modelling 180:
+    211--229. <https://doi.org/10.1016/j.ecolmodel.2004.01.022>
+-   Scheller, R. M., Domingo J. B. , Sturtevant B. R. , Williams J. S. ,
+    Rudy A. , Gustafson E. J. & Mladenoff D. J. (2007) Design,
+    development, and application of LANDIS-II, a spatial landscape
+    simulation model with flexible temporal and spatial resolution.
+    Ecological Modelling 201(3-4): 409--419.
+    <https://doi.org/10.1016/j.ecolmodel.2006.10.009>
+-   de Bruijn A., Gustafson E.J. , Sturtevant B.R., Foster J.R., Miranda
+    B.R., Lichti N.I. & Jacobs D.F. (2014) Toward more robust
+    projections of forest landscape dynamics under novel environmental
+    conditions: Embedding PnET within LANDIS-II. Ecological Modelling
+    (287): 44--57 <https://doi.org/10.1016/j.ecolmodel.2014.05.004>
+-   Petter G., Mairota P., Albrich K., Bebi P., Brůna J., Bugmann H.,
+    Haffenden A., Scheller R.M., Schmatz D.R., Seidl R., Speich M.,
+    Vacchiano G. & Lischke H. (2020) How robust are future projections
+    of forest landscape dynamics? Insights from a systematic comparison
+    of four forest landscape models. Environmental Modelling & Software
+    134: 104844. <https://doi.org/10.1016/j.envsoft.2020.104844>
     (supplementary material)
--   User guide for PNET 4.1 online -
-    <https://github.com/LANDIS-II-Foundation/Extension-PnET-Succession/blob/master/deploy/docs/LANDIS-II%20PnET-Succession%20v4.1%20User%20Guide.pdf>
+-   Gustafson E.J., De Bruijn A.M.G., Pangle R.E., Limousin J.M.,
+    Mcdowell N.G., Pockman W.T., Sturtevant B.R., Muss J.D. & Kubiske
+    M.E. (2015) Integrating ecophysiology and forest landscape models to
+    improve projections of drought effects under climate change. Global
+    Change Biology 21: 843--856. <https://doi.org/10.1111/gcb.12713>\
 
 ### Climate
 
