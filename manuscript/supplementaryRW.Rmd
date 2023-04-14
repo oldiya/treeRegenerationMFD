@@ -116,8 +116,7 @@ simulation protocol. Each plot was initialized with all five tree
 species with similar distributions of height classes and number of
 individuals: 2000 individuals/ha with height around 0.25 m, 1000
 individuals/ha with height around 0.75 m and 500 individuals/ha with
-height around 1.75 m. In total 17500 individuals/ha.
-Carpinus betulus,
+height around 1.75 m. In total 17500 individuals/ha. Carpinus betulus,
 Tilia cordata, Acer pseudoplatanus, Fraxinus excelsior, Alnus glutinosa
 and Abies alba are not fully parameterized in 4C.
 
@@ -152,21 +151,21 @@ the simulation (36 plots) so that not all plots were simulated for the
 full 2500 years. We started sampling the recruits after the first 500
 simulation years from non-overlapping 10 year periods to obtain 200
 samples. For shorter simulation periods we produced 200 samples from
-overlapping 10 year periods.
-In addition, we excluded those plots in which 4C simulated
-unrealistically high basal area values of over 150 m² (19 plots). We
-used this large threshold to give the model maximum flexibility to
-explore the solution space in these long simulation runs although we
-acknowledge that this is an unrealistic overestimation that is probably
-originating from misrepresented density dependent mortality processes in
-long simulation runs and misrepresented single tree dimensions due to
-wrong assumptions of tree geometry and biomass share of such old-aged
-individuals. Furthermore those plots with less than 1000 simulation
-years (16 plots) before termination were excluded because the sample
-space after the first 500 years was too small. Additionally we included
-another subset criterion removing all samples that have a ba \> 100 to
-exclude unrealistically high samples without the need to exclude the
-full site. This resulted in discarding 0.8 % of the sample
+overlapping 10 year periods. In addition, we excluded those plots in
+which 4C simulated unrealistically high basal area values of over 150 m²
+(19 plots). We used this large threshold to give the model maximum
+flexibility to explore the solution space in these long simulation runs
+although we acknowledge that this is an unrealistic overestimation that
+is probably originating from misrepresented density dependent mortality
+processes in long simulation runs and misrepresented single tree
+dimensions due to wrong assumptions of tree geometry and biomass share
+of such old-aged individuals. Furthermore those plots with less than
+1000 simulation years (16 plots) before termination were excluded
+because the sample space after the first 500 years was too small.
+Additionally we included another subset criterion removing all samples
+that have a ba \> 100 to exclude unrealistically high samples without
+the need to exclude the full site. This resulted in discarding 0.8 % of
+the sample
 
 ### Outputs
 
@@ -186,15 +185,14 @@ diameter thresholds, 7 and 10 cm. In over 90 % of the decades no
 recruitment takes place.
 
 [4C
-(v2.2)]([https://doi.org/10.5194/gmd-13-5311-2020)](https://doi.org/10.5194/gmd-13-5311-2020))
+(v2.2)](%5Bhttps://doi.org/10.5194/gmd-13-5311-2020)](<https://doi.org/10.5194/gmd-13-5311-2020>))
 is usually not used for simulations of forest equillibrium dynamics,
 potential natural vegetation assessment and long simulation periods but
 rather shorter-term simulations (up to 100-150 years). In addition, only
 five species out of the pool of eleven potentially relevant species here
 are parameterized in 4C so that projections of the potential natural
 vegetation done wih 4C need to be considered in the light of model
-uncertainty.
-For example, the spatial homogeneity in the model leads to
+uncertainty. For example, the spatial homogeneity in the model leads to
 cyclic recruitment patterns (see Fig. 4). When the adult stands dies of,
 young individuals are recruited into the larger diameter classes because
 more light reaches lower canopy layer since larger (adult) trees do not
@@ -210,7 +208,7 @@ spp. cross the recruitment diameter threshold.
 
 Xavier Morin & François de Coligny
 
-### Model 
+### Model
 
 The most complete reference resource for the ForCEEPS & ForCEEPS(f)
 model and regeneration module are:
@@ -520,7 +518,7 @@ The climatic factors also influence tree regeneration model.
 The most complete reference resource for the SIBYLA model and
 regeneration module is:
 
--    Fabrika (2005) and in the link:
+-   Fabrika (2005) and in the link:
     <http://etools.tuzvo.sk/sibyla/english/model.htm>.
 
 ### Climate
@@ -676,7 +674,7 @@ for Multi-criteria analysis. TU Zvolen.
 
 Tobias Mette, LWF, 24.05.2022
 
-### Model 
+### Model
 
 *Please provide here the references to this model where it is possible
 to understand the model structure specially for the regeneration module,
@@ -858,17 +856,25 @@ turnover.
 
 Christian Hochauer, Manfred J. Lexer
 
-### Model 
+### Model
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+The core elements of PICUS are described in Lexer and Hönninger (2001)
+and Seidl et al. (2005). Specific details regarding the regeneration
+module can be found in Woltjer et al. (2008).
 
-The most complete reference resource for the PICUS model and
-regeneration module is:
+-   Lexer MJ, Hönninger K (2001) A modified 3D-patch model for spatially
+    explicit simulation of vegetation composition in heterogeneous
+    landscapes. For Ecol Manag 144:43--65.
+    doi:10.1016/S0378-1127(00)00386-8
 
--   
+-   Seidl R, Lexer MJ, Jäger D, Hönninger K (2005) Evaluating the
+    accuracy and generality of a hybrid patch model. Tree Physiol
+    25:939--951. doi:10.1093/treephys/25.7.939
+
+-   Woltjer M, Rammer W, Brauner M, Seidl R, Mohren GMJ, Lexer MJ (2008)
+    Coupling a 3D patch model and a rockfall module to assess rockfall
+    protection in mountain forests. J Environ Manag 87:373--388.
+    doi:10.1016/j.jenvman.2007.01.031
 
 ### Climate
 
@@ -878,12 +884,16 @@ Additionally, vpd was calculated.
 
 ### Soil
 
-We used soil parameters as suggested by the protocol. Between given
-class specific values linear interpolation was sued to find
-between-class values. Soil Class N WHC pH 1 40 80 4.2 2 - - 4.2 3 - -
-4.6 4 - - 5.6 5 100 250 5.6
+Based on the provided continuous value for soil quality between 1 and 5
+minimum (soil quality = 1) and maximum (soil quality = 5) values for
+soil water holding capacity (80mm, 200mm), plant available Nitrogen (40
+kg ha^-1^ yr^-1^, 100 kg ha^-1^ yr^-1^) and soil pH (4.2, 5.6) were
+defined. Linear interpolation was used to scale between the minimum and
+maximum values.
 
 ### Topography
+
+Not considered.
 
 ### Tree species
 
@@ -935,17 +945,12 @@ equilibrium state.
 
 ### Output
 
-r.trees Counted the number of trees which were not present in the stand
-from the previous time period (10 years before) and where above the dbh
-threshold per species. For the oaks the value of the two species was
-summed into one. The result was then divided by 1.44 to get a per ha
-value of r.trees. r.ba Sum of the basal area (circle area calculated
-with the dbh) of trees which were not present in the stand from the
-previous time period (10 years before) and where above the dbh
-threshold. This was then divided by 1.44 to get a per ha value. ba Sum
-of the basal area (circle area calculated with the dbh) of all trees
-above the dbh threshold. This was then divided by 1.44 to get a per ha
-value.
+Output consisted of species-specific regeneration rates per decade and
+per ha. Oak species were aggregated. A sample was taken for every 10
+years for a total period of 2000 years once the model had reached
+equilibrium (see 1.7.7.3). Ingrowth was determined by counting the trees
+passing the 7cm and 10cm DBH thresholds every 10 years. Basal area of
+the ingrowth was determined at the end of each decade.
 
 ## iLand
 
@@ -953,7 +958,7 @@ value.
 
 Werner Rammer, Kristin Braziunas
 
-### Model 
+### Model
 
 The most complete reference resource for the iLand regeneration module
 is:
