@@ -865,16 +865,16 @@ module can be found in Woltjer et al. (2008).
 -   Lexer MJ, Hönninger K (2001) A modified 3D-patch model for spatially
     explicit simulation of vegetation composition in heterogeneous
     landscapes. For Ecol Manag 144:43--65.
-    doi:10.1016/S0378-1127(00)00386-8
+    [doi:10.1016/S0378-1127(00)00386-8](doi:10.1016/S0378-1127(00)00386-8){.uri}
 
 -   Seidl R, Lexer MJ, Jäger D, Hönninger K (2005) Evaluating the
     accuracy and generality of a hybrid patch model. Tree Physiol
-    25:939--951. doi:10.1093/treephys/25.7.939
+    25:939--951. <doi:10.1093/treephys/25.7.939>
 
 -   Woltjer M, Rammer W, Brauner M, Seidl R, Mohren GMJ, Lexer MJ (2008)
     Coupling a 3D patch model and a rockfall module to assess rockfall
     protection in mountain forests. J Environ Manag 87:373--388.
-    doi:10.1016/j.jenvman.2007.01.031
+    <doi:10.1016/j.jenvman.2007.01.031>
 
 ### Climate
 
@@ -1095,29 +1095,72 @@ vapor pressure. Journal of Applied Meteorology 6:203--204.
 
 ### Authors
 
+Olalla Díaz-Yáñez, Harald Bugmann
+
 ### Model
 
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
+We use the LandClim version 2.0, which calculates forest dynamics at a
+decadal time step. The complete reference resource for the LandClim
+model and regeneration module are:
 
-The most complete reference resource for the LandClim model and
-regeneration module is:
+-   SCHUMACHER, S., H. BUGMANN, AND D. J. MLADENOFF. (2004). "Improving
+    the formulation of tree growth and succession in a spatially
+    explicit landscape model" Ecological Modelling 180: 175-194.
 
--   
+-   SCHUMACHER,  S. AND H. BUGMANN. (2006). "The relative importance of
+    climatic effects, wildfires and management for future forest
+    landscape dynamics in the Swiss Alps" Global Change Biology 12:
+    1435-1450.
+
+-   SCHUMACHER, S., B. REINEKING, J. SIBOLD, AND H. BUGMANN. (2006).
+    "Modeling the impact of climate and vegetation on fire regimes in
+    mountain landscapes" Landscape Ecology 21: 539-554.
+
+-   Manual available on the model web page:
+    <https://ites-fe.ethz.ch/openaccess/products/landclim>
 
 ### Climate
 
+Climate inputs for LandClim are at monthly temporal resolution. We used
+monthly climate from the CHELSA dataset provided in the protocol using
+temperature and precipitation variables. -during the simulations, we
+sampled the climate time series randomly.
+
 ### Soil
+
+We used the soil quality provided to infer the Available Water Holding
+Capacity needed in LandClim. We assigned 8 cm for soil quality one and
+25 cm for soil quality five and interpolated the values for the other
+categories linearly between the two extremes.
 
 ### Topography
 
+We used the altitude and soil information provided in the protocol to
+create the different landscapes, one per site. However, each landscape
+created per site had no slope, altitude, or aspect variation.
+
 ### Tree species
+
+We simulated forest dynamics only considering the 11 species proposed in
+the protocol: *Fagus sylvatica, Picea abies, Abies alba, Carpinus
+betulus, Tilia cordata, Acer pseudoplatanus, Betula* spp.*, Fraxinus
+excelsior, Quercus* spp.*, Alnus glutinosa,* and *Pinus sylvestris.*
 
 ### Simulations
 
+We simulate forest dynamics from bare ground for each of the sites. We
+prepared landscapes of 250x250m without topographical elevation for each
+of the sites. The simulations we run from bare ground to 2000 years and
+the samples were taken from the year 2000. On the regeneration module,
+we use a background probability of 0.001, a dispersal mode based on the
+formulation random asymmetric, and the same establishment probability
+for all the species included in the simulation of 0.9.
+
 ### Outputs
+
+We estimated the outputs based on a sample of 25 random cells every ten
+years from 2000 to 4000 of the simulation for one simulation per site,
+providing 200 samples per site.
 
 ## Landis II
 
