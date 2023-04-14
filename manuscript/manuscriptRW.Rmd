@@ -1223,7 +1223,8 @@ disturbances, grant no. 22035418, 2019--2022) funded by the ERA-NET
 Cofund ForestValue. KM received funding from the Project No.
 CZ.02.1.01/0.0/0.0/16_019/0000803 financed by OP RDE, grant no.
 ITMS2014+313011W580 supported by the Integrated Infrastructure
-Operational Programme funded by the ERDF.
+Operational Programme funded by the ERDF. CH acknowledges financial
+support from Waldfonds WASIM2100 project.
 
 # References
 
