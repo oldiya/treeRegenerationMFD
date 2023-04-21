@@ -18,6 +18,7 @@ author:
 - Tobias Mette,
 - Xavier Morin,
 - Werner Rammer,
+- Christopher P.O. Reyer,
 - Simon	Scheiter,
 - Daniel Scherrer,
 - Harald Bugmann
@@ -90,14 +91,14 @@ simulated tree establishment. Furthermore, individual model design is
 more important than scale (stand, landscape, global) and approach
 (empirical, process-based) to accurately capture tree establishment.
 
-Despite sometimes considerable mismatches between simulation results and
-data, it is remarkable that most of the models capture the essential
-features of the highly complex process of tree establishment, while not
-having been parameterized with such data. We conclude that in spite of
-all the uncertainties, a lot can be gained by a focus on the modeling of
-establishment processes in these models. This has the potential to
-render long-term projections of forest dynamics under changing
-environmental conditions much more robust.
+Despite considerable mismatches between simulation results and data in
+some instances, it is remarkable that most of the models capture the
+essential features of the highly complex process of tree establishment,
+while not having been parameterized with such data. We conclude that in
+spite of all the uncertainties, a lot can be gained by a focus on the
+modeling of establishment processes in these models. This has the
+potential to render long-term projections of forest dynamics under
+changing environmental conditions much more robust.
 
 \newpage
 
@@ -105,20 +106,21 @@ environmental conditions much more robust.
 
 Forests provide a wide range of products and services of vital
 importance to humankind [@foresteurope2020]. Under the pressure of
-climate change and increasing disturbances, it is becoming ever more
-important to understand how forest structure, composition and function
-will change, and to evaluate forest capacity to adapt to or be resilient
-after disturbance [@lindner2010; @seidl2022]. A wide range of models of
-forest dynamics were developed over the past decades considering the
-impacts of climate on forest dynamics [@bugmann2022]. From these
-studies, it is evident that we have a reasonably good understanding how
-to model tree growth [@vanclay1997; @bugmann1996], and substantial
-efforts have been dedicated to improving the representation of tree
-mortality [@bugmann2019; @cailleret2017]. In contrast, tree
-establishment is a much less studied process that is often represented
-rather coarsely in these models [@walck2011; @leishman1992; @price2001],
-which is a clear research gap in the context of climate-induced forest
-disturbances and forest resilience.
+climate change, increasing disturbances and changing societal demands on
+forests ecosystems services, it is becoming ever more important to
+understand how forest structure, composition and function will change,
+and to evaluate forest capacity to adapt to or be resilient after
+disturbance [@lindner2010; @seidl2022]. A wide range of models of forest
+dynamics were developed over the past decades considering the impacts of
+climate on forest dynamics [@bugmann2022]. From these studies, it is
+evident that we have a reasonably good understanding how to model tree
+growth [@vanclay1997; @bugmann1996], and substantial efforts have been
+dedicated to improving the representation of tree mortality
+[@bugmann2019; @cailleret2017]. In contrast, tree establishment is a
+much less studied process that is often represented rather coarsely in
+these models [@walck2011; @leishman1992; @price2001], which is a clear
+research gap in the context of climate-induced forest disturbances and
+forest resilience.
 
 Tree establishment arises from multiple processes such as pollination,
 fruit maturation, seed production, dispersal, germination, juvenile
@@ -350,7 +352,7 @@ of 869 plots along the environmental dimensions of temperature, climatic
 water balance, soil quality and exposition (i.e., slope and aspect).
 Each of these sites featured at least two consecutive measurements.
 Ingrowth thresholds for the sites differed between diameters of 0 and 10
-cm. For our study, we defined two data sets where one included 165 sites
+cm. For our study, we defined two datasets where one included 165 sites
 with a diameter threshold of 7 cm or lower, and the other included
 another 35 sites with diameter thresholds between 7 and 10 cm.
 
@@ -370,13 +372,13 @@ establishment as it arises from empirical data against its
 representation in a wide range of models of forest dynamics. We define
 the tree establishment as the passing of a breast height diameter
 threshold of 7 or 10 cm, respectively (synonym: ingrowth). To this end,
-each modeling group was provided with a detailed protocol [@díaz-yáñez]
-with instructions how to perform the simulations, providing input
-variables on climate and soil conditions, and the expected output
-variables. Neither were further site information (except for the data
-specified below) nor any data on tree ingrowth or forest stand features
-provided prior to the simulation. That is, the models were run in "blind
-flight" mode.
+each modeling group was provided with a detailed protocol
+[@díaz-yáñez2022] with instructions how to perform the simulations,
+providing input variables on climate and soil conditions, and the
+expected output variables. Neither were further site information (except
+for the data specified below) nor any data on tree ingrowth or forest
+stand features provided prior to the simulation. That is, the models
+were run in "blind flight" mode.
 
 The input variables were collected and aggregated to be adapted to the
 needs of the different models. Time series of climatic variables from
@@ -454,7 +456,7 @@ included in the protocol (200 sites, 200 samples per site, 11 species
 and two diameter thresholds). For the models that simulated additional
 species, their ingrowth rates were aggregated as "others".
 
-Three models did not provide results from all the simulated samples or
+Two models did not provide results from all the simulated samples or
 sites to avoid unrealistic results, as follows. In the model 4C, a
 threshold of a maximum basal area of 90 $m^2 ha^{-1}$ was used to avoid
 unrealistic stand basal area data, and therefore not all the samples and
@@ -513,7 +515,9 @@ the species $i$ in sample $n$ calculated as the ingrowth basal area
 basal area ($TotalR_{BA_{n}}$) of the sample $n$; $p_{S_{n,i}}$ is the
 proportion of the species $i$ calculated as the basal area of all trees
 ($BA_{n,i}$) of that species $i$ relative to the total basal area
-($TotalR_{BA_{n}}$) of the sample $n$.
+($TotalR_{BA_{n}}$) of the sample $n$. The species diversity was not
+assessed for the model aDGVM2 because it does not simulate individual
+species.
 
 Mortality in tree establishment was assessed based on the ratio of
 ingrowth between the 7 and 10 cm diameter thresholds. We used the
@@ -532,7 +536,7 @@ calculated using Equation \ref{eqReineke}.
 Reineke = (7/10)^{(-1.605)} \label{eqReineke}
 \end{equation}
 ```
-We assessed model preformance in relation to model traits focusing on
+We assessed model performance in relation to model traits focusing on
 (1) model complexity as defined by @bugmann2022, (2) model type
 (empirical or process based), (3) the presence of absence of a canopy
 feedback for ingrowth, and (4) the scale of application of the model
@@ -825,7 +829,7 @@ the observed data.
 
 Lastly, there is no model that performed well across the five species
 regarding the species-specific ingrowth levels in the environmental
-space of Figure \@ref(fig:diff)). Some models (e.g., ForClim11, PICUS)
+space (Figure \@ref(fig:diff)). Some models (e.g., ForClim11, PICUS)
 tended to consistently overestimate the ingrowth share of all five
 species, but most models overestimated the ingrowth share of some
 species while underestimating the share of others (e.g., ForCEEPS,
@@ -1047,8 +1051,8 @@ place for long periods of time. This makes our assumption of an
 equilibrium between forest properties and environmental drivers more
 reasonable than it might appear at first sight. In an analysis of
 primeval forests at demographic equilibrium, @brzeziecki2021 found
-higher ingrowth rates than the ones observed in the Euforia data. Thus,
-the overestimate of ingrowth rates by the models may not be so
+higher ingrowth rates than the ones observed in the EuFoRia data. Thus,
+the overestimation of ingrowth rates by the models may not be so
 problematic. Second, the data were collected for ingrowth above a 7 cm
 threshold, thus limiting the assessment of tree establishment to a
 holistic viewpoint. This constituted a hard limit based on which we can
@@ -1199,9 +1203,9 @@ long-term projections of future forest dynamics.
 This study complies with the basic rules of reproducibility and has made
 available the protocol of the study, the data and all the software that
 has led to the findings presented in this paper. The protocol is
-available here @díaz-yáñez . The code and data that support the findings
-of this study are openly available at zenodo (*link to be added*) and
-gihub (*link to be added*).
+available here @díaz-yáñez2022 . The code and data that support the
+findings of this study are openly available at zenodo (*link to be
+added*) and gihub (*link to be added*).
 
 # Acknowledgements
 
