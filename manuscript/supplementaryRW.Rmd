@@ -1,25 +1,26 @@
 ---
 title: "Supplementary figures\nCapturing regeneration in models of forest dynamics"
 author: 
-- Olalla Díaz-Yáñez, 
-- Yannek Käber, 
-- Mats Mahnken, 
-- Samuel Fischer, 
-- Xavier Morin, 
-- Manfred J. Lexer, 
-- Christian Hochauer, 
-- Katarina Merganicova, 
-- Tobias Mette, 
-- Werner Rammer, 
-- Kristin H. Braziunas, 
-- Paola Mairota, 
-- Josef Bruna,
-- Heike Lischke, 
-- Daniel Scherrer, 
-- Simon Scheiter, 
-- Thomas Hickler, 
+- Olalla Díaz-Yáñez,
+- Yannek Käber,
 - Tim Anders,
-- Jessica Hetzer, 
+- Kristin H. Braziunas,
+- Josef	Bruna,
+- Samuel Fischer,
+- Jessica Hetzer,
+- Thomas Hickler,
+- Christian	Hochauer,
+- Manfred J. Lexer,
+- Heike	Lischke,
+- Mats Mahnken,
+- Paola	Mairota,
+- Katarina Merganicova,
+- Tobias Mette,
+- Xavier Morin,
+- Werner Rammer,
+- Christopher P.O. Reyer,
+- Simon	Scheiter,
+- Daniel Scherrer,
 - Harald Bugmann
 date: "`r Sys.Date()`"
 output: 
@@ -70,16 +71,16 @@ forest model 4C v2.2 at four European forest sites. DOI:
 
 We used the provided daily ERA5-CHELSA climate data set and complemented
 the CHELSA time series data regarding relative humidity with the model
-after Eccel et al. (2015) based on minimum and mean daily temperature to
-accomodate data needs of 4C. The missing data for January 2nd and 3rd
-2013 were filled with data from January 1st and 4th 2013 respectively.
-For construction of longer climate time series we looped through the
-provided time series from 1981 to 2018 up to the maximum simulation
-length of 2500 years. We amended situations where leap year
-inconsistencies arised by removing February 29 or duplicating data from
-February 28. Otherwise, the unaltered daily data were used to run 4C on
-a daily basis. We applied a constant atmopsheric CO2 concentration of
-380 ppm.
+after [Eccel et al. (2012)](https://doi.org/10.1002/met.258) based on
+minimum and mean daily temperature to accomodate data needs of 4C. The
+missing data for January 2nd and 3rd 2013 were filled with data from
+January 1st and 4th 2013 respectively. For construction of longer
+climate time series we looped through the provided time series from 1981
+to 2018 up to the maximum simulation length of 2500 years. We amended
+situations where leap year inconsistencies arised by removing February
+29 or duplicating data from February 28. Otherwise, the unaltered daily
+data were used to run 4C on a daily basis. We applied a constant
+atmopsheric CO2 concentration of 380 ppm.
 
 ### Soil
 
@@ -90,16 +91,16 @@ bucket size of the rooted soil horizons. We excluded bucket size values
 of lower than 10 cm and larger than 35 cm. The bucket size was
 reprojected to the range from 0 to 1. In addition we tested the
 sensitivity of dominant tree height at age 100 years for monospecific
-stands of all five species descibed above to the available soils using
-model simulations with 4C. The dominant tree height at age 100 years was
-then also reprojected to the range from 0 to 1 in order to derive a
-model specific soil quality indicator for all paramterized soils. Then
-we multiplied this relative model specific soil quality with the
-relative soil quality derived from the bucket size to the range from 1
-to 5. The match between paramterized soil and plot was then done by
-finding the pair of soil quality with the minimum difference between
-simuation protocol prescribed soil quality and and the soil quality of
-the paramterized soils as described above.
+stands of all five species simulated to the available soils using model
+simulations with 4C. The dominant tree height at age 100 years was then
+also reprojected to the range from 0 to 1 in order to derive a model
+specific soil quality indicator for all paramterized soils. Then we
+multiplied this relative model specific soil quality with the relative
+soil quality derived from the bucket size to the range from 1 to 5. The
+match between paramterized soil and plot was then done by finding the
+pair of soil quality with the minimum difference between simuation
+protocol prescribed soil quality and the soil quality of the
+paramterized soils as described above.
 
 ### Topography
 
@@ -130,7 +131,7 @@ years of 2000 individuals/ha for all five species; 10000 individuals/ha
 in total every five years. The constant sapling establishment provides
 constant regeneration potential if favorable conditions for sapling
 growth (especially light and water regime) are present. This approach
-enables regeneration of other species than only the one present in the
+enables regeneration of other species than only those present in the
 stand to establish if competition allows. The resulting recruitment
 patterns are an outcome of the dynamical processes from the sapling
 stage onward. Seed production and germination were not explicitly
@@ -163,26 +164,27 @@ of such old-aged individuals. Furthermore those plots with less than
 1000 simulation years (16 plots) before termination were excluded
 because the sample space after the first 500 years was too small.
 Additionally we included another subset criterion removing all samples
-that have a ba \> 100 to exclude unrealistically high samples without
-the need to exclude the full site. This resulted in discarding 0.8 % of
-the sample
+that have a ba \> 90 to exclude unrealistically high samples without the
+need to exclude the full site. This resulted in discarding 0.8 % of the
+samples.
 
 ### Outputs
 
-We provide 200 samples each for 165 of the 200 plots (see reason for
-excluded plots in "Simulation length and equilibrium criteria"). These
-stem from 10 year periods that overlap partially (for \< 2500 simulation
+We provide 200 samples each for 48 plots and at least 190 samples each
+for 117 plots while not simulating 35 plots (see reason for excluded
+plots in \"Simulation length and equilibrium criteria\"). These stem
+from 10 year periods that overlap partially (for \< 2500 simulation
 years) or do not overlap (for 2500 simulation years). The number of
 recruits (r.trees) is the sum of individuals that cross the threshold
 diameter (7/10 cm) in the 10 year sample period per hectare that have
-not already died until the sample year (Fig. 3). The recruit's basal
-area (r.ba) is the sum of the basal area per hectare of the trees that
-cross the diameter threshold that have not already died until the sample
-year. The total stand basal area (ba) is the basal area per hectare of
-all trees in the stand \> 0 cm diameter at breast height (no lower
-boundary) at the sample time per species. We provide the data for both
-diameter thresholds, 7 and 10 cm. In over 90 % of the decades no
-recruitment takes place.
+not already died until the sample year. The recruit's basal area (r.ba)
+is the sum of the basal area per hectare of the trees that cross the
+diameter threshold that have not already died until the sample year. The
+total stand basal area (ba) is the basal area per hectare of all trees
+in the stand \> 0 cm diameter at breast height (no lower boundary) at
+the sample time per species. We provide the data for both diameter
+thresholds, 7 and 10 cm. In over 90 % of the decades no recruitment
+takes place.
 
 [4C
 (v2.2)](%5Bhttps://doi.org/10.5194/gmd-13-5311-2020)](<https://doi.org/10.5194/gmd-13-5311-2020>))
@@ -193,9 +195,9 @@ five species out of the pool of eleven potentially relevant species here
 are parameterized in 4C so that projections of the potential natural
 vegetation done wih 4C need to be considered in the light of model
 uncertainty. For example, the spatial homogeneity in the model leads to
-cyclic recruitment patterns (see Fig. 4). When the adult stands dies of,
-young individuals are recruited into the larger diameter classes because
-more light reaches lower canopy layer since larger (adult) trees do not
+cyclic recruitment patterns. When the adult stands dies of, young
+individuals are recruited into the larger diameter classes because more
+light reaches lower canopy layer since larger (adult) trees do not
 anymore prevent the light reaching lower canopy layers. This results in
 increased growth of the regeneration layer during those times. In most
 stands Fagus sylvatica dominates the stand after some time but
@@ -1107,7 +1109,7 @@ model and regeneration module are:
     the formulation of tree growth and succession in a spatially
     explicit landscape model" Ecological Modelling 180: 175-194.
 
--   SCHUMACHER,  S. AND H. BUGMANN. (2006). "The relative importance of
+-   SCHUMACHER, S. AND H. BUGMANN. (2006). "The relative importance of
     climatic effects, wildfires and management for future forest
     landscape dynamics in the Swiss Alps" Global Change Biology 12:
     1435-1450.
@@ -1439,7 +1441,7 @@ and even younger regeneration (units kg/ha).
 r.bio.sum Biomass of the regeneration cohorts corresponding to the r. ba
 and r.trees on site (units kg/ha).
 
-Please noticed that we included 0 values for species missing in a given
+Please notice that we included 0 values for species missing in a given
 sample and for samples in sites where Landis did not simulate any tree.
 
 ### References
@@ -1689,7 +1691,7 @@ Publications in Climatology VIII:1-69.
 
 ### Authors
 
-Jessica Hetzer, Thoms Hickler, Tim Anders
+Tim Anders, Jessica Hetzer, Thomas Hickler
 
 ### Model
 
@@ -1733,7 +1735,7 @@ precipitation sum (pr) [mm] and surface solar (shortwave) radiation
 variables were converted to netCDF files. As LPJ-GUESS requires the
 climatic variables in specific units, temperature variables (tas,
 tasmax, tasmin) [°C] were converted to Kelvin and surface solar
-radiation (rsds) [J/m2] was converted to W/m2 by dividing rsds by 86400
+radiation (rsds) [Jm-2] was converted to W/m2 by dividing rsds by 86400
 s (3600 s/h \* 24 h). Nitrogen deposition was considered to be constant
 at a level of 10 kgN/ha/year. Atmospheric carbon dioxide concentration
 data from 1900 to 2018 was taken from the global carbon project (Quéré
@@ -1741,8 +1743,8 @@ et al. 2018).
 
 ### Soil
 
-All sites We used were simulated with default values for a medium
-textured soil type (sand: 0.35, clay: 0.15, silt: 0.5) in LPJ-GUESS.
+All sites were simulated with default values for a medium textured soil
+type (sand: 0.35, clay: 0.15, 823 silt: 0.5) in LPJ-GUESS.
 
 ### Topography
 
@@ -1761,17 +1763,17 @@ main tree species as well as other PFTs yielding an appropriate
 representation of European vegetation, including only tree and shrub
 species that are widely distributed across Europe and can become
 dominant in some areas (Hickler et al., 2012). Mediterranean rain-green
-small shrubs with shallow roots (e.g. Lavendula spp., Rosmarinus spp.)
-and alpine/arctic shrubs (e.g. Vaccinium spp.) were represented as PFTs
-in the model. As in earlier applications of LPJ-GUESS, herbaceous
+small shrubs with shallow roots (e.g. *Lavendula* spp., *Rosmarinus*
+spp.) and alpine/arctic shrubs (e.g. Vaccinium spp.) were represented as
+PFTs in the model. As in earlier applications of LPJ-GUESS, herbaceous
 vegetation was represented by two 'generic herb' PFTs, with C3 and C4
 photosynthesis, respectively. The final set included 16 tree species,
 one Mediterranean shrub PFT, one boreal/alpine shrub PFT, and the two
 herbaceous PFTs described earlier (Table 2). To increase the chances of
 shade-intolerant species becoming established, patch-destroying
-disturbances were allowed as described in Hickler et al. 2012. Acer
-pseudoplatanus and Alnus glutinosa are not parameterized in LPJ-GUESS
-and therefore not considered.we did not simulate these species.
+disturbances were allowed as described in Hickler et al. 2012. *Acer
+pseudoplatanus* and *Alnus glutinosa* are not parameterized in LPJ-GUESS
+and therefore not considered.
 
 ### Simulation
 
@@ -1813,9 +1815,6 @@ site.
 
 ### Output
 
-Please describe how have you calculated each of the variables in the
-output data.
-
 The generated output file is called Output_SGN_LPJGUESS.txt. Each row of
 the output dataset contains variables regarding the decade 2008-2018.
 The first two columns describe the study site (column "site", values
@@ -1836,7 +1835,7 @@ shrubs (alpine/arctic shrubs and Quercus coccifera) and herbaceous
 vegetation from the final output as this study focusses on tree
 regeneration only. The first variable is the number of 7 cm recruits
 "r_7cm.trees" calculated as the sum of all trees of the same species
-that cross the threshold of 7 cm DHB between 2008 and 2018 in that
+that cross the threshold of 7 cm DBH between 2008 and 2018 in that
 specific sample of that specific site. The variable "r_10cm.trees"
 refers to 10 cm threshold respectively. The 7 cm recruits' basal area
 „r_7cm.ba" is calculated as a weighted sum of r_7cm.trees multiplied by
@@ -1846,7 +1845,7 @@ describes the mean annual basal area and the mean number of trees per
 site, sample, and species overall years between 2008 and 2018 (column
 "ba").
 
-Table 2: Species/PFT characteristics and parameter of Hickler et al.
+Table 1: Species/PFT characteristics and parameter of Hickler et al.
 2012. r base respiration rate, kallm1 constant in allometry equations,
 Tc,min minimum winter temperature for establishment, Tc,max maximum
 coldest-month temperature for establishment, GDD5 minimum degree-day sum
@@ -2132,7 +2131,7 @@ kable(tabletrends,  format = "latex", caption = "Models trends in mortality betw
 kableExtra::kable_styling(latex_options = "HOLD_position")
 ```
 
-```{r mortality3 , echo=FALSE, fig.cap="Recruitment ration between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke selfthinning ratio under evenaged conditions", out.width='70%', fig.pos='H'}
+```{r mortality3 , echo=FALSE, fig.cap="Recruitment ratio between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke self-thinning ratio under evenaged conditions", out.width='70%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
 ```
 
