@@ -446,7 +446,7 @@
     
     
     xx <- ggpubr::ggarrange(sm, sl,
-                            labels = c("a", "b"),
+                            labels = c("A", "B"),
                             ncol = 1, nrow = 2, heights = c(3, 3), align = "v")
     
     xx <- ggpubr::annotate_figure(xx, 
@@ -741,10 +741,10 @@
                                              color = NULL),
                                 nudge_y = 0.05) +
       ggplot2::scale_fill_manual(values = values_color) +
-      ggplot2::annotate("text", x = 10, y = 2.6, label = "a") + 
-      ggplot2::annotate("text", x = 10, y = 1.6, label = "b") + 
-      ggplot2::annotate("text", x = -4.6, y = 1.6, label = "c") + 
-      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "d") + 
+      ggplot2::annotate("text", x = 10, y = 2.6, label = "A") + 
+      ggplot2::annotate("text", x = 10, y = 1.6, label = "B") + 
+      ggplot2::annotate("text", x = -4.6, y = 1.6, label = "C") + 
+      ggplot2::annotate("text", x = -4.6, y = 2.6, label = "D") + 
     
       ggplot2::annotate("text", x = 8.5, y = 1.81, label = "Reineke self-thinning") + 
       ggplot2::annotate("text", x = 7.9, y = 1.03, label = "Ratio equal to 1")
@@ -1491,7 +1491,6 @@
                  dplyr::group_by(site) |>  
                  dplyr::filter(dplyr::row_number() == 1)
     
-    
     recruitSpp <- obsSpp |> dplyr::group_by(site, dbh) |> dplyr::top_n(1, r.ba)
     recruitSpp <- recruitSpp[, c("site", "species", "dbh")]
     colnames(recruitSpp) <- c("site", "recruitment", "dbh")
@@ -1505,50 +1504,70 @@
       dplyr::group_by(site) |>  
       dplyr::filter(dplyr::row_number() == 1)
     
+    # Check if sites that had multiple samples
+    # had different dominant spp in recruitment
+    recruitSpp1 <- obsSpp |>  
+      dplyr::filter(r.ba > 0) |> # do not consider no recruitment 
+      dplyr::group_by(site, dbh, sample) |> 
+      dplyr::top_n(1, r.ba) #select with higher r.ba
+    # Select only dbh 10
+    recruitSpp102 <- recruitSpp1[recruitSpp1$dbh == 10,]
+    
     
     ###### DO NOT RUN #########
-  
-    # Add location 
-    # location <- data.table::fread("data/coords_blurred_dt4326.csv")
-    # 
-    # domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
-    # domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
-    # 
-    # domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
-    # domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
-    # 
-    # 
-    # library(tidyverse)
-    # library(sf)
-    # library(rnaturalearth)
-    # library(rnaturalearthdata)
-    # library(rgeos)
-    # library(rgdal)
-    # library(raster)
-    # world <- ne_countries(scale = "medium", returnclass = "sf")
-    # Europe <- world[which(world$continent == "Europe"), ]
-    # plotsMap <- ggplot(Europe) +
-    #   ggthemes::theme_map() +
-    #   geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
-    #   coord_sf(xlim = c(-15,30), ylim = c(40,55), expand = FALSE) +
-    #   geom_point(data = domSpp10, shape = 20, stroke = FALSE,
-    #              mapping = aes(x = X, y = Y, color = recruitment),
-    #              alpha = 1, size = 2.5) +
-    #   scale_color_manual("Dominant species of ingrowth",
-    #                      values = c("Abies alba" =  "#1B9E77",
-    #                                 "Picea abies" ="#D95F02" ,
-    #                                 "Fagus sylvatica" = "#7570B3",
-    #                                 "Pinus sylvestris" = "#E7298A" ,
-    #                                 "Quercus spp." = "#66A61E",
-    #                                 "Acer pseudoplatanus" =  "#E6AB02",
-    #                                 "Carpinus betulus" = "#A6761D",
-    #                                 "Fraxinus excelsior" = "#666666",
-    #                                 "Tilia cordata" = "#D8B365",
-    #                                 "Betula spp." = "#F5F5F5",
-    #                                 "Other spp." = "grey" ) )
-    # 
-    # ggplot2::ggsave("figures/theMap.png",
-    #                 plot =   plotsMap,
-    #                 width = 21, height = 12, scale = 0.9,
-    #                 dpi = 300, units = "cm", device = 'png')
+
+    #Add location
+    location <- data.table::fread("data/coords_blurred_dt4326.csv")
+
+    domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
+    domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
+
+    domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
+    domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
+
+    # Species to be plotted
+    #unique(domSpp10$stand)
+
+    library(tidyverse)
+    library(sf)
+    library(rnaturalearth)
+    library(rnaturalearthdata)
+    library(rgeos)
+    library(rgdal)
+    library(raster)
+    world <- ne_countries(scale = "medium", returnclass = "sf")
+    Europe <- world[which(world$continent == "Europe"), ]
+    plotsMap <- ggplot(Europe) +
+      ggthemes::theme_map() +
+      geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
+      coord_sf(xlim = c(-15, 30), ylim = c(40,55), expand = FALSE) +
+      geom_point(data = domSpp10, shape = 20, stroke = FALSE,
+                 mapping = aes(x = X, y = Y, color = recruitment),
+                 alpha = 1, size = 2.5) +
+      scale_color_manual("Dominant species of ingrowth",
+                         values = c(   "Picea abies" = "#D95F02" ,
+                                       "Fagus sylvatica" = "#7570B3",
+                                       "Abies alba" =  "#E6AB02",
+                                       "Quercus spp." = "#66A61E",
+                                       "Other spp." = "grey",
+                                       "Pinus sylvestris" = "#E7298A" ,
+                                       "Fraxinus excelsior" = "#666666",
+                                       "Alnus glutinosa" = "#0072B2",
+                                       "Tilia cordata" = "#A6761D"),
+                         labels = c("Picea abies" = expression(italic("Picea abies")),
+                                       "Fagus sylvatica" = expression(italic("Fagus sylvatica")),
+                                       "Abies alba" =  expression(italic("Abies alba")),
+                                       "Quercus spp." = expression(italic("Quercus"), atop(" spp."),
+                                       "Other spp." = expression(atop("Other spp.")),
+                                       "Pinus sylvestris" = expression(italic("Pinus sylvestris")),
+                                       "Fraxinus excelsior" = expression(italic("Fraxinus excelsior")),
+                                       "Alnus glutinosa" = expression(italic("Alnus glutinosa")),
+                                       "Tilia cordata" = expression(italic("Tilia cordata")))
+                                    
+                                    )) + theme(legend.text.align = 0)
+
+    ggplot2::ggsave("figures/theMap.png",
+                    plot =   plotsMap,
+                    width = 21, height = 12, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'png')
 
