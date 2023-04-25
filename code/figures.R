@@ -655,7 +655,8 @@
                           linetype = "dashed") +
       ggplot2::ylim(c(0,4)) +
       ggplot2::xlab(label = "") +
-      ggplot2::ylab(label = bquote(bar(R) * "(7cm) / " * bar(R) * "(10cm)")) +
+      ggplot2::ylab(label = "Ratio of recruitment (7 and 10 cm)") +
+                    # bquote(bar(R) * "(7cm) / " * bar(R) * "(10cm)")) +
       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
                      strip.text.y = ggplot2::element_text(angle = 0),
                      legend.position = "none",
