@@ -1001,7 +1001,21 @@ duration of the simulation.
 
 ### Soil
 
+Inputs for soil depth, texture, and fertility (plant available nitrogen)
+were extracted from a previously compiled Europe-wide dataset
+(unpublished dataset). We averaged values in a 1 km buffer around
+blurred site coordinates provided by workshop organizers. Relationships
+between ranked site quality provided by workshop organizers and soils
+data from our Europe-wide dataset were weak (Pearson's \|r\| ranged from
+0.04 to 0.34), but followed expected trends with lower sand content,
+higher water holding capacity, and higher fertility associated with
+higher site quality. Albeit the weak correlation, we chose to use our
+available data set because we could avoid additional assumptions as it
+included all site variables needed for the model.
+
 ### Topography
+
+Topographic information was not used.
 
 ### Tree species
 
@@ -1018,18 +1032,7 @@ species were included in model simulations.
 #### Simulation area
 
 The simulation extent for each site was 1000 m x 1000 m (total area =
-100 ha). Environmental conditions were homogeneous for each site, and we
-did not use topographic information. Inputs for soil depth, texture, and
-fertility (plant available nitrogen) were extracted from a previously
-compiled Europe-wide dataset. We averaged values in a 1 km buffer around
-blurred site coordinates provided by workshop organizers. Relationships
-between ranked site quality provided by workshop organizers and soils
-data from our Europe-wide dataset were weak (Pearson's \|r\| ranged from
-0.04 to 0.34), but followed expected trends with lower sand content,
-higher water holding capacity, and higher fertility associated with
-higher site quality. Albeit the weak correlation, we chose to use our
-available data set because we could avoid additional assumptions as it
-included all site variables needed for the model.
+100 ha). Environmental conditions were homogeneous for each site.
 
 #### Dispersal
 
