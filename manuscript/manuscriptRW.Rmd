@@ -1212,9 +1212,12 @@ added*) and github (*link to be added*).
 
 This paper arises from a workshop held in Davos (Switzerland) in June
 2022, co-led by Olalla Díaz-Yáñez, Yannek Käber and Harald Bugmann.
-Funding for the workshop was provided by COST Action CA19139 PROCLIAS
-(PROcess-based models for CLimate Impact Attribution across Sectors),
-supported by COST (European Cooperation in Science and
+Several people on top of the co-authors list have been involved in the
+development of this study in several degrees that we would like to thank
+here including Martin Gutsch and Giorgio Vacchiano. Funding for the
+workshop was provided by COST Action CA19139 PROCLIAS (PROcess-based
+models for CLimate Impact Attribution across Sectors), supported by COST
+(European Cooperation in Science and
 Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
 (Research Grant ETH-35 18-1). ODY was funded by the Swiss National
 Science Foundation project 200020_188882 / 1 . KB received support from
