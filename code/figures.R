@@ -577,9 +577,9 @@
     
     
   ### Fig. median vs overestimate per model ----
-    # Prepare the data
-    ##calculated as the difference between the 3rd quartile and the 1st quartile
-    ##in rate of ntrees between 10 and 7 cm
+    ## Prepare the data
+    ## calculated as the difference between the 3rd quartile and the 1st quartile
+    ## in rate of ntrees between 10 and 7 cm
     iqrDT <- mortAll[is.finite(mortAll$nn710),] |>
                 dplyr::group_by(model) |> 
                 dplyr::summarise(iqr7_10 = IQR(nn710, na.rm = TRUE),
@@ -751,7 +751,6 @@
     
     
 ## Model traits-----    
-## 
  ### Complexity VS overestimation proportion-----
 
     # Prepare data for species diversity -----
@@ -781,7 +780,7 @@
     #Figure
     tableCompOver <- readr::read_csv(here::here("figures", "tableCompOver.csv"))
     
-    ggplotRegression <- function(fit){
+    ggplotRegression <- function(fit) {
       require(ggplot2)
       ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 
         geom_point() +
