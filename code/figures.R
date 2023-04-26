@@ -223,34 +223,6 @@
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
     
-    #### FigS. H10 per model -----
-    dat10 <- ShannonIndex[ShannonIndex$dbh == "10",]
-    dat10 <- dat10 |>  dplyr::group_by(model, site) |> 
-        dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
-    
-    H10 <- ggplot2::ggplot(dat10,
-                           ggplot2::aes(y = ShannonIndexRecruit, 
-                                        x = model, 
-                                        fill = model)) + 
-        ggplot2::geom_boxplot(notch = F) +
-        #ggplot2::ylim(c(0,0.3)) +
-        ggplot2::xlab(label = "") +
-        ggplot2::ylab(label = "H (7cm)") +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                       strip.text.y = ggplot2::element_text(angle = 0),
-                       legend.position = "none",
-                       panel.background = ggplot2::element_blank(), 
-                       axis.line = ggplot2::element_line(colour = "black"),
-                       legend.key =  ggplot2::element_blank(), 
-                       legend.title = ggplot2::element_blank(),
-                       strip.background =  ggplot2::element_blank()) +
-        ggplot2::scale_fill_manual(values = values_color) 
-    
-    ggplot2::ggsave("figures/H10.png",
-                    plot =  H10,
-                    #width = 55, height = 18, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
-    
     #### FigS. H10-H7 / H7 ----
     
     medianPointsH <- S107 |>
