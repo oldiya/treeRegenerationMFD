@@ -110,7 +110,7 @@
                                   "Percentage of no recruitment (10 cm)")
     inflatedZeroDF <- tibble::rownames_to_column(inflatedZeroDF, "Model")
     
-    data.table::fwrite(inflatedZeroDF, file = "data/noRecruitment.csv")
+    data.table::fwrite(inflatedZeroDF, file = "figures/noRecruitment.csv")
     
 # Ingrowth levels ----
 
