@@ -1,7 +1,8 @@
 ################################################################################
 # Title: Data preparation from model simulations and observations
 # Aim: Prepare and merge data from simulations and observations
-# Authors: Olalla Díaz-Yáñez and Yannek Käber 
+# Authors: Olalla Díaz-Yáñez | @olalla | olalladiaz.net
+#          and Yannek Käber 
 ################################################################################ 
 
 # Load observations -----

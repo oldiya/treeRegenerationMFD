@@ -67,9 +67,10 @@ Mahnken M., Gutsch M., Reyer C.P.O., Lasch-Born P.
 The most complete reference resource for the 4C (v2.2) model and
 regeneration module is:
 
-Lasch-Bonn et al. 2020. Description and evaluation of the process-based
-forest model 4C v2.2 at four European forest sites. DOI:
-[https://doi.org/10.5194/gmd-13-5311-2020)](https://doi.org/10.5194/gmd-13-5311-2020))
+-   Lasch-Bonn et al. 2020. Description and evaluation of the
+    process-based forest model 4C v2.2 at four European forest sites.
+    DOI:
+    [https://doi.org/10.5194/gmd-13-5311-2020)](https://doi.org/10.5194/gmd-13-5311-2020))
 
 ### Climate
 
@@ -190,13 +191,12 @@ sample time per species. We provide the data for both diameter
 thresholds, 7 and 10 cm. In over 90 % of the decades no recruitment
 takes place.
 
-[4C
-(v2.2)](%5Bhttps://doi.org/10.5194/gmd-13-5311-2020)](<https://doi.org/10.5194/gmd-13-5311-2020>))
-is usually not used for simulations of forest equillibrium dynamics,
-potential natural vegetation assessment and long simulation periods but
-rather shorter-term simulations (up to 100-150 years). In addition, only
-five species out of the pool of eleven potentially relevant species here
-are parameterized in 4C so that projections of the potential natural
+[4C (v2.2)](https://doi.org/10.5194/gmd-13-5311-2020) is usually not
+used for simulations of forest equillibrium dynamics, potential natural
+vegetation assessment and long simulation periods but rather
+shorter-term simulations (up to 100-150 years). In addition, only five
+species out of the pool of eleven potentially relevant species here are
+parameterized in 4C so that projections of the potential natural
 vegetation done wih 4C need to be considered in the light of model
 uncertainty. For example, the spatial homogeneity in the model leads to
 cyclic recruitment patterns. When the adult stands dies of, young
@@ -490,16 +490,7 @@ We sampled in 10 year intervals between the simulation years 1010 to
 
 ### Authors
 
-Ján Merganič1, Katarína Merganičová2,3, Marek Fabrika1, Peter Valent1
-
-1Technical University in Zvolen, Faculty of Forestry, T. G. Masaryka 24,
-960 53 Zvolen, Slovak Republic
-
-2Department of Biodiversity of Ecosystems and Landscape, Slovak Academy
-of Sciences, Štefánikova 3, P.O.Box 25, 81499 Bratislava, Slovakia
-
-3Czech University of Life Sciences Prague, Faculty of Forestry and Wood
-Sciences, Kamýcká 129, 16500 Praha 6 -- Suchdol, Czech Republic
+Ján Merganič, Katarína Merganičová, Marek Fabrika, Peter Valent
 
 ### Model
 
@@ -519,7 +510,10 @@ The climatic factors also influence tree regeneration model.
 The most complete reference resource for the SIBYLA model and
 regeneration module is:
 
--   Fabrika (2005) and in the link:
+-   Fabrika (2005) "Simulátor biodynamiky lesa SIBYLA." *Koncepcia,
+    konštrukcia a programové riešenie. Habilitačná práca, Technická
+    univerzita vo Zvolene* 
+-   Materials available in
     <http://etools.tuzvo.sk/sibyla/english/model.htm>.
 
 ### Climate
@@ -563,19 +557,32 @@ the year is the driving variable.
 The growth simulator SIBYLA uses the model of ecological classification
 applied in the growth simulator SILVA 2.2, which was derived by Kahn
 (1994). Site is specified using ecological site characteristics
-describing climate, air, and soil, also called site variables: • s1
-(N2O) ... NOx concentration in air (ppb) • s2 (CO2) ... CO2
-concentration in air (ppm) • s3 (NUTR) ... soil nutrient supply
-(relative value in the range from 0 to 1) • s4 (DAYS) ... number of days
-in the vegetation period (days with daily mean temperature above 10°C) •
-s5 (TAMPL) ... annual temperature amplitude (the difference between
-minimum and maximum monthly temperature in °C) • s6 (TEMP) ... daily
-mean temperature in the vegetation period in °C (from April to
-September) • s7 (MOIST) ...soil moisture (relative value in the range
-from 0 to 1) • s8 (PRECIP) ... precipitation amount in the vegetation
-period in mm (from April to September) • s9 (ARID)... aridity index
-according to de Martone in mm.°C-1 They directly influence the
-production capacity of a stand (tree height and diameter increment).
+describing climate, air, and soil, also called site variables:
+
+• s1 (N2O) ... NOx concentration in air (ppb)
+
+• s2 (CO2) ... CO2 concentration in air (ppm)
+
+• s3 (NUTR) ... soil nutrient supply (relative value in the range from 0
+to 1)
+
+• s4 (DAYS) ... number of days in the vegetation period (days with daily
+mean temperature above 10°C)
+
+• s5 (TAMPL) ... annual temperature amplitude (the difference between
+minimum and maximum monthly temperature in °C)
+
+• s6 (TEMP) ... daily mean temperature in the vegetation period in °C
+(from April to September)
+
+• s7 (MOIST) ...soil moisture (relative value in the range from 0 to 1)
+
+• s8 (PRECIP) ... precipitation amount in the vegetation period in mm
+(from April to September)
+
+• s9 (ARID)... aridity index according to de Martone in mm.°C-1 They
+directly influence the production capacity of a stand (tree height and
+diameter increment).
 
 ### Tree species
 
@@ -650,20 +657,26 @@ density model developed for the purposes of the individual-tree growth
 simulator. Acta Facultatis Forestalis Zvolen, 51(3), p. 125-137, ISSN:
 0231-5785 Fabrika, M., (2005): Simulátor biodynamiky lesa SIBYLA,
 koncepcia, konštrukcia a programové riešenie. Habilitačná práca.
-Technická univerzita vo Zvolene, 238 p. Kahn, M., (1994): Modellierung
-der Höhenentwicklung ausgewählter Baumarten in Abhängigkeit vom
-Standort. Forstliche Forschungsber. München, Vol. 141, 221 p. Keeling C.
-D., R. B. Bacastow, A. E. Bainbridge, C. A. Ekdahl Jr., P. R. Guenther,
-L. S. Waterman, J. F. S. Chin 1976: Atmospheric carbon dioxide
-variations at Mauna Loa Observatory, Hawaii. Tellus. XXVIII, 6: 538-551,
-<https://doi.org/10.1111/j.2153-3490.1976.tb00701.x> Merganič J.,
-Fabrika M., 2009: Determination of climatic-site strata based on
-rectified climatic rasters for the purposes of natural regeneration
-density model. Acta Facultatis Forestalis Zvolen, 51(3), p. 113-124,
-ISSN: 0231-5785 Merganič, J., Fabrika, M., Merganičová, K., 2011:
-Submodel of height-diameter function for climatic-site strata of the
-model of natural regeneration in the growth simulator SIBYLA. Acta
-Facultatis Forestalis Zvolen, 53(1), p.155-168, ISSN: 0231-5785
+Technická univerzita vo
+
+Zvolene, 238 p. Kahn, M., (1994): Modellierung der Höhenentwicklung
+ausgewählter Baumarten in Abhängigkeit vom Standort. Forstliche
+Forschungsber. München, Vol. 141, 221 p. Keeling C. D., R. B. Bacastow,
+A. E. Bainbridge, C. A. Ekdahl Jr., P. R. Guenther, L. S. Waterman, J.
+F. S. Chin 1976: Atmospheric carbon dioxide variations at Mauna Loa
+Observatory, Hawaii. Tellus. XXVIII, 6: 538-551,
+<https://doi.org/10.1111/j.2153-3490.1976.tb00701.x>
+
+Merganič J., Fabrika M., 2009: Determination of climatic-site strata
+based on rectified climatic rasters for the purposes of natural
+regeneration density model. Acta Facultatis Forestalis Zvolen, 51(3), p.
+113-124, ISSN: 0231-5785
+
+Merganič, J., Fabrika, M., Merganičová, K., 2011: Submodel of
+height-diameter function for climatic-site strata of the model of
+natural regeneration in the growth simulator SIBYLA. Acta Facultatis
+Forestalis Zvolen, 53(1), p.155-168, ISSN: 0231-5785
+
 Pretzsch, H., (1992): Konzeption und Konstruktion von Wuchsmodellen für
 Rein- und Mischbestände. Forstliche Forschungsberichte München, Nr.115,
 358 p. Valent, P., Merganič J., Výbošťok J. 2018: Optimus -- Software
@@ -676,11 +689,6 @@ for Multi-criteria analysis. TU Zvolen.
 Tobias Mette, LWF, 24.05.2022
 
 ### Model
-
-*Please provide here the references to this model where it is possible
-to understand the model structure specially for the regeneration module,
-this could be a published paper, a website with the model description, a
-manual or some other document that the reader can access.*
 
 The forest growth model xcomp was developed to simulate gap dynamics of
 monospecific stands with a strong emphasis on position-dependent
