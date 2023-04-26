@@ -33,8 +33,8 @@
     outputsDF$model <- factor(outputsDF$model, levels = modelsOrder)
     outputsDF$dbh <- factor(outputsDF$dbh, levels = c("7", "10"))
     
-# Remove the 35 sites from the models data for threshold 7cm as they do not have 
-# observations for those sites
+# Remove the 35 sites from the models data for threshold 7cm 
+# as they do not have observations for those sites
 
     sitesWoObs <- outputsDF[is.na(outputsDF$r.trees), ]
     outputsDF <- outputsDF[!(outputsDF$dbh == 7 & outputsDF$site %in% unique(sitesWoObs$site)), ]
@@ -72,7 +72,6 @@
     ShannonIndex <- merge(ShannonIndex, ShannonIndexAll, by = c("site", "sample",
                                                                 "model","dbh"))
     
-    
     ## Relative Shannon index ----
     
     ShannonIndex$relShannon <- ShannonIndex$ShannonIndexRecruit / ShannonIndex$ShannonIndexAllAges
@@ -84,7 +83,7 @@
     
     zeroInflSim <-  zeroInflSim[, c("site", "sample", "model", "Totr.ba")]
     zeroInflSim <- zeroInflSim[!duplicated(zeroInflSim)]
-    zeroInflEmp <-  zeroInflEmp[, c("site", "sample", "Totr.ba")]
+    zeroInflEmp <- zeroInflEmp[, c("site", "sample", "Totr.ba")]
     zeroInflEmp <- zeroInflEmp[!duplicated(zeroInflEmp)]
     
     #Number of sites and samples with recruitment equal to 0 in observations
@@ -148,7 +147,7 @@
         ggplot2::scale_alpha_manual(values = c(0.3, 1),
                                     guide = ggplot2::guide_legend(override.aes = list(alpha = c(0.4, 1),
                                                                              fill = "red")),
-                                    #name = "Diameter threshold",
+                                    name = "", #"Diameter threshold",
                                     labels = c('7 cm', '10 cm')) +
         ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(overDTsim$r.trees[overDTsim$dbh == "7" & overDTsim$model == "Observed"],
                                                                c(0.25),
@@ -201,7 +200,7 @@
         ggplot2::scale_alpha_manual(values = c(0.3, 1),
                                     guide = ggplot2::guide_legend(override.aes = list(alpha = c(0.4, 1),
                                                                              fill = "red")),
-                                    #name = "Diameter threshold",
+                                    name = "", #"Diameter threshold",
                                     labels = c('7 cm', '10 cm')) +
         ggplot2::geom_hline(ggplot2::aes(yintercept = quantile(dat710$ShannonIndexRecruit[dat710$dbh == "7" & dat710$model == "Observed"],
                                                                c(0.25))), 
@@ -223,22 +222,6 @@
                           group.by = "model", method = "t.test")
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
-  
-    
-    # Significant difference compared to observed?
-    
-    sigH7_Obs <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
-                                         data = dat710[!dat710$model == "aDGVM2" & dat710$dbh == "7", ],
-                                       ref.group = "Observed", method = "t.test")
-    write.csv( sigH7_Obs,"figures/sigH7_Obs.csv", row.names = FALSE)
-    
-    sigH10_Obs <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
-                                    data = dat710[!dat710$model == "aDGVM2" & dat710$dbh == "10", ],
-                                    ref.group = "Observed", method = "t.test")
-    write.csv(sigH10_Obs,"figures/sigH10_Obs.csv", row.names = FALSE)
-    
-
-    ddataH <- outputsDF[outputsDF$species %in% c(selSpecies), ]
     
     ####  Figs. H7 per model -----
     
