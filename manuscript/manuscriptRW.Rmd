@@ -71,8 +71,8 @@ composition and mortality of tree establishment.
 Using 15 models and model variants built to capture long-term forest
 dynamics at the stand, landscape and global levels, we simulate tree
 establishment at 200 sites representing large environmental gradients
-across Europe. The results are evaluated against comprehensive data from
-unmanaged forests.
+across central Europe. The results are evaluated against comprehensive
+data from unmanaged forests.
 
 Most of the models overestimate ingrowth levels, which is only
 compensated by some models with high simulated mortality rates in the
