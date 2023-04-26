@@ -53,13 +53,10 @@ header-includes:
 ---
 
 ```{r, echo=FALSE}
-  # devtools::install_github("cboettig/knitcitations@v1")
   library(knitcitations); cleanbib()
   cite_options(citation_format = "pandoc", check.entries = FALSE)
   library(bibtex)
   options(tinytex.verbose = TRUE)
-  #knitr::opts_chunk$set(echo = TRUE, fig.pos = "h", out.extra = "")
-
 ```
 
 # Abstract
