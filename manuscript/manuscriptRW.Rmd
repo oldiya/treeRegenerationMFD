@@ -4,9 +4,11 @@ author:
 - Olalla Díaz-Yáñez,
 - Yannek Käber,
 - Tim Anders,
+- Friedrich Bohn,
 - Kristin H. Braziunas,
-- Josef	Bruna,
-- Samuel Fischer,
+- Josef	Brůna,
+- Rico Fischer,
+- Samuel M. Fischer,
 - Jessica Hetzer,
 - Thomas Hickler,
 - Christian	Hochauer,
@@ -14,8 +16,10 @@ author:
 - Heike	Lischke,
 - Mats Mahnken,
 - Paola	Mairota,
-- Katarina Merganicova,
+- Ján Merganič,
+- Katarina Merganičová,
 - Tobias Mette,
+- Marco Mina,
 - Xavier Morin,
 - Werner Rammer,
 - Christopher P.O. Reyer,
@@ -285,9 +289,8 @@ trees for the quantity and quality (e.g., diversity and composition) of
 simulated ingrowth, as one variant includes this feedback whereas the
 other does not.
 
-```{r tableModels, echo=FALSE,  message=FALSE, warning=FALSE}
+```{r tableModels, echo=FALSE,  message=FALSE, warning=TRUE}
 library(knitr)
-
 modelDF <- readr::read_csv(here::here("data", "modelsDescription.csv"))
 modelDF$Sampling <- NULL
 
@@ -299,15 +302,15 @@ names(modelDF)[5] <- paste0(names(modelDF)[5], "(d)")
 names(modelDF)[6] <- paste0(names(modelDF)[6], "(e)")
 names(modelDF)[11] <- paste0(names(modelDF)[11],"(f)")
 
-kable(modelDF, 
+kable(modelDF,
       format = "latex", booktabs = TRUE,
       caption = "Models included and their characteristics.") |>
         kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down") |>
     # fix width by column
-      kableExtra::column_spec(column = 1, width = "5em") |> 
-      kableExtra::column_spec(column = 2, width = "3em") |> 
-      kableExtra::column_spec(column = 3, width = "3em") |> 
+      kableExtra::column_spec(column = 1, width = "5em") |>
+      kableExtra::column_spec(column = 2, width = "3em") |>
+      kableExtra::column_spec(column = 3, width = "3em") |>
       kableExtra::column_spec(column = 4, width = "4em") |>
       kableExtra::column_spec(column = 5, width = "5em") |>
       kableExtra::column_spec(column = 6, width = "5em") |>
@@ -318,13 +321,13 @@ kable(modelDF,
       kableExtra::column_spec(column = 11, width = "5em") |>
       kableExtra::column_spec(column = 12, width = "8em") |>
       kableExtra::add_footnote(c("S-Stand, L-Landscape, G-Global",
-                                 "PB-Process based, EM-Empirical", 
+                                 "PB-Process based, EM-Empirical",
                                  "C-Cohort, I-Individual",
                                  "RG-Regeneration, RC-Recruitment",
                                  "Y-Yes, N-No",
                                  "D-Daily, M-Monthly"),
 
-                 notation = "alphabet") 
+                 notation = "alphabet")
 ```
 
 ## Observed data
