@@ -66,43 +66,40 @@ header-includes:
 
 Tree establishment is a key process in forest dynamics, particularly in
 the context of forest resilience and climate change. Models are pivotal
-for assessing long term (i.e., decadal to centennial) forest dynamics,
-and they have been in use for more than 50 years. However, an assessment
-of their ability to accurately represent tree establishment is lacking.
-We assess how well current models capture the overall abundance, species
-composition, and mortality of tree establishment.
+for assessing long-term forest dynamics, and they have been in use for
+more than 50 years. However, an assessment of their ability to
+accurately represent tree establishment is lacking. We assess how well
+current models capture the overall abundance, species composition, and
+mortality of tree establishment.
 
-Using 15 models and model variants built to capture long-term forest
-dynamics at the stand, landscape and global levels, we simulate tree
-establishment at 200 sites representing large environmental gradients
-across central Europe. The results are evaluated against comprehensive
-data from unmanaged forests.
+Using 15 models built to capture long-term forest dynamics at the stand,
+landscape, and global levels, we simulate tree establishment at 200
+sites representing large environmental gradients across Central Europe.
+The results are evaluated against comprehensive data from unmanaged
+forests.
 
 Most of the models overestimate ingrowth levels, which is only
 compensated by some models with high simulated mortality rates in the
 early stages of individual trees dynamics. Simulated species diversity
-of ingrowth matches the observed ranges quite well. Models simulating
-higher species diversity at the stand level do not feature higher
-ingrowth diversity. The effect of light availability on ingrowth levels
-is captured better than the effect of temperature and soil moisture, but
-patterns are not consistent across models. The ingrowth of *Abies alba*
-is captured well by most models across temperature and soil moisture
-gradients, whereas ingrowth of *Fagus sylvatica* is generally
-underestimated. *Picea abies* ingrowth is generally overestimated,
-particularly at colder sites. Increasing complexity in the tree
-establishment modules of the models is not related to higher accuracy of
-simulated tree establishment. Furthermore, individual model design is
-more important than scale (stand, landscape, global) and approach
-(empirical, process-based) for accurately capturing tree establishment.
+of ingrowth matches the observed ranges. Models simulating higher
+species diversity at the stand level do not feature higher ingrowth
+diversity. The effect of light availability on ingrowth levels is
+captured better than the effect of temperature and soil moisture, but
+patterns are not consistent across models. Increasing complexity in the
+tree establishment modules of the models is not related to higher
+accuracy of simulated tree establishment. Furthermore, individual model
+design is more important than scale (stand, landscape, global) and
+approach (empirical, process-based) for accurately capturing tree
+establishment.
 
 Despite considerable mismatches between simulation results and data in
 some instances, it is remarkable that most of the models capture the
 essential features of the highly complex process of tree establishment,
-while not having been parameterized with such data. We conclude that in
-spite of all the uncertainties, much can be gained by evaluating and
-refining model establishment processes. This has the potential to render
-long-term projections of forest dynamics under changing environmental
-conditions that are much more robust.
+while not having been parameterized with such data. We conclude that
+much can be gained by evaluating and refining model establishment
+processes. This has the potential to render long-term projections of
+forest dynamics under changing environmental conditions that are much
+more robust.
 
 \newpage
 
@@ -146,7 +143,7 @@ statistical parameterizations, which however are not easy to extrapolate
 in space and time [e.g., @ribbens1994].
 
 Overall, models are needed to (1) synthesize existing empirical data and
-explore their relationships, (2) assess future tree establishment e.g.
+explore their relationships, (2) assess future tree establishment e.g.,
 in the context of global change scenarios, and (3) identify the most
 important processes that are shaping ecological patterns. Given the
 current strategies that are used in models of forest dynamics to
@@ -363,10 +360,10 @@ another 35 sites with diameter thresholds between 7 and 10 cm.
 Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
 processed and aggregated following @käber2022 to provide ingrowth rates
 per ha and per decade. The observations used in this study featured
-30,900 established trees. Ingrowth rates per site, sample and
-decade ranged from zero to 1246 trees per ha, with a mean of 56 trees
-per ha. Adult species composition was also available at the plots. For
-more details on this unique dataset and the detailed establishment
+30,900 established trees. Ingrowth rates per site, sample and decade
+ranged from zero to 1246 trees per ha, with a mean of 56 trees per ha.
+Adult species composition was also available at the plots. For more
+details on this unique dataset and the detailed establishment
 information, cf. @käber2022.
 
 ## Simulation protocol
@@ -412,19 +409,19 @@ length of the simulation was also decided by the modeling teams (Table
 prepared the simulations and the outputs are available in Supplementary
 Material 1.
 
-The simulations were run in the absence of management to a
-simulated equilibrium ("Potential Natural Vegetation") with the current
-climate, as the ultimate goal was to evaluate tree establishment under
-comparable and near equilibrium conditions. This entails the assumption
-that the observations from the forest reserves (1) reflect no traces of
-forest management and (2) there is an equilibrium between forest
-dynamics and climate. While the former might be starting to be visible
-in many of the EuFoRIA reserves, the latter may be more debatable.
-However, in the absence of detailed data on the history of each plot in
-the EuFoRIa network, some broad assumptions had to be made. Both the
-width of the regeneration niche (i.e., in environmental space) as well
-as the intensity of the ingrowth process (i.e., the number of ingrowth
-trees per area and per unit of time) were of interest.
+The simulations were run in the absence of management to a simulated
+equilibrium ("Potential Natural Vegetation") with the current climate,
+as the ultimate goal was to evaluate tree establishment under comparable
+and near equilibrium conditions. This entails the assumption that the
+observations from the forest reserves (1) reflect no traces of forest
+management and (2) there is an equilibrium between forest dynamics and
+climate. While the former might be starting to be visible in many of the
+EuFoRIA reserves, the latter may be more debatable. However, in the
+absence of detailed data on the history of each plot in the EuFoRIa
+network, some broad assumptions had to be made. Both the width of the
+regeneration niche (i.e., in environmental space) as well as the
+intensity of the ingrowth process (i.e., the number of ingrowth trees
+per area and per unit of time) were of interest.
 
 The simulations were run for mixed species forests (not multiple
 single-species simulations) using mixtures of eleven species or genera
@@ -1150,15 +1147,15 @@ definition do not allow for the assessment of spatial interaction
 effects.
 
 Exercises like the one presented here, where the models are operated in
-"blind flight" mode, i.e. without the possibility of being tuned towards
-capturing the expected patterns, should be repeated. Such benchmarking
-exercises should next focus on aspects such as specific model traits and
-the ecological formulations of particular (sub-)processes, to better
-understand the implications of the assumptions on which the models are
-based. Furthermore, the inclusion of a wide range of models with
-different scales, type, populations structures, tree establishment
-modules and complexity will ensure a wider benefit to the whole modeling
-community.
+"blind flight" mode, i.e., without the possibility of being tuned
+towards capturing the expected patterns, should be repeated. Such
+benchmarking exercises should next focus on aspects such as specific
+model traits and the ecological formulations of particular
+(sub-)processes, to better understand the implications of the
+assumptions on which the models are based. Furthermore, the inclusion of
+a wide range of models with different scales, type, populations
+structures, tree establishment modules and complexity will ensure a
+wider benefit to the whole modeling community.
 
 ## Conclusions
 
@@ -1207,24 +1204,24 @@ long-term projections of future forest dynamics.
 This study complies with the basic rules of reproducibility and has made
 available the protocol of the study, the data and all the software that
 has led to the findings presented in this paper. The protocol is
-available here @díaz-yáñez2022 . The code and data that support the
+available at @díaz-yáñez2022 . The code and data that support the
 findings of this study are openly available at zenodo (*link to be
-added*) and github (*link to be added*).
+added*) and github (*link to be added*) [for the review process we have
+provided these materials [on this
+link](https://polybox.ethz.ch/index.php/s/q5MOB1CLcjARs3H) (password:
+DownDataCodeRegen1)].
 
 # Acknowledgements
 
 This paper arises from a workshop held in Davos (Switzerland) in June
 2022, co-led by Olalla Díaz-Yáñez, Yannek Käber and Harald Bugmann.
-Several people on top of the co-authors list have been involved in the
-development of this study in several degrees that we would like to thank
-here including Martin Gutsch and Giorgio Vacchiano. Funding for the
-workshop was provided by COST Action CA19139 PROCLIAS (PROcess-based
-models for CLimate Impact Attribution across Sectors), supported by COST
-(European Cooperation in Science and
-Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
-(Research Grant ETH-35 18-1). ODY was funded by the Swiss National
-Science Foundation project 200020_188882 / 1 . KB received support from
-the European Research Council under the European Union's Horizon 2020
+Funding for the workshop was provided by COST Action CA19139 PROCLIAS
+(PROcess-based models for CLimate Impact Attribution across Sectors),
+supported by COST (European Cooperation in Science and Technology;
+[https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich (Research
+Grant ETH-35 18-1). ODY was funded by the Swiss National Science
+Foundation project 200020_188882 / 1. KB received support from the
+European Research Council under the European Union's Horizon 2020
 research and innovation program (Grant Agreement 101001905). JB
 acknowledges funding from the long-term research development project no.
 RVO 67985939 from the Czech Academy of Sciences. MM acknowledges
@@ -1236,15 +1233,12 @@ project REINFORCE (Grant No. 891671). KM received funding from the
 Project No. CZ.02.1.01/0.0/0.0/16_019/0000803 financed by OP RDE, grant
 no. ITMS2014+313011W580 supported by the Integrated Infrastructure
 Operational Programme funded by the ERDF. CH acknowledges financial
-support from Waldfonds WASIM2100 project.
+support from Waldfonds WASIM2100 project. We would also like to thank
+all the people that helped to make this study possible with
+contributions at different stages such as Martin Gutsch and Giorgio
+Vacchiano.
 
 # References
 
 ```{=html}
-<!--The relationship was first described by
-[@key] for single citation
-[@key1; @key2] multiple citation can be separated by semi-colon
-[-@key] in order to suppress author name, and just display the year
-[see @key1 p 12; also this ref @key2] is alos a valid syntax
--->
 ```
