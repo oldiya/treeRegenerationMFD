@@ -289,9 +289,8 @@ modelDF$Sampling <- NULL
 names(modelDF)[2] <- paste0(names(modelDF)[2], "(a)")
 names(modelDF)[3] <- paste0(names(modelDF)[3], "(b)")
 names(modelDF)[4] <- paste0(names(modelDF)[4], "(c)")
-names(modelDF)[5] <- paste0(names(modelDF)[5], "(d)")
-names(modelDF)[6] <- paste0(names(modelDF)[6], "(e)")
-names(modelDF)[11] <- paste0(names(modelDF)[11],"(f)")
+names(modelDF)[6] <- paste0(names(modelDF)[6], "(d)")
+names(modelDF)[11] <- paste0(names(modelDF)[11],"(e)")
 
 kable(modelDF,
       format = "latex", booktabs = TRUE,
@@ -301,20 +300,18 @@ kable(modelDF,
     # fix width by column
       kableExtra::column_spec(column = 1, width = "5em") |>
       kableExtra::column_spec(column = 2, width = "3em") |>
-      kableExtra::column_spec(column = 3, width = "3em") |>
-      kableExtra::column_spec(column = 4, width = "4em") |>
+      kableExtra::column_spec(column = 3, width = "4em") |>
+      kableExtra::column_spec(column = 4, width = "5em") |>
       kableExtra::column_spec(column = 5, width = "5em") |>
       kableExtra::column_spec(column = 6, width = "5em") |>
-      kableExtra::column_spec(column = 7, width = "5em") |>
+      kableExtra::column_spec(column = 7, width = "8em") |>
       kableExtra::column_spec(column = 8, width = "8em") |>
-      kableExtra::column_spec(column = 9, width = "8em") |>
+      kableExtra::column_spec(column = 9, width = "5em") |>
       kableExtra::column_spec(column = 10, width = "5em") |>
-      kableExtra::column_spec(column = 11, width = "5em") |>
-      kableExtra::column_spec(column = 12, width = "8em") |>
+      kableExtra::column_spec(column = 11, width = "8em") |>
       kableExtra::add_footnote(c("S-Stand, L-Landscape, G-Global",
                                  "PB-Process based, EM-Empirical",
                                  "C-Cohort, I-Individual",
-                                 "RG-Regeneration, RC-Recruitment",
                                  "Y-Yes, N-No",
                                  "D-Daily, M-Monthly"),
 
