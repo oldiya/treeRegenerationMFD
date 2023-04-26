@@ -301,27 +301,22 @@ Samuel M. Fischer, Friedrich Bohn, Rico Fischer
 
 ### Model
 
-```{=html}
-<!--
-@article{fischer_lessons_2016,
-    title = {Lessons learned from applying a forest gap model to understand ecosystem and carbon dynamics of complex tropical forests},
-    volume = {326},
-    issn = {03043800},
-    url = {https://linkinghub.elsevier.com/retrieve/pii/S0304380015005505},
-    doi = {10.1016/j.ecolmodel.2015.11.018},
-    language = {en},
-    urldate = {2022-09-15},
-    journal = {Ecological Modelling},
-    author = {Fischer, Rico and Bohn, Friedrich and Dantas de Paula, Mateus and Dislich, Claudia and Groeneveld, J{\"u}rgen and Guti{\'e}rrez, Alvaro G. and Kazmierczak, Martin and Knapp, Nikolai and Lehmann, Sebastian and Paulick, Sebastian and P{\"u}tz, Sandro and R{\"o}dig, Edna and Taubert, Franziska and K{\"o}hler, Peter and Huth, Andreas},
-    month = apr,
-    year = {2016},
-    pages = {124--133},
-    file = {Volltext:C\:\\Users\\fischsam\\Zotero\\storage\\EISNTZF6\\Fischer et al. - 2016 - Lessons learned from applying a forest gap model t.pdf:application/pdf},
-}
--->
-```
-A full description of the model can be found in @fischer_lessons_2016.
-The basis for the parameterization we applied is described in @bohn2014.
+A full description of the model can be found in Fischer et al (2016) .
+The basis for the parameterization we applied is described in Bohn et al
+(2014):
+
+-   Bohn, F. J., Frank, K., & Huth, A. (2014). Of climate and its
+    resulting tree growth: Simulating the productivity of temperate
+    forests. Ecological Modelling, 278, 9--17.
+    <https://doi.org/10.1016/j.ecolmodel.>
+
+-   Fischer, R., Bohn, F., Dantas de Paula, M., Dislich, C., Groeneveld,
+    J., Gutiérrez, A. G., Kazmierczak, M., Knapp, N., Lehmann, S.,
+    Paulick, S., Pütz, S., Rödig, E., Taubert, F., Köhler, P., &
+    Huth, A. (2016).Lessons learned from applying a forest gap model to
+    understand ecosystem and carbon dynamics of complex tropical
+    forests. Ecological Modelling, 326, 124--133.
+    <https://doi.org/10.1016/j.ecolmodel.2015.>
 
 ### Climate
 
