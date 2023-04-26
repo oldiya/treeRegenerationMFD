@@ -223,42 +223,7 @@
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
     
-    #### FigS. H10-H7 / H7 ----
-    
-    medianPointsH <- S107 |>
-        dplyr::group_by(model) |> 
-        dplyr::summarise(ShannonIndexRecruit7 = median(ShannonIndexRecruit7, na.rm = TRUE),
-                         H710 = median(H710, na.rm = TRUE))  
-    
-    
-    H10H7_H7  <- ggplot2::ggplot(S107,
-                                 ggplot2::aes(x = ShannonIndexRecruit7,
-                                              y = H710, 
-                                              color = model)) +
-        ggplot2::geom_point(alpha = .2) +
-        #ggplot2::xlim(c(0, 0.4)) +
-        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0),
-                       strip.text.y = ggplot2::element_text(angle = 0),
-                       panel.background = ggplot2::element_blank(), 
-                       axis.line = ggplot2::element_line(colour = "black"),
-                       legend.key =  ggplot2::element_blank(), 
-                       legend.title = ggplot2::element_blank(),
-                       strip.background =  ggplot2::element_blank()) +
-        ggplot2::scale_colour_manual(values = values_color) +
-        ggplot2::scale_fill_manual(values = values_color) +
-        ggplot2::xlab(label = "H7") +
-        ggplot2::ylab(label = "H10-H7") +
-        ggplot2::geom_point(data = medianPointsH, size = 6, alpha = .9, 
-                            pch = 21, ggplot2::aes(fill = model))  
-    
-    
-    
-    ggplot2::ggsave("figures/H10H7_H7.png",
-                    plot = H10H7_H7,
-                    dpi = 300, units = "cm", device = 'png') 
-    
-    
-    
+   
     ### Fig. H obs. VS sim. in stand and recruitment  ----
     
     ### Data preparation
