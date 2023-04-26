@@ -351,10 +351,10 @@ We did not use any topography data.
 
 We considered each of the $11$ species in the protocol explicitly. We
 chose the model parameters for the individual species based on the work
-by @bohn2014. For species that were not covered by @bohn2014, we used
-parameter values of similar species with known parameters. The species
-composition was not predefined and evolved solely from the seed input
-and the model dynamics.
+by Bohn et al (2014). For species that were not covered by Bohn et al
+(2014), we used parameter values of similar species with known
+parameters. The species composition was not predefined and evolved
+solely from the seed input and the model dynamics.
 
 ### Simulations
 
@@ -2080,7 +2080,7 @@ vegetation models: learning from community ecology. NEW PHYTOLOGIST,
 ```{r zeroInflated, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
-zeroInflated <- readr::read_csv(here::here("data", "noRecruitment.csv"))
+zeroInflated <- readr::read_csv(here::here("figures", "noRecruitment.csv"))
 zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
 
 kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
