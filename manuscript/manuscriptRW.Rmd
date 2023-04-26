@@ -70,7 +70,7 @@ for assessing long term (i.e., decadal to centennial) forest dynamics,
 and they have been in use for more than 50 years. However, an assessment
 of their ability to accurately represent tree establishment is lacking.
 We assess how well current models capture the overall abundance, species
-composition and mortality of tree establishment.
+composition, and mortality of tree establishment.
 
 Using 15 models and model variants built to capture long-term forest
 dynamics at the stand, landscape and global levels, we simulate tree
@@ -102,7 +102,7 @@ while not having been parameterized with such data. We conclude that in
 spite of all the uncertainties, much can be gained by evaluating and
 refining model establishment processes. This has the potential to render
 long-term projections of forest dynamics under changing environmental
-conditions much more robust.
+conditions that are much more robust.
 
 \newpage
 
@@ -364,7 +364,7 @@ Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
 processed and aggregated following @käber2022 to provide ingrowth rates
 per ha and per decade. The observations used in this study featured
 30,900 established trees. Ingrowth rates per site, sample and
-decade ranged from zero to 1246 trees per ha, with a mean of 56 trees
+decade ranged from zero to 1246 trees per ha, with a mean of 56 trees
 per ha. Adult species composition was also available at the plots. For
 more details on this unique dataset and the detailed establishment
 information, cf. @käber2022.
@@ -413,7 +413,7 @@ prepared the simulations and the outputs are available in Supplementary
 Material 1.
 
 The simulations were run in the absence of management to a
-simulated equilibrium ("Potential Natural Vegetation") with the current
+simulated equilibrium ("Potential Natural Vegetation") with the current
 climate, as the ultimate goal was to evaluate tree establishment under
 comparable and near equilibrium conditions. This entails the assumption
 that the observations from the forest reserves (1) reflect no traces of
@@ -429,7 +429,7 @@ trees per area and per unit of time) were of interest.
 The simulations were run for mixed species forests (not multiple
 single-species simulations) using mixtures of eleven species or genera
 for which ingrowth data of sufficient quality were available from
-EuFoRIa: *Fagus sylvatica L., Picea abies L., Abies alba Mill., Carpinus
+EuFoRIa: *Fagus sylvatica L., Picea abies L., Abies alba Mill., Carpinus
 betulus L., Tilia cordata Mill., Acer pseudoplatanus L., Betula spp. L.,
 Fraxinus excelsior L., Quercus spp. L., Alnus glutinosa L., Pinus
 sylvestris L.* The same set of species was used at all 200 sites. Two
@@ -644,7 +644,7 @@ thresholds, species diversity in the ingrowth compared to stand-level
 diversity did not have clear patterns across the models (Figures S1 and
 S2). Most models captured reasonably well or overpredicted species
 diversity at the stand level (Figure \@ref(fig:combinedRichness)A, left
-and center; cf. Figure S3), but a characteristic feature was that
+and center; cf. Figure S3), but a characteristic feature was that
 simulations had a much lower variability of diversity compared to
 observations. Models overpredicting species diversity included ForClim1,
 ForClim 11, FORMIND and TreeMig (Figure \@ref(fig:combinedRichness)A,
@@ -694,22 +694,22 @@ whose mortality was well above the self-thinning line, indicates that
 they feature higher ingrowth mortality in mixed-species forests compared
 to even-aged, single-species forests. Some models yielded a mortality
 rate of ingrowth that is broadly compatible with the self-thinning rule
-(e.g., 4C and LandClim).
+(e.g., 4C and LandClim).
 
 The three models with the largest overestimation of the proportion of
-ingrowth at the 7 cm threshold featured the highest mortality between
+ingrowth at the 7 cm threshold featured the highest mortality between
 the 7 and 10 cm thresholds (Figure \@ref(fig:mortality13)A). The other
 models that overestimated ingrowth had mortalities lower than the
 expected self-thinning ratio, with the exception of LandClim (Figure
 \@ref(fig:mortality13)B). It is noteworthy that most of the models that
-featured a low ratio of ingrowth between 7 and 10 cm (i.e., ForCEEPS,
+featured a low ratio of ingrowth between 7 and 10 cm (i.e., ForCEEPS,
 ForClim 1, ForClim 11 and iLand) had only a small overestimation of
-ingrowth at the 7 cm threshold (Figure \@ref(fig:mortality11)). aDGVM2
+ingrowth at the 7 cm threshold (Figure \@ref(fig:mortality11)). aDGVM2
 was the only model that underestimated ingrowth at the 7 cm threshold
 while featuring a low mortality between the two thresholds (Figure
 \@ref(fig:mortality13)C), and only a few models were close to the
 correct ingrowth levels at 7 cm while also being close to the Reineke
-line (SIBYLA, Landis-II; cf. Figure \@ref(fig:mortality13)D; and 4C as
+line (SIBYLA, Landis-II; cf. Figure \@ref(fig:mortality13)D; and 4C as
 well as LandClim).
 
 ```{r mortality13, echo=FALSE, fig.cap="Ratio of tree ingrowth between the 7 and 10 cm thresholds (ingrowth 7 cm / ingrowth 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean ingrowth per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of ingrowth between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
@@ -1087,7 +1087,7 @@ potentially puts landscape models at a disadvantage, as they have been
 built to be accurate at the landscape level. Without spatial context, we
 are limiting ingrowth to the seed influx from the stand itself, unless
 the model has a background seed input. However, global models should not
-be at a disadvantage due to the limited spatial considerations [but cf.
+be at a disadvantage due to the limited spatial considerations [but cf.
 Snell et al. -@snell2018; or Lehsten et al. -@lehsten2019], as they are
 usually lacking dispersal between cells and are based on a strong
 abstraction of horizontal space [@hanbury-brown2022]. Lastly, detailed
@@ -1221,7 +1221,7 @@ here including Martin Gutsch and Giorgio Vacchiano. Funding for the
 workshop was provided by COST Action CA19139 PROCLIAS (PROcess-based
 models for CLimate Impact Attribution across Sectors), supported by COST
 (European Cooperation in Science and
-Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
+Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich
 (Research Grant ETH-35 18-1). ODY was funded by the Swiss National
 Science Foundation project 200020_188882 / 1 . KB received support from
 the European Research Council under the European Union's Horizon 2020
