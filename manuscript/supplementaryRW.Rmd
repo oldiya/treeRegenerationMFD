@@ -1119,7 +1119,7 @@ model and its regeneration module are:
     the formulation of tree growth and succession in a spatially
     explicit landscape model" Ecological Modelling 180: 175-194.
 
--   SCHUMACHER,  S. AND H. BUGMANN. (2006). "The relative importance of
+-   SCHUMACHER, S. AND H. BUGMANN. (2006). "The relative importance of
     climatic effects, wildfires and management for future forest
     landscape dynamics in the Swiss Alps" Global Change Biology 12:
     1435-1450.
@@ -1168,7 +1168,7 @@ we run from bare ground to 2000 years, and the samples were taken
 starting in the year 2000. In the regeneration module, we used (1) a
 base seeding probability of 0.001, which defines if seeds are available
 due to background seed rain; (2) a dispersal mode based on the
-formulation \'random asymmetric\'; and (3) the same establishment
+formulation 'random asymmetric'; and (3) the same establishment
 probability of 0.9 for all species included in the simulation of, which
 sets the same probability for all the species to regenerate
 successfully, provided that the abiotic and light conditions are

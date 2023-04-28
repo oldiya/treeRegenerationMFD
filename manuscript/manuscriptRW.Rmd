@@ -50,6 +50,9 @@ editor_options:
 header-includes:
 - \usepackage[left]{lineno}
 - \linenumbers
+- \usepackage{caption}
+- \captionsetup[figure]{font=scriptsize}
+- \captionsetup[table]{font=scriptsize}
 ---
 
 ```{r, echo=FALSE}
@@ -131,7 +134,7 @@ models are handled in a multitude of ways [@konig_tree_2022;
 @bugmann2022]: from 1) entirely ignoring it [as done in classical forest
 growth models, e.g., Pretzsch et al. -@pretzsch2002], across 2) the use
 of a few simple environmental filters, as done in most forest "gap"
-models [@shuman2011] and Dynamic Global Vegetation Models [e.g.,
+models [@shugart1984] and Dynamic Global Vegetation Models [e.g.,
 @hickler2012; @smith2001], to 3) complex approaches that incorporate
 local feedback from the canopy, multiple ecological processes and often
 also short time steps [e.g., @seidl2012; @wehrli2006], or 4) field-based
@@ -195,7 +198,7 @@ targeted [@berdanier2016; @collet2006].
 In the present study, for the first time, a large number of forest
 models commonly used to assess forest dynamics under climate change are
 evaluated against a continental-scale, multi-species harmonized dataset
-on tree regeneration [@käber2022]. By tree regeneration, we refer to the
+on tree regeneration [@käber2023]. By tree regeneration, we refer to the
 passing of trees across a specific diameter threshold ("ingrowth"). We
 included models that are based on a range of "philosophies", from models
 operating at the stand to the global scale as well as the range of
@@ -305,7 +308,7 @@ kable(modelDF,
       kableExtra::column_spec(column = 8, width = "8em") |>
       kableExtra::column_spec(column = 9, width = "5em") |>
       kableExtra::column_spec(column = 10, width = "5em") |>
-      kableExtra::column_spec(column = 11, width = "8em") |>
+      kableExtra::column_spec(column = 11, width = "10em") |>
       kableExtra::add_footnote(c("S-Stand, L-Landscape, G-Global",
                                  "PB-Process based, EM-Empirical",
                                  "C-Cohort, I-Individual",
@@ -347,13 +350,13 @@ a diameter threshold of 7 cm or lower, and the other included another 35
 sites with diameter thresholds between 7 and 10 cm.
 
 Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
-processed and aggregated following @käber2022 to provide regeneration
+processed and aggregated following @käber2023 to provide regeneration
 rates per ha and per decade. The observations used in this study
 featured 30,900 newly established trees. Regeneration rates per site,
 sample and decade ranged from zero to 1246 trees, with a mean of 56
 trees. Adult species composition was also available for each plot. For
 more details on this unique dataset and the detailed regeneration
-information, cf. @käber2022.
+information, cf. @käber2023.
 
 ## Simulation protocol
 
@@ -511,7 +514,7 @@ assessed for aDGVM2 as this model does not simulate individual species.
 
 Mortality in tree regeneration was assessed based on the ratio of
 regeneration between the 7 and 10 cm diameter thresholds. We used the
-Reineke self-thinning rule [@reineke1933; @pretzsch2003] as a reference
+Reineke self-thinning rule [@reineke1933; @pretzsch2005] as a reference
 to estimate whether the ratio of regeneration between the 7 and 10 cm
 diameter thresholds were above or below the expected theoretical rate.
 The Reineke self-thinning rule is usually calculated for even-aged,
@@ -650,7 +653,7 @@ reasonably well regeneration species diversity compared to the
 observations. Again, simulated diversity had considerably lower
 variability than observed diversity in the regeneration.
 
-```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site for observed and simulated data. Each plot shows one pattern represented for one examplary model of each category (overperdicted, intermediate and underpredicted). The full data with the models grouping are shown in Figures S3 and S4. n indicates the number of models falling in each group. A) Examples for the three trends across models for species diversity at the stand level. B) Examples for the three trends across models for regeneration at the 7 cm threshold.", out.width='75%'}
+```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site for observed and simulated data. Each plot shows one pattern represented by one exemplary model of each category (overperdicted, intermediate and underpredicted). The full data with the grouping of the models are shown in Figures S3 and S4. n indicates the number of models falling in each group. A) Examples for the three trends across models for species diversity at the stand level. B) Examples for the three trends across models for regeneration at the 7 cm threshold.", out.width='75%'}
 knitr::include_graphics(here::here("figures", "combined_richness.png"))
 ```
 
@@ -775,7 +778,7 @@ increasing soil moisture showed the opposite trend (i.e., more
 regeneration with increasing temperature), except for 4C. The other
 models did not feature a clear pattern.
 
-```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean regeneration values across the 200 samples per site with the y-axis scaled differently by model, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree-day sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. For comparing the magnitude of recruitment across models the same graphs with equal y-axis cf. Figure S7.", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
+```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean regeneration values across the 200 samples per site with the y-axis scaled differently by model, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree-day sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. For comparing the magnitude of recruitment across models the same graphs with equally scaled y-axis can be found in Figure S7.", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
 
    knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
                               here::here("figures", "envTrend7WB.png"),
@@ -845,7 +848,7 @@ the first time, projections of tree regeneration from multiple models of
 forest dynamics were confronted with a unique dataset from unmanaged
 forest reserves across a large environmental gradient in Europe.
 
-The EuFoRIa data [@käber2022] are exceptional, particularly with respect
+The EuFoRIa data [@käber2023] are exceptional, particularly with respect
 to the number of records (number of sites and repeated measurements),
 which is essential for capturing a highly 'noisy' process such as tree
 regeneration. The use of this dataset for model benchmarking provided
