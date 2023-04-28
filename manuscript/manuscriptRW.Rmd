@@ -28,13 +28,13 @@ author:
 - Harald Bugmann
 date: "`r Sys.Date()`"
 output:
+  word_document:
+    reference_docx: template_paper.docx
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
     extra_dependencies: "subfig"
-  word_document:
-    reference_docx: template_paper.docx
 mainfont: Arial
 fontsize: 12pt
 linestretch: 1.5
@@ -76,7 +76,7 @@ The results are evaluated against comprehensive data from unmanaged
 forests.
 
 Most of the models overestimate ingrowth levels, which is only
-compensated by some models with high simulated mortality rates in the
+compensated in some models by high simulated mortality rates in the
 early stages of individual trees dynamics. Simulated species diversity
 of ingrowth matches the observed ranges. Models simulating higher
 species diversity at the stand level do not feature higher ingrowth
@@ -89,11 +89,10 @@ design is more important than scale (stand, landscape, global) and
 approach (empirical, process-based) for accurately capturing tree
 establishment.
 
-Despite considerable mismatches between simulation results and data in
-some instances, it is remarkable that most of the models capture the
+Despite considerable mismatches between simulation results and data, it is remarkable that most models capture the
 essential features of the highly complex process of tree establishment,
 while not having been parameterized with such data. We conclude that
-much can be gained by evaluating and refining model establishment
+much can be gained by evaluating and refining the modeling of establishment
 processes. This has the potential to render long-term projections of
 forest dynamics under changing environmental conditions that are much
 more robust.
