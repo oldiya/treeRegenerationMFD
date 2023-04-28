@@ -73,17 +73,13 @@ current models capture the overall abundance, species composition, and
 mortality of tree regeneration.
 
 Using 15 models built to capture long-term forest dynamics at the stand,
-landscape, and global levels, we simulate tree regeneration at 200 sites
-representing large environmental gradients across Central Europe. The
-results are evaluated against comprehensive data from unmanaged forests.
+landscape, and global levels, we simulate tree regeneration at 200
+sites representing large environmental gradients across Central Europe.
+The results are evaluated against comprehensive data from unmanaged
+forests.
 
-<<<<<<< HEAD
-Most of the models overestimate ingrowth levels, which is only
-compensated in some models by high simulated mortality rates in the
-=======
 Most of the models overestimate regeneration levels, which is only
-compensated by some models with high simulated mortality rates in the
->>>>>>> terminology
+compensated in some models by high simulated mortality rates in the
 early stages of individual trees dynamics. Simulated species diversity
 of regeneration matches the observed ranges. Models simulating higher
 species diversity at the stand level do not feature higher regeneration
@@ -96,18 +92,10 @@ design is more important than scale (stand, landscape, global) and
 approach (empirical, process-based) for accurately capturing tree
 regeneration.
 
-<<<<<<< HEAD
 Despite considerable mismatches between simulation results and data, it is remarkable that most models capture the
-essential features of the highly complex process of tree establishment,
-while not having been parameterized with such data. We conclude that
-much can be gained by evaluating and refining the modeling of establishment
-=======
-Despite considerable mismatches between simulation results and data in
-some instances, it is remarkable that most of the models capture the
 essential features of the highly complex process of tree regeneration,
 while not having been parameterized with such data. We conclude that
-much can be gained by evaluating and refining model regeneration
->>>>>>> terminology
+much can be gained by evaluating and refining the modeling of regeneration
 processes. This has the potential to render long-term projections of
 forest dynamics under changing environmental conditions that are much
 more robust.
