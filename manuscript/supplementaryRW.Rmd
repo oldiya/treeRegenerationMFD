@@ -434,10 +434,11 @@ The most complete reference resource for the ForClim 1 & ForClim 11
 model and regeneration module is:
 
 -   Bugmann, H. (1994). On the ecology of mountainous forests in a
-    changing climate: A simulation study. Huber, N., Bugmann, H., &
-    Lafond, V. (2020). Capturing ecological processes in dynamic forest
-    models: Why there is no silver bullet to cope with complexity.
-    Ecosphere, 11(5). <https://doi.org/10.1002/ecs2.3109>
+    changing climate: A simulation study.
+-   Huber, N., Bugmann, H., & Lafond, V. (2020). Capturing ecological
+    processes in dynamic forest models: Why there is no silver bullet to
+    cope with complexity. Ecosphere, 11(5).
+    <https://doi.org/10.1002/ecs2.3109>
 
 ### Climate
 
@@ -508,7 +509,7 @@ height and diameter growth potential, and consequently tree increment.
 The climatic factors also influence tree regeneration model.
 
 The most complete reference resource for the SIBYLA model and
-regeneration module is:
+regeneration module are:
 
 -   Fabrika (2005) "Simulátor biodynamiky lesa SIBYLA." *Koncepcia,
     konštrukcia a programové riešenie. Habilitačná práca, Technická
@@ -867,6 +868,9 @@ Christian Hochauer, Manfred J. Lexer
 The core elements of PICUS are described in Lexer and Hönninger (2001)
 and Seidl et al. (2005). Specific details regarding the regeneration
 module can be found in Woltjer et al. (2008).
+
+The most complete reference resource for the SIBYLA model and
+regeneration module are:
 
 -   Lexer MJ, Hönninger K (2001) A modified 3D-patch model for spatially
     explicit simulation of vegetation composition in heterogeneous
@@ -2188,8 +2192,6 @@ kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the 
                               here::here("figures", "envTrend7DDS_500.png")))
 ```
 
-```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equalt to zero.", out.width='100%',out.height= "80%", fig.pos='H'}
+```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equal to zero.", out.width='100%',out.height= "80%", fig.pos='H'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
 ```
-
-## References
