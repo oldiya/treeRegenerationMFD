@@ -28,13 +28,13 @@ author:
 - Harald Bugmann
 date: "`r Sys.Date()`"
 output:
-  word_document:
-    reference_docx: template_paper.docx
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
     extra_dependencies: "subfig"
+  word_document:
+    reference_docx: template_paper.docx
 mainfont: Arial
 fontsize: 12pt
 linestretch: 1.5
@@ -73,10 +73,9 @@ current models capture the overall abundance, species composition, and
 mortality of tree regeneration.
 
 Using 15 models built to capture long-term forest dynamics at the stand,
-landscape, and global levels, we simulate tree regeneration at 200
-sites representing large environmental gradients across Central Europe.
-The results are evaluated against comprehensive data from unmanaged
-forests.
+landscape, and global levels, we simulate tree regeneration at 200 sites
+representing large environmental gradients across Central Europe. The
+results are evaluated against comprehensive data from unmanaged forests.
 
 Most of the models overestimate regeneration levels, which is only
 compensated in some models by high simulated mortality rates in the
@@ -92,13 +91,13 @@ design is more important than scale (stand, landscape, global) and
 approach (empirical, process-based) for accurately capturing tree
 regeneration.
 
-Despite considerable mismatches between simulation results and data, it is remarkable that most models capture the
-essential features of the highly complex process of tree regeneration,
-while not having been parameterized with such data. We conclude that
-much can be gained by evaluating and refining the modeling of regeneration
-processes. This has the potential to render long-term projections of
-forest dynamics under changing environmental conditions that are much
-more robust.
+Despite considerable mismatches between simulation results and data, it
+is remarkable that most models capture the essential features of the
+highly complex process of tree regeneration, while not having been
+parameterized with such data. We conclude that much can be gained by
+evaluating and refining the modeling of regeneration processes. This has
+the potential to render long-term projections of forest dynamics under
+changing environmental conditions that are much more robust.
 
 \newpage
 
@@ -139,40 +138,42 @@ models [@shugart1984] and Dynamic Global Vegetation Models [e.g.,
 local feedback from the canopy, multiple ecological processes and often
 also short time steps [e.g., @seidl2012; @wehrli2006], or 4) field-based
 statistical parameterizations, which however are not easy to extrapolate
-in space and time [e.g., @ribbens1994]. Overall, models are needed to
-(1) synthesize existing empirical data and explore their relationships,
-(2) assess future tree regeneration e.g. in the context of global change
-scenarios, and (3) identify the most important processes that are
-shaping ecological patterns. Given the current strategies that are used
-in models of forest dynamics to represent tree regeneration, model
-behavior often is prone to problems, such as very high levels of tree
-regeneration that necessitate excess mortality at early stages of tree
-life to simulate correct stand structure and composition. Also,
-inadequately high species diversity in tree regeneration may be
-simulated, which is characteristic of "classical" forest gap models
-[@gutiérrez2016], at least as long as the simulation set-up comprises a
-multitude of species. Some models use calibration against local
-canopy-level data to constrain simulated regeneration levels, which is
-likely to hamper the general applicability of these models e.g. under
-scenarios of climate change. Furthermore, correctly capturing the
-species composition in tree regeneration as a function of the presence
-of seed trees in the canopy is often a particular challenge, potentially
-leading to unrealistic successional drift in the model, which must be
-corrected by factors that are hard to parameterize [e.g., @lischke2006].
-A related issue is the excessive reduction of species diversity due to
-positive feedback effects, such that eventually just single-species
-stands remain. This is sometimes corrected by the incorporation of a low
-level of seed influx of all species at all times [@schumacher2006] or by
-restricting the number of seeds per species in the seedbank
-[@lischke2006]. However, simulated species composition is usually
-exceedingly sensitive to assumptions about seed availability, whereas
-the parameters of such functions are poorly constrained by field data.
-Lastly, there is often a problem with insufficient observational
-constraints on parameter values for models that start from very small
-tree sizes (e.g., 10 cm of height or even seeds) and track tree
-development in a process-oriented manner by considering a multitude of
-ecological influences, rather than emphasizing tree regeneration into a
-larger size class [e.g., @wehrli2006].
+in space and time [e.g., @ribbens1994].
+
+Overall, models are needed to (1) synthesize existing empirical data and
+explore their relationships, (2) assess future tree regeneration e.g. in
+the context of global change scenarios, and (3) identify the most
+important processes that are shaping ecological patterns. Given the
+current strategies that are used in models of forest dynamics to
+represent tree regeneration, model behavior often is prone to problems,
+such as very high levels of tree regeneration that necessitate excess
+mortality at early stages of tree life to simulate correct stand
+structure and composition. Also, inadequately high species diversity in
+tree regeneration may be simulated, which is characteristic of
+"classical" forest gap models [@gutiérrez2016], at least as long as the
+simulation set-up comprises a multitude of species. Some models use
+calibration against local canopy-level data to constrain simulated
+regeneration levels, which is likely to hamper the general applicability
+of these models e.g. under scenarios of climate change. Furthermore,
+correctly capturing the species composition in tree regeneration as a
+function of the presence of seed trees in the canopy is often a
+particular challenge, potentially leading to unrealistic successional
+drift in the model, which must be corrected by factors that are hard to
+parameterize [e.g., @lischke2006]. A related issue is the excessive
+reduction of species diversity due to positive feedback effects, such
+that eventually just single-species stands remain. This is sometimes
+corrected by the incorporation of a low level of seed influx of all
+species at all times [@schumacher2006] or by restricting the number of
+seeds per species in the seedbank [@lischke2006]. However, simulated
+species composition is usually exceedingly sensitive to assumptions
+about seed availability, whereas the parameters of such functions are
+poorly constrained by field data. Lastly, there is often a problem with
+insufficient observational constraints on parameter values for models
+that start from very small tree sizes (e.g., 10 cm of height or even
+seeds) and track tree development in a process-oriented manner by
+considering a multitude of ecological influences, rather than
+emphasizing tree regeneration into a larger size class [e.g.,
+@wehrli2006].
 
 Thus, a focus on the modeling of tree regeneration processes is sorely
 needed and overdue [@price2001; @walck2011] if we are to make reliable
@@ -704,7 +705,7 @@ few models were close to the correct regeneration levels at 7 cm while
 also being close to the Reineke line (SIBYLA, Landis-II; cf. Figure
 \@ref(fig:mortality13)D; and 4C as well as LandClim).
 
-```{r mortality13, echo=FALSE, fig.cap="Ratio of tree regeneration between the 7 and 10 cm thresholds (regeneration 7 cm / regeneration 10 cm) and the overestimation proportion at 7 cm ([simulated -observed] / observed) for the mean regeneration per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of regeneration between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
+```{r mortality13, echo=FALSE, fig.cap="Ratio of tree regeneration between the 7 and 10 cm thresholds (regeneration 7 cm / regeneration 10 cm) and the overestimation proportion at 7 cm ([simulated - observed] / observed) for the mean regeneration per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of regeneration between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
 knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
 ```
 
