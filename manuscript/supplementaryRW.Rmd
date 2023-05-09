@@ -764,7 +764,7 @@ Further simulation relevant model details:
 mortality. Mortality is determined by the Reineke exponent rke and the
 stand density sdi and calibrated over a range of 8 cm to 50 cm dq (=
 root mean square diameter) so that stem number N equals: N =
-sdi\*(dq/25)\^rke. A tree\'s resource acquisition area res (m2) is
+sdi\*(dq/25)\^rke. A tree's resource acquisition area res (m2) is
 approximated as res = 1e4/ (sdi\*(dbh/25)\^rke). As the Reineke exponent
 is fixed to ‑1.6, species with higher/ lower sdi have a lower/ higher
 resource acquisition area for a given dbh. Potential dbh growth dd is
@@ -784,14 +784,14 @@ available for regeneration.
 over the entire stand. First, a light availability matrix (1x1 m) is
 calculated from a cumulative crown shadow which decreases with
 increasing distance to the tree center. Next, regeneration matrices
-(1x1 m) are created for each of the stand\'s species. In the initial
+(1x1 m) are created for each of the stand's species. In the initial
 period, the regeneration matrix of each species is empty, but at the end
 of each period, a light dependent dbh growth and mortality is calculated
 for each 1m raster cell. The dbh growth is scaled so that under full
 light 5 cm dbh is reached in a defined regeneration period (regnPer)
 that depends on the site conditions. The default value is set to 15
 years and equal for all species. Dbh growth is modified by the light
-availability and the species\' regeneration light demand. This is a
+availability and the species' regeneration light demand. This is a
 decisive difference between the species and favours shadow-tolerant
 trees like fir and beech in the absence of large gaps. However, each
 raster cell is afflicted with a species bonus or malus that provides
@@ -843,7 +843,7 @@ species composition and turnover.
     stand to global scale. Ecosphere, 10(2), e02616.
 2.  Karger, D. N., Conrad, O., Böhner, J., Kawohl, T., Kreft, H.,
     Soria-Auza, R. W., \... & Kessler, M. (2017). Climatologies at high
-    resolution for the earth\'s land surface areas. Scientific data,
+    resolution for the earth's land surface areas. Scientific data,
     4(1), 1-20.
 3.  Mauri, A., Strona, G., & San-Miguel-Ayanz, J. (2017). EU-Forest, a
     high-resolution tree occurrence dataset for Europe. Scientific data,
