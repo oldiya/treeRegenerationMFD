@@ -1,6 +1,6 @@
 ---
-pretitle: "Journal: Ecological Monographs. Manuscript type: Article"
 title: "Tree regeneration in models of forest dynamics: a key priority for further research"
+subtitle: "Submitted to the journal Ecological Monographs. Manuscript type: Article"
 author: 
 - Olalla Díaz-Yáñez$^{*1}$, 
 - Yannek Käber$^1$, 
@@ -27,8 +27,7 @@ author:
 - Simon	Scheiter$^2$,
 - Daniel Scherrer$^{16}$,
 - Harald Bugmann$^1$
-date: $^*$Corresponding author (olalla.diaz@usys.ethz.ch) \newline
-      $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
+date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
       $^2$Senckenberg Biodiversity and Climate Research Centre (SBiK-F), 60325 Frankfurt am Main, Germany. \newline
       $^3$Department of Computational Hydrosystem, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
       $^4$Ecosystem Dynamics and Forest Management Group, TUM School of Life Sciences, Technical University of Munich, 85354 Freising, Germany. \newline
@@ -43,9 +42,8 @@ date: $^*$Corresponding author (olalla.diaz@usys.ethz.ch) \newline
        $^{13}$Dpt. of Soil and Climate, Bavarian State Institute of Forestry. \newline 
        $^{14}$Institute for Alpine Environment, Eurac Research, Bolzano/Bozen, Italy. \newline 
        $^{15}$CEFE, CNRS Campus du CNRS 1919, route de Mende 34293 Montpellier cedex, France. \newline 
-       $^{16}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland
-    \newline  
-    \newline
+       $^{16}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland.  \newline
+       $^*$Corresponding author (olalla.diaz@usys.ethz.ch)
 output:
   bookdown::pdf_document2:
     keep_tex: yes
@@ -83,6 +81,11 @@ header-includes:
   library(bibtex)
   options(tinytex.verbose = TRUE)
 ```
+
+OPEN RESEARCH STATEMENT: This submission uses novel code, both the data and code are provided in an external repository to be evaluated during the peer review process. The repository can be downloaded from [here](https://polybox.ethz.ch/index.php/s/q5MOB1CLcjARs3H) (password: DownDataCodeRegen1)]. The protocol is available at @díaz-yáñez2022. We will make publicly available the code and data after the revision.
+
+
+**Keywords:** tree regeneration | tree recruitment | tree establishment | forest dynamics | models | landscape | stand | global
 
 \newpage
 
@@ -383,13 +386,17 @@ When capturing tree regeneration, the specific design decisions taken in the dev
 
 Even though the regeneration routines of most of the models investigated here have never been sufficiently constrained by robust data, the regeneration projections are not overly off. This indicates that a lot can be gained by a focus on the modeling of regeneration processes. The representation of forest dynamics in these models would become much more robust particularly in the face of climate change and post-disturbance dynamics, thus strongly reducing the uncertainty in long-term projections of future forest dynamics.
 
-# Reproducibility and data availability statement
-
-This study complies with the basic rules of reproducibility and has made available the protocol of the study, the data and all the software that has led to the findings presented in this paper. The protocol is available at @díaz-yáñez2022. The code and data that support the findings of this study are openly available at zenodo (*link to be added*) and github (*link to be added*) [for the review process we have provided these materials [on this link](https://polybox.ethz.ch/index.php/s/q5MOB1CLcjARs3H) (password: DownDataCodeRegen1)].
+# Author contributions
+O. Díaz-Yáñez and Y. Käber contributed equally and share the first authorship. H. Bugmann, Y. Käber, and O. Díaz-Yáñez developed the study design. All authors contributed to preparing the simulations with their respective models. O. Díaz-Yáñez led the data analysis with contributions during the workshop from Y.Käber, T. Anders, K. H. Braziunas, J. Brůna, S. M. Fischer, J. Hetzer, T. Hickler, H. Lischke, M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X. Morin, W. Rammer and D. Scherrer
+H. Bugmann. O. Díaz-Yáñez and H. Bugmann led the writing of the manuscript. All authors participated in the revision of the manuscript and approved its submission.
 
 # Acknowledgements
 
 This paper arises from a workshop held in Davos (Switzerland) in June 2022, co-led by Olalla Díaz-Yáñez, Yannek Käber and Harald Bugmann. Funding for the workshop was provided by COST Action CA19139 PROCLIAS (PROcess-based models for CLimate Impact Attribution across Sectors), supported by COST (European Cooperation in Science and Technology; [https://www.cost.eu](https://www.cost.eu/)) and ETH Zurich (Research Grant ETH-35 18-1). ODY was funded by the Swiss National Science Foundation project 200020_188882 / 1. KB received support from the European Research Council under the European Union's Horizon 2020 research and innovation program (Grant Agreement 101001905). JB acknowledges funding from the long-term research development project no. RVO 67985939 from the Czech Academy of Sciences. MM acknowledges financial support from I-Maestro (Innovative forest management strategies for a resilient bioeconomy under climate change and disturbances, grant no. 22035418, 2019--2022) funded by the ERA-NET Cofund ForestValue. MMina acknowledges funding from the H2020-MSCA-IF project REINFORCE (Grant No. 891671). KM received funding from the Project No. CZ.02.1.01/0.0/0.0/16_019/0000803 financed by OP RDE, grant no. ITMS2014+313011W580 supported by the Integrated Infrastructure Operational Programme funded by the ERDF. CH acknowledges financial support from Waldfonds WASIM2100 project. We would also like to thank all the people that helped to make this study possible with contributions at different stages such as Martin Gutsch and Giorgio Vacchiano.
+
+# Conflict of interest statement
+
+The authors declare no conflicts of interest.
 
 # References
 
