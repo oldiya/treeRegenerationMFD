@@ -46,7 +46,6 @@ date: $^*$Corresponding author (olalla.diaz@usys.ethz.ch) \newline
        $^{16}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland
     \newline  
     \newline
-    \today 
 output:
   bookdown::pdf_document2:
     keep_tex: yes
