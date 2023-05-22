@@ -1,5 +1,5 @@
 ---
-title: "Supplementary figures\nCapturing regeneration in models of forest dynamics"
+title: "Appendix figures\nTree regeneration in models of forest dynamics: a key priority for further research"
 author: 
 - Olalla Díaz-Yáñez,
 - Yannek Käber,
@@ -38,14 +38,18 @@ output:
 bibliography: Regeneration.bib
 link-citations: yes
 linkcolor: blue
-csl: global-change-biology.csl
+csl: chicago-author-date.csl
 editor_options: 
   markdown: 
     wrap: 72
+fontsize: 12pt
+linestretch: 2
 header-includes:
 - \usepackage[left]{lineno}
 - \linenumbers
 - \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+- \usepackage{fontspec}
+- \setmainfont{Times New Roman}
 ---
 
 ```{r setup, include=FALSE}
@@ -54,7 +58,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.pos = "H", out.extra = "")
 #knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 ```
 
-# Supplementary Material 1: Model reports
+# Appendix 1: Model reports
 
 ## 4C
 
@@ -2086,7 +2090,7 @@ vegetation models: learning from community ecology. NEW PHYTOLOGIST,
 \newpage
 \beginsupplement
 ```
-# Supplementary Material 2: Supplementary figures and tables
+# Appendix 2: Supplementary figures and tables
 
 ## Ingrowth levels, tree diversity and mortality in tree establishment
 

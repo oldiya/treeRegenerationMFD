@@ -1,49 +1,66 @@
 ---
-title: "Tree regeneration in models of forest dynamics: a key priority for further research"
-author:
-- Olalla Díaz-Yáñez,
-- Yannek Käber,
-- Tim Anders,
-- Friedrich Bohn,
-- Kristin H. Braziunas,
-- Josef	Brůna,
-- Rico Fischer,
-- Samuel M. Fischer,
-- Jessica Hetzer,
-- Thomas Hickler,
-- Christian	Hochauer,
-- Manfred J. Lexer,
-- Heike	Lischke,
-- Mats Mahnken,
-- Paola	Mairota,
-- Ján Merganič,
-- Katarina Merganičová,
-- Tobias Mette,
-- Marco Mina,
-- Xavier Morin,
-- Werner Rammer,
-- Christopher P.O. Reyer,
-- Simon	Scheiter,
-- Daniel Scherrer,
-- Harald Bugmann
-date: "`r Sys.Date()`"
+subtitle: "\\fontsize{16pt}{3pt}\\selectfont \\textbf{\\textit{Tree regeneration in models of forest dynamics: a key priority for further research}} "
+title: "\\fontsize{12pt}{3pt}\\selectfont \\textbf{\\textit{Submitted to the journal Ecological Monographs. Manuscript type: Article}}"
+author: 
+- Olalla Díaz-Yáñez$^{*1}$, 
+- Yannek Käber$^1$, 
+- Tim Anders$^2$,
+- Friedrich Bohn$^3$,
+- Kristin H. Braziunas$^4$,
+- Josef	Brůna$^5$,
+- Rico Fischer$^3$,
+- Samuel M. Fischer$^3$,
+- Jessica Hetzer$^2$,
+- Thomas Hickler$^2$,
+- Christian	Hochauer$^6$,
+- Manfred J. Lexer$^6$,
+- Heike	Lischke$^7$,
+- Mats Mahnken$^8$,
+- Paola	Mairota$^9$,
+- Ján Merganič$^{10}$,
+- Katarina Merganičová$^{11,12}$,
+- Tobias Mette$^{13}$,
+- Marco Mina$^{14}$,
+- Xavier Morin$^{15}$
+- Werner Rammer$^4$,
+- Christopher P.O. Reyer$^8$,
+- Simon	Scheiter$^2$,
+- Daniel Scherrer$^{16}$,
+- Harald Bugmann$^1$
+date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
+      $^2$Senckenberg Biodiversity and Climate Research Centre (SBiK-F), 60325 Frankfurt am Main, Germany. \newline
+      $^3$Department of Computational Hydrosystem, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
+      $^4$Ecosystem Dynamics and Forest Management Group, TUM School of Life Sciences, Technical University of Munich, 85354 Freising, Germany. \newline
+       $^5$Department of Geoecology, Institute of Botany of the Czech Academy of Sciences, Průhonice, Czech Republic. \newline
+       $^6$Institute of Silviculture, Department of Forest and Soil Sciences, University of Natural Resources and Life Sciences, Peter Jordan Strasse 82, A-1190 Vienna, Austria \newline
+       $^7$Dynamic Macroecology, Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland. \newline
+       $^8$Potsdam Institute for Climate Impact Research (PIK), Member of the Leibniz Association, 14473 Potsdam, Germany. \newline
+       $^9$Department of Soil Sciences, of Plants and Food, University of Bari Aldo Moro, Italy. \newline
+       $^{10}$Department of Forest Harvesting, Logistics and Ameliorations, Faculty of Forestry, Technical University in Zvolen \newline
+       $^{11}$Czech University of Life Sciences Prague, Faculty of Forestry and Wood Sciences, Kamýcká 129, 16500 Praha 6 – Suchdol, Czech Republic. \newline
+       $^{12}$Department of Biodiversity of Ecosystems and Landscape, Slovak Academy of Sciences, Štefánikova 3, P.O.Box 25, 81499 Bratislava, Slovakia. \newline 
+       $^{13}$Dpt. of Soil and Climate, Bavarian State Institute of Forestry. \newline 
+       $^{14}$Institute for Alpine Environment, Eurac Research, Bolzano/Bozen, Italy. \newline 
+       $^{15}$CEFE, CNRS Campus du CNRS 1919, route de Mende 34293 Montpellier cedex, France. \newline 
+       $^{16}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland.  \newline
+       $^*$Corresponding author (olalla.diaz@usys.ethz.ch)
 output:
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
     extra_dependencies: "subfig"
+    latex_engine: xelatex
   word_document:
-    reference_docx: template_paper.docx
-mainfont: Arial
+    reference_docx: template_paper.docxl
 fontsize: 12pt
-linestretch: 1.5
+linestretch: 2
 bibliography: Regeneration.bib
 link-citations: yes
 nocite: |
   @bugmann1996a, @bohn2014, @fabrika2005, @mette2014, @smith2001a, @langan2017, @seidl2012a, @lischke2006, @schumacher2006, @scheiter2009, @scheller2007, @morin2021, @lasch-born2020, @hickler2012, @fischer_lessons_2016, @langan2017, @scheiter2013 
 linkcolor: blue
-csl: global-change-biology.csl
+csl: chicago-author-date.csl
 editor_options:
   markdown:
     wrap: 72
@@ -53,6 +70,11 @@ header-includes:
 - \usepackage{caption}
 - \captionsetup[figure]{font=scriptsize}
 - \captionsetup[table]{font=scriptsize}
+- \usepackage{titling}
+- \predate{ }
+- \postdate{  }
+- \usepackage{fontspec}
+- \setmainfont{Times New Roman}
 ---
 
 ```{r, echo=FALSE}
@@ -61,6 +83,21 @@ header-includes:
   library(bibtex)
   options(tinytex.verbose = TRUE)
 ```
+
+
+
+OPEN RESEARCH STATEMENT: This submission uses novel code, both the data
+and code are provided in an external repository to be evaluated during
+the peer review process. The repository can be downloaded from
+[here](https://polybox.ethz.ch/index.php/s/q5MOB1CLcjARs3H) (password:
+DownDataCodeRegen1). The protocol is available at @díaz-yáñez2022. We
+will make publicly available the code and data after the revision.
+
+**Keywords:** tree regeneration \| tree recruitment \| tree
+establishment \| forest dynamics \| models \| landscape \| stand \|
+global
+
+\newpage
 
 # Abstract
 
@@ -98,10 +135,11 @@ parameterized with such data. We conclude that much can be gained by
 evaluating and refining the modeling of regeneration processes. This has
 the potential to render long-term projections of forest dynamics under
 changing environmental conditions that are much more robust.
-
+ 
 \newpage
 
 # Introduction
+
 
 Forests provide a wide range of products and services of vital
 importance to humankind [@foresteurope2020]. Under the pressure of
@@ -221,11 +259,13 @@ model traits explain differences in model performance? (3) How well do
 the models capture total regeneration and individual species
 regeneration niches across environmental gradients of light
 availability, temperature, and soil moisture?
+ 
 
 # Material and methods
 
 ## Models
 
+ 
 Fifteen models of forest dynamics (including two models featuring model
 variants) were used to simulate forest dynamics at the stand, landscape
 or global scale (Table \@ref(tab:tableModels)). The approaches used for
@@ -280,47 +320,11 @@ variants allow us to isolate the importance of the canopy feedback
 the plot) via seed trees for the quantity and quality (e.g., diversity
 and composition) of simulated regeneration, as one variant includes this
 feedback whereas the other does not.
-
-```{r tableModels, echo=FALSE,  message=FALSE, warning=TRUE}
-library(knitr)
-modelDF <- readr::read_csv(here::here("data", "modelsDescription.csv"))
-modelDF$Sampling <- NULL
-
-#footnotes
-names(modelDF)[2] <- paste0(names(modelDF)[2], "(a)")
-names(modelDF)[3] <- paste0(names(modelDF)[3], "(b)")
-names(modelDF)[4] <- paste0(names(modelDF)[4], "(c)")
-names(modelDF)[6] <- paste0(names(modelDF)[6], "(d)")
-names(modelDF)[11] <- paste0(names(modelDF)[11],"(e)")
-
-kable(modelDF,
-      format = "latex", booktabs = TRUE,
-      caption = "Models included and their characteristics.") |>
-        kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down") |>
-    # fix width by column
-      kableExtra::column_spec(column = 1, width = "5em") |>
-      kableExtra::column_spec(column = 2, width = "3em") |>
-      kableExtra::column_spec(column = 3, width = "4em") |>
-      kableExtra::column_spec(column = 4, width = "5em") |>
-      kableExtra::column_spec(column = 5, width = "5em") |>
-      kableExtra::column_spec(column = 6, width = "5em") |>
-      kableExtra::column_spec(column = 7, width = "8em") |>
-      kableExtra::column_spec(column = 8, width = "8em") |>
-      kableExtra::column_spec(column = 9, width = "5em") |>
-      kableExtra::column_spec(column = 10, width = "5em") |>
-      kableExtra::column_spec(column = 11, width = "10em") |>
-      kableExtra::add_footnote(c("S-Stand, L-Landscape, G-Global",
-                                 "PB-Process based, EM-Empirical",
-                                 "C-Cohort, I-Individual",
-                                 "Y-Yes, N-No",
-                                 "D-Daily, M-Monthly"),
-
-                 notation = "alphabet")
-```
+  
 
 ## Observed data
 
+ 
 Regeneration data covering a wide range of environmental conditions are
 hard to obtain, and this is one of the reasons why most models of forest
 dynamics have never been confronted with a dataset covering such
@@ -358,9 +362,11 @@ sample and decade ranged from zero to 1246 trees, with a mean of 56
 trees. Adult species composition was also available for each plot. For
 more details on this unique dataset and the detailed regeneration
 information, cf. @käber2023.
+  
 
 ## Simulation protocol
 
+ 
 The overarching goal of the experiments was to assess the tree
 regeneration as it arises from empirical data against its representation
 in a wide range of models of forest dynamics. We define tree
@@ -464,13 +470,11 @@ outputs without tree regeneration, and these were considered as zero
 stand basal area and zero regeneration for all the tree species
 simulated; one site produced grassland rather than a forest and was not
 included in the results.
-
-```{r map, echo=FALSE, fig.cap="The 200 sites of the EuFoRIa network (EuFoRIa, 2019) used in the present study, the colors show the dominant tree species per site in the observed regeneration at the 10 cm threshold.", out.width='80%'}
-knitr::include_graphics(here::here("figures", "theMap.png"))
-```
+  
 
 ## Data analysis
 
+ 
 The simulation results were analyzed regarding (1) regeneration levels
 (i.e., ingrowth number per unit time and space), (2) regeneration
 species diversity, (3) regeneration mortality, (4) the relationship
@@ -575,11 +579,13 @@ species ($\bar{r}_{BA_{t,i}}$) was zero, but also when both the
 regeneration basal area of that species ($\bar{r}_{BA_{t,i}}$) and the
 total regeneration basal area ( $\sum_{i = 1}^{s}{\bar{r}_{BA_{t,i}}}$)
 equaled zero.
+  
 
 # Results
 
 ## Regeneration levels
 
+ 
 Simulated regeneration levels varied strongly across the 15 models and
 typically did not match the levels found in the forest reserve data
 (Figure \@ref(fig:over)). Regeneration was overestimated in most models
@@ -595,10 +601,6 @@ variability of simulated regeneration levels across the 200 sites
 notable exception of PICUS, where simulated regeneration variability was
 much larger.
 
-```{r over, echo=FALSE, fig.cap="Mean regeneration levels across all samples per site, plotted for the 200 sites and for each model. The red dashed lines shows the 25th and 75th percentiles for the 7 cm diameter threshold in the observed data. There are two boxplots for each model where the left lighter boxplot corresponds to 7 cm and the right darker boxplot to 10 cm", out.width='100%'}
-        knitr::include_graphics(here::here("figures", "recOverAll710.png"))
-```
-
 Both the observations and the simulated data had no regeneration in some
 samples and at some sites (for details, cf. Table S1). The observed data
 had 4% of the samples with no regeneration. Only three models had a
@@ -608,9 +610,11 @@ models always simulated regeneration for both the 7 and 10 cm threshold
 other ten models had a very low percentage of samples with no
 regeneration (0.01% - 2.39%), i.e., they had distinctly fewer
 occurrences of zeros compared to the observations.
+  
 
 ## Tree species diversity of regeneration
 
+ 
 Most models matched the level of diversity of the observed data quite
 well (Figure \@ref(fig:H710)). Five models overestimated regeneration
 diversity: ForCEEPS, ForClim 1, PICUS, TreeMig and LandClim, the latter
@@ -619,10 +623,6 @@ case, as it simulated five species only, i.e., its diversity values are
 not directly comparable to those of the other models, nor to the
 observations. Only one model, Landis-II, consistently underestimated
 regeneration diversity.
-
-```{r H710, echo=FALSE, fig.cap="Shannon index of tree regeneration, calculated by basal area, as the mean value across the 200 samples per site for the diameter thresholds of 7 and 10 cm, respectively. The red dashed lines shows the 25th and 75th percentiles for the 7 cm diameter threshold in the observed data.", out.width='100%'}
-    knitr::include_graphics(here::here("figures", "H7_10.png"))
-```
 
 In most models, there were only small but significant differences in the
 species diversity of regeneration between 7 and 10 cm across sites
@@ -653,13 +653,11 @@ feedback and those without feedback from the adult trees to regeneration
 reasonably well regeneration species diversity compared to the
 observations. Again, simulated diversity had considerably lower
 variability than observed diversity in the regeneration.
-
-```{r combinedRichness, echo=FALSE, fig.cap="Mean Shannon index across all samples per site for observed and simulated data. Each plot shows one pattern represented by one exemplary model of each category (overperdicted, intermediate and underpredicted). The full data with the grouping of the models are shown in Figures S3 and S4. n indicates the number of models falling in each group. A) Examples for the three trends across models for species diversity at the stand level. B) Examples for the three trends across models for regeneration at the 7 cm threshold.", out.width='75%'}
-knitr::include_graphics(here::here("figures", "combined_richness.png"))
-```
+  
 
 ## Mortality in tree regeneration
 
+ 
 There were strong differences among the models regarding the mortality
 rate between 7 and 10 cm (Figure \@ref(fig:mortality11)). Most of the
 models featured a mortality rate significantly larger than the observed
@@ -674,10 +672,6 @@ Figure \@ref(fig:over)). Interestingly, two models that underestimated
 overall regeneration levels (SIBYLA and Landis-II; cf. Figure
 \@ref(fig:over)) featured mortality rates that were close to but still
 above the self-thinning line (Figure \@ref(fig:mortality11)).
-
-```{r mortality11, echo=FALSE, fig.cap="Ratio of tree regeneration rates between the 7 and 10 cm thresholds. Dashed blue lines mark a ratio equal to 1, indicating no decrease in tree regeneration between 7 and 10 cm, and a ratio equal to 1.77, corresponding to the Reineke self-thinning ratio under even-aged conditions.", out.width='75%'}
-knitr::include_graphics(here::here("figures", "ratio7_10.png"))
-```
 
 The fact that some models (and observed data) featured lower mortality
 than expected by Reineke's self-thinning rule may point to facilitation,
@@ -705,10 +699,6 @@ few models were close to the correct regeneration levels at 7 cm while
 also being close to the Reineke line (SIBYLA, Landis-II; cf. Figure
 \@ref(fig:mortality13)D; and 4C as well as LandClim).
 
-```{r mortality13, echo=FALSE, fig.cap="Ratio of tree regeneration between the 7 and 10 cm thresholds (regeneration 7 cm / regeneration 10 cm) and the overestimation proportion at 7 cm ([simulated - observed] / observed) for the mean regeneration per model across sites and samples. The horizontal dashed lines show a ratio equal to 1, indicating no decrease of regeneration between 7 and 10 cm, and a ratio equal to 1.77 corresponding to the Reineke self-thinning line under even-aged conditions. The vertical line indicates zero overestimation.", out.width='80%'}
-knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
-```
-
 Lastly, some models that had a low number of individuals at the 7 cm
 threshold also had a smaller decrease of regeneration between 7 and 10
 cm (ratio 7-10 cm) (Figure S5). In these models, competition and
@@ -720,9 +710,11 @@ S4): most of the models showed a positive effect (higher regeneration at
 7 cm is coupled to an increase of the mortality between 7 and 10 cm).
 While some models showed a negative effect, the linear trend was not
 pronounced and not always significant regarding the slope.
+  
 
 ## Model performance and model traits
 
+ 
 There was no significant relationship between the mean complexity of the
 regeneration module (Table \@ref(tab:tableModels)) and the
 overestimation proportion at a diameter threshold of 7 cm (Figure S6).
@@ -739,9 +731,11 @@ for the model ForCEEPS the pattern changed from the overprediction of
 species diversity in the regeneration to a diversity level that is
 closer to observations when the recruitment module included feedback
 (ForCEEPs(f)).
+  
 
 ## Regeneration gradients on regeneration niches
 
+ 
 When evaluating regeneration levels along key gradients of light
 availability (basal area), temperature (degree-days) and soil moisture
 (climatic water balance), distinct features emerged: the models
@@ -778,13 +772,6 @@ all the models that featured a decrease in regeneration levels with
 increasing soil moisture showed the opposite trend (i.e., more
 regeneration with increasing temperature), except for 4C. The other
 models did not feature a clear pattern.
-
-```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap="Mean regeneration values across the 200 samples per site with the y-axis scaled differently by model, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree-day sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data. For comparing the magnitude of recruitment across models the same graphs with equally scaled y-axis can be found in Figure S7.", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
-
-   knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
-                              here::here("figures", "envTrend7WB.png"),
-                              here::here("figures", "envTrend7DDS.png")))
-```
 
 Silver fir (*Abies alba*), beech (*Fagus sylvatica*), Scots pine (*Pinus
 sylvestris*) and oak (*Quercus* spp.) were the species observed most
@@ -831,13 +818,11 @@ tended to consistently overestimate the regeneration share of all five
 species, but most models overestimated the regeneration share of some
 species while underestimating the share of others (e.g., ForCEEPS,
 LPJ-GUESS).
-
-```{r diff, echo=FALSE, fig.cap="Regeneration levels of the five main species in terms of their basal area share in the observations (top row) and the performance of each model across the environmental gradients (other rows) for the 7 cm regeneration threshold. The values shown are the mean of the 200 samples per site and across the sites in each bin (tile), with ten bins per gradient. The sizes of the circles represent the ratio between the regeneration basal area of the species and the total regeneration basal area for all species. The absence of a circle indicates a zero basal area share in the regeneration, or the absence of regeneration altogether. The color gradient (for the models only) shows the difference between the simulated and observed ratio of regeneration basal area of the species and the total regeneration basal area for all the species.", out.width='100%', out.height= '85%'}
-knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
-```
+  
 
 # Discussion
 
+ 
 Tree regeneration is a fundamental process in forest dynamics. Correctly
 capturing tree regeneration in dynamic models is fundamental to, for
 example, evaluate post-disturbance dynamics and potential long-term
@@ -860,9 +845,11 @@ Overall, by adopting this approach a much broader understanding resulted
 than if we had used these data for model calibration: it is primarily
 from the shortcomings of the models that we can gain ecological insights
 [cf. @trugman2022].
+  
 
 ## Regeneration levels
 
+ 
 Most of the models overestimated tree regeneration levels. This has
 potentially far-reaching implications, e.g., regarding biomass (and thus
 carbon) turnover, with a potential overestimation of the capacity for
@@ -902,9 +889,11 @@ from equilibrium forests, whereas in reality many of the forest reserves
 are recovering from past management activities and have become denser
 over the past decades [e.g., @heiri2009], leading to less regeneration
 than in an equilibrium situation.
+  
 
 ## Species composition of regeneration
 
+ 
 Correctly capturing species composition in tree regeneration is
 important to assess the future functional diversity of a forest, e.g.,
 its sensitivity to drought or resilience to disturbances [@redmond2015;
@@ -938,9 +927,11 @@ species diversity with the model version that included feedback
 feedback is likely because the models put more weight on the
 regeneration niche arising from abiotic and biotic filters, than from
 the habitat niche of the adult trees [@grubb1977].
+  
 
 ## Regeneration mortality
 
+ 
 There are several factors that lead to mortality during the regeneration
 phase, such as competition [@casper1997] and multiple abiotic factors
 [@schmid2021; @cunningham2006]. As mentioned above, it is reasonable to
@@ -962,9 +953,11 @@ carbon sink dynamics [@pugh2019]. Given our set of simulations and
 analyses, we cannot conclusively assess what is happening in the models,
 and further studies are required that focus on a wider range of tree
 sizes and the fate of tree regeneration along such a size continuum.
+  
 
 ## Model performance and model traits
 
+ 
 In spite of the critical considerations above, it is remarkable that
 most models did not deviate exceedingly from the observations with
 respect to simulated regeneration levels -- after all, few if any of the
@@ -992,9 +985,11 @@ lead to better projections and rather to a reduced transparency and
 lower predictive power [@franklin2020]. Thus, the question of what level
 of detail is appropriate and parsimonious for modeling tree regeneration
 processes remains open [@konig_tree_2022; @bugmann2022].
+  
 
 ## Regeneration gradients on regeneration niches
 
+ 
 Competition for light as a strong filter for tree regeneration has been
 widely documented [@messier1999; @collet2006; @berdanier2016], but the
 models examined here did not reproduce this expectation. However, it is
@@ -1035,10 +1030,11 @@ abundance, which is also found in the empirical data. Thus, although the
 broad patterns are matched by many models, improvements in the
 quantification of the regeneration niche of the species are needed, but
 this cannot be done in the absence of robust datasets across multiple
-stand development stages.
+  
 
 ## Methodological considerations
 
+ 
 The EuFoRIa data as used here are unique and well suited to better
 understand tree regeneration. However, three aspects of these data may
 represent considerable limitations. First, we made a comparison of tree
@@ -1094,9 +1090,11 @@ indicators based e.g. on soil water holding capacity, which had to be
 derived from a rough soil quality measure. This may at least partially
 explain the unsatisfactory performance of many models along the drought
 axis (i.e., climatic water balance).
+  
 
 ## Research recommendations
 
+ 
 With our study, we have demonstrated that models of forest dynamics need
 a focus on tree regeneration modules to make them more robust. It
 remains uncertain what level of detail is required to model regeneration
@@ -1154,9 +1152,11 @@ assumptions on which the models are based. Furthermore, the inclusion of
 a wide range of models with different scales, type, population
 structures, tree regeneration modules and complexity will ensure a wider
 benefit to the whole modeling community.
+  
 
 ## Conclusions
 
+ 
 Models of forest dynamics are important tools in science and decision
 support, and the formulation of tree regeneration has strong
 implications for simulated forest properties. The 15 models and variants
@@ -1196,21 +1196,26 @@ representation of forest dynamics in these models would become much more
 robust particularly in the face of climate change and post-disturbance
 dynamics, thus strongly reducing the uncertainty in long-term
 projections of future forest dynamics.
+  
 
-# Reproducibility and data availability statement
+# Author contributions
 
-This study complies with the basic rules of reproducibility and has made
-available the protocol of the study, the data and all the software that
-has led to the findings presented in this paper. The protocol is
-available at @díaz-yáñez2022. The code and data that support the
-findings of this study are openly available at zenodo (*link to be
-added*) and github (*link to be added*) [for the review process we have
-provided these materials [on this
-link](https://polybox.ethz.ch/index.php/s/q5MOB1CLcjARs3H) (password:
-DownDataCodeRegen1)].
+ 
+O. Díaz-Yáñez and Y. Käber contributed equally and share the first
+authorship. H. Bugmann, Y. Käber, and O. Díaz-Yáñez developed the study
+design. All authors contributed to preparing the simulations with their
+respective models. O. Díaz-Yáñez led the data analysis with
+contributions during the workshop from Y.Käber, T. Anders, K. H.
+Braziunas, J. Brůna, S. M. Fischer, J. Hetzer, T. Hickler, H. Lischke,
+M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X. Morin, W. Rammer and
+D. Scherrer H. Bugmann. O. Díaz-Yáñez and H. Bugmann led the writing of
+the manuscript. All authors participated in the revision of the
+manuscript and approved its submission.
+  
 
 # Acknowledgements
 
+ 
 This paper arises from a workshop held in Davos (Switzerland) in June
 2022, co-led by Olalla Díaz-Yáñez, Yannek Käber and Harald Bugmann.
 Funding for the workshop was provided by COST Action CA19139 PROCLIAS
@@ -1235,8 +1240,181 @@ support from Waldfonds WASIM2100 project. We would also like to thank
 all the people that helped to make this study possible with
 contributions at different stages such as Martin Gutsch and Giorgio
 Vacchiano.
+  
+
+# Conflict of interest statement
+
+The authors declare no conflicts of interest.
+
 
 # References
 
 ```{=html}
 ```
+::: {#refs}
+:::
+
+\newpage
+
+
+# Table
+
+```{r tableModels, echo=FALSE,  message=FALSE, warning=TRUE}
+library(knitr)
+modelDF <- readr::read_csv(here::here("data", "modelsDescription.csv"))
+modelDF$Sampling <- NULL
+
+#footnotes
+names(modelDF)[2] <- paste0(names(modelDF)[2], "(a)")
+names(modelDF)[3] <- paste0(names(modelDF)[3], "(b)")
+names(modelDF)[4] <- paste0(names(modelDF)[4], "(c)")
+names(modelDF)[6] <- paste0(names(modelDF)[6], "(d)")
+names(modelDF)[11] <- paste0(names(modelDF)[11],"(e)")
+
+kable(modelDF,
+      format = "latex", booktabs = TRUE,
+      caption = "Models included and their characteristics.") |>
+        kableExtra::landscape() |>
+        kableExtra::kable_styling(full_width = F, latex_options = "scale_down") |>
+    # fix width by column
+      kableExtra::column_spec(column = 1, width = "5em") |>
+      kableExtra::column_spec(column = 2, width = "3em") |>
+      kableExtra::column_spec(column = 3, width = "4em") |>
+      kableExtra::column_spec(column = 4, width = "5em") |>
+      kableExtra::column_spec(column = 5, width = "5em") |>
+      kableExtra::column_spec(column = 6, width = "5em") |>
+      kableExtra::column_spec(column = 7, width = "8em") |>
+      kableExtra::column_spec(column = 8, width = "8em") |>
+      kableExtra::column_spec(column = 9, width = "5em") |>
+      kableExtra::column_spec(column = 10, width = "5em") |>
+      kableExtra::column_spec(column = 11, width = "10em") |>
+      kableExtra::add_footnote(c("S-Stand, L-Landscape, G-Global",
+                                 "PB-Process based, EM-Empirical",
+                                 "C-Cohort, I-Individual",
+                                 "Y-Yes, N-No",
+                                 "D-Daily, M-Monthly"),
+
+                 notation = "alphabet")
+```
+
+\newpage
+
+# Figure captions
+
+**Figure 1.** The 200 sites of the EuFoRIa network (EuFoRIa, 2019) used
+in the present study, the colors show the dominant tree species per site
+in the observed regeneration at the 10 cm threshold.
+
+**Figure 2.** Mean regeneration levels across all samples per site,
+plotted for the 200 sites and for each model. The red dashed lines shows
+the 25th and 75th percentiles for the 7 cm diameter threshold in the
+observed data. There are two boxplots for each model where the left
+lighter boxplot corresponds to 7 cm and the right darker boxplot to 10
+cm
+
+**Figure 3.** Shannon index of tree regeneration, calculated by basal
+area, as the mean value across the 200 samples per site for the diameter
+thresholds of 7 and 10 cm, respectively. The red dashed lines shows the
+25th and 75th percentiles for the 7 cm diameter threshold in the
+observed data.
+
+**Figure 4.** Mean Shannon index across all samples per site for
+observed and simulated data. Each plot shows one pattern represented by
+one exemplary model of each category (overperdicted, intermediate and
+underpredicted). The full data with the grouping of the models are shown
+in Figures S3 and S4. n indicates the number of models falling in each
+group. A) Examples for the three trends across models for species
+diversity at the stand level. B) Examples for the three trends across
+models for regeneration at the 7 cm threshold.
+
+**Figure 5.** Ratio of tree regeneration rates between the 7 and 10 cm
+thresholds. Dashed blue lines mark a ratio equal to 1, indicating no
+decrease in tree regeneration between 7 and 10 cm, and a ratio equal to
+1.77, corresponding to the Reineke self-thinning ratio under even-aged
+conditions.
+
+**Figure 6.** Ratio of tree regeneration between the 7 and 10 cm
+thresholds (regeneration 7 cm / regeneration 10 cm) and the
+overestimation proportion at 7 cm ([simulated - observed] / observed)
+for the mean regeneration per model across sites and samples. The
+horizontal dashed lines show a ratio equal to 1, indicating no decrease
+of regeneration between 7 and 10 cm, and a ratio equal to 1.77
+corresponding to the Reineke self-thinning line under even-aged
+conditions. The vertical line indicates zero overestimation.
+
+**Figure 7.** Mean regeneration values across the 200 samples per site
+with the y-axis scaled differently by model, for the 200 sites against
+gradients of (a) total basal area; (b) climatic water balance; (c)
+seasonal degree-day sum. The values were split into ten bins; the red
+lines represent a GAM model showing the trend in the observed data. For
+comparing the magnitude of recruitment across models the same graphs
+with equally scaled y-axis can be found in Figure S7.
+
+**Figure 8.** Regeneration levels of the five main species in terms of
+their basal area share in the observations (top row) and the performance
+of each model across the environmental gradients (other rows) for the 7
+cm regeneration threshold. The values shown are the mean of the 200
+samples per site and across the sites in each bin (tile), with ten bins
+per gradient. The sizes of the circles represent the ratio between the
+regeneration basal area of the species and the total regeneration basal
+area for all species. The absence of a circle indicates a zero basal
+area share in the regeneration, or the absence of regeneration
+altogether. The color gradient (for the models only) shows the
+difference between the simulated and observed ratio of regeneration
+basal area of the species and the total regeneration basal area for all
+the species.
+
+\newpage
+
+# Figures
+
+```{r map, echo=FALSE, fig.cap=".", out.width='80%'}
+knitr::include_graphics(here::here("figures", "theMap.png"))
+```
+
+\newpage
+
+```{r over, echo=FALSE, fig.cap=".", out.width='100%'}
+        knitr::include_graphics(here::here("figures", "recOverAll710.png"))
+```
+
+\newpage
+
+```{r H710, echo=FALSE, fig.cap=".", out.width='100%'}
+    knitr::include_graphics(here::here("figures", "H7_10.png"))
+```
+
+\newpage
+
+```{r combinedRichness, echo=FALSE, fig.cap=".", out.width='75%'}
+knitr::include_graphics(here::here("figures", "combined_richness.png"))
+```
+
+\newpage
+
+```{r mortality11, echo=FALSE, fig.cap=".", out.width='75%'}
+knitr::include_graphics(here::here("figures", "ratio7_10.png"))
+```
+
+\newpage
+
+```{r mortality13, echo=FALSE, fig.cap=".", out.width='80%'}
+knitr::include_graphics(here::here("figures", "mort7_10_medianOver.png"))
+```
+
+\newpage
+
+```{r nvTrend710BAlightTemp, echo=FALSE, fig.cap=".", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
+
+   knitr::include_graphics(c(here::here("figures", "envTrend7Totba.png"),
+                              here::here("figures", "envTrend7WB.png"),
+                              here::here("figures", "envTrend7DDS.png")))
+```
+
+\newpage
+
+```{r diff, echo=FALSE, fig.cap=".", out.width='100%', out.height= '85%'}
+knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
+```
+
+\newpage
