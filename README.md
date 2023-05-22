@@ -1,34 +1,34 @@
 # RegenerationDFM
 
-This repository contains the data, code for the analysis and manuscript.
+This repository contains the code for the data analysis and manuscript preparation.
 
-## code
+## code/
 
 ### dataPreparation.R
-This script process the data submissions and create the database use in the analysis.
+This script processes the data submissions and creates the database used in the analysis.
 
 ### plottingManuscript.R
 Provides help for the figure creation.
 
 ### figures.R
-This script analyzed and creates figures and tables used in the manuscript
+This script analyzes and creates figures and tables used in the manuscript
 
 
-## data 
+## data/ 
 
-### observations
+### observations/
 Contains the data from the observed values from the EuFoRIa network
 
-### simulations_results 
+### simulations_results/ 
 Contains a set of folders, one per model, with the simulation results.
 
 
-## figures
-Contains the map figure (the only figure not reproducible due to coordinates data protection), and will storage all the figures outputs from the script figures.R
+## figures/
+It contains the map figure (the only figure not reproducible due to coordinates data protection) and will store all the figures outputs from the script figures.R
 
 
-## mansucript
+## mansucript/
+It contains the RMD files that create the manuscript and supplementary materials. It also includes the protocol in RMD.
 
-Contains the RMD files that create the manuscript and suplementary materials. It also contains the protocol in RMD.
 
 
