@@ -1261,7 +1261,7 @@ The authors declare no conflicts of interest.
 
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=TRUE}
 library(knitr)
-modelDF <- readr::read_csv(here::here("data", "modelsDescription.csv"))
+modelDF <- readr::read_csv(here::here("manuscript", "modelsDescription.csv"))
 modelDF$Sampling <- NULL
 
 #footnotes
