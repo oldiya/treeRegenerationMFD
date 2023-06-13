@@ -1408,13 +1408,13 @@
     ###### DO NOT RUN #########
 
     #Add location
-    location <- data.table::fread("data/coords_blurred_dt4326.csv")
+    #location <- data.table::fread("data/coords_blurred_dt4326.csv")
 
-    domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
-    domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
+    #domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
+    #domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
 
-    domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
-    domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
+    #domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
+    #domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
 
     # Species to be plotted
     #unique(domSpp10$stand)

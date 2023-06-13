@@ -1,5 +1,6 @@
 ---
-title: "Appendix figures\nTree regeneration in models of forest dynamics: a key priority for further research"
+title: "Appendix"
+subtitle: "Tree regeneration in models of forest dynamics: a key priority for further research"
 author: 
 - Olalla Díaz-Yáñez,
 - Yannek Käber,
@@ -26,7 +27,7 @@ author:
 - Simon	Scheiter,
 - Daniel Scherrer,
 - Harald Bugmann
-date: "`r Sys.Date()`"
+date: ""
 output: 
   pdf_document:
     fig_caption: yes

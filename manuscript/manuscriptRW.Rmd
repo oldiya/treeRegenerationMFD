@@ -1,6 +1,6 @@
 ---
 subtitle: "\\fontsize{16pt}{3pt}\\selectfont \\textbf{\\textit{Tree regeneration in models of forest dynamics: a key priority for further research}} "
-title: "\\fontsize{12pt}{3pt}\\selectfont \\textbf{\\textit{Submitted to the journal Ecological Monographs. Manuscript type: Article}}"
+title: "\\fontsize{12pt}{3pt}\\selectfont \\textbf{\\textit{Submitted to Ecosphere. Manuscript type: Article}}"
 author: 
 - Olalla Díaz-Yáñez$^{*1}$, 
 - Yannek Käber$^1$, 
@@ -86,12 +86,11 @@ header-includes:
 
 
 
-OPEN RESEARCH STATEMENT: This submission uses novel code, both the data
+**OPEN RESEARCH STATEMENT:** This submission uses novel code, both the data
 and code are provided in an external repository to be evaluated during
 the peer review process. The repository can be downloaded from
-[here](https://polybox.ethz.ch/index.php/s/q5MOB1CLcjARs3H) (password:
-DownDataCodeRegen1). The protocol is available at @díaz-yáñez2022. We
-will make publicly available the code and data after the revision.
+[this figshare private link: https://figshare.com/s/100857ba67d2351dcb15](https://figshare.com/s/100857ba67d2351dcb15). The protocol is available at @díaz-yáñez2022 ([with link: https://osf.io/czdxp/](https://osf.io/czdxp/ )). We
+will make publicly available the code and data if the manuscript is accepted. 
 
 **Keywords:** tree regeneration \| tree recruitment \| tree
 establishment \| forest dynamics \| models \| landscape \| stand \|
