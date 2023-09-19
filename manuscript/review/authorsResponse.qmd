@@ -312,7 +312,7 @@ The article is written entirely by Europeans, unless I'm mistaken, and very much
 
 ### Minor comments:
 
-These comment have been extracted from the reviewer 2 comments on the PDF document of the manuscript.
+These comments have been extracted from the reviewer 2 comments on the PDF document of the manuscript.
 
 #### COMMENT 5
 
@@ -320,16 +320,26 @@ L51-52 "However, an assessment of their ability to accurately represent tree reg
 
 ##### Response to comment 5:
 
+Based on the reviewers comments we have modified this sentence to: "However, there is a need to evaluate their capacity to accurately represent tree regeneration"
+
 #### COMMENT 6
 
 L56 "The results are evaluated against comprehensive data from unmanaged forests." comprehensive?
 
 ##### Response to comment 6:
 
+Following the reviewers comment we have changed the word "comprehensive" to "extensive" to express that we used a wide-range data that considers many important elements of regeneration.
+
 #### COMMENT 7
 
 L56 "Models simulating higher species diversity at the stand level do not feature higher regeneration diversity." feature?
 
 ##### Response to comment 7:
+
+Following the reviewers comments we have changed "feature" with "present".
+
+#### COMMENT 8
+
+##### Response to comment 8:
 
 ## Other changes made in the manuscript

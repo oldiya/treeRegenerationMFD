@@ -84,13 +84,14 @@ header-includes:
   options(tinytex.verbose = TRUE)
 ```
 
-
-
-**OPEN RESEARCH STATEMENT:** This submission uses novel code, both the data
-and code are provided in an external repository to be evaluated during
-the peer review process. The repository can be downloaded from
-[this figshare private link: https://figshare.com/s/100857ba67d2351dcb15](https://figshare.com/s/100857ba67d2351dcb15). The protocol is available at @díaz-yáñez2022 ([with link: https://osf.io/czdxp/](https://osf.io/czdxp/ )). We
-will make publicly available the code and data if the manuscript is accepted. 
+**OPEN RESEARCH STATEMENT:** This submission uses novel code, both the
+data and code are provided in an external repository to be evaluated
+during the peer review process. The repository can be downloaded from
+[this figshare private link:
+https://figshare.com/s/100857ba67d2351dcb15](https://figshare.com/s/100857ba67d2351dcb15).
+The protocol is available at @díaz-yáñez2022 ([with link:
+https://osf.io/czdxp/](https://osf.io/czdxp/)). We will make publicly
+available the code and data if the manuscript is accepted.
 
 **Keywords:** tree regeneration \| tree recruitment \| tree
 establishment \| forest dynamics \| models \| landscape \| stand \|
@@ -103,21 +104,21 @@ global
 Tree regeneration is a key process in forest dynamics, particularly in
 the context of forest resilience and climate change. Models are pivotal
 for assessing long-term forest dynamics, and they have been in use for
-more than 50 years. However, an assessment of their ability to
-accurately represent tree regeneration is lacking. We assess how well
-current models capture the overall abundance, species composition, and
-mortality of tree regeneration.
+more than 50 years. However, there is a need to evaluate their capacity
+to accurately represent tree regeneration. We assess how well current
+models capture the overall abundance, species composition, and mortality
+of tree regeneration.
 
 Using 15 models built to capture long-term forest dynamics at the stand,
 landscape, and global levels, we simulate tree regeneration at 200 sites
 representing large environmental gradients across Central Europe. The
-results are evaluated against comprehensive data from unmanaged forests.
+results are evaluated against extensive data from unmanaged forests.
 
 Most of the models overestimate regeneration levels, which is only
 compensated in some models by high simulated mortality rates in the
 early stages of individual trees dynamics. Simulated species diversity
 of regeneration matches the observed ranges. Models simulating higher
-species diversity at the stand level do not feature higher regeneration
+species diversity at the stand level do not present higher regeneration
 diversity. The effect of light availability on regeneration levels is
 captured better than the effect of temperature and soil moisture, but
 patterns are not consistent across models. Increasing complexity in the
@@ -134,11 +135,10 @@ parameterized with such data. We conclude that much can be gained by
 evaluating and refining the modeling of regeneration processes. This has
 the potential to render long-term projections of forest dynamics under
 changing environmental conditions that are much more robust.
- 
+
 \newpage
 
 # Introduction
-
 
 Forests provide a wide range of products and services of vital
 importance to humankind [@foresteurope2020]. Under the pressure of
@@ -258,13 +258,11 @@ model traits explain differences in model performance? (3) How well do
 the models capture total regeneration and individual species
 regeneration niches across environmental gradients of light
 availability, temperature, and soil moisture?
- 
 
 # Material and methods
 
 ## Models
 
- 
 Fifteen models of forest dynamics (including two models featuring model
 variants) were used to simulate forest dynamics at the stand, landscape
 or global scale (Table \@ref(tab:tableModels)). The approaches used for
@@ -319,11 +317,9 @@ variants allow us to isolate the importance of the canopy feedback
 the plot) via seed trees for the quantity and quality (e.g., diversity
 and composition) of simulated regeneration, as one variant includes this
 feedback whereas the other does not.
-  
 
 ## Observed data
 
- 
 Regeneration data covering a wide range of environmental conditions are
 hard to obtain, and this is one of the reasons why most models of forest
 dynamics have never been confronted with a dataset covering such
@@ -361,11 +357,9 @@ sample and decade ranged from zero to 1246 trees, with a mean of 56
 trees. Adult species composition was also available for each plot. For
 more details on this unique dataset and the detailed regeneration
 information, cf. @käber2023.
-  
 
 ## Simulation protocol
 
- 
 The overarching goal of the experiments was to assess the tree
 regeneration as it arises from empirical data against its representation
 in a wide range of models of forest dynamics. We define tree
@@ -469,11 +463,9 @@ outputs without tree regeneration, and these were considered as zero
 stand basal area and zero regeneration for all the tree species
 simulated; one site produced grassland rather than a forest and was not
 included in the results.
-  
 
 ## Data analysis
 
- 
 The simulation results were analyzed regarding (1) regeneration levels
 (i.e., ingrowth number per unit time and space), (2) regeneration
 species diversity, (3) regeneration mortality, (4) the relationship
@@ -578,13 +570,11 @@ species ($\bar{r}_{BA_{t,i}}$) was zero, but also when both the
 regeneration basal area of that species ($\bar{r}_{BA_{t,i}}$) and the
 total regeneration basal area ( $\sum_{i = 1}^{s}{\bar{r}_{BA_{t,i}}}$)
 equaled zero.
-  
 
 # Results
 
 ## Regeneration levels
 
- 
 Simulated regeneration levels varied strongly across the 15 models and
 typically did not match the levels found in the forest reserve data
 (Figure \@ref(fig:over)). Regeneration was overestimated in most models
@@ -609,11 +599,9 @@ models always simulated regeneration for both the 7 and 10 cm threshold
 other ten models had a very low percentage of samples with no
 regeneration (0.01% - 2.39%), i.e., they had distinctly fewer
 occurrences of zeros compared to the observations.
-  
 
 ## Tree species diversity of regeneration
 
- 
 Most models matched the level of diversity of the observed data quite
 well (Figure \@ref(fig:H710)). Five models overestimated regeneration
 diversity: ForCEEPS, ForClim 1, PICUS, TreeMig and LandClim, the latter
@@ -652,11 +640,9 @@ feedback and those without feedback from the adult trees to regeneration
 reasonably well regeneration species diversity compared to the
 observations. Again, simulated diversity had considerably lower
 variability than observed diversity in the regeneration.
-  
 
 ## Mortality in tree regeneration
 
- 
 There were strong differences among the models regarding the mortality
 rate between 7 and 10 cm (Figure \@ref(fig:mortality11)). Most of the
 models featured a mortality rate significantly larger than the observed
@@ -709,11 +695,9 @@ S4): most of the models showed a positive effect (higher regeneration at
 7 cm is coupled to an increase of the mortality between 7 and 10 cm).
 While some models showed a negative effect, the linear trend was not
 pronounced and not always significant regarding the slope.
-  
 
 ## Model performance and model traits
 
- 
 There was no significant relationship between the mean complexity of the
 regeneration module (Table \@ref(tab:tableModels)) and the
 overestimation proportion at a diameter threshold of 7 cm (Figure S6).
@@ -730,11 +714,9 @@ for the model ForCEEPS the pattern changed from the overprediction of
 species diversity in the regeneration to a diversity level that is
 closer to observations when the recruitment module included feedback
 (ForCEEPs(f)).
-  
 
 ## Regeneration gradients on regeneration niches
 
- 
 When evaluating regeneration levels along key gradients of light
 availability (basal area), temperature (degree-days) and soil moisture
 (climatic water balance), distinct features emerged: the models
@@ -817,11 +799,9 @@ tended to consistently overestimate the regeneration share of all five
 species, but most models overestimated the regeneration share of some
 species while underestimating the share of others (e.g., ForCEEPS,
 LPJ-GUESS).
-  
 
 # Discussion
 
- 
 Tree regeneration is a fundamental process in forest dynamics. Correctly
 capturing tree regeneration in dynamic models is fundamental to, for
 example, evaluate post-disturbance dynamics and potential long-term
@@ -844,11 +824,9 @@ Overall, by adopting this approach a much broader understanding resulted
 than if we had used these data for model calibration: it is primarily
 from the shortcomings of the models that we can gain ecological insights
 [cf. @trugman2022].
-  
 
 ## Regeneration levels
 
- 
 Most of the models overestimated tree regeneration levels. This has
 potentially far-reaching implications, e.g., regarding biomass (and thus
 carbon) turnover, with a potential overestimation of the capacity for
@@ -888,11 +866,9 @@ from equilibrium forests, whereas in reality many of the forest reserves
 are recovering from past management activities and have become denser
 over the past decades [e.g., @heiri2009], leading to less regeneration
 than in an equilibrium situation.
-  
 
 ## Species composition of regeneration
 
- 
 Correctly capturing species composition in tree regeneration is
 important to assess the future functional diversity of a forest, e.g.,
 its sensitivity to drought or resilience to disturbances [@redmond2015;
@@ -926,11 +902,9 @@ species diversity with the model version that included feedback
 feedback is likely because the models put more weight on the
 regeneration niche arising from abiotic and biotic filters, than from
 the habitat niche of the adult trees [@grubb1977].
-  
 
 ## Regeneration mortality
 
- 
 There are several factors that lead to mortality during the regeneration
 phase, such as competition [@casper1997] and multiple abiotic factors
 [@schmid2021; @cunningham2006]. As mentioned above, it is reasonable to
@@ -952,11 +926,9 @@ carbon sink dynamics [@pugh2019]. Given our set of simulations and
 analyses, we cannot conclusively assess what is happening in the models,
 and further studies are required that focus on a wider range of tree
 sizes and the fate of tree regeneration along such a size continuum.
-  
 
 ## Model performance and model traits
 
- 
 In spite of the critical considerations above, it is remarkable that
 most models did not deviate exceedingly from the observations with
 respect to simulated regeneration levels -- after all, few if any of the
@@ -984,11 +956,9 @@ lead to better projections and rather to a reduced transparency and
 lower predictive power [@franklin2020]. Thus, the question of what level
 of detail is appropriate and parsimonious for modeling tree regeneration
 processes remains open [@konig_tree_2022; @bugmann2022].
-  
 
 ## Regeneration gradients on regeneration niches
 
- 
 Competition for light as a strong filter for tree regeneration has been
 widely documented [@messier1999; @collet2006; @berdanier2016], but the
 models examined here did not reproduce this expectation. However, it is
@@ -1029,11 +999,9 @@ abundance, which is also found in the empirical data. Thus, although the
 broad patterns are matched by many models, improvements in the
 quantification of the regeneration niche of the species are needed, but
 this cannot be done in the absence of robust datasets across multiple
-  
 
 ## Methodological considerations
 
- 
 The EuFoRIa data as used here are unique and well suited to better
 understand tree regeneration. However, three aspects of these data may
 represent considerable limitations. First, we made a comparison of tree
@@ -1089,11 +1057,9 @@ indicators based e.g. on soil water holding capacity, which had to be
 derived from a rough soil quality measure. This may at least partially
 explain the unsatisfactory performance of many models along the drought
 axis (i.e., climatic water balance).
-  
 
 ## Research recommendations
 
- 
 With our study, we have demonstrated that models of forest dynamics need
 a focus on tree regeneration modules to make them more robust. It
 remains uncertain what level of detail is required to model regeneration
@@ -1151,11 +1117,9 @@ assumptions on which the models are based. Furthermore, the inclusion of
 a wide range of models with different scales, type, population
 structures, tree regeneration modules and complexity will ensure a wider
 benefit to the whole modeling community.
-  
 
 ## Conclusions
 
- 
 Models of forest dynamics are important tools in science and decision
 support, and the formulation of tree regeneration has strong
 implications for simulated forest properties. The 15 models and variants
@@ -1195,11 +1159,9 @@ representation of forest dynamics in these models would become much more
 robust particularly in the face of climate change and post-disturbance
 dynamics, thus strongly reducing the uncertainty in long-term
 projections of future forest dynamics.
-  
 
 # Author contributions
 
- 
 O. Díaz-Yáñez and Y. Käber contributed equally and share the first
 authorship. H. Bugmann, Y. Käber, and O. Díaz-Yáñez developed the study
 design. All authors contributed to preparing the simulations with their
@@ -1210,11 +1172,9 @@ M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X. Morin, W. Rammer and
 D. Scherrer H. Bugmann. O. Díaz-Yáñez and H. Bugmann led the writing of
 the manuscript. All authors participated in the revision of the
 manuscript and approved its submission.
-  
 
 # Acknowledgements
 
- 
 This paper arises from a workshop held in Davos (Switzerland) in June
 2022, co-led by Olalla Díaz-Yáñez, Yannek Käber and Harald Bugmann.
 Funding for the workshop was provided by COST Action CA19139 PROCLIAS
@@ -1239,12 +1199,10 @@ support from Waldfonds WASIM2100 project. We would also like to thank
 all the people that helped to make this study possible with
 contributions at different stages such as Martin Gutsch and Giorgio
 Vacchiano.
-  
 
 # Conflict of interest statement
 
 The authors declare no conflicts of interest.
-
 
 # References
 
@@ -1254,7 +1212,6 @@ The authors declare no conflicts of interest.
 :::
 
 \newpage
-
 
 # Table
 
