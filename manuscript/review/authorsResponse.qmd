@@ -88,6 +88,14 @@ Dr. Charles Canham Subject-matter Editor, Ecosphere
 
 ### Response to editors comments
 
+Dear Charles,
+
+Thank you very much for taking the time to review our manuscript and for your insightful thoughts on our findings.
+
+We totally agree with your comments. Our main take away from this manuscript it is not that it would be impossible to calibrate all 15 models against e.g. the EuFoRIa data, but the issue is - as you wrote - that this needs to be bound to the goals of the study. And when the goal is to provide extrapolation into a future climate, then calibration against data under current climate may be unreliable. This is why we belive it is fundamentally valuable to test model performance "out of the box\", as we have done here.
+
+In this revised version we have modify the manuscript according to the reviewers' recommendations and we have addressed each of the specific points made in the review comments. We believe the manuscript has significantly improved based on this changes.
+
 ## Response to reviewer 1
 
 ### General Comments
