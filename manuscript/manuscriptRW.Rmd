@@ -45,14 +45,14 @@ date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of 
        $^{16}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland.  \newline
        $^*$Corresponding author (olalla.diaz@usys.ethz.ch)
 output:
-  word_document:
-    reference_docx: template_paper.docx
   bookdown::pdf_document2:
     keep_tex: yes
     number_sections: yes
     toc: no
     extra_dependencies: "subfig"
     latex_engine: xelatex
+  word_document:
+    reference_docx: template_paper.docx
 fontsize: 12pt
 linestretch: 2
 bibliography: Regeneration.bib

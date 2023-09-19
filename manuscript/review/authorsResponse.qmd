@@ -41,59 +41,52 @@ format:
 
 ## Journal formatting
 
-* Respond to the review comments in the space provided. You can use this space to document any changes you make to the original manuscript. In order to expedite the processing of the resubmitted manuscript, please be as specific as possible in your response to the review comments. If you disagree with a point, please explain why. Please note that the field in ScholarOne does not retain type formats such as italics, boldface, or colors, so please format the responses accordingly. We suggest you upload a separate file for your "Author's Response to Reviewer Comments" document and use our template: <https://www.esa.org/wp-content/uploads/2021/04/Author-Response-to-Reviewers-Template.docx>. 
+-   Respond to the review comments in the space provided. You can use this space to document any changes you make to the original manuscript. In order to expedite the processing of the resubmitted manuscript, please be as specific as possible in your response to the review comments. If you disagree with a point, please explain why. Please note that the field in ScholarOne does not retain type formats such as italics, boldface, or colors, so please format the responses accordingly. We suggest you upload a separate file for your "Author's Response to Reviewer Comments" document and use our template: <https://www.esa.org/wp-content/uploads/2021/04/Author-Response-to-Reviewers-Template.docx>.
 
-* A version uploaded in the file list should be given the designation "Additional File for Review but NOT for publication".\
+-   A version uploaded in the file list should be given the designation "Additional File for Review but NOT for publication".
 
-* Please also include a "track changes" version of your file, along with a clean copy as your Main Document. This "track changes" version should be uploaded in the file list list and given the designation "Additional File for Review but NOT for publication".
+-   Please also include a "track changes" version of your file, along with a clean copy as your Main Document. This "track changes" version should be uploaded in the file list list and given the designation "Additional File for Review but NOT for publication".
 
-* IMPORTANT: Your original files are available to you when you upload your revised manuscript. Please replace files of the earlier version and delete any redundant files before completing the submission.
+-   IMPORTANT: Your original files are available to you when you upload your revised manuscript. Please replace files of the earlier version and delete any redundant files before completing the submission.
 
+-   To submit your revised manuscript, log into <https://mc.manuscriptcentral.com/ecosphere> and enter your Author Center. You will find your manuscript title listed under "Manuscripts with Decisions." Under "Actions," click on "Create a Revision." Your manuscript number has been appended to denote a revision. Please DO NOT upload your revised manuscript as a new submission.
 
-* To submit your revised manuscript, log into <https://mc.manuscriptcentral.com/ecosphere> and enter your Author Center. You will find your manuscript title listed under "Manuscripts with Decisions." Under "Actions," click on "Create a Revision." Your manuscript number has been appended to denote a revision. Please DO NOT upload your revised manuscript as a new submission.
+-   DEADLINE: We encourage you to submit your revised manuscript within three weeks from today's date. The final due date for submitting your manuscript with the same manuscript number is 14-Dec-2023. 
 
-* DEADLINE: We encourage you to submit your revised manuscript within three weeks from today's date. The final due date for submitting your manuscript with the same manuscript number is 14-Dec-2023. 
+-   If you are unable to meet the final deadline, you can request an extension by contacting the the journal's editorial staff ([esajournals\@esa.org](mailto:esajournals@esa.org)). Please note that we can only consider extensions of a few weeks. If you cannot submit by the final due date, you must create a new submission for your manuscript. If creating a new submission, be sure to note the previous manuscript ID (ECS23-0342) in the online submission form and include an "Author's Response to Reviewer Comments" document (using the template linked to earlier in this message) in the file list.
 
+-   Editorial staff note: In addition to revisions according to the review comments below, please make revisions to your paper to conform to the journal style at this stage, especially the tables, figures, and supporting information, anticipating the possibility that your paper may be accepted for publication.
 
-* If you are unable to meet the final deadline, you can request an extension by contacting the the journal's editorial staff ([esajournals\@esa.org](mailto:esajournals@esa.org)). Please note that we can only consider extensions of a few weeks. If you cannot submit by the final due date, you must create a new submission for your manuscript. If creating a new submission, be sure to note the previous manuscript ID (ECS23-0342) in the online submission form and include an "Author's Response to Reviewer Comments" document (using the template linked to earlier in this message) in the file list.
+-   Please provide the main manuscript file composed in Word, taking care to use the Table function for the tables. However, if you created your manuscript in LaTex, please provide only the .tex file of the main manuscript, a .pdf file of the main manuscript (that is the exact same in content as the .tex file), and a .bib file.
 
-* Editorial staff note: In addition to revisions according to the review comments below, please make revisions to your paper to conform to the journal style at this stage, especially the tables, figures, and supporting information, anticipating the possibility that your paper may be accepted for publication.
+-   Ecosphere page style allows for five levels of headings. Please use different type styles (italics, boldface, boldface italics, etc.) consistently to distinguish between the levels of headings in the article and delete the section numbers in the headings. 
 
+-   Literature references: Please check that each citation has complete information, and check that all references in text have a matching citation in the References section and vice versa.
 
-* Please provide the main manuscript file composed in Word, taking care to use the Table function for the tables. However, if you created your manuscript in LaTex, please provide only the .tex file of the main manuscript, a .pdf file of the main manuscript (that is the exact same in content as the .tex file), and a .bib file.
+-   Table and figure references: Please be sure that all tables and all figures have in-text citations in the main body of the manuscript, and that tables and figures are called out in numerical order (i.e., Figure 1 is called out before Figure 2).
 
-* Ecosphere page style allows for five levels of headings. Please use different type styles (italics, boldface, boldface italics, etc.) consistently to distinguish between the levels of headings in the article and delete the section numbers in the headings. 
+-   Figures: Each figure should be provided in an individual, complete file (all panels in one image, identified by figure number in the file name), preferably as a high-resolution (300-600 dpi) image file or high-quality PDF. Preferred file formats include TIF, EPS, PDF, or AI at 600 ppi, while JPEG, PPT/PPTX, or DOC/DOCX are acceptable if the resolution is sufficient. Only one version of each figure should be provided. Please delete figure images from the main manuscript file. Please check for misspellings and be sure that all parts, including all lettering, symbols, labels, and scale numbers, are discernible, clear, and readable when the figures are presented at the maximum allowable size (18 cm wide by 22 cm tall) in the typeset and paged PDF version of the article. See additional instructions for preparation in the Manuscript Preparation Guide.
 
+-   Figure captions: Please be sure to include a list of figure captions in the main manuscript file and ensure that any abbreviation that appears in a figure is identified in the caption.
 
-* Literature references: Please check that each citation has complete information, and check that all references in text have a matching citation in the References section and vice versa.
+-   Supporting Information: Each appendix must be assembled exactly as you intend it to appear online. (Appendices are posted "as is"; ESA and Wiley staff do not copy edit or assemble appendices.) Note also that the Ecosphere naming convention for appendices is of the style "Appendix S1," "Appendix S2," etc., and for tables and figures within appendices is "Table S1," "Table S2," etc. or "Fig. S1," "Fig. S2," etc., and requires that the numbering begins at "S1" in each appendix (and revise references to material in other appendices as necessary). Please be sure to eliminate line numbering and to include the title of the journal, the title of the article, and all of the authors' names on the first page of each appendix. In addition, if there are literature references within an appendix, the appendix should include a list of literature cited.
 
-
-* Table and figure references: Please be sure that all tables and all figures have in-text citations in the main body of the manuscript, and that tables and figures are called out in numerical order (i.e., Figure 1 is called out before Figure 2).\
-
-* Figures: Each figure should be provided in an individual, complete file (all panels in one image, identified by figure number in the file name), preferably as a high-resolution (300-600 dpi) image file or high-quality PDF. Preferred file formats include TIF, EPS, PDF, or AI at 600 ppi, while JPEG, PPT/PPTX, or DOC/DOCX are acceptable if the resolution is sufficient. Only one version of each figure should be provided. Please delete figure images from the main manuscript file. Please check for misspellings and be sure that all parts, including all lettering, symbols, labels, and scale numbers, are discernible, clear, and readable when the figures are presented at the maximum allowable size (18 cm wide by 22 cm tall) in the typeset and paged PDF version of the article. See additional instructions for preparation in the Manuscript Preparation Guide.
-
-
-* Figure captions: Please be sure to include a list of figure captions in the main manuscript file and ensure that any abbreviation that appears in a figure is identified in the caption.
-
-
-* Supporting Information: Each appendix must be assembled exactly as you intend it to appear online. (Appendices are posted "as is"; ESA and Wiley staff do not copy edit or assemble appendices.) Note also that the Ecosphere naming convention for appendices is of the style "Appendix S1," "Appendix S2," etc., and for tables and figures within appendices is "Table S1," "Table S2," etc. or "Fig. S1," "Fig. S2," etc., and requires that the numbering begins at "S1" in each appendix (and revise references to material in other appendices as necessary). Please be sure to eliminate line numbering and to include the title of the journal, the title of the article, and all of the authors' names on the first page of each appendix. In addition, if there are literature references within an appendix, the appendix should include a list of literature cited.
-
-
-* If the journal style is not followed at submission of the revision, we may return the manuscript to you for further revision before sending it along to the Subject-matter Editor. Closely following our manuscript preparation guide at this stage would expedite the production of your paper for publication, should it be accepted. You can download our guide here: <https://www.esa.org/wp-content/uploads/2022/05/ESA-Manuscript-Preparation-Guide.pdf>
+-   If the journal style is not followed at submission of the revision, we may return the manuscript to you for further revision before sending it along to the Subject-matter Editor. Closely following our manuscript preparation guide at this stage would expedite the production of your paper for publication, should it be accepted. You can download our guide here: <https://www.esa.org/wp-content/uploads/2022/05/ESA-Manuscript-Preparation-Guide.pdf>
 
 ## Response to the Editor
 
+### General Comments
+
 Dear Dr. Díaz-Yáñez:
 
-Thank you very much for submitting your manuscript "Tree regeneration in models of forest dynamics: a key priority for further research" for review by Ecosphere. The reviewers and I appreciate the work you have accomplished. I am willing to consider a revised version for publication in the journal, assuming that you are able to modify the manuscript according to the reviewers' extensive recommendations. Your revisions should address the specific points made in the review comments.  Please note that Reviewer #2 made extensive comments directly on the manuscript.
-\
+Thank you very much for submitting your manuscript "Tree regeneration in models of forest dynamics: a key priority for further research" for review by Ecosphere. The reviewers and I appreciate the work you have accomplished. I am willing to consider a revised version for publication in the journal, assuming that you are able to modify the manuscript according to the reviewers' extensive recommendations. Your revisions should address the specific points made in the review comments.  Please note that Reviewer #2 made extensive comments directly on the manuscript.\
 I should note that personally I can hardly disagree with your basic conclusion that models of forest dynamics need to do a good job of capturing regeneration and recruitment processes.  I have devoted most of my research over the past 40 years to developing the field methods to allow incorporation of accurate seedling, sapling and canopy recruitment in the models SORTIE and SORTIE-ND, in systems ranging from the tropics to boreal forests. The specific ecological processes incorporated in those models depended on the goals of the modeling and the ecology of the system, and included processes such as masting cycles, effects of disturbance on seedbed substrate dynamics, seed and seedling predation by small mammals, browsing by ungulates, Janzen-Connell effects, and, of course, detailed analyses of shading and neighborhood competition. More recently, this includes developing statistical models of seedling recruitment from the US forest inventory network that have been directly incorporated in the model for forests of the entire eastern US.  To my mind, the difficulties the models you reviewed encountered in capturing canopy recruitment speak more to the limitations of the approaches used in model development than in any inherent difficulties in capturing regeneration and recruitment in models of forest dynamics.  
 
 Sincerely,
 
-Dr. Charles Canham
-Subject-matter Editor, Ecosphere
+Dr. Charles Canham Subject-matter Editor, Ecosphere
 
+### Response to editors comments
 
 ## Response to reviewer 1
 
@@ -105,157 +98,173 @@ I have a few major comments. One of which requires a different statistical analy
 
 ##### Our general comments to reviewer 1:
 
-
 ### Major comments
 
 #### COMMENT 1
 
-'regeneration' versus 'recruitment'. I personally have had this conversation multiple times over the years, so I understand that there is variation in the definitions and uses. However, the authors do define these terms in the methods (L167-171) and I completely agree with them. Regeneration is for flowers, seeds, and seedlings while recruitment is for reaching a certain size threshold. However, the entire manuscript refers to regeneration as "passing of trees across a specific diameter threshold ("ingrowth") (L142), either reaching a size of 7 or 10 cm DBH. This is recruitment. Since this is the response variable for the manuscript, I would suggest replacing 'regeneration' with 'recruitment' throughout the manuscript. \
+'regeneration' versus 'recruitment'. I personally have had this conversation multiple times over the years, so I understand that there is variation in the definitions and uses. However, the authors do define these terms in the methods (L167-171) and I completely agree with them. Regeneration is for flowers, seeds, and seedlings while recruitment is for reaching a certain size threshold. However, the entire manuscript refers to regeneration as "passing of trees across a specific diameter threshold ("ingrowth") (L142), either reaching a size of 7 or 10 cm DBH. This is recruitment. Since this is the response variable for the manuscript, I would suggest replacing 'regeneration' with 'recruitment' throughout the manuscript.\
 
 ##### Response to comment 1:
 
-
+Thank you for pointing
 
 #### COMMENT 2
+
 The difference between 7 cm and 10 cm DBH in the observed data. From the methods, there is one dataset that has sites where recruitment was defined as 7 cm DBH, and then another where recruitment was somewhere between 7 -- 10 cm DBH. It was not clear how these were treated and compared in the results. I assume that the models simulated all 200 sites, but then the recruitment results were compared like-to-like. So, if a site defined recruitment as DBH = 8.0 cm, then all 15 models would compare simulated recruitment at that site only at 8 cm. Since the data are boxplots, I am not able to tell. For example, Figure 2 -- there should be 165 points for all of the 7 cm bars (observed and simulated) and 35 data points for the 10 cm bars (observed and simulated). If true, then please clarify. If not true, then please explain. Also, how was the data analysis performed when looking at the change in mortality and species diversity between 7 to 10 cm? I assume only the 165 stands were used. Please clarify. \
 
 ##### Response to comment 2:
 
+Thank you for highlighting that we didn not managed to appropriately communicate our diameter thresholds approach correctly in the manuscript. The explanation is that the observed data
+
+In this revised version we have revised the explanation in L XX
 
 #### COMMENT 3
+
 The t-tests. The results in Table S2 and S3 (comparing at 7 cm and 10 cm DBH) should be at least by paired t-tests not two-sided t-tests (L319), where you are comparing the difference within the same stand at 7 and 10 cm. The results Table S5 and S6 should not be a t-test at all. Performing 15 individual t-tests is a classic Type-1 error situation (technically this applies to Tables S2 and S3 as well, a comment on that below). For Tables S5 and S6, I would suggest a general linear mixed effects model. You can take the difference between the observed, and the simulated output and make this the response variable (Y). Then, include model complexity, feedback, model type and scale as fixed explanatory variables. And include the stand ID as the random effect. This will more accurately answer your question about if any of these fixed explanatory variables can predict over or under representation of recruitment. For Tables S2 and S3, you could do the same thing (i.e., calculate the difference between the observed and the simulated output for each model) and make this your response variable. But the only fixed effect would be the actual model, and then you could do an ANOVA (again, stand ID as the random effect) and then a post-hoc test to see which models were or were not different from observed. If you do want to keep the 15 paired t-tests, then you need to account for Type I error rates and adjust your p-values accordingly.\
 
 ##### Response to comment 3:
 
-
+Based on the comments from Reviewer 1, we have re-analyse some of the results. More specifically we
 
 ### Minor comments:
 
-
 #### COMMENT 4
+
 The abstract is not clear if the models do a good or poor job in simulating regeneration (L59, that they match observed ranges, and then L66, considerable mismatch between simulations and observed data, but that they do capture tree regeneration). Please clarify the main message in the abstract.  
 
 ##### Response to comment 4:
 
 #### COMMENT 5
-L123-138: this paragraph has a lot of "on the other hand" type of statements, and it does not lead nicely into the next paragraph about the current study. It was a bit of a surprise (i.e., I did not expect the main purpose of the study when I started to read the following paragraph). It seems like the main issue is that we just don't know how uncertain regeneration and recruitment methods are, because we lack the comparison across models and a comprehensive empirical recruitment data set that we can use to compare. And that is what your study is doing. 
+
+L123-138: this paragraph has a lot of "on the other hand" type of statements, and it does not lead nicely into the next paragraph about the current study. It was a bit of a surprise (i.e., I did not expect the main purpose of the study when I started to read the following paragraph). It seems like the main issue is that we just don't know how uncertain regeneration and recruitment methods are, because we lack the comparison across models and a comprehensive empirical recruitment data set that we can use to compare. And that is what your study is doing.
 
 ##### Response to comment 5:
 
 #### COMMENT 6
+
 Table 1. Please clarify what the letters are for (a, b, c and d in the table headers). For models that start from saplings or ingrowth, please add in the size as well (i.e., start from saplings with DBH = 1.0). Could also add in the classification scheme mentioned in the methods (L168, regeneration or recruitment) to Table 1. \
 
 ##### Response to comment 6:
 
 #### COMMENT 7
-L218 -- do I understand this correctly, that regeneration rates are a mean of 56 trees per ha per decade? This seems really low (assuming that this is for \>10 cm DBH).  \
 
+L218 -- do I understand this correctly, that regeneration rates are a mean of 56 trees per ha per decade? This seems really low (assuming that this is for \>10 cm DBH).  \
 
 ##### Response to comment 7:
 
 #### COMMENT 8
+
 L264 -- 274: how will this be accounted for later, that not all models simulated the same set of species? 
 
 ##### Response to comment 8:
 
 #### COMMENT 9
-L340: "regeneration basal area of that species" is mentioned twice, please delete the second one. 
 
+L340: "regeneration basal area of that species" is mentioned twice, please delete the second one. 
 
 ##### Response to comment 9:
 
 #### COMMENT 10
+
 L364: so please remove the 4C model from the figure as it is not comparable. Do you need to also remove other models that don't simulate the same number of species too?\
 
 ##### Response to comment 10:
 
-
 #### COMMENT 11
+
 Table S2 and S3: What are the 3 columns for p-values? Please report just the one you used. No need to have a column to state 't-test' -- just move this to the table caption. Then add in a column for df, the test statistic (t) and the effect size (was it higher or lower and by how much?). NOTE, this comment may become irrelevant if you change the statistical analyses.
 
 ##### Response to comment 11:
 
 #### COMMENT 12
+
 Figure S1 and S2 -- I can't tell the difference between observed and simulated. Are they different colours? The legend should be larger. What is the black line for? 
 
 ##### Response to comment 12:
 
-
 #### COMMENT 13
+
 Figure 4 (and Figure S3) are interesting in that there are no patterns with overstory diversity, and that this was not explained by feedback with seed production. What happens if you colour the points, by those from models with the feedback? Do you address in the discussion why this feedback makes no difference to recruitment? \
 
 ##### Response to comment 13:
 
 #### COMMENT 14
+
 All figures in the Appendix, please make the X and Y axis labels larger and centered. I actually thought labels were missing initially and it took a while to find them.  
 
 ##### Response to comment 14:
 
 #### COMMENT 15
+
 L400 -- 402: where is this conclusion about mixed species or monocultures coming from? I don't see that in the figures or the results. 
 
 ##### Response to comment 15:
 
 #### COMMENT 16
+
 Figure 6 is excellent. 
 
 ##### Response to comment 16:
 
 #### COMMENT 17
+
 Table S4: please clean up. No need to report 7 places after the decimal point. Please clarify in the table caption what the slope represents (maybe mention Figure S5 too, as I assume it is illustrating the slopes). Another suggestion, would be to make the slopes solid lines if significant, or dashed lines if not significant. Not sure if that would help, but if it does then it could eliminate the need for this table. 
 
 ##### Response to comment 17:
 
 #### COMMENT 18
-Not sure both Figure 7 and Figure S7 are necessary (I admit I spent a few minutes going back and forth between them trying to understand how they differed). I would just keep Figure 7 and note that the scales differ. 
+
+Not sure both Figure 7 and Figure S7 are necessary (I admit I spent a few minutes going back and forth between them trying to understand how they differed). I would just keep Figure 7 and note that the scales differ.
 
 ##### Response to comment 18:
 
-
 #### COMMENT 19
+
 L547-548: predicting stand diversity, did I miss this? I don't believe Figure 4 shows this, as if you put all data points on the same panel it would just be a random scatter of points that covers the entire space (not necessarily closer to the 1:1 line). 
 
 ##### Response to comment 19:
 
 #### COMMENT 20
+
 L575: that most models did not deviate exceedingly from observations seems in contrast to what the previous section was stating. What is this based on?
 
 ##### Response to comment 20:
 
-
 #### COMMENT 21
+
 L584: What does this mean, about degrees of freedom for modelling regeneration?
 
 ##### Response to comment 21:
 
-
 #### COMMENT 22
+
 L624: Missing the end of the sentence.
 
 ##### Response to comment 22:
 
-
 #### COMMENT 23
+
 L647: Completely agree that observed data is a snapshot of a stochastic and dynamic system and care should always be taken with comparing to simulation data, however I disagree about the following stamen (L648). The models should be able to capture broader patterns along climatic or environmental gradients.
 
 ##### Response to comment 23:
 
 #### COMMENT 24
+
 L655: But the landscape models generally did about the same (i.e., not consistently worse) then the rest, correct?
 
 ##### Response to comment 24:
 
 #### COMMENT 25
+
 L663: But in general, the models were more sensitive to water balance and the observed data did not have any real pattern. Why would this coarser representation of water balance in the model, cause it to be more sensitive?
 
 ##### Response to comment 25:
 
-
 #### COMMENT 26
-L675: what would a 'comprehensive regeneration dataset" look like? There are large data sets for seed production (MASTIF, MASTREE, etc.) and seedling data from national forest inventory programs. Does EuFoRIa (L677) have everything you need? Is it just a matter of expanding the spatial and temporal extent? Please explain what sort of data that the models would need (imagine an ideal world). 
+
+L675: what would a 'comprehensive regeneration dataset" look like? There are large data sets for seed production (MASTIF, MASTREE, etc.) and seedling data from national forest inventory programs. Does EuFoRIa (L677) have everything you need? Is it just a matter of expanding the spatial and temporal extent? Please explain what sort of data that the models would need (imagine an ideal world).
 
 ##### Response to comment 26:
-
 
 ## Response to reviewer 2
 
@@ -267,40 +276,52 @@ It is valuable to demonstrate that leading forest dynamics models are unable to 
 
 ##### Our general comments to reviewer 2:
 
-
 ### Major comments
 
 #### COMMENT 1
+
 Where the paper falls short, in my opinion, is in providing a clear path forward.  It shows that the models are too simplistic to simulate regeneration processes accurately but provides few insights into how we can improve their performance.  The paper reports that creating more complex models is not valuable in and of itself, but that's not to say that intelligent improvement of specific subcomponents may hold the key.  For instance, deer browsing and competition with herb layer plants may well contribute to lower recruitment being observed than simulated, but how can we demonstrate that, and if the inadequate representation of these processes in the models is the problem, what should be done to improve the models?  The review by Hanbury-Brown et al. (2022) on "future forests within Earth system models: regeneration processes critical to prediction" provides a good summary of current knowledge and future directions, including thoughts on 1. reproductive allocation and seed production; 2. dispersal;  3. seed survival, germination, and resprouting; and 4. seedling survival and growth. I would encourage the authors to frame their discussion in a similar way.  Advanced statistical approaches that bring together simulation models and Approximate Bayesian Computation to estimate parameters of recruitment submodels may hold the key (e.g. <https://onlinelibrary.wiley.com/doi/full/10.1111/ecog.04824> ).  To me, a key question is how we can make better use of field measurements and statistical analyses to refine forest dynamics models, i.e. not only parameterise them but also to identify which submodels need refinement and the function that need inclusion. 
 
 ##### Response to comment 1:
 
 #### COMMENT 2
+
 I felt the readability of the paper would be improved by introducing a "road mapping" paragraph at the end of the introduction or start of the methods section that sets out the approach in broad terms.
 
 ##### Response to comment 2:
 
 #### COMMENT 3
+
 The words "ingrowth", "regeneration" and "recruitment" are used interchangeably to describe the recruitment of new trees into the 7-cm diameter class.  I would encourage the authors to use the term "ingrowth" or "recruitment" to this to describe this process,  and keep "regeneration" as an overarching term describing the entire process of seed production, dispersal, early establishment, and onward growth.
 
 ##### Response to comment 3:
 
 #### COMMENT 4
+
 The article is written entirely by Europeans, unless I'm mistaken, and very much focused on the central/eastern European forestry literature.  I would encourage a deeper dive into the relevant North American and Asian literature when introducing and discussing their work.  
 
 ##### Response to comment 4:
 
 ### Minor comments:
-These comment have been extracted from the comments done by reviewer 2 in the PDF document of the manuscript. 
+
+These comment have been extracted from the reviewer 2 comments on the PDF document of the manuscript.
 
 #### COMMENT 5
 
-
+L51-52 "However, an assessment of their ability to accurately represent tree regeneration is lacking." Not true.
 
 ##### Response to comment 5:
 
+#### COMMENT 6
 
+L56 "The results are evaluated against comprehensive data from unmanaged forests." comprehensive?
+
+##### Response to comment 6:
+
+#### COMMENT 7
+
+L56 "Models simulating higher species diversity at the stand level do not feature higher regeneration diversity." feature?
+
+##### Response to comment 7:
 
 ## Other changes made in the manuscript
-
-
