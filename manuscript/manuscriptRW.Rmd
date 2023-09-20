@@ -147,18 +147,18 @@ demands on forest ecosystem services, it is becoming ever more important
 to understand how forest structure, composition and function will
 change, and to evaluate forest capacity to adapt to or be resilient
 after disturbance [@lindner2010; @seidl2022]. A wide range of models of
-forest dynamics were developed over the past decades considering the
-impacts of climate [@bugmann2022]. From these studies, it is evident
+forest dynamics have been developed over the past decades considering
+the impacts of climate [@bugmann2022]. From these studies, it is evident
 that we have a reasonably good understanding how to model tree growth
 [@vanclay1997; @bugmann1996], and substantial efforts have been
 dedicated to improving the representation of tree mortality
 [@bugmann2019; @cailleret2017]. In contrast, tree regeneration is a much
 less studied process that is often represented rather coarsely in models
-[@walck2011; @leishman1992; @price2001]. Which is a clear research gap
-in the context of climate-induced forest disturbances and forest
-resilience.
+[@walck2011; @leishman1992; @price2001]. This presents an important
+research gap, particularly in the context of climate-induced forest
+disturbances and forest resilience.
 
-Tree regeneration arises from multiple processes such as pollination,
+Tree regeneration arises from multiple processes including pollination,
 fruit maturation, seed production, dispersal, germination, juvenile
 growth and survival [@price2001; @vacchiano2018]. All these processes
 are difficult to assess, and some of them are scarcely understood and
@@ -167,10 +167,10 @@ appropriate level of complexity for the mathematical formulation of the
 key factors that are leading to successful tree regeneration is
 challenging. Currently, tree regeneration processes in dynamic forest
 models are handled in a multitude of ways [@konig_tree_2022;
-@bugmann2022]: from 1) entirely ignoring it [as done in classical forest
-growth models, e.g., Pretzsch et al. -@pretzsch2002], across 2) the use
-of a few simple environmental filters, as done in most forest "gap"
-models [@shugart1984] and Dynamic Global Vegetation Models [e.g.,
+@bugmann2022]: from 1) entirely ignoring them [as done in classical
+forest growth models, e.g., Pretzsch et al. -@pretzsch2002], across 2)
+the use of a few simple environmental filters, as done in most forest
+"gap" models [@shugart1984] and Dynamic Global Vegetation Models [e.g.,
 @hickler2012; @smith2001], to 3) complex approaches that incorporate
 local feedback from the canopy, multiple ecological processes and often
 also short time steps [e.g., @seidl2012; @wehrli2006], or 4) field-based
@@ -243,13 +243,13 @@ operating at the stand to the global scale as well as the range of
 models from empirically derived to "process-based" [e.g., @bugmann1996;
 @fabrika2012; @lexer2001; @reyer2014]. Due to the large variability in
 tree regeneration patterns in nature and the large number of factors
-driving this process --- including some that are not incorporated
-explicitly in most models, such as deer browsing --- we do not aim for a
-detailed statistical evaluation of each model. Instead, we aim to
-evaluate the general regeneration patterns and magnitudes simulated by
-the models, and benchmark the simulated regeneration niche of multiple
-species against empirical data along a wide environmental gradient of
-temperature, moisture, and light availability [@grubb1977].
+driving and constraining this process --- including some that are not
+incorporated explicitly in most models, such as deer browsing --- we do
+not aim for a detailed statistical evaluation of each model. Instead, we
+aim to evaluate the general regeneration patterns and magnitudes
+simulated by the models, and benchmark the simulated regeneration niche
+of multiple species against empirical data along a wide environmental
+gradient of temperature, moisture, and light availability [@grubb1977].
 
 More specifically, we aim to answer the following questions: (1) Are
 models of forest dynamics capturing accurately tree regeneration levels,
@@ -342,11 +342,11 @@ the simulation to be representative of the environmental variation
 contained in the data. This was achieved by applying k-means clustering
 to define 200 clusters of plots from the original set of 869 plots along
 the environmental dimensions of temperature, climatic water balance,
-soil quality and exposition (i.e., slope and aspect). Each of these
-sites featured at least two consecutive measurements. Regeneration
-thresholds for these sites differed between diameters of 0 and 10 cm.
-For our study, we defined two datasets where one included 165 sites with
-a diameter threshold of 7 cm or lower, and the other included another 35
+soil quality, slope and aspect. Each of these sites featured at least
+two consecutive measurements. Regeneration minimum size thresholds for
+these sites differed between stem diameters of 0 and 10 cm. For our
+study, we defined two datasets where one included 165 sites with a
+diameter threshold of 7 cm or lower, and the other included another 35
 sites with diameter thresholds between 7 and 10 cm.
 
 Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
@@ -360,18 +360,17 @@ information, cf. @käber2023.
 
 ## Simulation protocol
 
-The overarching goal of the experiments was to assess the tree
+The overarching goal of the simulation experiments was to assess tree
 regeneration as it arises from empirical data against its representation
 in a wide range of models of forest dynamics. We define tree
 regeneration as the passing of a breast height diameter threshold of 7
-or 10 cm, respectively (synonym: ingrowth). To this end, each modeling
-group was provided with a detailed protocol [@díaz-yáñez2022] with
-instructions how to perform the simulations, providing input variables
-on climate and soil conditions, and the list of expected output
-variables. Neither were further site information (except for the data
-specified below) nor any data on tree regeneration or forest stand
-features provided prior to the simulation. That is, the models were run
-in "blind flight" mode.
+and 10 cm (synonym: ingrowth). To this end, each modeling group was
+provided with a detailed protocol [@díaz-yáñez2022] with instructions
+how to perform the simulations, input variables on climate and soil
+conditions, and the list of expected output variables. Neither were
+further site information (except for the data specified below) nor any
+data on tree regeneration or forest stand features provided prior to the
+simulation.
 
 The input variables were collected from different data sources and
 aggregated to be adapted to the needs of the different models. Time
@@ -437,18 +436,19 @@ communities that are adjusted to the biotic and abiotic conditions, and
 the simulated plants can be classified into ecological strategies based
 on their trait values in a post-processing step.
 
-Each of the models reported the regeneration number by sampling 200
-times in a 10-year interval for each species and per ha for each of the
-200 sites. Multiple samples per site were used to better understand the
-simulated variation within each site. This was done using different
-strategies, depending on the model, including (1) sampling simulated
-data from the same 1 ha plot in the equilibrium over time, (2) sampling
-several 1 ha plots from the simulated forest at one specific point in
-time (in the equilibrium) or (3) a combination of (1) and (2). This
-resulted in 880,000 observations per model that simulated the 11 species
-included in the protocol (200 sites, 200 samples per site, 11 species
-and two diameter thresholds). For the models that simulated additional
-species, their regeneration rates were aggregated as "others".
+Each of the models reported the number of trees crossing the two
+diameter thresholds by sampling 200 times in a 10-year interval for each
+species and per ha for each of the 200 sites. Multiple samples per site
+were used to better understand the simulated variation within each site.
+This was done using different strategies, depending on the model,
+including (1) sampling simulated data from the same 1 ha plot in the
+equilibrium over time, (2) sampling several 1 ha plots from the
+simulated forest at one specific point in time (in the equilibrium) or
+(3) a combination of (1) and (2). This resulted in 880,000 observations
+per model that simulated the 11 species included in the protocol (200
+sites, 200 samples per site, 11 species and two diameter thresholds).
+For the models that simulated additional species, their regeneration
+rates were aggregated as "others".
 
 Two models did not provide results from all the simulated samples or
 sites to avoid unrealistic results, as follows. In the model 4C, a
@@ -522,7 +522,7 @@ Equation \ref{eqReineke}.
 
 ```{=tex}
 \begin{equation}
-Reineke = \frac{7}{10}^{-1.605} \label{eqReineke}
+Reineke = \frac{N7}{N10}^{-1.605} \label{eqReineke}
 \end{equation}
 ```
 We assessed model performance in relation to model traits focusing on
@@ -865,7 +865,10 @@ difference may be due to the fact that the simulation results were drawn
 from equilibrium forests, whereas in reality many of the forest reserves
 are recovering from past management activities and have become denser
 over the past decades [e.g., @heiri2009], leading to less regeneration
-than in an equilibrium situation.
+than in an equilibrium situation. Another possible reason for this
+difference may be the exclusion of factors like deer browsing or failure
+to accurately measure establishment filters, such as those to site
+limitants or competition with herb layers.
 
 ## Species composition of regeneration
 
@@ -894,14 +897,15 @@ as being proportional to adult abundance, regardless of productivity,
 might be a simple and conservative assumption to safely maintain
 relative species abundances [@hanbury-brown2022], although this may be
 simplistic. Furthermore, based on the simulation results, there is no
-evidence that models with feedback from the canopy captured better the
-species diversity of the regeneration than those without feedback, with
-the exception of ForCEEPS that significantly improved regeneration
-species diversity with the model version that included feedback
-(ForCEEPS(f)). The similar performance of models with and without
-feedback is likely because the models put more weight on the
-regeneration niche arising from abiotic and biotic filters, than from
-the habitat niche of the adult trees [@grubb1977].
+evidence that models with feedback from the canopy (in terms of species
+composition of regeneration) captured better the species diversity of
+the regeneration than those without feedback, with the exception of
+ForCEEPS that significantly improved regeneration species diversity with
+the model version that included feedback (ForCEEPS(f)). The similar
+performance of models with and without feedback is likely because the
+models put more weight on the regeneration niche arising from abiotic
+and biotic filters, than from the habitat niche of the adult trees
+[@grubb1977].
 
 ## Regeneration mortality
 
@@ -961,12 +965,13 @@ processes remains open [@konig_tree_2022; @bugmann2022].
 
 Competition for light as a strong filter for tree regeneration has been
 widely documented [@messier1999; @collet2006; @berdanier2016], but the
-models examined here did not reproduce this expectation. However, it is
-difficult to measure light availability at large spatial and temporal
-scales. We used total stand basal area as a proxy for light availability
-[cf. @schmid2021]. However, we were unable to consider light
-availability restrictions caused by ground vegetation, which may be an
-important filter for some EuForIa stands [@woltjer2008]. We found
+models examined here did not reproduce this expectation (i.e.,
+decreasing regeneration levels with increasing stand basal area).
+However, it is difficult to measure light availability at large spatial
+and temporal scales. We used total stand basal area as a proxy for light
+availability [cf. @schmid2021]. However, we were unable to consider
+light availability restrictions caused by ground vegetation, which may
+be an important filter for some EuForIa stands [@woltjer2008]. We found
 pronounced differences in the stand basal area ranges simulated by the
 models, but also between models and observations. This made it
 impossible to evaluate the regeneration for the extremes of the stand
