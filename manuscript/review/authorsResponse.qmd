@@ -123,7 +123,9 @@ I have a few major comments. One of which requires a different statistical analy
 
 [I have to think about this again]{.underline}
 
-Thank you for pointing
+Thank you for pointing this out. We also discussed terminology several times and we agree. We followed your suggestion replaced 'regeneration' with 'recruitment' where the difference is not clear. However, we believe that in some places regeneration is more accurate. Especially in many parts of the introduction and discussion. We argue that regeneration is often only modeled via "recruitment", but with the aim to simulate the whole process of regeneration. In this context it makes more sense to use the general term (e.g., for discussion consequences.)
+
+COMMENT from YK: I would argue that recruitment is evidence for successful regeneration. This allows us to use recruitment for discussions observation vs. simulation in both aspects: technical (recruitment) and general (regeneration).
 
 #### [COMMENT 2]{.underline}
 
@@ -153,6 +155,8 @@ The abstract is not clear if the models do a good or poor job in simulating rege
 
 [check]{.underline}
 
+SUGGESTION YK: We understand the necessity of a clear statement in this regard. Reformulate by replacing "capture" with "do a good job in capturing" after models [L67].
+
 #### [COMMENT 5]{.underline}
 
 L123-138: this paragraph has a lot of "on the other hand" type of statements, and it does not lead nicely into the next paragraph about the current study. It was a bit of a surprise (i.e., I did not expect the main purpose of the study when I started to read the following paragraph). It seems like the main issue is that we just don't know how uncertain regeneration and recruitment methods are, because we lack the comparison across models and a comprehensive empirical recruitment data set that we can use to compare. And that is what your study is doing.
@@ -160,6 +164,24 @@ L123-138: this paragraph has a lot of "on the other hand" type of statements, an
 ##### Response to comment 5:
 
 [check]{.underline}
+
+SUGGESTION YK: I think the paragraph can be simplified by dissentangling the issues and the corresponding approaches to resolve them. I suggest to resolve this comment with changing the text something like:
+
+A focus on the modeling of tree regeneration processes is sorely
+needed and overdue [@price2001; @walck2011] if we are to make reliable
+projections of future forest dynamics, i.e., when the models need to be
+operated in extrapolation mode, as well as from a fundamental ecological
+point of view for increasing systems understanding. 
+Tree regeneration has often been overlooked in previous research [@hanbury-brown2022] because of the challenges induced by trade offs between the spatial and temporal scales on which processes of regeneration act and the availability of data needed to analyse these processes [@clark1999].
+Data on forest regeneration data are often fragmented,
+which constitutes a major problem for model building [@clark1999].
+For example monitoring on permanent plots (such as National Forest
+Inventories) often measures tree regeneration with a design that captures the rate after the stand initiation phase [@hallsby2015; @zell2019]; Data from permanent plots, although available across
+regions, are highly heterogeneous, rendering their use difficult in a
+modeling context [@käber2021]; and targeted studies to
+measure tree regeneration on experimental sites are often limited in
+spatial extent, species studied, or the sub-set of processes that are
+targeted [@berdanier2016; @collet2006].
 
 #### [COMMENT 6]{.underline}
 
