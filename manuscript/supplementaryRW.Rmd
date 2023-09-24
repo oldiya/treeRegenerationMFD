@@ -2118,7 +2118,7 @@ kable(sigDiff,  format = "latex", caption = "Test of the significance of the dif
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
-```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm", out.width='100%', fig.pos='H'}
+```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm. The black line marks where the mean Shannon index per site at recruitment and at the stand level would be equal", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
 ```
 
@@ -2191,11 +2191,6 @@ kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the 
 
 ## Total ingrowth and individual species regeneration niches
 
-```{r nvTrend710, echo=FALSE, fig.cap="Mean ingrowth values across the 200 samples per site, for the 200 sites against gradients of (a) total basal area; (b) climatic water balance; (c) seasonal degree sum. The values were split into ten bins; the red lines represent a GAM model showing the trend in the observed data.", fig.show = 'hold', out.width="49%",fig.ncol = 2, fig.subcap=c('', '', ''), fig.show='hold', fig.align='left'}
-   knitr::include_graphics(c(here::here("figures", "envTrend7Totba_500.png"),
-                              here::here("figures", "envTrend7WB_500.png"),
-                              here::here("figures", "envTrend7DDS_500.png")))
-```
 
 ```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equal to zero.", out.width='100%',out.height= "80%", fig.pos='H'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))

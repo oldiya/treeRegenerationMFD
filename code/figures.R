@@ -26,6 +26,7 @@
     sum(obsNumAgg$r.ha, na.rm =  T)
     range(obsNumAgg$r.ha, na.rm = TRUE)
     mean(obsNumAgg$r.ha, na.rm = TRUE)
+    mean(obsNumAgg$r.ha[!obsNumAgg$r.ha == 0], na.rm = TRUE)
     median(obsNumAgg$r.ha, na.rm = TRUE)
     
     # Assign models and dbh to levels 
@@ -364,16 +365,17 @@
                          fill = "white") + 
         ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::geom_point(size = 0.1, alpha = 0.3 ) + 
-        hrbrthemes::theme_ipsum() +
+        ggplot2::theme_classic() +
         ggplot2::theme(legend.title = ggplot2::element_blank()) +
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
-        ggplot2::ggtitle("7 cm diamter threshold") +
+        ggplot2::ggtitle("7 cm diameter threshold") +
         ggplot2::facet_wrap(~model) +
         ggplot2::geom_abline() +
         ggplot2::scale_color_manual(labels = c("Observed" = "Observed", 
                                                "model" = "Simulated"),
-                                    values = c("#FDAE61", "grey"))
+                                    values = c("#FDAE61", "grey")) +
+        ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size = 10)))
     
     
     ggplot2::ggsave("figures/recruitmentAdultRichness7.png",
@@ -391,7 +393,7 @@
                          fill = "white") + 
         ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::geom_point(size = 0.1, alpha = 0.3 ) + 
-        hrbrthemes::theme_ipsum() +
+        ggplot2::theme_classic() +
         ggplot2::theme(legend.title = ggplot2::element_blank()) +
         ggplot2::labs(y = bquote(bar(H) * " recruitment"),
                       x = bquote(bar(H) * " stand")) +
@@ -400,7 +402,8 @@
         ggplot2::geom_abline() +
         ggplot2::scale_color_manual(labels = c("Observed" = "Observed", 
                                                "model" = "Simulated"),
-                                    values = c("#FDAE61", "grey"))
+                                    values = c("#FDAE61", "grey")) +
+      ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size = 10)))
     
     
     ggplot2::ggsave("figures/recruitmentAdultRichness10.png",
@@ -437,7 +440,7 @@
                                       y = ShannonIndexAllAgesMEAN,
                                       color = dbh),
                          fill = "white") + 
-        hrbrthemes::theme_ipsum() +
+        ggplot2::theme_classic() +
         ggplot2::coord_cartesian(xlim = c(0, 2.5), ylim = c(0, 2.5)) +  
         ggplot2::geom_point(size = 0.6, alpha = 0.7 ) + 
         ggplot2::labs(y = bquote(bar(H) * " simulated stand"),
@@ -451,7 +454,8 @@
                                                   label = label)) +
         ggplot2::scale_color_manual(values = c("7" = "#FDAE61", "10" = "grey"),
                                     name = "Diameter threshold",
-                                    labels = c("7" = '7 cm', "10" = '10 cm'))
+                                    labels = c("7" = '7 cm', "10" = '10 cm'))+
+      ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size = 10)))
     
     ggplot2::ggsave("figures/allAgesRichness.png",
                     plot = e,
@@ -489,7 +493,7 @@
                          fill = "white") + 
         ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 2)) +  
         ggplot2::geom_point(size = 0.6, alpha = 0.7 ) + 
-        hrbrthemes::theme_ipsum() +
+        ggplot2::theme_classic() +
         ggplot2::labs(y = bquote(bar(H) * " simulated recruitment"),
                       x = bquote(bar(H) * " observed recruitment")) +
         ggplot2::facet_wrap(~model) +
@@ -737,7 +741,7 @@
     
     # What attribute is more and least complex per model?
     complexitySum <- merge(maxAtt, minAtt, by = "model")
-    complexitySum <-  merge(complexitySum,  modelComp, by = "model" )
+    complexitySum <- merge(complexitySum, modelComp, by = "model" )
     complexitySum[order(complexitySum$complexityRegen),]
     
     # Across models complexity
@@ -774,6 +778,7 @@
                                  "complexity", "overestimation" )
     tableCompOver <- tableCompOver[, c("model2", "complexity", 
                                          "overestimation")]
+    
   
     write.csv(tableCompOver,"figures/tableCompOver.csv", row.names = FALSE)
     
