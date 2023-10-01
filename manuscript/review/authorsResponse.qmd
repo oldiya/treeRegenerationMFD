@@ -591,7 +591,9 @@ L200-202 "The observations used here are derived from a novel and unprecedented 
 
 ##### Response to comment 24:
 
-We agree with the reviewer's comment that there are other forest inventory data networks outside Central Europe even on forest reserves that could provide this sort of data. However, the EuFoRIa network is indeed novel and unprecedented network in Central Europe.
+We agree with the reviewer's comment that there are other forest inventory data networks outside Central Europe even on forest reserves that could provide this sort of data. However, within Europe no such data existed before. The research network (EuFoRIa) was established in 2019 and therefor is in fact novel, and within Europe such data is also without precedence.
+
+Yet we acknowledge that our statement needs to be put in a European context much clearer. We hope that our adjustments to the text resolve the exaggeration of our initial formulation.
 
 #### **COMMENT 26**
 
@@ -972,24 +974,24 @@ L1077 Explain the fitted curves
 We are not sure if we are correctly understanding the reviewers point here. In figure 8 we do not show any fitted curves.
 	
 
-					
+​					
 
-				
+​				
 
-			
+​			
 
-		
+​		
 
-	
+​	
 
-					
+​					
 
-				
+​				
 
-			
+​			
 
-		
+​		
 
-	
+​	
 
 ## Other changes made in the manuscript
