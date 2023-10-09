@@ -35,7 +35,11 @@ date: last-modified
 link-citations: true
 linkcolor: blue
 number-sections: true
-format: pdf
+format: 
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
 ---
 
 # Internal instructions
@@ -365,7 +369,7 @@ I felt the readability of the paper would be improved by introducing a "road map
 
 We have added a "road map" at the end of the introduction.
 
-### [COMMENT 3]{.underline}
+### COMMENT 3
 
 The words "ingrowth", "regeneration" and "recruitment" are used interchangeably to describe the recruitment of new trees into the 7-cm diameter class.  I would encourage the authors to use the term "ingrowth" or "recruitment" to this to describe this process,  and keep "regeneration" as an overarching term describing the entire process of seed production, dispersal, early establishment, and onward growth.
 
@@ -457,7 +461,7 @@ L96-98 Particularly given your conclusion that the models are poor at predicting
 
 Response to comment 13:
 
-It is indeed interesting to account with the increasing data availability to better understand tree regeneration processes. However, we believe that the main take away it is not that it would be impossible to calibrate all 15 models against e.g. the EuFoRIa data to better capture regeneration, but that the focus should be in the study goals. And when the goal is to provide extrapolation into a future climate, then calibration against data under current climate may be unreliable. With the approach we have followed in this study where we have asked the models to simulate forest dynamics and capture regeneration without statistical predetermination we can better assess their behavior and understand how their current model structures and inclusion of exclusion of certain ecological processes impact the outputs we are seeing.
+It is indeed interesting to account with the increasing data availability to better understand tree regeneration processes. However, we believe that the main take away it is not that it would be impossible to calibrate all 15 models against e.g. the EuFoRIa data to better capture regeneration, but that the focus should be in the study goals. And when the goal is to provide extrapolation into a future climate, then calibration against data under current climate may be unreliable. With the approach we have followed in this study where we have asked the models to simulate forest dynamics and capture regeneration without statistical parametrisation we can better assess their behavior and understand how their current model structures and inclusion of exclusion of certain ecological processes impact the outputs we are seeing.
 
 ### COMMENT 14
 
@@ -483,7 +487,7 @@ L112-114 "A related issue is the excessive reduction of species diversity due to
 
 [ToDo find a reference!Any suggestions?]{.underline}
 
-### **COMMENT 17**
+### COMMENT 17
 
 L127 I suggest making better use of the hanbury-brown 2022 review.
 
