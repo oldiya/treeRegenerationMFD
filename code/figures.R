@@ -8,7 +8,7 @@
 
 # Load plotting styles 
 
-    source("code/plottingManuscript.R")
+overDTsim    source("code/plottingManuscript.R")
 
 # Load data ----
 
@@ -220,7 +220,7 @@
     
     sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
                                       data = dat710[!dat710$model == "aDGVM2", ],
-                          group.by = "model", method = "t.test")
+                                      group.by = "model", method = "t.test")
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
     
@@ -454,7 +454,7 @@
                                                   label = label)) +
         ggplot2::scale_color_manual(values = c("7" = "#FDAE61", "10" = "grey"),
                                     name = "Diameter threshold",
-                                    labels = c("7" = '7 cm', "10" = '10 cm'))+
+                                    labels = c("7" = '7 cm', "10" = '10 cm')) +
       ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size = 10)))
     
     ggplot2::ggsave("figures/allAgesRichness.png",
@@ -505,7 +505,8 @@
                            show.legend = FALSE) +
         ggplot2::scale_color_manual(values = c("7" = "#FDAE61", "10" = "grey"),
                                     name = "Diameter threshold",
-                                    labels = c("7" = '7 cm', "10" = '10 cm')) 
+                                    labels = c("7" = '7 cm', "10" = '10 cm')) +
+      ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(size = 10)))
 
     
     ggplot2::ggsave("figures/recruitmentRichness.png",
@@ -821,7 +822,7 @@
                                     ref.group = "Observed", method = "t.test")
     write.csv(rtreesDiff ,"figures/rtreesDiff.csv", row.names = FALSE)
     
-    
+   
 ### feedback / not feedback H simulated vs observed -----  
 
     dat710 <- ShannonIndex |>  
@@ -835,6 +836,10 @@
                                         data = dat7H[!dat7H$model == "aDGVM2", ], 
                                         ref.group = "Observed", method = "t.test")
     write.csv(rtreesDiff, "figures/sigH7_SimObs.csv", row.names = FALSE)  
+    
+    
+    
+    
     
     
 # Recruitment niche-----
