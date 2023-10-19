@@ -1648,8 +1648,7 @@ at all sites the equilibrium was reached.
 #### More simulations per site
 
 TreeMig simulates directly the mean dynamics of entire stands, but based
-on the variability of light conditions within the stand [distribution
-based approach, Lischke, 1998, aggregation. To come up with the required
+on the variability of light conditions within the stand (distribution based approach, cf. Lischke et al. 1998). To come up with the required
 200 random patches of 1 ha, temporal and spatial variability intrinsic
 to TreeMig were combined. Temporal variability was given by sampling
 from each decade of the last 100 years of the simulation, i.e. years

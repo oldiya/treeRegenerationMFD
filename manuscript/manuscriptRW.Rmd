@@ -1344,11 +1344,3 @@ basal area of the species and the total regeneration basal area for all
 the species.
 
 \newpage
-
-# Figures
-
-```{r diff, echo=FALSE, fig.cap=".", out.width='100%', out.height= '85%'}
-knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_7.png"))
-```
-
-\newpage

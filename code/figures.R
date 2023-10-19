@@ -159,11 +159,11 @@
                                                                na.rm = TRUE)),
                             colour = "#990000", linetype = "dashed") 
     
-    ggplot2::ggsave("figures/recOverAll710.png",
+    ggplot2::ggsave("figures/Figure2.jpg", 
                     plot =  recOverAll,
                     width = 21, height = 12, scale = 0.9,
                     dpi = 300, units = "cm", 
-                    device = 'png') 
+                    device = 'jpg') 
     
 # Diversity in recruitment ----
 
@@ -210,10 +210,10 @@
                                                                c(0.75))),
                             colour = "#990000", linetype = "dashed") 
     
-    ggplot2::ggsave("figures/H7_10.png",
+    ggplot2::ggsave("figures/Figure3.jpg",
                     plot =   H7_10,
                     width = 21, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png')
+                    dpi = 300, units = "cm", device = 'jpg')
     
     
     # Significant difference per model between 7 and 10 diameter threshold
@@ -351,11 +351,11 @@
                                   bottom = grid::grid.text("Observed", 
                                                            gp = grid::gpar(cex = 1.3)))
     
-    ggplot2::ggsave("figures/combined_richness.png",
+    ggplot2::ggsave("figures/Figure4.jpg",
                     plot = xx,
                     dpi = 300, 
                     width = 20, height = 18, scale = 0.9,
-                    units = "cm", device = 'png')
+                    units = "cm", device = 'jpg')
     
     
     #### FigS. rec vs all 7cm ----
@@ -568,10 +568,10 @@
                                  values =  values_color[names(values_color) %in% unique(mortAll$model)],
                                  guide = "none")
     
-    ggplot2::ggsave("figures/ratio7_10.png",
+    ggplot2::ggsave("figures/Figure5.jpg",
                     plot = ratio7_10,
                     width = 21, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png') 
+                    dpi = 300, units = "cm", device = 'jpg') 
     
     
     mortAll$nn710 <-  as.numeric(as.character(mortAll$nn710))
@@ -649,10 +649,10 @@
       ggplot2::annotate("text", x = 8.5, y = 1.81, label = "Reineke self-thinning") + 
       ggplot2::annotate("text", x = 7.9, y = 1.03, label = "Ratio equal to 1")
     
-    ggplot2::ggsave("figures/mort7_10_medianOver.png",
+    ggplot2::ggsave("figures/Figure6.jpg",
                     plot =  overMortmedian,
                     width = 18, height = 12, scale = 0.9,
-                    dpi = 300, units = "cm", device = 'png')  
+                    dpi = 300, units = "cm", device = 'jpg')  
     
     
     #### FigS. R change from 7 ----   
@@ -827,10 +827,10 @@
     
     #### GLME -----
     
-    rtreesDiffGLME <- lme4::glmer(r.trees ~ model + (1 | site), 
-                                  family = poisson(link = "log"), 
+    rtreesDiffGLME <- lme4::glmer(r.trees ~ model + (1 | site),
+                                  family = poisson(link = "log"),
                                   data = overDTsim[overDTsim$dbh == 7,],
-                                  verbose = 1, optimizer="nloptwrap")
+                                  verbose = 1)
     
   
     
@@ -850,7 +850,10 @@
     write.csv(rtreesDiff, "figures/sigH7_SimObs.csv", row.names = FALSE)  
     
     
-    
+    sigH7_SimObsGLME <- lme4::lmer(r.trees ~ model + (1 | site),
+                                  family = gaussian(link = "identity"),
+                                  data = dat7H[!dat7H$model == "aDGVM2", ],
+                                  verbose = 1)
     
     
     
@@ -1380,6 +1383,13 @@
                       width = 27, height = 60, scale = 0.9,
                       dpi = 300, units = "cm", device = 'png') 
       
+      if(dbhSel == 7) {
+        ggplot2::ggsave("figures/Figures8.jpg",
+                        plot = heatCircle,
+                        width = 27, height = 60, scale = 0.9,
+                        dpi = 300, units = "cm", device = 'jpg') 
+      }
+      
       print(paste0("Range of values for recruited BA share and threshold ",dbhSel, " is ", 
                    range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[1], "-",
                    range(mainSppBAshareBinsMeanDiff$r.baTot.r.ShareMean)[2] ))
@@ -1429,18 +1439,18 @@
     
     ###### DO NOT RUN #########
 
-    #Add location
-    #location <- data.table::fread("data/coords_blurred_dt4326.csv")
-
-    #domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
-    #domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
-
-    #domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
-    #domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
-
-    # Species to be plotted
-    #unique(domSpp10$stand)
-
+    # #Add location
+    # location <- data.table::fread("data/coords_blurred_dt4326.csv")
+    # 
+    # domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
+    # domSpp7 <- merge(domSpp7, location, by.x = "site", by.y = "cluster_plot_id200")
+    # 
+    # domSpp10 <- merge(standSpp, recruitSpp10, by = "site")
+    # domSpp10 <- merge(domSpp10, location, by.x = "site", by.y = "cluster_plot_id200")
+    # 
+    # # Species to be plotted
+    # unique(domSpp10$stand)
+    # 
     # library(tidyverse)
     # library(sf)
     # library(rnaturalearth)
@@ -1476,10 +1486,10 @@
     #                                    "Fraxinus excelsior" = expression(italic("Fraxinus excelsior")),
     #                                    "Alnus glutinosa" = expression(italic("Alnus glutinosa")),
     #                                    "Tilia cordata" = expression(italic("Tilia cordata")))
-    #                                 
+    # 
     #                                 )) + theme(legend.text.align = 0)
     # 
-    # ggplot2::ggsave("figures/theMap.png",
+    # ggplot2::ggsave("figures/Figure1.jpg",
     #                 plot =   plotsMap,
     #                 width = 21, height = 12, scale = 0.9,
     #                 dpi = 300, units = "cm", device = 'png')
