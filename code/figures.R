@@ -8,7 +8,7 @@
 
 # Load plotting styles 
 
-overDTsim    source("code/plottingManuscript.R")
+    source("code/plottingManuscript.R")
 
 # Load data ----
 
@@ -223,6 +223,9 @@ overDTsim    source("code/plottingManuscript.R")
                                       group.by = "model", method = "t.test")
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
+    
+    
+    # GLME 
     
    
     ### Fig. H obs. VS sim. in stand and recruitment  ----
@@ -818,9 +821,18 @@ overDTsim    source("code/plottingManuscript.R")
     
   
     rtreesDiff <- ggpubr::compare_means(r.trees ~ model,  
-                                    data = overDTsim, 
+                                    data = overDTsim[overDTsim$dbh == 7,], 
                                     ref.group = "Observed", method = "t.test")
-    write.csv(rtreesDiff ,"figures/rtreesDiff.csv", row.names = FALSE)
+    write.csv(rtreesDiff, "figures/rtreesDiff.csv", row.names = FALSE)
+    
+    #### GLME -----
+    
+    rtreesDiffGLME <- lme4::glmer(r.trees ~ model + (1 | site), 
+                                  family = poisson(link = "log"), 
+                                  data = overDTsim[overDTsim$dbh == 7,],
+                                  verbose = 1, optimizer="nloptwrap")
+    
+  
     
    
 ### feedback / not feedback H simulated vs observed -----  
