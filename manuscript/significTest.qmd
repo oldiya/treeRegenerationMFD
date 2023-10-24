@@ -1,0 +1,250 @@
+---
+title: "signifTest"
+format: pdf
+editor: visual
+---
+
+## Test of significant differences between observed and models simulations and between 7 and 10 cm
+
+### Summary (potential response to reviewer)
+The objective of running the different t-tests were to allow us for discussing irrefutable differences between mean values per site between models and observations and between 7 and 10cm diameter thresholds. The t-test, as employed in our study, is not intended to serve as definitive proof of our findings and we have deliveratively avoid over-interpretation of their outcomes. Rather, it serves as a practical tool for managing the extensive number of comparisons in our study. As such, we intend to include a statement in the manuscript:
+
+"Note that the t-test does not present conclusive evidence for a specific hypotheses, but rather facilitates managing the extensive number of comparisons discussed in our study."
+
+Following the reviewers comment we included a correction for multiple testing although we are aware that all corrections have pros and cons. We use the Bonferroni correction to make sure that the actual Type I error probability for the combined H0 is smaller or equal than the nominal test level. 
+
+Regarding the other alternative approaches suggested by the reviewer: We can not do a paired t-test as the for paired samples it is necessary that you have the same number of subjects in both groups (observed and simulated) which is not the case. We tested the possibility of creating a GLME using as random effect the site and as a explanatory variables all the variables that we were interested in (model complexity, feedback, model type and scale) as suggested. However this approach will not give us the observed-model comparison that we wanted but a if any of these fixed explanatory variables can predict over or under representation of recruitment, which was not our intended goal.
+
+Following the reviewers comments we also did further testing to see if with other approaches we could better explain differences between observed and simulated values. We tested a mixed model to account for the randomness induce due to site (plot) differences. For example a glme model with the recruitment values as the response variable and models as the explanatory variable with observed data as the reference (with poisson distribution-count data). This worked well and the patterns were the same as in the t-test (expect for the model 4C). We also considered doing the same approach the shannon index and mortality differences but in this case we think it is more interesting to understand the mean differences across sites and therefore a t-test is a valid approach. We also tested a linear mixed model to assess differences between 7 and 10cm on the Shannon index creating a new parameter where the explanatory variable was a combination of the model and the diameter threshold, then we run a pairwise multiple comparisons to determine which means differ. The patterns here were also similar to the ones observed in the t-test except for the three landscape level models that were significant in this test contrary to the t-test. 
+
+We have included here 
+
+## Prepare the data for analysis
+
+```{r dataPrep}
+source("../code/plottingManuscript.R")
+
+# Recruitment data 
+outputsDF <- data.table::fread("../data/dataOutputs.csv")
+outputsDF$model[outputsDF$model == "Empirical"] <- "Observed"
+    
+# Assign models and dbh to levels 
+
+outputsDF$model <- factor(outputsDF$model, levels = modelsOrder)
+outputsDF$dbh <- factor(outputsDF$dbh, levels = c("7", "10"))
+    
+# Remove the 35 sites from the models data for threshold 7cm 
+# as they do not have observations for those sites
+
+sitesWoObs <- outputsDF[is.na(outputsDF$r.trees), ]
+outputsDF <- outputsDF[!(outputsDF$dbh == 7 & outputsDF$site %in% unique(sitesWoObs$site)), ]   
+
+# Aggegate data based on site, sample, dbh and model/obs
+overDTsim <- outputsDF |> 
+      dplyr::group_by(site, sample, dbh, model) |>
+      dplyr::summarise(r.trees = sum(r.trees),
+                       r.ba = sum(r.ba),
+                       Totba = unique(Totba)) |>
+      dplyr::group_by(site, dbh, model) |>
+      dplyr::summarise(r.trees = mean(r.trees),
+                       r.ba = mean(r.ba),
+                       Totba = mean(Totba))
+
+# Shannon index data 
+  ## Recruitment Shannon index  by basal area ----
+    ShannonDF <- outputsDF 
+    ShannonDF$giDIVG <- ShannonDF$r.ba / ShannonDF$Totr.ba
+    ShannonDF$lngiDIVG <- log(ShannonDF$r.ba / ShannonDF$Totr.ba)
+    ShannonDF$mult <- round(ShannonDF$giDIVG * ShannonDF$lngiDIVG, 2)
+    
+    # Sum across species in each observation
+    ShannonIndex <- data.frame(cbind(aggregate(mult ~ site + sample + model + dbh,
+                                               sum, data = ShannonDF)))
+    
+    ShannonIndex$mult <- (-1) * (ShannonIndex$mult)
+    colnames(ShannonIndex) <- c("site", "sample", "model", "dbh",
+                                "ShannonIndexRecruit")
+    
+    ## Stand Shannon index ----
+    ShannonDFAll <- outputsDF 
+    ShannonDFAll$giDIVG <- ShannonDFAll$ba / ShannonDFAll$Totba
+    ShannonDFAll$lngiDIVG <- log(ShannonDFAll$ba / ShannonDFAll$Totba)
+    ShannonDFAll$mult <- round(ShannonDFAll$giDIVG * ShannonDFAll$lngiDIVG, 2)
+    
+    # Sum across species per site and sample
+    ShannonIndexAll <- data.frame(cbind(aggregate(mult ~ site + sample + model + dbh,
+                                                  sum, data = ShannonDFAll)))
+    
+    ShannonIndexAll$mult <- (-1) * (ShannonIndexAll$mult)
+    colnames(ShannonIndexAll) <- c("site", "sample", "model",
+                                   "dbh", "ShannonIndexAllAges")
+    
+    ShannonIndex <- merge(ShannonIndex, ShannonIndexAll, by = c("site", "sample",
+                                                                "model","dbh"))
+    
+    ## Relative Shannon index ----
+    
+    ShannonIndex$relShannon <- ShannonIndex$ShannonIndexRecruit / ShannonIndex$ShannonIndexAllAges
+    
+     dat710 <- ShannonIndex |>  
+      dplyr::group_by(model, site, dbh) |> 
+      dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
+      dat710$dbh <- ordered(dat710$dbh, levels = c("7", "10"))
+    
+    dat7H <- dat710[dat710$dbh == "7", ]
+    
+    
+# data preparation mortality 
+    # Data preparation    
+    dataMort <- outputsDF[outputsDF$species %in% c(selSpecies, aDVGMSpecies), ]
+    
+    treesTot <- dataMort |>
+      dplyr::group_by(model, site, sample, dbh) |>
+      dplyr::summarise(Tot.rtrees = sum(r.trees),
+                       dds = unique(dds),      
+                       wb = unique(wb))
+    meanTrees <- treesTot |>
+      dplyr::group_by(model, site, dbh) |>
+      dplyr::summarise(mean.rtrees = mean(Tot.rtrees),
+                       dds = unique(dds),  
+                       wb = unique(wb))
+    
+    meanTrees7 <- meanTrees[meanTrees$dbh == 7,]
+    colnames(meanTrees7) <- c("model", "site", "dbh", "nn7", "dds", "wb")
+    meanTrees7 <- meanTrees7[, c("model", "site", "nn7")]
+    meanTrees10 <- meanTrees[meanTrees$dbh == 10,]
+    colnames(meanTrees10) <- c("model", "site", "dbh", "nn10", "dds", "wb")
+    meanTrees10 <- meanTrees10[, c("model", "site", "nn10",  "dds", "wb")]
+    
+    mortAll <- merge(meanTrees7, meanTrees10, by = c("model","site"))
+    mortAll$nn710 <- mortAll$nn7 / mortAll$nn10
+    
+    # the plot 
+    ratio7_10 <- ggplot2::ggplot(mortAll, ggplot2::aes(y = nn710, x = model, 
+                                                     fill = model)) + 
+      ggplot2::geom_boxplot() +
+      ggplot2::geom_hline(ggplot2::aes(yintercept = 1), colour = "darkblue", 
+                          linetype = "dashed") +
+      ggplot2::geom_hline(ggplot2::aes(yintercept = 1.77), colour = "darkblue",
+                          linetype = "dashed") +
+      ggplot2::ylim(c(0,4)) +
+      ggplot2::xlab(label = "") +
+      ggplot2::ylab(label = "Ratio of recruitment (7 and 10 cm)") +
+                    # bquote(bar(R) * "(7cm) / " * bar(R) * "(10cm)")) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                     strip.text.y = ggplot2::element_text(angle = 0),
+                     legend.position = "none",
+                     panel.background = ggplot2::element_blank(), 
+                     axis.line = ggplot2::element_line(colour = "black"),
+                     legend.key =  ggplot2::element_blank(), 
+                     legend.title = ggplot2::element_blank(),
+                     strip.background =  ggplot2::element_blank()) +
+      ggplot2::scale_fill_manual(labels = labels[names(labels) %in%  unique(mortAll$model)],
+                                 values =  values_color[names(values_color) %in% unique(mortAll$model)],
+                                 guide = "none")
+    
+    ggplot2::ggsave("figures/Figure5.jpg",
+                    plot = ratio7_10,
+                    width = 21, height = 12, scale = 0.9,
+                    dpi = 300, units = "cm", device = 'jpg') 
+    
+    
+    mortAll$nn710 <-  as.numeric(as.character(mortAll$nn710))
+   
+    
+```
+
+## Tree recruitment
+
+
+### T-test
+
+With this tests we wanted to see if the recruitment levels simulated per each model were different from the observations. We have included the bonferroni correction due to multiple testing. 
+
+```{r t-testR7, warning=FALSE}
+rtreesDiff <- ggpubr::compare_means(r.trees ~ model,  
+                                    data = overDTsim[overDTsim$dbh == 7,], 
+                                    ref.group = "Observed",
+                                    method = "t.test",
+                                    p.adjust.method = "bonferroni")
+
+# Clean the table 
+rtreesDiff$method <- NULL
+rtreesDiff$p.adj <- NULL
+rtreesDiff$p <- NULL
+```
+
+```{r t-testR7T, warning=FALSE, echo=FALSE}
+library(knitr)
+kable(rtreesDiff)
+```
+
+The conclusion here is, all the models except 4C have significantly different mean values per site of recruitment levels when compared with the observed data. 
+
+### GLME
+
+Here we try to also check if the recruitment levels simulated per each model were different from the observations but taking into consideration the random effects caused by the simulations being done at different sites. As here we are dealing with count data we use the poisson distribution. 
+
+```{r glmeRtrees7,  warning=FALSE}
+  nomeansdata <- outputsDF |> 
+     dplyr::group_by(site, sample, dbh, model) |>
+     dplyr::summarise(r.trees = sum(r.trees),
+                      r.ba = sum(r.ba),
+                      Totba = unique(Totba))
+
+   dataGLMrtrees2 <- nomeansdata[nomeansdata$dbh == 7,]
+   dataGLMrtrees2$r.trees <- as.integer(dataGLMrtrees2$r.trees) 
+   rtreesDiffGLME2 <- lme4::glmer(r.trees ~ model + (1 | site),
+                                  family = poisson(link = "log"),
+                                  data =  dataGLMrtrees2)
+   
+   summary(rtreesDiffGLME2)
+   
+```
+
+Contrary to the t-test, here all the models are significantly different to the observed data, so when taking into consideration the variability per site and not only the mean value per site, then also 4C is significantly different. 
+
+
+## Shannons index -Models with feedback and wo feedback and observations
+
+### T-test
+
+With this tests we wanted to see if the mean Shannon index values per site simulated per each model were different from the observations.
+```{r t-testH7, warning=FALSE}
+HtreesDiff <- ggpubr::compare_means(ShannonIndexRecruit ~ model, 
+                                    data = dat7H[!dat7H$model == "aDGVM2", ], 
+                                    ref.group = "Observed", method = "t.test",
+                                    p.adjust.method = "bonferroni")
+
+# Clean the table 
+HtreesDiff$method <- NULL
+HtreesDiff$p.adj <- NULL
+HtreesDiff$p <- NULL
+```
+
+```{r t-testH7T, warning=FALSE, echo=FALSE}
+library(knitr)
+kable(HtreesDiff)
+```
+
+The conclusion here is, that when looking at mean values per site, few models match the observed species diversity in recruitment (not significantly different).                                     
+                                        
+### LMM
+Here we try to also check if the Shannon index obtained from the simulations in each model were different from the observations but taking into consideration the random effects caused by the simulations being done at different sites. As here we are dealing with and index that starts from 0, we assumed a Gaussian distribution. 
+
+```{r ,  warning=FALSE, message = FALSE}
+  ShannonIndex7 <- ShannonIndex[ShannonIndex$dbh == "7", ]
+    ShannonIndex7$ShannonIndexRecruit[ShannonIndex7$ShannonIndexRecruit < 0] <- 0
+    sigH7_SimObsGLME2 <- lme4::lmer(ShannonIndexRecruit ~ model + (1 | site),
+                                    data = ShannonIndex7[!ShannonIndex7$model == "aDGVM2", ])
+    summary(sigH7_SimObsGLME2)
+```
+
+No significant differences of the models with the observed data, because here we are taking into consideration the variability at the different sites which is large. This answer might be also interesting but not the intended analysis I think. The conclusion here would be that none of the models matched species diversity in recruitment when accounting for site variability.
+
+## Mortality
+
+
+
+
+
