@@ -15,13 +15,13 @@ author:
 - Christian	Hochauer$^6$,
 - Manfred J. Lexer$^6$,
 - Heike	Lischke$^7$,
-- Mats Mahnken$^8$,
-- Paola	Mairota$^9$,
-- Ján Merganič$^{10}$,
-- Katarina Merganičová$^{11,12}$,
-- Tobias Mette$^{13}$,
-- Marco Mina$^{14}$,
-- Xavier Morin$^{15}$
+- Paola	Mairota$^8$,
+- Ján Merganič$^{9}$,
+- Katarina Merganičová$^{10,11}$,
+- Tobias Mette$^{12}$,
+- Marco Mina$^{13}$,
+- Xavier Morin$^{14}$
+- Mats Nieberg,$^{15}$,
 - Werner Rammer$^4$,
 - Christopher P.O. Reyer$^8$,
 - Simon	Scheiter$^2$,
@@ -114,27 +114,27 @@ landscape, and global levels, we simulate tree regeneration at 200 sites
 representing large environmental gradients across Central Europe. The
 results are evaluated against extensive data from unmanaged forests.
 
-Most of the models overestimate recruitment levels, which is only
-compensated in some models by high simulated mortality rates in the
-early stages of individual trees dynamics. Simulated species diversity
-of recruitment matches the observed ranges. Models simulating higher
-species diversity at the stand level do not present higher species
-diversity in the recruitment layer. The effect of light availability on
-recruitment levels is captured better than the effect of temperature and
-soil moisture, but patterns are not consistent across models. Increasing
-complexity in the tree regeneration modules of the models is not related
-to higher accuracy of simulated tree recruitment. Furthermore,
-individual model design is more important than scale (stand, landscape,
-global) and approach (empirical, process-based) for accurately capturing
-tree regeneration.
+Most of the models overestimate recruitment levels, which is compensated
+only in some models by high simulated mortality rates in the early
+stages of individual tree dynamics. Simulated species diversity of
+recruitment generally matches observed ranges. Models simulating higher
+stand-level species diversity do not feature higher species diversity in
+the recruitment layer. The effect of light availability on recruitment
+levels is captured better than the effects of temperature and soil
+moisture, but patterns are not consistent across models. Increasing
+complexity in the tree regeneration modules is not related to higher
+accuracy of simulated tree recruitment. Furthermore, individual model
+design is more important than scale (stand, landscape, global) and
+approach (empirical, process-based) for accurately capturing tree
+regeneration.
 
 Despite the mismatches between simulation results and data, it is
 remarkable that most models capture the essential features of the highly
 complex process of tree regeneration, while not having been
 parameterized with such data. We conclude that much can be gained by
-evaluating and refining the modeling of regeneration processes. This has
-the potential to render long-term projections of forest dynamics under
-changing environmental conditions that are much more robust.
+evaluating and refining the modeling of tree regeneration processes.
+This has the potential to render long-term projections of forest
+dynamics under changing environmental conditions much more robust.
 
 \newpage
 
@@ -152,8 +152,8 @@ the impacts of climate [@bugmann2022]. From these studies, it is evident
 that we have a reasonably good understanding how to model tree growth
 [@vanclay1997; @bugmann1996], and substantial efforts have been
 dedicated to improving the representation of tree mortality
-[@bugmann2019; @cailleret2017]. In contrast, tree regeneration is a much
-less studied process that is often represented rather coarsely in models
+[@bugmann2019; @cailleret2017]. In contrast, tree regeneration is much
+less studied and is often represented rather coarsely in models
 [@walck2011; @leishman1992; @price2001]. This presents an important
 research gap, particularly in the context of climate-induced forest
 disturbances and forest resilience.
@@ -180,19 +180,19 @@ in space and time [e.g., @ribbens1994].
 Overall, models are needed to (1) synthesize existing empirical data and
 explore their relationships, (2) assess future tree regeneration e.g. in
 the context of global change scenarios, and (3) identify the most
-important processes that are shaping ecological patterns. Given the
-current strategies that are used in models of forest dynamics to
-represent tree regeneration, model behavior often is prone to problems,
-such as very high levels of tree regeneration that necessitate excess
-mortality at early stages of tree life to simulate correct stand
-structure and composition [@kroiss2015]. Also, inadequately high species
-diversity in tree regeneration may be simulated, which is characteristic
-of "classical" forest gap models [@gutiérrez2016], at least as long as
-the simulation set-up comprises a multitude of species. Some models use
-calibration against local canopy-level data to constrain simulated
-regeneration levels, which is likely to hamper the general applicability
-of these models e.g. under scenarios of climate change. Furthermore,
-correctly capturing the species composition in tree regeneration as a
+important processes that are shaping vegetation patterns. Given the
+strategies that are used in models of forest dynamics to represent tree
+regeneration, their behavior often is prone to problems, such as very
+high levels of tree regeneration that necessitate excess mortality at
+early stages of tree life to simulate correct stand structure and
+composition [@kroiss2015]. Also, inadequately high species diversity in
+tree regeneration may be simulated, which is characteristic of
+"classical" forest gap models [@gutiérrez2016], at least as long as the
+simulation set-up comprises a multitude of species. Some models use
+calibration against local canopy-level data to constrain simulated tree
+regeneration, which is likely to hamper the general applicability of
+these models e.g. under scenarios of climate change. Furthermore,
+correctly capturing the species composition of tree regeneration as a
 function of the presence of seed trees in the canopy is often a
 particular challenge, potentially leading to unrealistic successional
 drift in the model, which must be corrected by factors that are hard to
@@ -206,10 +206,10 @@ simulated species composition is usually exceedingly sensitive to
 assumptions about seed availability, whereas the parameters of such
 functions are poorly constrained by field data. Lastly, there is often a
 problem with insufficient observational constraints on parameter values
-for models that start from very small tree sizes (e.g., 10 cm in height
-or even seeds) and track tree development in a process-oriented manner
-by considering a multitude of ecological influences, rather than
-emphasizing tree regeneration into a larger size class [e.g.,
+for models that start from very small tree sizes (e.g., 10 cm in height,
+or even from seed) and track tree development in a process-oriented
+manner by considering a multitude of ecological influences, rather than
+emphasizing tree recruitment into a larger size class [e.g.,
 @wehrli2006].
 
 Modeling tree regeneration processes is challenging, and even in
@@ -220,14 +220,15 @@ processes within one species along environmental gradients, let alone
 for a vast suite of species. Data on forest regeneration are often
 fragmented, which constitutes a major problem for model building
 [@clark1999a]. For example, monitoring on permanent plots (such as
-National Forest Inventories) often measures tree regeneration
-[@zell2019], however with a design that captures the rate after the
-stand initiation phase [@hallsby2015]. Data from permanent plots,
-although available across regions, are also highly heterogeneous,
-rendering their use difficult in a modeling context [@käber2021], and
-targeted studies to measure tree regeneration on experimental sites are
-often limited in spatial extent, species studied, or the sub-set of
-processes that are targeted [@berdanier2016; @collet2006].
+National Forest Inventories) often measures the ingrowth of new trees
+into a specific size class [@zell2019], however with a design that
+captures the rate after the stand initiation phase [@hallsby2015]. Data
+from permanent plots, although available across regions, are also highly
+heterogeneous, rendering their use difficult in a modeling context
+[@käber2021]. Lastly, targeted studies to measure tree regeneration on
+experimental sites are often limited in spatial extent, species studied,
+or the sub-set of processes that are investigated [@berdanier2016;
+@collet2006].
 
 Thus, a focus on the modeling of tree regeneration processes is sorely
 needed and overdue [@price2001; @walck2011] if we are to make reliable
@@ -247,7 +248,7 @@ tree regeneration patterns in nature and the large number of factors
 driving and constraining this process --- including some that are not
 incorporated explicitly in most models, such as deer browsing --- we do
 not aim for a detailed statistical evaluation of each model. Instead, we
-aim to evaluate the general regeneration patterns and magnitudes
+aim to evaluate the general recruitment patterns and magnitudes
 simulated by the models, and benchmark the simulated regeneration niche
 of multiple species against empirical data along a wide environmental
 gradient of temperature, moisture, and light availability [@grubb1977].
@@ -256,45 +257,47 @@ More specifically, we aim to answer the following questions: (1) Are
 models of forest dynamics capturing accurately tree recruitment levels,
 initial tree species diversity and mortality in the recruitment? (2) Do
 model traits explain differences in model performance? (3) How well do
-the models capture total recruitment and individual species regeneration
-niches across environmental gradients of light availability,
-temperature, and soil moisture? We evaluate the performance of
-regeneration models by analyzing simulated data alongside observed data.
-Specifically, we examine tree species diversity, mortality rates in tree
-recruitment, and recruitment levels. Then, we link model traits (e.g.,
-complexity, scale) to performance, and we assess whether modeled total
-recruitment or individual species regeneration niches (i.e.,
-proportional recruitment along an environmental gradient) align with
-observational data.
+the models capture total recruitment and the regeneration niches of
+individual species across environmental gradients of light availability,
+temperature, and soil moisture?
+
+We evaluate the performance of the models by analyzing simulated data
+alongside observed data. Specifically, we examine tree species
+diversity, mortality rates in tree recruitment, and recruitment levels.
+Then, we link model traits (e.g., complexity, scale) to performance, and
+we assess whether modeled total recruitment or individual species
+regeneration niches (i.e., proportional recruitment along an
+environmental gradient) align with observational data.
 
 # Material and methods
 
 ## Models
 
 Fifteen models of forest dynamics (including two models featuring model
-variants) were used to simulate forest dynamics at the stand, landscape
-or global scale (Table \@ref(tab:tableModels)). The approaches used for
-model construction and their origin differ strongly, with most of the
-models featuring a largely "process-based" approach, whereas two models
-are based on formulations derived from the statistical analysis of
-inventory data (SIBYLA and xComp). Some of the models largely rely on
-the original approach underlying forest gap models (e.g., ForClim 1),
-whereas some are based on plant ecophysiological processes (e.g.,
-FORMIND and iLand). The different approaches underlying the models have
-strongly influenced the formulation of tree regeneration processes.
+variants) developed for the stand, landscape or global scale were used
+to simulate forest dynamics (Table \@ref(tab:tableModels)). The
+approaches used for model construction and their origin differ strongly,
+with most of the models featuring a largely "process-based" approach,
+whereas two models are based on formulations derived from the
+statistical analysis of inventory data (SIBYLA and xComp). Some of the
+models largely rely on the original approach underlying forest gap
+models (e.g., ForClim 1), whereas some are based on plant
+ecophysiological processes (e.g., FORMIND and iLand). The different
+approaches underlying the models have strongly influenced the
+formulation of tree regeneration processes.
 
-The regeneration models can be differentiated into 'regeneration' and
-'recruitment' approaches [@vanclay1994; @konig_tree_2022]. *Regeneration
-models* include processes such as flowering and pollination, seed
-production, seed dispersal, germination, and seedling growth, which
-ultimately lead to the simulated number of established trees.
-*Recruitment models*, in contrast, introduce a number of new trees with
-certain characteristics such as biomass or diameter, without explicitly
-considering earlier development processes. We can further distinguish
-models that feature a feedback in the regeneration, i.e., where the
-level and species composition of regeneration is influenced by the
-existing adult tree community via the production of seeds, seedlings or
-saplings, from models that do not contain such a feedback.
+The models can be differentiated into 'regeneration' and 'recruitment'
+approaches [@vanclay1994; @konig_tree_2022]. *Regeneration models*
+include processes such as flowering and pollination, seed production,
+seed dispersal, germination, and seedling growth, which ultimately lead
+to the simulated number of established trees. *Recruitment models*, in
+contrast, introduce a number of new trees with certain characteristics
+such as biomass or diameter, without explicitly considering earlier
+development processes. We can further distinguish models that feature a
+feedback from stand properties to simulated recruitment, i.e., where the
+level and species composition of recruitment is influenced by the adult
+tree community via the production of seeds (or seedlings/saplings), from
+models that do not contain such feedback.
 
 The starting point for tree regeneration in the models differs as well,
 ranging from seedbank, seed or seedling to sapling (i.e., trees much
@@ -303,7 +306,7 @@ seed need to include a larger number of ecological processes such as
 germination and survival of young seedlings, whereas models that start
 from saplings have to aggregate via parameterizations several ecological
 processes that are not treated explicitly. This latter approach reduces
-model complexity but comes at the cost of blurring process
+model complexity but comes at the cost of blurred process
 representation.
 
 In the models used here, the overall complexity in the regeneration
@@ -311,23 +314,25 @@ modules varies considerably. Following @bugmann2022, we can classify
 seven models (iLand, PICUS, LandClim, ForCEEPS, LPJ-GUESS, ForClim and
 TreeMig) as having rather high complexity in their regeneration modules
 (mean regeneration formulation complexity across all processes \>0,
-Table \@ref(tab:tableModels)). Two models, ForClim and ForCEEPS, were
-used here with two alternative variants of regeneration. ForClim variant
-1 [@bugmann1996] is based on a regeneration module that adheres closely
-to the concept introduced by @botkin1972 which is an environmental
-filter considering species specific thresholds of light availability and
-climatic variables. Whereas ForClim variant 11 is adopting a slightly
-more complex approach where individual species properties and their
-relation to the environment are represented gradually along with the
-relative suitability of different species (i.e., competition among tree
-species) [@huber2020]. These two model variants allow us to evaluate a
-more process-based and complex module (variant 11) against a simple
-module (variant 1), while the rest of the model structure is identical.
-Similarly, the two ForCEEPS variants allow us to isolate the importance
-of the canopy feedback (i.e., simulated actual composition and relative
-abundance of species in the plot) via seed trees for the quantity and
-quality (e.g., diversity and composition) of simulated regeneration, as
-one variant includes this feedback whereas the other does not.
+Table \@ref(tab:tableModels)), whereas the other eight models feture
+relatively low complexity. Two models, ForClim and ForCEEPS, were used
+here with two alternative variants of regeneration. ForClim variant 1
+[@bugmann1996] is based on a regeneration module that adheres closely to
+the concept introduced by @botkin1972 which is based on environmental
+filters considering species-specific thresholds of light availability
+and climatic variables. In contrast, ForClim variant 11 is adopting a
+slightly more complex approach where individual species properties and
+their relation to the environment are represented gradually along with
+the relative suitability of different species (i.e., competition among
+tree species) [@huber2020]. These two model variants allow us to
+evaluate a more process-based and complex module (variant 11) against a
+simple module (variant 1), while the rest of the model structure is
+identical. Similarly, the two ForCEEPS variants allow us to isolate the
+importance of the canopy feedback (i.e., simulated actual composition
+and relative abundance of species in the plot) via seed trees for the
+quantity and quality (e.g., diversity and composition) of simulated
+regeneration, as one variant includes this feedback whereas the other
+does not.
 
 ## Observed data
 
@@ -338,39 +343,40 @@ gradients over a large number of sites, to evaluate how well
 regeneration is captured. The observations used here are derived from a
 novel network of sites in forest reserves that represent the range of
 environmental gradients in temperature and precipitation in Central
-Europe as compiled in the framework of the EuFoRIa network
-[@euforia2019; @käber2023] (Figure 1). The environmental coverage and
-the variety of forests represented by this data is unprecedented within
-Europe. These forests have been unmanaged for at least 10 years prior to
-their designation as reserves, and most of them provide time series of
-natural forest dynamics over multiple decades and up to ca. 80 years.
-The census periods range from 3 to 37 years, with an average of 14
-years. The data provide information at the tree level, thus allowing for
-the sequential comparison of processes such as individual-tree
-regeneration and death between the measurements.
+Europe as compiled in the EuFoRIa network [@euforia2019; @käber2023]
+(Figure 1). The environmental coverage and the variety of forests
+represented by this data is unprecedented within Europe. These forests
+have been unmanaged for at least 10 years prior to their designation as
+reserves, and most of them provide time series of natural forest
+dynamics over multiple decades and up to ca. 85 years. The census
+periods range from 3 to 37 years, with an average of 14 years. The data
+provide information at the tree level, thus allowing for the sequential
+comparison of processes such as individual-tree recruitment and death
+between the measurements.
 
 We selected 200 sites from this network as the benchmarking dataset for
-the simulation to be representative of the environmental variation
-contained in the data. This was achieved by applying k-means clustering
-to define 200 clusters of plots from the original set of 869 plots along
-the environmental dimensions of temperature, climatic water balance,
-soil quality, slope and aspect. Each of these sites featured at least
-two consecutive measurements. Recruitment minimum size thresholds for
-these sites differed between stem diameters of 0 and 10 cm. For our
-study, we defined two datasets where one included 165 sites with a
+the simulation, so as to be representative of the environmental
+variation contained in the data. This was achieved by applying k-means
+clustering to define 200 clusters of plots from the original set of 869
+plots along the environmental dimensions of temperature, climatic water
+balance, soil quality, slope and aspect. Each of these sites featured at
+least two consecutive measurements. Recruitment size thresholds ranged
+from stem diameters at breast height (dbh) from 0 to 10 cm. For our
+study, we defined two datasets, where one included 165 sites with a
 diameter threshold of 7 cm or lower, and the other included another 35
-sites with diameter thresholds from 10 cm. Therefore we had in total 200
-sites with observations of newly established trees above 10 cm and 165
-sites above 7cm. In the results section, any result from observed data
-at 7 cm threshold originated from the 165 sites.
+sites with diameter thresholds between 7 and 10 cm. Therefore we had in
+total 200 sites with observations of newly recruited trees above 10 cm
+and a subset of 165 sites with recruitment data above 7 cm. In the
+results section, any observations from the data at the 7 cm threshold
+originated from 165 sites.
 
 Plot size ranged from 0.02 ha to 5.52 ha, and the data were further
 processed and aggregated following @käber2023 to provide recruitment
 rates per ha and per decade. The observations used in this study
 featured 30,900 newly established trees. Recruitment rates per site,
-sample and decade ranged from zero to 1246 trees, with a mean of 56
+sample and decade ranged from zero to 1,246 trees, with a mean of 56
 trees. Adult species composition was also available for each plot. For
-more details on this dataset and the detailed regeneration information,
+more details on this dataset and the detailed recruitment information,
 cf. @käber2023.
 
 ## Simulation protocol
@@ -387,7 +393,7 @@ list of expected output variables. Neither were further site information
 or forest stand features provided prior to the simulation.
 
 The input variables were collected from different data sources and
-aggregated to be adapted to the needs of the different models. Time
+aggregated to be suitable for the needs of the different models. Time
 series of climatic variables from 1981 to 2018 were provided in hourly
 [Era5-land data, Muñoz Sabater -@muñozsabater2019], daily and monthly
 resolution [CHELSA data, Karger et al. -@karger2021]. Some variables
@@ -403,16 +409,16 @@ such as coordinates, with the exception of iLand and aDGVM2, which
 required blurred coordinates to derive highly detailed soil data.
 
 The simulations were run in the absence of natural disturbances. Only
-the model LPJ-GUESS had to include a background disturbance to increase
-chances of shade-intolerant species to establish. The simulations were
-set up to sample species-specific recruitment rates per decade and per
-ha in the equilibrium state of the model, typically entailing a
-"spin-up" run (as we did not provide any forest data). The modeling
-teams decided on the simulated area and how they derived these samples.
-The exact length of the simulation was also decided by the modeling
-teams (Table \@ref(tab:tableModels)). Further details on how each
-modeling team prepared the simulations and the outputs are available in
-Supplementary Material 1.
+the model LPJ-GUESS had to include a "background" disturbance
+probability to increase chances of shade-intolerant species to
+establish. The simulations were set up to sample species-specific
+recruitment rates per decade and per ha in the equilibrium state of the
+model, typically entailing a "spin-up" run (as we did not provide any
+forest data). The modeling teams decided on the simulated area and how
+they derived these samples. The exact length of the simulation was also
+decided by the modeling teams (Table \@ref(tab:tableModels)). Further
+details on how each modeling team prepared the simulations and the
+outputs are available in Supplementary Material 1.
 
 The simulations were run in the absence of management to a simulated
 equilibrium ("Potential Natural Vegetation") with the current climate,
@@ -425,18 +431,18 @@ EuFoRIA reserves, the latter may be more debatable. However, in the
 absence of detailed data on the history of each plot in the EuFoRIa
 network, some broad assumptions had to be made. Both the width of the
 regeneration niche (i.e., in environmental space) as well as the
-intensity of the regeneration process (i.e., the number of recruited
-trees per area and per unit of time) were of interest.
+intensity of recruitment (i.e., the number of recruited trees per area
+and per unit of time) were of interest.
 
 The simulations were run for mixed-species forests (not multiple
 single-species simulations) using mixtures of eleven species or genera
 for which regeneration data of sufficient quality were available from
 EuFoRIa: *Fagus sylvatica L., Picea abies L., Abies alba Mill., Carpinus
 betulus L., Tilia cordata Mill., Acer pseudoplatanus L., Betula spp. L.,
-Fraxinus excelsior L., Quercus spp. L., Alnus glutinosa L., Pinus
+Fraxinus excelsior L., Quercus spp. L., Alnus glutinosa L.,* and *Pinus
 sylvestris L.* The same set of species was used at all 200 sites. Two
 models included their standard set of species for the simulations, which
-is much larger (i.e., ForClim 1, ForClim 11, TreeMig), the species
+is much larger (i.e., ForClim 1, ForClim 11, TreeMig), and the species
 simulated beyond the eleven species were lumped in a category "others".
 In three models, fewer than these eleven species were simulated (4C,
 xComp, LPJ-GUESS) (Table \@ref(tab:tableModels)). In 4C only *Fagus
@@ -447,9 +453,10 @@ LPJ-GUESS, *Acer pseudoplatanus* and *Alnus glutinosa* are not
 parameterized and therefore these species could not be included in the
 simulation. Finally, the model aDGVM2 does not simulate individual
 species. Rather, community assembly processes and trait filtering
-generate plant communities that are adjusted to the biotic and abiotic
-conditions, and the simulated plants can be classified into ecological
-strategies based on their trait values in a post-processing step.
+generate plant communities that are adjusted to the local biotic and
+abiotic conditions, and the simulated plants can be classified into
+ecological strategies based on their trait values in a post-processing
+step.
 
 Each of the models reported the number of trees crossing the two
 diameter thresholds by sampling 200 times in a 10-year interval for each
@@ -526,14 +533,14 @@ for aDGVM2 as this model does not simulate individual species.
 Mortality in tree recruitment was assessed based on the ratio of
 recruitment between the 7 and 10 cm diameter thresholds. We used the
 Reineke self-thinning rule [@reineke1933; @pretzsch2005] as a reference
-to estimate whether the ratio of recruitment between the 7 and 10 cm
-diameter thresholds were above or below the expected theoretical rate.
-The Reineke self-thinning rule is usually calculated for even-aged,
-single species stands and assumes a fixed relationship between the
-number of stems and the quadratic mean diameter in fully stocked pure
-stands. The value used in our comparisons was 1.77 (i.e., we expect stem
-numbers at 7 cm to be 77% higher than at 10 cm), calculated using
-Equation \ref{eqReineke}.
+to estimate whether the ratio of recruitment between these two
+thresholds was above or below the expected theoretical rate. The Reineke
+self-thinning rule is usually calculated for even-aged, single species
+stands and is based on a fixed relationship between the number of stems
+and the quadratic mean diameter in fully stocked pure stands. The value
+used in our comparisons was 1.77 (i.e., we expect stem numbers at 7 cm
+to be 77% higher than at 10 cm), calculated using Equation
+\ref{eqReineke}.
 
 ```{=tex}
 \begin{equation}
@@ -542,25 +549,26 @@ Reineke = \frac{N7}{N10}^{-1.605} \label{eqReineke}
 ```
 We assessed model performance in relation to model traits focusing on
 (1) model complexity as defined by @bugmann2022, (2) model type
-(empirical or process based), (3) the presence or absence of a canopy
+(empirical or process-based), (3) the presence or absence of a canopy
 feedback for regeneration, and (4) the scale of application of the model
 (stand, landscape or global). We tested for significant differences
 between simulated and observed values of the recruitment levels and
 species diversity by using paired t-tests.
 
 Total recruitment and the regeneration niches of the individual species
-were evaluated across the environmental gradients of light availability,
-temperature, and soil moisture. Stand basal area (the basal area of all
-the trees in each sample including tree regeneration) was used as a
-proxy for light availability at the forest floor, the annual degree-day
-sum [@allen1976; @fischlin1995] as a proxy for growing season warmth,
-and the climatic water balance as a proxy for soil moisture
-[@speich2019]. Recruitment values of each species were calculated as the
-mean across the 200 samples per site. The observed data were modeled
-using a Generalized Additive Model [@wood2011] with a negative binomial
-distribution and restricted maximum likelihood to better understand the
-relationship between the environmental gradients and the levels of
-observed regeneration, relative to the simulation results per model.
+were evaluated across the gradients of light availability, temperature,
+and soil moisture as captured in the data. Stand basal area (the basal
+area of all the trees in each sample above the recruitment threshold)
+was used as a proxy for light availability at the forest floor, the
+annual degree-day sum [@allen1976; @fischlin1995] as a proxy for growing
+season warmth, and the climatic water balance as a proxy for soil
+moisture [@speich2019]. Recruitment values of each species were
+calculated as the mean across the 200 samples per site. The observed
+data were modeled using a Generalized Additive Model [@wood2011] with a
+negative binomial distribution and restricted maximum likelihood to
+better understand the relationship between the environmental gradients
+and the levels of observed regeneration, relative to the simulation
+results per model.
 
 In order to analyze the regeneration niches across the climatic
 gradients, we focused on five common tree species or genera: *Abies
@@ -586,7 +594,7 @@ basal area of that species ($\bar{r}_{BA_{t,i}}$) equaled zero.
 
 # Results
 
-## Regeneration levels
+## Recruitment levels
 
 Simulated levels of recruitment varied strongly across the 15 models and
 typically did not match the levels found in the forest reserve data
@@ -610,9 +618,9 @@ models always simulated recruitment for both the 7 and 10 cm threshold
 (xComp and TreeMig), i.e., they did not feature any zero values. The
 other ten models had a very low percentage of samples with no
 recruitment (0.01% - 2.39%), i.e., they had distinctly fewer occurrences
-of zeros compared to the observations.
+of zeros than the observations.
 
-## Tree species diversity of regeneration
+## Tree species diversity of recruitment
 
 Most models matched the level of diversity of the observed data quite
 well (Figure 3). Five models overestimated recruitment diversity:
@@ -637,26 +645,27 @@ and S2). Most models captured reasonably well or overpredicted species
 diversity at the stand level (Figure 4A, left and center; cf. Figure
 S3), but a characteristic feature was that the simulations had a much
 lower variability of diversity compared to observations. Models
-overpredicting species diversity included ForClim1, ForClim 11, FORMIND
-and TreeMig (Figure 4A, left). Several models underpredicted species
-diversity, i.e., LPJ-GUESS, ForCEEPS(f) and 4C (Figure 4A, right).
+overpredicting stand-level species diversity included ForClim1, ForClim
+11, FORMIND and TreeMig (Figure 4A, left). Several models underpredicted
+species diversity, i.e., LPJ-GUESS, ForCEEPS(f) and 4C (Figure 4A,
+right).
 
 The majority of the models overpredicted recruitment diversity; as
 already observed in Figure 3, only two of them underestimated it (4C and
-Landis-II) (Figure 4B and Figure S4). Both the models with feedback and
-those without feedback from the adult trees to regeneration (via seed
-production) overestimated, underestimated or captured reasonably well
-recruitment species diversity compared to the observations. Again,
-simulated diversity had considerably lower variability than observed
-diversity in the recruitment.
+Landis-II) (Figure 4B and Figure S4). Both the models with and without
+feedback from the adult trees to regeneration (via seed production)
+overestimated, underestimated or captured reasonably well recruitment
+species diversity compared to the observations. Again, simulated
+diversity had considerably lower variability than observed diversity in
+the recruitment.
 
-## Mortality in tree regeneration
+## Recruitment mortality
 
-There were strong differences among the models regarding the mortality
-rate between 7 and 10 cm (Figure 5). Most of the models featured a
-mortality rate significantly larger than the observed data, thus at
-least partially compensating for the general overestimation of
-recruitment levels (Figure 2 and Table S3); six models did not feature a
+There were strong differences among models regarding the mortality rate
+between 7 and 10 cm (Figure 5). Most of the models featured a mortality
+rate significantly larger than the observed data, thus at least
+partially compensating for the general overestimation of recruitment
+levels at 7 cm (Figure 2 and Table S3); six models did not feature a
 significant difference compared to the observed data (ForCEEPS, FORMIND,
 ForClim 1 and 11, iLand and aDGVM2). Four models (xComp, PICUS, LandClim
 and TreeMig) featured very high mortality rates (i.e., well above the
@@ -682,7 +691,7 @@ the 7 and 10 cm thresholds (Figure 6A). The other models that
 overestimated recruitment had mortalities lower than the expected
 self-thinning ratio, with the exception of LandClim (Figure 6B). It is
 noteworthy that most of the models that featured a low ratio of
-regeneration between 7 and 10 cm (i.e., ForCEEPS, ForClim 1, ForClim 11
+recruitment between 7 and 10 cm (i.e., ForCEEPS, ForClim 1, ForClim 11
 and iLand) had only a small overestimation of recruitment at the 7 cm
 threshold (Figure 5). aDGVM2 was the only model that underestimated
 recruitment at the 7 cm threshold while featuring a low mortality
@@ -691,8 +700,8 @@ to the correct recruitment levels at 7 cm while also being close to the
 Reineke line (SIBYLA, Landis-II; cf. Figure 6D; and 4C as well as
 LandClim).
 
-Lastly, some models that had a low number of individuals at the 7 cm
-threshold also had a smaller decrease of recruitment between 7 and 10 cm
+Lastly, some models that had a low number of recruits at the 7 cm
+threshold also had a small decrease of recruitment between 7 and 10 cm
 (ratio 7-10 cm) (Figure S5). In these models, competition and
 self-thinning are either not pronounced or must have occurred before the
 trees had reached 7 cm. However, this pattern was not consistent across
@@ -701,62 +710,61 @@ between the recruitment levels at 7 cm and the mortality rate (Table
 S4): most of the models showed a positive effect (higher regeneration at
 7 cm is coupled to an increase of the mortality between 7 and 10 cm).
 While some models showed a negative effect, the linear trend was not
-pronounced and not always significant regarding the slope.
+pronounced and not always significant regarding its slope.
 
 ## Model performance and model traits
 
 There was no significant relationship between the mean complexity of the
 regeneration module (Table \@ref(tab:tableModels)) and the
 overestimation proportion at a diameter threshold of 7 cm (Figure S6).
-All the models except 4C had significant differences between the
-observed and simulated mean recruitment values. Therefore it was not
-possible to differentiate in terms of performance between models type
-(empirical or process based), or their scales (stand, landscape or
-global) (Table S5). The values of recruited species diversity simulated
-by each model were also assessed against the observed data to see if
-there was a difference between models that include a feedback compared
-to those that did not; all the models except ForCEEPs(f) and FORMIND had
-significant differences (Table S6). It is noteworthy that for the model
-ForCEEPS the pattern changed from the overprediction of species
-diversity in the regeneration to a diversity level that is closer to
-observations when the recruitment module included feedback
-(ForCEEPs(f)).
+All models except 4C had significant differences between the observed
+and simulated mean recruitment values. Therefore it was not possible to
+differentiate in terms of performance between models type (empirical or
+process based), or their scales (stand, landscape or global) (Table S5).
+The values of species diversity in the recruitment simulated by each
+model were also assessed against the observed data to see if there was a
+difference between models that include a feedback compared to those that
+did not; all the models except ForCEEPs(f) and FORMIND had significant
+differences (Table S6). It is noteworthy that for the model ForCEEPS the
+pattern changed from the overprediction of species diversity in the
+regeneration to a diversity level that is closer to observations when
+the recruitment module included feedback (ForCEEPs(f)).
 
-## Regeneration gradients on regeneration niches
+## Regeneration gradients and regeneration niches
 
-When evaluating total recruited levels along key gradients of light
-availability (basal area), temperature (degree-days) and soil moisture
-(climatic water balance), distinct features emerged: the models
+When evaluating total tree recruitment levels along key gradients of
+light availability (basal area), temperature (degree-days) and soil
+moisture (climatic water balance), distinct features emerged: the models
 reproduced the effect of basal area in both its magnitude and patterns
 (Figure 7 and S7) considerably better than the effects of the climatic
 gradients, where they featured varying patterns.
 
-In the observed data, recruited levels decreased clearly with increasing
-stand basal area (Figure 7a). This trend was captured by the Landis-II
-model only, albeit at much lower values of basal area than in the
-observations. The other models featured distinctly different trends,
-such as (1) an increase in recruited levels with increasing total basal
-area followed by the absence of regeneration at high values of basal
-area (ForCEEPS, ForCEEPS(f), FORMIND, TreeMig and LPJ-GUESS), (2) almost
-constant recruitment levels with basal area (ForClim 11, xComp, LandClim
-and aDGVM2), or (3) an increase of recruitment up to a certain value of
-stand basal area followed by a decrease at even higher values of stand
-basal area, with model-specific thresholds (4C, ForClim 1, PICUS, SIBYLA
-and iLand).
+In the observed data, recruitment levels decreased clearly with
+increasing stand basal area (Figure 7a). This trend was captured by the
+Landis-II model only, albeit at much lower values of basal area than in
+the observations. The other models featured distinctly different trends,
+such as (1) an increase in recruitment levels with increasing total
+basal area followed by the absence of recruitment at high values of
+basal area (ForCEEPS, ForCEEPS(f), FORMIND, TreeMig and LPJ-GUESS), (2)
+almost constant recruitment levels with basal area (ForClim 11, xComp,
+LandClim and aDGVM2), or (3) an increase of recruitment up to a certain
+value of stand basal area followed by a decrease at even higher values
+of stand basal area, with model-specific thresholds (4C, ForClim 1,
+PICUS, SIBYLA and iLand).
 
 The observed recruitment did not change much across the climatic water
-balance gradient, and showed a slight increase with temperature. The
-models did not match the observed recruitment patterns across the
-gradients of soil moisture and temperature (Figure 7b,c), and neither
-was there a clear pattern across models. Regarding the soil moisture
-gradient, a group of models featured decreasing recruitment with
-increasing soil moisture (4C, ForClim 1, ForClim11, SIBYLA, xComp,
-PICUS, LandClim, TreeMig and iLand), while a few models showed the
-opposite trend (ForCEEPS(f), FORMIND and LPJ-GUESS). Across the
-temperature gradient, all the models that featured a decrease in
-recruitment levels with increasing soil moisture showed the opposite
-trend (i.e., more recruitment with increasing temperature), except for
-4C. The other models did not feature a clear pattern.
+balance gradient, and showed a slight increase with temperature. Neither
+did the models generally match the observed recruitment patterns across
+these gradients (Figure 7b,c), nor was there a clear pattern across
+models. Regarding the soil moisture gradient, a group of models featured
+decreasing recruitment with increasing soil moisture (4C, ForClim 1,
+ForClim11, SIBYLA, xComp, PICUS, LandClim, TreeMig and iLand), while a
+few models showed the opposite trend (ForCEEPS(f), FORMIND and
+LPJ-GUESS). Across the temperature gradient, all the models that
+featured a decrease in recruitment levels with increasing soil moisture
+showed the opposite trend (i.e., more recruitment with increasing
+temperature), except for 4C. The other models did not feature a clear
+pattern.
 
 Silver fir (*Abies alba*), beech (*Fagus sylvatica*), Scots pine (*Pinus
 sylvestris*) and oak (*Quercus* spp.) were the species observed most
@@ -791,9 +799,9 @@ spp. represented a small share of the recruitment in the observed data
 mostly at warm-dry sites. Many models, however, erroneously featured
 recruitment for these two species along most of the climatic gradients,
 although with a low share of basal area. Five models (4C, FORMIND,
-SIBYLA, xComp, and LandClim) had almost no recruitment of *Pinus
-sylvestris* and *Quercus* spp., or did not feature any recruitment of
-these species at all.
+SIBYLA, xComp, and LandClim) had very small amounts of recruitment of
+*Pinus sylvestris* and *Quercus* spp., or did not feature any
+recruitment of these species at all.
 
 Lastly, there is no model that performed well across the five species
 regarding the species-specific recruitment levels in the environmental
@@ -805,29 +813,29 @@ underestimating the share of others (e.g., ForCEEPS, LPJ-GUESS).
 # Discussion
 
 Tree regeneration is a fundamental process in forest dynamics. Correctly
-capturing tree regeneration in dynamic models is fundamental to, for
-example, evaluate post-disturbance dynamics and potential long-term
-recovery trajectories as it will define the forest state in the first
-decades [@seidl2022]. If this initial phase is not captured well, we can
-not properly assess aspects such as forest resilience or the timing,
-magnitude and progression of carbon sequestration. In this study, for
-the first time, projections of tree regeneration from multiple models of
-forest dynamics were confronted with a unique dataset from unmanaged
-forest reserves across a large environmental gradient in Europe.
+capturing it in dynamic models is fundamental to, for example, evaluate
+post-disturbance dynamics and potential long-term recovery trajectories
+as it will define the forest state in the first decades [@seidl2022]. If
+this initial phase is not captured well, we can not properly assess
+aspects such as forest resilience or the timing, magnitude and
+progression of carbon sequestration. In this study, for the first time,
+projections of tree recruitment from multiple models of forest dynamics
+were confronted with a unique dataset from unmanaged forest reserves
+across a large environmental gradient in Europe.
 
 The EuFoRIa data [@käber2023] are exceptional, particularly with respect
 to the number of records (number of sites and repeated measurements on
 unmanaged forests), which is essential for capturing a highly 'noisy'
 process such as tree regeneration. The use of this dataset for model
 benchmarking provided novel insights on the ability of state-of-the-art
-models to accurately simulate regeneration levels, species composition,
-and mortality in an early stage of tree life, i.e., between tree
-diameters of 7 and 10 cm. Overall, by adopting this approach a much
+models to accurately simulate recruitment levels, its species
+composition and mortality in an early stage of tree life, i.e., between
+tree diameters of 7 and 10 cm. Overall, by adopting this approach a much
 broader understanding resulted than if we had used these data for model
 calibration: it is primarily from the shortcomings of the models that we
 can gain ecological insights [cf. @trugman2022].
 
-## Regeneration levels
+## Recruitment levels
 
 Most of the models overestimated tree recruitment levels. This has
 potentially far-reaching implications, e.g., regarding biomass (and thus
@@ -836,25 +844,25 @@ forest carbon sequestration [@pugh2019; @pan2011]. Yet, we focused on
 one specific stage, i.e., recruitment into the 7 and 10 cm diameter
 classes. Trees at this size contribute little to carbon sequestration,
 and if the excess regeneration at this stage is compensated -- in the
-models -- soon thereafter by higher mortality, overall simulated
-regeneration may still yield trustworthy results at the level of stand
-structure and related forest attributes such as basal area or biomass.
+models -- soon thereafter by higher mortality, overall simulated tree
+population dynamics may still be trustworthy at the level of stand
+structure and attributes such as basal area or biomass.
 
-From a modeling point of view, excess regeneration inevitably requires
-excess mortality rates in a later stage, either -- as observed for some
-models -- between the 7 and 10 cm diameter thresholds, or soon after the
-10 cm threshold has been crossed. In any case, correcting at early
-stages for the expected forest densities at later stages is equivalent
-to compensating for a first error (excess regeneration) by a second
-error (excess mortality). It is highly likely that biased projections
-will result, because the two errors are unlikely to be perfectly linked
-and thus will not always compensate each other. Hence, this structural
-problem of most models investigated here is problematic particularly if
-the models are to be used under novel conditions such as under climate
-change [e.g., @huber2021] or in a decision support context [e.g.,
-@thrippleton2021].
+From a modeling point of view, excess tree recruitment inevitably
+requires excess mortality rates in a later stage, either -- as observed
+for some models -- between the 7 and 10 cm diameter thresholds, or soon
+after the 10 cm threshold has been crossed. In any case, correcting at
+early stages for the expected forest densities at later stages is
+equivalent to compensating for a first error (excess recruitment) by a
+second error (excess mortality). It is highly likely that biased
+projections will result, because the two errors are unlikely to be
+perfectly linked and thus will not always compensate each other. Hence,
+this structural problem of most models investigated here is problematic
+particularly if the models are to be used under novel conditions such as
+under climate change [e.g., @huber2021] or in a decision support context
+[e.g., @thrippleton2021].
 
-Regeneration levels define the structure and composition of future
+Recruitment levels define the structure and composition of future
 forests, but it is equally important to correctly identify areas where
 regeneration is lacking [@rammer2021]. There are multiple constraints to
 the regeneration niche of tree species [@price2001], and therefore the
@@ -870,51 +878,50 @@ over the past decades [e.g., @heiri2009], leading to less regeneration
 than in an equilibrium situation. Another possible reason for this
 difference may be the exclusion of factors like deer browsing or failure
 to accurately measure establishment filters, such as competition with
-herb layers, site or environmental limitants.
+the herb layer, site-specific or environmental limitations.
 
-## Species composition of regeneration
+## Species composition of recruitment
 
-Correctly capturing species composition in tree regeneration is
-important to assess the future functional diversity of a forest, e.g.,
-its sensitivity to drought or resilience to disturbances [@redmond2015;
+Correctly capturing species composition in tree recruitment is important
+to assess the future functional diversity of a forest, e.g., its
+sensitivity to drought or resilience to disturbances [@redmond2015;
 @seidl2022]. In the simulations, overall species diversity levels in the
-regeneration were well within the observed range for half of the models
-(7 out of 14). Thus, while most of the models are facing difficulties to
-quantitatively match regeneration levels (cf. above), their performance
-is better when it comes to matching the composition of regeneration as a
-function of abiotic and biotic conditions. Most models maintained or
-even decreased recruitment diversity between the 7 and 10 cm thresholds,
-and the same is visible from the empirical data, but the differences
-were not significant. Diversity variations may be explained by the way
-the individual models consider regeneration processes
-[@konig_tree_2022], e.g., without considering the feedback from adults,
-regeneration can be linked to either seed rain from dispersal or a
-seed/seedling bank; neither process is incorporated across many models
-studied here, however.
+recruitment were well within the observed range for half of the models
+(7 out of 14). Thus, while most models are facing difficulties to
+quantitatively match recruitment levels (cf. above), their performance
+is better regarding the composition of recruitment as a function of
+abiotic and biotic conditions. Most models maintained or even decreased
+recruitment diversity between the 7 and 10 cm thresholds, and the same
+is visible from the empirical data, but the differences between the 7
+and 10 cm thresholds were not significant. Diversity variations may be
+explained by the way the individual models consider regeneration
+processes [@konig_tree_2022], e.g., regeneration can be linked to the
+seed/seedling bank, seed rain from dispersal or from a pool of available
+species.
 
 The species diversity of the entire stand was captured better by the
 models than the diversity of tree recruitment, and only a few models
-overpredicted stand-level diversity. Defining regeneration composition
-as being proportional to adult abundance, regardless of productivity,
-might be a simple and conservative assumption to safely maintain
-relative species abundances [@hanbury-brown2022], although this may be
+overpredicted stand-level diversity. Defining recruitment composition as
+being proportional to local adult abundance, regardless of productivity,
+might be a simple and conservative assumption to maintain relative
+species abundances [@hanbury-brown2022], although this may be
 simplistic. Furthermore, based on the simulation results, there is no
 evidence that models with feedback from the canopy (in terms of species
-composition of regeneration) better captured the species diversity of
-the recruitment than those without feedback, with the exception of
-ForCEEPS that significantly improved regeneration species diversity with
-the model version that included feedback (ForCEEPS(f)). The similar
-performance of models with and without feedback is likely because the
-models put more weight on the regeneration niche arising from abiotic
-and biotic filters, than from the habitat niche of the adult trees
-[@grubb1977].
+composition of regeneration) captured the species diversity of the
+recruitment better than those without feedback, with the exception of
+ForCEEPS that featured significantly more accurate recruitment species
+diversity with the model version that included feedback (ForCEEPS(f)).
+The similar performance of models with and without feedback is likely
+because the models put more weight on the regeneration niche arising
+from abiotic and biotic filters, than from the habitat niche of the
+adult trees [@grubb1977].
 
-## Regeneration mortality
+## Recruitment mortality
 
 There are several factors that lead to mortality during the regeneration
 phase, such as competition [@casper1997] and multiple abiotic factors
 [@schmid2021; @cunningham2006]. As mentioned above, it is reasonable to
-expect that models that overestimate regeneration may have a
+expect that models that overestimate recruitment at 7 cm may have a
 particularly high mortality between the 7 and 10 cm thresholds. However,
 this was not consistently evident from the simulations. This implies
 that these models must have an excess mortality in later stages, if we
@@ -938,67 +945,70 @@ sizes and the fate of tree regeneration along such a size continuum.
 In spite of the critical considerations above, it is remarkable that
 most models did not deviate exceedingly from the observations with
 respect to simulated recruited levels -- after all, few if any of the
-models' regeneration routines are sufficiently constrained by data, with
-the exception of the empirical models xComp and SIBYLA. It is noteworthy
+models' regeneration routines are well constrained by data, with the
+exception of the empirical models xComp and SIBYLA. It is noteworthy
 that in spite of their empirical basis, these two models did not match
-empirical regeneration levels, in a similar magnitude as the other
-models and even in opposite directions (SIBYLA: underestimation; xComp:
+empirical recruitment levels, in a similar magnitude as the other models
+and even in opposite directions (SIBYLA: underestimation; xComp:
 overestimation). It appears that using empirical data of limited
-geographical scope and constrained to managed forests, as done in these
-models, leads to extrapolation problems already under current climatic
-conditions. For the other models, whose regeneration modules are not
-strongly constrained by empirical data, the multiple strategies that are
-available for modeling regeneration [@konig_tree_2022] could have
-implied that model performance would be much worse than what we found.
+geographical scope that are constrained to managed forests, as done in
+these models, leads to extrapolation problems already under current
+climatic conditions. For the other models, whose regeneration modules
+are not strongly constrained by empirical data, the multiple strategies
+that are available for modeling regeneration processes
+[@konig_tree_2022] could have implied that model performance would be
+much worse than what we found.
 
 Our study showed that increasing complexity in the regeneration modules
-is not linked with a higher accuracy of the projections of regeneration
+is not linked to a higher accuracy of the projections of recruitment
 levels, species composition or mortality at early tree stages, as there
 was no significant relationship between model performance and model
 complexity. Increasing complexity in regeneration modules has been
-motivated by better process understanding and enhancing of model
-accuracy [@bugmann2022]. However, more complex models do not necessarily
-lead to better projections and rather to a reduced transparency and
-lower predictive power [@franklin2020]. Thus, the question of what level
-of detail is appropriate and parsimonious for modeling tree regeneration
-processes remains open [@konig_tree_2022; @bugmann2022].
+called for a long time ago (e.g., @price2001) motivated by better
+process understanding and with the goal of enhancing model accuracy
+[@bugmann2022]. However, more complex models do may not necessarily lead
+to better projections but rather to reduced transparency and lower
+predictive power [@franklin2020]. Thus, the question regarding the level
+of detail that is appropriate and parsimonious for modeling tree
+regeneration remains open [@konig_tree_2022; @bugmann2022].
 
 ## Regeneration gradients on regeneration niches
 
 Competition for light as a strong filter for tree regeneration has been
 widely documented [@messier1999; @collet2006; @berdanier2016], but the
 models examined here did not reproduce this expectation (i.e.,
-decreasing regeneration levels with increasing stand basal area).
+decreasing recruitment levels with increasing stand basal area).
 However, it is difficult to measure light availability at large spatial
 and temporal scales. We used total stand basal area as a proxy for light
-availability [cf. @schmid2021]. However, we were unable to consider
-light availability restrictions caused by ground vegetation, which may
-be an important filter for some EuForIa stands [@woltjer2008]. We found
-pronounced differences in the stand basal area ranges simulated by the
-models, but also between models and observations. This made it
-impossible to evaluate the regeneration for the extremes of the stand
-density ranges in some models. For example, regeneration levels at low
-stand densities are relevant to assess how well forests are recovering
-e.g. after gap creation due to disturbance [@seidl2022; @grubb1977]. At
-the level of the simulated one-hectare samples, average basal area is
-typically not very low as long as no larger disturbances occur, which
-was explicitly excluded in our simulation protocol. Towards the other
-end of the spectrum, i.e., with increasing stand basal area, it would be
-reasonable to expect that the recruitment of the different species would
-become sparser and drop out entirely under low-light conditions
-[@klopcic2012; @zell2019]. However, few models showed this trend, thus
-indicating that the relation between regeneration and light availability
-is not yet captured correctly in most models. Yet, several of the models
-that did feature an increase of regeneration with increasing basal area
-include a feedback between seed production of mature trees and
-regeneration. Thus, it seems that higher light competition does not
-sufficiently compensate for increased seed availability with higher
-basal area due to a higher abundance of mature trees.
+availability [cf. @schmid2021]. Yet, we were unable to consider light
+availability restrictions caused by ground vegetation, which may be an
+important filter for forest dynamics at least in some EuFoRIa stands
+[@woltjer2008]. We found pronounced differences in the ranges of stand
+basal area simulated by the models, but also between models and
+observations. This made it impossible to evaluate tree recruitment for
+the extremes of the stand density ranges in some models. This is
+unfortunate because recruitment levels at low stand density are relevant
+to assess how well forests are recovering e.g. after gap creation due to
+disturbance [@seidl2022; @grubb1977]. At the level of the simulated
+one-hectare samples, average basal area is typically not very low as
+long as no larger disturbances occur, which was explicitly excluded in
+our simulation protocol. Towards the other end of the spectrum, i.e.,
+with increasing stand basal area, it would be reasonable to expect that
+the recruitment of the different species would become sparser and drop
+out entirely under low-light conditions [@klopcic2012; @zell2019].
+However, few models showed this trend, thus indicating that the relation
+between regeneration and light availability is not yet captured
+correctly in most models. Yet, several of the models that did feature an
+increase of regeneration with increasing basal area include a feedback
+between seed production of mature trees and regeneration. Thus, it seems
+that in these models higher light competition does not sufficiently
+compensate for increased seed availability with higher basal area due to
+a higher abundance of mature trees.
 
-There were pronounced differences in how the main tree species were
+Lastly, there were pronounced differences how the main tree species were
 represented by the models along the environmental gradients, in
 particular the dominant species *Abies alba*, *Fagus sylvatica* and
-*Picea abies*. The regeneration levels were sampled from simulations in
+*Picea abies*. The recruitment levels were sampled from simulations in
 the equilibrium, and in this state it is expected that non-climax
 species such as *Pinus sylvestris* or *Quercus* would be of minor
 importance, or absent [@klopcic2015]. Most models captured this low
@@ -1019,58 +1029,59 @@ were collected in forest reserves where no management has taken place
 for long periods of time. This makes our assumption of an equilibrium
 between forest properties and environmental drivers more reasonable than
 it might appear at first sight. In an analysis of primeval forests at
-demographic equilibrium, @brzeziecki2021 found higher regeneration rates
+demographic equilibrium, @brzeziecki2021 found higher recruitment rates
 than the ones observed in the EuFoRia data. Thus, the overestimation of
-regeneration rates by the models may not be so problematic. Second, the
-data were collected for regeneration above a 7 cm threshold, thus
-limiting the assessment of tree regeneration to a holistic viewpoint.
-This constituted a hard limit based on which we can understand only some
-aspects of tree regeneration, which in its entirety often comprises a
-rather long period since seed production [@price2001]. In reality, many
-environmental constraints are acting on young trees [@käber2021] that we
-were unable to assess. Yet, regeneration data with lower thresholds are
-simply not available in a harmonized manner across large environmental
-gradients. Third, the empirical data were collected from rather small
-plots, while we sampled simulated regeneration levels from 1 ha areas,
-which may lead to an incorrect representation of space. Even though the
-strategy we adopted is not ideal, it represents a common challenge when
-harmonizing diverse data sources originating from varied sampling
-strategies [@portier2022]. It would have been extremely challenging for
-such a variety of models to follow a protocol where the spatial sampling
-size was different at each of the 200 sites, and it would have
-introduced additional uncertainty in the results.
+recruitment rates by the models may not be so problematic. Second, the
+data were collected for recruitment above a 7 cm threshold, thus
+limiting the assessment of tree regeneration to a specific point of
+stand dynamics. This constituted a hard limit based on which we can
+understand only some aspects of tree regeneration, which in its entirety
+often comprises a rather long period since seed production [@price2001].
+In reality, many environmental constraints are acting on young trees
+[@käber2021] that we were unable to assess. Yet, recruitment data with
+lower thresholds are simply not available in a harmonized manner across
+large environmental gradients. Third, the empirical data were collected
+from rather small plots, while we sampled simulated recruitment levels
+from 1 ha areas, which may lead to an incorrect representation of space.
+Even though the strategy we adopted is not ideal, it represents a common
+challenge when harmonizing diverse data sources originating from varied
+sampling strategies [@portier2022]. It would have been extremely
+challenging for such a variety of models to follow a protocol where the
+spatial sampling size was different at each of the 200 sites, and it
+would have introduced additional uncertainty in the results.
 
 The design of our sampling protocol did not include spatial aspects such
 as seed dispersal or detailed soil data. While we considered a wide
 range of models of forest dynamics, from stand to global scales, the
-simulation setup was limited to 1 ha regeneration values. This lack of
-consideration of spatial scale is appropriate for stand-scale models,
-but it potentially puts the landscape models at a disadvantage, as they
-have been built to be accurate at the landscape level. Without spatial
-context, we are limiting regeneration to the seed influx from the stand
-itself, unless the model has a background seed input. Yet, the global
-models should not be at a disadvantage due to the limited spatial
-considerations [but cf. Snell et al. -@snell2018; or Lehsten et al.
--@lehsten2019], as they are usually lacking dispersal between cells and
-are based on a strong abstraction of horizontal space
-[@hanbury-brown2022]. Lastly, detailed data on soil conditions were not
-available from the observed data, and independent, admittedly rather
-coarse data for soil and climatic water balance had to be used instead.
-It is noteworthy that many models represent drought based on detailed
-indicators based e.g. on soil water holding capacity, which had to be
-derived from a rough soil quality measure. This may at least partially
-explain the unsatisfactory performance of many models along the drought
-axis (i.e., climatic water balance).
+simulation setup was limited a spatial scale of 1 ha. This lack of
+consideration of spatial scale relationships is appropriate for
+stand-scale models, but it potentially puts the landscape models at a
+disadvantage, as they have been built to be accurate at the landscape
+level: without any spatial context, we are limiting tree regeneration to
+the seed influx from the stand itself, unless the model has a background
+seed input. Yet, the global models should not be at a disadvantage here
+due to their inherently limited spatial considerations [but cf. Snell et
+al. -@snell2018; or Lehsten et al. -@lehsten2019], as they are usually
+lacking dispersal between cells and are based on a strong abstraction of
+horizontal space [@hanbury-brown2022]. Lastly, detailed data on soil
+conditions were not available from the observed data, and independent,
+admittedly coarse data for soil properties and the climatic water
+balance had to be used instead. It is noteworthy that many models
+represent drought using detailed indicators based e.g. on soil water
+holding capacity, which had to be derived from a rough soil quality
+measure. This may at least partially explain the unsatisfactory
+performance of many models along the drought axis (i.e., climatic water
+balance).
 
 ## Research recommendations
 
 With our study, we have demonstrated that models of forest dynamics need
-a focus on tree regeneration modules to make them more robust. It
-remains uncertain what level of detail is required to model regeneration
-processes, and this must be addressed in future research. We recommend
-that the improvement of the regeneration modules is implemented as
-additional features that can be traced back, as done here for the
-variants of ForClim and ForCEEPS, and that model complexity and
+a focus on their regeneration modules to make them more robust. It
+remains uncertain what level of detail is required to model tree
+regeneration, and this must be addressed in future research. We
+recommend that the improvement of the regeneration modules is
+implemented as additional features that can be traced back, as done here
+for the variants of ForClim and ForCEEPS, and that model complexity and
 structure must always be connected with modeling objectives
 [@albrich2020]. If it should be necessary to include more detail in the
 regeneration models, this will come with higher parameterisation
@@ -1095,10 +1106,9 @@ equilibrium state only. It is equally important to understand how these
 models project tree regeneration after changes in forest structure by
 disturbances [@seidl2022], or under different management strategies
 [@lindner2000]. However, this will require an entirely different set of
-observed data, and potentially not all models of forest dynamics would
-be able to assess the relationship of these aspects on tree
-regeneration, e.g. due to the lack of disturbance or appropriate
-management modules.
+observed data, and potentially not all forest models would be able to
+assess the relationship of these aspects on tree regeneration, e.g. due
+to the lack of disturbance or appropriate management modules.
 
 We recommend to investigate in detail the implications of the current
 modeling strategies for tree regeneration and, ultimately, simulated
@@ -1108,9 +1118,9 @@ focusing on a wider range of tree sizes and the related regeneration
 dynamics. We also recommend, especially for the landscape-level models,
 the inclusion of explicit spatial considerations regarding tree
 regeneration [@beckage2003]; this, however, is a serious challenge
-regarding appropriate datasets, as inventory data have wide coverage,
-but by definition do not allow for the assessment of spatial interaction
-effects.
+regarding appropriate datasets, as large-scale inventory data have a
+wide coverage, but by definition do not allow for the assessment of
+spatial interactions.
 
 Exercises like the one presented here, where the models are operated in
 "blind flight" mode, i.e., without the possibility of being tuned
@@ -1119,9 +1129,10 @@ benchmarking exercises should next focus on aspects such as specific
 model traits and the ecological formulations of particular
 (sub-)processes, to better understand the implications of the
 assumptions on which the models are based. Furthermore, the inclusion of
-a wide range of models with different scales, type, population
-structures, tree regeneration modules and complexity will ensure a wider
-benefit to the whole modeling community.
+a wide range of models with different (1) scales, (2) approaches for
+capturing population structure, (3) tree regeneration modules and (4)
+complexity of their formulations will ensure a large benefit to the
+entire modeling community and beyond.
 
 ## Conclusions
 
@@ -1129,7 +1140,7 @@ Models of forest dynamics are important tools in science and decision
 support, and the formulation of tree regeneration has strong
 implications for simulated forest properties. The 15 models and variants
 used here are facing similar challenges in their representation of tree
-regeneration: they generally overestimate tree regeneration levels, and
+regeneration: they generally overestimate tree recruitment levels, and
 the simulated regeneration niche is not always captured accurately as a
 function of biotic (light) and abiotic (temperature and moisture)
 factors.
@@ -1140,9 +1151,9 @@ presence or absence of feedback from the adult trees did not have a
 strong effect on capturing the species composition of regeneration.
 
 Regarding mortality in the early phase of tree life, many models that
-feature a particularly high overestimation of regeneration levels are
+feature a particularly high overestimation of recruitment levels are
 compensating for this by a larger tree mortality. Often, this
-compensation is not sufficient to reduce the high regeneration levels to
+compensation is not sufficient to reduce the high recruitment levels to
 realistic values. Overall, there is no clear mortality pattern across
 all models.
 
@@ -1157,9 +1168,9 @@ complexity does not represent an improvement for capturing tree
 regeneration.
 
 Even though the regeneration routines of most of the models investigated
-here have never been sufficiently constrained by robust data, the
-regeneration projections are not overly off. This indicates that a lot
-can be gained by a focus on the modeling of regeneration processes. The
+here have never been constrained well by robust data, their projections
+of recruitment are not overly off. This indicates that a lot can be
+gained by a focus on the modeling of regeneration processes. The
 representation of forest dynamics in these models would become much more
 robust particularly in the face of climate change and post-disturbance
 dynamics, thus strongly reducing the uncertainty in long-term
@@ -1169,14 +1180,16 @@ projections of future forest dynamics.
 
 O. Díaz-Yáñez and Y. Käber contributed equally and share the first
 authorship. H. Bugmann, Y. Käber, and O. Díaz-Yáñez developed the study
-design. All authors contributed to preparing the simulations with their
-respective models. O. Díaz-Yáñez led the data analysis with
-contributions during the workshop from Y.Käber, T. Anders, K. H.
-Braziunas, J. Brůna, S. M. Fischer, J. Hetzer, T. Hickler, H. Lischke,
-M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X. Morin, W. Rammer, D.
-Scherrer and H. Bugmann. O. Díaz-Yáñez and H. Bugmann led the writing of
-the manuscript. All authors participated in the revision of the
-manuscript and approved its submission.
+design. Y. Käber and O. Díaz-Yáñez prepared the input data used by all
+modeling teams. All authors contributed by conducting the simulations
+with their respective models. O. Díaz-Yáñez led the analysis of the
+simulation results with contributions during the workshop from Y.Käber,
+T. Anders, K. H. Braziunas, J. Brůna, S. M. Fischer, J. Hetzer, T.
+Hickler, H. Lischke, M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X.
+Morin, W. Rammer, and D. Scherrer. O. Díaz-Yáñez and H. Bugmann led the
+writing of the manuscript and provided the first draft. All authors
+participated in the revision of the manuscript and approved its
+submission.
 
 # Acknowledgements
 
@@ -1201,9 +1214,8 @@ Project No. CZ.02.1.01/0.0/0.0/16_019/0000803 financed by OP RDE, grant
 no. ITMS2014+313011W580 supported by the Integrated Infrastructure
 Operational Programme funded by the ERDF. CH acknowledges financial
 support from Waldfonds WASIM2100 project. We would also like to thank
-all the people that helped to make this study possible with
-contributions at different stages such as Martin Gutsch and Giorgio
-Vacchiano.
+all the people who helped to make this study possible with contributions
+at different stages particularly Martin Gutsch and Giorgio Vacchiano.
 
 # Conflict of interest statement
 
