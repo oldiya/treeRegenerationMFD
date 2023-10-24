@@ -216,16 +216,82 @@
                     dpi = 300, units = "cm", device = 'jpg')
     
     
-    # Significant difference per model between 7 and 10 diameter threshold
+    # Significant difference per model between 7 and 10 diameter threshold-----
     
     sigH7_10 <- ggpubr::compare_means(ShannonIndexRecruit ~ dbh, 
                                       data = dat710[!dat710$model == "aDGVM2", ],
-                                      group.by = "model", method = "t.test")
+                                      group.by = "model", method = "t.test",
+                                      p.adjust.method = "bonferroni")
     
-    write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
+    # Clean table
+    sigH7_10$p.adf <- NULL
+    sigH7_10$p.format <- NULL
+    sigH7_10$method <- NULL
     
+     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
     
-    # GLME 
+     #####  GLME approach -----
+     # briefly thought about how to analyse your data (Shannon index and mortality),
+     #  when you want to focus on the differences between the 7 and 10 cm thresholds 
+     #  within the same model. We actually use a function in our applied stats 
+     #  course that we apply to anova, but I didn’t know whether this will 
+     #  work with random effects as well.
+     # 
+     # You can try to use the function "glht" in the R library "multcomp",
+     #  which allows to define specific contrasts that you want to test. 
+     #  The function can also be applied to mixed effects models. 
+     #  You can try whether the following works: Calculate a repeated-measures ANOVA, 
+     #  i.e. a linear mixed-effects model, e.g. lmer(y ~ model.thr + (1 | sample)), 
+     #  where y is the response variable and model.thr a factor, which combines 
+     #  the model (e.g. LandClim) and the threshold (e.g. 7 cm), e.g. LandClim.7, 
+     #  LandClim.10. For the Shannon index, you can probably assume a linear
+     #   mixed-effects model with log(y) as response. For the mortality data, 
+     #   the best would be to use a binomial distribution, because you know the 
+     #   number of dead trees and the number of surviving trees, i.e. use 
+     #   glmer(cbind(dead, alive) ~ model.thr + (1 | sample), family=binomial(link=“logit”)).
+     # 
+     # The reference level for model.thr could be the observations. 
+     # Then you apply the function "glht" on this model. You will have to define
+     #  in the argument "linfct" the contrasts that you want to test, 
+     #  i.e. you only test between the data of the 7 and 10 cm threshold 
+     #  of the same model. This will require some time to figure out, 
+     #  how this should be done, but you can find some examples in the R-help or online.
+     #   If my explanation was very unclear we have to discuss this in person.
+     # 
+     
+     
+     ShannonIndex$modelDbh <- paste0(ShannonIndex$model, "_", ShannonIndex$dbh)
+     
+     sigH710_SimObsGLME2 <- lme4::lmer(ShannonIndexRecruit ~ modelDbh + (1 | site),
+                                     #family = gaussian(link = "identity"),
+                                     data = ShannonIndex[!ShannonIndex$model == "aDGVM2", ],
+                                     verbose = 1)
+     
+     summary(sigH710_SimObsGLME2)
+    
+     multcomp::glht(sigH710_SimObsGLME2, linfct =  as.factor(ShannonIndex[!ShannonIndex$model == "aDGVM2", ]$dbh))
+     
+     library(lsmeans)
+     comp <- lsmeans(sigH710_SimObsGLME2, pairwise ~ modelDbh)
+     
+     
+     comp [[2]][1] #4c
+     comp [[2]][58] # ForCEEPS
+     comp [[2]][111] # ForCEEPS(f)
+     comp [[2]][160] #ForClim 1
+     comp [[2]][205] #ForClim 11
+     comp [[2]][246] #Formind
+     
+     comp [[2]][283] #iland
+     comp [[2]][316] #LandClim
+     comp [[2]][345] #Landis
+     comp [[2]][370] #Lpjguess
+     comp [[2]][399] #Observed
+     comp [[2]][408] #PICUS
+     comp [[2]][430] #TREEMIG
+     comp [[2]][435] #XCOMP
+     
+      # GLME 
     
    
     ### Fig. H obs. VS sim. in stand and recruitment  ----
@@ -575,15 +641,48 @@
     
     
     mortAll$nn710 <-  as.numeric(as.character(mortAll$nn710))
+   
     
+    #### Mortality test ----- 
     mortRatio7_10 <- ggpubr::compare_means(nn710 ~ model,  
                                         data = mortAll[!is.na(mortAll$nn710) & !is.infinite(mortAll$nn710), ],
-                                        ref.group = "Observed", method = "t.test")
-    write.csv(mortRatio7_10 ,"figures/mortRatio7_10.csv", row.names = FALSE)
+                                        ref.group = "Observed", method = "t.test",
+                                        p.adjust.method = "bonferroni")
     
+    # Clean the table 
+    mortRatio7_10$method <- NULL
+    mortRatio7_10$p.adj <- NULL
+    mortRatio7_10$p <- NULL
     
+    colnames(mortRatio7_10) <- c("Y", "Group 1", "Group 2", "p", "p.signif")
+    write.csv(mortRatio7_10, "figures/mortRatio7_10.csv", row.names = FALSE)
     
+    ##### GLME mort -----
+    treesTot <- dataMort |>
+      dplyr::group_by(model, site, sample, dbh) |>
+      dplyr::summarise(Tot.rtrees = sum(r.trees),
+                       dds = unique(dds),      
+                       wb = unique(wb))
     
+     treesTot7 <-  treesTot[ treesTot$dbh == 7,]
+     colnames( treesTot7) <- c("model", "site", "sample", "dbh", "nn7", "dds", "wb")
+     treesTot7 <-  treesTot7[, c("model", "site","sample", "nn7")]
+     treesTot10 <-  treesTot[ treesTot$dbh == 10,]
+     colnames( treesTot10) <- c("model", "site","sample",  "dbh", "nn10", "dds", "wb")
+     treesTot10 <-  treesTot10[, c("model", "site","sample", "nn10",  "dds", "wb")]
+    
+     mortAllTot <- merge( treesTot7,  treesTot10, by = c("model","site", "sample"))
+     mortAllTot$nn710 <- mortAllTot$nn7 / mortAllTot$nn10
+     
+     mortAllTotGLME2 <- lme4::glmer(nn710 ~ model + (1 | site),
+                                    family = poisson(link = "log"),
+                                    data = mortAllTot[!is.na(mortAllTot$nn710) & !is.infinite(mortAllTot$nn710), ],
+                                    verbose = 1)
+     
+     save(mortAllTotGLME2 , file = "figures/mortAllTotGLME2.rda")
+     summary(mortAllTotGLME2)
+    
+
   ### Fig. median vs overestimate per model ----
     ## Prepare the data
     ## calculated as the difference between the 3rd quartile and the 1st quartile
@@ -768,6 +867,11 @@
     
     write.csv(sigH7_10,"figures/sigH7_10.csv", row.names = FALSE)
     
+    
+    
+    
+    
+    
     # Prepare data for Threshold 7cm 
     overestimationProportion <- modelMean2$diff
     meanComplexity <- complexitySum$complexityRegen
@@ -822,18 +926,45 @@
   
     rtreesDiff <- ggpubr::compare_means(r.trees ~ model,  
                                     data = overDTsim[overDTsim$dbh == 7,], 
-                                    ref.group = "Observed", method = "t.test")
+                                    ref.group = "Observed", method = "t.test",
+                                    p.adjust.method = "bonferroni")
+    # Clean the table 
+    rtreesDiff$method <- NULL
+    rtreesDiff$p.adj <- NULL
+    rtreesDiff$p <- NULL
+    
+    colnames(rtreesDiff) <- c("Y", "Group 1", "Group 2", "p", "p.signif")
+    
+    
     write.csv(rtreesDiff, "figures/rtreesDiff.csv", row.names = FALSE)
     
-    #### GLME -----
-    
-    rtreesDiffGLME <- lme4::glmer(r.trees ~ model + (1 | site),
+    #### GLME rtrees -----
+    dataGLMrtrees <- overDTsim[overDTsim$dbh == 7,]
+    dataGLMrtrees$r.trees <- as.integer(dataGLMrtrees$r.trees) 
+    rtreesDiffGLME1 <- lme4::glmer(r.trees ~ model + (1 | site),
                                   family = poisson(link = "log"),
-                                  data = overDTsim[overDTsim$dbh == 7,],
+                                  data =  dataGLMrtrees,
                                   verbose = 1)
     
-  
-    
+    save(rtreesDiffGLME1, file = "figures/rtreesDiffGLME.rda")
+    summary(rtreesDiffGLME1)
+   
+   nomeansdata <- outputsDF |> 
+     dplyr::group_by(site, sample, dbh, model) |>
+     dplyr::summarise(r.trees = sum(r.trees),
+                      r.ba = sum(r.ba),
+                      Totba = unique(Totba))
+
+   dataGLMrtrees2 <- nomeansdata[nomeansdata$dbh == 7,]
+   dataGLMrtrees2$r.trees <- as.integer(dataGLMrtrees2$r.trees) 
+   rtreesDiffGLME2 <- lme4::glmer(r.trees ~ model + (1 | site),
+                                  family = poisson(link = "log"),
+                                  data =  dataGLMrtrees2,
+                                  verbose = 1)
+   
+   save(rtreesDiffGLME2, file = "figures/rtreesDiffGLME2.rda")
+   summary(rtreesDiffGLME2)
+   
    
 ### feedback / not feedback H simulated vs observed -----  
 
@@ -844,17 +975,53 @@
     
     dat7H <- dat710[dat710$dbh == "7", ]
     
-    rtreesDiff <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
+    HtreesDiff <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
                                         data = dat7H[!dat7H$model == "aDGVM2", ], 
-                                        ref.group = "Observed", method = "t.test")
-    write.csv(rtreesDiff, "figures/sigH7_SimObs.csv", row.names = FALSE)  
+                                        ref.group = "Observed", method = "t.test",
+                                        p.adjust.method = "bonferroni")
     
     
-    sigH7_SimObsGLME <- lme4::lmer(r.trees ~ model + (1 | site),
-                                  family = gaussian(link = "identity"),
-                                  data = dat7H[!dat7H$model == "aDGVM2", ],
-                                  verbose = 1)
+    # Clean the table 
+    HtreesDiff$method <- NULL
+    HtreesDiff$p.adj <- NULL
+    HtreesDiff$p <- NULL
     
+    colnames(HtreesDiff) <- c("Y", "Group 1", "Group 2", "p", "p.signif")
+    
+    write.csv(HtreesDiff, "figures/sigH7_SimObs.csv", row.names = FALSE)  
+    
+    #### GLME H -----
+    # sigH7_SimObsGLME1 <- lme4::lmer(ShannonIndexRecruit ~ model + (1 | site),
+    #                               #family = gaussian(link = "identity"),
+    #                               data = dat7H[!dat7H$model == "aDGVM2", ],
+    #                               verbose = 1)
+    # summary( sigH7_SimObsGLME1)
+    # anova(sigH7_SimObsGLME1)
+    # 
+    # # Test significance of random effects 
+    # m0 <- lm(ShannonIndexRecruit ~ model, dat7H[!dat7H$model == "aDGVM2", ])
+    # anova(sigH7_SimObsGLME1,m0)
+    
+    ShannonIndex7 <- ShannonIndex[ShannonIndex$dbh == "7", ]
+    ShannonIndex7$ShannonIndexRecruit[ShannonIndex7$ShannonIndexRecruit < 0] <- 0
+    sigH7_SimObsGLME2 <- lme4::lmer(ShannonIndexRecruit ~ model + (1 | site),
+                                    data = ShannonIndex7[!ShannonIndex7$model == "aDGVM2", ],
+                                    verbose = 1)
+    
+    summary(sigH7_SimObsGLME2)
+    vcov(sigH7_SimObsGLME2)
+    # extract coefficients
+    coefs <- data.frame(coef(summary(sigH7_SimObsGLME2)))
+    # use normal distribution to approximate p-value
+    coefs$p.z <- 2 * (1 - pnorm(abs(coefs$t.value)))
+    coefs
+    
+    anova(sigH7_SimObsGLME2)
+    lme4::pvalues(sigH7_SimObsGLME2) 
+    
+    # Test significance of random effects 
+    m0 <- lm(ShannonIndexRecruit ~ model,  ShannonIndex7[! ShannonIndex7$model == "aDGVM2", ])
+    anova(sigH7_SimObsGLME2,m0)
     
     
 # Recruitment niche-----
