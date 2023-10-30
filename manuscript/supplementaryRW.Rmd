@@ -1,6 +1,6 @@
 ---
 title: "Appendix"
-subtitle: "Tree regeneration in models of forest dynamics: a key priority for further research"
+subtitle: "Tree regeneration in models of forest dynamics: a key priority for further research  ECOSPHERE"
 author: 
 - Olalla Díaz-Yáñez,
 - Yannek Käber,
@@ -15,13 +15,13 @@ author:
 - Christian	Hochauer,
 - Manfred J. Lexer,
 - Heike	Lischke,
-- Mats Mahnken,
 - Paola	Mairota,
 - Ján Merganič,
 - Katarina Merganičová,
 - Tobias Mette,
 - Marco Mina,
 - Xavier Morin,
+- Mats Nieberg,
 - Werner Rammer,
 - Christopher P.O. Reyer,
 - Simon	Scheiter,
@@ -47,7 +47,6 @@ fontsize: 12pt
 linestretch: 2
 header-includes:
 - \usepackage[left]{lineno}
-- \linenumbers
 - \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
 - \usepackage{fontspec}
 - \setmainfont{Times New Roman}
@@ -59,13 +58,13 @@ knitr::opts_chunk$set(echo = TRUE, fig.pos = "H", out.extra = "")
 #knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 ```
 
-# Appendix 1: Model reports
+# Model reports
 
 ## 4C
 
 ### Authors
 
-Mahnken M., Gutsch M., Reyer C.P.O., Lasch-Born P.
+Nieberg M., Gutsch M., Reyer C.P.O., Lasch-Born P.
 
 ### Model
 
@@ -470,15 +469,16 @@ the calculation of this value see Käber et. al. 2021.
 
 ### Tree species
 
-All species required were simulated: Fagus sylvatica, Picea abies, Abies
-alba, Carpinus betulus, Tilia cordata, Acer pseudoplatanus, Betula spp.,
-Fraxinus excelsior, Quercus spp., Alnus glutinosa, Pinus sylvestris
+All species required were simulated: *Fagus sylvatica, Picea abies,
+Abies alba, Carpinus betulus, Tilia cordata, Acer pseudoplatanus, Betula
+spp., Fraxinus excelsior, Quercus spp., Alnus glutinosa, Pinus
+sylvestris.*
 
-In addition the following species were simulated: Acer campestre, Acer
+In addition the following species were simulated: *Acer campestre, Acer
 platanoides, Alnus incana, Alnus viridis, Castanea sativa, Corylus
 avellana, Larix decidua, Pinus montana, Populus nigra, Populus tremula,
 Salix alba, Sorbus aria, Sorbus aucuparia, Taxus baccata, Tilia
-platyphyllos, Ulmus glabra, Pinus cembra
+platyphyllos, Ulmus glabra, Pinus cembra*
 
 ### Simulations
 
@@ -661,16 +661,19 @@ species occurred in the period.
 Fabrika M., Merganič J., Merganičová K., 2009: Natural regeneration
 density model developed for the purposes of the individual-tree growth
 simulator. Acta Facultatis Forestalis Zvolen, 51(3), p. 125-137, ISSN:
-0231-5785 Fabrika, M., (2005): Simulátor biodynamiky lesa SIBYLA,
-koncepcia, konštrukcia a programové riešenie. Habilitačná práca.
-Technická univerzita vo
+0231-5785
 
-Zvolene, 238 p. Kahn, M., (1994): Modellierung der Höhenentwicklung
-ausgewählter Baumarten in Abhängigkeit vom Standort. Forstliche
-Forschungsber. München, Vol. 141, 221 p. Keeling C. D., R. B. Bacastow,
-A. E. Bainbridge, C. A. Ekdahl Jr., P. R. Guenther, L. S. Waterman, J.
-F. S. Chin 1976: Atmospheric carbon dioxide variations at Mauna Loa
-Observatory, Hawaii. Tellus. XXVIII, 6: 538-551,
+Fabrika, M., (2005): Simulátor biodynamiky lesa SIBYLA, koncepcia,
+konštrukcia a programové riešenie. Habilitačná práca. Technická
+univerzita vo Zvolene, 238 p.
+
+Kahn, M., (1994): Modellierung der Höhenentwicklung ausgewählter
+Baumarten in Abhängigkeit vom Standort. Forstliche Forschungsber.
+München, Vol. 141, 221 p.
+
+Keeling C. D., R. B. Bacastow, A. E. Bainbridge, C. A. Ekdahl Jr., P. R.
+Guenther, L. S. Waterman, J. F. S. Chin 1976: Atmospheric carbon dioxide
+variations at Mauna Loa Observatory, Hawaii. Tellus. XXVIII, 6: 538-551,
 <https://doi.org/10.1111/j.2153-3490.1976.tb00701.x>
 
 Merganič J., Fabrika M., 2009: Determination of climatic-site strata
@@ -685,8 +688,10 @@ Forestalis Zvolen, 53(1), p.155-168, ISSN: 0231-5785
 
 Pretzsch, H., (1992): Konzeption und Konstruktion von Wuchsmodellen für
 Rein- und Mischbestände. Forstliche Forschungsberichte München, Nr.115,
-358 p. Valent, P., Merganič J., Výbošťok J. 2018: Optimus -- Software
-for Multi-criteria analysis. TU Zvolen.
+358 p.
+
+Valent, P., Merganič J., Výbošťok J. 2018: Optimus -- Software for
+Multi-criteria analysis. TU Zvolen.
 
 ## xComp
 
@@ -1648,7 +1653,8 @@ at all sites the equilibrium was reached.
 #### More simulations per site
 
 TreeMig simulates directly the mean dynamics of entire stands, but based
-on the variability of light conditions within the stand (distribution based approach, cf. Lischke et al. 1998). To come up with the required
+on the variability of light conditions within the stand (distribution
+based approach, cf. Lischke et al. 1998). To come up with the required
 200 random patches of 1 ha, temporal and spatial variability intrinsic
 to TreeMig were combined. Temporal variability was given by sampling
 from each decade of the last 100 years of the simulation, i.e. years
@@ -2090,7 +2096,7 @@ vegetation models: learning from community ecology. NEW PHYTOLOGIST,
 \newpage
 \beginsupplement
 ```
-# Appendix 2: Supplementary figures and tables
+# Supplementary figures and tables
 
 ## Ingrowth levels, tree diversity and mortality in tree establishment
 
@@ -2100,9 +2106,8 @@ library(knitr)
 zeroInflated <- readr::read_csv(here::here("figures", "noRecruitment.csv"))
 zeroInflated$Model[zeroInflated$Model == "Empirical"] <- "Observations"
 
-kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.")|>
-        kableExtra::kable_styling(latex_options = "HOLD_position")|>
-        #kableExtra::landscape() |>
+kable(zeroInflated,  format = "latex", caption = "Number of total samples, samples with zero recruitment and the proportion of zero recruitment per model and observed data.") |>
+        kableExtra::kable_styling(latex_options = "HOLD_position") |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
 ```
 
@@ -2110,26 +2115,26 @@ kable(zeroInflated,  format = "latex", caption = "Number of total samples, sampl
 library(knitr)
 
 sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
+sigDiff$p.adj <- NULL
+colnames(sigDiff) <- c("model", "y", "Group 1", "Group 2", "p", "p.signif")
 
 kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
-        kableExtra::kable_styling(latex_options = "HOLD_position")|>
-        #kableExtra::landscape() |>
-        kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+        kableExtra::kable_styling(latex_options = "HOLD_position")
 ```
 
-```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm. The black line marks where the mean Shannon index per site at recruitment and at the stand level would be equal", out.width='100%', fig.pos='H'}
+```{r recrStand7, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm. The black line marks where the mean Shannon index per site at recruitment and at the stand level would be equal.", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness7.png"))
 ```
 
-```{r recrStand10, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 10cm", out.width='100%', fig.pos='H'}
+```{r recrStand10, echo=FALSE, fig.cap="Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 10cm.", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentAdultRichness10.png"))
 ```
 
-```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimated using the Shannon index  calculated by basal area. A1) groups models where the simulated species composition in adults is higher than the observed, A2) groups models where the simulated species composition in adults is similar to the observed, A3) groups models where the simulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
+```{r simObadult , echo=FALSE, fig.cap="Mean species richness at the stand level per site in the simulated versus observed species richness. The species richness is estimated using the Shannon index  calculated by basal area. A1) groups models where the simulated species composition in adults is higher than the observed, A2) groups models where the simulated species composition in adults is similar to the observed, A3) groups models where the simulated species composition in adults is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA.", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "allAgesRichness.png"))
 ```
 
-```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness in the recruitment. The species richness is estimated using the Shannon index using the basal area. B1) groups models where the simulated species composition in recruitment is higher than the observed, A2) groups models where the simulated species composition in recruitment is similar to the observed, A3) groups models where the simulated species composition in recruitment is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA", out.width='100%', fig.pos='H'}
+```{r simObr, echo=FALSE, fig.cap="Mean species richness per site in the simulated recruitment versus observed species richness in the recruitment. The species richness is estimated using the Shannon index using the basal area. B1) groups models where the simulated species composition in recruitment is higher than the observed, A2) groups models where the simulated species composition in recruitment is similar to the observed, A3) groups models where the simulated species composition in recruitment is lower than the observed. NOTE: The recruitment treshold recruitment for treshold 7 cm in the empirical data has several sites with no recruitment or no data and the Shannon index for those sites is NA.", out.width='100%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "recruitmentRichness.png"))
 ```
 
@@ -2139,20 +2144,20 @@ library(knitr)
 sigDiff <- readr::read_csv(here::here("figures", "mortRatio7_10.csv"))
 
 kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold over 10 cm threshold between the observed values and the simulated values per model.") |>
-    kableExtra::kable_styling(latex_options = "HOLD_position")|>
-#kableExtra::landscape()
-kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+    kableExtra::kable_styling(latex_options = "HOLD_position") 
 ```
 
 ```{r tableModels, echo=FALSE,  message=FALSE, fig.pos='H'}
 library(knitr)
 
 tabletrends <- readr::read_csv(here::here("figures", "mort7_10_trends.csv"))
-kable(tabletrends,  format = "latex", caption = "Models trends in mortality between 7 and 10cm, and the ingrowth at 7cm, based in the mean oer site .")|>
+tabletrends$Significance <- round(tabletrends$Significance, 4)
+tabletrends$Slope <- round(tabletrends$Slope, 4)
+kable(tabletrends,  format = "latex", caption = "Models trends in mortality between 7 and 10cm (represented in Figure S5), and the ingrowth at 7cm, based in the mean per site. The slope is the rate of change from the linear model between recruitment ratio 7-10 cm and the initial recruitment tree number.") |>
 kableExtra::kable_styling(latex_options = "HOLD_position")
 ```
 
-```{r mortality3 , echo=FALSE, fig.cap="Recruitment ratio between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke self-thinning ratio under evenaged conditions", out.width='70%', fig.pos='H'}
+```{r mortality3 , echo=FALSE, fig.cap="Recruitment ratio between 7 and 10cm and the initial recruitment tree number at 7cm. Dashed red lines mark a ratio equal to 1 indicating no decrease between 7 and 10cm tree recruitment and ratio equal to 1.77 corresponding with the Reineke self-thinning ratio under evenaged conditions.", out.width='70%', fig.pos='H'}
 knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
 ```
 
@@ -2160,7 +2165,7 @@ knitr::include_graphics(here::here("figures", "mort7_10_trends.png"))
 
 ## Model traits and model performance
 
-```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary statistics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules", fig.show = 'hold', out.width = '70%', fig.pos='H'}
+```{r plotComp, echo=FALSE, warning=FALSE, fig.cap="Plot and summary statistics of the linear model between the overestimation proportion in ingrowth levels and the mean complexity value of the establisment modules.", fig.show = 'hold', out.width = '70%', fig.pos='H'}
 
 knitr::include_graphics(here::here("figures", "compOver.png"))
 
@@ -2172,8 +2177,7 @@ library(knitr)
 rtreesDiff <- readr::read_csv(here::here("figures", "rtreesDiff.csv"))
 
 kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold of the observed values and the simulated values per model.") |>
-    kableExtra::kable_styling(latex_options = "HOLD_position") |>
-    kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+    kableExtra::kable_styling(latex_options = "HOLD_position") 
 ```
 
 ```{r sigH7_SimObs, echo=FALSE,  message=FALSE, fig.pos='H'}
@@ -2182,14 +2186,12 @@ library(knitr)
 rtreesDiff <- readr::read_csv(here::here("figures", "sigH7_SimObs.csv"))
 
 kable(rtreesDiff,  format = "latex", caption = "Test of the significance of the differences of rate of recruitment at 7 cm threshold of the observed values and the simulated values per model.") |>
-    kableExtra::kable_styling(latex_options = "HOLD_position") |>
-    kableExtra::kable_styling(full_width = F, latex_options = "scale_down")
+    kableExtra::kable_styling(latex_options = "HOLD_position") 
 ```
 
 \newpage
 
 ## Total ingrowth and individual species regeneration niches
-
 
 ```{r diff, echo=FALSE, fig.cap="Departure of each model in the representation of the main species recruitment relative abundance from the observations across the environmental gradients for a 10cm treshold. The values shown are the mean of samples per site and across sites in bins, where the range of the climatic water balance (cm) and seasonal degree-day sum (dºC) was divided in 10 bins. The point sizes represent ratio between recruited basal area of the species and the total recruited basal area for all the species. The color gradient shows the difference between the simulated and observed ratio between recruited basal area of the species and the total recruited basal area: grey cell represent areas of the envirnomental gradient in which the model had R BA share  and the empirical dara did not becuase both recruitment and stand level recruitments were equal to zero.", out.width='100%',out.height= "80%", fig.pos='H'}
 knitr::include_graphics(here::here("figures", "HeatEnvGrad_10circles_10.png"))
