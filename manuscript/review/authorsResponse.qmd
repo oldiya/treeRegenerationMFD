@@ -18,13 +18,13 @@ author:
   - name: Christian	Hochauer,
   - name: Manfred J. Lexer,
   - name: Heike	Lischke,
-  - name: Mats Mahnken,
   - name: Paola	Mairota,
   - name: Ján Merganič,
   - name: Katarina Merganičová,
   - name: Tobias Mette,
   - name: Marco Mina,
   - name: Xavier Morin,
+  - name: Mats Nieberg,
   - name: Werner Rammer,
   - name: Christopher P.O. Reyer,
   - name: Simon	Scheiter,
@@ -42,50 +42,11 @@ format:
     colorlinks: true
 ---
 
-# Internal instructions \[this section will be deleted\]
-
--   underlined comments are comments that still need attention
--   I will delete most of the quoted text and add Line numbers, all the L\[XX-XX\] will be added in the last round after all the changes are done
-
-## Journal formatting (ToDo list)
-
--   Respond to the review comments in the space provided. You can use this space to document any changes you make to the original manuscript. In order to expedite the processing of the resubmitted manuscript, please be as specific as possible in your response to the review comments. If you disagree with a point, please explain why. Please note that the field in ScholarOne does not retain type formats such as italics, boldface, or colors, so please format the responses accordingly. We suggest you upload a separate file for your "Author's Response to Reviewer Comments" document and use our template: <https://www.esa.org/wp-content/uploads/2021/04/Author-Response-to-Reviewers-Template.docx>.
-
--   A version uploaded in the file list should be given the designation "Additional File for Review but NOT for publication".
-
--   Please also include a "track changes" version of your file, along with a clean copy as your Main Document. This "track changes" version should be uploaded in the file list list and given the designation "Additional File for Review but NOT for publication".
-
--   IMPORTANT: Your original files are available to you when you upload your revised manuscript. Please replace files of the earlier version and delete any redundant files before completing the submission.
-
--   To submit your revised manuscript, log into <https://mc.manuscriptcentral.com/ecosphere> and enter your Author Center. You will find your manuscript title listed under "Manuscripts with Decisions." Under "Actions," click on "Create a Revision." Your manuscript number has been appended to denote a revision. Please DO NOT upload your revised manuscript as a new submission.
-
--   DEADLINE: We encourage you to submit your revised manuscript within three weeks from today's date. The final due date for submitting your manuscript with the same manuscript number is 14-Dec-2023. 
-
--   If you are unable to meet the final deadline, you can request an extension by contacting the the journal's editorial staff ([esajournals\@esa.org](mailto:esajournals@esa.org)). Please note that we can only consider extensions of a few weeks. If you cannot submit by the final due date, you must create a new submission for your manuscript. If creating a new submission, be sure to note the previous manuscript ID (ECS23-0342) in the online submission form and include an "Author's Response to Reviewer Comments" document (using the template linked to earlier in this message) in the file list.
-
--   Editorial staff note: In addition to revisions according to the review comments below, please make revisions to your paper to conform to the journal style at this stage, especially the tables, figures, and supporting information, anticipating the possibility that your paper may be accepted for publication.
-
--   Please provide the main manuscript file composed in Word, taking care to use the Table function for the tables. However, if you created your manuscript in LaTex, please provide only the .tex file of the main manuscript, a .pdf file of the main manuscript (that is the exact same in content as the .tex file), and a .bib file.
-
--   Ecosphere page style allows for five levels of headings. Please use different type styles (italics, boldface, boldface italics, etc.) consistently to distinguish between the levels of headings in the article and delete the section numbers in the headings. 
-
--   Literature references: Please check that each citation has complete information, and check that all references in text have a matching citation in the References section and vice versa.
-
--   Table and figure references: Please be sure that all tables and all figures have in-text citations in the main body of the manuscript, and that tables and figures are called out in numerical order (i.e., Figure 1 is called out before Figure 2).
-
--   Figures: Each figure should be provided in an individual, complete file (all panels in one image, identified by figure number in the file name), preferably as a high-resolution (300-600 dpi) image file or high-quality PDF. Preferred file formats include TIF, EPS, PDF, or AI at 600 ppi, while JPEG, PPT/PPTX, or DOC/DOCX are acceptable if the resolution is sufficient. Only one version of each figure should be provided. Please delete figure images from the main manuscript file. Please check for misspellings and be sure that all parts, including all lettering, symbols, labels, and scale numbers, are discernible, clear, and readable when the figures are presented at the maximum allowable size (18 cm wide by 22 cm tall) in the typeset and paged PDF version of the article. See additional instructions for preparation in the Manuscript Preparation Guide.
-
--   Figure captions: Please be sure to include a list of figure captions in the main manuscript file and ensure that any abbreviation that appears in a figure is identified in the caption.
-
--   Supporting Information: Each appendix must be assembled exactly as you intend it to appear online. (Appendices are posted "as is"; ESA and Wiley staff do not copy edit or assemble appendices.) Note also that the Ecosphere naming convention for appendices is of the style "Appendix S1," "Appendix S2," etc., and for tables and figures within appendices is "Table S1," "Table S2," etc. or "Fig. S1," "Fig. S2," etc., and requires that the numbering begins at "S1" in each appendix (and revise references to material in other appendices as necessary). Please be sure to eliminate line numbering and to include the title of the journal, the title of the article, and all of the authors' names on the first page of each appendix. In addition, if there are literature references within an appendix, the appendix should include a list of literature cited.
-
--   If the journal style is not followed at submission of the revision, we may return the manuscript to you for further revision before sending it along to the Subject-matter Editor. Closely following our manuscript preparation guide at this stage would expedite the production of your paper for publication, should it be accepted. You can download our guide here: <https://www.esa.org/wp-content/uploads/2022/05/ESA-Manuscript-Preparation-Guide.pdf>
-
 # Response to the Editor
 
 ## General Comments
 
-Your revisions should address the specific points made in the review comments.  Please note that Reviewer #2 made extensive comments directly on the manuscript.\
+Your revisions should address the specific points made in the review comments. Please note that Reviewer #2 made extensive comments directly on the manuscript.\
 I should note that personally I can hardly disagree with your basic conclusion that models of forest dynamics need to do a good job of capturing regeneration and recruitment processes.  I have devoted most of my research over the past 40 years to developing the field methods to allow incorporation of accurate seedling, sapling and canopy recruitment in the models SORTIE and SORTIE-ND, in systems ranging from the tropics to boreal forests. The specific ecological processes incorporated in those models depended on the goals of the modeling and the ecology of the system, and included processes such as masting cycles, effects of disturbance on seedbed substrate dynamics, seed and seedling predation by small mammals, browsing by ungulates, Janzen-Connell effects, and, of course, detailed analyses of shading and neighborhood competition. More recently, this includes developing statistical models of seedling recruitment from the US forest inventory network that have been directly incorporated in the model for forests of the entire eastern US.  To my mind, the difficulties the models you reviewed encountered in capturing canopy recruitment speak more to the limitations of the approaches used in model development than in any inherent difficulties in capturing regeneration and recruitment in models of forest dynamics.  
 
 **Response to editors comments**
@@ -118,7 +79,7 @@ Our responses to each of the comments and the concrete actions we have taken are
 
 **Response to comment 1:**
 
-Thank you for pointing this out. We discussed terminology several times and basically agree. We have followed your suggestion and have replaced the erroneous use of 'regeneration' by 'recruitment' where we refer to ingrowth into a certain DBH class. However, in some places the term 'regeneration' is more accurate, especially in many parts of the Introduction and Discussion sections. 'Regeneration' is a broader term that starts from flowering and ends with ingrowth into a given size class; that is, recruitment is the result of successful regeneration. Thus, where we refer to the entire process of regeneration, it would not be appropriate to use 'recruitment', and therefore we maintain the former term where it is fitting.
+Thank you for pointing this out. We discussed terminology several times and basically agree. We have followed your suggestion and have replaced the erroneous use of 'regeneration' by 'recruitment' where we refer to ingrowth into a certain DBH class. However, in some places the term 'regeneration' is more accurate, especially in many parts of the introduction and discussion sections. 'Regeneration' is a broader term that starts from flowering and ends with ingrowth into a given size class; that is, recruitment is the result of successful regeneration. Thus, where we refer to the entire process of regeneration, it would not be appropriate to use 'recruitment', and therefore we maintain the former term where it is fitting.
 
 ### COMMENT 2
 
@@ -126,33 +87,23 @@ The difference between 7 cm and 10 cm DBH in the observed data. From the methods
 
 **Response to comment 2:**
 
-We realized that there is an issue with the way we communicated our diameter thresholds approach in the manuscript. The observed data had varying diameter thresholds for reporting tree recruitment, and, for the purposes of this study, we merged the recruited trees values into two thresholds of 7 and 10 cm.  That is, in all plots (*n* = 165) that had a calipering limit \<7 cm, only the successful recruitment events at 7 cm were considered; and analogously for plots (*n* = 35) with a callipering limit between 7 and 10 cm, where only recruitment at 10 cm was considered. Thus, the 7 cm dataset (*n* = 165) actually is a subset of the 10 cm dataset (*n* = 200), as all data from the 7-cm threshold could be re-calculated for the 10-cm threshold. Thus, there was no 'like-to-like' comparison for any other diameter threshold, only for 7 and 10cm.
+We realized that there is an issue with the way we communicated our diameter thresholds approach in the manuscript. The observed data had varying diameter thresholds for reporting tree recruitment, and, for the purposes of this study, we merged the recruited trees values into two thresholds of 7 and 10 cm.  That is, in all plots (*n* = 165) that had a calipering limit \<7 cm, only the successful recruitment events at 7 cm were considered; and analogously for plots (*n* = 35) with a callipering limit between 7 and 10 cm, where only recruitment at 10 cm was considered. Thus, the 7 cm dataset (*n* = 165) actually is a subset of the 10 cm dataset (*n* = 200), as all data from the 7-cm threshold could be re-calculated for the 10-cm threshold. Thus, there was no 'like-to-like' comparison for any other diameter threshold, only for 7 and 10 cm.
 
-When examining the change in mortality between 7 and 10 cm, or the difference in species diversity between observed and simulated data (Figure 4), we could only use the 165 sites that contained both pieces of information at the 7 and 10 cm thresholds in the observed data. This is reported in the supplementary materials software, script \`\`\`Figures.R\`\`\` line 536 and L284-349 and now better explained in the manuscript:
+When examining the change in mortality between 7 and 10 cm, or the difference in species diversity between observed and simulated data (Figure 4), we could only use the 165 sites that contained both pieces of information at the 7 and 10 cm thresholds in the observed data. This is reported in the supplementary materials software, script \`\`\`Figures.R\`\`\` line 536 and L284-349 and now better explained in the manuscript: we have better explained the difference on the observed data in the section 3.2 Observed data L\[225-230\] and we have added a new text in the caption of figure 4 L\[1085-1086\].
 
-1\) We have better explained the difference on the observed data in the section 3.2 Observed data L\[XX-XX\]
-
-"For our study, we defined two datasets where one included 165 sites with a diameter threshold of 7 cm or lower, and the other included another 35 sites with diameter thresholds from 10 cm. Therefore we had in total 200 sites with observations of newly established trees above 10 cm and 165 sites above 7cm. In the results section any result from observed data at 7 cm threshold is originated from the 165 sites."
-
-2\) We have added a new text in the caption of figure 4 L\[XX-XX\]
-
-"B) Examples for the three trends across models for regeneration at the 7 cm threshold (165 sites)."
-
-### [COMMENT 3]{.underline}
+### COMMENT 3
 
 The t-tests. The results in Table S2 and S3 (comparing at 7 cm and 10 cm DBH) should be at least by paired t-tests not two-sided t-tests (L319), where you are comparing the difference within the same stand at 7 and 10 cm. The results Table S5 and S6 should not be a t-test at all. Performing 15 individual t-tests is a classic Type-1 error situation (technically this applies to Tables S2 and S3 as well, a comment on that below). For Tables S5 and S6, I would suggest a general linear mixed effects model. You can take the difference between the observed, and the simulated output and make this the response variable (Y). Then, include model complexity, feedback, model type and scale as fixed explanatory variables. And include the stand ID as the random effect. This will more accurately answer your question about if any of these fixed explanatory variables can predict over or under representation of recruitment. For Tables S2 and S3, you could do the same thing (i.e., calculate the difference between the observed and the simulated output for each model) and make this your response variable. But the only fixed effect would be the actual model, and then you could do an ANOVA (again, stand ID as the random effect) and then a post-hoc test to see which models were or were not different from observed. If you do want to keep the 15 paired t-tests, then you need to account for Type I error rates and adjust your p-values accordingly.\
 
 **Response to comment 3:**
 
-The objective of running the different t-tests were to allow us for discussing irrefutable differences between models and observations. The t-test, as employed in our study, is not intended to serve as definitive proof of our findings. Rather, it serves as a practical tool for managing the extensive number of comparisons in our study. As such, we intend to include a statement in the manuscript:
+The objective of running the different t-tests were to allow us for discussing differences between mean values per site between models and observations and between 7 and 10 cm diameter thresholds. The t-test, as employed in our study, is not intended to serve as definitive proof of our findings and we have deliberately avoid over-interpretation of their outcomes. Rather, it serves as a practical tool for managing the extensive number of comparisons in our study. As such, we intend to include a statement in the manuscript to clarify this aspect, please see L\[336-337\].
 
-"Note that the t-test does not present conclusive evidence for a specific hypotheses, but rather facilitates managing the extensive number of comparisons discussed in our study."
+Following the reviewers comment we included a correction for multiple testing although we are aware that all corrections have pros and cons. In this case we used the Bonferroni correction to make sure that the actual Type I error probability for the combined H0 is smaller or equal than the nominal test level.
 
-Regarding the other alternative approaches suggested by the reviewer: We can not do a paired t-test as the for paired samples it is necessary that you have the same number of subjects in both groups (observed and simulated) which is not the case. We tested the possibility of creating a GLME using as random effect the site and as a explanatory variables all the variables that we were interested in (model complexity, feedback, model type and scale). This model approach did not work as the combination as including some models having the same values in the combination of type and scale (factors did not have 2 or more levels).
+We also look into the alternative approaches suggested by the reviewer. We can not do a paired t-test as the for paired samples it is necessary that you have the same number of subjects in both groups (observed and simulated) which is not the case as for example some models did not simulate all the sites. We tested the possibility of creating a GLME using as random effect the site and as a explanatory variables all the variables that we were interested in (model complexity, feedback, model type and scale) as suggested. However this approach will not give us the observed-model comparison that we are interested in. Following the reviewers comments we also did further testing to see if with other approaches we could better explain differences between observed and simulated values. We tested a mixed model to account for the randomness induce due to site (plot) differences. For example a glme model with the recruitment values as the response variable and models as the explanatory variable with observed data as the reference (with poisson distribution-count data). This worked well and the patterns were the same as in the t-test (expect for the model 4C). We also considered doing the same approach with the shannon index and mortality differences but in this case we think it is more interesting to understand the mean differences across sites and therefore a t-test is a valid approach. We also tested a linear mixed model to assess differences between 7 and 10cm on the Shannon index creating a new parameter where the explanatory variable was a combination of the model and the diameter threshold, then we run a pairwise multiple comparisons to determine which means differ. The patterns here were also similar to the ones observed in the t-test except for two landscape level models (TreeMig and LandisII) that were significant in this test contrary to the t-test.
 
--   "This more accurately answer your question about if any of these fixed explanatory variables can predict over or under representation of recruitment. " how to respond to this?
-
-Account for Type I error rates and adjust your p-values accordingly
+After considering all the options that the reviewer suggested and testing others, we made some adjustments to the t-tests analysis, with the correction for multiple testing and more clean output tables as suggested by the reviewer. In addition we explain the purpose and interpretation of these tests better in line \[336-337\].
 
 ## Minor comments:
 
@@ -178,7 +129,7 @@ Table 1. Please clarify what the letters are for (a, b, c and d in the table hea
 
 **Response to comment 6:**
 
-We have added a new column classifying the models into recruitment or regeneration models; and the letters a,b,c, d,e and f in the table are now better described. Regarding the suggestion of adding the size of the saplings or ingrowth: we are concerned that this would be more confusing than helpful. For example, there are models that start from saplings without a diameter threshold, as they are biomass-based (e.g. LandClim), and providing all information for each model would make this table rather overloaded, without a clear benefit, as we believe. Therefore we have decided not to include this information. We would also like to note that the 15 model reports in the Supplementary Materials provide more details how regeneration is simulated.
+We have added a new column classifying the models into recruitment or regeneration models; and the letters a, b, c, d, e and f in the table are now better described. Regarding the suggestion of adding the size of the saplings or ingrowth: we are concerned that this would be more confusing than helpful. For example, there are models that start from saplings without a diameter threshold, as they are biomass-based (e.g. LandClim), and providing all information for each model would make this table rather overloaded, without a clear benefit, as we believe. Therefore we have decided not to include this information. We would also like to note that the 15 model reports in the Supplementary Materials provide more details how regeneration is simulated.
 
 ### COMMENT 7
 
@@ -194,9 +145,7 @@ L264 -- 274: how will this be accounted for later, that not all models simulated
 
 **Response to comment 8:**
 
-For those models that simulated more than the eleven species, we created a different category "others" were we lumped those extra recruited species. These were counted when we calculated the diversity index as well as for total recruitment values. We have added this information in the simulation protocol section L\[XX-XX\].
-
-"Two models included their standard set of species for the simulations, which is much larger (i.e., ForClim 1, ForClim 11, TreeMig), the species simulated beyond the eleven species were lumped in a category"others""
+For those models that simulated more than the eleven species, we created a different category "others" were we lumped those extra recruited species. These were counted when we calculated the diversity index as well as for total recruitment values. We have added this information in the simulation protocol section L\[278-281\].
 
 ### COMMENT 9
 
@@ -204,9 +153,7 @@ L340: "regeneration basal area of that species" is mentioned twice, please delet
 
 **Response to comment 9:**
 
-Following the reviewers comment we have modified the text L\[XX-XX\]
-
-"Furthermore, regarding the share in the regeneration basal area per species ($\bar{R}_{BA_{share_{i}}}$), we categorized this as zero when the regeneration basal area of that species ($\bar{r}_{BA_{t,i}}$) was zero, but also when both the total regeneration basal area ( $\sum_{i = 1}^{s}{\bar{r}_{BA_{t,i}}}$) and the regeneration basal area of that species ($\bar{r}_{BA_{t,i}}$) equaled zero."
+Following the reviewers comment we have modified the text L\[354-357\].
 
 ### COMMENT 10
 
@@ -216,13 +163,13 @@ L364: so please remove the 4C model from the figure as it is not comparable. Do 
 
 We acknowledge the point that the reviewer is making, but even though it is not directly comparable, we still believe to be insightful for the reader that we share the findings related to the 4C model. Note that in those models that simulate more species, these additional species were lumped in the category 'others' (as explained further above), thus with little impact on the comparison.
 
-### [COMMENT 11]{.underline}
+### COMMENT 11
 
 Table S2 and S3: What are the 3 columns for p-values? Please report just the one you used. No need to have a column to state 't-test' -- just move this to the table caption. Then add in a column for df, the test statistic (t) and the effect size (was it higher or lower and by how much?). NOTE, this comment may become irrelevant if you change the statistical analyses.
 
 **Response to comment 11:**
 
-[To be addressed in combination with COMMENT 3]{.underline}
+We have cleaned all the output tables.
 
 ### COMMENT 12
 
@@ -230,9 +177,7 @@ Figure S1 and S2 -- I can't tell the difference between observed and simulated. 
 
 **Response to comment 12:**
 
-We have increased the font size of the legend, and now the difference between observed and simulated is visible. We have also explained the meaning of the black line in the caption L\[XX-XX\].
-
-"Mean Shannon index per site at recruitment and at the stand level both for observed and simulated values for the diameter threshold of 7cm. The black line marks where the mean Shannon index per site at recruitment and at the stand level would be equal"
+We have increased the font size of the legend, and now the difference between observed and simulated is visible. We have also explained the meaning of the black line in the caption.
 
 ### COMMENT 13
 
@@ -240,9 +185,7 @@ Figure 4 (and Figure S3) are interesting in that there are no patterns with over
 
 **Response to comment 13:**
 
-We agree that it is interesting that the models with feedback did not capture better the species diversity of the regeneration compared with those without, with the exeption of ForCEEPS. Figure 4 shows three representative patterns observed across models using 6 of the models as an example, and Figure S3 provides the details for each model. We believe it is not very informative to color the points from the models with feedback in Figure 4 as this will only color all the points from some of the panels and it is possible to identify the models with feedback in table 1 We have addressed this point in the discussion section L\[XX-XX\].
-
-"Furthermore, based on the simulation results, there is no evidence that models with feedback from the canopy (in terms of species composition of regeneration) captured better the species diversity of the regeneration than those without feedback, with the exception of ForCEEPS that significantly improved regeneration species diversity with the model version that included feedback (ForCEEPS(f)). The similar performance of models with and without feedback is likely because the models put more weight on the regeneration niche arising from abiotic and biotic filters, than from the habitat niche of the adult trees [@grubb1977]."
+We agree that it is interesting that the models with feedback did not capture better the species diversity of the regeneration compared with those without, with the exeption of ForCEEPS. Figure 4 shows three representative patterns observed across models using 6 of the models as an example, and Figure S3 provides the details for each model. We believe it is not very informative to color the points from the models with feedback in Figure 4 as this will only color all the points from some of the panels and it is possible to identify the models with feedback in table 1 We have addressed this point in the discussion section L\[563-570\].
 
 ### COMMENT 14
 
@@ -250,7 +193,7 @@ All figures in the Appendix, please make the X and Y axis labels larger and cent
 
 **Response to comment 14:**
 
-Done.
+We have corrected these figures.
 
 ### COMMENT 15
 
@@ -258,7 +201,7 @@ L400 -- 402: where is this conclusion about mixed species or monocultures coming
 
 **Response to comment 15:**
 
-This paragraph is addressing the comparison with the theoretical Reineke value which is usually calculated for even-aged, single species stands. We have change this text to clarify this aspect.
+This paragraph is addressing the comparison with the theoretical Reineke value which is usually calculated for even-aged, single species stands. We have change this text to clarify this aspect L\[324-330\].
 
 ### COMMENT 16
 
@@ -268,13 +211,13 @@ Figure 6 is excellent. 
 
 Thank you!
 
-### [COMMENT 17]{.underline}
+### COMMENT 17
 
 Table S4: please clean up. No need to report 7 places after the decimal point. Please clarify in the table caption what the slope represents (maybe mention Figure S5 too, as I assume it is illustrating the slopes). Another suggestion, would be to make the slopes solid lines if significant, or dashed lines if not significant. Not sure if that would help, but if it does then it could eliminate the need for this table. 
 
 **Response to comment 17:**
 
-[Clean together with comment 3]{.underline}
+We have cleaned this table and changed the table caption including a reference to Figure S5 as suggested by the reviewer.
 
 ### COMMENT 18
 
@@ -306,7 +249,7 @@ L584: What does this mean, about degrees of freedom for modelling regeneration?
 
 **Response to comment 21:**
 
-With this statement, we were referring to the multiple potential combinations of approaches of modeling tree regeneration. We have modified this for clarity L\[XX-XX\]
+With this statement, we were referring to the multiple potential combinations of approaches of modeling tree regeneration. We have modified this for clarity L\[596-598\]
 
 ### COMMENT 22
 
@@ -314,7 +257,7 @@ L624: Missing the end of the sentence.
 
 **Response to comment 22:**
 
-This was a glitch, which now is corrected L\[ XX-XX\]
+This was a glitch, which now is corrected L\[636-638\]
 
 ### COMMENT 23
 
@@ -346,9 +289,7 @@ L675: what would a 'comprehensive regeneration dataset" look like? There are lar
 
 **Response to comment 26:**
 
-We have changed this text L\[XX-XX\]. Although there are multiple data sources (such as MASTIF, MASTREE, National Forest Inventories, Forest Reserve plots, etc.), usually these data do not refer to the same locations and thus cannot be used in a site-specific manner for calibrating or testing models that intend to follow the ‚regeneration' chain of processes.
-
-"Therefore, we further recommend that more effort should be invested into collecting harmonized datasets in a site-specific manner covering the different aspects leading to tree regeneration."
+We have changed this text L\[684-688\]. Although there are multiple data sources (such as MASTIF, MASTREE, National Forest Inventories, Forest Reserve plots, etc.), usually these data do not refer to the same locations and thus cannot be used in a site-specific manner for calibrating or testing models that intend to follow the "regeneration" chain of processes.
 
 # Response to reviewer 2
 
@@ -376,7 +317,7 @@ I felt the readability of the paper would be improved by introducing a "road map
 
 **Response to comment 2:**
 
-We have added a "road map" at the end of the introduction.
+We have added a "road map" at the end of the introduction L\[159-163\].
 
 ### COMMENT 3
 
@@ -404,9 +345,7 @@ L51-52 "However, an assessment of their ability to accurately represent tree reg
 
 **Response to comment 5:**
 
-We have modified this sentence L\[XX-XX\]
-
-"However, there is a need to evaluate their capacity to accurately represent tree regeneration"
+We have modified this sentence L\[52-53\]
 
 ### COMMENT 6
 
@@ -414,7 +353,7 @@ L56 "The results are evaluated against comprehensive data from unmanaged forests
 
 **Response to comment 6:**
 
-We have changed the word "comprehensive" to "extensive" to express that we used a wide-range data that considers many important elements of regeneration.
+We have changed the word "comprehensive" to "extensive" to express that we used a wide-range data that considers many important elements of regeneration L\[57\]
 
 ### COMMENT 7
 
@@ -422,7 +361,7 @@ L56 "Models simulating higher species diversity at the stand level do not featur
 
 **Response to comment 7:**
 
-We have changed "feature" with "present".
+We have kept "feature" in this case.
 
 ### COMMENT 8
 
@@ -430,7 +369,7 @@ L76-78 "A wide range of models of forest dynamics were developed over the past d
 
 **Response to comment 8:**
 
-We have changed the word "were" with "have been".
+We have changed the word "were" with "have been" L\[78\].
 
 ### COMMENT 9
 
@@ -438,7 +377,7 @@ L79 K. Vanclay and Skovsgaard 1997;
 
 **Response to comment 9:**
 
-We have corrected the reference style.
+We have corrected the reference style L\[80\].
 
 ### COMMENT 10
 
@@ -446,7 +385,7 @@ L83-84 "Which is a clear research gap in the context of climate-induced forest d
 
 **Response to comment 10:**
 
-We have changed this sentence to: "This presents an important research gap, particularly in the context of climate-induced forest disturbances and forest resilience."
+We have changed this sentence L\[84-85\].
 
 ### COMMENT 11
 
@@ -454,7 +393,7 @@ L85-86 "Tree regeneration arises from multiple processes such as pollination, fr
 
 Response to comment 11:
 
-We have changed "such as" with "including"
+We have changed "such as" with "including" L\[86\].
 
 ### COMMENT 12
 
@@ -462,7 +401,7 @@ L90-92 "Currently, tree regeneration processes in dynamic forest models are hand
 
 Response to comment 12:
 
-We have changed "it" with "them"
+We have changed "it" with "them" L\[92\].
 
 ### COMMENT 13
 
@@ -494,7 +433,7 @@ L112-114 "A related issue is the excessive reduction of species diversity due to
 
 **Response to comment 16:**
 
-We have added a reference here.
+We have added a reference here L\[105\].
 
 ### COMMENT 17
 
@@ -526,7 +465,7 @@ L186-188 "ForClim variant 1 (Bugmann et al. 1996) is based on a recruitment modu
 
 **Response to comment 22:**
 
-We have added information to briefly explain the general approach.
+We have added information to briefly explain the general approach L\[196-197\].
 
 ### COMMENT 21
 
@@ -544,7 +483,7 @@ L200-202 "The observations used here are derived from a novel and unprecedented 
 
 We agree with the reviewer's comment that there are other forest inventory data networks outside Central Europe even on forest reserves that could provide this sort of data. However, within Europe no such data existed before. The research network (EuFoRIa) was established in 2019 and therefor is in fact novel, and within Europe such data is also without precedence.
 
-Yet we acknowledge that our statement needs to be put in a European context much clearer. We hope that our adjustments to the text resolve the exaggeration of our initial formulation.
+Yet we acknowledge that our statement needs to be put in a European context much clearer. We hope that our adjustments to the text resolve the exaggeration of our initial formulation L\[211-213\].
 
 ### COMMENT 23
 
@@ -560,7 +499,7 @@ L211-212 "exposition (i.e.,slope and aspect)." unfamiliar term to me
 
 **Response to comment 24:**
 
-We have changed "and exposition (i.e.,slope and aspect)." with ", slope and aspect."
+We have changed "and exposition (i.e.,slope and aspect)." with ", slope and aspect." L\[223\].
 
 ### COMMENT 25
 
@@ -568,11 +507,13 @@ L212-213 "Regeneration thresholds for these sites differed between diameters of 
 
 **Response to comment 25:**
 
-Following the reviewer's comment we have changed this sentence to: "Regeneration minimum size thresholds for these sites differed between stem diameters of 0 and 10 cm"
+Following the reviewer's comment we have changed this sentence L\[224-225\].
 
 ### COMMENT 26
 
 L215 "another 35 sites with diameter thresholds between 7 and 10 cm." OK, so we're talking about v large trees here 
+
+L218 "featured 30,900 newly established trees" so they are trees....
 
 **Response to comment 26:**
 
@@ -580,149 +521,139 @@ The minimum threshold that could be standarized across reserves was of at least 
 
 ### COMMENT 27
 
-L215 "another 35 sites with diameter thresholds between 7 and 10 cm." OK, so we're talking about v large trees here 
-
-L218 "featured 30,900 newly established trees" so they are trees....
+L215 "on this unique dataset" not so unique
 
 **Response to comment 27:**
 
-The minimum threshold that could be standardized across reserves was of at least 7cm.
+We have changed this text L\[235\].
 
 ### COMMENT 28
 
-L215 "on this unique dataset" not so unique
+L221 "nformation, cf. Käber et al. (2023)." in review and not available 
 
 **Response to comment 28:**
 
-We have changed this text L\[XX-XX\]
+This paper have recently being published and the reference has been updated accordingly.
 
 ### COMMENT 29
 
-L221 "nformation, cf. Käber et al. (2023)." in review and not available 
+L223 "The overarching goal of the experiments was to assess the tree regeneration as it arises" simulation experiments and remove "the"
 
-**Response to comment 32:**
+**Response to comment 29:**
 
-This paper have recently being published and the reference has been updated accordingly.
+Changed as suggested L\[238-239\].
 
 ### COMMENT 30
 
-L223 "The overarching goal of the experiments was to assess the tree regeneration as it arises" simulation experiments and remove "the"
+L225 "tree regeneration as the passing of a breast height diameter threshold of 7 or 10 cm, respectively" I suggest "tree recruitment" not "tree regeneration" here. respectively??
 
 **Response to comment 30:**
 
-Changed as suggested
-
-### COMMENT 31
-
-L225 "tree regeneration as the passing of a breast height diameter threshold of 7 or 10 cm, respectively" I suggest "tree recruitment" not "tree regeneration" here. respectively??
-
-**Response to comment 31:**
-
-We have removed "respectively".
+We have removed "respectively" L\[240\].
 
 We have re-assessed the terms used across this manuscript and change it across the text accordingly.
 
-### COMMENT 32
+### COMMENT 31
 
 L 227-228 "simulations, providing input variables" provided with 
 
-**Response to comment 32:**
+**Response to comment 31:**
 
-We have removed "providing".
+We have removed "providing" L\[242\].
 
-### COMMENT 33
+### COMMENT 32
 
 L229 "Neither were further site information (except for the data specified below) nor any data" These were "blind trials":  modelling group were not provided with site information \... 
 
-**Response to comment 33:**
+**Response to comment 32:**
 
 The reviewer is correct that we did not provide e.g. site coordinates (with the exception of iLand that needed this for a model specific soil input, this is described in the manuscript), but we did provide topography, climate and soil site specific variables.
 
-### COMMENT 34
+### COMMENT 33
 
 L230-231 "That is, the models were run in"blind flight" mode." Remove
 
-**Response to comment 34:**
+**Response to comment 33:**
 
 Changed as suggested.
 
-### COMMENT 35
+### COMMENT 34
 
 L237-238 "Soil quality data were provided as continuous values between 1 and 5" ?hydrological quality? 
 
-**Response to comment 35:**
+**Response to comment 34:**
 
 The soil quality value is based on a random forest that was trained to predict expert knowledge based soil quality on a scale from 1 to 5 from the [SoilGrids250 data set](https://www.isric.org/explore/soilgrids) and the [WISE data set](https://www.isric.org/explore/wise-databases). The most influential variables in the random forest were total depth to bedrock and sand content. Thus the variable is a good predictor for plant available water storage capacity. This information has been provided in the protocol of this study.
 
-### COMMENT 36
+### COMMENT 35
 
 L247 "The exact length of the simulation was also decided by the modeling teams" seems odd not to constrain that.
 
-**Response to comment 36:**
+**Response to comment 35:**
 
-We understand the reviewers concern on not constraining the length of the simulations, but we decided to leave it to the assessment of the individual modelers, as we wanted to obtain simulation that were run from from bare ground in the absence of management to a simulated equilibrium ("potential natural vegetation") with current climate, and each modeler know best how to obtain this in each model. This information is currently available in the manuscript and in the protocol of this study.
+We understand the reviewers concern on not constraining the length of the simulations, but we decided to leave it to the assessment of the individual modelers, as we wanted to obtain simulation that were run from bare ground in the absence of management to a simulated equilibrium ("potential natural vegetation") with current climate. Each modeler know best how to obtain this in each model and different model uses its own logic to get to the equilibriium that can require different lengths.
 
-### **CO**MMENT 37
+### **CO**MMENT 36
 
 L250 "The simulations were run in the absence of management to a simulated equilibrium" The absence of disturbance and running to equilibrium set quite specific conditions; suggest this is emphasised more in abstract / intro / discussion. 
 
-**Response to comment 37:**
+**Response to comment 36:**
 
 We agree with the reviewer that the simulations set up regarding absence of management and to a simulated equilibrium are quite specific. We found challenging to incorporate this in the introduction as we see this a more of a methodological specification, and in the abstract due to space constraints as we though is more interesting to focus in the results and meaning of our findings than in methodological aspects. However we currently have a lengthy discussion on the equilibrium assumption and also about the importance of considering disturbances, which we think it would be a great further research direction to better understand regeneration from models of forest dynamics.
 
-### COMMENT 38
+### COMMENT 37
 
 L252-253 "This entails the assumption that (1) the observations from the forest reserves reflect no traces of forest management," That's seldom the case in Europe where the legacies of management are evident centuries on 
 
-Response to comment 38:
+Response to comment 37:
 
-The reviewer is correct and management legacies might be evident for long periods of time. The data were collected in forest reserves where no management has taken place for long periods of time which makes our assumption of an equilibrium between forest properties and environmental drivers reasonable. This is the best data we have and we have address its limitations, as this one, in the discussion because we are also aware that is not ideal.
+The reviewer is correct and management legacies might be evident for long periods of time. The data were collected in forest reserves where no management has taken place for long periods of time which makes our assumption of an equilibrium between forest properties and environmental drivers reasonable. This is the best data we have and we have addressed its limitations, as this one, in the discussion because we are also aware that is not ideal.
 
-### COMMENT 39
+### COMMENT 38
 
 L275 "Each of the models reported the regeneration number by sampling 200 times in a 10-year interval" regeneration number = number of "recruits" entering the 7-cm size class?
 
-Response to comment 39:
+Response to comment 38:
 
-Following the reviewer's comment we have changed "regeneration number" with "number of trees crossing the two diameter thresholds"
+Following the reviewer's comment we have changed this sentence L\[290-291\]
 
-### COMMENT 40
+### COMMENT 39
 
 L295 "(2) regeneration species diversity" species diversity of recruitment
 
 L295 "(3) regeneration mortality" mortality of recruits 
 
-Response to comment 40:
+Response to comment 39:
 
 We have changed the terminology.
 
-### COMMENT 41
+### COMMENT 40
 
 L296 "ingrowth gradients along the regeneration niches." ?? not clear to me. How is regeneration niche defined??
 
-**Response to comment 41:**
+**Response to comment 40:**
 
 We defined the regeneration niche as the passing of a diameter threshold of 7 and 10 cm and we focused both in the width of the regeneration niche (i.e., in environmental space) as well as the intensity of the regeneration process (i.e., the number of ingrowth trees per area and per unit of time) were of interest. This is currently defined in the material and methods section and in the protocol of this study.
 
-### COMMENT 42
+### COMMENT 41
 
 Equations 1-5. not convinced these formulae need to be shown as  the Shannon index is very well known.  Consider converting the Shannon index to the effective number of species,  by taking the negative of the SI and exponentiating it.  This is gaining ground in ecology as it's more intuitive to interpret than SI  (see paper by Jost).
 
 L1046 Such converting to effective no of species using Jost formula
 
-**Response to comment 42:**
+**Response to comment 41:**
 
 We agree with the reviewer that the Shannon index is very well known index and its equation as well. However we think is still important that we define how we did calculate the Shannon index based on the available data we had as we had some internal discussion on how to do this and the meaning of this index in this context, we thought the reader will benefit from a more detailed explanation. In any case the exact details of how we did calculate this index based on the simulation outputs are also available in the software supplementary materials, in the script figures.R L42-78. We also thank the reviewer for the suggestion of using the effective number of species instead of the Shannon index, it is indeed a good alternative, however we have decided to leave it with the SI.
 
-### COMMENT 43
+### COMMENT 42
 
 L308 "Mortality in tree regeneration was assessed based on the ratio of regeneration between the 7 and 10" [of recent recruits.]{.underline} Now I understand the 7 and 10 cm thresholds mentioned earlier;  please clarify earlier mention.
 
-**Response to comment 43:**
+**Response to comment 42:**
 
-Following the reviewer's comment on the lack of clarity of the selected thresholds explanation we have changed at the beginning of the section simulation protocol the first sentence where we explain that we considered tree regeneration as the passing of a breast height diameter threshold of 7 and 10 cm. We have also reported later on in this section (but before this line) that each of the models reported the number of trees crossing the two diameter thresholds. L\[XX-XX\]
+Following the reviewer's comment on the lack of clarity of the selected thresholds explanation we have changed at the beginning of the section simulation protocol the first sentence where we explain that we considered tree regeneration as the passing of a breast height diameter threshold of 7 and 10 cm. We have also reported later on in this section (but before this line) that each of the models reported the number of trees crossing the two diameter thresholds L\[290-291\].
 
-### COMMENT 44
+### COMMENT 43
 
 L311-313 "The Reineke self-thinning rule is usually calculated for even-aged, single species stands and assumes a fixed relationship between the number of stems and the quadratic mean diameter in fully stocked pure stands." more to the point,  it's always (I think) applied to all stems in the stand,  not just regenerating trees, as it's fundamental concept is that entire canopies are space filling . Why would we expect it to apply to a narrow cohort?  I think not. 
 
@@ -730,55 +661,51 @@ equation 5 Suggest writing N7 / N10 
 
 Given my comment above, is there a strong justification for the -1.605 exponent?  Or just keep it at one?
 
-**Response to comment 44:**
+**Response to comment 43:**
 
 Following the reviewer recommendation we have changed the equation formulation to better represent the Reineke relationship. The reviewer is correct that the Reineke is applied to all stems in the stand, in our case the N value is only changing due to the available regeneration at the two diameter thresholds as the adult trees number is the same. By comparing our expected relationship of recruited trees at 7 and 10cm with the Reineke value we are just comparing to a theoretical value in fully stocked stands. We have use the coefficient -1.605 because Reineke attributed a general validity to this allometric coefficient for fully stocked, even-aged forest stands, regardless of tree species and site.
 
-### COMMENT 45
+### COMMENT 44
 
 L317 "model type (empirical or process based)," if statistical analyses are used to estimate the coefficients of complex functions that underpin a process based model, is that model empirical or process based? 
 
-**Response to comment 45:**
+**Response to comment 44:**
 
 The reviewer's comment is a very valid one as it is true that many processes in process based models have been defined based on empirical approaches. In this study we have categorized the models in process based and empirical based on their general approaches to define forest dynamics. This categorization is available in table 1. It is also possible to find further details on each of the models in the supplementary materials.
 
-### COMMENT 46
+### COMMENT 45
 
 L319-321 - overly complex sentence structure
 
-**Response to comment 46:**
+**Response to comment 45:**
 
-We have improved this sentence L\[XX-XX\]
+We have improved this sentence L\[334-337\].
 
-"We tested for significant differences between simulated and observed values of the recruitment levels and species diversity by using paired t-tests."
-
-### COMMENT 47
+### COMMENT 46
 
 L323-324 presumably, recruits make up a very small proportion of stand basal if the models have been run to equilibrium?
 
-**Response to comment 47:**
+**Response to comment 46:**
 
 Yes the reviewer is correct, the recruits represent a small proportion of the total stand basal area.
 
-### COMMENT 48
+### COMMENT 47
 
 L327 of each species?
 
-**Response to comment 48:**
+**Response to comment 47:**
 
-Added as suggested.
+Added as suggested L\[343\].
 
-### COMMENT 49
+### COMMENT 48
 
 L332-335 This give a matric of species-level variation in recruitment across sites, but how does this relate to the regeneration niche concept of Grubb 1977?
 
-**Response to comment 49:**
+**Response to comment 48:**
 
-We have changed the text to clarify this point. L\[XX-XX\]
+We have changed the text to clarify this point. L\[350-351\].
 
-"For these species, we calculated the share in the recruited basal area per site, where each site represents a part of the environmental space, as the mean across the available samples per site:"
-
-### COMMENT 50
+### COMMENT 49
 
 L496 "confronted with a unique dataset from unmanaged"
 
@@ -786,113 +713,107 @@ L498 "The EuFoRIa data (Käber et al. 2023) are exceptional, particularly"
 
 I think there are plenty of other datasets that could be used and have better information on smaller trees than EuFoRIa,  so suggest a more nuanced sales pitch here.
 
-**Response to comment 50:**
+**Response to comment 49:**
 
-We have changed the text L\[XX-XX\]
+We agree with the reviewer's comment that there are other forest inventory data networks outside Central Europe even on forest reserves that could provide this sort of data. However, within Europe no such data existed before, e.g. from unmanaged forests and collecting such a large number of records.
 
-### COMMENT 51
+### COMMENT 50
 
 L525-527 "There are multiple constraints to the regeneration niche of tree species (Price et al. 2001), and therefore the absence of regeneration is likely to be common (Fortin and DeBlois 2007), even over larger areas" YES - good point.  This should be featured more prominent I think
 
-**Response to comment 51:**
+**Response to comment 50:**
 
-Thank you for this remark, we agree with the reviewer that this is an important point and specially how different models are capturing or missing to represent the absence of regeneration. We have now captured this aspect also in the introduction in the sentence L\[XX-XX\]
+Thank you for this remark, we agree with the reviewer that this is an important point and specially how different models are capturing or missing to represent the absence of regeneration. We have now captured this aspect also in the introduction in the sentence, L\[147-148\], on top of the current whole paragraph on this issue present in the discussion.
 
-"Due to the large variability in tree regeneration patterns in nature and the large number of factors driving and constraining this process" on top of the current whole paragraph on this issue present in the discussion.
-
-### COMMENT 52
+### COMMENT 51
 
 L530-533 "This substantial difference may be due to the fact that the simulation results were drawn from equilibrium forests, whereas in reality many of the forest reserves are recovering from past management activities and have become denser over the past decades (e.g., Heiri et al. 2009), leading to less regeneration than in an equilibrium situation." But also \-\-- browsing, establishment sites,  competition with herb layer all reduce recruitment
 
-**Response to comment 52:**
+**Response to comment 51:**
 
-We have included this point by adding into this paragraph: "Another possible reason for this difference may be the exclusion of factors like deer browsing or failure to accurately measure establishment filters, such as those to site limitants or competition with herb layers."
+We have included this point by adding into this paragraph a new sentence: L\[544-546\].
 
-### COMMENT 53
+### COMMENT 52
 
 L552 "there is no evidence that models with feedback from the canopy captured better the species" could you explain what you mean by "feedback" here?
 
+**Response to comment 52:**
+
+We have modified this sentence to clarify what do we mean here with feedback L\[563-567\]
+
+This had also been defined in the material and methods where we stated L\[180-182\].
+
+### COMMENT 53
+
+L586-587 "Our study showed that increasing complexity in the regeneration modules is not linked with a higher accuracy of the projections of regeneration levels," Surely more complex models WOULD be better if they captured the relevant processes!  Arguing for simple vs complex models is a distraction here\... we need models that are as simple as possible but not too simple.. 
+
 **Response to comment 53:**
-
-We have modified this sentence to clarify what do we mean here with feedback: " Furthermore, based on the simulation results, there is no evidence that models with feedback from the canopy (in terms of species composition of regeneration) captured better the species diversity of the regeneration than those without feedback, "
-
-This had also been defined in the material and methods where we stated that "i.e., where the level and species composition of regeneration is influenced by the existing adult tree community via the production of seeds, seedlings or saplings, from models that do not contain such a feedback."
-
-### COMMENT 54
-
-L586-587 "Our study showed that increasing complexity in the regenerationmodules is not linkedwith a higher accuracy of the projections of regeneration levels," Surely more complex models WOULD be better if they captured the relevant processes!  Arguing for simple vs complex models is a distraction here\... we need models that are as simple as possible but not too simple.. 
-
-**Response to comment 54:**
 
 We agree with the reviewers statement that we need the "right amount" of complexity which considers the most relevant processes. However there are limited studies looking at this aspect in models of forest dynamics and even more limited looking at this aspect in the regeneration related processes in models of forest dynamics. We still think it is important to discuss this issue in the context of our findings even though this was not the solely focus of our research.
 
-### COMMENT 55
+### COMMENT 54
 
 L596-598 "Competition for light as a strong filter for tree regeneration has been widely documented (Messier et al. 1999; Collet and Chenost 2006; Berdanier and Clark 2016), but the models examined here did not reproduce this expectation.", because \... remind us of the evidence you are putting forward
 
-**Response to comment 55:**
+**Response to comment 54:**
 
-Following the reviewers comment we have added the following sentence in this part of the text:
+Following the reviewers comment we have added the a sentence in this part of the text L\[611-612\].
 
-"(i.e., decreasing regeneration levels with increasing stand basal area)"
-
-### COMMENT 56
+### COMMENT 55
 
 L603-606 "This made it impossible to evaluate the regeneration for the extremes of the stand density ranges in some models. For example, regeneration levels at low stand densities are relevant to assess how well forests are recovering e.g. after gap creation due to disturbance" Agreed \... and this paper isn't testing performance of models in predicting regeneration in large gaps.  It's possible that the models do a better job at this,  but it's not something you tested.  Suggest making that point e.g. in the abstract. 
 
-**Response to comment 56:**
+**Response to comment 55:**
 
 We have decided not to include this aspect in the abstract due to lack of space.
 
-### COMMENT 57
+### COMMENT 56
 
 L656 "Yet, the global models should not be at a disadvantage due to the limited spatial consideration" Don't quite follow your point here. what does "at a disadvantage" mean?
 
-**Response to comment 57:**
+**Response to comment 56:**
 
 In this sentence we are discussing how the sampling strategy presented in the study protocol might have represented a disadvantage for landscape level models due to the limited spatial scale, but how this might not be the same for global level models as they usually lack dispersal between cells.
 
-### COMMENT 58
+### COMMENT 57
 
 L676-677 "Therefore, we further recommend that more effort should be invested into collecting harmonized datasets on tree regeneration." regeneration in what sense?   Seedlings/ ground layer/ ....  What is really needed?
 
-**Response to comment 58:**
+**Response to comment 57:**
 
-We have changed this text L\[XX-XX\]
+We have changed this text L\[687-688\].
 
-### COMMENT 59
+### COMMENT 58
 
 L685-687 "However, this will require an entirely different set of observed data, and potentially not all models of forest dynamics would be able to assess the relationship of these aspects on tree regeneration, e.g. due to the lack of disturbance or appropriate management modules." more akin to data already available in national inventories I think
 
-**Response to comment 59:**
+**Response to comment 58:**
 
 We agree with the reviewer that a more systematic kind of inventory could be useful to detect regeneration patterns under management or disturbances impacts.
 
-### COMMENT 60
+### COMMENT 59
 
 L696 "Exercises like the one presented here, where the models are operated in"blind flight" mode." Definition of blind flight "To do something based on guesswork, intuition, or without any help or instructions"....is that what you mean? 
 
-**Response to comment 60:**
+**Response to comment 59:**
 
 With blind flight we refer to doing the simulations without having important information about the expected regeneration values.
 
-### COMMENT 61
+### COMMENT 60
 
 Table 1 caption: A useful table. I'd encourage the authors to write a lengthier table heading, which briefly summarises the methods section, so that readers can know what "start from", "runtime for sampling" mean without having to delve into the text. Also I'd like to see an explanation of "formulation complexity" in the text and here. The supplementary information gives more details about model assumptions, and I do wonder whether those could be included here; in particular, seed production and dispersal is clearly important for regeneration, so could columns be introduced to compare assumptions of model with respect to these. Also deer browsing, herb-layers and nurse logs all have an influence of regeneration, but not incorporated into these models; I suggest the table heading makes that clear.
 
-**Response to comment 61:**
+**Response to comment 60:**
 
-Following the reviewers comment we have expanded the caption of table 1 with the following text:
+Following the reviewers comment we have expanded the caption of table 1.
 
-"Models included, their characteristics and simulation strategies used in this study. Where *Scale* refers to the models scale, *Type* to the models type, *Population structure* to the model population approach, *Feedback* to the inclusion or not of adult tree feedback to the level and species composition of regeneration, *Approach* to the model regeneration module approach, *Start from* to the stage from which trees are recruited, *Complexity,* to *t*he mean regeneration formulation as estimated in (Bugmann & Seidl, 2022), *Species* to which species from the original eleven species were simulated, *Runtime (spin up) \[years\]* to the number of years used per model in their simulations for the spin up period and regeneration sampling; *Climate data type (use of years)* to the type of data used in the simulations and how it was used, and Reference provides the link to the publication with more model details. Further information can be found on the individual model reports available in the supplementary materials."
-
-### COMMENT 62
+### COMMENT 61
 
 L831 Add publisher
 
 L939 Correct doi
 
-**Response to comment 62:**
+**Response to comment 61:**
 
 Changed as suggested.
 
