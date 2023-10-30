@@ -176,6 +176,7 @@
         dplyr::summarise(ShannonIndexRecruit = mean(ShannonIndexRecruit))
     dat710$dbh <- ordered(dat710$dbh, levels = c("7", "10"))
     modelsSel <-  modelsOrder[!modelsOrder  == "aDGVM2"]
+    dat7 <- dat710[dat710$dbh == "7",]
     
     #### Plot
     H7_10 <- ggplot2::ggplot(dat710[!dat710$model == "aDGVM2", ],
@@ -928,6 +929,9 @@
                                     data = overDTsim[overDTsim$dbh == 7,], 
                                     ref.group = "Observed", method = "t.test",
                                     p.adjust.method = "bonferroni")
+    pp <- overDTsim[overDTsim$dbh == 7,]
+    pp <-  pp [!pp $model %in% c("4C", "LPJ-GUESS"  ),]
+    
     # Clean the table 
     rtreesDiff$method <- NULL
     rtreesDiff$p.adj <- NULL
@@ -975,7 +979,7 @@
     
     dat7H <- dat710[dat710$dbh == "7", ]
     
-    HtreesDiff <- ggpubr::compare_means(ShannonIndexRecruit ~ model,  
+    HtreesDiff <- ggpubr::compare_means(ShannonIndexRecruit ~ model,
                                         data = dat7H[!dat7H$model == "aDGVM2", ], 
                                         ref.group = "Observed", method = "t.test",
                                         p.adjust.method = "bonferroni")
