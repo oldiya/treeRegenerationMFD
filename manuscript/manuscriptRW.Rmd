@@ -1,6 +1,6 @@
 ---
 subtitle: "\\fontsize{16pt}{3pt}\\selectfont \\textbf{\\textit{Tree regeneration in models of forest dynamics: a key priority for further research}} "
-title: "\\fontsize{12pt}{3pt}\\selectfont \\textbf{\\textit{Submitted to Ecosphere. Manuscript type: Article}}"
+title: "\\fontsize{12pt}{3pt}\\selectfont \\textbf{\\textit{Journal: Ecosphere. Manuscript ID: ECS23-0342. Manuscript type: Article}}"
 author: 
 - Olalla Díaz-Yáñez$^{*1}$, 
 - Yannek Käber$^1$, 
@@ -23,7 +23,7 @@ author:
 - Xavier Morin$^{14}$
 - Mats Nieberg,$^{15}$,
 - Werner Rammer$^4$,
-- Christopher P.O. Reyer$^8$,
+- Christopher P.O. Reyer$^{15}$,
 - Simon	Scheiter$^2$,
 - Daniel Scherrer$^{16}$,
 - Harald Bugmann$^1$
@@ -32,11 +32,11 @@ date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of 
       $^3$Department of Ecological Modelling, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
       $^4$Ecosystem Dynamics and Forest Management Group, TUM School of Life Sciences, Technical University of Munich, 85354 Freising, Germany. \newline
        $^5$Department of Geoecology, Institute of Botany of the Czech Academy of Sciences, Průhonice, Czech Republic. \newline
-       $^6$Institute of Silviculture, Department of Forest and Soil Sciences, University of Natural Resources and Life Sciences, Peter Jordan Strasse 82, A-1190 Vienna, Austria \newline
+       $^6$Institute of Silviculture, Department of Forest and Soil Sciences, University of Natural Resources and Life Sciences, Peter Jordan Strasse 82, A-1190 Vienna, Austria. \newline
        $^7$Dynamic Macroecology, Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland. \newline
        $^8$Potsdam Institute for Climate Impact Research (PIK), Member of the Leibniz Association, 14473 Potsdam, Germany. \newline
        $^9$Department of Soil Sciences, of Plants and Food, University of Bari Aldo Moro, Italy. \newline
-       $^{10}$Department of Forest Harvesting, Logistics and Ameliorations, Faculty of Forestry, Technical University in Zvolen, Slovakia \newline
+       $^{10}$Department of Forest Harvesting, Logistics and Ameliorations, Faculty of Forestry, Technical University in Zvolen, Slovakia. \newline
        $^{11}$Czech University of Life Sciences Prague, Faculty of Forestry and Wood Sciences, Kamýcká 129, 16500 Praha 6 – Suchdol, Czech Republic. \newline
        $^{12}$Department of Biodiversity of Ecosystems and Landscape, Slovak Academy of Sciences, Štefánikova 3, P.O.Box 25, 81499 Bratislava, Slovakia. \newline 
        $^{13}$Dpt. of Soil and Climate, Bavarian State Institute of Forestry, Germany. \newline 
@@ -458,7 +458,7 @@ abiotic conditions, and the simulated plants can be classified into
 ecological strategies based on their trait values in a post-processing
 step.
 
-Each of the models reported the number of trees crossing the two
+Each of the models reported the number of new trees crossing the two
 diameter thresholds by sampling 200 times in a 10-year interval for each
 species and per ha for each of the 200 sites. Multiple samples per site
 were used to better understand the simulated variation within each site.
@@ -553,7 +553,10 @@ We assessed model performance in relation to model traits focusing on
 feedback for regeneration, and (4) the scale of application of the model
 (stand, landscape or global). We tested for significant differences
 between simulated and observed values of the recruitment levels and
-species diversity by using paired t-tests.
+species diversity by using t-tests with a correction for multiple
+testing. Note that the t-tests does not present conclusive evidence for
+a specific hypotheses, but rather facilitates managing the extensive
+number of comparisons discussed in our study.
 
 Total recruitment and the regeneration niches of the individual species
 were evaluated across the gradients of light availability, temperature,
@@ -1176,21 +1179,6 @@ robust particularly in the face of climate change and post-disturbance
 dynamics, thus strongly reducing the uncertainty in long-term
 projections of future forest dynamics.
 
-# Author contributions
-
-O. Díaz-Yáñez and Y. Käber contributed equally and share the first
-authorship. H. Bugmann, Y. Käber, and O. Díaz-Yáñez developed the study
-design. Y. Käber and O. Díaz-Yáñez prepared the input data used by all
-modeling teams. All authors contributed by conducting the simulations
-with their respective models. O. Díaz-Yáñez led the analysis of the
-simulation results with contributions during the workshop from Y.Käber,
-T. Anders, K. H. Braziunas, J. Brůna, S. M. Fischer, J. Hetzer, T.
-Hickler, H. Lischke, M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X.
-Morin, W. Rammer, and D. Scherrer. O. Díaz-Yáñez and H. Bugmann led the
-writing of the manuscript and provided the first draft. All authors
-participated in the revision of the manuscript and approved its
-submission.
-
 # Acknowledgements
 
 This paper arises from a workshop held in Davos (Switzerland) in June
@@ -1217,6 +1205,21 @@ support from Waldfonds WASIM2100 project. We would also like to thank
 all the people who helped to make this study possible with contributions
 at different stages particularly Martin Gutsch and Giorgio Vacchiano.
 
+# Author contributions
+
+O. Díaz-Yáñez and Y. Käber contributed equally and share the first
+authorship. H. Bugmann, Y. Käber, and O. Díaz-Yáñez developed the study
+design. Y. Käber and O. Díaz-Yáñez prepared the input data used by all
+modeling teams. All authors contributed by conducting the simulations
+with their respective models. O. Díaz-Yáñez led the analysis of the
+simulation results with contributions during the workshop from Y. Käber,
+T. Anders, K. H. Braziunas, J. Brůna, S. M. Fischer, J. Hetzer, T.
+Hickler, H. Lischke, M.Mahnken, P. Mairota, K. Merganičová, T. Mette, X.
+Morin, W. Rammer, and D. Scherrer. O. Díaz-Yáñez and H. Bugmann led the
+writing of the manuscript and provided the first draft. All authors
+participated in the revision of the manuscript and approved its
+submission.
+
 # Conflict of interest statement
 
 The authors declare no conflicts of interest.
@@ -1232,10 +1235,27 @@ The authors declare no conflicts of interest.
 
 # Table
 
+**Table 1.** Models included in this study, their characteristics and
+simulation strategies used. Scale refers to the models scale, Type to
+the models type, Population structure to the model population approach,
+Feedback to the inclusion or not of adult tree feedback to the level and
+species composition of regeneration, Approach to the model regeneration
+module approach, Start from to the stage from which trees are recruited,
+Complexity, to the mean regeneration formulation as estimated in
+(Bugmann & Seidl, 2022), Species to which species from the original
+eleven species were simulated, Runtime (spin up) [years] to the number
+of years used per model in their simulations for the spin up period and
+regeneration sampling; Climate data type (use of years) to the type of
+data used in the simulations and how it was used, and Reference provides
+the link to the publication with more model details. Further information
+can be found on the individual model reports available in the
+supplementary materials.
+
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=TRUE}
 library(knitr)
 modelDF <- readr::read_csv(here::here("manuscript", "modelsDescription.csv"))
 modelDF$Sampling <- NULL
+captionText <- ""
 
 #footnotes
 names(modelDF)[2] <- paste0(names(modelDF)[2], "(a)")
@@ -1247,7 +1267,7 @@ names(modelDF)[11] <- paste0(names(modelDF)[11],"(f)")
 
 kable(modelDF,
       format = "latex", booktabs = TRUE,
-      caption = "") |>
+      caption = captionText) |>
         kableExtra::landscape() |>
         kableExtra::kable_styling(full_width = F, latex_options = "scale_down") |>
     # fix width by column
@@ -1275,23 +1295,7 @@ kable(modelDF,
 
 \newpage
 
-# Table and Figure captions
-
-**Table 1.** Models included in this study, their characteristics and
-simulation strategies used. *Scale* refers to the models scale, *Type*
-to the models type, *Population structure* to the model population
-approach, *Feedback* to the inclusion or not of adult tree feedback to
-the level and species composition of regeneration, *Approach* to the
-model regeneration module approach, *Start from* to the stage from which
-trees are recruited, *Complexity*, to the mean regeneration formulation
-as estimated in (Bugmann & Seidl, 2022), *Species* to which species from
-the original eleven species were simulated, *Runtime* (spin up) [years]
-to the number of years used per model in their simulations for the spin
-up period and regeneration sampling; *Climate data type (use of years)*
-to the type of data used in the simulations and how it was used, and
-*Reference* provides the link to the publication with more model
-details. Further information can be found on the individual model
-reports available in the supplementary materials.
+# Figure captions
 
 **Figure 1.** The 200 sites of the EuFoRIa network (EuFoRIa, 2019) used
 in the present study, the colors show the dominant tree species per site
