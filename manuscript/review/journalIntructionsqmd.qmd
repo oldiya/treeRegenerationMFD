@@ -1,0 +1,44 @@
+---
+title: "Untitled"
+format: pdf
+editor: visual
+---
+
+## Internal instructions \[this section will be deleted\]
+
+-   underlined comments are comments that still need attention
+-   I will delete most of the quoted text and add Line numbers, all the L\[XX-XX\] will be added in the last round after all the changes are done
+
+## Journal formatting (ToDo list)
+
+-   Respond to the review comments in the space provided. You can use this space to document any changes you make to the original manuscript. In order to expedite the processing of the resubmitted manuscript, please be as specific as possible in your response to the review comments. If you disagree with a point, please explain why. Please note that the field in ScholarOne does not retain type formats such as italics, boldface, or colors, so please format the responses accordingly. We suggest you upload a separate file for your "Author's Response to Reviewer Comments" document and use our template: <https://www.esa.org/wp-content/uploads/2021/04/Author-Response-to-Reviewers-Template.docx>.
+
+-   A version uploaded in the file list should be given the designation "Additional File for Review but NOT for publication".
+
+-   Please also include a "track changes" version of your file, along with a clean copy as your Main Document. This "track changes" version should be uploaded in the file list list and given the designation "Additional File for Review but NOT for publication".
+
+-   IMPORTANT: Your original files are available to you when you upload your revised manuscript. Please replace files of the earlier version and delete any redundant files before completing the submission.
+
+-   To submit your revised manuscript, log into <https://mc.manuscriptcentral.com/ecosphere> and enter your Author Center. You will find your manuscript title listed under "Manuscripts with Decisions." Under "Actions," click on "Create a Revision." Your manuscript number has been appended to denote a revision. Please DO NOT upload your revised manuscript as a new submission.
+
+-   DEADLINE: We encourage you to submit your revised manuscript within three weeks from today's date. The final due date for submitting your manuscript with the same manuscript number is 14-Dec-2023. 
+
+-   If you are unable to meet the final deadline, you can request an extension by contacting the the journal's editorial staff ([esajournals\@esa.org](mailto:esajournals@esa.org)). Please note that we can only consider extensions of a few weeks. If you cannot submit by the final due date, you must create a new submission for your manuscript. If creating a new submission, be sure to note the previous manuscript ID (ECS23-0342) in the online submission form and include an "Author's Response to Reviewer Comments" document (using the template linked to earlier in this message) in the file list.
+
+-   Editorial staff note: In addition to revisions according to the review comments below, please make revisions to your paper to conform to the journal style at this stage, especially the tables, figures, and supporting information, anticipating the possibility that your paper may be accepted for publication.
+
+-   Please provide the main manuscript file composed in Word, taking care to use the Table function for the tables. However, if you created your manuscript in LaTex, please provide only the .tex file of the main manuscript, a .pdf file of the main manuscript (that is the exact same in content as the .tex file), and a .bib file.
+
+-   Ecosphere page style allows for five levels of headings. Please use different type styles (italics, boldface, boldface italics, etc.) consistently to distinguish between the levels of headings in the article and delete the section numbers in the headings. 
+
+-   Literature references: Please check that each citation has complete information, and check that all references in text have a matching citation in the References section and vice versa.
+
+-   Table and figure references: Please be sure that all tables and all figures have in-text citations in the main body of the manuscript, and that tables and figures are called out in numerical order (i.e., Figure 1 is called out before Figure 2).
+
+-   Figures: Each figure should be provided in an individual, complete file (all panels in one image, identified by figure number in the file name), preferably as a high-resolution (300-600 dpi) image file or high-quality PDF. Preferred file formats include TIF, EPS, PDF, or AI at 600 ppi, while JPEG, PPT/PPTX, or DOC/DOCX are acceptable if the resolution is sufficient. Only one version of each figure should be provided. Please delete figure images from the main manuscript file. Please check for misspellings and be sure that all parts, including all lettering, symbols, labels, and scale numbers, are discernible, clear, and readable when the figures are presented at the maximum allowable size (18 cm wide by 22 cm tall) in the typeset and paged PDF version of the article. See additional instructions for preparation in the Manuscript Preparation Guide.
+
+-   Figure captions: Please be sure to include a list of figure captions in the main manuscript file and ensure that any abbreviation that appears in a figure is identified in the caption.
+
+-   Supporting Information: Each appendix must be assembled exactly as you intend it to appear online. (Appendices are posted "as is"; ESA and Wiley staff do not copy edit or assemble appendices.) Note also that the Ecosphere naming convention for appendices is of the style "Appendix S1," "Appendix S2," etc., and for tables and figures within appendices is "Table S1," "Table S2," etc. or "Fig. S1," "Fig. S2," etc., and requires that the numbering begins at "S1" in each appendix (and revise references to material in other appendices as necessary). Please be sure to eliminate line numbering and to include the title of the journal, the title of the article, and all of the authors' names on the first page of each appendix. In addition, if there are literature references within an appendix, the appendix should include a list of literature cited.
+
+-   If the journal style is not followed at submission of the revision, we may return the manuscript to you for further revision before sending it along to the Subject-matter Editor. Closely following our manuscript preparation guide at this stage would expedite the production of your paper for publication, should it be accepted. You can download our guide here: <https://www.esa.org/wp-content/uploads/2022/05/ESA-Manuscript-Preparation-Guide.pdf>
