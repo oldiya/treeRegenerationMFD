@@ -8,41 +8,42 @@ author:
 - Friedrich Bohn$^3$,
 - Kristin H. Braziunas$^4$,
 - Josef	Brůna$^5$,
-- Rico Fischer$^3$,
-- Samuel M. Fischer$^3$,
+- Rico Fischer$^6$,
+- Samuel M. Fischer$^6$,
 - Jessica Hetzer$^2$,
 - Thomas Hickler$^2$,
-- Christian	Hochauer$^6$,
-- Manfred J. Lexer$^6$,
-- Heike	Lischke$^7$,
-- Paola	Mairota$^8$,
-- Ján Merganič$^{9}$,
-- Katarina Merganičová$^{10,11}$,
-- Tobias Mette$^{12}$,
-- Marco Mina$^{13}$,
-- Xavier Morin$^{14}$
-- Mats Nieberg,$^{15}$,
+- Christian	Hochauer$^7$,
+- Manfred J. Lexer$^7$,
+- Heike	Lischke$^8$,
+- Paola	Mairota$^9$,
+- Ján Merganič$^{10}$,
+- Katarina Merganičová$^{11,12}$,
+- Tobias Mette$^{13}$,
+- Marco Mina$^{14}$,
+- Xavier Morin$^{15}$
+- Mats Nieberg,$^{16}$,
 - Werner Rammer$^4$,
-- Christopher P.O. Reyer$^{15}$,
+- Christopher P.O. Reyer$^{16}$,
 - Simon	Scheiter$^2$,
 - Daniel Scherrer$^{16}$,
 - Harald Bugmann$^1$
 date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
       $^2$Senckenberg Biodiversity and Climate Research Centre (SBiK-F), 60325 Frankfurt am Main, Germany. \newline
-      $^3$Department of Ecological Modelling, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
+      $^3$Department of Computational Hydrosystem, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
       $^4$Ecosystem Dynamics and Forest Management Group, TUM School of Life Sciences, Technical University of Munich, 85354 Freising, Germany. \newline
        $^5$Department of Geoecology, Institute of Botany of the Czech Academy of Sciences, Průhonice, Czech Republic. \newline
-       $^6$Institute of Silviculture, Department of Forest and Soil Sciences, University of Natural Resources and Life Sciences, Peter Jordan Strasse 82, A-1190 Vienna, Austria. \newline
-       $^7$Dynamic Macroecology, Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland. \newline
-       $^8$Potsdam Institute for Climate Impact Research (PIK), Member of the Leibniz Association, 14473 Potsdam, Germany. \newline
+       $^6 Department of Ecological Modelling, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
+       $^7$Institute of Silviculture, Department of Forest and Soil Sciences, University of Natural Resources and Life Sciences, Peter Jordan Strasse 82, A-1190 Vienna, Austria. \newline
+       $^8$Dynamic Macroecology, Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland. \newline
        $^9$Department of Soil Sciences, of Plants and Food, University of Bari Aldo Moro, Italy. \newline
        $^{10}$Department of Forest Harvesting, Logistics and Ameliorations, Faculty of Forestry, Technical University in Zvolen, Slovakia. \newline
        $^{11}$Czech University of Life Sciences Prague, Faculty of Forestry and Wood Sciences, Kamýcká 129, 16500 Praha 6 – Suchdol, Czech Republic. \newline
        $^{12}$Department of Biodiversity of Ecosystems and Landscape, Slovak Academy of Sciences, Štefánikova 3, P.O.Box 25, 81499 Bratislava, Slovakia. \newline 
        $^{13}$Dpt. of Soil and Climate, Bavarian State Institute of Forestry, Germany. \newline 
        $^{14}$Institute for Alpine Environment, Eurac Research, Bolzano/Bozen, Italy. \newline 
-       $^{15}$CEFE, CNRS Campus du CNRS 1919, route de Mende 34293 Montpellier cedex, France. \newline 
-       $^{16}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland.  \newline
+       $^{15}$CEFE, CNRS Campus du CNRS 1919, route de Mende 34293 Montpellier cedex, France.
+       $^{16}$Potsdam Institute for Climate Impact Research (PIK), Member of the Leibniz Association, 14473 Potsdam, Germany. \newline
+       $^{17}$Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland.  \newline
        $^*$Corresponding author (olalla.diaz@usys.ethz.ch)
 output:
   bookdown::pdf_document2:
