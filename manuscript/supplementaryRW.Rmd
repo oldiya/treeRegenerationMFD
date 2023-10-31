@@ -1,5 +1,5 @@
 ---
-title: "Appendix"
+title: "Appendix S1"
 subtitle: "Tree regeneration in models of forest dynamics: a key priority for further research  ECOSPHERE"
 author: 
 - Olalla Díaz-Yáñez,
@@ -2116,6 +2116,8 @@ library(knitr)
 
 sigDiff <- readr::read_csv(here::here("figures", "sigH7_10.csv"))
 sigDiff$p.adj <- NULL
+sigDiff$p <- NULL
+sigDiff$method <- NULL
 colnames(sigDiff) <- c("model", "y", "Group 1", "Group 2", "p", "p.signif")
 
 kable(sigDiff,  format = "latex", caption = "Test of the significance of the differences of Shannon index in each model for 7 and 10 cm threshold.") |>
