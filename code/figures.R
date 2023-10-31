@@ -1456,7 +1456,7 @@
     
     ###### DO NOT RUN #########
 
-    # #Add location
+    # # #Add location
     # location <- data.table::fread("data/coords_blurred_dt4326.csv")
     # 
     # domSpp7 <- merge(standSpp, recruitSpp7, by = "site")
@@ -1509,5 +1509,5 @@
     # ggplot2::ggsave("figures/Figure1.jpg",
     #                 plot =   plotsMap,
     #                 width = 21, height = 12, scale = 0.9,
-    #                 dpi = 300, units = "cm", device = 'png')
-    # 
+    #                 dpi = 300, units = "cm", device = 'jpg')
+

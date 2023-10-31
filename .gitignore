@@ -14,4 +14,5 @@ manuscript/supplementaryRW.pdf
 manuscript/supplementaryRW.tex
 manuscript/.trackdown/
 manuscript/manuscriptRW.docx
-data/
+data/*
+!data/model_structure/dNumScaled.csv

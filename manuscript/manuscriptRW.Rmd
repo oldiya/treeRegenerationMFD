@@ -25,14 +25,14 @@ author:
 - Werner Rammer$^4$,
 - Christopher P.O. Reyer$^{16}$,
 - Simon	Scheiter$^2$,
-- Daniel Scherrer$^{16}$,
+- Daniel Scherrer$^{17}$,
 - Harald Bugmann$^1$
 date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
       $^2$Senckenberg Biodiversity and Climate Research Centre (SBiK-F), 60325 Frankfurt am Main, Germany. \newline
       $^3$Department of Computational Hydrosystem, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
       $^4$Ecosystem Dynamics and Forest Management Group, TUM School of Life Sciences, Technical University of Munich, 85354 Freising, Germany. \newline
        $^5$Department of Geoecology, Institute of Botany of the Czech Academy of Sciences, Průhonice, Czech Republic. \newline
-       $^6 Department of Ecological Modelling, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
+       $^6$Department of Ecological Modelling, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
        $^7$Institute of Silviculture, Department of Forest and Soil Sciences, University of Natural Resources and Life Sciences, Peter Jordan Strasse 82, A-1190 Vienna, Austria. \newline
        $^8$Dynamic Macroecology, Swiss Federal Institute for Forest, Snow and Landscape Research WSL, Zürcherstrasse 111, 8903 Birmensdorf, Switzerland. \newline
        $^9$Department of Soil Sciences, of Plants and Food, University of Bari Aldo Moro, Italy. \newline
