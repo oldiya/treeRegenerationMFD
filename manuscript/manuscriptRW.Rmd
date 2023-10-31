@@ -418,7 +418,7 @@ forest data). The modeling teams decided on the simulated area and how
 they derived these samples. The exact length of the simulation was also
 decided by the modeling teams (Table \@ref(tab:tableModels)). Further
 details on how each modeling team prepared the simulations and the
-outputs are available in Supplementary Material 1.
+outputs are available in Appendix S1: Model reports.
 
 The simulations were run in the absence of management to a simulated
 equilibrium ("Potential Natural Vegetation") with the current climate,
@@ -553,10 +553,10 @@ We assessed model performance in relation to model traits focusing on
 feedback for regeneration, and (4) the scale of application of the model
 (stand, landscape or global). We tested for significant differences
 between simulated and observed values of the recruitment levels and
-species diversity by using t-tests with a correction for multiple
-testing. Note that the t-tests does not present conclusive evidence for
-a specific hypotheses, but rather facilitates managing the extensive
-number of comparisons discussed in our study.
+species diversity by using t-tests with the Bonferroni correction for
+multiple testing. Note that the t-tests does not present conclusive
+evidence for a specific hypotheses, but rather facilitates managing the
+extensive number of comparisons discussed in our study.
 
 Total recruitment and the regeneration niches of the individual species
 were evaluated across the gradients of light availability, temperature,
@@ -636,31 +636,31 @@ recruited diversity.
 
 In most models, there were only small but significant differences in the
 species diversity of recruitment between 7 and 10 cm across sites
-(Tables S2). Four models (iLand, Landis-II, TreeMig and LPJ-GUESS)
-maintained the recruitment diversity between the 7 and 10 cm thresholds
-(i.e., the differences between them were not significant, see Table S2),
-and the same was evident from the observed data.
+(Appendix S1: Table S2). Four models (iLand, Landis-II, TreeMig and
+LPJ-GUESS) maintained the recruitment diversity between the 7 and 10 cm
+thresholds (i.e., the differences between them were not significant, see
+Appendix S1: Table S2), and the same was evident from the observed data.
 
 For both the observed and the simulated data, and both recruitment
 thresholds, species diversity in the recruitment compared to stand-level
-diversity did not feature clear patterns across the models (Figures S1
-and S2). Most models captured reasonably well or overpredicted species
-diversity at the stand level (Figure 4A, left and center; cf. Figure
-S3), but a characteristic feature was that the simulations had a much
-lower variability of diversity compared to observations. Models
-overpredicting stand-level species diversity included ForClim1, ForClim
-11, FORMIND and TreeMig (Figure 4A, left). Several models underpredicted
-species diversity, i.e., LPJ-GUESS, ForCEEPS(f) and 4C (Figure 4A,
-right).
+diversity did not feature clear patterns across the models (Appendix S1:
+Figures S1 and S2). Most models captured reasonably well or
+overpredicted species diversity at the stand level (Figure 4A, left and
+center; cf. Appendix S1: Figure S3), but a characteristic feature was
+that the simulations had a much lower variability of diversity compared
+to observations. Models overpredicting stand-level species diversity
+included ForClim1, ForClim 11, FORMIND and TreeMig (Figure 4A, left).
+Several models underpredicted species diversity, i.e., LPJ-GUESS,
+ForCEEPS(f) and 4C (Figure 4A, right).
 
 The majority of the models overpredicted recruitment diversity; as
 already observed in Figure 3, only two of them underestimated it (4C and
-Landis-II) (Figure 4B and Figure S4). Both the models with and without
-feedback from the adult trees to regeneration (via seed production)
-overestimated, underestimated or captured reasonably well recruitment
-species diversity compared to the observations. Again, simulated
-diversity had considerably lower variability than observed diversity in
-the recruitment.
+Landis-II) (Figure 4B and Appendix S1: Figure S4). Both the models with
+and without feedback from the adult trees to regeneration (via seed
+production) overestimated, underestimated or captured reasonably well
+recruitment species diversity compared to the observations. Again,
+simulated diversity had considerably lower variability than observed
+diversity in the recruitment.
 
 ## Recruitment mortality
 
@@ -668,15 +668,15 @@ There were strong differences among models regarding the mortality rate
 between 7 and 10 cm (Figure 5). Most of the models featured a mortality
 rate significantly larger than the observed data, thus at least
 partially compensating for the general overestimation of recruitment
-levels at 7 cm (Figure 2 and Table S3); six models did not feature a
-significant difference compared to the observed data (ForCEEPS, FORMIND,
-ForClim 1 and 11, iLand and aDGVM2). Four models (xComp, PICUS, LandClim
-and TreeMig) featured very high mortality rates (i.e., well above the
-Reineke self-thinning line), which compensated for the strong initial
-overestimation of recruitment (cf. Figure 2). Interestingly, two models
-that underestimated overall recruitment levels (SIBYLA and Landis-II;
-cf. Figure 2) featured mortality rates that were close to but still
-above the self-thinning line (Figure 5).
+levels at 7 cm (Figure 2 and Appendix S1: Table S3); six models did not
+feature a significant difference compared to the observed data
+(ForCEEPS, FORMIND, ForClim 1 and 11, iLand and aDGVM2). Four models
+(xComp, PICUS, LandClim and TreeMig) featured very high mortality rates
+(i.e., well above the Reineke self-thinning line), which compensated for
+the strong initial overestimation of recruitment (cf. Figure 2).
+Interestingly, two models that underestimated overall recruitment levels
+(SIBYLA and Landis-II; cf. Figure 2) featured mortality rates that were
+close to but still above the self-thinning line (Figure 5).
 
 The fact that some models (and observed data) featured lower mortality
 than expected by Reineke's self-thinning rule may point to facilitation,
@@ -705,33 +705,35 @@ LandClim).
 
 Lastly, some models that had a low number of recruits at the 7 cm
 threshold also had a small decrease of recruitment between 7 and 10 cm
-(ratio 7-10 cm) (Figure S5). In these models, competition and
-self-thinning are either not pronounced or must have occurred before the
-trees had reached 7 cm. However, this pattern was not consistent across
-models (Figure S5). It is noteworthy that there is a relationship
-between the recruitment levels at 7 cm and the mortality rate (Table
-S4): most of the models showed a positive effect (higher regeneration at
-7 cm is coupled to an increase of the mortality between 7 and 10 cm).
-While some models showed a negative effect, the linear trend was not
-pronounced and not always significant regarding its slope.
+(ratio 7-10 cm) (Appendix S1: Figure S5). In these models, competition
+and self-thinning are either not pronounced or must have occurred before
+the trees had reached 7 cm. However, this pattern was not consistent
+across models (Appendix S1: Figure S5). It is noteworthy that there is a
+relationship between the recruitment levels at 7 cm and the mortality
+rate (Appendix S1: Table S4): most of the models showed a positive
+effect (higher regeneration at 7 cm is coupled to an increase of the
+mortality between 7 and 10 cm). While some models showed a negative
+effect, the linear trend was not pronounced and not always significant
+regarding its slope.
 
 ## Model performance and model traits
 
 There was no significant relationship between the mean complexity of the
 regeneration module (Table \@ref(tab:tableModels)) and the
-overestimation proportion at a diameter threshold of 7 cm (Figure S6).
-All models except 4C had significant differences between the observed
-and simulated mean recruitment values. Therefore it was not possible to
-differentiate in terms of performance between models type (empirical or
-process based), or their scales (stand, landscape or global) (Table S5).
-The values of species diversity in the recruitment simulated by each
-model were also assessed against the observed data to see if there was a
-difference between models that include a feedback compared to those that
-did not; all the models except ForCEEPs(f) and FORMIND had significant
-differences (Table S6). It is noteworthy that for the model ForCEEPS the
-pattern changed from the overprediction of species diversity in the
-regeneration to a diversity level that is closer to observations when
-the recruitment module included feedback (ForCEEPs(f)).
+overestimation proportion at a diameter threshold of 7 cm (Appendix S1:
+Figure S6). All models except 4C had significant differences between the
+observed and simulated mean recruitment values. Therefore it was not
+possible to differentiate in terms of performance between models type
+(empirical or process based), or their scales (stand, landscape or
+global) (Appendix S1: Table S5). The values of species diversity in the
+recruitment simulated by each model were also assessed against the
+observed data to see if there was a difference between models that
+include a feedback compared to those that did not; all the models except
+ForCEEPs(f) and FORMIND had significant differences (Appendix S1: Table
+S6). It is noteworthy that for the model ForCEEPS the pattern changed
+from the overprediction of species diversity in the regeneration to a
+diversity level that is closer to observations when the recruitment
+module included feedback (ForCEEPs(f)).
 
 ## Regeneration gradients and regeneration niches
 
@@ -739,8 +741,8 @@ When evaluating total tree recruitment levels along key gradients of
 light availability (basal area), temperature (degree-days) and soil
 moisture (climatic water balance), distinct features emerged: the models
 reproduced the effect of basal area in both its magnitude and patterns
-(Figure 7 and S7) considerably better than the effects of the climatic
-gradients, where they featured varying patterns.
+(Figure 7 and Appendix S1: Figure S7) considerably better than the
+effects of the climatic gradients, where they featured varying patterns.
 
 In the observed data, recruitment levels decreased clearly with
 increasing stand basal area (Figure 7a). This trend was captured by the
@@ -774,8 +776,8 @@ sylvestris*) and oak (*Quercus* spp.) were the species observed most
 frequently in the EuFoRIa data. Most models captured well the share of
 basal area in the recruitment of these five species compared to the
 observed data along the two major climatic gradients (Figure 8, cf.
-Figure S8). However, the models differed considerably in the way in
-which they simulated these climatic niches.
+Appendix S1: Figure S8). However, the models differed considerably in
+the way in which they simulated these climatic niches.
 
 First, some models overestimated recruitment across the entire gradients
 of at least one of the five main tree species (Figure 8, e.g., ForCEEPS,
@@ -784,7 +786,7 @@ recruitment of more than one species for a large part of the climate
 gradients, such as xComp, PICUS, SIBYLA or LPJ-GUESS (cf. red colors in
 Figure 8). These trends were consistent for both recruitment thresholds,
 although the exact changes in the share of the recruited basal area were
-different (Figure S8).
+different (Appendix S1: Figure S8).
 
 Second, there was some congruence in the simulation results by species
 across the models. The share in the recruitment of Silver fir (*Abies
@@ -1248,8 +1250,8 @@ of years used per model in their simulations for the spin up period and
 regeneration sampling; Climate data type (use of years) to the type of
 data used in the simulations and how it was used, and Reference provides
 the link to the publication with more model details. Further information
-can be found on the individual model reports available in the
-supplementary materials.
+can be found on the individual model reports available in the Appendix
+S1: Model reports.
 
 ```{r tableModels, echo=FALSE,  message=FALSE, warning=TRUE}
 library(knitr)
