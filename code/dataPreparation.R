@@ -7,7 +7,43 @@
 
 # Load observations -----
 
+    linkObs <- "https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/643426/observations.zip"
+   
+    
+     download.file(url = linkObs, destfile = here::here("data/observations.zip"),  mode="wb")
+    downloader::download("https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/643426/observations.zip",
+                         destfile = here::here("data/observations.csv"))
+    
+    temp <- tempfile()
+    download.file(linkObs, "data/observations.zip", mode="wb")
+    data <- read.table(unz(temp, here::here("data/observations.csv")))
+    unlink(temp)
+   
+     download.file(myURL, dir, mode="wb")
     observationsData <- data.table::fread("data/observations/observations.csv")
+    
+    
+    
+    
+    
+    url <- "https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/643426/observations.zip"
+    
+    # Local folder to save the downloaded zip file
+    local_folder <-  here::here("data")
+    
+    # File path for the downloaded zip file
+    zip_file <- file.path(local_folder, "observations.zip")
+    
+    # Download the zip file
+    download.file(url, destfile = zip_file, mode = "wb")# wget or curl
+    
+    # Unzip the file
+    unzip(zip_file, exdir = local_folder, list = TRUE)
+
+    
+    
+    
+    
 
 # Load model simulations ----
     
@@ -98,8 +134,20 @@
 
     ### xComp----
     load("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.RData")
-    xcomp7 <- ddataOut
+    write.csv(ddataOut,
+              file = "data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.csv")
+   
+     xcomp7 <- data.table::fread("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.csv")
+    xcomp7$V1 <- NULL 
+    
+
     load("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary10cm.RData")
+    write.csv(ddataOut,
+              file = "data/simulation_results/xcomp/xcomp2022_simulation_v01_summary10cm.csv")
+    
+    xcomp10 <- data.table::fread("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary10cm.csv")
+    xcomp10$V1 <- NULL 
+    
     xcomp10 <- ddataOut
     xcomp <- rbind(xcomp7, xcomp10)
     xcomp$model <- "xComp"
