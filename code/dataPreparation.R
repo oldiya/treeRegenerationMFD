@@ -133,22 +133,12 @@
     
 
     ### xComp----
-    load("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.RData")
-    write.csv(ddataOut,
-              file = "data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.csv")
-   
-     xcomp7 <- data.table::fread("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.csv")
+    xcomp7 <- data.table::fread("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary07cm.csv")
     xcomp7$V1 <- NULL 
-    
-
-    load("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary10cm.RData")
-    write.csv(ddataOut,
-              file = "data/simulation_results/xcomp/xcomp2022_simulation_v01_summary10cm.csv")
     
     xcomp10 <- data.table::fread("data/simulation_results/xcomp/xcomp2022_simulation_v01_summary10cm.csv")
     xcomp10$V1 <- NULL 
     
-    xcomp10 <- ddataOut
     xcomp <- rbind(xcomp7, xcomp10)
     xcomp$model <- "xComp"
 
