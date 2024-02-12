@@ -62,6 +62,20 @@
                 "Treemig" = "TreeMig",
                 "aDGVM2" = "aDGVM2", 
                 "LPJ-GUESS" = "LPJ-GUESS")
+    
+# Labels per species -----
+
+    labelsSpecies <- c("Abies alba" = "A. alba" ,
+                       "Acer pseudoplatanus" = "A. pseudoplatanus",
+                       "Alnus glutinosa" = "A. glutinosa",
+                       "Betula spp." = "Betula spp.",
+                       "Carpinus betulus" = "C. betulus",
+                       "Fagus sylvatica" = "F. sylvatica",
+                       "Fraxinus excelsior" = "F. excelsior",
+                       "Picea abies" = "P. abies",
+                       "Pinus sylvestris" = "P. sylvestris",
+                       "Quercus spp." =  "Quercus spp.",
+                       "Tilia cordata" = "T.cordata")    
 
 # Labels figures  ----
 

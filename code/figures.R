@@ -1400,15 +1400,141 @@
         ggplot2::labs(size = expression(bar(R) * " BA share")) 
       
       
-      ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles_",dbhSel, ".png"),
+      ggplot2::ggsave(paste0("figures/HeatEnvGrad_", binSize - 1, "circles_", 
+                             dbhSel, ".png"),
                       plot = heatCircle,
                       width = 27, height = 60, scale = 0.9,
                       dpi = 300, units = "cm", device = 'png') 
       
+      #Divide the figure in two panels for publication
+      panel1models <-  c( "Observed", "4C", "ForCEEPS", "ForCEEPS(f)",  "FORMIND", 
+                          "ForClim 1",  "ForClim 11", "SIBYLA")
+      panel2models <-  c("Observed","xComp", "PICUS", "iLand", "LandClim", "Landis II", 
+                         "TreeMig", "LPJ-GUESS") 
+      
+      heatCircle1 <- ggplot2::ggplot(data = mainSppBAshareBinsMeanDiff[mainSppBAshareBinsMeanDiff$model %in% panel1models,],
+                                    mapping = ggplot2::aes(x = dds_bin,
+                                                           y = wb_bin,
+                                                           fill = Diff)) +
+        ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
+                                      breaks = c(-1, -0.5, 0, 0.5, 1),
+                                      midpoint = 0, 
+                                      name = expression(bar(R) * " BA share difference")) +
+        
+        ggplot2::geom_tile() +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = "") +
+        ggplot2::facet_grid(model ~ species,  
+                            labeller = labeller(species = labelsSpecies)) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       strip.text.x = ggplot2::element_text(size = 6), 
+                       panel.grid.major = ggplot2::element_blank(), 
+                       panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_rect(fill = "lightgrey",
+                                                                colour = "lightblue"),
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       strip.background =  ggplot2::element_blank(),
+                       legend.position = "none",
+                       plot.margin = margin(0, 0, 0, 0, 'cm')) +
+        ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
+                                              "(786,977]" = "",
+                                              "(977,1.17e+03]" = "",
+                                              "(1.17e+03,1.36e+03]" = "",
+                                              "(1.36e+03,1.55e+03]" = "1360",
+                                              "(1.55e+03,1.74e+03]" = "",
+                                              "(1.74e+03,1.93e+03]" = "",
+                                              "(1.93e+03,2.12e+03]" = "",
+                                              "(2.12e+03,2.31e+03]" = "",
+                                              "(2.31e+03,2.51e+03]" = "2310", 
+                                              "(2.51e+03,2.7e+03]" = "")) +
+        ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
+                                             "(-138,0.29]"  = "",
+                                             "(0.29,139]" = "",
+                                             "(139,278]" = "",
+                                             "(278,416]" = "278",
+                                             "(416,555]" = "",
+                                             "(555,693]" = "",
+                                             "(693,832]" = "",
+                                             "(832,971]" = "832",
+                                             "(971,1.11e+03]" = "",
+                                             "(1.11e+03,1.25e+03]" = "")) +
+        ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
+                                         size = r.baTot.r.ShareMean), shape = 1) +
+        ggplot2::scale_size_binned_area(breaks = c(0.1, 0.3, 0.6, 0.9), limits = c(0.000001, 1),
+                                        max_size = 2) + 
+        ggplot2::labs(size = expression(bar(R) * " BA share")) 
+      
+      heatCircle2 <- ggplot2::ggplot(data = mainSppBAshareBinsMeanDiff[mainSppBAshareBinsMeanDiff$model %in% panel2models,],
+                                     mapping = ggplot2::aes(x = dds_bin,
+                                                            y = wb_bin,
+                                                            fill = Diff)) +
+        ggplot2::scale_fill_gradient2(low = "blue", mid = 'white', high = "red",
+                                      breaks = c(-1, -0.5, 0, 0.5, 1),
+                                      midpoint = 0,
+                                      name = expression(bar(R) * " BA share difference")) +
+        
+        ggplot2::geom_tile() +
+        ggplot2::xlab(label = "") +
+        ggplot2::ylab(label = "") +
+        ggplot2::facet_grid(model ~ species,
+                            labeller = labeller(species = labelsSpecies)) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                       strip.text.y = ggplot2::element_text(angle = 0),
+                       strip.text.x = ggplot2::element_text(size = 6), 
+                       panel.grid.major = ggplot2::element_blank(), 
+                       panel.grid.minor = ggplot2::element_blank(),
+                       panel.background = ggplot2::element_rect(fill = "lightgrey",
+                                                                colour = "lightblue"),
+                       axis.line = ggplot2::element_line(colour = "black"),
+                       strip.background =  ggplot2::element_blank(),
+                       plot.margin = margin(0, 0, 0, 0, 'cm')) +
+        ggplot2::scale_x_discrete(labels = c( "[595,786]" = "595", 
+                                              "(786,977]" = "",
+                                              "(977,1.17e+03]" = "",
+                                              "(1.17e+03,1.36e+03]" = "",
+                                              "(1.36e+03,1.55e+03]" = "1360",
+                                              "(1.55e+03,1.74e+03]" = "",
+                                              "(1.74e+03,1.93e+03]" = "",
+                                              "(1.93e+03,2.12e+03]" = "",
+                                              "(2.12e+03,2.31e+03]" = "",
+                                              "(2.31e+03,2.51e+03]" = "2310", 
+                                              "(2.51e+03,2.7e+03]" = "")) +
+        ggplot2::scale_y_discrete(labels = c("[-277,-138]" = "-277",
+                                             "(-138,0.29]"  = "",
+                                             "(0.29,139]" = "",
+                                             "(139,278]" = "",
+                                             "(278,416]" = "278",
+                                             "(416,555]" = "",
+                                             "(555,693]" = "",
+                                             "(693,832]" = "",
+                                             "(832,971]" = "832",
+                                             "(971,1.11e+03]" = "",
+                                             "(1.11e+03,1.25e+03]" = "")) +
+        ggplot2::geom_point(ggplot2::aes(x = dds_bin, y = wb_bin, 
+                                         size = r.baTot.r.ShareMean), shape = 1) +
+        ggplot2::scale_size_binned_area(breaks = c(0.1, 0.3, 0.6, 0.9), limits = c(0.000001, 1),
+                                        max_size = 2) + 
+        ggplot2::labs(size = expression(bar(R) * " BA share")) 
+      
+      
+      
       if(dbhSel == 7) {
+        
+        comb <- ggpubr::ggarrange(heatCircle1, heatCircle2,
+                                ncol = 2, nrow = 1, widths = c(1, 1),
+                                common.legend = TRUE)
+        
+        comb <- ggpubr::annotate_figure(comb, 
+                                      left = grid::grid.text(labEnvVarWB, 
+                                                             rot = 90, vjust = 1,
+                                                             gp = grid::gpar(cex = 1.3)),
+                                      bottom = grid::grid.text(labEnvVarDDS, 
+                                                               gp = grid::gpar(cex = 1.3)))
+        
         ggplot2::ggsave("figures/Figure10.jpg",
-                        plot = heatCircle,
-                        width = 27, height = 60, scale = 0.9,
+                        plot =  comb,
+                        width = 24, height = 18, scale = 0.9, # width = 27, height = 60, scale = 0.9,
                         dpi = 300, units = "cm", device = 'jpg') 
       }
       
