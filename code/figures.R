@@ -42,7 +42,7 @@
 
 # Data preparation ----    
     
-    ## Recruitment Shannon index  by basal area ----
+    ## Recruitment Shannon index by basal area ----
     ShannonDF <- outputsDF 
     ShannonDF$giDIVG <- ShannonDF$r.ba / ShannonDF$Totr.ba
     ShannonDF$lngiDIVG <- log(ShannonDF$r.ba / ShannonDF$Totr.ba)
@@ -1479,7 +1479,7 @@
     # Europe <- world[which(world$continent == "Europe"), ]
     # plotsMap <- ggplot(Europe) +
     #   ggthemes::theme_map() +
-    #   geom_sf(fill = "transparent" , colour = "lightgrey",  lwd = 0.25) +
+    #   geom_sf(fill = "transparent" , colour = "black",  lwd = 0.25) +
     #   coord_sf(xlim = c(-15, 30), ylim = c(40,55), expand = FALSE) +
     #   geom_point(data = domSpp10, shape = 20, stroke = FALSE,
     #              mapping = aes(x = X, y = Y, color = recruitment),
@@ -1510,4 +1510,4 @@
     #                 plot =   plotsMap,
     #                 width = 21, height = 12, scale = 0.9,
     #                 dpi = 300, units = "cm", device = 'jpg')
-
+    # 

@@ -4,7 +4,7 @@
 .Ruserdata
 data/dataOutputs.csv
 figures/*
-!figures/theMap.png
+!figures/Figure1.jpg
 data/coords_blurred_dt4326.csv
 data/noRecruitment.csv
 manuscript/manuscriptRW.tex
