@@ -947,7 +947,7 @@
     
     
     #### Fig. R VS BA----
-    png(file = "figures/envTrend7Totba.png", width = 16, height = 12, 
+    jpeg(file = "figures/Figure7.jpg", width = 16, height = 12, 
         units = "cm", res = 300)
     par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
     
@@ -1074,7 +1074,7 @@
     
     #### FigS. R VS WB -----
     
-    png(file = "figures/envTrend7WB.png", width = 16, height = 12, 
+    jpeg(file = "figures/Figure8.jpg", width = 16, height = 12, 
         units = "cm", res = 300)
     par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
     
@@ -1178,7 +1178,7 @@
     
     #### FigS. R VS. DDS -----
     
-    png(file = "figures/envTrend7DDS.png", width = 16, height = 12, 
+    jpeg(file = "figures/Figure9.jpg", width = 16, height = 12, 
         units = "cm", res = 300)
     par(mfrow = c(4, 4), mar = c(2, 3, 1, 1), oma = c(2, 2, 1, 1))
     
@@ -1199,6 +1199,10 @@
     
     for (modelSel in unique(envTrend$model)) {
       ienvTrendModel <- envTrend[envTrend$model == modelSel,]
+      
+      axisPlot <- ifelse(modelSel %in% c("Landis II", "TreeMig", "LPJ-GUESS",
+                                         "aDGVM2"), "s", "n")
+      
       dataSel <- ienvTrendModel[ienvTrendModel$dbh == 7 & ienvTrendModel$model == modelSel, ]
       boxplot(r.trees ~ dds_cut, 
               data = dataSel, 
@@ -1224,6 +1228,7 @@
     
     dev.off()
     
+
     
     png(file = "figures/envTrend7DDS_500.png", width = 16, height = 12, 
         units = "cm", res = 300)
@@ -1401,7 +1406,7 @@
                       dpi = 300, units = "cm", device = 'png') 
       
       if(dbhSel == 7) {
-        ggplot2::ggsave("figures/Figures8.jpg",
+        ggplot2::ggsave("figures/Figure10.jpg",
                         plot = heatCircle,
                         width = 27, height = 60, scale = 0.9,
                         dpi = 300, units = "cm", device = 'jpg') 
