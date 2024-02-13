@@ -1,6 +1,6 @@
 ---
 title: "Appendix S1"
-subtitle: "Tree regeneration in models of forest dynamics: a key priority for further research  ECOSPHERE"
+subtitle: "Tree regeneration in models of forest dynamics: a key priority for further research"
 author: 
 - Olalla Díaz-Yáñez,
 - Yannek Käber,
