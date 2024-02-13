@@ -27,7 +27,7 @@ author:
 - Simon	Scheiter$^2$,
 - Daniel Scherrer$^{17}$,
 - Harald Bugmann$^1$
-date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
+date: $^1$ETH Zurich. Department of Environmental Systems Science. Institute of Terrestrial Ecosystems. Forest Ecology. Universitätstrasse 16, 8092 Zürich, Switzerland. \newline
       $^2$Senckenberg Biodiversity and Climate Research Centre (SBiK-F), 60325 Frankfurt am Main, Germany. \newline
       $^3$Department of Computational Hydrosystem, Helmholtz-Centre for Environmental Research - UFZ, Permoserstraße 15, 04318 Leipzig, Germany. \newline
       $^4$Ecosystem Dynamics and Forest Management Group, TUM School of Life Sciences, Technical University of Munich, 85354 Freising, Germany. \newline
@@ -85,14 +85,12 @@ header-includes:
   options(tinytex.verbose = TRUE)
 ```
 
-**OPEN RESEARCH STATEMENT:** This submission uses novel code, both the
-data and code are provided in an external repository to be evaluated
-during the peer review process. The repository can be downloaded from
-[this figshare private link:
-https://figshare.com/s/100857ba67d2351dcb15](https://figshare.com/s/100857ba67d2351dcb15).
-The protocol is available at @díaz-yáñez2022 ([with link:
-https://osf.io/czdxp/](https://osf.io/czdxp/)). We will make publicly
-available the code and data if the manuscript is accepted.
+**OPEN RESEARCH STATEMENT:** This paper uses novel protocol, data and
+code, alle are available open access. The protocol and the protocol data
+is available at @díaz-yáñez2022. The data is available at
+@diaz-yanez2023. The repository containing the code used in the
+analysis, figure creation and manuscript writing can be downloaded from
+XXXXXXX.
 
 **Keywords:** tree regeneration \| tree recruitment \| tree
 establishment \| forest dynamics \| models \| landscape \| stand \|
@@ -1304,29 +1302,31 @@ kable(modelDF,
 in the present study, the colors show the dominant tree species per site
 in the observed regeneration at the 10 cm threshold.
 
-**Figure 2.** Mean regeneration levels ($\overline{R}$) across all samples per
-site, plotted for the 200 sites and for each model. The red dashed lines
-shows the 25th and 75th percentiles for the 7 cm diameter threshold in
-the observed data. There are two boxplots for each model where the left
-lighter boxplot corresponds to 7 cm and the right darker boxplot to 10
-cm. The boxplot shows the median (midline), interquartile range (box
-limits), largest and smallest value within 1.5 times interquartile range
-(whiskers), larger values are represented as outliers.
+**Figure 2.** Mean regeneration levels ($\overline{R}$) across all
+samples per site, plotted for the 200 sites and for each model. The red
+dashed lines shows the 25th and 75th percentiles for the 7 cm diameter
+threshold in the observed data. There are two boxplots for each model
+where the left lighter boxplot corresponds to 7 cm and the right darker
+boxplot to 10 cm. The boxplot shows the median (midline), interquartile
+range (box limits), largest and smallest value within 1.5 times
+interquartile range (whiskers), larger values are represented as
+outliers.
 
-**Figure 3.** Mean Shannon index ($\overline{H}$) of tree regeneration, calculated by basal
-area, as the mean value across the 200 samples per site for the diameter
-thresholds of 7 and 10 cm, respectively. The red dashed lines shows the
-25th and 75th percentiles for the 7 cm diameter threshold in the
-observed data. Boxplot features are the same as in Figure 2.
+**Figure 3.** Mean Shannon index ($\overline{H}$) of tree regeneration,
+calculated by basal area, as the mean value across the 200 samples per
+site for the diameter thresholds of 7 and 10 cm, respectively. The red
+dashed lines shows the 25th and 75th percentiles for the 7 cm diameter
+threshold in the observed data. Boxplot features are the same as in
+Figure 2.
 
-**Figure 4.** Mean Shannon index ($\overline{H}$) across all samples per site for
-observed and simulated data. Each plot shows one pattern represented by
-one exemplary model of each category (overpredicted, intermediate and
-underpredicted). The full data with the grouping of the models are shown
-in Figures S3 and S4. n indicates the number of models falling in each
-group. A) Examples for the three trends across models for species
-diversity at the stand level. B) Examples for the three trends across
-models for regeneration at the 7 cm threshold (165 sites).
+**Figure 4.** Mean Shannon index ($\overline{H}$) across all samples per
+site for observed and simulated data. Each plot shows one pattern
+represented by one exemplary model of each category (overpredicted,
+intermediate and underpredicted). The full data with the grouping of the
+models are shown in Figures S3 and S4. n indicates the number of models
+falling in each group. A) Examples for the three trends across models
+for species diversity at the stand level. B) Examples for the three
+trends across models for regeneration at the 7 cm threshold (165 sites).
 
 **Figure 5.** Ratio of tree regeneration rates between the 7 and 10 cm
 thresholds. Dashed blue lines mark a ratio equal to 1, indicating no
@@ -1343,32 +1343,35 @@ of regeneration between 7 and 10 cm, and a ratio equal to 1.77
 corresponding to the Reineke self-thinning line under even-aged
 conditions. The vertical line indicates zero overestimation.
 
-**Figure 7.** Mean recruitment ($\overline{R}$) across the 200 samples per site with the
-y-axis scaled differently by model, for the 200 sites against gradients
-of total basal area. The values were split into ten bins; the red lines
-represent a GAM model showing the trend in the observed data.
+**Figure 7.** Mean recruitment ($\overline{R}$) across the 200 samples
+per site with the y-axis scaled differently by model, for the 200 sites
+against gradients of total basal area. The values were split into ten
+bins; the red lines represent a GAM model showing the trend in the
+observed data.
 
-**Figure 8.** Mean recruitment ($\overline{R}$) across the 200 samples per site with the
-y-axis scaled differently by model, for the 200 sites against gradients
-of climatic water balance. The values were split into ten bins; the red
-lines represent a GAM model showing the trend in the observed data.
+**Figure 8.** Mean recruitment ($\overline{R}$) across the 200 samples
+per site with the y-axis scaled differently by model, for the 200 sites
+against gradients of climatic water balance. The values were split into
+ten bins; the red lines represent a GAM model showing the trend in the
+observed data.
 
-**Figure 9.** Mean recruitment ($\overline{R}$) across the 200 samples per site with the
-y-axis scaled differently by model, for the 200 sites against gradients
-of seasonal degree-day sum. The values were split into ten bins; the red
-lines represent a GAM model showing the trend in the observed data.
+**Figure 9.** Mean recruitment ($\overline{R}$) across the 200 samples
+per site with the y-axis scaled differently by model, for the 200 sites
+against gradients of seasonal degree-day sum. The values were split into
+ten bins; the red lines represent a GAM model showing the trend in the
+observed data.
 
-**Figure 10.** Mean recruitment levels ($\overline{R}$) of the five main species in terms of
-their basal area share in the observations (top row) and the performance
-of each model across the environmental gradients (other rows) for the 7
-cm regeneration threshold. The values shown are the mean of the 200
-samples per site and across the sites in each bin (tile), with ten bins
-per gradient. The sizes of the circles represent the ratio between the
-regeneration basal area of the species and the total regeneration basal
-area for all species. The absence of a circle indicates a zero basal
-area share in the regeneration, or the absence of regeneration
-altogether. The color gradient (for the models only) shows the
-difference between the simulated and observed ratio of regeneration
+**Figure 10.** Mean recruitment levels ($\overline{R}$) of the five main
+species in terms of their basal area share in the observations (top row)
+and the performance of each model across the environmental gradients
+(other rows) for the 7 cm regeneration threshold. The values shown are
+the mean of the 200 samples per site and across the sites in each bin
+(tile), with ten bins per gradient. The sizes of the circles represent
+the ratio between the regeneration basal area of the species and the
+total regeneration basal area for all species. The absence of a circle
+indicates a zero basal area share in the regeneration, or the absence of
+regeneration altogether. The color gradient (for the models only) shows
+the difference between the simulated and observed ratio of regeneration
 basal area of the species and the total regeneration basal area for all
 the species.
 
