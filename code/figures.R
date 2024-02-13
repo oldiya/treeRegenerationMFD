@@ -2,9 +2,13 @@
 # Title: Figures
 # Aim: Create figures and analysis for the manuscript
 # Author: Olalla Díaz-Yáñez | @olalla | olalladiaz.net &
-#         some part of the figures code were based in the work of the 
+#         some parts of the figures code were based in the work of the 
 #         regeneration workshop attendees
 ################################################################################
+
+# Note:
+# code/dataPreparation.R script should be run before this script
+# to produce the file data/dataOutputs.csv needed for this script
 
 # Load plotting styles 
 

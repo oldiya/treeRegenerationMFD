@@ -1,49 +1,23 @@
 ################################################################################
 # Title: Data preparation from model simulations and observations
 # Aim: Prepare and merge data from simulations and observations
+#      produces dataOutputs.csv file needed in code/figures.R
 # Authors: Olalla Díaz-Yáñez | @olalla | olalladiaz.net
 #          and Yannek Käber 
 ################################################################################ 
 
-# Load observations -----
+# Download the data 
+# IMPORTANT! this data is needed to run this script
 
-    linkObs <- "https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/643426/observations.zip"
-   
-    
-     download.file(url = linkObs, destfile = here::here("data/observations.zip"),  mode="wb")
-    downloader::download("https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/643426/observations.zip",
-                         destfile = here::here("data/observations.csv"))
-    
-    temp <- tempfile()
-    download.file(linkObs, "data/observations.zip", mode="wb")
-    data <- read.table(unz(temp, here::here("data/observations.csv")))
-    unlink(temp)
-   
-     download.file(myURL, dir, mode="wb")
-    observationsData <- data.table::fread("data/observations/observations.csv")
-    
-    
-    
-    
-    
-    url <- "https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/643426/observations.zip"
-    
-    # Local folder to save the downloaded zip file
-    local_folder <-  here::here("data")
-    
-    # File path for the downloaded zip file
-    zip_file <- file.path(local_folder, "observations.zip")
-    
-    # Download the zip file
-    download.file(url, destfile = zip_file, mode = "wb")# wget or curl
-    
-    # Unzip the file
-    unzip(zip_file, exdir = local_folder, list = TRUE)
+# this section requires to download the study data
+# the data is available in: 
+# https://doi.org/10.3929/ethz-b-000643426
+# via this link you can download the observations and simulation_results data
+# these two folders should be placed under the folder data 
+# data/observations/
+# data/simulations_results/
 
-    
-    
-    
-    
+
 
 # Load model simulations ----
     
