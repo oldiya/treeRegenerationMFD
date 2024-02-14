@@ -1632,14 +1632,13 @@
     #                      labels = c("Picea abies" = expression(italic("Picea abies")),
     #                                    "Fagus sylvatica" = expression(italic("Fagus sylvatica")),
     #                                    "Abies alba" =  expression(italic("Abies alba")),
-    #                                    "Quercus spp." = expression(italic("Quercus"), atop(" spp."),
-    #                                    "Other spp." = expression(atop("Other spp.")),
+    #                                    "Quercus spp." = expression(italic("Quercus spp.")),
+    #                                    "Other spp." = "Other spp.",
     #                                    "Pinus sylvestris" = expression(italic("Pinus sylvestris")),
     #                                    "Fraxinus excelsior" = expression(italic("Fraxinus excelsior")),
     #                                    "Alnus glutinosa" = expression(italic("Alnus glutinosa")),
-    #                                    "Tilia cordata" = expression(italic("Tilia cordata")))
-    # 
-    #                                 )) + theme(legend.text.align = 0)
+    #                                    "Tilia cordata" = expression(italic("Tilia cordata")))) +
+    #          theme(legend.text.align = 0)
     # 
     # ggplot2::ggsave("figures/Figure1.jpg",
     #                 plot =   plotsMap,
