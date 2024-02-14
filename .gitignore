@@ -16,3 +16,4 @@ manuscript/.trackdown/
 manuscript/manuscriptRW.docx
 data/*
 !data/model_structure/dNumScaled.csv
+!data/README.md
