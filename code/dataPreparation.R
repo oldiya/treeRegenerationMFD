@@ -17,7 +17,9 @@
 # data/observations/
 # data/simulations_results/
 
+# Load observations -----
 
+    observationsData <- data.table::fread("data/observations/observations.csv")
 
 # Load model simulations ----
     
