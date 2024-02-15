@@ -85,12 +85,12 @@ header-includes:
   options(tinytex.verbose = TRUE)
 ```
 
-**OPEN RESEARCH STATEMENT:** This paper uses novel protocol, data and
-code, alle are available open access. The protocol and the protocol data
+**OPEN RESEARCH STATEMENT:** This paper uses a novel protocol, data and
+code, all are available open access. The protocol and the protocol data
 is available at @díaz-yáñez2022. The data is available at
 @diaz-yanez2023. The repository containing the code used in the
 analysis, figure creation and manuscript writing can be downloaded from
-XXXXXXX.
+@díaz-yáñez2024.
 
 **Keywords:** tree regeneration \| tree recruitment \| tree
 establishment \| forest dynamics \| models \| landscape \| stand \|
